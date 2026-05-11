@@ -751,8 +751,10 @@ h2 em {
 }
 
 .modal-logo {
-  width: 44px;
-  height: 44px;
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
   border-radius: 10px;
   object-fit: contain;
   background: rgba(255,255,255,0.12);
@@ -2023,7 +2025,7 @@ footer span { color: rgba(255,255,255,0.6); }
       <button class="modal-close" onclick="closeModal()">&times;</button>
       <div class="modal-hero-content">
         <div class="modal-brand-row">
-          <img id="modal-logo" class="modal-logo" src="" alt="" style="display:none" />
+          <img id="modal-logo" class="modal-logo" src="" alt="" style="display:none" onerror="this.style.display='none'" />
           <div class="modal-brand" id="modal-title"></div>
         </div>
         <div class="modal-meta" id="modal-meta"></div>
