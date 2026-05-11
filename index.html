@@ -92,9 +92,15 @@
 }
 
 [data-theme="dark"] .s-tag {
-  background: #1A1A1A;
-  border-color: rgba(255,255,255,0.08);
-  color: #CCCCCC;
+  background: transparent;
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75);
+}
+
+[data-theme="dark"] .s-tag:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.3);
+  color: #fff;
 }
 
 [data-theme="dark"] .work-card-logo {
@@ -1627,7 +1633,7 @@ footer span { color: rgba(255,255,255,0.6); }
       </div>
 
       <!-- Potters' Hub -->
-      <!-- Mohamina Haque -->
+      <!-- Mohaimina Haque -->
       <div class="work-card fade-up" onclick="openModal('mohamina')">
         <div class="work-card-thumb" style="background:linear-gradient(135deg, #5a0808 0%, #8b1515 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;">
           <div style="font-family:'Fraunces',serif;font-size:52px;font-weight:600;color:rgba(255,255,255,0.92);letter-spacing:-2px;line-height:1;">MH</div>
@@ -1636,7 +1642,7 @@ footer span { color: rgba(255,255,255,0.6); }
         </div>
         <div class="work-card-body">
           <span class="work-card-tag">Executive Personal Brand / Instagram & Facebook</span>
-          <div class="work-card-title">Mohamina Haque</div>
+          <div class="work-card-title">Mohaimina Haque</div>
           <p class="work-card-desc">Turned a quiet executive Instagram into a real presence. 1.2M+ impressions in 6 months, nothing spent on ads.</p>
           <div class="work-card-metrics">
             <div class="wm"><div class="wm-val">1.2M+</div><div class="wm-label">Impressions</div></div>
@@ -2144,14 +2150,14 @@ const cases = {
       { val: "130K", label: "Top Post Views" },
     ],
     sections: [
-      { title: "The Challenge", body: "Tony Roma's needed a consistent social presence and support for new location launches. They also wanted to build out the personal brand of their CEO, Mohamina Haque — the brand's first female CEO." },
+      { title: "The Challenge", body: "Tony Roma's needed a consistent social presence and support for new location launches. They also wanted to build out the personal brand of their CEO, Mohaimina Haque — the brand's first female CEO." },
       { title: "What I Built", body: "I ran the full content strategy: calendar, visual direction, posting cadence. Multi-phase campaigns for location launches including Kimball, Tennessee. In parallel, I built the CEO's personal brand on Instagram — positioning her as an executive voice in the restaurant industry. Everything was organic, no paid spend." },
       { title: "The Result", body: "Facebook: 729K total views, +448% on 3-second views, +76% content interactions, +386% watch time. Instagram: 305K views, +14% reach, +100% content interactions. Top post hit 130,100 views. CEO account grew to 6,000+ followers." },
     ],
     screenshots: [],
   },
   mohamina: {
-    title: "Mohamina Haque",
+    title: "Mohaimina Haque",
     logo: null,
     meta: "Executive Personal Branding  |  Oct 2025 to Apr 2026  |  Instagram, Facebook",
     img: null,
@@ -2162,7 +2168,7 @@ const cases = {
       { val: "100%", label: "Organic" },
     ],
     sections: [
-      { title: "Who She Is", body: "Mohamina Haque is the CEO of Tony Roma's India — the brand's first female CEO. She had an existing following on Instagram and Facebook but no real content strategy behind it. The goal was to turn the accounts into something people followed for a reason." },
+      { title: "Who She Is", body: "Mohaimina Haque is the CEO of Tony Roma's India — the brand's first female CEO. She had an existing following on Instagram and Facebook but no real content strategy behind it. The goal was to turn the accounts into something people followed for a reason." },
       { title: "What I Did", body: "I ran her personal brand on Instagram and Facebook: positioning, content pillars, copy, and calendar. Every post came from her real experience as a female CEO in a legacy restaurant brand. I prioritised quality over output — fewer posts, more substance." },
       { title: "The Results", body: "1.2M+ organic impressions in 6 months, nothing spent on ads. The account went from silent to consistently present with a clear voice. Follower count held steady, but the account became something people actually noticed." },
     ],
@@ -2257,13 +2263,13 @@ function openModal(key) {
 
   const thumbData = {
     fantv:    { bg: 'linear-gradient(135deg, #dde3f0 0%, #c8d2ea 100%)', logo: 'Logos/FanTV-AI.jpg', blend: 'multiply' },
-    prashan:  { bg: 'linear-gradient(135deg, #0c1828 0%, #1e3a60 100%)', initials: 'PA', initColor: '#a8c4e8' },
+    prashan:  { bg: 'linear-gradient(135deg, #0c1828 0%, #1e3a60 100%)', initials: 'Prashan Agarwal', initColor: '#a8c4e8' },
     fere:     { bg: 'linear-gradient(135deg, #030c1f 0%, #071830 100%)', logo: 'Logos/Fere-AI.png', blend: 'screen' },
     novaswap: { bg: 'linear-gradient(135deg, #010d1a 0%, #042535 100%)', logo: 'Logos/Novaswap.jpg', blend: 'screen' },
     defx:     { bg: 'linear-gradient(135deg, #050508 0%, #0c1028 100%)', logo: 'Logos/Defx.png', blend: 'screen' },
     bima:     { bg: 'linear-gradient(135deg, #f2f0ea 0%, #e8e4d4 100%)', logo: 'Logos/Bima-BTC.jpg', blend: 'multiply' },
     tony:     { bg: 'linear-gradient(135deg, #5a0808 0%, #8b1515 100%)', logo: 'Logos/Tony-Romas.jpg', blend: 'screen' },
-    mohamina: { bg: 'linear-gradient(135deg, #5a0808 0%, #8b1515 100%)', initials: 'MH', initColor: '#f5c5c5' },
+    mohamina: { bg: 'linear-gradient(135deg, #5a0808 0%, #8b1515 100%)', initials: 'Mohaimina Haque', initColor: '#f5c5c5' },
     potters:  { bg: 'linear-gradient(135deg, #f5f0e8 0%, #e8dcc8 100%)', logo: 'Logos/Potters-Hub.jpg', blend: 'multiply' },
     bones:     { bg: 'linear-gradient(135deg, #5a0808 0%, #8b1515 100%)', logo: 'Logos/bones-and-burgers.jpg', blend: 'screen' },
     opaque:    { bg: 'linear-gradient(135deg, #1a1208 0%, #4a3520 50%, #6b4c2a 100%)', logo: 'Logos/Opaque-Studio.png', filter: 'invert(1) brightness(1.3)' },
@@ -2289,7 +2295,7 @@ function openModal(key) {
   } else if (td.initials) {
     imgEl.style.display = 'none';
     imgEl.src = '';
-    initialsEl.innerHTML = '<span style="font-family:Fraunces,serif;font-size:80px;font-weight:700;color:' + (td.initColor || 'rgba(255,255,255,0.9)') + ';letter-spacing:-0.02em;opacity:0.3;">' + td.initials + '</span>';
+    initialsEl.innerHTML = '<span style="font-family:Fraunces,serif;font-size:38px;font-weight:700;color:' + (td.initColor || 'rgba(255,255,255,0.9)') + ';letter-spacing:-0.5px;opacity:0.85;text-align:center;padding:0 32px;">' + td.initials + '</span>';
     initialsEl.style.display = 'flex';
   } else {
     imgEl.style.display = 'none';
