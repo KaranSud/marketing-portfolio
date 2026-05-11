@@ -2258,13 +2258,7 @@ function openModal(key) {
   document.getElementById('modal-title').textContent = c.title;
   document.getElementById('modal-meta').textContent = c.meta;
 
-  const logoEl = document.getElementById('modal-logo');
-  if (c.logo) {
-    logoEl.src = c.logo;
-    logoEl.style.display = 'inline-block';
-  } else {
-    logoEl.style.display = 'none';
-  }
+  document.getElementById('modal-logo').style.display = 'none';
 
   const thumbData = {
     fantv:    { bg: 'linear-gradient(135deg, #dde3f0 0%, #c8d2ea 100%)', logo: 'Logos/FanTV-AI.jpg', blend: 'multiply' },
