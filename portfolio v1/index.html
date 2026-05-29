@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karan Sud -- Sr. Content Manager & Growth Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F6F2;
+  --white: #FFFFFF;
+  --ink: #0D0D0D;
+  --ink2: #2A2A2A;
+  --muted: #777;
+  --light: #E8E6DF;
+  --border: rgba(0,0,0,0.08);
+  --blue: #1A56DB;
+  --blue2: #3B82F6;
+  --blue3: #60A5FA;
+  --grad: linear-gradient(135deg, #1A56DB 0%, #1E40AF 50%, #1D4ED8 100%);
+  --grad2: linear-gradient(135deg, #1e40af 0%, #1A56DB 100%);
+  --grad3: linear-gradient(180deg, #1A56DB 0%, #1E40AF 100%);
+  --surface: #FFFFFF;
+  --tag-bg: rgba(26,86,219,0.08);
+  --tag-color: #1A56DB;
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --bg: #0D0D0D;
+  --white: #141414;
+  --ink: #F0F0F0;
+  --ink2: #CCCCCC;
+  --muted: #888;
+  --light: #1E1E1E;
+  --border: rgba(255,255,255,0.08);
+  --surface: #141414;
+  --tag-bg: rgba(99,136,255,0.12);
+  --tag-color: #6388FF;
+  --blue: #5B8DFF;
+  --blue2: #6B9FFF;
+  --blue3: #93C5FD;
+  --grad: linear-gradient(135deg, #4F75FF 0%, #3B6FFF 50%, #4F75FF 100%);
+  --grad2: linear-gradient(135deg, #3B5BDB 0%, #1E40AF 100%);
+  --grad3: linear-gradient(180deg, #4F75FF 0%, #3B6FFF 100%);
+}
+
+[data-theme="dark"] body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+[data-theme="dark"] #services {
+  background: #080808;
+}
+
+[data-theme="dark"] .srv {
+  background: #0F0F0F;
+}
+[data-theme="dark"] .srv:hover {
+  background: #161616;
+}
+
+[data-theme="dark"] nav {
+  background: rgba(13,13,13,0.92);
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] .hero-right,
+[data-theme="dark"] .h-stat,
+[data-theme="dark"] .work-card,
+[data-theme="dark"] .c-link,
+[data-theme="dark"] .brand-pill,
+[data-theme="dark"] .modal {
+  background: #141414;
+  border-color: rgba(255,255,255,0.07);
+}
+
+[data-theme="dark"] .modal {
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+}
+
+[data-theme="dark"] .p-stat,
+[data-theme="dark"] .ms {
+  background: #1A1A1A;
+}
+
+[data-theme="dark"] .wm {
+  background: transparent;
+}
+
+[data-theme="dark"] .skill-group {
+  background: transparent;
+}
+
+[data-theme="dark"] .s-tag {
+  background: transparent;
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75);
+}
+
+[data-theme="dark"] .s-tag:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+[data-theme="dark"] .work-card-logo {
+  background: rgba(20,20,20,0.95);
+  color: #F0F0F0;
+}
+
+[data-theme="dark"] .modal-body {
+  background: #141414;
+}
+
+[data-theme="dark"] .brands-section,
+[data-theme="dark"] #brands,
+[data-theme="dark"] #skills {
+  background: #0D0D0D;
+}
+
+[data-theme="dark"] .hero-bg-orb1 {
+  background: radial-gradient(circle, rgba(26,86,219,0.12) 0%, transparent 70%);
+}
+[data-theme="dark"] .hero-bg-orb2 {
+  background: radial-gradient(circle, rgba(30,64,175,0.1) 0%, transparent 70%);
+}
+[data-theme="dark"] .contact-orb {
+  background: radial-gradient(circle, rgba(26,86,219,0.07) 0%, transparent 70%);
+}
+
+[data-theme="dark"] footer {
+  background: #080808;
+}
+
+/* Toggle button */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--tag-bg);
+}
+.theme-toggle svg { pointer-events: none; }
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+
+
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+/* ===================== NAV ===================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 0 56px;
+  height: 68px;
+  background: rgba(247,246,242,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-links { display: flex; gap: 40px; align-items: center; }
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+.nav-cta {
+  background: var(--grad);
+  color: white !important;
+  padding: 9px 20px;
+  border-radius: 100px;
+  font-weight: 500 !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85; color: white !important; }
+
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 56px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-orb1 {
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,86,219,0.12) 0%, transparent 70%);
+  right: -100px; top: -100px;
+  pointer-events: none;
+}
+.hero-bg-orb2 {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30,64,175,0.08) 0%, transparent 70%);
+  left: 30%; bottom: 10%;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--tag-bg);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+  margin-bottom: 28px;
+  border: 1px solid rgba(26,86,219,0.15);
+}
+
+.hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); display: inline-block; animation: pulse 2s ease infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(52px, 6.5vw, 88px);
+  font-weight: 600;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+
+h1 em {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+
+.btn-grad {
+  background: var(--grad);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 24px rgba(26,86,219,0.3);
+}
+.btn-grad:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 32px rgba(26,86,219,0.35); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 400;
+  padding: 13px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 1.5px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+/* Hero stat pills */
+.hero-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.h-stat {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 20px;
+  min-width: 130px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.h-stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 600;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.h-stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Hero right card */
+.hero-right {
+  width: 340px;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+.profile-title {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.profile-stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.p-stat {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.p-stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.p-stat-label { font-size: 10px; color: var(--muted); font-weight: 400; }
+
+.profile-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.p-tag {
+  background: var(--tag-bg);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+/* ===================== SECTIONS ===================== */
+.section-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 56px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-tag::before {
+  display: none;
+}
+
+h2 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+h2 em {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 56px;
+  max-width: 560px;
+  font-weight: 300;
+}
+
+/* ===================== WORK GRID ===================== */
+#work { background: var(--bg); }
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.work-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  position: relative;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+}
+
+.work-card-thumb {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+.work-card-thumb > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 28px 44px;
+  opacity: 0.95;
+  transition: opacity 0.3s, transform 0.3s;
+  transform-origin: center;
+}
+
+.work-card:hover .work-card-thumb > img { opacity: 1; transform: scale(1.05); }
+
+.work-card-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+}
+
+.work-card-logo {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+}
+
+.work-card-logo img {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.work-card-body {
+  padding: 22px;
+}
+
+.work-card-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--blue);
+  background: var(--tag-bg);
+  padding: 3px 10px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.work-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.work-card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  font-weight: 300;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.work-card-metrics {
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.wm {
+  flex: 1;
+}
+
+.wm-val {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 600;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.wm-label {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.work-card-cta {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.work-card:hover .work-card-cta {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ===================== CASE STUDY MODAL ===================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  z-index: 500;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 40px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--white);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 840px;
+  overflow: hidden;
+  transform: translateY(24px);
+  transition: transform 0.3s;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0);
+}
+
+.modal-hero {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.modal-hero > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+}
+
+.modal-hero-content {
+  position: absolute;
+  bottom: 28px;
+  left: 36px;
+  right: 80px;
+}
+
+.modal-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.modal-logo {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  border-radius: 10px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+  padding: 4px;
+}
+
+.modal-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+.modal-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 10;
+  line-height: 1;
+}
+.modal-close:hover { background: rgba(255,255,255,0.25); }
+
+.modal-body {
+  padding: 36px;
+}
+
+.modal-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.ms {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+}
+
+.ms-val {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.ms-label {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.modal-section { margin-bottom: 28px; }
+
+.modal-section h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.modal-section p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.modal-screenshots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.modal-screenshots img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.modal-screenshots.single img {
+  grid-column: 1/-1;
+}
+
+/* ===================== SERVICES ===================== */
+#services { background: var(--ink); color: white; }
+#services h2 { color: white; }
+#services h2 em {
+  background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#services .section-tag { color: #60A5FA; }
+#services .section-tag::before { display: none; }
+#services .section-sub { color: rgba(255,255,255,0.5); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.srv {
+  background: #111;
+  padding: 28px 24px;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.srv:hover { background: #161616; }
+
+.srv-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--grad2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(26,86,219,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
+.srv-title {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.srv-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ===================== BRANDS ===================== */
+#brands { background: var(--bg); }
+
+.brands-scroll-area {
+  overflow: hidden;
+  position: relative;
+  margin: 0 -56px;
+  padding: 0 56px;
+}
+
+.brands-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.brand-cat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.brand-logos-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.brand-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 10px 18px 10px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.2s;
+}
+
+.brand-pill:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 4px 16px rgba(26,86,219,0.12);
+  transform: translateY(-1px);
+}
+
+.brand-pill img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: var(--bg);
+  padding: 2px;
+}
+
+.brand-pill .brand-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--grad2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: white;
+  font-weight: 600;
+  font-family: 'Fraunces', serif;
+  flex-shrink: 0;
+}
+
+/* ===================== SKILLS ===================== */
+#skills { background: var(--white); }
+
+.skills-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.skills-left h2 { margin-bottom: 20px; }
+
+.skills-left p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.skill-group { margin-bottom: 32px; }
+
+.skill-group-title {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-group-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.s-tag {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink2);
+  padding: 6px 14px;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+
+.s-tag:hover {
+  background: var(--tag-bg);
+  border-color: rgba(26,86,219,0.2);
+  color: var(--blue);
+}
+
+/* ===================== CONTACT ===================== */
+#contact {
+  background: var(--bg);
+  text-align: center;
+  padding: 120px 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-orb {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,86,219,0.08) 0%, transparent 70%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.contact-inner { position: relative; max-width: 600px; margin: 0 auto; }
+
+.contact-inner h2 { font-size: clamp(36px, 5vw, 60px); margin-bottom: 16px; }
+
+.contact-inner .section-sub {
+  margin-bottom: 28px;
+  max-width: 100%;
+  text-align: center;
+  font-size: 17px;
+}
+
+.contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+.c-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 12px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.c-link:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 4px 20px rgba(26,86,219,0.15);
+  transform: translateY(-1px);
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.35);
+  padding: 28px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+footer span { color: rgba(255,255,255,0.6); }
+
+/* ===================== ANIMATIONS ===================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 24px 60px; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .section-wrap { padding: 72px 24px; }
+  .work-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .modal-stats-row { grid-template-columns: 1fr 1fr; }
+  .skills-container { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+/* ===================== CENTER ALIGNMENT ===================== */
+/* Hero */
+.hero-left { text-align: center; }
+.hero-sub { max-width: 540px; margin-left: auto; margin-right: auto; }
+.hero-actions { justify-content: center; }
+.hero-stats { justify-content: center; }
+.hero-badge { margin-left: auto; margin-right: auto; }
+
+/* Section intros — direct children only so skills-left stays left-aligned */
+.section-wrap > .section-tag {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.section-wrap > h2 { text-align: center; }
+.section-wrap > .section-sub {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===================== CONTACT MODAL ===================== */
+.contact-ctas {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.contact-modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
+}
+.contact-modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.contact-modal {
+  background: var(--surface);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 480px;
+  margin: 24px;
+  padding: 40px;
+  position: relative;
+  border: 1px solid var(--border);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+.contact-modal-overlay.open .contact-modal { transform: translateY(0); }
+
+.contact-modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--border); background: transparent;
+  cursor: pointer; font-size: 18px; color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.contact-modal-close:hover { border-color: var(--blue); color: var(--blue); }
+
+.contact-modal-tabs {
+  display: flex; gap: 8px; margin-bottom: 28px;
+  background: var(--light); border-radius: 100px; padding: 4px;
+}
+.ctab {
+  flex: 1; padding: 9px 16px; border-radius: 100px; border: none;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  background: transparent; color: var(--muted); transition: all 0.2s;
+}
+.ctab.active { background: var(--surface); color: var(--ink); box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+
+.cform { display: flex; flex-direction: column; gap: 14px; }
+.cform input, .cform textarea {
+  width: 100%; padding: 13px 16px;
+  border: 1px solid var(--border); border-radius: 12px;
+  background: var(--bg); color: var(--ink);
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 300;
+  outline: none; transition: border-color 0.2s;
+  resize: none;
+}
+.cform input:focus, .cform textarea:focus { border-color: var(--blue); }
+.cform textarea { min-height: 110px; }
+.cform-submit {
+  background: var(--grad); color: white; border: none;
+  padding: 13px; border-radius: 100px; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(26,86,219,0.25);
+}
+.cform-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.cschedule-panel {
+  text-align: center; padding: 12px 0;
+}
+.cschedule-panel p {
+  color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 24px;
+}
+.cschedule-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--grad); color: white; text-decoration: none;
+  padding: 14px 32px; border-radius: 100px; font-size: 14px; font-weight: 500;
+  box-shadow: 0 4px 20px rgba(26,86,219,0.25); transition: opacity 0.2s, transform 0.2s;
+}
+.cschedule-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.cschedule-note { font-size: 12px; color: var(--muted); margin-top: 14px; }
+
+.cform-success { text-align: center; padding: 20px 0; }
+.cform-success svg { margin-bottom: 16px; }
+.cform-success h3 { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 8px; color: var(--ink); }
+.cform-success p { color: var(--muted); font-size: 14px; }
+
+/* ═══════════════════════════════════════════════════════════
+   CONVERSION ELEMENTS
+═══════════════════════════════════════════════════════════ */
+
+/* Green available dot on hero badge */
+.hero-badge span {
+  background: #22c55e !important;
+}
+@keyframes avail-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
+  60%       { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+}
+.hero-badge span { animation: avail-glow 2.2s ease-in-out infinite !important; }
+
+/* CTA pulse ring wrapper */
+@keyframes ring-out {
+  0%   { opacity: 0.55; transform: scale(1); }
+  100% { opacity: 0;    transform: scale(1.4); }
+}
+.cta-pulse-wrap {
+  position: relative;
+  display: inline-block;
+  border-radius: 100px;
+}
+.cta-pulse-wrap::before,
+.cta-pulse-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 100px;
+  border: 1.5px solid rgba(26,86,219,0.35);
+  animation: ring-out 2.8s ease-out infinite;
+  pointer-events: none;
+}
+.cta-pulse-wrap::after {
+  inset: -9px;
+  border-color: rgba(26,86,219,0.15);
+  animation-delay: 0.7s;
+}
+
+/* Shimmer sweep on primary buttons */
+.btn-grad { position: relative; overflow: hidden; }
+@keyframes shimmer {
+  0%   { left: -80%; }
+  100% { left: 160%; }
+}
+.btn-grad::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  animation: shimmer 3.5s ease-in-out infinite 1.2s;
+  pointer-events: none;
+  border-radius: 0;
+}
+
+/* Trust strip */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 20px 0 36px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+.trust-item strong { color: var(--ink); font-weight: 600; }
+.trust-item svg { opacity: 0.45; flex-shrink: 0; color: var(--ink); }
+
+/* scarcity-note removed */
+
+/* Sticky floating book-a-call button */
+@keyframes sticky-in {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.sticky-book {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--grad);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 13px 22px 13px 17px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(26,86,219,0.45);
+  text-decoration: none;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.sticky-book.visible {
+  opacity: 1;
+  visibility: visible;
+  animation: sticky-in 0.38s ease forwards;
+}
+.sticky-book:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(26,86,219,0.55);
+}
+.sticky-book .sb-dot {
+  width: 8px; height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: avail-glow 2s ease-in-out infinite;
+}
+@media (max-width: 600px) {
+  .sticky-book { bottom: 18px; right: 16px; padding: 11px 18px 11px 14px; font-size: 13px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Karan Sud</a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#brands">Brands</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-orb1"></div>
+  <div class="hero-bg-orb2"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge"><span></span> Available for new projects</div>
+      <h1>Making Brands<br><em>Impossible</em><br>to Ignore</h1>
+      <p class="hero-sub">Sr. Content Manager and Growth Strategist. 5+ years of building brands from nothing: content, community, paid channels, and the systems that keep it all moving.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-grad">View Case Studies &darr;</a>
+        <div class="cta-pulse-wrap"><a href="#contact" class="btn-outline">Let's Talk</a></div>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="h-stat-val">$50M+</div>
+          <div class="h-stat-label">Monthly DEX volume driven</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-val">300K+</div>
+          <div class="h-stat-label">Followers on single brand account</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-val">150K+</div>
+          <div class="h-stat-label">Community members built</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-val">$1.5B</div>
+          <div class="h-stat-label">Cumulative perp volume</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="profile-top">
+        <div class="profile-avatar">K</div>
+        <div>
+          <div class="profile-name">Karan Sud</div>
+          <div class="profile-title">Sr. Content Manager</div>
+        </div>
+      </div>
+      <div class="profile-stat-row">
+        <div class="p-stat">
+          <div class="p-stat-val">5+</div>
+          <div class="p-stat-label">Years experience</div>
+        </div>
+        <div class="p-stat">
+          <div class="p-stat-val">9</div>
+          <div class="p-stat-label">Brands managed</div>
+        </div>
+        <div class="p-stat">
+          <div class="p-stat-val">471%</div>
+          <div class="p-stat-label">Peak e-comm ROI</div>
+        </div>
+        <div class="p-stat">
+          <div class="p-stat-val">12K+</div>
+          <div class="p-stat-label">AI agent signups</div>
+        </div>
+      </div>
+      <div class="profile-tags">
+        <span class="p-tag">Web3</span>
+        <span class="p-tag">DeFi</span>
+        <span class="p-tag">F&B</span>
+        <span class="p-tag">SaaS</span>
+        <span class="p-tag">Creator Brands</span>
+        <span class="p-tag">E-Commerce</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-wrap">
+    <div class="section-tag">Case Studies</div>
+    <h2>Work that moved<br><em>the needle</em></h2>
+    <p class="section-sub">Every engagement starts from zero. Here's what came out the other end.</p>
+
+    <div class="work-grid">
+
+      <!-- FanTV AI -->
+      <div class="work-card fade-up" onclick="openModal('fantv')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #dde3f0 0%, #c8d2ea 100%)">
+          <img src="Logos/FanTV-AI.jpg" alt="FanTV AI" style="mix-blend-mode:multiply;" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">Web3 / Social Growth</span>
+          <div class="work-card-title">FanTV AI</div>
+          <p class="work-card-desc">Took a stagnant account to 300K and built the community around it: Discord, Telegram, KOLs, the full structure.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">300K</div><div class="wm-label">Followers (from 70K)</div></div>
+            <div class="wm"><div class="wm-val">9.5M+</div><div class="wm-label">X Impressions</div></div>
+            <div class="wm"><div class="wm-val">150K+</div><div class="wm-label">Community</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <!-- Fere AI -->
+      <!-- Prashan Agarwal -->
+      <div class="work-card fade-up" onclick="openModal('prashan')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #0c1828 0%, #1e3a60 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 16px;text-align:center;">
+          <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:rgba(255,255,255,0.92);letter-spacing:-0.5px;line-height:1.2;">Prashan Agarwal</div>
+          <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;">CEO, FanTV · ex-CEO Gaana.com</div>
+          <div class="work-card-thumb-overlay"></div>
+        </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">Executive Personal Brand / X & LinkedIn</span>
+          <div class="work-card-title">Prashan Agarwal</div>
+          <p class="work-card-desc">Grew a Web3 CEO's X from 12K to 100K and built out LinkedIn, while running FanTV at the same time.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">12K to 100K</div><div class="wm-label">X Followers</div></div>
+            <div class="wm"><div class="wm-val">5K to 10K</div><div class="wm-label">LinkedIn</div></div>
+            <div class="wm"><div class="wm-val">9.5M+</div><div class="wm-label">Impressions</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <div class="work-card fade-up" onclick="openModal('fere')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #030c1f 0%, #071830 100%)">
+          <img src="Logos/Fere-AI.png" alt="Fere AI" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">AI / Growth Marketing</span>
+          <div class="work-card-title">Fere AI</div>
+          <p class="work-card-desc">Took an AI trading platform from invisible to 12K signups. Voice, content, email, community. Built without a paid budget.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">12K+</div><div class="wm-label">AI Agent Signups</div></div>
+            <div class="wm"><div class="wm-val">6.8M</div><div class="wm-label">X Impressions</div></div>
+            <div class="wm"><div class="wm-val">400-500</div><div class="wm-label">Daily Active Users</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <!-- Novaswap -->
+      <div class="work-card fade-up" onclick="openModal('novaswap')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #010d1a 0%, #042535 100%)">
+          <img src="Logos/Novaswap.jpg" alt="Novaswap" style="mix-blend-mode:screen;" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">DeFi / Brand Building</span>
+          <div class="work-card-title">Novaswap</div>
+          <p class="work-card-desc">Launched Novaswap from nothing: brand, community, trading incentives. $650K+ in organic volume in 90 days.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">$650K+</div><div class="wm-label">Organic Volume, 90 Days</div></div>
+            <div class="wm"><div class="wm-val">1.1M</div><div class="wm-label">X Impressions</div></div>
+            <div class="wm"><div class="wm-val">19,000%</div><div class="wm-label">Profile Visit Growth</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <!-- Defx -->
+      <div class="work-card fade-up" onclick="openModal('defx')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #050508 0%, #0c1028 100%)">
+          <img src="Logos/Defx.png" alt="Defx" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">DeFi / Volume Growth</span>
+          <div class="work-card-title">Defx</div>
+          <p class="work-card-desc">Took a perp DEX from under $100K monthly volume to $50M+. Verified $1.5B cumulative on DefiLlama.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">$50M+</div><div class="wm-label">Monthly Volume</div></div>
+            <div class="wm"><div class="wm-val">$1.5B+</div><div class="wm-label">Cumulative Perp Vol.</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <!-- BimaBTC -->
+      <div class="work-card fade-up" onclick="openModal('bima')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #f2f0ea 0%, #e8e4d4 100%)">
+          <img src="Logos/Bima-BTC.jpg" alt="BimaBTC" style="mix-blend-mode:multiply;" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">Web3 / Content Strategy</span>
+          <div class="work-card-title">BimaBTC</div>
+          <p class="work-card-desc">144K followers, 2.4% engagement rate, 2.3M impressions. Built on posting discipline, not paid reach.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">2.3M</div><div class="wm-label">X Impressions</div></div>
+            <div class="wm"><div class="wm-val">144K</div><div class="wm-label">Followers</div></div>
+            <div class="wm"><div class="wm-val">2.4%</div><div class="wm-label">Engagement Rate</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <!-- Tony Roma's -->
+      <div class="work-card fade-up" onclick="openModal('tony')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #5a0808 0%, #8b1515 100%)">
+          <img src="Logos/Tony-Romas.jpg" alt="Tony Roma's" style="mix-blend-mode:screen;" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">F&B / Social + Personal Brand</span>
+          <div class="work-card-title">Tony Roma's</div>
+          <p class="work-card-desc">Content strategy for a 53-year-old global chain, plus executive personal branding for their first female CEO. 100% organic.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">729K</div><div class="wm-label">Facebook Views</div></div>
+            <div class="wm"><div class="wm-val">+448%</div><div class="wm-label">3-Sec Video Views</div></div>
+            <div class="wm"><div class="wm-val">305K</div><div class="wm-label">Instagram Views</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <!-- Potters' Hub -->
+      <!-- Mohaimina Haque -->
+      <div class="work-card fade-up" onclick="openModal('mohamina')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #5a0808 0%, #8b1515 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 16px;text-align:center;">
+          <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:rgba(255,255,255,0.92);letter-spacing:-0.5px;line-height:1.2;">Mohaimina Haque</div>
+          <div style="font-size:10px;font-weight:500;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;">CEO, Tony Roma's</div>
+          <div class="work-card-thumb-overlay"></div>
+        </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">Executive Personal Brand / Instagram & Facebook</span>
+          <div class="work-card-title">Mohaimina Haque</div>
+          <p class="work-card-desc">Turned a quiet executive Instagram (@attorneyminadc) into a real presence. 1.2M+ impressions in 6 months, nothing spent on ads.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">1.2M+</div><div class="wm-label">Impressions</div></div>
+            <div class="wm"><div class="wm-val">6 mo</div><div class="wm-label">Duration</div></div>
+            <div class="wm"><div class="wm-val">$0</div><div class="wm-label">Paid Spend</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <div class="work-card fade-up" onclick="openModal('potters')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #f5f0e8 0%, #e8dcc8 100%)">
+          <img src="Logos/Potters-Hub.jpg" alt="Potters' Hub" style="mix-blend-mode:multiply;" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">E-Commerce / Paid Ads</span>
+          <div class="work-card-title">Potters' Hub</div>
+          <p class="work-card-desc">Built their Shopify store and ran Meta ads that turned ₹3,500 into ₹20,000 in month one.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">471%</div><div class="wm-label">Month 1 ROI</div></div>
+            <div class="wm"><div class="wm-val">243K</div><div class="wm-label">Views, 90 Days</div></div>
+            <div class="wm"><div class="wm-val">+190%</div><div class="wm-label">Accounts Reached</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <!-- Bones and Burgers -->
+      <div class="work-card fade-up" onclick="openModal('bones')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #5a0808 0%, #8b1515 100%);">
+          <img src="Logos/bones-and-burgers.jpg" alt="Bones & Burgers" style="mix-blend-mode:screen;" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">F&B / Organic Growth</span>
+          <div class="work-card-title">Bones &amp; Burgers</div>
+          <p class="work-card-desc">Inherited an account full of bot followers. Cleaned it up and rebuilt it. No ads, just content.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">+160%</div><div class="wm-label">Content Interactions</div></div>
+            <div class="wm"><div class="wm-val">+287%</div><div class="wm-label">Watch Time</div></div>
+            <div class="wm"><div class="wm-val">$0</div><div class="wm-label">Ad Spend</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <div class="work-card fade-up" onclick="openModal('opaque')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #1a1208 0%, #4a3520 50%, #6b4c2a 100%);">
+          <img src="Logos/Opaque-Studio.png" alt="Opaque Studio" style="filter:invert(1) brightness(1.3);" />
+          <div class="work-card-thumb-overlay"></div>
+          </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">Luxury D2C / Performance Marketing</span>
+          <div class="work-card-title">Opaque Studio</div>
+          <p class="work-card-desc">Ran all marketing for a luxury handcrafted home brand: Meta, Google, socials, product launches. 4X ROAS at ₹3L/month.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">4X</div><div class="wm-label">ROAS</div></div>
+            <div class="wm"><div class="wm-val">+37%</div><div class="wm-label">Follower Growth</div></div>
+            <div class="wm"><div class="wm-val">₹3L/mo</div><div class="wm-label">Ad Spend Managed</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+      <!-- The Sportrush -->
+      <div class="work-card fade-up" onclick="openModal('sportrush')">
+        <div class="work-card-thumb" style="background:linear-gradient(135deg, #0a1a0a 0%, #0d2b0d 100%)">
+          <img src="Logos/sportsrush.jpg" alt="The Sportrush" style="mix-blend-mode:lighten;opacity:0.9;" />
+          <div class="work-card-thumb-overlay"></div>
+        </div>
+        <div class="work-card-body">
+          <span class="work-card-tag">Sports Media / Content Growth</span>
+          <div class="work-card-title">The Sportrush</div>
+          <p class="work-card-desc">Built their entire Instagram presence from 26 followers. New content strategy, formats, SOPs. Two reels went viral: 4M and 2M views.</p>
+          <div class="work-card-metrics">
+            <div class="wm"><div class="wm-val">7M+</div><div class="wm-label">Total Views</div></div>
+            <div class="wm"><div class="wm-val">26 to 4.5K</div><div class="wm-label">Followers</div></div>
+            <div class="wm"><div class="wm-val">$0</div><div class="wm-label">Ad Spend</div></div>
+          </div>
+        </div>
+        <div class="work-card-cta">+</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-wrap">
+    <div class="section-tag">What I Do</div>
+    <h2>Full-stack marketing,<br><em>start to finish</em></h2>
+    <p class="section-sub">From strategy to execution across every channel that matters.</p>
+
+    <div class="services-grid">
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+        <div class="srv-title">Social Media Management</div>
+        <p class="srv-desc">Full-service across X, Instagram, LinkedIn, TikTok, Facebook, Telegram, and Discord. From brief to post.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <div class="srv-title">Content Strategy</div>
+        <p class="srv-desc">Your brand's complete playbook: tone, pillars, formats, competitor benchmarks, 90-day roadmap.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="srv-title">KOL &amp; Influencer Partnerships</div>
+        <p class="srv-desc">Identification, outreach, briefing, execution, tracking. Built KOL networks across Web3, AI, and F&amp;B, with results to show for it.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="srv-title">Community Building</div>
+        <p class="srv-desc">Discord and Telegram built from nothing. Tier systems, ambassador programs, AMAs, and the mechanics to keep 150K+ members active.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div class="srv-title">Paid Ads (Meta &amp; Google)</div>
+        <p class="srv-desc">Campaign setup, creative direction, A/B testing, optimisation. 4x ROAS on monthly budgets, 471% ROI for e-commerce.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <div class="srv-title">Web3 &amp; DeFi Marketing</div>
+        <p class="srv-desc">TGE planning, points programs, trading contests, ambassador networks, protocol community growth.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div>
+        <div class="srv-title">Marketing Funnel Design</div>
+        <p class="srv-desc">Campaign strategy from awareness to conversion: ATL, BTL, and the tracking that connects spend to results.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="srv-title">Email Marketing</div>
+        <p class="srv-desc">Drip campaigns, TGE announcements, product launches, welcome sequences, list building.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="srv-title">Executive Personal Branding</div>
+        <p class="srv-desc">Thought leadership for founders and CEOs on X, LinkedIn, and Instagram.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
+        <div class="srv-title">Restaurant &amp; F&B Marketing</div>
+        <p class="srv-desc">Social strategy and Meta ads for restaurant chains, F&B brands, and location launches.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="srv-title">SaaS &amp; Tech Marketing</div>
+        <p class="srv-desc">Product-led content, go-to-market strategy, community building for SaaS products.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+        <div class="srv-title">Brand Strategy &amp; Roadmap</div>
+        <p class="srv-desc">Positioning, messaging, platform strategy, 6-12 month growth roadmap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="section-wrap">
+    <div class="section-tag">Brands</div>
+    <h2>Across industries,<br><em>from zero</em></h2>
+    <p class="section-sub">Eight industries. One approach, different playbooks every time.</p>
+
+    <div class="brands-categories">
+      <div>
+        <div class="brand-cat-label">Web3 &amp; DeFi</div>
+        <div class="brand-logos-row">
+          <div class="brand-pill">
+            <img src="Logos/FanTV-AI.jpg" onerror="this.outerHTML='<div class=brand-icon>F</div>'" />
+            FanTV AI
+          </div>
+          <div class="brand-pill">
+            <img src="Logos/Novaswap.jpg" onerror="this.outerHTML='<div class=brand-icon>N</div>'" />
+            Novaswap
+          </div>
+          <div class="brand-pill">
+            <img src="Logos/fereai.jpg" onerror="this.outerHTML='<div class=brand-icon>F</div>'" style="object-fit:cover;object-position:center;padding:0;" />
+            Fere AI
+          </div>
+          <div class="brand-pill">
+            <img src="Logos/defx-logomark.png" onerror="this.outerHTML='<div class=brand-icon>D</div>'" style="object-fit:contain;padding:2px;background:#fff;border-radius:50%;" />
+            Defx
+          </div>
+          <div class="brand-pill">
+            <img src="Logos/Bima-BTC.jpg" alt="BimaBTC" />
+            BimaBTC
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="brand-cat-label">F&B &amp; Hospitality</div>
+        <div class="brand-logos-row">
+          <div class="brand-pill">
+            <img src="Logos/Tony-Romas.jpg" onerror="this.outerHTML='<div class=brand-icon>T</div>'" />
+            Tony Roma's
+          </div>
+          <div class="brand-pill">
+            <img src="Logos/bones-and-burgers.jpg" alt="Bones &amp; Burgers" />
+            Bones &amp; Burgers
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="brand-cat-label">E-Commerce &amp; Local</div>
+        <div class="brand-logos-row">
+          <div class="brand-pill">
+            <img src="Logos/Potters-Hub.jpg" alt="Potters' Hub" />
+            Potters' Hub
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="brand-cat-label">Home &amp; Lifestyle</div>
+        <div class="brand-logos-row">
+          <div class="brand-pill">
+            <img src="Logos/Opaque-Studio.png" onerror="this.outerHTML='<div class=brand-icon>O</div>'" />
+            Opaque Studio
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="brand-cat-label">Sports &amp; Media</div>
+        <div class="brand-logos-row">
+          <div class="brand-pill">
+            <img src="Logos/sportsrush.jpg" onerror="this.outerHTML='<div class=brand-icon>S</div>'" />
+            The Sportrush
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="skills-container">
+      <div class="skills-left">
+        <div class="section-tag">Skills</div>
+        <h2>The<br><em>toolkit</em></h2>
+        <p>5+ years across strategy, paid, organic, community, and email. Broad enough to run the whole thing, deep enough to not need hand-holding.</p>
+      </div>
+      <div class="skills-right">
+        <div class="skill-group">
+          <div class="skill-group-title">Strategy</div>
+          <div class="skill-tags">
+            <span class="s-tag">Content Strategy</span>
+            <span class="s-tag">Brand Storytelling</span>
+            <span class="s-tag">Campaign Planning</span>
+            <span class="s-tag">Go-to-Market</span>
+            <span class="s-tag">Competitor Research</span>
+            <span class="s-tag">Audience Targeting</span>
+            <span class="s-tag">Brand Roadmapping</span>
+            <span class="s-tag">ATL / BTL Planning</span>
+            <span class="s-tag">Funnel Architecture</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Execution</div>
+          <div class="skill-tags">
+            <span class="s-tag">Social Media Mgmt</span>
+            <span class="s-tag">Community Mgmt</span>
+            <span class="s-tag">KOL Partnerships</span>
+            <span class="s-tag">Email Marketing</span>
+            <span class="s-tag">Meta Ads</span>
+            <span class="s-tag">Google Ads</span>
+            <span class="s-tag">SEO &amp; SEM</span>
+            <span class="s-tag">Copywriting</span>
+            <span class="s-tag">Video Direction</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Platforms</div>
+          <div class="skill-tags">
+            <span class="s-tag">X Analytics</span>
+            <span class="s-tag">Meta Business Suite</span>
+            <span class="s-tag">Shopify</span>
+            <span class="s-tag">Discord</span>
+            <span class="s-tag">Telegram</span>
+            <span class="s-tag">DefiLlama</span>
+            <span class="s-tag">Notion</span>
+            <span class="s-tag">Canva</span>
+            <span class="s-tag">Figma</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">AI Tools</div>
+          <div class="skill-tags">
+            <span class="s-tag">Claude</span>
+            <span class="s-tag">ChatGPT</span>
+            <span class="s-tag">Perplexity</span>
+            <span class="s-tag">Gemini</span>
+            <span class="s-tag">Manus AI</span>
+            <span class="s-tag">Gumloop</span>
+            <span class="s-tag">Notion AI</span>
+            <span class="s-tag">Midjourney</span>
+            <span class="s-tag">ElevenLabs</span>
+            <span class="s-tag">Runway</span>
+            <span class="s-tag">Suno</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-orb"></div>
+  <div class="contact-inner">
+    <div class="section-tag" style="justify-content:center;">Get in Touch</div>
+    <h2>Let's build<br><em>something real</em></h2>
+    <p class="section-sub">If your brand needs more than just posts, reach&nbsp;out.</p>
+    <div class="trust-strip">
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span><strong>15+ brands</strong> worked with</span>
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Response within <strong>24 hours</strong></span>
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span>Free <strong>30-min intro call</strong></span>
+      </div>
+    </div>
+    <div class="contact-ctas">
+      <div class="cta-pulse-wrap">
+        <button class="btn-grad" onclick="openContactModal('form')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          Send a Message
+        </button>
+      </div>
+      <div class="cta-pulse-wrap">
+        <a href="https://calendly.com/contactkaransud/30min" target="_blank" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book a Free Call
+        </a>
+      </div>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:contactkaransud@gmail.com" class="c-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        contactkaransud@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/karansud7" target="_blank" class="c-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/karansud7
+      </a>
+      <a href="https://twitter.com/KaranSudSocial" target="_blank" class="c-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.629 5.905-5.629zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        @KaranSudSocial
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Karan Sud</span>
+  <span>Making Brands Impossible to Ignore</span>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal-box">
+    <div class="modal-hero">
+      <img id="modal-img" src="" alt="" />
+      <div id="modal-thumb-initials" style="position:absolute;inset:0;align-items:center;justify-content:center;display:none;"></div>
+      <div class="modal-hero-overlay"></div>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-hero-content">
+        <div class="modal-brand-row">
+          <img id="modal-logo" class="modal-logo" src="" alt="" style="display:none" onerror="this.style.display='none'" />
+          <div class="modal-brand" id="modal-title"></div>
+        </div>
+        <div class="modal-meta" id="modal-meta"></div>
+      </div>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const cases = {
+  fantv: {
+    title: "FanTV AI",
+    logo: "https://img.logo.dev/fantv.app?token=pk_X1cBjbOiRgirxmZ9jGCcRQ&size=128",
+    meta: "Social Media Marketer  |  Oct 2024 to Aug 2025  |  X, Instagram, Discord, Telegram",
+    img: null,
+    stats: [
+      { val: "300K", label: "X Followers (from 70K)" },
+      { val: "9.5M+", label: "Impressions in 6 months" },
+      { val: "150K+", label: "Community Members" },
+      { val: "+70%", label: "Community Retention" },
+    ],
+    sections: [
+      { title: "The Challenge", body: "FanTV had 70K followers and no real momentum behind them. Quiet community, no posting discipline, nothing pulling new people in. The Web3 space doesn't reward average. You either show up or you get buried." },
+      { title: "What I Built", body: "I built a content system on X that kept the brand visible and shareable week after week. On the personal brand side, I grew the founder's X from 12K to 100K and LinkedIn from 5K to 10K. Built Discord and Telegram from zero to 150K+ members: AMAs, tier systems, reward mechanics, all of it. At peak I was running 100+ people: mods, KOLs, ambassadors, designers, editors." },
+      { title: "The Result", body: "Brand X account: 70K to 300K followers. 9.5M+ impressions in 6 months. Founder grew from 12K to 100K on X and 5K to 10K on LinkedIn. Community hit 150K+ members with 70% retention growth." },
+    ],
+    screenshots: ["Results/FanTV/FanTV X Mobile SS.png", "Results/FanTV/FanTV_Web1.png", "Results/FanTV/FanTV_Web2.png", "Results/FanTV/FanTV_Web3.png"],
+  },
+  prashan: {
+    title: "Prashan Agarwal",
+    logo: null,
+    meta: "Executive Personal Branding  |  Oct 2024 to Aug 2025  |  X (Twitter), LinkedIn",
+    img: null,
+    stats: [
+      { val: "12K to 100K", label: "X Followers" },
+      { val: "5K to 10K", label: "LinkedIn Followers" },
+      { val: "9.5M+", label: "Combined Impressions" },
+      { val: "10 mo", label: "Duration" },
+    ],
+    sections: [
+      { title: "Who He Is", body: "Prashan Agarwal is CEO of FanTV and former CEO of Gaana.com, one of India’s biggest music streaming platforms. Building a Web3 startup meant he needed a real personal voice on X and LinkedIn, not a broadcast account." },
+      { title: "What I Did", body: "I ran his content on X and LinkedIn alongside the FanTV brand account. Defined his positioning as a Web3 builder and Indian tech founder, built the content pillars, set the calendar, and wrote everything. Every post came from his actual perspective — I just gave it a shape." },
+      { title: "The Results", body: "X went from 12K to 100K. LinkedIn from 5K to 10K. His content fed directly into FanTV's growth, part of the 9.5M+ impressions the whole thing generated." },
+    ],
+    screenshots: ["Results/Prashan/Prashan_1.png", "Results/Prashan/Prashan_2.png", "Results/Prashan/Prashan_3.png"],
+  },
+  fere: {
+    title: "Fere AI",
+    logo: "https://img.logo.dev/fereai.xyz?token=pk_X1cBjbOiRgirxmZ9jGCcRQ&size=128",
+    meta: "Sr. Content Manager at Crowwd Labs  |  Sep 2025 to Present  |  X, Telegram, Email, YouTube, Blog, Medium, Farcaster",
+    img: null,
+    stats: [
+      { val: "12K+", label: "AI Agent Signups" },
+      { val: "400-500", label: "Daily Active Users" },
+      { val: "6.8M", label: "X Impressions" },
+      { val: "195K+", label: "Engagements" },
+    ],
+    sections: [
+      { title: "The Challenge", body: "Fere AI had a working product and nobody knew about it. The agent was live, the tech was solid. The brand just didn't exist yet." },
+      { title: "What I Built", body: "I defined the brand from day one and built a content system on X around what traders actually stop to read: trading threads, data drops, market takes. Ran a team of 5 across design, copy, and community. Layered in email sequences, points program redesign, video scripts, demo hooks, and weekly reporting." },
+      { title: "The Result", body: "12K signups in a few months. 400 to 500 daily active users. 6.8M X impressions and 195K+ engagements. These aren't inflated numbers. The product had real daily users." },
+    ],
+    screenshots: ["Results/Fere AI/Fere AI.png"],
+  },
+  novaswap: {
+    title: "Novaswap",
+    logo: "https://img.logo.dev/novaswap.fi?token=pk_X1cBjbOiRgirxmZ9jGCcRQ&size=128",
+    meta: "Sr. Content Manager at Crowwd Labs  |  Sep 2025 to Present  |  X, Telegram, Discord",
+    img: null,
+    stats: [
+      { val: "$650K+", label: "Organic Volume, 90 Days" },
+      { val: "1.1M", label: "X Impressions" },
+      { val: "53K+", label: "Engagements" },
+      { val: "19,000%", label: "Profile Visit Increase" },
+    ],
+    sections: [
+      { title: "The Challenge", body: "Novaswap had no name, no community, and no volume. Cross-chain stablecoin DEX built on Mynth Protocol. Solid product, no one around it." },
+      { title: "What I Built", body: "I built everything: voice, visual direction, posting cadence, community onboarding. Seeded the right KOLs, designed trading incentives that drove on-chain activity, and ran content from weekly stablecoin reports and chain expansion announcements to editorial pieces and partnership threads with protocols like Hemi Network." },
+      { title: "The Result", body: "$650K+ in organic trading volume in the first 90 days, and it held. 1.1M X impressions, 53K+ engagements, 19,000% increase in profile visits." },
+    ],
+    screenshots: ["Results/Novaswap/Novaswap.png"],
+  },
+  defx: {
+    title: "Defx",
+    logo: "https://img.logo.dev/defx.exchange?token=pk_X1cBjbOiRgirxmZ9jGCcRQ&size=128",
+    meta: "Sr. Content Manager at Crowwd Labs  |  Sep 2025 to Jan 2026  |  X, Telegram, Discord",
+    img: null,
+    stats: [
+      { val: "$50M+", label: "Monthly Volume (from sub-$100K)" },
+      { val: "$1.5B+", label: "Cumulative Perp Volume" },
+    ],
+    sections: [
+      { title: "The Challenge", body: "Defx had a working perp DEX and nobody using it. Under $100K in monthly volume when I joined. No community, no real reason for traders to show up." },
+      { title: "What I Built", body: "Trading contests, KOL relationships, and a community of people actually on the platform. UGC and organic content built awareness; incentive programs pulled traders in and kept them there. Most of the original content was deleted when the company was sold and rebranded." },
+      { title: "The Result", body: "Monthly volume went from under $100K to $50M+. $1.5B cumulative on DefiLlama, verified and public." },
+    ],
+    screenshots: ["Results/Defx/Defx.png"],
+  },
+  bima: {
+    title: "BimaBTC",
+    logo: "https://img.logo.dev/bima.money?token=pk_X1cBjbOiRgirxmZ9jGCcRQ&size=128",
+    meta: "Sr. Content Manager at Crowwd Labs  |  Sep 2025 to Apr 2026  |  X, Telegram, Discord",
+    img: null,
+    stats: [
+      { val: "2.3M", label: "X Impressions" },
+      { val: "58K", label: "Engagements" },
+      { val: "2.4%", label: "Engagement Rate" },
+      { val: "144K", label: "Followers" },
+    ],
+    sections: [
+      { title: "The Challenge", body: "BimaBTC had a product worth following. The job was making sure the account reflected that: real engagement, not a padded follower count." },
+      { title: "What I Built", body: "A posting system built on discipline. Regular cadence, timely market commentary, and content that gave people a reason to stay. A 2.4% engagement rate at 144K followers doesn't come from luck. It comes from content that earns it." },
+      { title: "The Result", body: "2.3M impressions, 58K engagements, 2.4% engagement rate, 144K followers. Built slow, built right." },
+    ],
+    screenshots: ["Results/BimaBTC/BimaBTC.png"],
+  },
+  tony: {
+    title: "Tony Roma's",
+    logo: "https://img.logo.dev/tonyromas.com?token=pk_X1cBjbOiRgirxmZ9jGCcRQ&size=128",
+    meta: "Freelance Content Strategist  |  Jan 2025 to Present  |  Instagram, Facebook",
+    img: null,
+    stats: [
+      { val: "729K", label: "Facebook Views (100% organic)" },
+      { val: "+448%", label: "3-Second Video Views" },
+      { val: "305K", label: "Instagram Views" },
+      { val: "130K", label: "Top Post Views" },
+    ],
+    sections: [
+      { title: "The Challenge", body: "Tony Roma's needed a consistent social presence and support for new location launches. They also wanted to build out the personal brand of their CEO, Mohaimina Haque, the brand's first female CEO." },
+      { title: "What I Built", body: "I ran the full content strategy: calendar, visual direction, posting cadence. Multi-phase campaigns for location launches including Kimball, Tennessee. In parallel, I built the CEO's personal brand on Instagram — positioning her as an executive voice in the restaurant industry. Everything was organic, no paid spend." },
+      { title: "The Result", body: "Facebook: 729K total views, +448% on 3-second views, +76% content interactions, +386% watch time. Instagram: 305K views, +14% reach, +100% content interactions. Top post hit 130,100 views. CEO account grew to 6,000+ followers." },
+    ],
+    screenshots: ["Results/Tony Roma's/TR_Facebook.png", "Results/Tony Roma's/TR_FacebookContent.png", "Results/Tony Roma's/TR_FacebookMessaging.png", "Results/Tony Roma's/TR_Instagram.png", "Results/Tony Roma's/TR_InstagramContent.png", "Results/Tony Roma's/TR_InstagramMessaging.png"],
+  },
+  mohamina: {
+    title: "Mohaimina Haque",
+    logo: null,
+    meta: "Executive Personal Branding  |  Oct 2025 to Apr 2026  |  Instagram, Facebook",
+    img: null,
+    stats: [
+      { val: "1.2M+", label: "Organic Impressions" },
+      { val: "6 months", label: "Duration" },
+      { val: "$0", label: "Paid Spend" },
+      { val: "100%", label: "Organic" },
+    ],
+    sections: [
+      { title: "Who She Is", body: "Mohaimina Haque (<a href='https://instagram.com/attorneyminadc' target='_blank' style='color:var(--blue);text-decoration:none;font-weight:500'>@attorneyminadc</a>) is the CEO of Tony Roma's and the brand's first female CEO. She had an existing following on Instagram and Facebook but no real content strategy behind it. The goal was to build accounts people actually followed for a reason." },
+      { title: "What I Did", body: "I ran her personal brand on Instagram and Facebook: positioning, content pillars, copy, and calendar. Every post came from her real experience as a female CEO in a legacy restaurant brand. I prioritised quality over output — fewer posts, more substance." },
+      { title: "The Results", body: "1.2M+ organic impressions in 6 months, nothing spent on ads. The account went from silent to consistently present with a clear voice. Follower count held steady, but the account became something people actually noticed." },
+    ],
+    screenshots: ["Results/Mohaimina Haque/Mohaimina.png", "Results/Mohaimina Haque/Posts Feed.png", "Results/Mohaimina Haque/Reels Feed.png"],
+  },
+  potters: {
+    title: "Potters' Hub",
+    logo: null,
+    meta: "Freelance Digital Strategist  |  Jan 2025 to May 2025  |  Instagram, Meta Ads, Shopify",
+    img: null,
+    stats: [
+      { val: "471%", label: "Month 1 ROI" },
+      { val: "243K", label: "Views in 90 Days" },
+      { val: "+190%", label: "Accounts Reached" },
+      { val: "104K", label: "Top Reel Views" },
+    ],
+    sections: [
+      { title: "The Challenge", body: "Potters' Hub had a physical studio and nothing online. No Shopify, no digital presence, no revenue from the internet. They needed one built." },
+      { title: "What I Built", body: "I built the Shopify store, ran targeted Instagram ads for class bookings and retail, and created organic reels around pottery and education. 95.8% of views came from non-followers, meaning the content was pulling in new people, not recycling the existing audience." },
+      { title: "The Result", body: "Month one: ₹20,000 in revenue from ₹3,500 in ad spend: 471% ROI. Scaled to ₹15K per month from there. 243K views in 90 days, accounts reached up 190%, top reel at 104K views." },
+    ],
+    screenshots: ["Results/Potters' Hub/Potters' Hub_1.png", "Results/Potters' Hub/Potters Hub_2.png", "Results/Potters' Hub/Potters Hub_3.png", "Results/Potters' Hub/Potters Hub 4.png"],
+  },
+  opaque: {
+    title: "Opaque Studio",
+    logo: "https://img.logo.dev/opaquestudio.in?token=pk_X1cBjbOiRgirxmZ9jGCcRQ&size=128",
+    meta: "Performance & Social Marketer @ Mach1  |  Instagram, Facebook, Google Ads",
+    img: null,
+    stats: [
+      { val: "4X", label: "ROAS" },
+      { val: "₹3L/mo", label: "Ad Spend Managed" },
+      { val: "30K to 41K", label: "Followers Grown" },
+      { val: "2+", label: "Product Launches" },
+    ],
+    sections: [
+      { title: "The Brand", body: "Opaque Studio is a luxury D2C home brand: handcrafted furniture, bespoke decor, made to order with 700+ artisans across India. The product was there. The marketing wasn't." },
+      { title: "What I Ran", body: "I ran their marketing end-to-end at Mach1: social strategy and execution on Instagram and Facebook, Meta and Google performance, website management, and full product launch campaigns. Led a team of designers, editors, and a performance marketing exec." },
+      { title: "The Results", body: "Scaled to ₹3L/month in ad spend, consistently hitting 4X ROAS. Grew Instagram from 30K to 41K. Launched multiple collections, from pre-launch storytelling to paid amplification, driving both brand awareness and direct sales." },
+    ],
+    screenshots: [],
+  },
+  bones: {
+    title: "Bones & Burgers",
+    logo: null,
+    meta: "Freelance Social Media Manager  |  Jan 2025 to Present  |  Facebook, Instagram",
+    img: null,
+    stats: [
+      { val: "+160%", label: "Content Interactions" },
+      { val: "+287%", label: "Watch Time" },
+      { val: "+359%", label: "3-Second Views" },
+      { val: "$0", label: "Ad Spend" },
+    ],
+    sections: [
+      { title: "The Challenge", body: "Bones & Burgers had an account full of bots, no posting schedule, and zero real engagement. Before anything else, it needed a clean slate." },
+      { title: "What I Built", body: "I audited and removed the bot followers, then rebuilt the whole content strategy: calendar, visual identity, voice. Started posting with zero paid budget, organic quality only." },
+      { title: "The Result", body: "Facebook views up 79%, content interactions up 160%, watch time up 287%, and 3-second views up 359%. All organic. No budget. Just strategy." },
+    ],
+    screenshots: ["Results/B&B/B&B_1.png", "Results/B&B/B&B_2.png", "Results/B&B/B&B_3.png"],
+  },
+  sportrush: {
+    title: "The Sportrush",
+    logo: "Logos/sportsrush.jpg",
+    meta: "Content Strategist  |  Jun 2024 to Sep 2024  |  Instagram",
+    img: null,
+    stats: [
+      { val: "7M+", label: "Total Views" },
+      { val: "4M", label: "Single Reel (Viral)" },
+      { val: "26 to 4.5K", label: "Followers in 3 Months" },
+      { val: "$0", label: "Ad Spend" },
+    ],
+    sections: [
+      { title: "The Brief", body: "The Sportrush is a sports media brand. When I joined, their Instagram had 26 followers and no real content strategy. I was brought in to build it: strategy, formats, SOPs, everything." },
+      { title: "What I Built", body: "I developed the entire content strategy and identity for the account: defined content pillars, created original video formats, wrote production SOPs so the team could execute without me in every frame. The goal was a system, not just content." },
+      { title: "The Results", body: "Two reels went viral: one hit 4M views, another 2M, both organic. Total account views crossed 7M in three months. Followers grew from 26 to 4,500 with zero paid spend. The content approach I built is what drove it, not luck." },
+    ],
+    screenshots: ["Results/Sportsrush/Sportsrush Viral Reels.png"],
+  },
+};
+
+function openModal(key) {
+  const c = cases[key];
+  document.getElementById('modal-title').textContent = c.title;
+  document.getElementById('modal-meta').textContent = c.meta;
+
+  document.getElementById('modal-logo').style.display = 'none';
+
+  const thumbData = {
+    fantv:    { bg: 'linear-gradient(135deg, #dde3f0 0%, #c8d2ea 100%)', logo: 'Logos/FanTV-AI.jpg', blend: 'multiply' },
+    prashan:  { bg: 'linear-gradient(135deg, #0c1828 0%, #1e3a60 100%)', initials: 'Prashan Agarwal', initColor: '#a8c4e8' },
+    fere:     { bg: 'linear-gradient(135deg, #030c1f 0%, #071830 100%)', logo: 'Logos/Fere-AI.png', blend: 'screen' },
+    novaswap: { bg: 'linear-gradient(135deg, #010d1a 0%, #042535 100%)', logo: 'Logos/Novaswap.jpg', blend: 'screen' },
+    defx:     { bg: 'linear-gradient(135deg, #050508 0%, #0c1028 100%)', logo: 'Logos/Defx.png', blend: 'screen' },
+    bima:     { bg: 'linear-gradient(135deg, #f2f0ea 0%, #e8e4d4 100%)', logo: 'Logos/Bima-BTC.jpg', blend: 'multiply' },
+    tony:     { bg: 'linear-gradient(135deg, #5a0808 0%, #8b1515 100%)', logo: 'Logos/Tony-Romas.jpg', blend: 'screen' },
+    mohamina: { bg: 'linear-gradient(135deg, #5a0808 0%, #8b1515 100%)', initials: 'Mohaimina Haque', initColor: '#f5c5c5' },
+    potters:  { bg: 'linear-gradient(135deg, #f5f0e8 0%, #e8dcc8 100%)', logo: 'Logos/Potters-Hub.jpg', blend: 'multiply' },
+    bones:     { bg: 'linear-gradient(135deg, #5a0808 0%, #8b1515 100%)', logo: 'Logos/bones-and-burgers.jpg', blend: 'screen' },
+    opaque:    { bg: 'linear-gradient(135deg, #1a1208 0%, #4a3520 50%, #6b4c2a 100%)', logo: 'Logos/Opaque-Studio.png', filter: 'invert(1) brightness(1.3)' },
+    sportrush: { bg: 'linear-gradient(135deg, #0a1a0a 0%, #0d2b0d 100%)', logo: 'Logos/sportsrush.jpg', blend: 'lighten' },
+  };
+  const td = thumbData[key] || {};
+  const heroEl = document.getElementById('modal-img').parentElement;
+  const imgEl = document.getElementById('modal-img');
+  const initialsEl = document.getElementById('modal-thumb-initials');
+
+  heroEl.style.display = 'block';
+  heroEl.style.background = td.bg || '#111';
+
+  if (td.logo) {
+    imgEl.style.display = 'block';
+    imgEl.src = td.logo;
+    imgEl.style.objectFit = 'contain';
+    imgEl.style.objectPosition = 'center';
+    imgEl.style.padding = '40px 80px';
+    imgEl.style.mixBlendMode = td.blend || '';
+    imgEl.style.filter = td.filter || '';
+    initialsEl.style.display = 'none';
+  } else if (td.initials) {
+    imgEl.style.display = 'none';
+    imgEl.src = '';
+    initialsEl.innerHTML = '<span style="font-family:Fraunces, serif;font-size:38px;font-weight:700;color:' + (td.initColor || 'rgba(255,255,255,0.9)') + ';letter-spacing:-0.5px;opacity:0.85;text-align:center;padding:0 32px;">' + td.initials + '</span>';
+    initialsEl.style.display = 'flex';
+  } else {
+    imgEl.style.display = 'none';
+    imgEl.src = '';
+    initialsEl.style.display = 'none';
+  }
+
+  let statsHtml = '<div class="modal-stats-row">' + c.stats.map(s =>
+    `<div class="ms"><div class="ms-val">${s.val}</div><div class="ms-label">${s.label}</div></div>`
+  ).join('') + '</div>';
+
+  let sectionsHtml = c.sections.map(s =>
+    `<div class="modal-section"><h3>${s.title}</h3><p>${s.body}</p></div>`
+  ).join('');
+
+  let screenshotsHtml = '';
+  const allScreenshots = [...(c.img ? [c.img] : []), ...(c.screenshots || [])];
+  if (allScreenshots.length > 0) {
+    const cls = allScreenshots.length === 1 ? 'modal-screenshots single' : 'modal-screenshots';
+    screenshotsHtml = `<div class="modal-section"><h3>Proof</h3><div class="${cls}">${
+      allScreenshots.map(s => `<img src="${s}" alt="Analytics screenshot" loading="lazy" />`).join('')
+    }</div></div>`;
+  }
+
+  document.getElementById('modal-body').innerHTML = statsHtml + sectionsHtml + screenshotsHtml;
+
+  const overlay = document.getElementById('modal-overlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+// Fade-up scroll observer
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  el.style.transitionDelay = (i % 3) * 80 + 'ms';
+  obs.observe(el);
+});
+
+// Dark mode toggle
+const toggleBtn = document.getElementById('theme-toggle');
+const root = document.documentElement;
+// Check saved preference
+if (localStorage.getItem('theme') === 'dark') {
+  root.setAttribute('data-theme', 'dark');
+}
+toggleBtn.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  if (next === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    root.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  }
+});
+
+
+function openContactModal(tab) {
+  document.getElementById('contact-modal-overlay').classList.add('open');
+  if (tab) switchContactTab(tab);
+  document.body.style.overflow = 'hidden';
+}
+function closeContactModal() {
+  document.getElementById('contact-modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeContactOnOverlay(e) {
+  if (e.target === document.getElementById('contact-modal-overlay')) closeContactModal();
+}
+function switchContactTab(tab) {
+  document.getElementById('cpanel-form').style.display = tab === 'form' ? '' : 'none';
+  document.getElementById('cpanel-schedule').style.display = tab === 'schedule' ? '' : 'none';
+  document.getElementById('ctab-form').classList.toggle('active', tab === 'form');
+  document.getElementById('ctab-schedule').classList.toggle('active', tab === 'schedule');
+}
+function submitContactForm(e) {
+  e.preventDefault();
+  const f = e.target;
+  const btn = f.querySelector('button[type="submit"]');
+  const name = f.name.value.trim();
+  const email = f.email.value.trim();
+  const msg = f.message.value.trim();
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  fetch('https://formspree.io/f/xkoykoye', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, message: msg })
+  })
+  .then(res => {
+    if (res.ok) {
+      f.innerHTML = `<div class="cform-success"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1A56DB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h3>Message sent</h3><p>I'll get back to you within 24 hours.</p></div>`;
+    } else {
+      return res.json().then(data => { throw new Error(data.error || 'Submission failed'); });
+    }
+  })
+  .catch(err => {
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+    alert('Something went wrong: ' + err.message + '. Try emailing contactkaransud@gmail.com directly.');
+  });
+}
+
+
+// Sticky CTA visibility
+(function() {
+  const btn = document.getElementById('sticky-book');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+})();
+
+// Count-up animation for hero stats
+(function() {
+  function parseStatVal(str) {
+    str = str.trim();
+    const prefix = str.match(/^[^0-9]*/)[0];
+    const suffix = str.match(/[^0-9.]+$/)?.[0] || '';
+    const num = parseFloat(str.replace(prefix, '').replace(suffix, ''));
+    return { prefix, suffix, num };
+  }
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function animateStat(el) {
+    const original = el.textContent;
+    const { prefix, suffix, num } = parseStatVal(original);
+    if (isNaN(num)) return;
+    const duration = 1600;
+    const start = performance.now();
+    const isDecimal = num % 1 !== 0;
+    function tick(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const val = easeOut(t) * num;
+      el.textContent = prefix + (isDecimal ? val.toFixed(1) : Math.floor(val)) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = original;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const stats = document.querySelectorAll('.h-stat-val');
+  if (!stats.length) return;
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { animateStat(e.target); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  stats.forEach(function(el) { obs.observe(el); });
+})();
+
+</script>
+
+<!-- CONTACT MODAL -->
+<div class="contact-modal-overlay" id="contact-modal-overlay" onclick="closeContactOnOverlay(event)">
+  <div class="contact-modal">
+    <button class="contact-modal-close" onclick="closeContactModal()">&times;</button>
+    <div class="contact-modal-tabs">
+      <button class="ctab active" id="ctab-form" onclick="switchContactTab('form')">Send a Message</button>
+      <button class="ctab" id="ctab-schedule" onclick="switchContactTab('schedule')">Schedule a Meeting</button>
+    </div>
+    <div id="cpanel-form">
+      <form class="cform" id="contact-form" onsubmit="submitContactForm(event)">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" placeholder="What are you working on?" required></textarea>
+        <button type="submit" class="cform-submit">Send Message</button>
+      </form>
+    </div>
+    <div id="cpanel-schedule" style="display:none">
+      <div class="cschedule-panel">
+        <p>Pick a time that works for you. It's a free 30-minute call to talk through your brand, goals, and how I can help.</p>
+        <a href="https://calendly.com/contactkaransud/30min" target="_blank" class="cschedule-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book a 30-min Call
+        </a>
+        <p class="cschedule-note">Free. No pressure. Just a conversation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- STICKY BOOK CTA -->
+<a href="https://calendly.com/contactkaransud/30min" target="_blank" class="sticky-book" id="sticky-book">
+  <span class="sb-dot"></span>
+  Book a Free Call
+</a>
+
+</body>
+</html>

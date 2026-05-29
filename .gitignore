@@ -4,3 +4,9 @@ Logos/.DS_Store
 .claude/
 calendly-featured.html
 index-netflix.html
+
+# next.js build output (any location)
+.next/
+node_modules/
+*.tsbuildinfo
+.vercel
