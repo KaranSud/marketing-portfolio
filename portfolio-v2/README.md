@@ -31,3 +31,7 @@ Metadata, JSON-LD entity graph (Person / ProfilePage / ItemList / FAQPage),
 `robots.txt` (AI crawlers welcomed), `sitemap.xml`, `llms.txt`, dynamic OG image.
 
 The previous static site is archived in `../portfolio v1`.
+
+## Deploy
+
+Auto-deployed to Vercel on push to `main` (root directory: `portfolio-v2`).
