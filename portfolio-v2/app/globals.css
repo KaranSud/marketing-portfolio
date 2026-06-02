@@ -1709,3 +1709,115 @@ footer {
     max-width: none;
   }
 }
+
+/* ============================================================
+   MOBILE NAV + A11Y
+============================================================ */
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.nav-toggle-bar {
+  width: 22px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-toggle-bar.a {
+  transform: translateY(3.25px) rotate(45deg);
+}
+.nav-toggle-bar.b {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 64px;
+  bottom: 0;
+  z-index: 150;
+  background: rgba(10, 10, 11, 0.98);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 24px;
+}
+.mobile-menu-inner a:not(.mobile-menu-cta) {
+  font-family: var(--font-display), sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-2);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.mobile-menu-inner a.active,
+.mobile-menu-inner a:not(.mobile-menu-cta):hover {
+  color: var(--text);
+}
+.mobile-menu-cta {
+  margin-top: 28px;
+  justify-content: center;
+  font-size: 15px;
+  padding: 15px;
+}
+
+/* Keyboard focus visibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .mobile-menu {
+    display: block;
+  }
+  /* tighter modals on phones */
+  .modal-body {
+    padding: 24px;
+  }
+  .modal-hero {
+    height: 200px;
+  }
+  .modal-hero-content {
+    left: 24px;
+    right: 24px;
+  }
+  .modal-brand {
+    font-size: 26px;
+  }
+  .contact-modal {
+    padding: 28px;
+  }
+  .feature-body {
+    padding: 28px 24px;
+  }
+  .feature-title {
+    font-size: 28px;
+  }
+}

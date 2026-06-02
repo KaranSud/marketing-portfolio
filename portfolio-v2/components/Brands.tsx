@@ -32,6 +32,8 @@ function Chip({ brand }: { brand: Brand }) {
         <img
           src={brand.src}
           alt={brand.name}
+          loading="lazy"
+          decoding="async"
           onError={() => setErrored(true)}
         />
       )}

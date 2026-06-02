@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import AmbientBackground from "@/components/AmbientBackground";
 import JsonLd from "@/components/JsonLd";
+import MotionProvider from "@/components/MotionProvider";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
@@ -27,9 +28,9 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://karansud.com";
+const siteUrl = "https://karan-sud-portfolio.vercel.app";
 const description =
-  "Senior Content and Growth Strategist. 5+ years building brands across Web3, DeFi, AI, F&B, and e-commerce: content, community, paid channels, and the systems behind them.";
+  "Senior content and growth strategist. 5+ years building brands across Web3, AI, F&B, and e-commerce through content, community, and paid media.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -80,7 +81,7 @@ export default function RootLayout({
         <AmbientBackground />
         <SmoothScroll />
         <ScrollProgress />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
         <JsonLd />
       </body>
     </html>

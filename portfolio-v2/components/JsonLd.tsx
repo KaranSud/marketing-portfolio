@@ -1,7 +1,7 @@
 import { caseStudies } from "@/lib/caseStudies";
 import { faqs } from "@/lib/faqs";
 
-const siteUrl = "https://karansud.com";
+const siteUrl = "https://karan-sud-portfolio.vercel.app";
 
 export default function JsonLd() {
   const graph = {
