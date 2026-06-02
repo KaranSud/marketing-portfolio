@@ -10,7 +10,15 @@ import { getLenis } from "@/lib/lenis";
 
 function Thumb({ c }: { c: CaseStudy }) {
   if (c.thumb.logo) {
-    return <img src={c.thumb.logo} alt={c.title} style={c.thumb.cardImgStyle} />;
+    return (
+      <img
+        src={c.thumb.logo}
+        alt={c.title}
+        loading="lazy"
+        decoding="async"
+        style={c.thumb.cardImgStyle}
+      />
+    );
   }
   return (
     <div>

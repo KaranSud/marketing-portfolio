@@ -38,7 +38,7 @@ export default function OpengraphImage() {
               background: "#6CA088",
             }}
           />
-          KARANSUD.COM
+          PORTFOLIO
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

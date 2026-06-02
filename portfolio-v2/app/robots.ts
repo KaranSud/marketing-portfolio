@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://karansud.com";
+const siteUrl = "https://karan-sud-portfolio.vercel.app";
 
 // Explicitly welcome AI crawlers so ChatGPT, Perplexity, Claude, Gemini, and
 // Copilot can read and cite this portfolio (AEO / GEO).
