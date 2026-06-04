@@ -6,8 +6,8 @@ import CountUp from "./CountUp";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const tiles = [
+  { val: "7K+", label: "Daily active traders" },
   { val: "12K+", label: "AI signups driven" },
-  { val: "500", label: "Daily active users" },
   { val: "300K+", label: "Followers grown" },
   { val: "471%", label: "Peak campaign ROI" },
 ];

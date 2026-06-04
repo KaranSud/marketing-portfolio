@@ -12,7 +12,7 @@ branding. He also builds and ships his own web frontends (this site is a custom
 Next.js build).
 
 ## Selected results
-- Fere AI: 12,000+ AI product signups, 400-500 daily active users, 6.8M X impressions.
+- Fere AI: 7,000+ daily active traders, 10M+ AI agent executions across 90+ automated strategies, 12,000+ signups; launched to #1 Fintech Product of the Day on Product Hunt.
 - FanTV AI: grew a brand account from 70K to 300K followers; built a 150K+ member community.
 - Defx: grew a perpetuals DEX from under $100K to $50M+ monthly volume ($1.5B cumulative, verified on DefiLlama).
 - Novaswap: $650K+ organic trading volume in 90 days from a standing start.
