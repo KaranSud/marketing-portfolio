@@ -3,6 +3,18 @@
 // or missing source never breaks the report. NOTHING here is model-generated;
 // every value is fetched from a real source and carries its source URL.
 
+import {
+  extractSiteFacts,
+  parseSitemapUrls,
+  classifySitemap,
+  detectAts,
+  detectCareersPage,
+  type SiteFacts,
+  type SiteScope,
+  type Hiring,
+} from "./extract";
+import { classifyBusiness, type Classification } from "./classify";
+
 const UA =
   "Mozilla/5.0 (compatible; AccountResearchBot/1.0; +portfolio demo)";
 
@@ -47,6 +59,10 @@ export type GitHubData = {
 export type Signals = {
   snapshot?: Snapshot;
   profiles?: Profiles;
+  facts?: SiteFacts;
+  scope?: SiteScope;
+  hiring?: Hiring;
+  classification?: Classification;
   news: NewsItem[];
   hn?: HN;
   github?: GitHubData;
@@ -489,24 +505,127 @@ export async function fetchGitHub(
   return {};
 }
 
+/* ── Sitemap: catalog / locations / content cadence (universal size proxy) ── */
+
+export async function fetchSitemap(
+  domain: string
+): Promise<{ scope?: SiteScope; source?: SourceLink }> {
+  const root = domain.replace(/^www\./i, "");
+  const url = `https://${root}/sitemap.xml`;
+  const xml = await getText(url, 8000);
+  if (!xml) return {};
+  let urls = parseSitemapUrls(xml);
+  // Sitemap index: pull a few child sitemaps to get real page URLs.
+  if (/<sitemapindex/i.test(xml)) {
+    const children = urls.filter((u) => /\.xml/i.test(u)).slice(0, 3);
+    const childXmls = await Promise.all(children.map((c) => getText(c, 7000)));
+    urls = childXmls
+      .filter(Boolean)
+      .flatMap((x) => parseSitemapUrls(x as string));
+  }
+  if (!urls.length) return {};
+  return { scope: classifySitemap(urls), source: { label: "Sitemap", url } };
+}
+
+/* ── Hiring signal (universal growth proxy; real counts via free ATS APIs) ── */
+
+export async function fetchHiring(
+  domain: string,
+  html: string
+): Promise<{ hiring?: Hiring; source?: SourceLink }> {
+  const ats = detectAts(html);
+  if (ats?.provider === "greenhouse") {
+    const data = await getJson<{ jobs?: unknown[]; meta?: { total?: number } }>(
+      `https://boards-api.greenhouse.io/v1/boards/${ats.token}/jobs`
+    );
+    const n = data?.meta?.total ?? data?.jobs?.length;
+    if (typeof n === "number")
+      return {
+        hiring: { hiring: n > 0, openRoles: n, source: "Greenhouse" },
+        source: {
+          label: "Greenhouse jobs",
+          url: `https://boards.greenhouse.io/${ats.token}`,
+        },
+      };
+  } else if (ats?.provider === "lever") {
+    const data = await getJson<unknown[]>(
+      `https://api.lever.co/v0/postings/${ats.token}?mode=json`
+    );
+    if (Array.isArray(data))
+      return {
+        hiring: { hiring: data.length > 0, openRoles: data.length, source: "Lever" },
+        source: { label: "Lever jobs", url: `https://jobs.lever.co/${ats.token}` },
+      };
+  }
+  if (detectCareersPage(html))
+    return { hiring: { hiring: true, source: "Careers page" } };
+  return {};
+}
+
 /* ── Orchestrator ── */
 
 export async function gatherSignals(
   companyName: string,
   domain: string,
   html: string,
-  headers: Record<string, string>
+  headers: Record<string, string>,
+  extraHtml = ""
 ): Promise<Signals> {
-  const [snap, news, hn, gh] = await Promise.all([
+  const combined = extraHtml ? `${html}\n${extraHtml}` : html;
+  const [snap, news, hn, gh, sm, hire] = await Promise.all([
     fetchSnapshot(companyName, domain),
     fetchNews(companyName),
     fetchHN(companyName),
     fetchGitHub(companyName, domain),
+    fetchSitemap(domain),
+    fetchHiring(domain, combined),
   ]);
-  const tech = detectTech(html, headers);
+  const tech = detectTech(combined, headers);
+  const facts = extractSiteFacts(combined);
+
+  // Treat HN as a real tech signal only when there is genuine mindshare, so a
+  // single incidental mention never mislabels a restaurant as a tech company.
+  const hnTech = !!hn.hn && (hn.hn.stories > 1 || hn.hn.points > 30);
+  const title = combined.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1] || "";
+  // Strip the page to readable text so keyword classification sees real copy
+  // (a law firm's site says "attorneys" everywhere; a SaaS never does).
+  const bodyText = combined
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .slice(0, 6000);
+  const classifyText = [facts.name, facts.description, facts.slogan, title, bodyText]
+    .filter(Boolean)
+    .join(" ");
+  const classification = classifyBusiness({
+    facts,
+    hasGithub: !!gh.github,
+    hasHN: hnTech,
+    techNames: tech.map((t) => t.name),
+    scope: sm.scope,
+    wikidataIndustry: snap.snapshot?.industry,
+    text: classifyText,
+  });
+
+  const root = domain.replace(/^www\./i, "");
+  const hasFacts = !!(
+    facts.name ||
+    facts.address ||
+    facts.rating ||
+    facts.priceRange ||
+    facts.sameAs.length
+  );
 
   const sources: SourceLink[] = [];
   if (snap.source) sources.push(snap.source);
+  if (hasFacts)
+    sources.push({
+      label: "Company website (structured data)",
+      url: `https://${root}`,
+    });
+  if (sm.source) sources.push(sm.source);
+  if (hire.source) sources.push(hire.source);
   if (gh.source) sources.push(gh.source);
   if (news.source) sources.push(news.source);
   if (hn.source) sources.push(hn.source);
@@ -514,6 +633,10 @@ export async function gatherSignals(
   return {
     snapshot: snap.snapshot,
     profiles: snap.profiles,
+    facts,
+    scope: sm.scope,
+    hiring: hire.hiring,
+    classification,
     news: news.news,
     hn: hn.hn,
     github: gh.github,

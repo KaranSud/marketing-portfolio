@@ -62,6 +62,40 @@ type GitHubData = {
   topLanguage?: string;
   url: string;
 };
+type Classification = {
+  category: string;
+  label: string;
+  confidence: "high" | "medium" | "low";
+  reason: string;
+};
+type SiteFacts = {
+  schemaTypes: string[];
+  name?: string;
+  description?: string;
+  slogan?: string;
+  founded?: string;
+  employees?: string;
+  address?: string;
+  locality?: string;
+  region?: string;
+  country?: string;
+  phone?: string;
+  email?: string;
+  openingHours?: string[];
+  priceRange?: string;
+  servesCuisine?: string[];
+  areaServed?: string[];
+  rating?: { value: number; count?: number; best?: number };
+  sameAs: string[];
+  cmsHints: string[];
+};
+type SiteScope = {
+  urls: number;
+  products: number;
+  locations: number;
+  articles: number;
+};
+type Hiring = { hiring: boolean; openRoles?: number; source: string };
 
 type Result = {
   domain: string;
@@ -71,6 +105,10 @@ type Result = {
   siteReachable?: boolean;
   snapshot?: Snapshot | null;
   profiles?: Profiles | null;
+  facts?: SiteFacts | null;
+  scope?: SiteScope | null;
+  hiring?: Hiring | null;
+  classification?: Classification | null;
   news?: NewsItem[];
   hn?: HN | null;
   github?: GitHubData | null;
@@ -90,22 +128,22 @@ const EXAMPLES: { offer: string; domains: string }[] = [
   {
     offer:
       "A done-for-you content and community growth engine for B2B SaaS and AI companies: brand voice, daily content, founder personal branding, and growth reporting.",
-    domains: "notion.so\nfigma.com\nvercel.com",
+    domains: "notion.so\nvercel.com\nlinear.app",
   },
   {
     offer:
-      "Developer marketing and technical content for devtools and infrastructure companies.",
-    domains: "gitlab.com\ndatadog.com\nmongodb.com",
+      "Local marketing and reputation management for restaurants and hospitality: reviews, local SEO, social, and online-ordering growth.",
+    domains: "sweetgreen.com\nshakeshack.com\neataly.com",
   },
   {
     offer:
-      "Lifecycle, email, and retention marketing as a service for SaaS and D2C brands.",
-    domains: "shopify.com\nhubspot.com\ndropbox.com",
+      "Retention, email, and paid growth for e-commerce and D2C brands: higher AOV, repeat purchase, and profitable acquisition.",
+    domains: "allbirds.com\nwarbyparker.com\nglossier.com",
   },
   {
     offer:
-      "Performance and paid growth for fintech and infrastructure companies: Meta, Google, and lifecycle.",
-    domains: "stripe.com\ntwilio.com\ncloudflare.com",
+      "Client acquisition and thought-leadership marketing for professional-services firms: law, accounting, and consulting.",
+    domains: "deloitte.com\nperkinscoie.com\nmckinsey.com",
   },
 ];
 
@@ -159,10 +197,11 @@ function Copy({ text }: { text: string }) {
 
 const LOADING_MSGS = [
   "Reading their homepage…",
-  "Skimming the about page…",
+  "Parsing their structured data…",
+  "Working out what kind of business this is…",
   "Pulling recent news…",
-  "Checking Hacker News…",
-  "Detecting their tech stack…",
+  "Sizing up the locations and catalog…",
+  "Checking for hiring signals…",
   "Sizing up the fit…",
   "Writing a human opener…",
 ];
@@ -237,6 +276,10 @@ export default function Home() {
                     siteReachable: data.siteReachable,
                     snapshot: data.snapshot,
                     profiles: data.profiles,
+                    facts: data.facts,
+                    scope: data.scope,
+                    hiring: data.hiring,
+                    classification: data.classification,
                     news: data.news,
                     hn: data.hn,
                     github: data.github,
@@ -274,10 +317,13 @@ export default function Home() {
     const header = [
       "Domain",
       "Name",
+      "Business Type",
       "Fit Score",
       "Fit Reason",
       "Founded",
       "Employees",
+      "Location",
+      "Rating",
       "Company LinkedIn",
       "Emails",
       "Email Subject",
@@ -286,13 +332,28 @@ export default function Home() {
     ];
     const lines = rows.map((r) => {
       const b = r.brief!;
+      const loc =
+        r.facts?.address ||
+        [r.facts?.locality, r.facts?.region, r.facts?.country]
+          .filter(Boolean)
+          .join(", ") ||
+        r.snapshot?.hq ||
+        "";
+      const rating = r.facts?.rating
+        ? `${r.facts.rating.value}${r.facts.rating.best ? `/${r.facts.rating.best}` : ""}${
+            r.facts.rating.count ? ` (${r.facts.rating.count})` : ""
+          }`
+        : "";
       return [
         r.domain,
         r.name || "",
+        r.classification?.label || "",
         b.fitScore,
         b.fitReason,
-        r.snapshot?.founded || "",
-        r.snapshot?.employees || "",
+        r.snapshot?.founded || r.facts?.founded || "",
+        r.snapshot?.employees || r.facts?.employees || "",
+        loc,
+        rating,
         r.profiles?.linkedinCompany || r.contacts?.linkedin || "",
         (r.contacts?.emails || []).join("; "),
         b.email.subject,
@@ -343,9 +404,11 @@ export default function Home() {
           Account research and <em>outreach</em>, on autopilot
         </motion.h1>
         <motion.p className="lede" {...up(0.16)}>
-          Drop in any company&apos;s domain. An AI agent reads their public
-          site, builds an account brief, and writes outreach tailored to your
-          offer. No CRM, no enrichment bills, no manual digging.
+          Drop in any company&apos;s domain, a SaaS startup, a restaurant, a
+          Shopify brand, or a law firm. An AI agent reads their public site,
+          works out what kind of business they are, builds a sourced account
+          brief, and writes outreach tailored to your offer. No CRM, no
+          enrichment bills, no manual digging.
         </motion.p>
         <motion.div className="hero-cta" {...up(0.24)}>
           <a className="btn btn-primary" href="#workspace">
@@ -539,13 +602,23 @@ export default function Home() {
                       <div className="result-head">
                         <span className="result-domain">{r.domain}</span>
                         {r.status === "done" && r.brief ? (
-                          <span
-                            className={`fit-badge ${fitTier(r.brief.fitScore).cls}`}
-                            title={r.brief.fitReason}
-                          >
-                            <span className="fit-num">{r.brief.fitScore}</span>
-                            <span className="fit-label">
-                              {fitTier(r.brief.fitScore).label} fit
+                          <span className="result-head-right">
+                            {r.classification && (
+                              <span
+                                className="cat-chip"
+                                title={`${r.classification.confidence} confidence: ${r.classification.reason}`}
+                              >
+                                {r.classification.label}
+                              </span>
+                            )}
+                            <span
+                              className={`fit-badge ${fitTier(r.brief.fitScore).cls}`}
+                              title={r.brief.fitReason}
+                            >
+                              <span className="fit-num">{r.brief.fitScore}</span>
+                              <span className="fit-label">
+                                {fitTier(r.brief.fitScore).label} fit
+                              </span>
                             </span>
                           </span>
                         ) : r.title ? (
@@ -636,6 +709,105 @@ export default function Home() {
                                 </div>
                               </div>
                             )}
+
+                          {(() => {
+                            const f = r.facts;
+                            const sc = r.scope;
+                            const h = r.hiring;
+                            const hasProfile =
+                              !!(
+                                f &&
+                                (f.address ||
+                                  f.rating ||
+                                  f.priceRange ||
+                                  f.servesCuisine?.length ||
+                                  f.openingHours?.length)
+                              ) ||
+                              !!(sc && (sc.products || sc.locations)) ||
+                              !!h?.hiring;
+                            if (!hasProfile) return null;
+                            return (
+                              <div className="block">
+                                <div className="block-label">Business profile</div>
+                                <div className="snap-grid">
+                                  {f?.rating && (
+                                    <div className="snap">
+                                      <div className="snap-val">
+                                        {f.rating.value}
+                                        {f.rating.best ? `/${f.rating.best}` : ""} ★
+                                      </div>
+                                      <div className="snap-label">
+                                        {f.rating.count
+                                          ? `${f.rating.count.toLocaleString()} reviews`
+                                          : "Rating"}
+                                      </div>
+                                    </div>
+                                  )}
+                                  {f?.priceRange && (
+                                    <div className="snap">
+                                      <div className="snap-val">{f.priceRange}</div>
+                                      <div className="snap-label">Price range</div>
+                                    </div>
+                                  )}
+                                  {!!sc?.locations && (
+                                    <div className="snap">
+                                      <div className="snap-val">
+                                        {sc.locations.toLocaleString()}
+                                      </div>
+                                      <div className="snap-label">Location pages</div>
+                                    </div>
+                                  )}
+                                  {!!sc?.products && (
+                                    <div className="snap">
+                                      <div className="snap-val">
+                                        {sc.products.toLocaleString()}
+                                      </div>
+                                      <div className="snap-label">Catalog pages</div>
+                                    </div>
+                                  )}
+                                  {h?.hiring && (
+                                    <div className="snap">
+                                      <div className="snap-val">
+                                        {h.openRoles != null ? h.openRoles : "Yes"}
+                                      </div>
+                                      <div className="snap-label">
+                                        {h.openRoles != null ? "Open roles" : "Hiring"}
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                                {(f?.address ||
+                                  f?.servesCuisine?.length ||
+                                  f?.openingHours?.length) && (
+                                  <div className="profile-meta">
+                                    {f?.address && (
+                                      <div className="profile-row">
+                                        <span>Address</span> {f.address}
+                                      </div>
+                                    )}
+                                    {f?.servesCuisine?.length ? (
+                                      <div className="profile-row">
+                                        <span>Cuisine</span>{" "}
+                                        {f.servesCuisine.join(", ")}
+                                      </div>
+                                    ) : null}
+                                    {f?.openingHours?.length ? (
+                                      <div className="profile-row">
+                                        <span>Hours</span>{" "}
+                                        {f.openingHours.slice(0, 3).join("  ·  ")}
+                                      </div>
+                                    ) : null}
+                                  </div>
+                                )}
+                                <div className="snap-note">
+                                  From their own website
+                                  {h?.source && h.source !== "Careers page"
+                                    ? ` and ${h.source}`
+                                    : ""}
+                                </div>
+                              </div>
+                            );
+                          })()}
 
                           <div className="block">
                             <div className="block-label">Strategic read</div>

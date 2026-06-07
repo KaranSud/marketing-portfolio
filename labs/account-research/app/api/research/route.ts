@@ -68,13 +68,14 @@ export async function POST(req: Request) {
     }
 
     const name = deriveName(normalized);
+    const extraHtml = siteReachable ? await fetchExtraHtml(normalized) : "";
     const signals = await gatherSignals(
       name,
       normalized,
       site.homeHtml,
-      site.headers
+      site.headers,
+      extraHtml
     );
-    const extraHtml = siteReachable ? await fetchExtraHtml(normalized) : "";
     const contacts = detectContacts(
       `${site.homeHtml}\n${extraHtml}`,
       normalized,
@@ -105,6 +106,10 @@ export async function POST(req: Request) {
       siteReachable,
       snapshot: signals.snapshot ?? null,
       profiles: signals.profiles ?? null,
+      facts: signals.facts ?? null,
+      scope: signals.scope ?? null,
+      hiring: signals.hiring ?? null,
+      classification: signals.classification ?? null,
       news: signals.news,
       hn: signals.hn ?? null,
       github: signals.github ?? null,
