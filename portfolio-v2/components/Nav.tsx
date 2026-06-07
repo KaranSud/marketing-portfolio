@@ -8,6 +8,7 @@ const links: [string, string][] = [
   ["services", "Services"],
   ["brands", "Brands"],
   ["skills", "Toolkit"],
+  ["labs", "Labs"],
 ];
 
 export default function Nav() {
@@ -15,7 +16,7 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const ids = ["work", "services", "brands", "skills", "contact"];
+    const ids = ["work", "services", "brands", "skills", "labs", "contact"];
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
