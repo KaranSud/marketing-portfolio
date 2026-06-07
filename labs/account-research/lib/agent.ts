@@ -1,6 +1,38 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import type { SiteResearch } from "./research";
 import type { Signals } from "./sources";
+import type { Category } from "./classify";
+
+// What actually matters when selling INTO each kind of business. Keeps the
+// brief from defaulting to SaaS framing for a restaurant, shop, or law firm.
+const CATEGORY_LENS: Record<Category, string> = {
+  saas_tech:
+    "product adoption and activation, user or developer growth, integrations, technical credibility, and pricing or expansion revenue",
+  ecommerce:
+    "catalog and merchandising, conversion rate and average order value, paid acquisition and ROAS, retention and repeat purchase, and seasonal launches",
+  restaurant_food:
+    "footfall and covers, online ordering and delivery, reviews and reputation, new location launches, local discovery, and catering or events",
+  local_service:
+    "local discovery and reviews, bookings and appointments, service-area coverage, response time, seasonal demand, and word-of-mouth reputation",
+  professional_services:
+    "client acquisition and referrals, the specific practice areas or service lines, credibility and thought leadership, and pipeline or proposal volume",
+  healthcare:
+    "patient acquisition and reviews, appointment booking, the service lines they offer, local reputation, and trust or compliance-sensitive messaging",
+  media_content:
+    "audience growth and engagement, publishing cadence, monetization through ads, subscriptions or sponsors, and distribution channels",
+  nonprofit:
+    "donor and volunteer acquisition, program awareness, grants and fundraising, and community engagement. This is mission-led, not a hard sales motion",
+  other:
+    "who their core customers are, how they win and keep business, and where the offer plausibly fits",
+};
+
+function lensFor(signals: Signals): { label: string; lens: string } {
+  const cat = (signals.classification?.category ?? "other") as Category;
+  return {
+    label: signals.classification?.label ?? "business",
+    lens: CATEGORY_LENS[cat],
+  };
+}
 
 export type Brief = {
   fitScore: number;
@@ -60,6 +92,57 @@ function renderSignals(signals: Signals): string {
     if (facts.length) lines.push(`VERIFIED FACTS (Wikipedia/Wikidata): ${facts.join("; ")}.`);
     if (s.description) lines.push(`ENCYCLOPEDIA SUMMARY: ${s.description}`);
   }
+
+  const cls = signals.classification;
+  if (cls)
+    lines.push(
+      `BUSINESS TYPE: ${cls.label} (${cls.confidence} confidence; ${cls.reason}).`
+    );
+
+  const f = signals.facts;
+  if (f) {
+    const fl: string[] = [];
+    if (f.address) fl.push(`address: ${f.address}`);
+    else if (f.locality || f.region || f.country)
+      fl.push(
+        `location: ${[f.locality, f.region, f.country].filter(Boolean).join(", ")}`
+      );
+    if (f.phone) fl.push(`phone: ${f.phone}`);
+    if (f.priceRange) fl.push(`price range: ${f.priceRange}`);
+    if (f.servesCuisine?.length) fl.push(`cuisine: ${f.servesCuisine.join(", ")}`);
+    if (f.areaServed?.length) fl.push(`area served: ${f.areaServed.join(", ")}`);
+    if (f.founded && !s?.founded) fl.push(`founded ${f.founded}`);
+    if (f.employees && !s?.employees) fl.push(`${f.employees} employees`);
+    if (f.rating)
+      fl.push(
+        `customer rating ${f.rating.value}${f.rating.best ? `/${f.rating.best}` : ""}${
+          f.rating.count ? ` from ${f.rating.count} reviews` : ""
+        }`
+      );
+    if (f.openingHours?.length) fl.push("publishes opening hours");
+    if (fl.length)
+      lines.push(
+        `BUSINESS PROFILE (from their site's structured data): ${fl.join("; ")}.`
+      );
+  }
+
+  const sc = signals.scope;
+  if (sc) {
+    const parts: string[] = [];
+    if (sc.products) parts.push(`~${sc.products} product or catalog pages`);
+    if (sc.locations) parts.push(`${sc.locations} location pages`);
+    if (sc.articles) parts.push(`${sc.articles} articles or blog posts`);
+    if (parts.length) lines.push(`WEBSITE SCOPE (from sitemap): ${parts.join(", ")}.`);
+  }
+
+  const h = signals.hiring;
+  if (h?.hiring)
+    lines.push(
+      `HIRING: ${
+        h.openRoles != null ? `${h.openRoles} open roles` : "actively hiring"
+      } (${h.source}). A growth and expansion signal.`
+    );
+
   if (signals.profiles?.leaders?.length) {
     lines.push(
       "LEADERSHIP: " +
@@ -124,6 +207,9 @@ EXTERNAL SIGNALS (already verified and sourced; treat as ground truth):
 """
 ${renderSignals(signals)}
 """
+
+BUSINESS CONTEXT:
+This account is a ${lensFor(signals).label}. Judge fit, pains, hook, and outreach through the lens of what actually matters to this kind of business: ${lensFor(signals).lens}. Do NOT assume they are a tech or SaaS company, or default to software language, unless the signals clearly say so. Speak about their real world (for a restaurant talk covers, delivery, and reviews; for a shop talk catalog, conversion, and repeat buyers; for a firm talk clients and referrals).
 
 Write the brief. Hard rules:
 - Ground everything in the material above. Do NOT invent statistics, funding, headcounts, customers, or dates. If a number is not in the signals, do not state one. You may reference the verified facts and recent news in your analysis.

@@ -479,6 +479,50 @@ textarea:focus {
   color: var(--text-3);
 }
 
+/* business-type chip + header layout */
+.result-head-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.cat-chip {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+/* business profile meta rows */
+.profile-meta {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.profile-row {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.profile-row span {
+  display: inline-block;
+  min-width: 72px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-right: 8px;
+}
+
 /* ranking / pipeline by fit */
 .ranking {
   background: var(--surface);

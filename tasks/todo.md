@@ -119,3 +119,48 @@ All free — Vercel Hobby, Formspree free, Calendly free, self-hosted fonts, loc
 - [ ] npm run build clean
 - [ ] Local preview for Karan → iterate
 - [ ] (Next phase) full content lockdown per section
+
+---
+
+# Phase 7 — Account-research: best AI-native outbound + research for ALL business types
+
+Goal: flawless for Tech/SaaS/AI, Local & service, E-commerce & D2C, and Professional & B2B services.
+**Decisions (from Karan):** strictly FREE / no new API keys · deepen research (input stays offer + domains,
+no discovery mode) · test all 4 verticals hard.
+
+## Architecture (data-architect view)
+Engine is tech-biased: HN/GitHub/tech-stack only fire for software. Richest UNIVERSAL free source,
+on-page schema.org/JSON-LD, was never parsed. Fix = universal extractors + business-type classification
++ adaptive, category-aware brief; make tech signals conditional. No fabrication: every fact cited.
+
+## Build stages
+- [ ] 1. `lib/extract.ts`: parse on-page structured data (JSON-LD @type graph, OG/meta, sameAs,
+      address/geo/phone, openingHours, priceRange, servesCuisine, aggregateRating rating+count,
+      foundingDate, numberOfEmployees, brand, slogan, areaServed) → normalized `SiteFacts`, cited to page.
+- [ ] 2. sitemap.xml (+index) → catalog/locations/blog counts (size & cadence proxy);
+      careers/ATS detection (greenhouse/lever public JSON for real open-role counts) → hiring signal.
+- [ ] 3. `lib/classify.ts`: deterministic `classifyBusiness(facts, signals)` →
+      {category,label,confidence}. Categories: saas_tech, ecommerce, restaurant_food, local_service,
+      professional_services, healthcare, media_content, nonprofit, other.
+- [ ] 4. `lib/sources.ts`: extend `Signals` (place/ratings/catalog/hiring/category/sameAs); wire into gatherSignals.
+- [ ] 5. `lib/agent.ts`: category-aware prompt + renderSignals universal facts; brief reframes per category.
+- [ ] 6. route + `app/page.tsx`: render category badge, rating, location/hours, price range, catalog/locations,
+      hiring (conditional, no empty blocks); diversify EXAMPLES across 4 verticals; CSV adds category/rating/location.
+- [ ] 7. globals.css: snapshot chips + badges (dark product system).
+
+## Testing (no mistakes)
+- [ ] Probe pipeline 2-3 real domains/vertical via `node --experimental-strip-types`: correct category,
+      cited universal facts, NO fabrication, brief reframes, fit sane, tech signals hidden for non-tech.
+- [ ] `npm run build` clean; dev smoke; live API smoke post-deploy; auto-deploy READY; confirm live.
+
+## Review
+DONE + tested. New `lib/extract.ts` (schema.org/JSON-LD, OG/meta, sitemap, ATS/careers; pure,
+15/15 unit tests pass) + `lib/classify.ts` (deterministic vertical classifier). `sources.ts` extended
+(facts/scope/hiring/classification, fetchSitemap, fetchHiring, body-text for keyword classify).
+`agent.ts` category-aware prompt + universal facts in renderSignals. route + page.tsx render category
+chip, business-profile block (rating/price/locations/catalog/hiring/address/cuisine/hours, all
+conditional), diversified examples across 4 verticals, CSV adds Business Type/Location/Rating.
+Classification verified correct on 13 real domains across tech/restaurant/ecommerce/pro-services/
+healthcare/local (fixed: vercel->saas not ecommerce; deloitte/perkinscoie->pro-services not tech;
+aspendental->healthcare). Real facts populate (eataly address+socials). Briefs reframe per vertical,
+no fabrication. Builds clean. Strictly free, no new keys.
