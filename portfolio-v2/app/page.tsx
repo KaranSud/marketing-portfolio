@@ -4,6 +4,7 @@ import Work from "@/components/Work";
 import Services from "@/components/Services";
 import Brands from "@/components/Brands";
 import Skills from "@/components/Skills";
+import Labs from "@/components/Labs";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 
@@ -17,6 +18,7 @@ export default function Home() {
         <Services />
         <Brands />
         <Skills />
+        <Labs />
         <Faq />
         <Contact />
       </main>
