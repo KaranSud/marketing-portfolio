@@ -7,6 +7,8 @@ import {
   inferEmails,
 } from "@/lib/sources";
 import { generateReport } from "@/lib/agent";
+import { assertPublicHost } from "@/lib/safe";
+import { rateLimit, clientIp } from "@/lib/ratelimit";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -23,15 +25,24 @@ function deriveName(domain: string): string {
 }
 
 export async function POST(req: Request) {
-  let body: { domain?: string; offer?: string };
+  const rl = rateLimit(`research:${clientIp(req)}`, 40, 60_000);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Too many requests. Please slow down and try again shortly." },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } }
+    );
+  }
+
+  let body: { domain?: string; offer?: string; prefs?: string };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const domain = (body.domain || "").trim();
-  const offer = (body.offer || "").trim();
+  const domain = (body.domain || "").trim().slice(0, 253);
+  const offer = (body.offer || "").trim().slice(0, 2000);
+  const prefs = (body.prefs || "").trim().slice(0, 1200) || undefined;
 
   if (!domain) {
     return NextResponse.json({ error: "Missing target domain." }, { status: 400 });
@@ -47,6 +58,17 @@ export async function POST(req: Request) {
   if (!normalized || !normalized.includes(".")) {
     return NextResponse.json(
       { error: `"${domain}" is not a valid domain.` },
+      { status: 400 }
+    );
+  }
+
+  // SSRF guard: never let a user-supplied domain point at internal/private/
+  // cloud-metadata addresses.
+  try {
+    await assertPublicHost(normalized);
+  } catch (e) {
+    return NextResponse.json(
+      { error: e instanceof Error ? e.message : "That host is not allowed.", domain: normalized },
       { status: 400 }
     );
   }
@@ -111,7 +133,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const brief = await generateReport(site, offer, signals);
+    const brief = await generateReport(site, offer, signals, prefs);
 
     return NextResponse.json({
       domain: normalized,

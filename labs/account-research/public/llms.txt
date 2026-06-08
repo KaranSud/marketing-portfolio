@@ -1,0 +1,21 @@
+# Account Research & Outreach Engine
+
+> A free, AI-native outbound lead-generation and account-research tool by Karan Sud. It finds your ideal customers, researches any business from public data, scores fit, and writes a full multi-touch outbound sequence. Every fact is cited to a real source; nothing is fabricated.
+
+## What it does
+- Lead discovery: describe your offer, it builds an ICP and finds real companies (with verified domains) from open data, plus a playbook for sourcing the rest.
+- Account research for ANY business type: tech/SaaS, e-commerce/D2C, restaurants, local and professional services, healthcare, and more. It detects the business type and reframes everything accordingly.
+- Sourced briefs: executive summary, strategic read, fit score (0-100), pains, and a hook, grounded only in cited public data (the company's own site/schema, Wikipedia/Wikidata, Google News, Hacker News, GitHub, sitemaps, hiring signals).
+- Decision-makers and contacts: named leaders with roles and LinkedIn, published emails, and a grounded "likely email" pattern when a real address reveals one.
+- Outbound engine: a ready-to-run 5-touch cadence per account (cold-call opener, email bump, LinkedIn DM, proof email, breakup), plus the first email and connection note. Exportable to CSV.
+- Self-improving: the writer learns from your feedback and adapts to your voice.
+
+## Principles
+- Strictly free, no paid data providers, no API keys beyond a free Google AI Studio key.
+- No fabrication: every number traces to a source; seller-side claims are placeholders to fill in.
+
+## Author
+Karan Sud, a marketer who codes. Portfolio: https://karan-sud-portfolio.vercel.app
+
+## Live
+https://account-research-five.vercel.app

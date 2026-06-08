@@ -210,8 +210,16 @@ function renderSignals(signals: Signals): string {
   return lines.length ? lines.join("\n\n") : "(no external signals available)";
 }
 
-function buildPrompt(site: SiteResearch, offer: string, signals: Signals): string {
-  return `You are a senior GTM strategist writing a concise, McKinsey-style account brief for a sales/marketing team. Be sharp, specific, and grounded.
+function buildPrompt(
+  site: SiteResearch,
+  offer: string,
+  signals: Signals,
+  prefs?: string
+): string {
+  const prefsBlock = prefs
+    ? `\nUSER STYLE PREFERENCES (learned from this user's edits and feedback; follow them closely in all outreach copy):\n"""\n${prefs}\n"""\n`
+    : "";
+  return `You are a senior GTM strategist writing a concise, McKinsey-style account brief for a sales/marketing team. Be sharp, specific, and grounded.${prefsBlock}
 
 THE SELLER'S OFFER (what we are pitching):
 """
@@ -260,11 +268,15 @@ Write the brief. Hard rules:
 - Write like a sharp human operator, not a marketing bot.`;
 }
 
-export async function generateReport(
-  site: SiteResearch,
-  offer: string,
-  signals: Signals
-): Promise<Brief> {
+const fix = (s: string) => (s || "").replace(/\s*[—–]\s*/g, ", ");
+
+// One Gemini call with the primary model and a lighter fallback, retrying on
+// transient overload. Shared by every generator so behavior stays consistent.
+async function callGemini<T>(
+  prompt: string,
+  schema: object,
+  temperature = 0.6
+): Promise<T> {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     throw new Error(
@@ -272,46 +284,27 @@ export async function generateReport(
     );
   }
   const ai = new GoogleGenAI({ apiKey });
-  const prompt = buildPrompt(site, offer, signals);
   const config = {
     responseMimeType: "application/json",
-    responseSchema,
-    temperature: 0.6,
+    responseSchema: schema,
+    temperature,
   };
-  // Primary model, then a lighter fallback if the primary is overloaded.
-  const models = [process.env.GEMINI_MODEL || "gemini-2.5-flash", "gemini-2.5-flash-lite"];
-  const fix = (s: string) => s.replace(/\s*[—–]\s*/g, ", ");
-
+  const models = [
+    process.env.GEMINI_MODEL || "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+  ];
   let lastErr: unknown;
   for (const model of models) {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
-        const response = await ai.models.generateContent({ model, contents: prompt, config });
+        const response = await ai.models.generateContent({
+          model,
+          contents: prompt,
+          config,
+        });
         const text = response.text;
         if (!text) throw new Error("empty response");
-        const brief = JSON.parse(text) as Brief;
-        return {
-          fitScore: Math.max(0, Math.min(100, Math.round(Number(brief.fitScore) || 0))),
-          fitReason: fix(brief.fitReason),
-          executiveSummary: fix(brief.executiveSummary),
-          strategicRead: fix(brief.strategicRead),
-          fit: fix(brief.fit),
-          pains: brief.pains.map(fix),
-          hook: fix(brief.hook),
-          email: { subject: fix(brief.email.subject), body: fix(brief.email.body) },
-          linkedin: fix(brief.linkedin),
-          sequence: Array.isArray(brief.sequence)
-            ? brief.sequence.map((s) => ({
-                day: Math.max(0, Math.round(Number(s.day) || 0)),
-                channel: (["email", "linkedin", "call"].includes(s.channel)
-                  ? s.channel
-                  : "email") as SequenceStep["channel"],
-                label: fix(s.label || ""),
-                subject: s.subject ? fix(s.subject) : undefined,
-                body: fix(s.body || ""),
-              }))
-            : [],
-        };
+        return JSON.parse(text) as T;
       } catch (e) {
         lastErr = e;
         const msg = String((e as Error)?.message || e);
@@ -324,8 +317,125 @@ export async function generateReport(
       }
     }
   }
-  console.error("generateReport failed:", lastErr);
+  console.error("Gemini call failed:", lastErr);
   throw new Error(
     "The AI model is busy right now. Please try again in a few seconds."
   );
+}
+
+export async function generateReport(
+  site: SiteResearch,
+  offer: string,
+  signals: Signals,
+  prefs?: string
+): Promise<Brief> {
+  const prompt = buildPrompt(site, offer, signals, prefs);
+  const brief = await callGemini<Brief>(prompt, responseSchema, 0.6);
+  return {
+    fitScore: Math.max(0, Math.min(100, Math.round(Number(brief.fitScore) || 0))),
+    fitReason: fix(brief.fitReason),
+    executiveSummary: fix(brief.executiveSummary),
+    strategicRead: fix(brief.strategicRead),
+    fit: fix(brief.fit),
+    pains: brief.pains.map(fix),
+    hook: fix(brief.hook),
+    email: { subject: fix(brief.email.subject), body: fix(brief.email.body) },
+    linkedin: fix(brief.linkedin),
+    sequence: Array.isArray(brief.sequence)
+      ? brief.sequence.map((s) => ({
+          day: Math.max(0, Math.round(Number(s.day) || 0)),
+          channel: (["email", "linkedin", "call"].includes(s.channel)
+            ? s.channel
+            : "email") as SequenceStep["channel"],
+          label: fix(s.label || ""),
+          subject: s.subject ? fix(s.subject) : undefined,
+          body: fix(s.body || ""),
+        }))
+      : [],
+  };
+}
+
+/* ── ICP builder: from a brand/offer with no list, produce a target profile,
+   the industries to search, and a practical plan to source leads. ── */
+
+export type Icp = {
+  summary: string;
+  industries: string[];
+  companyProfile: string;
+  regions: string[];
+  buyerTitles: string[];
+  triggers: string[];
+  searchStrings: string[];
+  sourcingPlaybook: { channel: string; how: string }[];
+};
+
+const icpSchema = {
+  type: Type.OBJECT,
+  properties: {
+    summary: { type: Type.STRING },
+    industries: { type: Type.ARRAY, items: { type: Type.STRING } },
+    companyProfile: { type: Type.STRING },
+    regions: { type: Type.ARRAY, items: { type: Type.STRING } },
+    buyerTitles: { type: Type.ARRAY, items: { type: Type.STRING } },
+    triggers: { type: Type.ARRAY, items: { type: Type.STRING } },
+    searchStrings: { type: Type.ARRAY, items: { type: Type.STRING } },
+    sourcingPlaybook: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          channel: { type: Type.STRING },
+          how: { type: Type.STRING },
+        },
+        required: ["channel", "how"],
+      },
+    },
+  },
+  required: [
+    "summary",
+    "industries",
+    "companyProfile",
+    "regions",
+    "buyerTitles",
+    "triggers",
+    "searchStrings",
+    "sourcingPlaybook",
+  ],
+};
+
+function buildIcpPrompt(brand: string, offer: string): string {
+  return `You are a senior GTM strategist helping a seller who has NO prospect list yet. From the brand and offer below, define a sharp Ideal Customer Profile and a practical plan to build a target list from scratch.
+
+THE BRAND (who is selling): ${brand || "(not specified, infer from the offer)"}
+THE OFFER (what they sell):
+"""
+${offer}
+"""
+
+Return JSON. Rules:
+- "summary": 2 sentences naming exactly who should buy this and why now.
+- "industries": 3 to 5 CONCRETE industry terms that map to well-known categories (for example "artificial intelligence", "financial technology", "e-commerce", "restaurants", "legal services", "software"). These will be used to look up real companies, so use standard industry names, not clever labels.
+- "companyProfile": one line on the size, stage, and shape of the right accounts (for example "Seed to Series B B2B SaaS, 20 to 200 staff, US or EU").
+- "regions": the geographies to focus on.
+- "buyerTitles": 3 to 6 real job titles of the person who would buy or champion this.
+- "triggers": 3 to 5 concrete buying signals to watch for (hiring a role, a funding round, a product launch, a new market, a tech change). Real and observable.
+- "searchStrings": 4 to 6 ready-to-paste search queries to find these accounts and people (for example Google dorks and LinkedIn search URLs). Make them copy-paste usable.
+- "sourcingPlaybook": 4 to 6 channels to source leads beyond automation, each a {channel, how}: where these buyers gather and how to extract a list (directories like Crunchbase, G2, Product Hunt, industry association lists; communities like specific subreddits, Slack or Discord groups; events and conferences; job boards as intent signals; partners and integrations). Be specific and actionable, name real places.
+- Be concrete and grounded in the offer. Do not invent specific company names. No em dashes. No AI-slop words (delve, leverage, synergy, unlock, elevate, seamless, robust, game-changer, cutting-edge, revolutionize).`;
+}
+
+export async function buildIcp(brand: string, offer: string): Promise<Icp> {
+  const icp = await callGemini<Icp>(buildIcpPrompt(brand, offer), icpSchema, 0.7);
+  return {
+    summary: fix(icp.summary),
+    industries: (icp.industries || []).map((s) => fix(s)).slice(0, 5),
+    companyProfile: fix(icp.companyProfile),
+    regions: (icp.regions || []).map((s) => fix(s)).slice(0, 5),
+    buyerTitles: (icp.buyerTitles || []).map((s) => fix(s)).slice(0, 6),
+    triggers: (icp.triggers || []).map((s) => fix(s)).slice(0, 5),
+    searchStrings: (icp.searchStrings || []).map((s) => fix(s)).slice(0, 6),
+    sourcingPlaybook: (icp.sourcingPlaybook || [])
+      .map((p) => ({ channel: fix(p.channel), how: fix(p.how) }))
+      .slice(0, 6),
+  };
 }
