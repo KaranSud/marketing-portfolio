@@ -110,6 +110,31 @@ type SiteScope = {
   articles: number;
 };
 type Hiring = { hiring: boolean; openRoles?: number; source: string };
+type Icp = {
+  summary: string;
+  industries: string[];
+  companyProfile: string;
+  regions: string[];
+  buyerTitles: string[];
+  triggers: string[];
+  searchStrings: string[];
+  sourcingPlaybook: { channel: string; how: string }[];
+};
+type DiscoveredCompany = {
+  name: string;
+  domain: string;
+  country?: string;
+  qid?: string;
+};
+
+const FEEDBACK_CHIPS: { label: string; rule: string }[] = [
+  { label: "Shorter", rule: "Keep emails noticeably shorter and tighter." },
+  { label: "More casual", rule: "Use a more casual, conversational tone." },
+  { label: "More formal", rule: "Use a more professional, formal tone." },
+  { label: "Less salesy", rule: "Sound less salesy, more like a peer reaching out." },
+  { label: "More specific", rule: "Be more specific and concrete, fewer generic lines." },
+  { label: "Punchier", rule: "Make the opening line punchier and more direct." },
+];
 
 type Result = {
   domain: string;
@@ -273,10 +298,92 @@ export default function Home() {
   const [running, setRunning] = useState(false);
   const [exIdx, setExIdx] = useState(-1);
 
+  // Cold-start discovery
+  const [mode, setMode] = useState<"research" | "discover">("research");
+  const [brand, setBrand] = useState("");
+  const [country, setCountry] = useState("");
+  const [icp, setIcp] = useState<Icp | null>(null);
+  const [discovered, setDiscovered] = useState<DiscoveredCompany[]>([]);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [discovering, setDiscovering] = useState(false);
+  const [discoverError, setDiscoverError] = useState("");
+
+  // Self-improving: writing preferences learned from feedback, persisted locally
+  const [prefs, setPrefs] = useState("");
+  const [prefsOpen, setPrefsOpen] = useState(false);
+  useEffect(() => {
+    try {
+      setPrefs(localStorage.getItem("ar_prefs") || "");
+    } catch {}
+  }, []);
+  function savePrefs(v: string) {
+    setPrefs(v);
+    try {
+      localStorage.setItem("ar_prefs", v);
+    } catch {}
+  }
+  function addFeedback(rule: string) {
+    const lines = prefs
+      .split("\n")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (lines.includes(rule)) return;
+    savePrefs([...lines, rule].join("\n"));
+  }
+
   const domains = domainsText
     .split(/[\n,]/)
     .map((d) => d.trim())
     .filter(Boolean);
+
+  async function runDiscover() {
+    if (!offer.trim() || discovering) return;
+    setDiscovering(true);
+    setDiscoverError("");
+    setIcp(null);
+    setDiscovered([]);
+    setSelected(new Set());
+    try {
+      const res = await fetch("/api/discover", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ brand, offer, country }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setDiscoverError(data.error || "Discovery failed.");
+      } else {
+        setIcp(data.icp);
+        setDiscovered(data.companies || []);
+        setSelected(
+          new Set(
+            (data.companies || [])
+              .slice(0, 10)
+              .map((c: DiscoveredCompany) => c.domain)
+          )
+        );
+      }
+    } catch {
+      setDiscoverError("Network error.");
+    }
+    setDiscovering(false);
+  }
+  function toggleSelect(domain: string) {
+    setSelected((prev) => {
+      const n = new Set(prev);
+      if (n.has(domain)) n.delete(domain);
+      else n.add(domain);
+      return n;
+    });
+  }
+  function addSelectedToResearch() {
+    const picks = discovered
+      .filter((c) => selected.has(c.domain))
+      .map((c) => c.domain);
+    if (!picks.length) return;
+    setDomainsText(picks.join("\n"));
+    setMode("research");
+  }
 
   const doneCount = results.filter((r) => r.status === "done").length;
   const rankRows = results
@@ -295,7 +402,7 @@ export default function Home() {
         const res = await fetch("/api/research", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ domain, offer }),
+          body: JSON.stringify({ domain, offer, prefs }),
         });
         const data = await res.json();
         setResults((prev) =>
@@ -536,7 +643,23 @@ export default function Home() {
 
         <div className="workspace-grid">
           <div className="controls">
-            <div className="controls-title">Run a batch</div>
+            <div className="mode-tabs">
+              <button
+                className={mode === "research" ? "active" : ""}
+                onClick={() => setMode("research")}
+                type="button"
+              >
+                Research a list
+              </button>
+              <button
+                className={mode === "discover" ? "active" : ""}
+                onClick={() => setMode("discover")}
+                type="button"
+              >
+                Find leads (no list)
+              </button>
+            </div>
+
             <div className="field">
               <label>
                 Your offer
@@ -549,46 +672,271 @@ export default function Home() {
                 onChange={(e) => setOffer(e.target.value)}
               />
             </div>
-            <div className="field">
-              <label>
-                Target companies
-                <span className="hint">one domain per line</span>
-              </label>
-              <textarea
-                rows={5}
-                value={domainsText}
-                placeholder={"linear.app\nvercel.com\nclay.com"}
-                onChange={(e) => setDomainsText(e.target.value)}
-              />
-            </div>
-            <button
-              className="btn btn-primary"
-              onClick={run}
-              disabled={running || !offer.trim() || domains.length === 0}
-            >
-              {running
-                ? "Researching…"
-                : `Generate ${domains.length || ""} brief${
-                    domains.length === 1 ? "" : "s"
-                  }`.trim()}
-            </button>
-            <div className="controls-foot">
-              <span>
-                {domains.length} {domains.length === 1 ? "company" : "companies"}
-                {domains.length > 10 ? " (first 10)" : ""}
-              </span>
-              <button className="linkbtn" onClick={loadExample} type="button">
-                Load example
+
+            {mode === "research" ? (
+              <>
+                <div className="field">
+                  <label>
+                    Target companies
+                    <span className="hint">one domain per line</span>
+                  </label>
+                  <textarea
+                    rows={5}
+                    value={domainsText}
+                    placeholder={"linear.app\nvercel.com\nclay.com"}
+                    onChange={(e) => setDomainsText(e.target.value)}
+                  />
+                </div>
+                <button
+                  className="btn btn-primary"
+                  onClick={run}
+                  disabled={running || !offer.trim() || domains.length === 0}
+                >
+                  {running
+                    ? "Researching…"
+                    : `Generate ${domains.length || ""} brief${
+                        domains.length === 1 ? "" : "s"
+                      }`.trim()}
+                </button>
+                <div className="controls-foot">
+                  <span>
+                    {domains.length}{" "}
+                    {domains.length === 1 ? "company" : "companies"}
+                    {domains.length > 10 ? " (first 10)" : ""}
+                  </span>
+                  <button
+                    className="linkbtn"
+                    onClick={loadExample}
+                    type="button"
+                  >
+                    Load example
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="field">
+                  <label>
+                    Your brand
+                    <span className="hint">optional, sharpens the ICP</span>
+                  </label>
+                  <input
+                    className="text-input"
+                    value={brand}
+                    placeholder="Helio AI, an AI support agent for SaaS"
+                    onChange={(e) => setBrand(e.target.value)}
+                  />
+                </div>
+                <div className="field">
+                  <label>
+                    Focus region
+                    <span className="hint">optional</span>
+                  </label>
+                  <input
+                    className="text-input"
+                    value={country}
+                    placeholder="United States"
+                    onChange={(e) => setCountry(e.target.value)}
+                  />
+                </div>
+                <button
+                  className="btn btn-primary"
+                  onClick={runDiscover}
+                  disabled={discovering || !offer.trim()}
+                >
+                  {discovering
+                    ? "Finding companies…"
+                    : "Build ICP and find companies"}
+                </button>
+                <p className="notice">
+                  Builds your ICP and finds real companies from open data.
+                  Coverage is best for established companies.
+                </p>
+              </>
+            )}
+
+            <div className="prefs">
+              <button
+                className="prefs-toggle"
+                onClick={() => setPrefsOpen((o) => !o)}
+                type="button"
+              >
+                <span>
+                  Writing style memory
+                  {prefs.split("\n").filter(Boolean).length > 0
+                    ? ` (${prefs.split("\n").filter(Boolean).length})`
+                    : ""}
+                </span>
+                <span>{prefsOpen ? "▾" : "▸"}</span>
               </button>
+              {prefsOpen && (
+                <div className="prefs-body">
+                  <p className="prefs-note">
+                    The writer learns from your feedback below the drafts. Edit
+                    or clear it anytime.
+                  </p>
+                  <textarea
+                    rows={3}
+                    value={prefs}
+                    placeholder="e.g. Keep emails short. No questions in the first line."
+                    onChange={(e) => savePrefs(e.target.value)}
+                  />
+                  {prefs && (
+                    <button
+                      className="linkbtn"
+                      onClick={() => savePrefs("")}
+                      type="button"
+                    >
+                      Clear memory
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
+
             <p className="notice">
-              Outreach is AI-drafted from public site content, so always review
-              before sending.
+              Outreach is AI-drafted from public data, so always review before
+              sending.
             </p>
           </div>
 
           <div className="results">
-            {results.length === 0 ? (
+            {mode === "discover" ? (
+              <div className="discover-view">
+                {discovering ? (
+                  <div className="empty">
+                    <div className="empty-icon">
+                      <span className="spinner" />
+                    </div>
+                    <h3>Building your ICP and finding companies…</h3>
+                    <p>
+                      Defining the target profile, then pulling real companies
+                      from open data.
+                    </p>
+                  </div>
+                ) : discoverError ? (
+                  <div className="result error">
+                    <div className="err-msg">{discoverError}</div>
+                  </div>
+                ) : icp ? (
+                  <>
+                    <div className="block">
+                      <div className="block-label">Ideal customer profile</div>
+                      <p className="report-lead">{icp.summary}</p>
+                      <div className="profile-meta">
+                        <div className="profile-row">
+                          <span>Profile</span> {icp.companyProfile}
+                        </div>
+                        {icp.regions.length > 0 && (
+                          <div className="profile-row">
+                            <span>Regions</span> {icp.regions.join(", ")}
+                          </div>
+                        )}
+                        <div className="profile-row">
+                          <span>Industries</span> {icp.industries.join(", ")}
+                        </div>
+                      </div>
+                      <div className="icp-cols">
+                        <div>
+                          <div className="icp-h">Who to reach</div>
+                          <ul className="icp-list">
+                            {icp.buyerTitles.map((t) => (
+                              <li key={t}>{t}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="icp-h">Buying triggers</div>
+                          <ul className="icp-list">
+                            {icp.triggers.map((t) => (
+                              <li key={t}>{t}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="block">
+                      <div className="block-label">Where to source leads</div>
+                      <div className="playbook">
+                        {icp.sourcingPlaybook.map((p, i) => (
+                          <div className="play" key={i}>
+                            <div className="play-channel">{p.channel}</div>
+                            <div className="play-how">{p.how}</div>
+                          </div>
+                        ))}
+                      </div>
+                      {icp.searchStrings.length > 0 && (
+                        <div className="searchstrings">
+                          <div className="icp-h">Ready-to-paste searches</div>
+                          {icp.searchStrings.map((s, i) => (
+                            <div className="searchstring" key={i}>
+                              <code>{s}</code>
+                              <Copy text={s} />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="block">
+                      <div className="block-label">
+                        Companies found{" "}
+                        <span className="muted">({discovered.length})</span>
+                      </div>
+                      {discovered.length === 0 ? (
+                        <p className="prefs-note">
+                          No companies matched in open data for this ICP. Use the
+                          sourcing playbook above, or switch to Research a list
+                          and paste domains.
+                        </p>
+                      ) : (
+                        <>
+                          <div className="disc-list">
+                            {discovered.map((c) => (
+                              <label className="disc-item" key={c.domain}>
+                                <input
+                                  type="checkbox"
+                                  checked={selected.has(c.domain)}
+                                  onChange={() => toggleSelect(c.domain)}
+                                />
+                                <span className="disc-name">{c.name}</span>
+                                <span className="disc-domain">{c.domain}</span>
+                                {c.country && (
+                                  <span className="disc-country">{c.country}</span>
+                                )}
+                              </label>
+                            ))}
+                          </div>
+                          <button
+                            className="btn btn-primary"
+                            onClick={addSelectedToResearch}
+                            disabled={selected.size === 0}
+                          >
+                            Add {selected.size} to research
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <div className="empty">
+                    <div className="empty-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="m21 21-4.3-4.3" />
+                      </svg>
+                    </div>
+                    <h3>No list? Start here.</h3>
+                    <p>
+                      Describe your offer and brand, and the engine builds your
+                      ICP, finds real companies, and gives you a plan to source
+                      the rest.
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : results.length === 0 ? (
               <div className="empty">
                 <div className="empty-icon">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -1170,6 +1518,23 @@ export default function Home() {
                               </div>
                               <pre>{r.brief.linkedin}</pre>
                             </div>
+                          </div>
+
+                          <div className="feedback">
+                            <span className="feedback-label">
+                              Teach the writer
+                            </span>
+                            {FEEDBACK_CHIPS.map((c) => (
+                              <button
+                                key={c.label}
+                                className="feedback-chip"
+                                type="button"
+                                onClick={() => addFeedback(c.rule)}
+                                title={`Adds "${c.rule}" to the writer's memory for your next runs`}
+                              >
+                                {c.label}
+                              </button>
+                            ))}
                           </div>
 
                           {r.brief.sequence &&

@@ -18,6 +18,7 @@ import {
   type Person,
 } from "./extract";
 import { classifyBusiness, type Classification } from "./classify";
+import { isPublicHost } from "./safe";
 
 const UA =
   "Mozilla/5.0 (compatible; AccountResearchBot/1.0; +portfolio demo)";
@@ -630,7 +631,14 @@ export async function gatherSignals(
   // JS-only homepage hides. Recovers facts for big chains and shops, for free.
   if (sm.deepTargets?.length) {
     const deepHtmls = await Promise.all(
-      sm.deepTargets.map((u) => getText(u, 7000))
+      sm.deepTargets.map(async (u) => {
+        try {
+          if (!(await isPublicHost(new URL(u).hostname))) return null;
+          return await getText(u, 7000);
+        } catch {
+          return null;
+        }
+      })
     );
     for (const dh of deepHtmls) {
       if (!dh) continue;
