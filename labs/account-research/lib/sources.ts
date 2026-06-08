@@ -5,6 +5,9 @@
 
 import {
   extractSiteFacts,
+  extractPeople,
+  mergeFacts,
+  pickDeepTargets,
   parseSitemapUrls,
   classifySitemap,
   detectAts,
@@ -12,6 +15,7 @@ import {
   type SiteFacts,
   type SiteScope,
   type Hiring,
+  type Person,
 } from "./extract";
 import { classifyBusiness, type Classification } from "./classify";
 
@@ -42,7 +46,7 @@ export type HN = {
 export type Tech = { name: string; category: string };
 
 export type Profiles = {
-  leaders?: { name: string; role: string }[];
+  leaders?: { name: string; role: string; linkedin?: string }[];
   linkedinCompany?: string;
   twitter?: string;
   crunchbase?: string;
@@ -509,7 +513,7 @@ export async function fetchGitHub(
 
 export async function fetchSitemap(
   domain: string
-): Promise<{ scope?: SiteScope; source?: SourceLink }> {
+): Promise<{ scope?: SiteScope; deepTargets?: string[]; source?: SourceLink }> {
   const root = domain.replace(/^www\./i, "");
   const url = `https://${root}/sitemap.xml`;
   const xml = await getText(url, 8000);
@@ -524,7 +528,11 @@ export async function fetchSitemap(
       .flatMap((x) => parseSitemapUrls(x as string));
   }
   if (!urls.length) return {};
-  return { scope: classifySitemap(urls), source: { label: "Sitemap", url } };
+  return {
+    scope: classifySitemap(urls),
+    deepTargets: pickDeepTargets(urls),
+    source: { label: "Sitemap", url },
+  };
 }
 
 /* ── Hiring signal (universal growth proxy; real counts via free ATS APIs) ── */
@@ -564,6 +572,39 @@ export async function fetchHiring(
 
 /* ── Orchestrator ── */
 
+function mergePeople(a: Person[], b: Person[]): Person[] {
+  const out = [...a];
+  const seen = new Set(a.map((p) => p.name.toLowerCase()));
+  for (const p of b) {
+    const k = p.name.toLowerCase();
+    if (seen.has(k)) continue;
+    seen.add(k);
+    out.push(p);
+  }
+  return out;
+}
+
+// Combine Wikidata leadership with named people from the site, attaching a
+// LinkedIn profile to a Wikidata leader when the site reveals one.
+function mergeLeaders(
+  wiki: { name: string; role: string }[] | undefined,
+  people: Person[]
+): { name: string; role: string; linkedin?: string }[] {
+  const out: { name: string; role: string; linkedin?: string }[] = [];
+  const seen = new Set<string>();
+  for (const l of wiki || []) {
+    const m = people.find((p) => p.name.toLowerCase() === l.name.toLowerCase());
+    out.push({ name: l.name, role: l.role, linkedin: m?.linkedin });
+    seen.add(l.name.toLowerCase());
+  }
+  for (const p of people) {
+    if (seen.has(p.name.toLowerCase())) continue;
+    seen.add(p.name.toLowerCase());
+    out.push({ name: p.name, role: p.role || "Team", linkedin: p.linkedin });
+  }
+  return out.slice(0, 6);
+}
+
 export async function gatherSignals(
   companyName: string,
   domain: string,
@@ -581,7 +622,28 @@ export async function gatherSignals(
     fetchHiring(domain, combined),
   ]);
   const tech = detectTech(combined, headers);
-  const facts = extractSiteFacts(combined);
+  let facts = extractSiteFacts(combined);
+  let people = extractPeople(combined);
+
+  // Deep pass: a representative location or product page usually carries the
+  // LocalBusiness / Product schema (address, hours, rating, price) that a
+  // JS-only homepage hides. Recovers facts for big chains and shops, for free.
+  if (sm.deepTargets?.length) {
+    const deepHtmls = await Promise.all(
+      sm.deepTargets.map((u) => getText(u, 7000))
+    );
+    for (const dh of deepHtmls) {
+      if (!dh) continue;
+      facts = mergeFacts(facts, extractSiteFacts(dh));
+      people = mergePeople(people, extractPeople(dh));
+    }
+  }
+
+  const mergedLeaders = mergeLeaders(snap.profiles?.leaders, people);
+  const profiles: Profiles | undefined =
+    snap.profiles || mergedLeaders.length
+      ? { ...(snap.profiles || {}), leaders: mergedLeaders.length ? mergedLeaders : snap.profiles?.leaders }
+      : undefined;
 
   // Treat HN as a real tech signal only when there is genuine mindshare, so a
   // single incidental mention never mislabels a restaurant as a tech company.
@@ -632,7 +694,7 @@ export async function gatherSignals(
 
   return {
     snapshot: snap.snapshot,
-    profiles: snap.profiles,
+    profiles,
     facts,
     scope: sm.scope,
     hiring: hire.hiring,
@@ -655,6 +717,8 @@ export type Contacts = {
   teamLinkedins: string[];
   contactUrl?: string;
   linkedinPeopleSearch: string;
+  emailPattern?: string;
+  likelyEmails?: { name: string; email: string }[];
 };
 
 const BROWSER_UA =
@@ -768,3 +832,5 @@ export function detectContacts(
     linkedinPeopleSearch,
   };
 }
+
+export { inferEmails } from "./extract";

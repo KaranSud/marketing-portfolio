@@ -324,6 +324,129 @@ function richness(o: JsonObj): number {
   return n;
 }
 
+/* ── People: real named decision-makers from on-page schema ── */
+
+export type Person = { name: string; role?: string; linkedin?: string };
+
+export function extractPeople(html: string): Person[] {
+  if (!html) return [];
+  const nodes = parseJsonLd(html);
+  const people: Person[] = [];
+
+  const push = (p: JsonObj) => {
+    let name = str(p["name"]);
+    if (!name) {
+      const gn = str(p["givenName"]);
+      const fn = str(p["familyName"]);
+      name = [gn, fn].filter(Boolean).join(" ") || undefined;
+    }
+    if (!name) return;
+    // A real person name: 2 to 4 words, letters only. Filters org names / junk.
+    if (!/^[\p{L}][\p{L}.'-]*(?:\s+[\p{L}][\p{L}.'-]*){1,3}$/u.test(name)) return;
+    const role = str(p["jobTitle"]) || str(p["role"]) || str(p["hasOccupation"]);
+    const sameAs = asArray<string>(p["sameAs"])
+      .map((u) => str(u))
+      .filter((u): u is string => !!u);
+    const linkedin = sameAs.find((u) => /linkedin\.com\/in\//i.test(u));
+    people.push({ name, role, linkedin });
+  };
+
+  for (const n of nodes) {
+    if (typeList(n).includes("Person")) push(n);
+    for (const key of [
+      "employee",
+      "employees",
+      "founder",
+      "founders",
+      "member",
+      "members",
+      "author",
+    ]) {
+      for (const e of asArray<JsonObj>(n[key]))
+        if (e && typeof e === "object" && (typeList(e).includes("Person") || e["name"]))
+          push(e);
+    }
+  }
+
+  const seen = new Set<string>();
+  const unique = people.filter((p) => {
+    const k = p.name.toLowerCase();
+    return seen.has(k) ? false : seen.add(k);
+  });
+  // Surface the most senior, most outreach-worthy people first.
+  const rank = (role?: string): number => {
+    const r = (role || "").toLowerCase();
+    if (/founder|ceo|chief executive|owner|president|principal|managing/.test(r))
+      return 0;
+    if (/chief|cxo|cto|cfo|cmo|coo|partner|\bvp\b|vice president|head of|director/.test(r))
+      return 1;
+    if (r) return 2;
+    return 3;
+  };
+  return unique.sort((a, b) => rank(a.role) - rank(b.role)).slice(0, 8);
+}
+
+/* ── Merge two fact sets (e.g. homepage + a deep location/product page) ── */
+
+export function mergeFacts(base: SiteFacts, extra: SiteFacts): SiteFacts {
+  const out: SiteFacts = { ...base };
+  const fill = <K extends keyof SiteFacts>(k: K) => {
+    if (
+      (out[k] == null || out[k] === "" ) &&
+      extra[k] != null &&
+      extra[k] !== ""
+    )
+      (out[k] as SiteFacts[K]) = extra[k];
+  };
+  (
+    [
+      "name",
+      "description",
+      "slogan",
+      "founded",
+      "employees",
+      "address",
+      "locality",
+      "region",
+      "country",
+      "phone",
+      "email",
+      "priceRange",
+      "ogType",
+      "ogSiteName",
+    ] as (keyof SiteFacts)[]
+  ).forEach(fill);
+  if (!out.rating && extra.rating) out.rating = extra.rating;
+  if (!out.openingHours?.length && extra.openingHours?.length)
+    out.openingHours = extra.openingHours;
+  out.schemaTypes = Array.from(new Set([...out.schemaTypes, ...extra.schemaTypes]));
+  out.sameAs = Array.from(new Set([...out.sameAs, ...extra.sameAs])).slice(0, 12);
+  out.cmsHints = Array.from(new Set([...out.cmsHints, ...extra.cmsHints]));
+  if (extra.servesCuisine?.length)
+    out.servesCuisine = Array.from(
+      new Set([...(out.servesCuisine || []), ...extra.servesCuisine])
+    ).slice(0, 6);
+  if (extra.areaServed?.length && !out.areaServed?.length)
+    out.areaServed = extra.areaServed;
+  return out;
+}
+
+// From a sitemap's URLs, pick a representative location and product page so we
+// can read the LocalBusiness / Product schema that big chains put there (not on
+// the homepage). This recovers facts that JS-only homepages never expose.
+export function pickDeepTargets(urls: string[]): string[] {
+  const targets: string[] = [];
+  const loc = urls.find((u) =>
+    /\/(locations?|stores?|restaurants?|branches?|find-?a-?(store|location))\/[^/]+/i.test(u)
+  );
+  const product = urls.find((u) =>
+    /\/(products?|collections?|item|menu)\/[^/]+/i.test(u)
+  );
+  if (loc) targets.push(loc);
+  if (product) targets.push(product);
+  return targets.slice(0, 2);
+}
+
 /* ── Sitemap → catalog / locations / content cadence ── */
 
 export type SiteScope = {
@@ -381,4 +504,75 @@ export function detectCareersPage(html: string): boolean {
   return /href=["'][^"']*\/(careers?|jobs|join-?us|work-?with-?us|we-?re-?hiring)[^"']*["']/i.test(
     html
   );
+}
+
+/* ── Email pattern inference (grounded: only from a real, matching email) ── */
+
+function normName(name: string): { first?: string; last?: string } {
+  const cleaned = name
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase()
+    .replace(/[^a-z\s-]/g, "")
+    .trim();
+  const parts = cleaned.split(/\s+/).filter(Boolean);
+  if (parts.length < 2) return { first: parts[0] };
+  return { first: parts[0], last: parts[parts.length - 1] };
+}
+
+type EmailTmpl = { label: string; build: (f: string, l: string) => string };
+const EMAIL_TEMPLATES: EmailTmpl[] = [
+  { label: "{first}.{last}", build: (f, l) => `${f}.${l}` },
+  { label: "{first}{last}", build: (f, l) => `${f}${l}` },
+  { label: "{first}_{last}", build: (f, l) => `${f}_${l}` },
+  { label: "{f}{last}", build: (f, l) => `${f[0]}${l}` },
+  { label: "{first}.{l}", build: (f, l) => `${f}.${l[0]}` },
+  { label: "{f}.{last}", build: (f, l) => `${f[0]}.${l}` },
+  { label: "{last}.{first}", build: (f, l) => `${l}.${f}` },
+  { label: "{first}", build: (f) => `${f}` },
+];
+
+// Infer the org's email pattern ONLY when a real published address provably
+// matches a known person's name. Never a blind guess; the UI labels results
+// "likely / unverified". Returns nothing if no real email reveals a pattern.
+export function inferEmails(
+  realEmails: string[],
+  domain: string,
+  leaders: { name: string }[]
+): { pattern?: string; likely: { name: string; email: string }[] } {
+  const root = domain.replace(/^www\./i, "").toLowerCase();
+  const named = leaders
+    .map((l) => ({ name: l.name, ...normName(l.name) }))
+    .filter(
+      (l): l is { name: string; first: string; last: string } =>
+        !!l.first && !!l.last
+    );
+  if (!named.length) return { likely: [] };
+
+  const GENERIC =
+    /^(info|hello|contact|sales|support|admin|team|press|hi|office|enquir\w*|inquir\w*|booking|reservations?|hr|jobs|careers|help|no-?reply|marketing|billing)$/;
+
+  let matched: EmailTmpl | undefined;
+  for (const e of realEmails) {
+    const [local, host] = e.toLowerCase().split("@");
+    if (!host || !host.endsWith(root) || GENERIC.test(local)) continue;
+    for (const l of named) {
+      const t = EMAIL_TEMPLATES.find((tm) => tm.build(l.first, l.last) === local);
+      if (t) {
+        matched = t;
+        break;
+      }
+    }
+    if (matched) break;
+  }
+  if (!matched) return { likely: [] };
+
+  const haveLocal = new Set(realEmails.map((e) => e.toLowerCase().split("@")[0]));
+  const likely: { name: string; email: string }[] = [];
+  for (const l of named) {
+    const local = matched.build(l.first, l.last);
+    if (haveLocal.has(local)) continue;
+    likely.push({ name: l.name, email: `${local}@${root}` });
+  }
+  return { pattern: `${matched.label}@${root}`, likely: likely.slice(0, 6) };
 }
