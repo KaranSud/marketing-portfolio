@@ -766,6 +766,113 @@ textarea:focus {
   color: var(--text-2);
   line-height: 1.65;
 }
+
+/* follow-up cadence (the outbound engine) */
+.cadence-sub {
+  font-size: 13px;
+  color: var(--text-3);
+  margin: -4px 0 14px;
+}
+.cadence {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.touch {
+  position: relative;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  padding-left: 20px;
+}
+.touch::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--accent);
+  opacity: 0.55;
+}
+.touch-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+.touch-channel {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-2);
+  color: var(--text-2);
+}
+.touch-channel.email {
+  color: var(--accent);
+  border-color: rgba(108, 160, 136, 0.4);
+  background: var(--accent-soft);
+}
+.touch-channel.linkedin {
+  color: #6ea8d6;
+  border-color: rgba(110, 168, 214, 0.4);
+  background: rgba(110, 168, 214, 0.1);
+}
+.touch-channel.call {
+  color: #d6b87a;
+  border-color: rgba(214, 184, 122, 0.4);
+  background: rgba(214, 184, 122, 0.1);
+}
+.touch-meta {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  color: var(--text-3);
+  margin-right: auto;
+}
+.touch .subject {
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+.touch pre {
+  white-space: pre-wrap;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* likely (inferred) emails */
+.likely {
+  margin-top: 14px;
+}
+.likely-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 9px;
+}
+.likely-tag {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 11px;
+  color: #d6b87a;
+}
+.contact-chip.likely-chip {
+  border-style: dashed;
+  border-color: rgba(214, 184, 122, 0.4);
+}
 .copy {
   background: transparent;
   border: 1px solid var(--border-2);

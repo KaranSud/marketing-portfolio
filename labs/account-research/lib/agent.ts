@@ -34,6 +34,14 @@ function lensFor(signals: Signals): { label: string; lens: string } {
   };
 }
 
+export type SequenceStep = {
+  day: number;
+  channel: "email" | "linkedin" | "call";
+  label: string;
+  subject?: string;
+  body: string;
+};
+
 export type Brief = {
   fitScore: number;
   fitReason: string;
@@ -44,6 +52,7 @@ export type Brief = {
   hook: string;
   email: { subject: string; body: string };
   linkedin: string;
+  sequence: SequenceStep[];
 };
 
 const responseSchema = {
@@ -65,6 +74,20 @@ const responseSchema = {
       required: ["subject", "body"],
     },
     linkedin: { type: Type.STRING },
+    sequence: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          day: { type: Type.NUMBER },
+          channel: { type: Type.STRING },
+          label: { type: Type.STRING },
+          subject: { type: Type.STRING },
+          body: { type: Type.STRING },
+        },
+        required: ["day", "channel", "label", "body"],
+      },
+    },
   },
   required: [
     "fitScore",
@@ -76,6 +99,7 @@ const responseSchema = {
     "hook",
     "email",
     "linkedin",
+    "sequence",
   ],
 };
 
@@ -213,6 +237,7 @@ This account is a ${lensFor(signals).label}. Judge fit, pains, hook, and outreac
 
 Write the brief. Hard rules:
 - Ground everything in the material above. Do NOT invent statistics, funding, headcounts, customers, or dates. If a number is not in the signals, do not state one. You may reference the verified facts and recent news in your analysis.
+- Never fabricate the SELLER's own results, metrics, client names, or case studies. If a specific proof point or number about the seller is not stated in the offer above, write it as a short bracketed placeholder for the user to fill in, for example "[X% lift]" or "[a similar brand we helped]". Do not invent a figure. This applies everywhere, especially any proof or social-proof line.
 - "executiveSummary": 2 to 3 sentences. The "so what" for a seller: who they are, what they are clearly focused on right now, and whether they are a strong fit. Reference a real signal (a fact or a recent headline) if available.
 - "strategicRead": 3 to 4 sentences on their positioning and likely current priorities, inferred from their site and signals. Concrete, not generic.
 - "fitScore": an honest integer from 0 to 100 for how strong a fit this account is for the seller's offer right now. Be discerning and use the full range: 80+ only for a clear, timely fit, 40 to 70 for plausible, under 40 for weak. Judge from the real signals, not optimism.
@@ -222,6 +247,13 @@ Write the brief. Hard rules:
 - "hook": one specific, current observation to open outreach with (a product, claim, page, or recent news item). No flattery.
 - "email": a cold email that reads like one human wrote it to another, not a template. Subject under 50 characters, specific and curiosity-driven, lowercase is fine, never clickbait. Body 50 to 90 words MAX. Open with a specific, real observation about THEM (the hook), not about yourself. Give one concrete reason it is relevant to them right now. End with a low-friction question, not a hard sell (for example "worth a quick look?", "want me to send a 2-line idea?", "open to a short chat?"). Use contractions and plain words, warm and confident. No "I hope this finds you well", no feature dumps, no fake compliments. It should feel effortless and personal.
 - "linkedin": a connection note under 280 characters. Casual and human, reference one specific real thing about them, no pitch. Like something a peer would actually send.
+- "sequence": a follow-up cadence of exactly 5 touches that CONTINUE after the first email and the LinkedIn note above (so never repeat the opener). Each touch must take a genuinely different angle and feel like a real human wrote it. Use these touches in this order:
+  1. day 3, channel "email", label "Bump": a 2 to 3 sentence nudge on the original thread, light and friendly, one fresh detail.
+  2. day 5, channel "linkedin", label "LinkedIn DM": a short direct message to send after they connect, casual, references something real, one soft question.
+  3. day 7, channel "email", label "Proof": a short email that offers relevant proof framed for THEIR kind of business, then a low-friction CTA. Do not invent a statistic, client name, or case study for the seller. If the offer does not contain a real result, use a bracketed placeholder like "[a recent result you can drop in]" so the user fills it in.
+  4. day 12, channel "email", label "Breakup": a friendly, no-pressure breakup email that leaves the door open.
+  5. day 1, channel "call", label "Cold-call opener": a 2 to 3 sentence cold-call or voicemail script (about 15 seconds spoken), natural and confident, opening with a real reason for the call.
+  For every email touch include a "subject" under 50 characters; for linkedin and call touches omit the subject. Bodies: emails 40 to 70 words, the DM and call under 45 words. Same human tone and grounding rules as above, category-aware, no pressure, no AI-slop, no em dashes.
 - If a specific decision-maker is named in LEADERSHIP and is clearly the right person, you may address the email and note to them by first name. Otherwise keep it role-neutral (never "Hi team").
 - Never use em dashes or en dashes. Use periods or commas.
 - Ban AI-slop and filler: no "I hope this finds you well", "in today's fast-paced world", "delve", "leverage", "synergy", "game-changer", "unlock", "elevate", "seamless", "robust", "cutting-edge", "revolutionize", "in the realm of", "navigate the landscape", or the "it's not just X, it's Y" construction.
@@ -268,6 +300,17 @@ export async function generateReport(
           hook: fix(brief.hook),
           email: { subject: fix(brief.email.subject), body: fix(brief.email.body) },
           linkedin: fix(brief.linkedin),
+          sequence: Array.isArray(brief.sequence)
+            ? brief.sequence.map((s) => ({
+                day: Math.max(0, Math.round(Number(s.day) || 0)),
+                channel: (["email", "linkedin", "call"].includes(s.channel)
+                  ? s.channel
+                  : "email") as SequenceStep["channel"],
+                label: fix(s.label || ""),
+                subject: s.subject ? fix(s.subject) : undefined,
+                body: fix(s.body || ""),
+              }))
+            : [],
         };
       } catch (e) {
         lastErr = e;

@@ -4,6 +4,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 
+type SequenceStep = {
+  day: number;
+  channel: "email" | "linkedin" | "call";
+  label: string;
+  subject?: string;
+  body: string;
+};
 type Brief = {
   fitScore: number;
   fitReason: string;
@@ -14,12 +21,17 @@ type Brief = {
   hook: string;
   email: { subject: string; body: string };
   linkedin: string;
+  sequence?: SequenceStep[];
 };
 
 function fitTier(score: number): { label: string; cls: string } {
   if (score >= 70) return { label: "Strong", cls: "strong" };
   if (score >= 40) return { label: "Moderate", cls: "moderate" };
   return { label: "Weak", cls: "weak" };
+}
+
+function channelLabel(c: SequenceStep["channel"]): string {
+  return c === "email" ? "Email" : c === "linkedin" ? "LinkedIn" : "Call";
 }
 
 type Snapshot = {
@@ -48,9 +60,11 @@ type Contacts = {
   teamLinkedins?: string[];
   contactUrl?: string;
   linkedinPeopleSearch: string;
+  emailPattern?: string;
+  likelyEmails?: { name: string; email: string }[];
 };
 type Profiles = {
-  leaders?: { name: string; role: string }[];
+  leaders?: { name: string; role: string; linkedin?: string }[];
   linkedinCompany?: string;
   twitter?: string;
   crunchbase?: string;
@@ -144,6 +158,26 @@ const EXAMPLES: { offer: string; domains: string }[] = [
     offer:
       "Client acquisition and thought-leadership marketing for professional-services firms: law, accounting, and consulting.",
     domains: "deloitte.com\nperkinscoie.com\nmckinsey.com",
+  },
+  {
+    offer:
+      "Patient acquisition and reputation marketing for healthcare and dental groups: local search, reviews, and online booking.",
+    domains: "aspendental.com\nonemedical.com\nteladoc.com",
+  },
+  {
+    offer:
+      "Membership growth and retention for gyms and fitness studios: paid social, referrals, and win-back campaigns.",
+    domains: "planetfitness.com\norangetheory.com\nequinox.com",
+  },
+  {
+    offer:
+      "Developer marketing and technical content for devtools and infrastructure companies: docs-led growth and community.",
+    domains: "gitlab.com\ndatadog.com\nmongodb.com",
+  },
+  {
+    offer:
+      "Performance and lifecycle marketing for fintech and payments companies: paid acquisition, onboarding, and activation.",
+    domains: "stripe.com\nbrex.com\nramp.com",
   },
 ];
 
@@ -303,12 +337,25 @@ export default function Home() {
     setRunning(false);
   }
 
-  function loadExample() {
-    const next = (exIdx + 1) % EXAMPLES.length;
-    setExIdx(next);
-    setOffer(EXAMPLES[next].offer);
-    setDomainsText(EXAMPLES[next].domains);
+  function applyExample(n: number) {
+    setExIdx(n);
+    setOffer(EXAMPLES[n].offer);
+    setDomainsText(EXAMPLES[n].domains);
   }
+
+  function loadExample() {
+    // A fresh random example each click, never the same one twice in a row.
+    let n = Math.floor(Math.random() * EXAMPLES.length);
+    if (EXAMPLES.length > 1 && n === exIdx) n = (n + 1) % EXAMPLES.length;
+    applyExample(n);
+  }
+
+  // Prefill a random example on every visit so the landing page always shows
+  // a different, relevant scenario.
+  useEffect(() => {
+    applyExample(Math.floor(Math.random() * EXAMPLES.length));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function exportCsv() {
     const rows = results.filter((r) => r.status === "done" && r.brief);
@@ -326,9 +373,12 @@ export default function Home() {
       "Rating",
       "Company LinkedIn",
       "Emails",
+      "Decision Makers",
+      "Likely Emails",
       "Email Subject",
       "Email Body",
       "LinkedIn Opener",
+      "Follow-up Sequence",
     ];
     const lines = rows.map((r) => {
       const b = r.brief!;
@@ -356,9 +406,25 @@ export default function Home() {
         rating,
         r.profiles?.linkedinCompany || r.contacts?.linkedin || "",
         (r.contacts?.emails || []).join("; "),
+        (r.profiles?.leaders || [])
+          .map((l) => `${l.name} (${l.role})`)
+          .join("; "),
+        (r.contacts?.likelyEmails || [])
+          .map((le) => `${le.name} <${le.email}>`)
+          .join("; "),
         b.email.subject,
         b.email.body,
         b.linkedin,
+        (b.sequence || [])
+          .slice()
+          .sort((x, y) => x.day - y.day)
+          .map(
+            (s) =>
+              `Day ${s.day} [${channelLabel(s.channel)} / ${s.label}]: ${
+                s.subject ? s.subject + " — " : ""
+              }${s.body}`
+          )
+          .join("\n\n"),
       ]
         .map(esc)
         .join(",");
@@ -936,9 +1002,12 @@ export default function Home() {
                                       <a
                                         className="leader"
                                         key={l.name}
-                                        href={`https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(
-                                          `${l.name} ${r.name || ""}`
-                                        )}`}
+                                        href={
+                                          l.linkedin ||
+                                          `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(
+                                            `${l.name} ${r.name || ""}`
+                                          )}`
+                                        }
                                         target="_blank"
                                         rel="noopener noreferrer"
                                       >
@@ -946,7 +1015,10 @@ export default function Home() {
                                           {l.name}
                                         </span>
                                         <span className="leader-role">
-                                          {l.role} · find on LinkedIn ↗
+                                          {l.role} ·{" "}
+                                          {l.linkedin
+                                            ? "LinkedIn profile ↗"
+                                            : "find on LinkedIn ↗"}
                                         </span>
                                       </a>
                                     ))}
@@ -1049,6 +1121,30 @@ export default function Home() {
                                   </a>
                                 )}
                               </div>
+                              {r.contacts?.likelyEmails &&
+                                r.contacts.likelyEmails.length > 0 && (
+                                  <div className="likely">
+                                    <div className="likely-head">
+                                      Likely emails
+                                      <span className="likely-tag">
+                                        inferred from {r.contacts.emailPattern},
+                                        verify before sending
+                                      </span>
+                                    </div>
+                                    <div className="contacts">
+                                      {r.contacts.likelyEmails.map((le) => (
+                                        <a
+                                          className="contact-chip likely-chip"
+                                          href={`mailto:${le.email}`}
+                                          key={le.email}
+                                          title={`${le.name}, pattern-inferred, unverified`}
+                                        >
+                                          {le.name}: {le.email}
+                                        </a>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
                             </div>
                           )}
 
@@ -1075,6 +1171,51 @@ export default function Home() {
                               <pre>{r.brief.linkedin}</pre>
                             </div>
                           </div>
+
+                          {r.brief.sequence &&
+                            r.brief.sequence.length > 0 && (
+                              <div className="block">
+                                <div className="block-label">
+                                  Follow-up cadence
+                                </div>
+                                <p className="cadence-sub">
+                                  A ready-to-run multi-touch sequence that picks
+                                  up after the first email and the connection
+                                  request.
+                                </p>
+                                <div className="cadence">
+                                  {[...r.brief.sequence]
+                                    .sort((a, b) => a.day - b.day)
+                                    .map((s, i) => (
+                                      <div className="touch" key={i}>
+                                        <div className="touch-head">
+                                          <span
+                                            className={`touch-channel ${s.channel}`}
+                                          >
+                                            {channelLabel(s.channel)}
+                                          </span>
+                                          <span className="touch-meta">
+                                            Day {s.day} · {s.label}
+                                          </span>
+                                          <Copy
+                                            text={
+                                              s.subject
+                                                ? `Subject: ${s.subject}\n\n${s.body}`
+                                                : s.body
+                                            }
+                                          />
+                                        </div>
+                                        {s.subject && (
+                                          <div className="subject">
+                                            {s.subject}
+                                          </div>
+                                        )}
+                                        <pre>{s.body}</pre>
+                                      </div>
+                                    ))}
+                                </div>
+                              </div>
+                            )}
 
                           {r.sources && r.sources.length > 0 && (
                             <div className="sources">

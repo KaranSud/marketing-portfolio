@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { researchSite, normalizeDomain } from "@/lib/research";
-import { gatherSignals, detectContacts, fetchExtraHtml } from "@/lib/sources";
+import {
+  gatherSignals,
+  detectContacts,
+  fetchExtraHtml,
+  inferEmails,
+} from "@/lib/sources";
 import { generateReport } from "@/lib/agent";
 
 export const runtime = "nodejs";
@@ -81,6 +86,15 @@ export async function POST(req: Request) {
       normalized,
       name
     );
+    // Grounded email inference: only fills in when a real published address
+    // matches a named leader, so the pattern is real, not guessed.
+    const inferred = inferEmails(
+      contacts.emails,
+      normalized,
+      signals.profiles?.leaders ?? []
+    );
+    contacts.emailPattern = inferred.pattern;
+    contacts.likelyEmails = inferred.likely;
 
     if (
       !siteReachable &&
