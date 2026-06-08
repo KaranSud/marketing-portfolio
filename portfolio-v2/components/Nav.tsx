@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { getLenis } from "@/lib/lenis";
 
 const links: [string, string][] = [
@@ -14,8 +15,11 @@ const links: [string, string][] = [
 export default function Nav() {
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const onHome = pathname === "/";
 
   useEffect(() => {
+    if (!onHome) return;
     const ids = ["work", "services", "brands", "skills", "labs", "contact"];
     const obs = new IntersectionObserver(
       (entries) => {
@@ -30,7 +34,7 @@ export default function Nav() {
       if (el) obs.observe(el);
     });
     return () => obs.disconnect();
-  }, []);
+  }, [onHome]);
 
   useEffect(() => {
     const lenis = getLenis();
@@ -47,42 +51,55 @@ export default function Nav() {
     };
   }, [menuOpen]);
 
-  function scrollTo(e: React.MouseEvent, id: string) {
-    e.preventDefault();
+  // On the home page, hash links smooth-scroll. On sub-pages they navigate back
+  // to the section, so we let the browser follow the /#id href.
+  function handleSection(e: React.MouseEvent, id: string) {
     setMenuOpen(false);
+    if (!onHome) return;
+    e.preventDefault();
     const el = id === "top" ? document.body : document.getElementById(id);
     if (!el) return;
     const lenis = getLenis();
-    if (lenis) {
-      lenis.scrollTo(id === "top" ? 0 : el, { offset: -64 });
-    } else {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    if (lenis) lenis.scrollTo(id === "top" ? 0 : el, { offset: -64 });
+    else el.scrollIntoView({ behavior: "smooth" });
   }
+
+  const sectionHref = (id: string) => (onHome ? `#${id}` : `/#${id}`);
 
   return (
     <>
       <nav>
         <div className="nav-inner">
-          <a href="#" className="nav-logo" onClick={(e) => scrollTo(e, "top")}>
+          <a
+            href={onHome ? "#" : "/"}
+            className="nav-logo"
+            onClick={(e) => handleSection(e, "top")}
+          >
             Karan Sud
           </a>
           <div className="nav-links">
             {links.map(([id, label]) => (
               <a
                 key={id}
-                href={`#${id}`}
-                className={active === id ? "active" : undefined}
-                aria-current={active === id ? "true" : undefined}
-                onClick={(e) => scrollTo(e, id)}
+                href={sectionHref(id)}
+                className={onHome && active === id ? "active" : undefined}
+                aria-current={onHome && active === id ? "true" : undefined}
+                onClick={(e) => handleSection(e, id)}
               >
                 {label}
               </a>
             ))}
             <a
-              href="#contact"
+              href="/blog"
+              className={pathname?.startsWith("/blog") ? "active" : undefined}
+              onClick={() => setMenuOpen(false)}
+            >
+              Writing
+            </a>
+            <a
+              href={sectionHref("contact")}
               className="btn btn-ghost nav-cta"
-              onClick={(e) => scrollTo(e, "contact")}
+              onClick={(e) => handleSection(e, "contact")}
             >
               Get in touch
             </a>
@@ -104,17 +121,20 @@ export default function Nav() {
           {links.map(([id, label]) => (
             <a
               key={id}
-              href={`#${id}`}
-              className={active === id ? "active" : undefined}
-              onClick={(e) => scrollTo(e, id)}
+              href={sectionHref(id)}
+              className={onHome && active === id ? "active" : undefined}
+              onClick={(e) => handleSection(e, id)}
             >
               {label}
             </a>
           ))}
+          <a href="/blog" onClick={() => setMenuOpen(false)}>
+            Writing
+          </a>
           <a
-            href="#contact"
+            href={sectionHref("contact")}
             className="btn btn-primary mobile-menu-cta"
-            onClick={(e) => scrollTo(e, "contact")}
+            onClick={(e) => handleSection(e, "contact")}
           >
             Get in touch
           </a>
