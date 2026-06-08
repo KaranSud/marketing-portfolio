@@ -82,6 +82,21 @@ export default function Labs() {
             </div>
           </a>
         </Reveal>
+
+        <Reveal delay={0.08}>
+          <a className="labs-mini" href="/crm">
+            <div className="labs-tag">Outbound CRM</div>
+            <h3 className="labs-mini-title">Track your pipeline, end to end</h3>
+            <p className="labs-mini-desc">
+              Import the leads you researched, move them through stages, add
+              notes, and run your outbound. Saved in your browser, no account
+              needed.
+            </p>
+            <span className="labs-cta">
+              Open the CRM<span>&rarr;</span>
+            </span>
+          </a>
+        </Reveal>
       </div>
     </section>
   );
