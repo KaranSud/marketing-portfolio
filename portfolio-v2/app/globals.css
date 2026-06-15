@@ -2468,3 +2468,138 @@ footer {
   max-width: 640px;
   margin-bottom: 18px;
 }
+
+/* CRM — board view, reminders, search */
+.crm-viewtoggle {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  background: var(--bg-2, #0e0e11);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+.crm-viewtoggle button {
+  border: none;
+  background: transparent;
+  color: var(--text-3);
+  font-size: 12.5px;
+  font-family: var(--font-body), sans-serif;
+  padding: 7px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.crm-viewtoggle button.active {
+  background: var(--surface, #131316);
+  color: var(--text);
+}
+.crm-search {
+  flex: 1;
+  min-width: 180px;
+  max-width: 320px;
+  background: var(--surface, #131316);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 9px 13px;
+  color: var(--text);
+  font-size: 13.5px;
+  font-family: var(--font-body), sans-serif;
+}
+.crm-search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.crm-stat.alert {
+  border-color: rgba(217, 138, 122, 0.5);
+  background: rgba(217, 138, 122, 0.08);
+}
+.crm-stat.alert .crm-stat-n {
+  color: #d98a7a;
+}
+
+/* board */
+.crm-board {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(248px, 1fr);
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  align-items: start;
+}
+.crm-col {
+  background: var(--bg-2, #0e0e11);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  min-height: 140px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.crm-col.dragover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.crm-col-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  padding: 2px 4px 12px;
+}
+.crm-col-n {
+  color: var(--text-3);
+}
+.crm-col-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.crm-board .crm-card {
+  cursor: grab;
+}
+.crm-board .crm-card:active {
+  cursor: grabbing;
+}
+.crm-card.overdue {
+  border-color: rgba(217, 138, 122, 0.45);
+}
+
+/* follow-up reminder row */
+.crm-touch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.crm-touch input[type="date"] {
+  background: var(--bg-2, #0e0e11);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 4px 8px;
+  color: var(--text-2);
+  font-size: 12px;
+  font-family: var(--font-body), sans-serif;
+  color-scheme: dark;
+}
+.crm-touch.overdue input[type="date"] {
+  border-color: rgba(217, 138, 122, 0.5);
+  color: #d98a7a;
+}
+.crm-touch.due input[type="date"] {
+  border-color: rgba(214, 184, 122, 0.5);
+}
+.crm-touch-flag {
+  color: #d98a7a;
+  font-weight: 600;
+}
+.crm-touch-flag.due {
+  color: #d6b87a;
+}

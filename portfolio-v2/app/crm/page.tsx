@@ -28,10 +28,12 @@ type Lead = {
   fit: string;
   stage: Stage;
   notes: string;
+  nextTouch: string; // ISO date (yyyy-mm-dd) or ""
   createdAt: number;
 };
 
 const KEY = "crm_leads_v1";
+const today = () => new Date().toISOString().slice(0, 10);
 const uid = () =>
   Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
@@ -67,6 +69,23 @@ function parseCsv(text: string): string[][] {
   return rows.filter((r) => r.some((c) => c.trim()));
 }
 
+function isOverdue(l: Lead): boolean {
+  return (
+    !!l.nextTouch &&
+    l.nextTouch < today() &&
+    l.stage !== "Won" &&
+    l.stage !== "Lost"
+  );
+}
+function isDueToday(l: Lead): boolean {
+  return (
+    !!l.nextTouch &&
+    l.nextTouch === today() &&
+    l.stage !== "Won" &&
+    l.stage !== "Lost"
+  );
+}
+
 export default function CrmPage() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loaded, setLoaded] = useState(false);
@@ -78,13 +97,19 @@ export default function CrmPage() {
     email: "",
     fit: "",
   });
-  const [filter, setFilter] = useState<Stage | "All">("All");
+  const [view, setView] = useState<"board" | "list">("board");
+  const [query, setQuery] = useState("");
+  const [dragId, setDragId] = useState<string | null>(null);
+  const [dragOver, setDragOver] = useState<Stage | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setLeads(JSON.parse(raw));
+      if (raw) {
+        const parsed: Lead[] = JSON.parse(raw);
+        setLeads(parsed.map((l) => ({ ...l, nextTouch: l.nextTouch ?? "" })));
+      }
     } catch {}
     setLoaded(true);
   }, []);
@@ -107,6 +132,7 @@ export default function CrmPage() {
         fit: form.fit.trim(),
         stage: "New",
         notes: "",
+        nextTouch: "",
         createdAt: Date.now(),
       },
       ...p,
@@ -153,6 +179,7 @@ export default function CrmPage() {
         fit: get(fi),
         stage: "Researched",
         notes: "",
+        nextTouch: "",
         createdAt: Date.now(),
       });
       if (domain) existing.add(domain.toLowerCase());
@@ -179,10 +206,20 @@ export default function CrmPage() {
       "Email",
       "Fit",
       "Stage",
+      "Next Touch",
       "Notes",
     ];
     const lines = leads.map((l) =>
-      [l.company, l.domain, l.contact, l.email, l.fit, l.stage, l.notes]
+      [
+        l.company,
+        l.domain,
+        l.contact,
+        l.email,
+        l.fit,
+        l.stage,
+        l.nextTouch,
+        l.notes,
+      ]
         .map(esc)
         .join(",")
     );
@@ -197,11 +234,101 @@ export default function CrmPage() {
     URL.revokeObjectURL(url);
   }
 
-  const shown =
-    filter === "All" ? leads : leads.filter((l) => l.stage === filter);
-  const counts = STAGES.map(
-    (s) => leads.filter((l) => l.stage === s).length
-  );
+  const q = query.trim().toLowerCase();
+  const matches = (l: Lead) =>
+    !q ||
+    [l.company, l.domain, l.contact, l.email, l.notes]
+      .join(" ")
+      .toLowerCase()
+      .includes(q);
+  const visible = leads.filter(matches);
+  const overdueCount = leads.filter(isOverdue).length;
+
+  function dropOn(stage: Stage) {
+    if (dragId) update(dragId, { stage });
+    setDragId(null);
+    setDragOver(null);
+  }
+
+  function LeadCard({ l }: { l: Lead }) {
+    const over = isOverdue(l);
+    const due = isDueToday(l);
+    return (
+      <div
+        className={`crm-card${over ? " overdue" : ""}`}
+        draggable
+        onDragStart={() => setDragId(l.id)}
+        onDragEnd={() => {
+          setDragId(null);
+          setDragOver(null);
+        }}
+      >
+        <div className="crm-card-top">
+          <div className="crm-card-id">
+            <span className="crm-company">{l.company}</span>
+            {l.domain && (
+              <a
+                className="crm-domain"
+                href={`https://${l.domain}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {l.domain}
+              </a>
+            )}
+          </div>
+          <div className="crm-card-actions">
+            {l.fit && <span className="crm-fit">Fit {l.fit}</span>}
+            {view === "list" && (
+              <select
+                className={`crm-stage stage-${l.stage.toLowerCase()}`}
+                value={l.stage}
+                onChange={(e) =>
+                  update(l.id, { stage: e.target.value as Stage })
+                }
+              >
+                {STAGES.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            )}
+            <button
+              className="crm-del"
+              onClick={() => remove(l.id)}
+              aria-label="Delete lead"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+        {(l.contact || l.email) && (
+          <div className="crm-contact">
+            {l.contact && <span>{l.contact}</span>}
+            {l.email && <a href={`mailto:${l.email}`}>{l.email}</a>}
+          </div>
+        )}
+        <textarea
+          className="crm-notes"
+          placeholder="Notes, next step, last touch…"
+          value={l.notes}
+          rows={2}
+          onChange={(e) => update(l.id, { notes: e.target.value })}
+        />
+        <label className={`crm-touch${over ? " overdue" : due ? " due" : ""}`}>
+          <span>Follow up</span>
+          <input
+            type="date"
+            value={l.nextTouch}
+            onChange={(e) => update(l.id, { nextTouch: e.target.value })}
+          />
+          {over && <span className="crm-touch-flag">overdue</span>}
+          {due && <span className="crm-touch-flag due">today</span>}
+        </label>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -213,33 +340,49 @@ export default function CrmPage() {
             Your pipeline, <em>end to end</em>
           </h1>
           <p className="page-sub">
-            Import the leads you researched, move them through stages, and keep
-            your outbound organized. Everything is saved in your browser, no
-            account needed.
+            Import the leads you researched, drag them through stages, set
+            follow-up reminders, and run your outbound. Everything is saved in
+            your browser, no account needed.
           </p>
         </header>
 
         <div className="crm-stats">
-          <button
-            className={`crm-stat ${filter === "All" ? "active" : ""}`}
-            onClick={() => setFilter("All")}
-          >
-            <span className="crm-stat-n">{leads.length}</span>
-            <span className="crm-stat-l">All</span>
-          </button>
-          {STAGES.map((s, i) => (
-            <button
-              key={s}
-              className={`crm-stat ${filter === s ? "active" : ""}`}
-              onClick={() => setFilter(s)}
-            >
-              <span className="crm-stat-n">{counts[i]}</span>
-              <span className="crm-stat-l">{s}</span>
-            </button>
-          ))}
+          {STAGES.map((s) => {
+            const n = leads.filter((l) => l.stage === s).length;
+            return (
+              <div key={s} className="crm-stat">
+                <span className="crm-stat-n">{n}</span>
+                <span className="crm-stat-l">{s}</span>
+              </div>
+            );
+          })}
+          <div className={`crm-stat ${overdueCount ? "alert" : ""}`}>
+            <span className="crm-stat-n">{overdueCount}</span>
+            <span className="crm-stat-l">Overdue</span>
+          </div>
         </div>
 
         <div className="crm-toolbar">
+          <div className="crm-viewtoggle">
+            <button
+              className={view === "board" ? "active" : ""}
+              onClick={() => setView("board")}
+            >
+              Board
+            </button>
+            <button
+              className={view === "list" ? "active" : ""}
+              onClick={() => setView("list")}
+            >
+              List
+            </button>
+          </div>
+          <input
+            className="crm-search"
+            placeholder="Search company, contact, notes…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
           <button className="btn btn-primary" onClick={() => setAdding((a) => !a)}>
             {adding ? "Close" : "Add lead"}
           </button>
@@ -320,64 +463,38 @@ export default function CrmPage() {
               and import it here to start your pipeline.
             </p>
           </div>
-        ) : (
-          <div className="crm-list">
-            {shown.map((l) => (
-              <div className="crm-card" key={l.id}>
-                <div className="crm-card-top">
-                  <div className="crm-card-id">
-                    <span className="crm-company">{l.company}</span>
-                    {l.domain && (
-                      <a
-                        className="crm-domain"
-                        href={`https://${l.domain}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {l.domain}
-                      </a>
-                    )}
+        ) : view === "board" ? (
+          <div className="crm-board">
+            {STAGES.map((s) => {
+              const items = visible.filter((l) => l.stage === s);
+              return (
+                <div
+                  key={s}
+                  className={`crm-col${dragOver === s ? " dragover" : ""}`}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    setDragOver(s);
+                  }}
+                  onDragLeave={() => setDragOver((d) => (d === s ? null : d))}
+                  onDrop={() => dropOn(s)}
+                >
+                  <div className="crm-col-head">
+                    <span>{s}</span>
+                    <span className="crm-col-n">{items.length}</span>
                   </div>
-                  <div className="crm-card-actions">
-                    {l.fit && <span className="crm-fit">Fit {l.fit}</span>}
-                    <select
-                      className={`crm-stage stage-${l.stage.toLowerCase()}`}
-                      value={l.stage}
-                      onChange={(e) =>
-                        update(l.id, { stage: e.target.value as Stage })
-                      }
-                    >
-                      {STAGES.map((s) => (
-                        <option key={s} value={s}>
-                          {s}
-                        </option>
-                      ))}
-                    </select>
-                    <button
-                      className="crm-del"
-                      onClick={() => remove(l.id)}
-                      aria-label="Delete lead"
-                    >
-                      ×
-                    </button>
+                  <div className="crm-col-body">
+                    {items.map((l) => (
+                      <LeadCard key={l.id} l={l} />
+                    ))}
                   </div>
                 </div>
-                {(l.contact || l.email) && (
-                  <div className="crm-contact">
-                    {l.contact && <span>{l.contact}</span>}
-                    {l.email && (
-                      <a href={`mailto:${l.email}`}>{l.email}</a>
-                    )}
-                  </div>
-                )}
-                <textarea
-                  className="crm-notes"
-                  placeholder="Notes, next step, last touch…"
-                  value={l.notes}
-                  rows={2}
-                  onChange={(e) => update(l.id, { notes: e.target.value })}
-                />
-              </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="crm-list">
+            {visible.map((l) => (
+              <LeadCard key={l.id} l={l} />
             ))}
           </div>
         )}

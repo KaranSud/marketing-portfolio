@@ -11,7 +11,12 @@ export type DiscoveredCompany = {
   domain: string;
   country?: string;
   qid?: string;
+  sitelinks?: number;
 };
+
+// Entities that are real organizations but almost never a sales prospect.
+const NON_PROSPECT =
+  /\b(association|federation|foundation|institute|university|college|school|ministry|government|council|commission|agency|wikimedia|nonprofit|non-profit|charity|consortium|society|union|bureau)\b/i;
 
 async function getJson<T>(url: string, timeout = 12000): Promise<T | null> {
   try {
@@ -94,8 +99,16 @@ export async function discoverCompanies(opts: {
     const domain = website ? domainFromUrl(website) : null;
     if (!domain || !name || seen.has(domain)) continue;
     if (/^Q\d+$/.test(name)) continue; // skip unlabeled entities
+    if (NON_PROSPECT.test(name)) continue; // not a sales prospect
+    const sitelinks = parseInt(r.sl?.value || "", 10);
     seen.add(domain);
-    companies.push({ name, domain, country: r.countryLabel?.value, qid });
+    companies.push({
+      name,
+      domain,
+      country: r.countryLabel?.value,
+      qid,
+      sitelinks: isNaN(sitelinks) ? 0 : sitelinks,
+    });
   }
   return { companies, industryQid };
 }
@@ -112,13 +125,26 @@ export async function discoverForIcp(
       discoverCompanies({ industry: ind, country, limit: perIndustry })
     )
   );
+  // Round-robin across industries so the final list is balanced, not dominated
+  // by whichever industry resolved best. Each list is already notability-sorted.
+  const queues = lists.map((l) => [...l.companies]);
   const merged: DiscoveredCompany[] = [];
-  const seen = new Set<string>();
-  for (const l of lists)
-    for (const c of l.companies) {
-      if (seen.has(c.domain)) continue;
-      seen.add(c.domain);
+  const seenDomain = new Set<string>();
+  const seenName = new Set<string>();
+  let added = true;
+  while (added && merged.length < 40) {
+    added = false;
+    for (const q of queues) {
+      const c = q.shift();
+      if (!c) continue;
+      added = true;
+      const nameKey = c.name.toLowerCase().trim();
+      if (seenDomain.has(c.domain) || seenName.has(nameKey)) continue;
+      seenDomain.add(c.domain);
+      seenName.add(nameKey);
       merged.push(c);
+      if (merged.length >= 40) break;
     }
-  return merged.slice(0, 40);
+  }
+  return merged;
 }
