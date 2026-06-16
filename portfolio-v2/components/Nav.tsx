@@ -94,7 +94,7 @@ export default function Nav() {
               className={pathname?.startsWith("/blog") ? "active" : undefined}
               onClick={() => setMenuOpen(false)}
             >
-              Writing
+              Blog
             </a>
             <a
               href={sectionHref("contact")}
@@ -129,7 +129,7 @@ export default function Nav() {
             </a>
           ))}
           <a href="/blog" onClick={() => setMenuOpen(false)}>
-            Writing
+            Blog
           </a>
           <a
             href={sectionHref("contact")}
