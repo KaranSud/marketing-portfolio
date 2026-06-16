@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { marked } from "marked";
 import Nav from "@/components/Nav";
+import BlogHeader from "@/components/BlogHeader";
 import { getPost, getSlugs } from "@/lib/blog";
 
 const SITE = "https://karan-sud-portfolio.vercel.app";
@@ -83,30 +84,24 @@ export default async function PostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Link className="back-link" href="/blog">
-          ← All writing
+          ← All posts
         </Link>
         <article>
-          <header className="article-head">
-            <div className="post-meta">
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
-              <span aria-hidden>·</span>
-              <span>{post.readingTime}</span>
-            </div>
-            <h1 className="article-title">{post.title}</h1>
-            <p className="article-desc">{post.description}</p>
-            <div className="post-tags">
-              {post.tags.map((t) => (
-                <span key={t}>{t}</span>
-              ))}
-            </div>
-          </header>
+          <BlogHeader
+            title={post.title}
+            dateLabel={formatDate(post.date)}
+            readingTime={post.readingTime}
+            tags={post.tags}
+            accent={post.accent}
+          />
+          <p className="article-desc">{post.description}</p>
           <div
             className="prose"
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <footer className="article-foot">
             <span>Written by {post.author}</span>
-            <Link href="/blog">More writing →</Link>
+            <Link href="/blog">More posts →</Link>
           </footer>
         </article>
       </main>

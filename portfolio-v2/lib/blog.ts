@@ -12,6 +12,7 @@ export type PostMeta = {
   tags: string[];
   author: string;
   readingTime: string;
+  accent: string; // sage | teal | violet (drives the header graphic)
 };
 export type Post = PostMeta & { content: string };
 
@@ -29,6 +30,9 @@ function toMeta(slug: string, data: matter.GrayMatterFile<string>["data"], conte
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     author: typeof data.author === "string" ? data.author : "Karan Sud",
     readingTime: readingTime(content),
+    accent: ["sage", "teal", "violet", "amber"].includes(data.accent)
+      ? data.accent
+      : "sage",
   };
 }
 
