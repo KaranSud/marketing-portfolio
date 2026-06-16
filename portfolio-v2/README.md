@@ -1,4 +1,4 @@
-# Karan Sud — Portfolio (V2)
+# Karan Sud, Portfolio (V2)
 
 Personal portfolio for Karan Sud, content & growth strategist. Dark, motion-led
 single-page site built as a custom Next.js app and deployed on Vercel.
@@ -21,9 +21,9 @@ npm run build    # production build
 
 ## Structure
 
-- `app/` — routes, layout, metadata, robots, sitemap, OG image
-- `components/` — UI (Hero, Work, case modal, Brands marquee, etc.)
-- `lib/` — typed case-study + FAQ data
+- `app/`, routes, layout, metadata, robots, sitemap, OG image
+- `components/`, UI (Hero, Work, case modal, Brands marquee, etc.)
+- `lib/`, typed case-study + FAQ data
 
 ## SEO / AEO / GEO
 

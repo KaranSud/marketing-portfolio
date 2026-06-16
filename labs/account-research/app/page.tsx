@@ -528,7 +528,7 @@ export default function Home() {
           .map(
             (s) =>
               `Day ${s.day} [${channelLabel(s.channel)} / ${s.label}]: ${
-                s.subject ? s.subject + " — " : ""
+                s.subject ? s.subject + ". " : ""
               }${s.body}`
           )
           .join("\n\n"),

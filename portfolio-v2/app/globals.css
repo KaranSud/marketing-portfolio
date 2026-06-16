@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   TOKENS — Warm dark + refined gold
+   TOKENS, Warm dark + refined gold
 ============================================================ */
 :root {
   --bg: #0A0A0B;
@@ -855,7 +855,7 @@ nav {
 }
 
 /* ============================================================
-   SERVICES — numbered editorial
+   SERVICES, numbered editorial
 ============================================================ */
 #services {
   background: rgba(255, 255, 255, 0.014);
@@ -1090,7 +1090,7 @@ nav {
 }
 
 /* ============================================================
-   BRANDS — marquee
+   BRANDS, marquee
 ============================================================ */
 #brands {
   background: transparent;
@@ -1170,7 +1170,7 @@ nav {
 }
 
 /* ============================================================
-   SKILLS — toolkit
+   SKILLS, toolkit
 ============================================================ */
 #skills {
   background: rgba(255, 255, 255, 0.014);
@@ -1574,7 +1574,7 @@ footer {
 }
 
 /* ============================================================
-   CASE MODAL — journey additions
+   CASE MODAL, journey additions
 ============================================================ */
 .modal-chips {
   display: flex;
@@ -1759,7 +1759,7 @@ footer {
 }
 
 /* ============================================================
-   HERO — two-column SaaS layout + results panel
+   HERO, two-column SaaS layout + results panel
 ============================================================ */
 .hero-layout {
   position: relative;
@@ -2469,7 +2469,7 @@ footer {
   margin-bottom: 18px;
 }
 
-/* CRM — board view, reminders, search */
+/* CRM, board view, reminders, search */
 .crm-viewtoggle {
   display: flex;
   gap: 3px;
