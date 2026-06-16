@@ -34,7 +34,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Karan Sud — Content & Growth Strategist",
+  title: "Karan Sud, Content & Growth Strategist",
   description,
   keywords: [
     "Karan Sud",
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Karan Sud — Content & Growth Strategist",
+    title: "Karan Sud, Content & Growth Strategist",
     description,
     siteName: "Karan Sud",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karan Sud — Content & Growth Strategist",
+    title: "Karan Sud, Content & Growth Strategist",
     description,
     creator: "@KaranSudSocial",
   },

@@ -42,7 +42,7 @@ export default function JsonLd() {
         "@type": "ProfilePage",
         "@id": `${siteUrl}/#profilepage`,
         url: siteUrl,
-        name: "Karan Sud — Content & Growth Strategist",
+        name: "Karan Sud, Content & Growth Strategist",
         about: { "@id": `${siteUrl}/#person` },
         isPartOf: { "@id": `${siteUrl}/#website` },
       },
@@ -54,7 +54,7 @@ export default function JsonLd() {
           position: i + 1,
           item: {
             "@type": "CreativeWork",
-            name: `${c.title} — ${c.tag}`,
+            name: `${c.title}, ${c.tag}`,
             description: c.desc,
           },
         })),
