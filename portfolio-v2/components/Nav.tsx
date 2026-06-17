@@ -97,6 +97,13 @@ export default function Nav() {
               Blog
             </a>
             <a
+              href="/samples"
+              className={pathname?.startsWith("/samples") ? "active" : undefined}
+              onClick={() => setMenuOpen(false)}
+            >
+              Samples
+            </a>
+            <a
               href={sectionHref("contact")}
               className="btn btn-ghost nav-cta"
               onClick={(e) => handleSection(e, "contact")}
@@ -130,6 +137,9 @@ export default function Nav() {
           ))}
           <a href="/blog" onClick={() => setMenuOpen(false)}>
             Blog
+          </a>
+          <a href="/samples" onClick={() => setMenuOpen(false)}>
+            Samples
           </a>
           <a
             href={sectionHref("contact")}

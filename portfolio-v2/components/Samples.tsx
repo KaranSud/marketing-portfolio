@@ -44,35 +44,65 @@ export default function Samples() {
     };
   }, [open]);
 
+  // Render X/Twitter embeds client-side via the widget script (works in the
+  // browser even though server-side oEmbed is blocked).
+  useEffect(() => {
+    if (open?.embed?.type !== "tweet") return;
+    const w = window as unknown as {
+      twttr?: { widgets?: { load: (el?: HTMLElement) => void } };
+    };
+    const run = () => w.twttr?.widgets?.load?.();
+    if (w.twttr?.widgets) {
+      run();
+      return;
+    }
+    const existing = document.getElementById("twitter-wjs");
+    if (existing) {
+      existing.addEventListener("load", run);
+      return;
+    }
+    const s = document.createElement("script");
+    s.id = "twitter-wjs";
+    s.src = "https://platform.twitter.com/widgets.js";
+    s.async = true;
+    s.onload = run;
+    document.body.appendChild(s);
+  }, [open]);
+
   const items =
     active === "all" ? showcase : showcase.filter((i) => i.category === active);
 
   function CardInner({ item }: { item: ShowcaseItem }) {
-    const watchable = !!item.embed;
+    const isVideo =
+      item.embed?.type === "youtube" || item.embed?.type === "video";
+    const isTweet = item.embed?.type === "tweet";
     const viewable = !item.embed && !item.href && !!item.image;
+    const action = isVideo
+      ? "Watch"
+      : isTweet
+      ? "View post"
+      : viewable
+      ? "View"
+      : item.href
+      ? item.href.startsWith("/")
+        ? "Read"
+        : "Open ↗"
+      : "";
     return (
       <>
         <div className="sample-media">
           <Thumb item={item} />
-          {watchable && <span className="sample-play" aria-hidden>▶</span>}
+          {isVideo && (
+            <span className="sample-play" aria-hidden>
+              ▶
+            </span>
+          )}
         </div>
         <div className="sample-body">
           <span className="sample-cat">{label(item.category)}</span>
           <div className="sample-title">{item.title}</div>
-          {item.description && (
-            <p className="sample-desc">{item.description}</p>
-          )}
-          <span className="sample-action">
-            {watchable
-              ? "Watch"
-              : viewable
-              ? "View"
-              : item.href
-              ? item.href.startsWith("/")
-                ? "Read"
-                : "Open ↗"
-              : ""}
-          </span>
+          {item.description && <p className="sample-desc">{item.description}</p>}
+          <span className="sample-action">{action}</span>
         </div>
       </>
     );
@@ -162,6 +192,17 @@ export default function Samples() {
                 title={open.title}
               />
             )}
+            {open.embed?.type === "tweet" && (
+              <div className="lightbox-tweet" key={open.id}>
+                <blockquote
+                  className="twitter-tweet"
+                  data-theme="dark"
+                  data-dnt="true"
+                >
+                  <a href={open.embed.src}>{open.title}</a>
+                </blockquote>
+              </div>
+            )}
             {!open.embed && open.image && (
               // eslint-disable-next-line @next/next/no-img-element
               <img className="lightbox-img" src={open.image} alt={open.title} />
@@ -169,6 +210,16 @@ export default function Samples() {
             <div className="lightbox-cap">
               <span>{label(open.category)}</span>
               <strong>{open.title}</strong>
+              {open.href && !open.href.startsWith("/") && (
+                <a
+                  href={open.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lightbox-link"
+                >
+                  View original ↗
+                </a>
+              )}
             </div>
           </div>
         </div>

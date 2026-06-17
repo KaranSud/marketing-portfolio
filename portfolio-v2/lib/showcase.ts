@@ -16,8 +16,8 @@ export type ShowcaseCategory =
 
 export type Embed = {
   // "youtube" -> src is the video id or full url; "video" -> src is an mp4 url;
-  // "iframe" -> src is any embeddable url.
-  type: "youtube" | "video" | "iframe";
+  // "tweet" -> src is the X/Twitter post url; "iframe" -> any embeddable url.
+  type: "youtube" | "video" | "tweet" | "iframe";
   src: string;
 };
 
@@ -69,6 +69,35 @@ export const CATEGORIES: {
 //     { id, category: "post", title, image: "/samples/post-x.png", href: "https://..." }
 
 export const showcase: ShowcaseItem[] = [
+  // ── Landing pages ──
+  {
+    id: "lp-fereai",
+    category: "landing",
+    title: "Fere AI",
+    client: "Fere AI",
+    description: "Marketing site for the AI trading agent.",
+    image: "/samples/landing-fereai.png",
+    href: "https://www.fereai.xyz/",
+  },
+  {
+    id: "lp-novaswap",
+    category: "landing",
+    title: "Novaswap",
+    client: "Novaswap",
+    description: "Landing page for the cross-chain stablecoin DEX.",
+    image: "/samples/landing-novaswap.png",
+    href: "https://www.novaswap.io/",
+  },
+  // ── Blog posts (external + on-site) ──
+  {
+    id: "blog-fereai",
+    category: "writing",
+    title: "Fere AI Blog",
+    client: "Fere AI",
+    description: "Long-form posts I wrote and ran for Fere AI.",
+    image: "/samples/blog-fereai.png",
+    href: "https://blog.fereai.xyz/",
+  },
   {
     id: "blog-how-built",
     category: "writing",
@@ -99,6 +128,25 @@ export const showcase: ShowcaseItem[] = [
     date: "2026-06-14",
     tags: ["Lead generation", "Data"],
   },
+  // ── Social posts (embedded; click a card to view the post on the site) ──
+  { id: "x-2046250966232776719", category: "post", client: "Novaswap", title: "Novaswap on X", description: "Posted Apr 20, 2026", date: "2026-04-20", accent: "teal", embed: { type: "tweet", src: "https://x.com/Novaswap/status/2046250966232776719" }, href: "https://x.com/Novaswap/status/2046250966232776719" },
+  { id: "x-2045469594979312048", category: "post", client: "Novaswap", title: "Novaswap on X", description: "Posted Apr 18, 2026", date: "2026-04-18", accent: "teal", embed: { type: "tweet", src: "https://x.com/Novaswap/status/2045469594979312048" }, href: "https://x.com/Novaswap/status/2045469594979312048" },
+  { id: "x-2043691923588936108", category: "post", client: "Novaswap", title: "Novaswap on X", description: "Posted Apr 13, 2026", date: "2026-04-13", accent: "teal", embed: { type: "tweet", src: "https://x.com/Novaswap/status/2043691923588936108" }, href: "https://x.com/Novaswap/status/2043691923588936108" },
+  { id: "x-2041173474572640727", category: "post", client: "Novaswap", title: "Novaswap on X", description: "Posted Apr 6, 2026", date: "2026-04-06", accent: "teal", embed: { type: "tweet", src: "https://x.com/Novaswap/status/2041173474572640727" }, href: "https://x.com/Novaswap/status/2041173474572640727" },
+  { id: "x-2040484413835038860", category: "post", client: "Novaswap", title: "Novaswap on X", description: "Posted Apr 4, 2026", date: "2026-04-04", accent: "teal", embed: { type: "tweet", src: "https://x.com/Novaswap/status/2040484413835038860" }, href: "https://x.com/Novaswap/status/2040484413835038860" },
+  { id: "x-2034985775004319773", category: "post", client: "Novaswap", title: "Novaswap on X", description: "Posted Mar 20, 2026", date: "2026-03-20", accent: "teal", embed: { type: "tweet", src: "https://x.com/Novaswap/status/2034985775004319773" }, href: "https://x.com/Novaswap/status/2034985775004319773" },
+  { id: "x-2034313721175232921", category: "post", client: "Fere AI", title: "Fere AI on X", description: "Posted Mar 18, 2026", date: "2026-03-18", accent: "sage", embed: { type: "tweet", src: "https://x.com/fere_ai/status/2034313721175232921" }, href: "https://x.com/fere_ai/status/2034313721175232921" },
+  { id: "x-2032087217028677869", category: "post", client: "Novaswap", title: "Novaswap on X", description: "Posted Mar 12, 2026", date: "2026-03-12", accent: "teal", embed: { type: "tweet", src: "https://x.com/Novaswap/status/2032087217028677869" }, href: "https://x.com/Novaswap/status/2032087217028677869" },
+  { id: "x-2028477554466988226", category: "post", client: "Fere AI", title: "Fere AI on X", description: "Posted Mar 2, 2026", date: "2026-03-02", accent: "sage", embed: { type: "tweet", src: "https://x.com/fere_ai/status/2028477554466988226" }, href: "https://x.com/fere_ai/status/2028477554466988226" },
+  { id: "x-2026999094502359452", category: "post", client: "Fere AI", title: "Fere AI on X", description: "Posted Feb 26, 2026", date: "2026-02-26", accent: "sage", embed: { type: "tweet", src: "https://x.com/fere_ai/status/2026999094502359452" }, href: "https://x.com/fere_ai/status/2026999094502359452" },
+  { id: "x-2008534109770182673", category: "post", client: "Fere AI", title: "Fere AI on X", description: "Posted Jan 6, 2026", date: "2026-01-06", accent: "sage", embed: { type: "tweet", src: "https://x.com/fere_ai/status/2008534109770182673" }, href: "https://x.com/fere_ai/status/2008534109770182673" },
+  { id: "x-1998407325535838465", category: "post", client: "Fere AI", title: "Fere AI on X", description: "Posted Dec 9, 2025", date: "2025-12-09", accent: "sage", embed: { type: "tweet", src: "https://x.com/fere_ai/status/1998407325535838465" }, href: "https://x.com/fere_ai/status/1998407325535838465" },
+  { id: "x-1977773856468181475", category: "post", client: "Fere AI", title: "Fere AI on X", description: "Posted Oct 13, 2025", date: "2025-10-13", accent: "sage", embed: { type: "tweet", src: "https://x.com/fere_ai/status/1977773856468181475" }, href: "https://x.com/fere_ai/status/1977773856468181475" },
+  { id: "x-1946583737040613669", category: "post", client: "FanTV", title: "FanTV on X", description: "Posted Jul 19, 2025", date: "2025-07-19", accent: "violet", embed: { type: "tweet", src: "https://x.com/FanTV_official/status/1946583737040613669" }, href: "https://x.com/FanTV_official/status/1946583737040613669" },
+  { id: "x-1923014684761858414", category: "post", client: "FanTV", title: "FanTV on X", description: "Posted May 15, 2025", date: "2025-05-15", accent: "violet", embed: { type: "tweet", src: "https://x.com/FanTV_official/status/1923014684761858414" }, href: "https://x.com/FanTV_official/status/1923014684761858414" },
+  { id: "x-1908155413578567980", category: "post", client: "FanTV", title: "FanTV on X", description: "Posted Apr 4, 2025", date: "2025-04-04", accent: "violet", embed: { type: "tweet", src: "https://x.com/FanTV_official/status/1908155413578567980" }, href: "https://x.com/FanTV_official/status/1908155413578567980" },
+  { id: "x-1895474817693847849", category: "post", client: "FanTV", title: "FanTV on X", description: "Posted Feb 28, 2025", date: "2025-02-28", accent: "violet", embed: { type: "tweet", src: "https://x.com/FanTV_official/status/1895474817693847849" }, href: "https://x.com/FanTV_official/status/1895474817693847849" },
+  { id: "x-1895080873084457038", category: "post", client: "FanTV", title: "FanTV on X", description: "Posted Feb 27, 2025", date: "2025-02-27", accent: "violet", embed: { type: "tweet", src: "https://x.com/FanTV_official/status/1895080873084457038" }, href: "https://x.com/FanTV_official/status/1895080873084457038" },
 ];
 
 export function categoriesWithItems(): typeof CATEGORIES {
