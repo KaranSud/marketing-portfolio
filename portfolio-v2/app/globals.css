@@ -2943,3 +2943,18 @@ footer {
   font-weight: 600;
   color: var(--text);
 }
+
+/* tweet embed inside the lightbox */
+.lightbox-tweet {
+  width: 100%;
+  max-height: 84vh;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+}
+.lightbox-tweet .twitter-tweet { margin: 0 auto !important; }
+.lightbox-link {
+  color: var(--accent);
+  font-size: 13px;
+  margin-top: 4px;
+}
