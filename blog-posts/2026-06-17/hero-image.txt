@@ -1,0 +1,23 @@
+HERO IMAGE NOTES
+
+STATUS: Placeholder generated locally. See "ACTION NEEDED" below.
+
+Intended source (researched and selected, but not downloadable from this session):
+- Title: "Server Racks on Data Center"
+- Photographer: Brett Sayles
+- Source URL: https://www.pexels.com/photo/server-racks-on-data-center-5480781/
+- Direct CDN URL (for manual download): https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1600
+- License: Pexels License (free to use, no attribution required, but credit appreciated)
+- Credit line: Photo by Brett Sayles / Pexels
+- Rationale: editorial, architectural, minimal, no people, no robot hands, no AI brain graphics, no money flying. Reads as "the infrastructure underneath the optimization layer," which mirrors the post's argument that AI ad tools sit on top of a programmatic supply chain most marketers never see.
+- Alt text (for the real photo, once downloaded): "Rows of dark server racks in a minimal, evenly lit data center, photographed straight on."
+
+ACTION NEEDED:
+This session runs in a sandboxed remote environment whose network egress allowlist blocks image CDN hosts (images.pexels.com, images.unsplash.com, cdn.pixabay.com, i.imgur.com, upload.wikimedia.org all returned "Host not in allowlist" on curl). Direct WebFetch to the Pexels page also returned 403. As a result, the actual licensed photo above could not be downloaded into this repo automatically.
+
+In its place, hero.jpg currently contains a generated abstract placeholder (white background, brand palette, vertical bar/rack motif with one #DC2626 accent column, no text) created locally with Pillow so the post folder is not missing a visual asset.
+
+To swap in the real photo before publishing, run this on a machine with normal internet access:
+curl -L -o hero.jpg "https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&w=1600"
+
+Then replace blog-posts/2026-06-17/hero.jpg with that file.
