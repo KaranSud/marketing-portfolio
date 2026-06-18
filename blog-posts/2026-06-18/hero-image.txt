@@ -1,0 +1,23 @@
+HERO IMAGE NOTES
+
+STATUS: Placeholder generated locally. See "ACTION NEEDED" below.
+
+Intended source (researched and selected, but not downloadable from this session):
+- Title: "Cables Plugged into Patch Panel"
+- Photographer: Brett Sayles
+- Source URL: https://www.pexels.com/photo/cables-plugged-into-patch-panel-5073493/
+- Direct CDN URL (for manual download): https://images.pexels.com/photos/5073493/pexels-photo-5073493.jpeg?auto=compress&cs=tinysrgb&w=1600
+- License: Pexels License (free to use, no attribution required, but credit appreciated)
+- Credit line: Photo by Brett Sayles / Pexels
+- Rationale: editorial, architectural, minimal, no people, no robot hands, no AI brain graphics, no money flying. A patch panel is the physical layer of the ad supply chain nobody photographs for marketing decks, rows of identical connections where it is impossible to tell which cable carries real signal and which one terminates in nothing. That is the post's argument made literal.
+- Alt text (for the real photo, once downloaded): "Close-up of network cables plugged into a patch panel, rows of identical connections."
+
+ACTION NEEDED:
+This session runs in a sandboxed remote environment whose network egress allowlist blocks image CDN hosts (images.pexels.com returned "Host not in allowlist" on curl, same as images.unsplash.com and cdn.pixabay.com). Direct WebFetch to the Pexels page also returned 403. As a result, the actual licensed photo above could not be downloaded into this repo automatically.
+
+In its place, hero.jpg currently contains a generated abstract placeholder (white background, brand palette, patch-panel/grid motif with cable connections, one #DC2626 accent cable breaking the pattern, no text) created locally with Pillow so the post folder is not missing a visual asset.
+
+To swap in the real photo before publishing, run this on a machine with normal internet access:
+curl -L -o hero.jpg "https://images.pexels.com/photos/5073493/pexels-photo-5073493.jpeg?auto=compress&cs=tinysrgb&w=1600"
+
+Then replace blog-posts/2026-06-18/hero.jpg with that file.
