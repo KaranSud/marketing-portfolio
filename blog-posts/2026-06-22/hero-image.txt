@@ -1,0 +1,43 @@
+SOURCE SUBSTITUTION NOTICE
+
+Attempted sources (Phase 4, stock photography search):
+- Searched Pexels for editorial, people-free imagery matching the article's
+  "crowded buying room" theme (queries: "empty conference room", "boardroom",
+  "board meeting"). Best candidate identified: "Empty Conference Room with a
+  Table and Chairs" (pexels.com/photo/22718136), an editorial, minimal shot
+  with no people, no laptops, no stock-photo cliches.
+- Attempted to fetch the photo page via WebFetch: HTTP 403.
+- Per the retry protocol, retried directly against the Pexels CDN
+  (images.pexels.com/photos/22718136/pexels-photo-22718136.jpeg) via curl:
+  HTTP 403, header "x-deny-reason: host_not_allowed".
+- Tested whether the failure was source-specific by attempting the same
+  direct-fetch pattern against Unsplash (images.unsplash.com), Pixabay
+  (pixabay.com), Wikimedia Commons (upload.wikimedia.org), and Google
+  (google.com). All five returned the identical "host_not_allowed" deny
+  reason. A control fetch against raw.githubusercontent.com succeeded
+  (HTTP 200) in the same session, confirming network egress works but is
+  restricted to an allowlist that does not include any image CDN or
+  general search host.
+
+Conclusion: this is a sandbox-level network egress restriction, not a
+flaky or rate-limited source. No alternate stock-photo provider or retry
+would resolve it, so the documented "Google secondary-source" workaround
+(designed for verifying text/stats, not downloading binary image assets)
+does not apply here.
+
+SUBSTITUTION: hero.svg (in this folder) replaces hero.jpg. It is an
+original, self-contained vector graphic built in the article's brand
+palette (#FAFAF9 background, #DC2626 accent, #0F172A/#64748B/#94A3B8 text
+and line colors), depicting the article's central image: one highlighted
+node reached by a single funnel line, surrounded by a scattered field of
+unaddressed nodes representing the rest of the buying committee. No
+license or attribution is required since the asset was created directly
+for this post.
+
+Alt text: "A single highlighted contact reached by one funnel line, surrounded
+by more than a dozen other unaddressed contacts scattered across the frame,
+illustrating a buying committee that has outgrown a single-threaded funnel."
+
+Rationale: avoids every flagged cliche (people in suits pointing at laptops,
+robot hands, AI brain graphics, money flying) while visually mirroring the
+article's core argument before a single word is read.

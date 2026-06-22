@@ -10,5 +10,11 @@
     "slug": "2026-06-18",
     "title": "AI Ad Fraud Is Draining the Budget AI Ad Buying Wins",
     "chart_types": ["dumbbell", "vertical bar"]
+  },
+  {
+    "date": "2026-06-22",
+    "slug": "2026-06-22",
+    "title": "The Buying Committee Just Outgrew Your Funnel",
+    "chart_types": ["donut", "line"]
   }
 ]
