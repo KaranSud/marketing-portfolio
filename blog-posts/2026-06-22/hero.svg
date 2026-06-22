@@ -1,0 +1,57 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#FAFAF9"/>
+
+  <!-- faint grid backdrop -->
+  <g stroke="#E2E8F0" stroke-width="1">
+    <line x1="0" y1="225" x2="1600" y2="225"/>
+    <line x1="0" y1="450" x2="1600" y2="450"/>
+    <line x1="0" y1="675" x2="1600" y2="675"/>
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1200" y1="0" x2="1200" y2="900"/>
+  </g>
+
+  <!-- single highlighted node: the one visitor the funnel was built for -->
+  <circle cx="270" cy="450" r="34" fill="#FFFFFF" stroke="#DC2626" stroke-width="3"/>
+  <circle cx="270" cy="450" r="10" fill="#DC2626"/>
+
+  <!-- the rest of the buying committee: scattered, unaddressed nodes -->
+  <g fill="#FFFFFF" stroke="#94A3B8" stroke-width="2">
+    <circle cx="520" cy="270" r="22"/>
+    <circle cx="640" cy="500" r="22"/>
+    <circle cx="560" cy="700" r="22"/>
+    <circle cx="800" cy="200" r="22"/>
+    <circle cx="900" cy="420" r="22"/>
+    <circle cx="820" cy="640" r="22"/>
+    <circle cx="1020" cy="300" r="22"/>
+    <circle cx="1100" cy="560" r="22"/>
+    <circle cx="980" cy="730" r="22"/>
+    <circle cx="1240" cy="240" r="22"/>
+    <circle cx="1300" cy="470" r="22"/>
+    <circle cx="1220" cy="660" r="22"/>
+    <circle cx="1420" cy="350" r="22"/>
+    <circle cx="1460" cy="580" r="22"/>
+  </g>
+  <g fill="#94A3B8" opacity="0.6">
+    <circle cx="520" cy="270" r="6"/>
+    <circle cx="640" cy="500" r="6"/>
+    <circle cx="560" cy="700" r="6"/>
+    <circle cx="800" cy="200" r="6"/>
+    <circle cx="900" cy="420" r="6"/>
+    <circle cx="820" cy="640" r="6"/>
+    <circle cx="1020" cy="300" r="6"/>
+    <circle cx="1100" cy="560" r="6"/>
+    <circle cx="980" cy="730" r="6"/>
+    <circle cx="1240" cy="240" r="6"/>
+    <circle cx="1300" cy="470" r="6"/>
+    <circle cx="1220" cy="660" r="6"/>
+    <circle cx="1420" cy="350" r="6"/>
+    <circle cx="1460" cy="580" r="6"/>
+  </g>
+
+  <!-- single funnel line reaching only the highlighted node -->
+  <path d="M 270 416 L 270 120" stroke="#DC2626" stroke-width="2" stroke-dasharray="6,6" fill="none"/>
+
+  <text x="80" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="34" fill="#0F172A" font-weight="600">One funnel. Thirteen stakeholders.</text>
+  <text x="80" y="830" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" fill="#64748B">The room got bigger. The funnel did not.</text>
+</svg>
