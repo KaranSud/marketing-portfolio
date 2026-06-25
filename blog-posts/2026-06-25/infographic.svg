@@ -1,0 +1,49 @@
+<svg width="800" height="560" viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="800" height="560" fill="#FAFAF9"/>
+
+  <text x="400" y="46" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="600" fill="#0F172A">Where Your Next Marketing Dollar Actually Goes</text>
+  <text x="400" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#64748B">Two paths from the same budget line, two very different outcomes</text>
+
+  <!-- Starting node -->
+  <rect x="330" y="110" width="140" height="48" rx="8" fill="#0F172A"/>
+  <text x="400" y="139" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Next Budget Dollar</text>
+
+  <!-- Branch lines -->
+  <path d="M 400 158 L 400 185 L 190 185 L 190 215" stroke="#94A3B8" stroke-width="2" fill="none"/>
+  <path d="M 400 158 L 400 185 L 610 185 L 610 215" stroke="#94A3B8" stroke-width="2" fill="none"/>
+
+  <!-- Left path: Acquisition Reflex -->
+  <rect x="70" y="215" width="240" height="56" rx="8" fill="#FFFFFF" stroke="#DC2626" stroke-width="2"/>
+  <text x="190" y="238" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="14" font-weight="600" fill="#DC2626">Acquisition Reflex</text>
+  <text x="190" y="257" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="11" fill="#475569">More ads, more demos, more top of funnel</text>
+
+  <path d="M 190 271 L 190 300" stroke="#94A3B8" stroke-width="2"/>
+  <rect x="70" y="300" width="240" height="56" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="190" y="323" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="13" font-weight="600" fill="#0F172A">Pipeline grows, churn unaddressed</text>
+  <text x="190" y="342" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="11" fill="#475569">New logos replace the ones quietly leaving</text>
+
+  <path d="M 190 356 L 190 385" stroke="#94A3B8" stroke-width="2"/>
+  <rect x="70" y="385" width="240" height="80" rx="8" fill="#0F172A"/>
+  <text x="190" y="415" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="28" font-weight="700" fill="#DC2626">5x</text>
+  <text x="190" y="440" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="12" fill="#FFFFFF">EV / revenue multiple</text>
+  <text x="190" y="456" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="11" fill="#94A3B8">Retention laggard tier</text>
+
+  <!-- Right path: Retention Math -->
+  <rect x="490" y="215" width="240" height="56" rx="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+  <text x="610" y="238" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Retention Math</text>
+  <text x="610" y="257" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="11" fill="#475569">Lifecycle, expansion, renewal content</text>
+
+  <path d="M 610 271 L 610 300" stroke="#94A3B8" stroke-width="2"/>
+  <rect x="490" y="300" width="240" height="56" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="610" y="323" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="13" font-weight="600" fill="#0F172A">Existing revenue compounds</text>
+  <text x="610" y="342" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="11" fill="#475569">Net revenue retention climbs instead of leaking</text>
+
+  <path d="M 610 356 L 610 385" stroke="#94A3B8" stroke-width="2"/>
+  <rect x="490" y="385" width="240" height="80" rx="8" fill="#0F172A"/>
+  <text x="610" y="415" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">24x</text>
+  <text x="610" y="440" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="12" fill="#FFFFFF">EV / revenue multiple</text>
+  <text x="610" y="456" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="11" fill="#94A3B8">Retention leader tier</text>
+
+  <text x="400" y="510" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="11" fill="#64748B">Source: McKinsey, "The net revenue retention advantage," 2025, SaaS company benchmark data.</text>
+  <text x="400" y="528" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="11" fill="#94A3B8">Both paths start from the same budget line. The multiple is the difference between funding them.</text>
+</svg>

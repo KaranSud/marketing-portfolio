@@ -16,5 +16,11 @@
     "slug": "2026-06-22",
     "title": "The Buying Committee Just Outgrew Your Funnel",
     "chart_types": ["donut", "line"]
+  },
+  {
+    "date": "2026-06-25",
+    "slug": "2026-06-25",
+    "title": "Marketing Budget Allocation Is Backing the Wrong Bet",
+    "chart_types": ["area", "dumbbell"]
   }
 ]
