@@ -1,0 +1,10 @@
+Source: https://www.pexels.com/photo/aerial-view-of-roundabout-3613017/
+Photographer: Tom Fisk (Pexels)
+License: Pexels License (free to use, no attribution required; attribution given as courtesy)
+Credit line: Photo by Tom Fisk from Pexels
+Alt text: Aerial view of a multi-lane roundabout with traffic flowing through several converging roads, shot directly overhead in muted concrete and asphalt tones.
+Rationale: An aerial roundabout is a clean editorial/architectural visual metaphor for budget allocation, multiple paths converging on one junction, some lanes wide and fast moving, others narrow and underused, without resorting to people-in-suits, laptop, robot-hand, or AI-brain cliches. No people are visible in the frame.
+
+Backup candidate if needed: https://www.pexels.com/photo/an-aerial-shot-of-a-roundabout-7900785/ (Ferdi Noberda, Kosovo)
+
+NOTE ON DELIVERY: The binary file (hero.jpg) could not be downloaded in this execution environment. The egress proxy for this session categorically blocks all image-CDN hosts at the network-policy layer (images.pexels.com, images.unsplash.com, pixabay.com, cdn.pixabay.com, upload.wikimedia.org all returned policy-level connect_rejected / 403 on CONNECT, confirmed via the proxy status endpoint, not a transient rate limit). Per the proxy's own operating instructions, policy denials are to be reported rather than retried or routed around. The article ships with the [HERO IMAGE HERE] placement marker and this sourcing record so the image can be downloaded and dropped in manually, or so the environment's network policy can be updated to allow image-CDN hosts for future runs.
