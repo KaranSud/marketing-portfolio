@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560">
+  <style>
+    .card { fill: #FFFFFF; stroke: #E7E5E4; stroke-width: 1.5; rx: 10; }
+    .card-accent { fill: #FFFFFF; stroke: #DC2626; stroke-width: 2; rx: 10; }
+    .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size: 26px; font-weight: 700; fill: #0F172A; }
+    .label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 600; fill: #0F172A; }
+    .sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; fill: #475569; }
+    .tag { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: 600; }
+    .arrow { stroke: #64748B; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    .arrow-accent { stroke: #DC2626; stroke-width: 2; fill: none; marker-end: url(#arrowhead-accent); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B" />
+    </marker>
+    <marker id="arrowhead-accent" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#DC2626" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="560" fill="#FAFAF9" />
+
+  <text x="40" y="48" class="title">The Product-Led Sales Decision Path</text>
+  <text x="40" y="72" class="sub">Where most self-serve products actually convert their largest accounts</text>
+
+  <!-- Step 1 -->
+  <rect x="40" y="110" width="200" height="100" class="card" />
+  <text x="60" y="142" class="label">Self-Serve Signup</text>
+  <text x="60" y="164" class="sub">User starts free, no</text>
+  <text x="60" y="180" class="sub">rep involved yet</text>
+
+  <path d="M240,160 L320,160" class="arrow" />
+
+  <!-- Step 2 -->
+  <rect x="320" y="110" width="200" height="100" class="card" />
+  <text x="340" y="142" class="label">Product Usage Tracked</text>
+  <text x="340" y="164" class="sub">Activation, seats, feature</text>
+  <text x="340" y="180" class="sub">depth, account size</text>
+
+  <path d="M520,160 L600,160" class="arrow" />
+
+  <!-- Step 3: decision diamond -->
+  <polygon points="700,110 800,160 700,210 600,160" class="card-accent" />
+  <text x="700" y="155" class="label" text-anchor="middle">PQL Threshold</text>
+  <text x="700" y="174" class="sub" text-anchor="middle">Crossed?</text>
+
+  <!-- No path -->
+  <path d="M700,210 L700,280" class="arrow" />
+  <text x="715" y="250" class="tag" fill="#64748B">No</text>
+  <rect x="600" y="280" width="200" height="90" class="card" />
+  <text x="620" y="312" class="label">Stays Self-Serve</text>
+  <text x="620" y="334" class="sub">Continues on product-led</text>
+  <text x="620" y="350" class="sub">growth, no sales touch</text>
+
+  <!-- Yes path -->
+  <path d="M800,160 L900,160 L900,280" class="arrow-accent" />
+  <text x="855" y="150" class="tag" fill="#DC2626">Yes</text>
+  <rect x="800" y="280" width="160" height="90" class="card-accent" />
+  <text x="820" y="312" class="label">Sales-Assist Engages</text>
+  <text x="820" y="334" class="sub">Rep contacts the</text>
+  <text x="820" y="350" class="sub">account directly</text>
+
+  <path d="M880,370 L880,430" class="arrow-accent" />
+
+  <!-- Final outcome -->
+  <rect x="760" y="430" width="200" height="90" class="card-accent" />
+  <text x="780" y="462" class="label">Enterprise Close</text>
+  <text x="780" y="484" class="sub">Product proved value,</text>
+  <text x="780" y="500" class="sub">rep closes the contract</text>
+
+  <path d="M700,370 L700,430" class="arrow" />
+  <rect x="600" y="430" width="140" height="60" class="card" />
+  <text x="620" y="465" class="label" font-size="14">Stays in PLG Loop</text>
+
+  <text x="40" y="540" class="sub" fill="#94A3B8">This is the product-led sales motion: self-serve underneath, a sales rep layered on only where the product signals it.</text>
+</svg>

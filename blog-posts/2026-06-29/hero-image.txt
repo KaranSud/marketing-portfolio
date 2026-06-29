@@ -1,0 +1,10 @@
+Source: https://www.pexels.com/photo/light-corridor-with-doors-in-hotel-6207362/
+Photographer: Skylar Kang (Pexels)
+License: Pexels License (free to use, no attribution required; attribution given as courtesy)
+Credit line: Photo by Skylar Kang from Pexels
+Alt text: A bright, minimal hotel corridor lined with identical closed doors on either side, shot in soft natural light with no people in frame.
+Rationale: A corridor of identical doors is a clean editorial/architectural metaphor for the choice at the center of this post, a self-serve path versus a sales-assisted path, both available, neither obviously marked as the right one, without resorting to people-in-suits, laptop, robot-hand, or AI-brain cliches. No people are visible in the frame.
+
+Backup candidate if needed: https://www.pexels.com/photo/architectural-design-architecture-doors-exterior-191761/ (Two Brown Wooden Doors, Pexels)
+
+NOTE ON DELIVERY: The binary file (hero.jpg) could not be downloaded in this execution environment. The egress proxy for this session categorically blocks all image-CDN hosts at the network-policy layer (images.pexels.com, images.unsplash.com, and cdn.pixabay.com all returned policy-level connect_rejected / 403 on CONNECT, confirmed via the proxy status endpoint; this is not a transient rate limit, and it matches the same block hit on the 2026-06-25 post). Per the proxy's own operating instructions, policy denials are to be reported rather than retried or routed around. The article ships with the [HERO IMAGE HERE] placement marker and this sourcing record so the image can be downloaded and dropped in manually, or so the environment's network policy can be updated to allow image-CDN hosts for future runs.
