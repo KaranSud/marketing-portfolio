@@ -22,5 +22,11 @@
     "slug": "2026-06-25",
     "title": "Marketing Budget Allocation Is Backing the Wrong Bet",
     "chart_types": ["area", "dumbbell"]
+  },
+  {
+    "date": "2026-06-29",
+    "slug": "2026-06-29",
+    "title": "Product-Led Growth Was Supposed to Kill Sales Teams",
+    "chart_types": ["vertical bar", "radar"]
   }
 ]
