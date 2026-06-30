@@ -1,0 +1,91 @@
+1/ The paid prospecting stack is confidently wrong about a third of your targets.
+
+And you're paying $400-500/month for the privilege.
+
+I stopped paying and built my own instead. Here's exactly why:
+
+2/ B2B contact data decays at 2.1% per month under normal conditions.
+
+In fast-moving sectors, that hit 3.6% monthly in late 2024.
+
+That means ~30% of any database can go stale in a year even if it was accurate when you bought it.
+
+3/ The paid tools don't tell you when a record was last verified.
+
+They print a revenue figure — "$8M to $12M" — with the same visual confidence as a verified phone number.
+
+No source. No timestamp. Just confidence.
+
+4/ Sales reps working from bad enrichment data waste ~500 hours a year validating it manually.
+
+That's 62 full workdays.
+
+You're paying the subscription AND paying in time to check if the subscription was right.
+
+5/ Here's what a lean outbound stack actually costs:
+
+Mid-tier Apollo: ~$100/mo per user
+Add intent data: $400-500/mo
+Add sequencing + deliverability tools: more
+
+A 5-person SDR team averages $47K-156K/year on tools. Using ~60% of what they pay for.
+
+6/ The bigger problem no one talks about: these tools were built for B2B tech.
+
+Point one at a restaurant group, a law firm, or a retail brand and the data thins out fast.
+
+The messaging defaults to software language. Restaurant owners notice immediately.
+
+7/ So I built from scratch instead.
+
+My tool classifies the business type first, then pulls signals relevant to that type:
+- Reviews and coverage for restaurants
+- Catalog and repeat purchase signals for retail
+- Case study language for agencies
+
+Then it writes outbound that talks to the actual business.
+
+8/ The constraint I built in by design: it cannot fabricate numbers.
+
+Every fact traces to a public source I can open in a browser.
+
+If a revenue figure isn't findable, the field stays blank. No confident estimates. No interpolated headcounts.
+
+9/ This matters more than it sounds.
+
+Cold email reply rates have dropped from 8.5% in 2019 to roughly 3-5% entering 2026.
+
+A major reason: buyers have learned to recognize fabricated personalization. They can feel when the "research" is a guess.
+
+10/ The honest tradeoff: my tool has lower contact coverage than Apollo per query.
+
+If I need 500 CFOs at mid-market logistics companies, a paid database gets there faster.
+
+I'm not hiding that. It's the real cost of the approach.
+
+11/ What the build gave me that a subscription can't:
+
+Works for any business type.
+Zero running cost.
+Never claims what it doesn't know.
+Forces you to understand every assumption the paid tools make implicitly.
+
+12/ That last one is underrated.
+
+Building the engine made me understand which signals actually indicate intent, how to classify a business without Crunchbase, how to find a decision-maker without LinkedIn Sales Navigator.
+
+That judgment stays with you after the tool becomes obsolete.
+
+13/ Build vs buy is never truly binary.
+
+The question is: what are you optimizing for, and what does the subscription actually give you for the price?
+
+For a 20-person sales team with a tight ICP inside B2B tech: buy. It's worth it.
+
+For a lean operation testing a motion across business types: the math flips.
+
+14/ Full breakdown of the reasoning, the tradeoffs I kept, and exactly how the tool works:
+
+[link to article]
+
+If you're running outbound on a lean budget or working outside pure B2B tech, this one's for you.
