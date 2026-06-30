@@ -1,0 +1,29 @@
+1/ B2B databases decay at 22.5% per year. ZoomInfo costs $15K+ to start. I built a tool that pulls a real prospect list from open data in seconds, for free. Here is how the whole thing works:
+
+2/ Every GTM operator knows this moment: you have a product, you know who to sell to, and the first step is "build a list." Then you open ZoomInfo and see the entry plan is $14,995 per year for 3 seats.
+
+3/ Apollo is cheaper ($49/mo) and genuinely good. But it skews tech-heavy, US-heavy, and every credit spent on a stale record is a credit wasted. B2B contact data decays 2.1% per month. By contract renewal, a quarter of what you paid for is already wrong.
+
+4/ The real number: 76% of organizations say less than half their CRM data is accurate. Sales reps waste ~500 hours per year chasing records that should have been correct when they were sold to you.
+
+5/ The average cost per B2B lead across paid channels ranges from $70 (Google Ads) to $110 (LinkedIn) to $811 for trade shows. Referrals cost $25/lead because someone who knows your buyer does the qualification for free.
+
+6/ That same logic applies to open data. The qualification is baked into the source.
+
+7/ The tool queries Wikidata, the structured knowledge graph behind Wikipedia. Every notable company in it has a verified domain, an industry tag, and a rough notability score based on how many Wikipedia editions reference it.
+
+8/ Raw queries return noise: universities, trade associations, government bodies. All real orgs, none of them prospects. The tool drops anything whose Wikidata classification falls outside "company you could actually sell to."
+
+9/ What remains: a ranked list of real B2B accounts with verified domains, sorted by how well-documented they are publicly. The top quartile are also the most legible targets for research. Publicly notable = more signal available.
+
+10/ Open data does not contain every company. New startups and niche operators are largely absent. So alongside the list, the tool outputs a sourcing playbook: directories, communities, search operators for the long tail it cannot find.
+
+11/ The combination: automation covers established, recognizable accounts in seconds. The playbook covers the rest honestly. Both together are more useful than either one alone.
+
+12/ This is not a replacement for Apollo or ZoomInfo at scale. When you are running high-volume sequences, you need enrichment and contact data. But it closes the gap between "I know what I sell" and "here are 50 real targets with verified domains."
+
+13/ For the founder testing their first outbound motion, or the operator validating a new segment before committing budget: there is no reason to start from zero when structured, public company data is one query away.
+
+14/ Full breakdown of how the discovery works, how the filtering works, and what the sourcing playbook covers:
+
+[link to article]
