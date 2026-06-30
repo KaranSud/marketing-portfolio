@@ -1,0 +1,65 @@
+1/ I built a free account research engine that takes a company domain and returns a sourced brief, fit score, contacts, and a 5-touch outbound cadence.
+
+It costs $0 to run. Here's how it works (and why the paid tools are overpriced for what they deliver):
+
+2/ B2B contact data decays at 30-40% per year (Dun & Bradstreet). The ZoomInfo export you pulled in January is already meaningfully stale by summer.
+
+ZoomInfo starts at $15,000/yr. You're paying a lot for data that's wrong before you import it.
+
+3/ Gartner puts the average annual cost of dirty data at $15M per organization. Validity found 76% of orgs say less than half their CRM data is accurate.
+
+SDRs waste 27% of their selling time chasing dead ends from that same data.
+
+4/ So I built around the problem. The engine pulls from 5 public sources:
+
+- Schema.org markup on the company's own site
+- Wikidata (verified firmographics)
+- Recent news (timing signals)
+- XML sitemap (scale signals)
+- Careers pages (growth signals)
+
+5/ Schema.org is the sleeper hit here. Companies that care about SEO publish structured data that includes exactly the firmographic + product signals you need for outbound. Address, founders, pricing tiers, social profiles.
+
+All public. All current. Zero dollars.
+
+6/ The no-fabrication rule is the core design constraint.
+
+The model cannot invent a number. Every quantitative claim traces to a gathered source. If the outreach wants to cite a result the seller hasn't provided, it writes a placeholder.
+
+[INSERT RESULT FROM YOUR PORTFOLIO]
+
+7/ Most AI research tools let the model fill gaps with "plausible" estimates. The brief sounds confident. It is often wrong in ways that are hard to detect.
+
+A wrong brief calibrates your entire pitch around a misunderstanding. It's worse than no brief.
+
+8/ The AI only does what AI is actually good at: classification, synthesis, tone-matching, sequencing.
+
+Fact-gathering and fact-verification happen entirely outside the model. The model is never the source of truth. Only the interpreter of sources.
+
+9/ Stack is boring by design:
+
+Next.js + serverless routes
+Wikidata SPARQL
+Schema.org parsing
+Gemini for synthesis (free tier)
+Vercel hosting (free tier)
+
+Running cost: $0. No CRM. No data vendor. No enrichment API.
+
+10/ Yes I thought about SSRF. The system refuses private IP ranges, validates domains resolve to public addresses, rate-limits per visitor, caps input sizes, and ships a full set of security headers.
+
+Small free tool. Same standards as a production system.
+
+11/ What I actually learned: reps who used this said the bracketed placeholders were useful, not frustrating.
+
+A brief that knows what it doesn't know is more valuable than one that fills every gap with a confident fabrication.
+
+12/ McKinsey found AI can increase sales productivity by 3-5% of global sales expenditure. That number assumes AI does the tasks it's good at.
+
+AI doing confident fabrication at scale doesn't produce productivity gains. It produces confident mistakes at scale.
+
+13/ The engine is live. Any company domain. Brief in ~45 seconds. Sourced. No invented numbers.
+
+Full write-up on the architecture, data sources, and the no-fabrication design is on my blog.
+
+Read it here: [LINK]
