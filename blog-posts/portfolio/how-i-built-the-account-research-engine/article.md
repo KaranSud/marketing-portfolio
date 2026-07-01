@@ -2,7 +2,7 @@
 
 ### Why a $15,000 per year data problem has a $0 solution, and the architectural choices that make it work without fabricating a single fact.
 
-[HERO IMAGE HERE]
+![Rows of servers in a data center, representing infrastructure built to process company data at scale](https://raw.githubusercontent.com/KaranSud/marketing-portfolio/main/blog-posts/portfolio/how-i-built-the-account-research-engine/hero.jpg)
 
 I got tired of watching sales teams spend real money on data that was wrong before they even imported it. So I built an account research and outbound engine that takes a company domain, pulls from public sources, and returns a sourced company brief, a fit score, the right contacts to reach, and a ready-to-run five-touch outbound cadence. It works for any business type, costs zero dollars to operate, and refuses to invent a single number.
 
