@@ -9,7 +9,7 @@ accent: "violet"
 
 ## The $15,000 blank list problem
 
-[HERO IMAGE HERE]
+![A network of companies and data connections on a minimal dark background](https://raw.githubusercontent.com/KaranSud/marketing-portfolio/main/blog-posts/portfolio/finding-real-leads-with-no-paid-data/hero.jpg)
 
 Every B2B founder or GTM operator I have talked to remembers the same moment: you have a product, you know who you want to sell it to, and the first concrete step everyone tells you to take is "get a lead list." Then you open ZoomInfo's pricing page and discover the entry tier starts around $15,000 per year for a small team, with mid-market contracts routinely reaching $25,000 to $35,000 before anyone has touched intent data or an extra module ([Factors.ai](https://www.factors.ai/blog/zoominfo-pricing), 2025).
 
