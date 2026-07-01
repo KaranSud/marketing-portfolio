@@ -2,7 +2,7 @@
 
 ### I built my own outbound tool from scratch using open, live data. Here is exactly why, and what I gave up to do it.
 
-[HERO IMAGE HERE]
+![Woodworking tools arranged on a workshop bench, representing the choice to build from scratch rather than buy off the shelf](https://raw.githubusercontent.com/KaranSud/marketing-portfolio/main/blog-posts/portfolio/why-i-built-my-own-outbound-tool/hero.jpg)
 
 I spent about three months paying for a prospecting tool before I stopped. The data was confident and wrong. The pricing was built for a funded sales team, not someone testing a motion. And every time I pointed it at a business that wasn't a software company, it basically shrugged. I built my own instead, and the reasoning has held up long enough to be worth explaining in full.
 
