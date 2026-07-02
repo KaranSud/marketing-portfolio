@@ -51,7 +51,7 @@ export default function OpengraphImage() {
               letterSpacing: -3,
             }}
           >
-            Making brands
+            Brands don&rsquo;t go viral.
           </div>
           <div
             style={{
@@ -63,8 +63,8 @@ export default function OpengraphImage() {
               gap: 20,
             }}
           >
-            <span style={{ color: "#6CA088" }}>impossible</span>
-            <span style={{ color: "#F2F1EC" }}>to ignore</span>
+            <span style={{ color: "#6CA088" }}>Systems</span>
+            <span style={{ color: "#F2F1EC" }}>do.</span>
           </div>
         </div>
 
