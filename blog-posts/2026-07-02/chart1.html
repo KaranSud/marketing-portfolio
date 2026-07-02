@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free-to-Paid Conversion: PLG Approach Comparison</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+  .chart-wrap {
+    width: 100%;
+    max-width: 720px;
+  }
+  .chart-header {
+    margin-bottom: 24px;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+  }
+  .chart-container {
+    position: relative;
+    height: 340px;
+  }
+  .chart-note {
+    margin-top: 16px;
+    font-size: 11.5px;
+    color: #94A3B8;
+    line-height: 1.6;
+    border-top: 1px solid #E2E8F0;
+    padding-top: 12px;
+  }
+  .accent { color: #DC2626; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <div class="chart-header">
+    <div class="chart-title">Free-to-Paid Conversion Rates by PLG Approach</div>
+    <div class="chart-subtitle">
+      The gap between unscored signups and PQL-scored leads is not incremental — it is structural.
+      <span class="accent">3x difference</span> from a single change in qualification logic.
+    </div>
+  </div>
+  <div class="chart-container">
+    <canvas id="chart1"></canvas>
+  </div>
+  <div class="chart-note">
+    Sources: ChartMogul SaaS Conversion Report (200 products, 2024) for median and opt-in/opt-out data.
+    ProductLed PLG Benchmark (600+ companies, 2025) for PQL-scored conversion range.
+    Bars show median conversion rate. PQL range reflects 25th–75th percentile spread.
+  </div>
+</div>
+
+<script>
+const labels = [
+  'Unscored Freemium Leads',
+  'Opt-In Free Trial\n(no credit card)',
+  'Industry Median\n(all PLG models)',
+  'PQL-Scored Free Users\n(product qualified leads)',
+  'Opt-Out Free Trial\n(credit card required)',
+];
+
+const values = [5.5, 8.9, 8.0, 28.0, 31.4];
+const colors = values.map((v, i) => {
+  if (i === 3) return '#DC2626';
+  return '#64748B';
+});
+const borderColors = colors;
+
+const ctx = document.getElementById('chart1').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [{
+      label: 'Conversion Rate (%)',
+      data: values,
+      backgroundColor: colors.map(c => c === '#DC2626' ? 'rgba(220,38,38,0.15)' : 'rgba(100,116,139,0.12)'),
+      borderColor: borderColors,
+      borderWidth: 2,
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.parsed.x}% conversion`
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#FFFFFF',
+        bodyColor: '#E2E8F0',
+        padding: 10,
+        cornerRadius: 6,
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        max: 40,
+        grid: { color: '#E2E8F0' },
+        border: { display: false },
+        ticks: {
+          color: '#94A3B8',
+          font: { size: 12 },
+          callback: v => v + '%'
+        }
+      },
+      y: {
+        grid: { display: false },
+        border: { display: false },
+        ticks: {
+          color: '#475569',
+          font: { size: 12.5 },
+          padding: 8,
+        }
+      }
+    }
+  },
+  plugins: [{
+    id: 'dataLabels',
+    afterDatasetsDraw(chart) {
+      const { ctx, data } = chart;
+      chart.getDatasetMeta(0).data.forEach((bar, i) => {
+        const value = data.datasets[0].data[i];
+        const color = value === 28.0 ? '#DC2626' : '#475569';
+        ctx.save();
+        ctx.fillStyle = color;
+        ctx.font = `600 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.fillText(`${value}%`, bar.x + 6, bar.y + 4.5);
+        ctx.restore();
+      });
+    }
+  }]
+});
+</script>
+</body>
+</html>

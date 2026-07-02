@@ -1,0 +1,38 @@
+HERO IMAGE — MANUAL DOWNLOAD REQUIRED
+======================================
+NOTE: The Pexels API endpoint (api.pexels.com) is blocked by the session's
+egress policy. Please download the hero image manually using the instructions below.
+
+RECOMMENDED PEXELS SEARCH:
+  https://www.pexels.com/search/industrial+pipe+abstract+flow/
+  or
+  https://www.pexels.com/search/empty+corridor+light+perspective/
+
+SUGGESTED PHOTO (Pexels library suggestion):
+  Search on pexels.com for photo ID 2310901 (industrial pipe photography, landscape)
+  or search "concrete tunnel abstract perspective" for an architectural option.
+
+Primary search URL (Pexels free):
+  https://www.pexels.com/search/water+flow+drain+industrial/
+
+DOWNLOAD COMMAND (run after finding a suitable image):
+  curl -sL "[PEXELS_large2x_URL]" -o blog-posts/2026-07-02/hero.jpg
+
+Pexels License: Free to use — https://www.pexels.com/license/
+
+ALT TEXT (use with your chosen image):
+  "Industrial pipes or a long empty corridor representing the invisible
+   dropout zone between user signup and product value in PLG funnels"
+
+RATIONALE FOR IMAGE CHOICE DIRECTION:
+  The article is about the activation gap — the invisible space between
+  signup and value delivery where 40-60% of PLG free users disappear.
+  Preferred photography: industrial (pipes, corridors, tunnels, drains),
+  architectural (long perspective shots with vanishing points), or abstract
+  (water flow, light through aperture). Avoid: people at laptops, AI brain
+  graphics, money, robots. The image should evoke "something flowing through
+  and leaking before reaching the destination."
+
+CURRENT PLACEHOLDER:
+  A minimal 1x1 placeholder JPEG has been written to hero.jpg.
+  Replace it with the actual downloaded image before publishing.
