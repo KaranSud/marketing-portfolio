@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Karan Sud — Growth Marketing Deck</title>
+<link rel="stylesheet" href="fonts/local-fonts.css">
+<style>
+  /* ── Base ─────────────────────────────────────────────── */
+
+  :root {
+    --bg: #0B0C10;
+    --bg2: #101218;
+    --panel: #14161d;
+    --panel2: #191c25;
+    --ink: #F2F3F5;
+    --muted: #9BA1AC;
+    --faint: #6b717d;
+    --amber: #F0A84B;
+    --amber-deep: #C97F1E;
+    --line: rgba(255,255,255,0.09);
+    --line-soft: rgba(255,255,255,0.055);
+    --display: "Space Grotesk", "Inter", system-ui, sans-serif;
+    --body: "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #000; }
+  body { font-family: var(--body); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+  .slide {
+    width: 1280px; height: 720px;
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    margin: 0 auto;
+  }
+  @media screen { .slide { margin-bottom: 24px; box-shadow: 0 20px 60px rgba(0,0,0,.6); } }
+  @page { size: 1280px 720px; margin: 0; }
+  @media print { .slide { margin: 0; box-shadow: none; } }
+
+  /* ── Shared atoms ─────────────────────────────────────── */
+  .pad { position: absolute; inset: 0; padding: 60px 72px; }
+
+  .glow {
+    position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none;
+  }
+  .glow-amber { background: radial-gradient(circle, rgba(240,168,75,0.16), transparent 65%); }
+  .glow-blue  { background: radial-gradient(circle, rgba(79,139,255,0.10), transparent 65%); }
+
+  .grid-tex {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 78%);
+  }
+
+  .kicker {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--amber); display: flex; align-items: center; gap: 12px;
+  }
+  .kicker::before { content: ""; width: 26px; height: 1px; background: var(--amber); opacity: .8; }
+
+  h2.slide-title {
+    font-family: var(--display); font-weight: 600; font-size: 40px;
+    letter-spacing: -0.015em; line-height: 1.08; margin-top: 14px;
+  }
+  h2.slide-title em { font-style: normal; color: var(--amber); }
+  .slide-sub { color: var(--muted); font-size: 15.5px; font-weight: 300; line-height: 1.55; margin-top: 12px; }
+
+  .footer {
+    position: absolute; left: 72px; right: 72px; bottom: 30px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+    color: var(--faint); text-transform: uppercase;
+    border-top: 1px solid var(--line-soft); padding-top: 14px;
+  }
+  .footer b { color: var(--muted); font-weight: 500; }
+
+  .shot {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 24px 50px rgba(0,0,0,.45);
+  }
+  .shot .bar {
+    height: 26px; background: #1a1d26; display: flex; align-items: center; gap: 6px; padding: 0 12px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .shot .bar i { width: 8px; height: 8px; border-radius: 50%; background: #333845; display: block; }
+  .shot img { display: block; width: 100%; }
+
+  .phone {
+    border-radius: 22px; border: 1px solid rgba(255,255,255,0.14);
+    background: #000; padding: 7px; box-shadow: 0 26px 55px rgba(0,0,0,.55);
+  }
+  .phone .screen { border-radius: 16px; overflow: hidden; background: #000; }
+  .phone img { display: block; width: 100%; }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px;
+  }
+  .chip i { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); display: block; }
+
+  .statline { display: flex; gap: 0; }
+  .statline .st { padding: 0 28px; border-left: 1px solid var(--line); }
+  .statline .st:first-child { padding-left: 0; border-left: 0; }
+  .st .v { font-family: var(--display); font-weight: 700; font-size: 30px; letter-spacing: -0.02em; color: var(--ink); }
+  .st .v span { color: var(--amber); }
+  .st .l { font-size: 11.5px; color: var(--muted); margin-top: 5px; line-height: 1.35; }
+
+  /* ── S1 Cover ─────────────────────────────────────────── */
+  .cover .glow1 { width: 900px; height: 620px; top: -280px; right: -230px; }
+  .cover .glow2 { width: 700px; height: 500px; bottom: -260px; left: -200px; }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; }
+  .wordmark { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: .30em; text-transform: uppercase; }
+  .wordmark span { color: var(--amber); }
+  .cover-tag { font-family: var(--mono); font-size: 11px; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; }
+  .cover-mid { margin-top: 108px; }
+  .cover h1 {
+    font-family: var(--display); font-weight: 600; font-size: 84px;
+    line-height: 1.02; letter-spacing: -0.025em;
+  }
+  .cover h1 em { font-style: normal; color: var(--amber); }
+  .cover-sub { margin-top: 26px; max-width: 620px; color: var(--muted); font-size: 17.5px; font-weight: 300; line-height: 1.6; }
+  .cover-name { margin-top: 44px; display: flex; align-items: center; gap: 18px; }
+  .cover-name .avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber), #8a5514);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-weight: 700; font-size: 19px; color: #14100a;
+  }
+  .cover-name .who .n { font-family: var(--display); font-weight: 600; font-size: 18px; }
+  .cover-name .who .r { color: var(--muted); font-size: 13px; margin-top: 3px; }
+  .cover-trust { margin-top: 52px; display: flex; align-items: center; gap: 14px; }
+  .cover-trust .ct-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--faint); margin-right: 8px;
+  }
+  .cover-trust img {
+    width: 34px; height: 34px; border-radius: 9px; object-fit: cover;
+    border: 1px solid var(--line); box-sizing: border-box;
+  }
+  .cover-trust .ct-more { font-family: var(--mono); font-size: 10.5px; color: var(--faint); margin-left: 4px; }
+
+  /* ── S2 POV / numbers ─────────────────────────────────── */
+  .bigline {
+    font-family: var(--display); font-weight: 600; font-size: 44px; line-height: 1.16;
+    letter-spacing: -0.02em; max-width: 1000px; margin-top: 26px;
+  }
+  .bigline em { font-style: normal; color: var(--amber); }
+  .pov-body { margin-top: 26px; max-width: 780px; color: var(--muted); font-size: 16px; line-height: 1.65; font-weight: 300; }
+  .engine { margin-top: 30px; display: flex; align-items: center; gap: 18px; max-width: 1000px; }
+  .engine .eng {
+    flex: 1; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px;
+  }
+  .engine .ek {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--amber);
+  }
+  .engine .ev { margin-top: 8px; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+  .engine .arrow { color: var(--amber); font-family: var(--display); font-size: 20px; }
+  .numbers-band {
+    position: absolute; left: 72px; right: 72px; bottom: 88px;
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    border-top: 1px solid var(--line);
+  }
+  .numbers-band .nb { padding: 26px 20px 0 0; }
+  .numbers-band .nb + .nb { padding-left: 24px; border-left: 1px solid var(--line-soft); }
+  .nb .v { font-family: var(--display); font-weight: 700; font-size: 31px; letter-spacing: -0.02em; }
+  .nb .v span { color: var(--amber); }
+  .nb .l { font-size: 11.5px; color: var(--muted); margin-top: 7px; line-height: 1.4; }
+
+  /* ── S3 Clients ───────────────────────────────────────── */
+  .client-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 42px; }
+  .client-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px 20px 20px; min-height: 178px; display: flex; flex-direction: column;
+  }
+  .client-card .logo {
+    width: 46px; height: 46px; border-radius: 10px; overflow: hidden; background: #fff;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  }
+  .client-card .logo.dark { background: #0d0f14; border: 1px solid var(--line); }
+  .client-card .logo img { width: 100%; height: 100%; object-fit: cover; }
+  .client-card .logo.contain img { object-fit: contain; padding: 6px; }
+  .client-card .cn { font-family: var(--display); font-weight: 600; font-size: 15.5px; }
+  .client-card .ci { font-size: 11px; color: var(--faint); margin: 3px 0 10px; }
+  .client-card .cr { margin-top: auto; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+  .client-card .cr b { color: var(--amber); font-weight: 600; }
+
+  /* ── Case slides ──────────────────────────────────────── */
+  .case { display: grid; grid-template-columns: 520px 1fr; gap: 54px; position: absolute; inset: 0; padding: 58px 72px 84px; }
+  .case-copy { display: flex; flex-direction: column; }
+  .case-head { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+  .case-head .logo {
+    width: 46px; height: 46px; border-radius: 11px; overflow: hidden; background: #fff; flex: 0 0 auto;
+    border: 1px solid var(--line);
+  }
+  .case-head .logo.dark { background: #0d0f14; }
+  .case-head .logo img { width: 100%; height: 100%; object-fit: cover; }
+  .case-head .logo.contain img { object-fit: contain; padding: 5px; }
+  .case-head h2 { font-family: var(--display); font-weight: 600; font-size: 31px; letter-spacing: -0.015em; }
+  .case-head .sub { color: var(--faint); font-size: 12px; margin-top: 3px; font-family: var(--mono); letter-spacing: .06em; }
+  .case-brief { margin-top: 18px; color: var(--muted); font-size: 14.5px; line-height: 1.62; font-weight: 300; }
+  .case-brief b { color: var(--ink); font-weight: 500; }
+  .case-did { margin-top: 20px; display: flex; flex-direction: column; gap: 9px; }
+  .case-did .d { display: flex; gap: 11px; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .case-did .d::before { content: ""; width: 14px; height: 1px; background: var(--amber); margin-top: 10px; flex: 0 0 auto; }
+  .case-stats { margin-top: auto; padding-top: 22px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .case-stats .cs { border-top: 2px solid var(--amber); padding-top: 11px; }
+  .case-stats .cs .v { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: -0.02em; }
+  .case-stats .cs .l { font-size: 10.8px; color: var(--muted); margin-top: 4px; line-height: 1.35; }
+  .case-visual { position: relative; display: flex; align-items: center; }
+  .case-visual .cap {
+    position: absolute; left: 4px; bottom: -26px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint);
+  }
+
+  /* ── Creatives grid ───────────────────────────────────── */
+  .creative-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 20px; margin-top: 26px; }
+  .creative-card { position: relative; }
+  .creative-card .label {
+    margin-top: 9px; display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .creative-card .label .t { font-family: var(--display); font-weight: 600; font-size: 13px; }
+  .creative-card .label .k { font-family: var(--mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+  .creative-card .imgbox { height: 172px; overflow: hidden; }
+  .creative-card .imgbox img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+  /* ── Services ─────────────────────────────────────────── */
+  .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 36px; }
+  .svc {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px 28px;
+  }
+  .svc .num { font-family: var(--mono); font-size: 11px; color: var(--amber); letter-spacing: .15em; }
+  .svc h3 { font-family: var(--display); font-weight: 600; font-size: 19px; margin: 10px 0 8px; }
+  .svc p { color: var(--muted); font-size: 13px; line-height: 1.6; font-weight: 300; }
+  .svc .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 7px; }
+  .svc .tags span {
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); background: rgba(255,255,255,0.045); border: 1px solid var(--line-soft);
+    padding: 4px 9px; border-radius: 6px;
+  }
+
+  /* ── Process ──────────────────────────────────────────── */
+  .proc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; }
+  .proc .step { padding: 0 26px 0 0; position: relative; }
+  .proc .step + .step { padding-left: 26px; border-left: 1px solid var(--line-soft); }
+  .proc .wk { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; color: var(--faint); text-transform: uppercase; }
+  .proc .n { font-family: var(--display); font-weight: 700; font-size: 46px; color: var(--amber); line-height: 1; margin: 14px 0 12px; }
+  .proc h3 { font-family: var(--display); font-weight: 600; font-size: 17.5px; margin-bottom: 10px; }
+  .proc p { color: var(--muted); font-size: 12.8px; line-height: 1.6; font-weight: 300; }
+  .proc .get {
+    margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--line);
+    font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: var(--faint);
+    text-transform: uppercase; line-height: 1.7;
+  }
+  .proc .get b { color: var(--amber); font-weight: 500; }
+  .proc-note {
+    position: absolute; left: 72px; right: 72px; bottom: 92px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 26px; display: flex; align-items: center; gap: 18px;
+  }
+  .proc-note .ic { color: var(--amber); font-family: var(--display); font-weight: 700; font-size: 20px; }
+  .proc-note p { color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+  .proc-note p b { color: var(--ink); font-weight: 500; }
+
+  /* ── Pricing ──────────────────────────────────────────── */
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
+  .tier {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+    padding: 26px 26px 22px; display: flex; flex-direction: column; min-height: 430px; position: relative;
+  }
+  .tier.pop { background: linear-gradient(180deg, rgba(240,168,75,0.10), rgba(240,168,75,0.02) 55%), var(--panel); border-color: rgba(240,168,75,0.45); }
+  .tier .flag {
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    background: var(--amber); color: #14100a; font-family: var(--mono); font-size: 9.5px;
+    letter-spacing: .14em; text-transform: uppercase; font-weight: 500;
+    padding: 5px 12px; border-radius: 999px; white-space: nowrap;
+  }
+  .tier .tn { font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .tier .tf { color: var(--faint); font-size: 11.5px; margin-top: 4px; }
+  .tier .amt { margin: 18px 0 4px; display: flex; align-items: baseline; gap: 6px; }
+  .tier .amt .c { font-family: var(--display); font-weight: 700; font-size: 40px; letter-spacing: -0.02em; }
+  .tier.pop .amt .c { color: var(--amber); }
+  .tier .amt .per { color: var(--faint); font-size: 12.5px; }
+  .tier ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8.5px; }
+  .tier li { display: flex; gap: 10px; font-size: 12.3px; color: var(--muted); line-height: 1.45; }
+  .tier li::before {
+    content: "✓"; color: var(--amber); font-size: 11px; font-weight: 600; margin-top: 1px;
+  }
+  .tier li.mute { color: var(--faint); }
+  .tier li.mute::before { content: "—"; color: #3a3f4a; }
+  .tier .best { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line-soft); font-size: 11.3px; color: var(--faint); line-height: 1.5; }
+  .tier .best b { color: var(--muted); font-weight: 500; }
+  .price-notes { margin-top: 18px; display: flex; gap: 26px; font-size: 11.3px; color: var(--faint); }
+  .price-notes span { display: flex; gap: 8px; align-items: baseline; }
+  .price-notes i { color: var(--amber); font-style: normal; }
+
+  /* ── Next steps / contact ─────────────────────────────── */
+  .next-steps { display: grid; grid-template-columns: 1fr 420px; gap: 70px; margin-top: 40px; }
+  .steps-list { display: flex; flex-direction: column; }
+  .steps-list .s { display: flex; gap: 22px; padding: 20px 0; border-bottom: 1px solid var(--line-soft); }
+  .steps-list .s:last-child { border-bottom: 0; }
+  .steps-list .num {
+    font-family: var(--mono); font-size: 12px; color: var(--amber); letter-spacing: .1em; margin-top: 4px; flex: 0 0 30px;
+  }
+  .steps-list h3 { font-family: var(--display); font-weight: 600; font-size: 18px; }
+  .steps-list p { color: var(--muted); font-size: 13px; line-height: 1.55; margin-top: 5px; font-weight: 300; }
+  .contact-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 30px;
+    align-self: start;
+  }
+  .contact-card .t { font-family: var(--display); font-weight: 600; font-size: 19px; }
+  .contact-card .rows { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .contact-card .row { display: flex; flex-direction: column; gap: 3px; }
+  .contact-card .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+  .contact-card .v { font-size: 14px; color: var(--ink); }
+  .contact-card .cta {
+    margin-top: 22px; background: var(--amber); color: #14100a; border-radius: 10px;
+    text-align: center; padding: 13px; font-family: var(--display); font-weight: 600; font-size: 14.5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ 01 · COVER ═══════════ -->
+<section class="slide cover">
+  <div class="glow glow-amber glow1"></div>
+  <div class="glow glow-amber glow2"></div>
+  <div class="grid-tex"></div>
+  <div class="pad">
+    <div class="cover-top">
+      <div class="wordmark">KARAN<span>·</span>SUD</div>
+      <div class="cover-tag">Growth Marketing & Content Partner</div>
+    </div>
+    <div class="cover-mid">
+      <h1>Making brands<br><em>impossible</em> to ignore.</h1>
+      <p class="cover-sub">Content, community, and growth systems for brands that want compounding attention — built and run end to end, with the receipts to prove it works.</p>
+      <div class="cover-name">
+        <div class="avatar">KS</div>
+        <div class="who">
+          <div class="n">Karan Sud</div>
+          <div class="r">Content &amp; Growth Strategist · 5+ years · Web3, AI, F&amp;B, D2C</div>
+        </div>
+      </div>
+      <div class="cover-trust">
+        <span class="ct-label">Brands grown</span>
+        <img src="assets/logo-fantv.jpg" alt="FanTV">
+        <img src="assets/logo-fere.png" alt="Fere AI" style="background:#0d0f14; padding:4px;">
+        <img src="assets/logo-defx.png" alt="Defx" style="background:#0d0f14; padding:5px;">
+        <img src="assets/logo-tonyromas.jpg" alt="Tony Roma's">
+        <img src="assets/logo-novaswap.jpg" alt="Novaswap">
+        <img src="assets/logo-bima.jpg" alt="BimaBTC">
+        <span class="ct-more">+ 4 more</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span><b>contactkaransud@gmail.com</b></span>
+    <span>linkedin.com/in/karansud7 · @KaranSudSocial</span>
+  </div>
+</section>
+
+<!-- ═══════════ 02 · POV + NUMBERS ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:700px;height:500px;top:-260px;left:-180px;"></div>
+  <div class="pad">
+    <div class="kicker">Why brands work with me</div>
+    <div class="bigline">Attention is the last real moat.<br>I build the systems that <em>earn it, keep it,</em> and turn it into revenue.</div>
+    <p class="pov-body">Most agencies sell you posts. I run the full engine — positioning, content, community, creators, and paid — as one system with one owner. That's how a SocialFi app went from 70K to 300K followers, a DEX went from under $100K to $50M+ in monthly volume, and a 53-year-old restaurant brand pulled 729K organic views without a dollar of ad spend.</p>
+    <div class="engine">
+      <div class="eng"><div class="ek">Earn it</div><div class="ev">Content systems, creators &amp; KOLs, launches that put you in the feed</div></div>
+      <div class="arrow">→</div>
+      <div class="eng"><div class="ek">Keep it</div><div class="ev">Community, retention loops, and a voice people come back for</div></div>
+      <div class="arrow">→</div>
+      <div class="eng"><div class="ek">Convert it</div><div class="ev">Paid media, email, and funnels that turn attention into revenue</div></div>
+    </div>
+  </div>
+  <div class="numbers-band">
+    <div class="nb"><div class="v">25<span>M+</span></div><div class="l">Organic impressions generated</div></div>
+    <div class="nb"><div class="v">300<span>K+</span></div><div class="l">Followers added across brands</div></div>
+    <div class="nb"><div class="v">150<span>K+</span></div><div class="l">Community members built</div></div>
+    <div class="nb"><div class="v">$1.5<span>B+</span></div><div class="l">Trading volume driven</div></div>
+    <div class="nb"><div class="v">4<span>X</span></div><div class="l">ROAS on paid media</div></div>
+    <div class="nb"><div class="v">10<span>+</span></div><div class="l">Brands across 6 industries</div></div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>02</span></div>
+</section>
+
+<!-- ═══════════ 03 · CLIENTS ═══════════ -->
+<section class="slide">
+  <div class="glow glow-blue" style="width:800px;height:500px;top:-240px;right:-200px;"></div>
+  <div class="pad">
+    <div class="kicker">The roster</div>
+    <h2 class="slide-title">Brands I've grown, <em>and what happened</em></h2>
+    <div class="client-grid">
+      <div class="client-card">
+        <div class="logo"><img src="assets/logo-fantv.jpg" alt="FanTV"></div>
+        <div class="cn">FanTV AI</div><div class="ci">SocialFi · Creator platform</div>
+        <div class="cr"><b>70K → 300K</b> followers, 1.5M+ monthly active users</div>
+      </div>
+      <div class="client-card">
+        <div class="logo dark contain"><img src="assets/logo-fere.png" alt="Fere AI"></div>
+        <div class="cn">Fere AI</div><div class="ci">AI trading agent</div>
+        <div class="cr"><b>7K+ daily traders</b>, #1 Fintech on Product Hunt</div>
+      </div>
+      <div class="client-card">
+        <div class="logo dark contain"><img src="assets/logo-defx.png" alt="Defx"></div>
+        <div class="cn">Defx</div><div class="ci">DeFi · Perpetuals DEX</div>
+        <div class="cr"><b>&lt;$100K → $50M+</b> monthly trading volume</div>
+      </div>
+      <div class="client-card">
+        <div class="logo"><img src="assets/logo-novaswap.jpg" alt="Novaswap"></div>
+        <div class="cn">Novaswap</div><div class="ci">DeFi · Stablecoin DEX</div>
+        <div class="cr"><b>$650K+ volume</b> in first 90 days, from zero</div>
+      </div>
+      <div class="client-card">
+        <div class="logo"><img src="assets/logo-tonyromas.jpg" alt="Tony Roma's"></div>
+        <div class="cn">Tony Roma's</div><div class="ci">F&amp;B · Global chain</div>
+        <div class="cr"><b>729K views</b>, +448% video views, all organic</div>
+      </div>
+      <div class="client-card">
+        <div class="logo"><img src="assets/logo-bima.jpg" alt="BimaBTC"></div>
+        <div class="cn">BimaBTC</div><div class="ci">Web3 · Bitcoin DeFi</div>
+        <div class="cr"><b>2.3M impressions</b> at a 2.4% engagement rate</div>
+      </div>
+      <div class="client-card">
+        <div class="logo dark contain"><img src="assets/logo-opaque.png" alt="Opaque Studio" style="filter: invert(1) brightness(1.3);"></div>
+        <div class="cn">Opaque Studio</div><div class="ci">Luxury D2C · Home</div>
+        <div class="cr"><b>4X ROAS</b> on ₹3L/month ad spend</div>
+      </div>
+      <div class="client-card">
+        <div class="logo"><img src="assets/logo-potters.jpg" alt="Potters' Hub"></div>
+        <div class="cn">Potters' Hub</div><div class="ci">E-commerce · Studio</div>
+        <div class="cr"><b>471% ROI</b> in month one on Meta ads</div>
+      </div>
+      <div class="client-card">
+        <div class="logo"><img src="assets/logo-bnb.jpg" alt="Bones & Burgers"></div>
+        <div class="cn">Bones &amp; Burgers</div><div class="ci">F&amp;B · Restaurant</div>
+        <div class="cr"><b>+160% interactions</b>, +287% watch time, $0 ads</div>
+      </div>
+      <div class="client-card">
+        <div class="logo"><img src="assets/logo-sportsrush.jpg" alt="The Sportrush"></div>
+        <div class="cn">The Sportrush</div><div class="ci">Sports media</div>
+        <div class="cr"><b>7M+ views</b> in 3 months, two viral reels</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>03</span></div>
+</section>
+
+<!-- ═══════════ 04 · CASE: FANTV ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:600px;height:450px;bottom:-220px;right:-150px;"></div>
+  <div class="case">
+    <div class="case-copy">
+      <div class="kicker">Case study · 01</div>
+      <div class="case-head">
+        <div class="logo"><img src="assets/logo-fantv.jpg" alt="FanTV"></div>
+        <div><h2>FanTV AI</h2><div class="sub">SocialFi · X, Instagram, Discord, Telegram</div></div>
+      </div>
+      <p class="case-brief">A strong product nobody was talking about: <b>~70K followers, under 1,000 community members.</b> I built the full growth engine — brand + founder content running in parallel, a 100+ KOL program, airdrop campaigns, and top-of-funnel paid on a ₹45–50L/month budget.</p>
+      <div class="case-did">
+        <div class="d">Full content system for the brand and the founder — pillars, cadence, recurring formats</div>
+        <div class="d">KOL program scaled from ~10 to 100+ creators at peak</div>
+        <div class="d">Community from &lt;1K to 150K+ via ambassadors, AMAs, and airdrops</div>
+        <div class="d">Full-funnel tracking in MoEngage: CAC, DAU/WAU/MAU, D3/D7/D15 retention</div>
+      </div>
+      <div class="case-stats">
+        <div class="cs"><div class="v">300K</div><div class="l">Followers, up from 70K</div></div>
+        <div class="cs"><div class="v">1.5M+</div><div class="l">Monthly active users</div></div>
+        <div class="cs"><div class="v">12M+</div><div class="l">Impressions in 6 months</div></div>
+      </div>
+    </div>
+    <div class="case-visual">
+      <div class="phone" style="width:400px; margin:0 auto;">
+        <div class="screen"><img src="assets/fantv-x-stats.jpg" alt="FanTV X analytics"></div>
+      </div>
+      <div class="cap">X analytics · 12M impressions · 4.4M engagements · 37% ER</div>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>04</span></div>
+</section>
+
+<!-- ═══════════ 05 · CASE: FERE AI ═══════════ -->
+<section class="slide">
+  <div class="glow glow-blue" style="width:600px;height:450px;top:-200px;right:-150px;"></div>
+  <div class="case">
+    <div class="case-copy">
+      <div class="kicker">Case study · 02</div>
+      <div class="case-head">
+        <div class="logo dark contain"><img src="assets/logo-fere.png" alt="Fere AI"></div>
+        <div><h2>Fere AI</h2><div class="sub">AI trading agent · X, Email, YouTube, Blog</div></div>
+      </div>
+      <p class="case-brief">A powerful AI trading agent with <b>almost no one using it.</b> I positioned Fere on proof instead of AI hype — show the agent actually trading, benchmark it against competitors, and put that evidence on every channel.</p>
+      <div class="case-did">
+        <div class="d">Built the X content pipeline the brand still runs on today</div>
+        <div class="d">#1 Fintech Product of the Day on Product Hunt (Top 2 overall)</div>
+        <div class="d">Paid acquisition, referral program, and points program for signups</div>
+        <div class="d">Email program that converted Fere's first paying users</div>
+      </div>
+      <div class="case-stats">
+        <div class="cs"><div class="v">7K+</div><div class="l">Daily active traders</div></div>
+        <div class="cs"><div class="v">10M+</div><div class="l">AI agent executions</div></div>
+        <div class="cs"><div class="v">12K+</div><div class="l">Signups driven</div></div>
+      </div>
+    </div>
+    <div class="case-visual">
+      <div class="shot" style="width:100%;">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="assets/fere-stats.jpg" alt="Fere AI analytics">
+      </div>
+      <div class="cap">6.8M X impressions · 195K+ engagements · #1 Product Hunt Fintech</div>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>05</span></div>
+</section>
+
+<!-- ═══════════ 06 · CASE: DEFX ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:600px;height:450px;bottom:-220px;left:-160px;"></div>
+  <div class="case">
+    <div class="case-copy">
+      <div class="kicker">Case study · 03</div>
+      <div class="case-head">
+        <div class="logo dark contain"><img src="assets/logo-defx.png" alt="Defx"></div>
+        <div><h2>Defx</h2><div class="sub">Perpetuals DEX · X, Telegram, Discord</div></div>
+      </div>
+      <p class="case-brief">A working perps DEX doing <b>under $100K a month with ~50 traders.</b> The playbook: give traders a reason to show up (contests, KOLs) and a reason to stay (community, credible organic content).</p>
+      <div class="case-did">
+        <div class="d">Designed and ran two trading contests, incl. a partnership with Voltrade</div>
+        <div class="d">Built KOL relationships and a community of people actually trading</div>
+        <div class="d">UGC and organic content to build trust around the product</div>
+      </div>
+      <div class="case-stats">
+        <div class="cs"><div class="v">$50M+</div><div class="l">Monthly volume, from &lt;$100K</div></div>
+        <div class="cs"><div class="v">$1.5B+</div><div class="l">Cumulative volume (on DefiLlama)</div></div>
+        <div class="cs"><div class="v">350</div><div class="l">Active traders, from ~50</div></div>
+      </div>
+    </div>
+    <div class="case-visual">
+      <div class="shot" style="width:100%;">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="assets/defx-stats.jpg" alt="Defx analytics">
+      </div>
+      <div class="cap">Volume growth verified &amp; public on DefiLlama</div>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>06</span></div>
+</section>
+
+<!-- ═══════════ 07 · CASE: NOVASWAP + BIMA ═══════════ -->
+<section class="slide">
+  <div class="glow glow-blue" style="width:650px;height:480px;top:-230px;left:-160px;"></div>
+  <div class="pad">
+    <div class="kicker">Case study · 04</div>
+    <h2 class="slide-title">Launching from zero, <em>twice</em></h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:32px;">
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:26px 28px;">
+        <div class="case-head" style="margin-top:0;">
+          <div class="logo"><img src="assets/logo-novaswap.jpg" alt="Novaswap"></div>
+          <div><h2 style="font-size:24px;">Novaswap</h2><div class="sub">Cross-chain stablecoin DEX</div></div>
+        </div>
+        <p class="case-brief" style="font-size:13.5px; margin-top:14px;">No name, no community, no volume. I launched it like a brand, not a contract — voice, visual direction, seeded KOLs, and trading incentives tied directly to on-chain action.</p>
+        <div class="case-stats" style="margin-top:20px; padding-top:0;">
+          <div class="cs"><div class="v">$650K+</div><div class="l">Organic volume in 90 days</div></div>
+          <div class="cs"><div class="v">1.1M</div><div class="l">X impressions</div></div>
+          <div class="cs"><div class="v">19,000%</div><div class="l">Profile visit growth</div></div>
+        </div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:26px 28px;">
+        <div class="case-head" style="margin-top:0;">
+          <div class="logo"><img src="assets/logo-bima.jpg" alt="BimaBTC"></div>
+          <div><h2 style="font-size:24px;">BimaBTC</h2><div class="sub">Bitcoin-backed stablecoin</div></div>
+        </div>
+        <p class="case-brief" style="font-size:13.5px; margin-top:14px;">Growth on posting discipline, not giveaways. A consistent system plus timely market commentary earned engagement that compounds — at a rate most accounts this size never touch.</p>
+        <div class="case-stats" style="margin-top:20px; padding-top:0;">
+          <div class="cs"><div class="v">2.3M</div><div class="l">X impressions</div></div>
+          <div class="cs"><div class="v">2.4%</div><div class="l">Engagement rate at scale</div></div>
+          <div class="cs"><div class="v">144K</div><div class="l">Followers</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="shot" style="margin-top:22px;">
+      <div style="height:158px; overflow:hidden;"><img src="assets/novaswap-stats.jpg" alt="Novaswap X analytics" style="width:100%; height:100%; object-fit:cover; object-position:50% 100%; display:block;"></div>
+    </div>
+    <div style="margin-top:20px; display:flex; gap:10px; justify-content:space-between;">
+      <span class="chip"><i></i>Brand voice &amp; identity</span>
+      <span class="chip"><i></i>KOL seeding</span>
+      <span class="chip"><i></i>Trading incentives</span>
+      <span class="chip"><i></i>Weekly editorial &amp; reports</span>
+      <span class="chip"><i></i>Partnership content</span>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>07</span></div>
+</section>
+
+<!-- ═══════════ 08 · CASE: TONY ROMA'S ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:600px;height:460px;top:-210px;right:-140px;"></div>
+  <div class="case">
+    <div class="case-copy">
+      <div class="kicker">Case study · 05</div>
+      <div class="case-head">
+        <div class="logo"><img src="assets/logo-tonyromas.jpg" alt="Tony Roma's"></div>
+        <div><h2>Tony Roma's</h2><div class="sub">53-year-old global chain · Instagram, Facebook</div></div>
+      </div>
+      <p class="case-brief">A legacy restaurant brand that needed a modern, consistent social presence — plus launch support for new locations. <b>Every number here is organic. $0 in paid spend.</b></p>
+      <div class="case-did">
+        <div class="d">Full content strategy: calendar, visual direction, posting cadence</div>
+        <div class="d">Multi-phase campaigns for location launches (Kimball, TN)</div>
+        <div class="d">CEO personal brand built in parallel as the human layer</div>
+      </div>
+      <div class="case-stats">
+        <div class="cs"><div class="v">729K</div><div class="l">Facebook views, 100% organic</div></div>
+        <div class="cs"><div class="v">+448%</div><div class="l">3-second video views</div></div>
+        <div class="cs"><div class="v">305K</div><div class="l">Instagram views (+386% watch time)</div></div>
+      </div>
+    </div>
+    <div class="case-visual">
+      <div class="shot" style="width:100%;">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="assets/tr-ig-content.jpg" alt="Tony Roma's Instagram insights">
+      </div>
+      <div class="cap">Meta insights · 289K IG views · reach +52.7% · interactions +8.8K%</div>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>08</span></div>
+</section>
+
+<!-- ═══════════ 09 · IG FEED TRANSFORMATION ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:700px;height:480px;bottom:-240px;left:-180px;"></div>
+  <div class="pad">
+    <div style="display:grid; grid-template-columns: 430px 1fr; gap: 50px;">
+      <div>
+        <div class="kicker">Case study · 06 · The feed itself</div>
+        <h2 class="slide-title" style="font-size:34px;">From silent account to <em>executive presence</em></h2>
+        <p class="slide-sub">Mohaimina Haque — CEO of Tony Roma's, attorney, and law professor (@attorneyminadc). She had a following but no strategy behind it.</p>
+        <div class="case-did" style="margin-top:22px;">
+          <div class="d"><b style="color:var(--ink); font-weight:500;">Before:</b>&nbsp;quiet feed, no positioning, no reason to follow</div>
+          <div class="d"><b style="color:var(--ink); font-weight:500;">After:</b>&nbsp;a designed feed system — Bloomberg TV features, Davos, board leadership, award wins — every post laddering to one story</div>
+        </div>
+        <div class="case-stats" style="margin-top:34px;">
+          <div class="cs"><div class="v">1.2M+</div><div class="l">Organic impressions in 6 months</div></div>
+          <div class="cs"><div class="v">$0</div><div class="l">Paid spend</div></div>
+          <div class="cs"><div class="v">6.5K+</div><div class="l">Engaged followers</div></div>
+        </div>
+      </div>
+      <div style="display:flex; gap:18px; align-items:flex-start; justify-content:center; padding-top:6px;">
+        <div class="phone" style="width:200px;"><div class="screen" style="height:520px;"><img src="assets/mina-profile.jpg" style="object-fit:cover; height:100%;" alt="Profile"></div></div>
+        <div class="phone" style="width:200px; margin-top:26px;"><div class="screen" style="height:520px;"><img src="assets/mina-posts-feed.jpg" style="object-fit:cover; object-position:top; height:100%;" alt="Posts feed"></div></div>
+        <div class="phone" style="width:200px;"><div class="screen" style="height:520px;"><img src="assets/mina-reels-feed.jpg" style="object-fit:cover; object-position:top; height:100%;" alt="Reels feed"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>09</span></div>
+</section>
+
+<!-- ═══════════ 10 · EXEC BRANDS ═══════════ -->
+<section class="slide">
+  <div class="glow glow-blue" style="width:650px;height:470px;top:-220px;right:-160px;"></div>
+  <div class="case">
+    <div class="case-copy">
+      <div class="kicker">Case study · 07</div>
+      <div class="case-head">
+        <div class="logo" style="background:linear-gradient(135deg,#1e3a60,#0c1828); display:flex; align-items:center; justify-content:center;"><span style="font-family:var(--display); font-weight:700; color:#a8c4e8; font-size:15px;">PA</span></div>
+        <div><h2>Founders, made famous</h2><div class="sub">Executive personal branding · X, LinkedIn</div></div>
+      </div>
+      <p class="case-brief"><b>Prashan Agarwal</b> — CEO of FanTV, ex-CEO of Gaana (one of India's largest streaming platforms). I positioned him at the intersection of proven operator and serious Web3 builder, writing everything in his actual voice — and ran it alongside the FanTV brand so each fed the other.</p>
+      <div class="case-did">
+        <div class="d">Positioning, pillars, and a calendar across X + LinkedIn</div>
+        <div class="d">All content written and managed in his voice, not a ghost-feed</div>
+        <div class="d">His reach humanised the brand; the brand fed his credibility</div>
+      </div>
+      <div class="case-stats">
+        <div class="cs"><div class="v">12K→100K</div><div class="l">X followers in 10 months</div></div>
+        <div class="cs"><div class="v">2×</div><div class="l">LinkedIn audience (5K→10K)</div></div>
+        <div class="cs"><div class="v">12M+</div><div class="l">Combined impressions</div></div>
+      </div>
+    </div>
+    <div class="case-visual">
+      <div class="shot" style="width:100%;">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <img src="assets/prashan-1.jpg" alt="Prashan X growth">
+      </div>
+      <div class="cap">Founder X account analytics · 12K → 100K</div>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>10</span></div>
+</section>
+
+<!-- ═══════════ 11 · SMB RESULTS ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:600px;height:450px;bottom:-220px;right:-150px;"></div>
+  <div class="pad">
+    <div class="kicker">Case study · 08</div>
+    <h2 class="slide-title">Small budgets, <em>outsized returns</em></h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:30px;">
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:24px 26px;">
+        <div class="case-head" style="margin-top:0;">
+          <div class="logo"><img src="assets/logo-potters.jpg" alt="Potters' Hub"></div>
+          <div><h2 style="font-size:22px;">Potters' Hub</h2><div class="sub">Pottery studio → e-commerce</div></div>
+        </div>
+        <p class="case-brief" style="font-size:13px; margin-top:12px;">No store, no digital revenue. I built the Shopify storefront and the demand at the same time — organic reels for discovery, Meta ads for conversion. 95.8% of views came from non-followers.</p>
+        <div class="case-stats" style="margin-top:18px; padding-top:0;">
+          <div class="cs"><div class="v">471%</div><div class="l">Month-1 ROI (₹3.5K → ₹20K)</div></div>
+          <div class="cs"><div class="v">243K</div><div class="l">Views in 90 days</div></div>
+          <div class="cs"><div class="v">104K</div><div class="l">Top reel views</div></div>
+        </div>
+      </div>
+      <div style="background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:24px 26px;">
+        <div class="case-head" style="margin-top:0;">
+          <div class="logo"><img src="assets/logo-bnb.jpg" alt="Bones & Burgers"></div>
+          <div><h2 style="font-size:22px;">Bones &amp; Burgers</h2><div class="sub">Restaurant · Instagram, Facebook</div></div>
+        </div>
+        <p class="case-brief" style="font-size:13px; margin-top:12px;">Inherited an account full of bot followers and zero real engagement. Audited it, cleaned it out, and rebuilt the identity, calendar, and voice from a true baseline — organic only.</p>
+        <div class="case-stats" style="margin-top:18px; padding-top:0;">
+          <div class="cs"><div class="v">+160%</div><div class="l">Content interactions</div></div>
+          <div class="cs"><div class="v">+287%</div><div class="l">Watch time</div></div>
+          <div class="cs"><div class="v">$0</div><div class="l">Ad spend</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:22px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 24px; display:flex; align-items:center; gap:20px;">
+      <div style="font-family:var(--display); font-weight:700; font-size:25px; color:var(--amber); white-space:nowrap; flex:0 0 150px;">26 → 4.5K</div>
+      <p style="color:var(--muted); font-size:13px; line-height:1.5;"><b style="color:var(--ink); font-weight:500;">The Sportrush</b> — built the entire Instagram from 26 followers: strategy, formats, and SOPs. Two reels went viral at <b style="color:var(--ink); font-weight:500;">4M and 2M views</b>; 7M+ total views in three months, zero paid.</p>
+    </div>
+    <div style="margin-top:14px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 24px; display:flex; align-items:center; gap:20px;">
+      <div style="font-family:var(--display); font-weight:700; font-size:25px; color:var(--amber); white-space:nowrap; flex:0 0 150px;">4X ROAS</div>
+      <p style="color:var(--muted); font-size:13px; line-height:1.5;"><b style="color:var(--ink); font-weight:500;">Opaque Studio</b> — luxury handcrafted home brand. Ran marketing end to end: Meta &amp; Google at <b style="color:var(--ink); font-weight:500;">₹3L/month ad spend, consistent 4X ROAS</b>, Instagram grown 30K → 41K, multiple collection launches.</p>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>11</span></div>
+</section>
+
+<!-- ═══════════ 12 · CREATIVE WORK ═══════════ -->
+<section class="slide">
+  <div class="glow glow-blue" style="width:700px;height:480px;top:-240px;left:-180px;"></div>
+  <div class="pad">
+    <div class="kicker">The creative layer</div>
+    <h2 class="slide-title">Creative that ships, <em>across every surface</em></h2>
+    <div class="creative-grid">
+      <div class="creative-card">
+        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/landing-fereai.jpg" alt="Fere AI landing page"></div></div>
+        <div class="label"><span class="t">Fere AI — marketing site</span><span class="k">Landing page</span></div>
+      </div>
+      <div class="creative-card">
+        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/landing-novaswap.jpg" alt="Novaswap landing page"></div></div>
+        <div class="label"><span class="t">Novaswap — DEX launch</span><span class="k">Landing page</span></div>
+      </div>
+      <div class="creative-card">
+        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/sportsrush-reels.jpg" alt="Viral reels" style="object-position:center;"></div></div>
+        <div class="label"><span class="t">Sportrush — 4M + 2M viral reels</span><span class="k">Short-form video</span></div>
+      </div>
+      <div class="creative-card">
+        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/mina-posts-feed.jpg" alt="Designed IG posts feed" style="object-position:top;"></div></div>
+        <div class="label"><span class="t">Executive IG feed system</span><span class="k">Social design</span></div>
+      </div>
+      <div class="creative-card">
+        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/mina-reels-feed.jpg" alt="Designed IG reels feed" style="object-position:top;"></div></div>
+        <div class="label"><span class="t">Reels program — cover design</span><span class="k">Social design</span></div>
+      </div>
+      <div class="creative-card">
+        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/tr-ig-content.jpg" alt="Tony Roma's top content" style="object-position:bottom;"></div></div>
+        <div class="label"><span class="t">Tony Roma's — top organic posts</span><span class="k">F&amp;B content</span></div>
+      </div>
+    </div>
+    <p style="margin-top:16px; color:var(--faint); font-size:12px;">Plus: email campaigns, X threads and partnership content, product-launch campaigns, UGC briefs, and KOL creative direction — live samples at the portfolio site.</p>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>12</span></div>
+</section>
+
+<!-- ═══════════ 13 · SERVICES ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:650px;height:470px;top:-230px;right:-170px;"></div>
+  <div class="pad">
+    <div class="kicker">What I do</div>
+    <h2 class="slide-title">One partner, <em>the whole engine</em></h2>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="num">01</div>
+        <h3>Social & Content</h3>
+        <p>Full-service management from brief to post — strategy, calendars, copy, creative direction, and short-form video across every platform that matters.</p>
+        <div class="tags"><span>X</span><span>Instagram</span><span>LinkedIn</span><span>TikTok</span><span>Facebook</span></div>
+      </div>
+      <div class="svc">
+        <div class="num">02</div>
+        <h3>Community & Creators</h3>
+        <p>Discord and Telegram communities grown to 150K+. Ambassador programs, AMAs, reward mechanics, and KOL networks scaled past 100 creators.</p>
+        <div class="tags"><span>Discord</span><span>Telegram</span><span>KOL programs</span><span>Ambassadors</span></div>
+      </div>
+      <div class="svc">
+        <div class="num">03</div>
+        <h3>Paid & Performance</h3>
+        <p>Meta and Google campaigns with creative, A/B testing, and full-funnel tracking. 4X ROAS on luxury D2C, 471% month-one ROI on e-commerce.</p>
+        <div class="tags"><span>Meta Ads</span><span>Google Ads</span><span>Email</span><span>Funnels</span><span>Analytics</span></div>
+      </div>
+      <div class="svc">
+        <div class="num">04</div>
+        <h3>Brand & Founder</h3>
+        <p>Positioning, messaging, and 6–12 month roadmaps — plus executive personal brands that took founders from 12K to 100K followers.</p>
+        <div class="tags"><span>Positioning</span><span>Personal brand</span><span>Web3 / TGE</span><span>Launches</span></div>
+      </div>
+    </div>
+    <div style="margin-top:22px; display:flex; align-items:center; gap:14px;">
+      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); white-space:nowrap;">Industries</span>
+      <span class="chip"><i></i>Web3 &amp; DeFi</span>
+      <span class="chip"><i></i>AI &amp; SaaS</span>
+      <span class="chip"><i></i>Restaurants &amp; F&amp;B</span>
+      <span class="chip"><i></i>D2C &amp; E-commerce</span>
+      <span class="chip"><i></i>Sports media</span>
+      <span class="chip"><i></i>Executive brands</span>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>13</span></div>
+</section>
+
+<!-- ═══════════ 14 · PROCESS ═══════════ -->
+<section class="slide">
+  <div class="glow glow-blue" style="width:650px;height:460px;bottom:-230px;left:-170px;"></div>
+  <div class="pad">
+    <div class="kicker">How we'll work</div>
+    <h2 class="slide-title">The first 90 days, <em>mapped</em></h2>
+    <div class="proc">
+      <div class="step">
+        <div class="wk">Week 1–2</div>
+        <div class="n">01</div>
+        <h3>Audit & strategy</h3>
+        <p>Deep dive into your brand, audience, and competitors. You get a playbook: positioning, pillars, formats, and a 90-day roadmap with targets.</p>
+        <div class="get"><b>You get:</b> strategy doc + roadmap</div>
+      </div>
+      <div class="step">
+        <div class="wk">Week 2–4</div>
+        <div class="n">02</div>
+        <h3>Build the system</h3>
+        <p>Content calendar, visual direction, and channel setup. First content batch ships within two weeks — no month-long "onboarding."</p>
+        <div class="get"><b>You get:</b> live calendar + first posts</div>
+      </div>
+      <div class="step">
+        <div class="wk">Month 2</div>
+        <div class="n">03</div>
+        <h3>Ship & learn</h3>
+        <p>Consistent publishing with weekly iteration. Double down on what the data says is working; kill what isn't. Reporting you can actually read.</p>
+        <div class="get"><b>You get:</b> reports tied to goals</div>
+      </div>
+      <div class="step">
+        <div class="wk">Month 3+</div>
+        <div class="n">04</div>
+        <h3>Scale what works</h3>
+        <p>Layer in creators, paid amplification, community programs, and campaigns. The system compounds — this is where the curve bends.</p>
+        <div class="get"><b>You get:</b> growth that compounds</div>
+      </div>
+    </div>
+    <div class="proc-note">
+      <div class="ic">→</div>
+      <p><b>You always know what's happening.</b> A shared content tracker, a direct line to me (not an account manager), and reporting tied to business numbers — not vanity metrics.</p>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>14</span></div>
+</section>
+
+<!-- ═══════════ 15 · PRICING ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:800px;height:520px;top:-280px;left:50%;transform:translateX(-50%);"></div>
+  <div class="pad" style="padding-top:48px;">
+    <div class="kicker">Investment</div>
+    <h2 class="slide-title" style="font-size:36px;">Simple plans. <em>Serious outcomes.</em></h2>
+    <div class="price-grid">
+      <div class="tier">
+        <div class="tn">Essentials</div>
+        <div class="tf">Social media management, done right</div>
+        <div class="amt"><span class="c">$1,200</span><span class="per">/month</span></div>
+        <ul>
+          <li>2 platforms managed end to end</li>
+          <li>12–15 posts/month: copy + creative direction</li>
+          <li>Monthly content calendar, approved upfront</li>
+          <li>Community responses &amp; inbox management</li>
+          <li>Monthly performance report</li>
+          <li class="mute">Paid ads, email &amp; KOL programs</li>
+        </ul>
+        <div class="best"><b>Best for:</b> brands that need a consistent, professional presence without the overhead.</div>
+      </div>
+      <div class="tier pop">
+        <div class="flag">Most popular</div>
+        <div class="tn">Growth</div>
+        <div class="tf">Content engine + community momentum</div>
+        <div class="amt"><span class="c">$2,000</span><span class="per">/month</span></div>
+        <ul>
+          <li>Everything in Essentials, plus:</li>
+          <li>Up to 4 platforms, 20+ posts/month</li>
+          <li>Short-form video strategy &amp; scripting</li>
+          <li>Community building (Discord / Telegram / IG)</li>
+          <li>Quarterly campaign or launch support</li>
+          <li>Bi-weekly reporting + strategy calls</li>
+        </ul>
+        <div class="best"><b>Best for:</b> brands ready to grow, not just post — the plan most clients start on.</div>
+      </div>
+      <div class="tier">
+        <div class="tn">Full-Stack Partner</div>
+        <div class="tf">End-to-end marketing, one owner</div>
+        <div class="amt"><span class="c">$3,500</span><span class="per">/month</span></div>
+        <ul>
+          <li>Everything in Growth, plus:</li>
+          <li>Paid ads: Meta &amp; Google (strategy → optimisation)</li>
+          <li>Email marketing &amp; lifecycle flows</li>
+          <li>KOL / influencer program management</li>
+          <li>Founder or exec personal brand (1 leader)</li>
+          <li>Funnel, landing page &amp; launch campaigns</li>
+        </ul>
+        <div class="best"><b>Best for:</b> teams that want a full marketing department in one person.</div>
+      </div>
+    </div>
+    <div class="price-notes">
+      <span><i>→</i> 3-month minimum, then month to month</span>
+      <span><i>→</i> Ad spend billed separately to your accounts</span>
+      <span><i>→</i> Web3 / TGE scopes quoted custom</span>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>15</span></div>
+</section>
+
+<!-- ═══════════ 16 · NEXT STEPS ═══════════ -->
+<section class="slide">
+  <div class="glow glow-amber" style="width:800px;height:560px;bottom:-300px;right:-220px;"></div>
+  <div class="grid-tex"></div>
+  <div class="pad">
+    <div class="kicker">Next steps</div>
+    <h2 class="slide-title">Let's build <em>something real</em></h2>
+    <div class="next-steps">
+      <div class="steps-list">
+        <div class="s">
+          <div class="num">01</div>
+          <div><h3>Book a 30-minute call</h3><p>Free, no pressure. We talk through your brand, your goals, and whether this is a fit — both ways.</p></div>
+        </div>
+        <div class="s">
+          <div class="num">02</div>
+          <div><h3>Get your audit & plan</h3><p>Within a week of kickoff you'll have a written strategy: positioning, channels, content pillars, and 90-day targets.</p></div>
+        </div>
+        <div class="s">
+          <div class="num">03</div>
+          <div><h3>Content ships in week two</h3><p>No long onboarding. The system goes live fast, and we iterate from real data — with a direct line to me throughout.</p></div>
+        </div>
+        <div style="margin-top:26px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 24px; display:flex; align-items:center; justify-content:space-between; gap:18px;">
+          <p style="color:var(--muted); font-size:12.5px; line-height:1.55;"><b style="color:var(--amber); font-weight:600;">Currently taking on 2 new clients.</b> Full case studies, live work samples, and more at the portfolio site.</p>
+          <span style="font-family:var(--mono); font-size:11px; color:var(--ink); white-space:nowrap;">karan-sud-portfolio.vercel.app</span>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="t">Karan Sud</div>
+        <div class="rows">
+          <div class="row"><span class="k">Email</span><span class="v">contactkaransud@gmail.com</span></div>
+          <div class="row"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/karansud7</span></div>
+          <div class="row"><span class="k">X / Twitter</span><span class="v">@KaranSudSocial</span></div>
+          <div class="row"><span class="k">Book directly</span><span class="v">calendly.com/contactkaransud/30min</span></div>
+        </div>
+        <div class="cta">Book your free strategy call →</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth Deck</span><span>16 · Thank you</span></div>
+</section>
+
+</body>
+</html>

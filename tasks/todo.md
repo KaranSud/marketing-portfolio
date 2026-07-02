@@ -164,3 +164,15 @@ Classification verified correct on 13 real domains across tech/restaurant/ecomme
 healthcare/local (fixed: vercel->saas not ecommerce; deloitte/perkinscoie->pro-services not tech;
 aspendental->healthcare). Real facts populate (eataly address+socials). Briefs reframe per vertical,
 no fabrication. Builds clean. Strictly free, no new keys.
+
+## Client Deck (2026-07-02)
+- [x] Pull work, metrics, creatives from portfolio (caseStudies.ts, showcase.ts, Results/)
+- [x] Build 16-slide agency-style deck (deck/deck.html, 1280x720, brand-matched dark/amber)
+- [x] Include creatives across platforms + IG feed screenshots (Mohaimina posts/reels feeds)
+- [x] Pricing page: $1,200 / $2,000 / $3,500 tiers
+- [x] Local fonts (Space Grotesk/Inter/JetBrains Mono), optimized images, 4.8MB PDF
+- [x] Self-review loop on rendered slides: fixed overflow, broken screenshot, dead space
+
+### Review
+Deliverables: deck/Karan-Sud-Growth-Deck.pdf (16 slides) + deck/deck.html (editable source).
+Rebuild PDF: render deck.html in Chromium, print 1280x720 pages.
