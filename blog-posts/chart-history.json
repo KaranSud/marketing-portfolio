@@ -28,5 +28,11 @@
     "slug": "2026-06-29",
     "title": "Product-Led Growth Was Supposed to Kill Sales Teams",
     "chart_types": ["vertical bar", "radar"]
+  },
+  {
+    "date": "2026-07-02",
+    "slug": "2026-07-02",
+    "title": "Product Led Growth Activation: The 60% Leak in Your Conversion Funnel",
+    "chart_types": ["horizontal bar", "line"]
   }
 ]

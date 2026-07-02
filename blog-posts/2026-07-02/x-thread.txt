@@ -1,0 +1,71 @@
+1/ Most PLG teams are obsessing over free-to-paid conversion rates.
+
+They're optimizing the wrong thing.
+
+The real leak is upstream — and 40-60% of your free users are already gone before you get a chance to convert them. Thread:
+
+2/ The industry median PLG conversion rate is 8%.
+
+But that number is a lie. ChartMogul's data on 200 products shows a bimodal distribution: most products are either below 5% or above 15%.
+
+If you're at 8%, you're not near average. You're in the wrong cluster.
+
+3/ Between signup and your product's core value, something brutal happens.
+
+40-60% of free users leave. Not because they hated the product. They never saw enough of it to form an opinion.
+
+This is the dropout zone. It's where your growth is leaking.
+
+4/ Userpilot's benchmark of 62 B2B SaaS companies puts the average activation rate at 37.5%.
+
+Translation: roughly 6 out of 10 new free users disappear before any meaningful product experience. They never churned. They just never started.
+
+5/ Here's the mistake most PLG teams make with activation:
+
+They define it as a time-based or count threshold. Logged in 3x in 7 days. Completed 3 actions. Uploaded a file.
+
+That tells you a user touched your product. It doesn't tell you they got anything from it.
+
+6/ Kyle Poyar put it well: "Activation is more of a score than a binary yes/no, and conversion increases dramatically as the score goes up."
+
+The aha moment isn't a checkbox. It's a pattern of behaviors tied to your core value.
+
+7/ The most revealing stat in all of PLG right now:
+
+Only 34% of PLG companies actively track activation as a metric.
+
+2 in 3 PLG teams are running a growth motion without measuring the thing that most predicts whether a free user ever pays.
+
+8/ Why? Activation sits at the intersection of product, marketing, and customer success.
+
+In most orgs, nobody owns the 4-14 days between signup and value. Product owns the feature. Marketing owns the signup. CS owns the "at risk" user.
+
+Nobody owns the gap.
+
+9/ Buyer behavior is making this more expensive by the day.
+
+A March 2026 Gartner survey found 67% of B2B buyers now prefer a rep-free experience for at least part of their purchase journey.
+
+Your product's first session IS the sales call. It either activates them or it doesn't.
+
+10/ The fix that actually works: product qualified lead scoring.
+
+Companies using PQL frameworks see 25-30% free-to-paid conversion. Companies routing unscored leads see 5-10%.
+
+That's a 3x difference from one structural change in how the GTM team decides who gets human attention.
+
+11/ And yet only 25% of PLG companies have a PQL framework.
+
+The other 75% are still qualifying leads by company size and job title — firmographic signals from the sales-led era — while sitting on a PLG motion.
+
+12/ The actual fix starts at product architecture, not the email queue.
+
+What does a user need to experience in their first session to feel the product is for them? That answer becomes your activation design target.
+
+Minimize the distance between signup and that moment. Everything else follows.
+
+13/ The teams that win the next generation of PLG aren't the ones with the best acquisition machine.
+
+They're the ones who figured out how to make every free user feel like a paying customer before they ever open their wallet.
+
+Full breakdown with data and a 3-step framework: [link]
