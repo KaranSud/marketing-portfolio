@@ -14,6 +14,10 @@ The prospecting market is crowded. There are well-funded tools for finding compa
 The existing tools are good at what they do, but three things bothered me enough to build around them.
 
 <div class="ig">
+  <div class="ig-head">
+    <span class="ig-kicker">Figure 1 · Build vs. buy</span>
+    <span class="ig-title">What the paid stack costs, and what this engine replaces</span>
+  </div>
   <div class="ig-compare">
     <div class="ig-col">
       <div class="ig-col-head">Typical paid stack</div>

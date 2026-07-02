@@ -3,6 +3,27 @@
 import { useEffect, useRef, useState } from "react";
 import Nav from "@/components/Nav";
 
+const RESEARCH_URL = "https://account-research-five.vercel.app";
+
+const HOW_STEPS: { title: string; desc: string }[] = [
+  {
+    title: "Bring in your leads",
+    desc: "Export the CSV from the research engine and hit Import CSV. Companies, contacts, and fit scores map automatically. Or add leads by hand.",
+  },
+  {
+    title: "Drag cards through stages",
+    desc: "Work the board from New to Won. Flip to list view to scan everything, and search across companies, contacts, and notes.",
+  },
+  {
+    title: "Set follow-up dates",
+    desc: "Pick a next-touch date on any card. Due-today leads get marked, overdue ones are flagged red and counted up top.",
+  },
+  {
+    title: "Your data stays yours",
+    desc: "Everything is saved in this browser only, with no account and no server. Export a CSV backup whenever you like.",
+  },
+];
+
 type Stage =
   | "New"
   | "Researched"
@@ -99,6 +120,7 @@ export default function CrmPage() {
   });
   const [view, setView] = useState<"board" | "list">("board");
   const [query, setQuery] = useState("");
+  const [showHow, setShowHow] = useState(false);
   const [dragId, setDragId] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState<Stage | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -346,6 +368,45 @@ export default function CrmPage() {
           </p>
         </header>
 
+        {(showHow || (loaded && leads.length === 0)) && (
+          <div className="crm-how">
+            <div className="crm-how-head">
+              <span className="eyebrow">How this works</span>
+              {leads.length > 0 && (
+                <button
+                  className="crm-how-close"
+                  onClick={() => setShowHow(false)}
+                  aria-label="Hide guide"
+                >
+                  ×
+                </button>
+              )}
+            </div>
+            <div className="crm-how-grid">
+              {HOW_STEPS.map((s, i) => (
+                <div className="crm-how-step" key={s.title}>
+                  <span className="crm-how-num">{i + 1}</span>
+                  <b>{s.title}</b>
+                  <p>{s.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="crm-how-foot">
+              <a
+                className="btn btn-primary"
+                href={RESEARCH_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research leads first
+              </a>
+              <a className="btn btn-ghost" href="/tools#crm">
+                Full step-by-step guide
+              </a>
+            </div>
+          </div>
+        )}
+
         <div className="crm-stats">
           {STAGES.map((s) => {
             const n = leads.filter((l) => l.stage === s).length;
@@ -396,6 +457,11 @@ export default function CrmPage() {
           >
             Export CSV
           </button>
+          {leads.length > 0 && !showHow && (
+            <button className="btn btn-ghost" onClick={() => setShowHow(true)}>
+              How it works
+            </button>
+          )}
           {leads.length > 0 && (
             <button
               className="linkbtn crm-clear"
@@ -450,17 +516,14 @@ export default function CrmPage() {
 
         {leads.length === 0 ? (
           <div className="crm-empty">
-            <h3>No leads yet</h3>
+            <h3>Your pipeline is empty</h3>
             <p>
-              Add a lead, or export a CSV from the{" "}
-              <a
-                href="https://account-research-five.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              Start with step 1 above: research your targets with the{" "}
+              <a href={RESEARCH_URL} target="_blank" rel="noopener noreferrer">
                 Account Research engine
-              </a>{" "}
-              and import it here to start your pipeline.
+              </a>
+              , export the CSV, and import it here. Or just hit{" "}
+              <b>Add lead</b> to enter one by hand.
             </p>
           </div>
         ) : view === "board" ? (

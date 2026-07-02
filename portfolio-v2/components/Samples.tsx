@@ -86,7 +86,7 @@ export default function Samples() {
       : item.href
       ? item.href.startsWith("/")
         ? "Read"
-        : "Open ↗"
+        : "Open"
       : "";
     return (
       <>
@@ -217,7 +217,7 @@ export default function Samples() {
                   rel="noopener noreferrer"
                   className="lightbox-link"
                 >
-                  View original ↗
+                  View original
                 </a>
               )}
             </div>

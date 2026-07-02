@@ -14,6 +14,10 @@ I built an account research and outbound engine that takes a company domain and 
 Every request flows through three stages: gather public signals, classify and synthesize, then produce the outreach. Nothing is invented along the way.
 
 <div class="ig">
+  <div class="ig-head">
+    <span class="ig-kicker">Figure 1 · Architecture</span>
+    <span class="ig-title">How a domain becomes a ready-to-run brief</span>
+  </div>
   <div class="ig-flow">
     <div class="ig-step"><span class="ig-num">1</span><b>Gather</b><small>Site, Wikidata, news, sitemap, hiring</small></div>
     <div class="ig-arrow">&rarr;</div>
@@ -43,6 +47,10 @@ The single most important design decision was that the model never invents a num
 The stack is deliberately boring and free.
 
 <div class="ig">
+  <div class="ig-head">
+    <span class="ig-kicker">Figure 2 · The stack</span>
+    <span class="ig-title">Everything it runs on, all on free tiers</span>
+  </div>
   <div class="ig-chips">
     <span>Next.js app</span>
     <span>Serverless API routes</span>
