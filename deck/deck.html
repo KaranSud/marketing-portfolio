@@ -44,15 +44,6 @@
   .glow-blue { background: radial-gradient(circle, rgba(78,140,255,0.15), transparent 65%); }
   .glow-cyan { background: radial-gradient(circle, rgba(90,200,235,0.10), transparent 65%); }
 
-  .grid-tex {
-    position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      linear-gradient(rgba(150,180,255,0.028) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(150,180,255,0.028) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 78%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 78%);
-  }
 
   .kicker { font-family: var(--body); font-size: 13px; font-weight: 500; color: var(--accent); }
 
@@ -104,11 +95,7 @@
     font-family: var(--display); font-weight: 600; font-size: 84px;
     line-height: 1.02; letter-spacing: -0.025em;
   }
-  .cover h1 em {
-    font-style: normal;
-    background: linear-gradient(92deg, #5CA2FF 10%, #7FD4F0 90%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
+  .cover h1 em { font-style: normal; color: var(--accent); }
   .cover-sub { margin-top: 26px; max-width: 640px; color: var(--muted); font-size: 17px; font-weight: 300; line-height: 1.6; }
   .cover-name { margin-top: 44px; display: flex; align-items: center; gap: 18px; }
   .cover-name .avatar {
@@ -180,6 +167,11 @@
   .case-head .logo.contain img { object-fit: contain; padding: 5px; }
   .case-head h2 { font-family: var(--display); font-weight: 600; font-size: 31px; letter-spacing: -0.015em; }
   .case-head .sub { color: var(--faint); font-size: 12.5px; margin-top: 3px; }
+  .lab { font-size: 11px; font-weight: 600; color: var(--accent); margin-top: 18px; }
+  .lab + .case-brief { margin-top: 6px; }
+  .lab + .case-did { margin-top: 8px; }
+  .lab.push { margin-top: auto; padding-top: 20px; }
+  .lab.push + .case-stats { margin-top: 10px; padding-top: 0; }
   .case-brief { margin-top: 18px; color: var(--muted); font-size: 14.5px; line-height: 1.62; font-weight: 300; }
   .case-brief b { color: var(--ink); font-weight: 500; }
   .case-did { margin-top: 20px; display: flex; flex-direction: column; gap: 9px; }
@@ -307,7 +299,6 @@
 <section class="slide cover">
   <div class="glow glow-blue glow1"></div>
   <div class="glow glow-cyan glow2"></div>
-  <div class="grid-tex"></div>
   <div class="pad">
     <div class="cover-top">
       <div class="wordmark">KARAN<span>·</span>SUD</div>
@@ -435,13 +426,16 @@
         <div class="logo"><img src="assets/logo-fantv.jpg" alt="FanTV"></div>
         <div><h2>FanTV AI</h2><div class="sub">SocialFi · X, Instagram, Discord, Telegram</div></div>
       </div>
+      <div class="lab">The situation</div>
       <p class="case-brief">FanTV had <b>around 70K followers and under 1,000 community members</b> when I joined, so I ran brand and founder content in parallel, scaled the KOL program past 100 creators, and led paid acquisition on a ₹45–50L monthly budget.</p>
+      <div class="lab">What I did</div>
       <div class="case-did">
         <div class="d">Content system for the brand and the founder covering pillars, cadence, and formats</div>
         <div class="d">KOL program scaled from roughly 10 to more than 100 creators at peak</div>
         <div class="d">Community grown from under 1K to 150K+ through ambassadors, AMAs, and airdrops</div>
         <div class="d">Full-funnel tracking in MoEngage across CAC, DAU/WAU/MAU, and D3/D7/D15 retention</div>
       </div>
+      <div class="lab push">The results</div>
       <div class="case-stats">
         <div class="cs"><div class="v">300K</div><div class="l">Followers, up from 70K</div></div>
         <div class="cs"><div class="v">1.5M+</div><div class="l">Monthly active users</div></div>
@@ -467,13 +461,16 @@
         <div class="logo dark contain"><img src="assets/logo-fere.png" alt="Fere AI"></div>
         <div><h2>Fere AI</h2><div class="sub">AI trading agent · X, email, YouTube, blog</div></div>
       </div>
+      <div class="lab">The situation</div>
       <p class="case-brief">Fere AI had a strong trading agent and <b>almost no users</b>, so I built proof-led content around the agent actually trading, benchmarked it against competitors, and put that evidence on every channel.</p>
+      <div class="lab">What I did</div>
       <div class="case-did">
         <div class="d">Built the X content pipeline the brand still runs on today</div>
         <div class="d">Reached #1 Fintech Product of the Day on Product Hunt and Top 2 overall</div>
         <div class="d">Ran paid acquisition, referrals, and a points program to drive signups</div>
         <div class="d">Launched the email program that landed Fere's first paying users</div>
       </div>
+      <div class="lab push">The results</div>
       <div class="case-stats">
         <div class="cs"><div class="v">7K+</div><div class="l">Daily active traders</div></div>
         <div class="cs"><div class="v">10M+</div><div class="l">AI agent executions</div></div>
@@ -500,12 +497,15 @@
         <div class="logo dark contain"><img src="assets/logo-defx.png" alt="Defx"></div>
         <div><h2>Defx</h2><div class="sub">Perpetuals DEX · X, Telegram, Discord</div></div>
       </div>
+      <div class="lab">The situation</div>
       <p class="case-brief">Defx had a working exchange doing <b>under $100K a month with about 50 traders</b>, so contests and KOLs brought people in while community and organic content gave them a reason to stay.</p>
+      <div class="lab">What I did</div>
       <div class="case-did">
         <div class="d">Ran two trading contests, including a partnership with Voltrade</div>
         <div class="d">Built KOL relationships and a community of people actually trading</div>
         <div class="d">Produced UGC and organic content to build trust around the product</div>
       </div>
+      <div class="lab push">The results</div>
       <div class="case-stats">
         <div class="cs"><div class="v">$50M+</div><div class="l">Monthly volume, from under $100K</div></div>
         <div class="cs"><div class="v">$1.5B+</div><div class="l">Cumulative volume on DefiLlama</div></div>
@@ -571,12 +571,15 @@
         <div class="logo"><img src="assets/logo-tonyromas.jpg" alt="Tony Roma's"></div>
         <div><h2>Tony Roma's</h2><div class="sub">53-year-old global chain · Instagram, Facebook</div></div>
       </div>
+      <div class="lab">The situation</div>
       <p class="case-brief">Tony Roma's needed a modern, consistent presence along with launch support for new locations, and <b>every number on this slide is organic with zero paid spend behind it</b>.</p>
+      <div class="lab">What I did</div>
       <div class="case-did">
         <div class="d">Content strategy covering the calendar, visual direction, and posting cadence</div>
         <div class="d">Multi-phase campaigns for location launches, including Kimball in Tennessee</div>
-        <div class="d">CEO personal brand built in parallel as the human layer of the brand</div>
+        <div class="d">CEO personal brand run in parallel, adding 1.2M+ organic impressions in six months with zero paid spend</div>
       </div>
+      <div class="lab push">The results</div>
       <div class="case-stats">
         <div class="cs"><div class="v">729K</div><div class="l">Facebook views, fully organic</div></div>
         <div class="cs"><div class="v">+448%</div><div class="l">3-second video views</div></div>
@@ -594,41 +597,7 @@
   <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>08</span></div>
 </section>
 
-<!-- 09 · Mohaimina feed -->
-<section class="slide">
-  <div class="pad">
-    <div style="display:grid; grid-template-columns: 470px 1fr; gap: 56px;">
-      <div>
-        <div class="kicker">Case study</div>
-        <h2 class="slide-title" style="font-size:34px;">From silent account to <em>executive presence</em></h2>
-        <p class="slide-sub">Mohaimina Haque is the CEO of Tony Roma's, an attorney, and a law professor, and her Instagram (@attorneyminadc) had a following without a strategy behind it.</p>
-        <div class="case-did" style="margin-top:22px;">
-          <div class="d">Before, the feed was quiet, with no positioning and no reason to follow</div>
-          <div class="d">After, every post ladders to one story, from Bloomberg TV features to Davos and board leadership</div>
-          <div class="d">The designed grid and reels covers on the right are the system, not one-off posts</div>
-        </div>
-        <div class="case-stats" style="margin-top:30px;">
-          <div class="cs"><div class="v">1.2M+</div><div class="l">Organic impressions in 6 months</div></div>
-          <div class="cs"><div class="v">$0</div><div class="l">Paid spend</div></div>
-          <div class="cs"><div class="v">6.5K+</div><div class="l">Engaged followers</div></div>
-        </div>
-      </div>
-      <div style="display:flex; gap:26px; align-items:flex-start; justify-content:center; padding-top:14px;">
-        <div>
-          <div class="phone" style="width:230px;"><div class="screen"><img src="assets/mina-posts-feed.jpg" alt="Designed posts grid"></div></div>
-          <p style="text-align:center; margin-top:10px; color:var(--faint); font-size:11.5px;">The designed posts grid</p>
-        </div>
-        <div>
-          <div class="phone" style="width:230px;"><div class="screen"><img src="assets/mina-reels-feed.jpg" alt="Reels covers"></div></div>
-          <p style="text-align:center; margin-top:10px; color:var(--faint); font-size:11.5px;">Reels with designed covers</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>09</span></div>
-</section>
-
-<!-- 10 · Prashan -->
+<!-- 09 · Prashan -->
 <section class="slide">
   <div class="case">
     <div class="case-copy">
@@ -637,12 +606,15 @@
         <div class="logo" style="background:linear-gradient(135deg,#1d4d8f,#0c1f3d); display:flex; align-items:center; justify-content:center;"><span style="font-family:var(--display); font-weight:700; color:#a8c9f0; font-size:15px;">PA</span></div>
         <div><h2>Prashan Agarwal</h2><div class="sub">Executive personal brand · X and LinkedIn</div></div>
       </div>
+      <div class="lab">The situation</div>
       <p class="case-brief"><b>Prashan is the CEO of FanTV and the former CEO of Gaana</b>, and I wrote everything in his actual voice, positioning him as a proven operator making a serious Web3 bet while running his accounts alongside the FanTV brand so each fed the other.</p>
+      <div class="lab">What I did</div>
       <div class="case-did">
         <div class="d">Defined the positioning, pillars, and calendar across X and LinkedIn</div>
         <div class="d">Wrote and managed every post directly with him rather than running a ghost-feed</div>
         <div class="d">His reach humanised the brand while the brand built his credibility</div>
       </div>
+      <div class="lab push">The results</div>
       <div class="case-stats">
         <div class="cs"><div class="v">12K→100K</div><div class="l">X followers in 10 months</div></div>
         <div class="cs"><div class="v">2×</div><div class="l">LinkedIn audience, 5K to 10K</div></div>
@@ -657,10 +629,10 @@
       <div class="cap">Founder account analytics across the 12K to 100K run</div>
     </div>
   </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>10</span></div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>09</span></div>
 </section>
 
-<!-- 11 · Small budgets -->
+<!-- 10 · Small budgets -->
 <section class="slide">
   <div class="pad">
     <div class="kicker">Case study</div>
@@ -700,10 +672,10 @@
       <p><b>Opaque Studio</b>, a luxury handcrafted home brand, had me run marketing end to end across Meta and Google at <b>₹3L monthly ad spend with a consistent 4X ROAS</b>, while Instagram grew from 30K to 41K through multiple collection launches.</p>
     </div>
   </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>11</span></div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>10</span></div>
 </section>
 
-<!-- 12 · Creative work -->
+<!-- 11 · Creative work -->
 <section class="slide">
   <div class="pad">
     <div class="kicker">Creative</div>
@@ -722,24 +694,20 @@
         <div class="label"><span class="t">Sportrush viral reels</span><span class="k">Short-form video</span></div>
       </div>
       <div class="creative-card">
-        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/mina-posts-feed.jpg" alt="Designed IG posts feed" style="object-position:top;"></div></div>
-        <div class="label"><span class="t">Executive feed design</span><span class="k">Social design</span></div>
-      </div>
-      <div class="creative-card">
-        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/mina-reels-feed.jpg" alt="Designed IG reels feed" style="object-position:top;"></div></div>
-        <div class="label"><span class="t">Reels cover system</span><span class="k">Social design</span></div>
-      </div>
-      <div class="creative-card">
         <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/tr-ig-content.jpg" alt="Tony Roma's top content" style="object-position:bottom;"></div></div>
         <div class="label"><span class="t">Tony Roma's top posts</span><span class="k">F&amp;B content</span></div>
+      </div>
+      <div class="creative-card" style="grid-column: span 2;">
+        <div class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="imgbox"><img src="assets/tr-fb-posts.jpg" alt="Tony Roma's launch creatives" style="object-position:top;"></div></div>
+        <div class="label"><span class="t">Tony Roma's location launch campaign, 130K views on the top post</span><span class="k">Campaign creative</span></div>
       </div>
     </div>
     <p style="margin-top:16px; color:var(--faint); font-size:12px;">The scope also covers email campaigns, X threads, launch campaigns, UGC briefs, and KOL creative direction, with more samples on the portfolio site.</p>
   </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>12</span></div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>11</span></div>
 </section>
 
-<!-- 13 · Live links -->
+<!-- 12 · Live links -->
 <section class="slide">
   <div class="glow glow-blue" style="width:700px;height:480px;top:-260px;right:-200px;"></div>
   <div class="pad">
@@ -791,10 +759,10 @@
       </a>
     </div>
   </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>13</span></div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>12</span></div>
 </section>
 
-<!-- 14 · Services -->
+<!-- 13 · Services -->
 <section class="slide">
   <div class="pad">
     <div class="kicker">Services</div>
@@ -823,10 +791,10 @@
     </div>
     <p class="plainlist" style="margin-top:20px;">The work spans Web3, AI, restaurants, D2C, sports media, and executive brands.</p>
   </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>14</span></div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>13</span></div>
 </section>
 
-<!-- 15 · Process -->
+<!-- 14 · Process -->
 <section class="slide">
   <div class="pad">
     <div class="kicker">Process</div>
@@ -861,10 +829,10 @@
       <p><b>You'll always know what's happening</b>, with a shared content tracker, direct access to me, and reporting tied to real business numbers rather than vanity metrics.</p>
     </div>
   </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>15</span></div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>14</span></div>
 </section>
 
-<!-- 16 · Pricing -->
+<!-- 15 · Pricing -->
 <section class="slide">
   <div class="glow glow-blue" style="width:800px;height:520px;top:-280px;left:50%;transform:translateX(-50%);"></div>
   <div class="pad" style="padding-top:48px;">
@@ -917,13 +885,12 @@
     </div>
     <div class="price-notes">Plans run on a 3-month minimum and then month to month, ad spend is billed separately to your accounts, and Web3 or TGE scopes are quoted custom.</div>
   </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>16</span></div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>15</span></div>
 </section>
 
-<!-- 17 · Close -->
+<!-- 16 · Close -->
 <section class="slide">
   <div class="glow glow-blue" style="width:800px;height:560px;bottom:-300px;right:-220px;"></div>
-  <div class="grid-tex"></div>
   <div class="pad">
     <div class="kicker">Next steps</div>
     <h2 class="slide-title">Let's build <em>something real</em></h2>
@@ -958,7 +925,7 @@
       </div>
     </div>
   </div>
-  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>17 · Thank you</span></div>
+  <div class="footer"><span><b>Karan Sud</b> · Growth deck</span><span>16 · Thank you</span></div>
 </section>
 
 </body>
