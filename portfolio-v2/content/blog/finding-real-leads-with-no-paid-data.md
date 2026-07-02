@@ -14,6 +14,10 @@ The hardest part of starting outbound for a new brand is the blank list. Paid da
 You describe what you sell. The tool turns that into an ideal customer profile, then queries open data for companies that match, then cleans and ranks the result.
 
 <div class="ig">
+  <div class="ig-head">
+    <span class="ig-kicker">Figure 1 · Lead discovery</span>
+    <span class="ig-title">From your offer to a ranked list of real companies</span>
+  </div>
   <div class="ig-flow">
     <div class="ig-step"><span class="ig-num">1</span><b>Offer</b><small>What you sell</small></div>
     <div class="ig-arrow">&rarr;</div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getLenis } from "@/lib/lenis";
 
@@ -9,7 +10,6 @@ const links: [string, string][] = [
   ["services", "Services"],
   ["brands", "Brands"],
   ["skills", "Toolkit"],
-  ["labs", "Labs"],
 ];
 
 export default function Nav() {
@@ -89,20 +89,31 @@ export default function Nav() {
                 {label}
               </a>
             ))}
-            <a
+            <Link
+              href="/tools"
+              className={
+                pathname?.startsWith("/tools") || pathname?.startsWith("/crm")
+                  ? "active"
+                  : undefined
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              Tools
+            </Link>
+            <Link
               href="/blog"
               className={pathname?.startsWith("/blog") ? "active" : undefined}
               onClick={() => setMenuOpen(false)}
             >
               Blog
-            </a>
-            <a
+            </Link>
+            <Link
               href="/samples"
               className={pathname?.startsWith("/samples") ? "active" : undefined}
               onClick={() => setMenuOpen(false)}
             >
               Samples
-            </a>
+            </Link>
             <a
               href={sectionHref("contact")}
               className="btn btn-ghost nav-cta"
@@ -135,12 +146,15 @@ export default function Nav() {
               {label}
             </a>
           ))}
-          <a href="/blog" onClick={() => setMenuOpen(false)}>
+          <Link href="/tools" onClick={() => setMenuOpen(false)}>
+            Tools
+          </Link>
+          <Link href="/blog" onClick={() => setMenuOpen(false)}>
             Blog
-          </a>
-          <a href="/samples" onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/samples" onClick={() => setMenuOpen(false)}>
             Samples
-          </a>
+          </Link>
           <a
             href={sectionHref("contact")}
             className="btn btn-primary mobile-menu-cta"

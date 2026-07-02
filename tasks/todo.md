@@ -164,3 +164,17 @@ Classification verified correct on 13 real domains across tech/restaurant/ecomme
 healthcare/local (fixed: vercel->saas not ecommerce; deloitte/perkinscoie->pro-services not tech;
 aspendental->healthcare). Real facts populate (eataly address+socials). Briefs reframe per vertical,
 no fabrication. Builds clean. Strictly free, no new keys.
+
+---
+
+## Review: engagement overhaul (2026-07-02)
+
+Shipped on branch `claude/portfolio-redesign-overhaul-8dsywo`.
+
+- [x] New `/tools` page: per-tool hero with live mock, "built for / replaces / costs" facts, numbered how-to steps with a Result callout per step, "what you walk away with" lists, workflow strip showing how the two tools chain, closing CTA. Added to nav and sitemap.
+- [x] Homepage Labs section: both tools now get a full visual card (pipeline mock + kanban mock), each with an open link and a step-by-step guide link into /tools.
+- [x] Blog infographics: figure headers (kicker + title), larger type throughout, hover states, wider canvas than the text column on desktop, vertical timeline layout on phones.
+- [x] Services section: numbered list restyled as a 3-column interactive card grid with cursor-glow hover.
+- [x] CRM: "How this works" onboarding panel (auto-shows when pipeline is empty, toggleable from the toolbar), rewritten empty state.
+- [x] Copy pass: removed all em/en dashes and AI-sounding phrasing, dropped checkmark chips and arrow glyphs in buttons (see tasks/lessons.md).
+- [x] Verified: production build passes, lint clean on changed files (2 pre-existing errors untouched), desktop + mobile screenshots reviewed for home, blog index, article, /tools, /crm.

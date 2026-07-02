@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { caseStudies, type CaseStudy } from "@/lib/caseStudies";
 import CaseModal from "./CaseModal";
+import FeatureStory from "./FeatureStory";
 import SectionHead from "./SectionHead";
 import { getLenis } from "@/lib/lenis";
 
@@ -86,9 +87,10 @@ export default function Work() {
           sub="Twelve engagements across Web3, AI, F&B, and e-commerce. What each looked like before, and where it ended up."
         />
 
-        {/* Featured */}
+        {/* Featured: pinned scroll story on desktop, card on smaller screens */}
+        <FeatureStory data={featured} onOpen={() => openCase(featured)} />
         <motion.div
-          className="feature"
+          className="feature feature-fallback"
           onClick={() => openCase(featured)}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,11 +98,24 @@ export default function Work() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <div
-            className="feature-visual"
+            className={`feature-visual${featured.screenshots[0] ? " media" : ""}`}
             style={{ background: featured.thumb.bg }}
           >
             <span className="feature-badge">Featured</span>
-            <Thumb c={featured} />
+            {featured.screenshots[0] ? (
+              <>
+                <img
+                  className="feature-shot"
+                  src={featured.screenshots[0]}
+                  alt={`${featured.title} work sample`}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="wcard-shot-fade" />
+              </>
+            ) : (
+              <Thumb c={featured} />
+            )}
           </div>
           <div className="feature-body">
             <div className="feature-tag">{featured.tag}</div>
@@ -139,9 +154,27 @@ export default function Work() {
                 delay: (i % 3) * 0.07,
               }}
             >
-              <div className="wcard-thumb" style={{ background: c.thumb.bg }}>
-                <Thumb c={c} />
-              </div>
+              {c.screenshots[0] ? (
+                <div className="wcard-thumb media">
+                  <img
+                    className="wcard-shot"
+                    src={c.screenshots[0]}
+                    alt={`${c.title} work sample`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="wcard-shot-fade" />
+                  {c.thumb.logo ? (
+                    <img className="wcard-chip" src={c.thumb.logo} alt="" />
+                  ) : (
+                    <span className="wcard-chip text">{c.title}</span>
+                  )}
+                </div>
+              ) : (
+                <div className="wcard-thumb" style={{ background: c.thumb.bg }}>
+                  <Thumb c={c} />
+                </div>
+              )}
               <div className="wcard-body">
                 <span className="wtag">{c.tag}</span>
                 <div className="wtitle">{c.title}</div>

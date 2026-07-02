@@ -1,18 +1,20 @@
+import Link from "next/link";
 import SectionHead from "./SectionHead";
 import Reveal from "./Reveal";
+import { PipelineMock, BoardMock } from "./ToolMocks";
 
-const pipeline: { domain: string; fit: number; tier: string }[] = [
-  { domain: "stripe.com", fit: 88, tier: "strong" },
-  { domain: "vercel.com", fit: 85, tier: "strong" },
-  { domain: "notion.so", fit: 64, tier: "moderate" },
-  { domain: "wikipedia.org", fit: 15, tier: "weak" },
-];
-
-const points: string[] = [
+const researchPoints: string[] = [
   "Sourced briefs from Wikidata, live news, GitHub, and Hacker News",
   "A 0 to 100 fit score with a fit-ranked pipeline view",
   "Contact and leadership discovery, plus one-click CSV export",
   "No fabricated numbers, every figure traces back to a source",
+];
+
+const crmPoints: string[] = [
+  "Kanban board and list views, drag leads between six stages",
+  "Follow-up reminders with overdue flags, notes on every card",
+  "Imports the research engine's CSV, contacts and fit scores included",
+  "Saved in your browser, private by default, no account needed",
 ];
 
 export default function Labs() {
@@ -29,36 +31,13 @@ export default function Labs() {
         />
 
         <Reveal>
-          <a
-            className="labs-card"
-            href="https://account-research-five.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <div className="labs-card">
             <div className="labs-visual">
               <span className="labs-live">
                 <span className="labs-dot" />
                 Live
               </span>
-              <div className="labs-mock" aria-hidden="true">
-                <div className="labs-mock-head">
-                  <span className="labs-mock-label">Pipeline by fit</span>
-                </div>
-                <div className="labs-mock-rows">
-                  {pipeline.map((p) => (
-                    <div className="labs-mock-row" key={p.domain}>
-                      <span className="labs-mock-domain">{p.domain}</span>
-                      <span className="labs-mock-track">
-                        <i
-                          className={`labs-mock-fill ${p.tier}`}
-                          style={{ width: `${p.fit}%` }}
-                        />
-                      </span>
-                      <span className="labs-mock-score">{p.fit}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <PipelineMock />
             </div>
 
             <div className="labs-body">
@@ -71,31 +50,70 @@ export default function Labs() {
                 actually sounds human, for every account at once.
               </p>
               <ul className="labs-points">
-                {points.map((pt) => (
+                {researchPoints.map((pt) => (
                   <li key={pt}>{pt}</li>
                 ))}
               </ul>
-              <span className="labs-cta">
-                Open the live tool
-                <span>&rarr;</span>
-              </span>
+              <div className="labs-ctas">
+                <a
+                  className="labs-cta"
+                  href="https://account-research-five.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open the live tool
+                  <span>&rarr;</span>
+                </a>
+                <Link className="labs-cta ghost" href="/tools#research">
+                  How to use it, step by step
+                  <span>&rarr;</span>
+                </Link>
+              </div>
             </div>
-          </a>
+          </div>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <a className="labs-mini" href="/crm">
-            <div className="labs-tag">Outbound CRM</div>
-            <h3 className="labs-mini-title">Track your pipeline, end to end</h3>
-            <p className="labs-mini-desc">
-              Import the leads you researched, move them through stages, add
-              notes, and run your outbound. Saved in your browser, no account
-              needed.
-            </p>
-            <span className="labs-cta">
-              Open the CRM<span>&rarr;</span>
-            </span>
-          </a>
+          <div className="labs-card labs-card-alt">
+            <div className="labs-visual">
+              <span className="labs-live">
+                <span className="labs-dot" />
+                Live
+              </span>
+              <BoardMock />
+            </div>
+
+            <div className="labs-body">
+              <div className="labs-tag">Outbound CRM</div>
+              <h3 className="labs-title">Track your pipeline, end to end</h3>
+              <p className="labs-desc">
+                Import the leads you researched, move them through stages, add
+                notes, and run your outbound. Built to receive the research
+                engine&apos;s CSV, so the two tools work as one system.
+              </p>
+              <ul className="labs-points">
+                {crmPoints.map((pt) => (
+                  <li key={pt}>{pt}</li>
+                ))}
+              </ul>
+              <div className="labs-ctas">
+                <Link className="labs-cta" href="/crm">
+                  Open the CRM<span>&rarr;</span>
+                </Link>
+                <Link className="labs-cta ghost" href="/tools#crm">
+                  How to use it, step by step
+                  <span>&rarr;</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <Link className="labs-all" href="/tools">
+            See both tools explained, with step-by-step guides
+            <span>&rarr;</span>
+          </Link>
         </Reveal>
       </div>
     </section>
