@@ -1,0 +1,167 @@
+X THREAD: Marketing Attribution Created the Doom Loop
+Published: 2026-07-06
+Post: karansud.substack.com
+
+---
+
+1/14
+84% of companies are stuck in what Gartner calls the "brand doom loop."
+
+Marketing can't prove its value. Budget gets cut. Measurement gets harder. Value gets harder to prove.
+
+The cycle feeds itself.
+
+What nobody says out loud: last-touch attribution built this loop.
+
+Thread.
+
+---
+
+2/14
+Here is the doom loop in four moves:
+
+1. Can't measure brand value
+2. Shift budget to attributable channels (search, retargeting)
+3. Those channels get expensive because they capture existing demand, not new demand
+4. CFO asks for ROI story. CMO has no good answer.
+5. Budget gets cut. Return to step 1.
+
+---
+
+3/14
+The measurement gap is real.
+
+Only 52% of senior marketing leaders successfully prove the value of their department and get credit for it.
+
+That is from a Gartner survey of 378 CMOs and marketing leaders, published in September 2024.
+
+Half of the people running major marketing orgs can't defend what they spend.
+
+---
+
+4/14
+Why can't they prove it?
+
+Attribution software answers: "Which channel recorded the last interaction before a conversion?"
+
+The CFO is asking: "Did your marketing spending cause revenue to grow?"
+
+Those are not the same question. The tools are measuring something real. They're just measuring the wrong thing.
+
+---
+
+5/14
+The signal in the budget data is hard to miss.
+
+62.6% of total media spend now goes to awareness and conversion channels (up more than 10% since 2024).
+
+Loyalty and retention spend dropped 29% in the same period.
+
+Source: Gartner 2026 CMO Spend Survey, 401 CMOs.
+
+Last-touch attribution is doing exactly what it was built to do.
+
+---
+
+6/14
+The standard industry response: buy better attribution software.
+
+Multi-touch attribution. Customer data platforms. Revenue attribution modelers with machine learning.
+
+None of it fixes the real problem.
+
+64% of B2B marketing leaders don't trust their own measurement data for decision-making. Not "don't have it." Don't trust it.
+
+(Forrester, 2024)
+
+---
+
+7/14
+"Ninety percent of attribution tech is theater."
+
+That is Pranav Piyush, CEO of Paramark, the measurement startup that raised $8M in 2025.
+
+The dashboards are real. The data pipeline is real. The insight about what actually caused revenue growth is, in most cases, not there.
+
+---
+
+8/14
+The real cost of broken measurement: $26.3 billion in wasted media investment value that improvements in measurement could release.
+
+Plus $6.2 billion in industry-wide productivity.
+
+That is the IAB's estimate from the State of Data 2026 report, based on 400+ senior planning and analytics leaders.
+
+---
+
+9/14
+The path out is not a better attribution model.
+
+It is a measurement philosophy that can answer the causal question:
+
+Not "which channel appeared last?"
+
+But "did this investment cause revenue to grow that would not have grown otherwise?"
+
+Three tools exist to answer it.
+
+---
+
+10/14
+Tool 1: Self-reported attribution.
+
+Add one question to every lead form: "How did you first hear about us?"
+
+The answer will not match your CRM. That gap is the measurement gap.
+
+Refine Labs has data showing software-based attribution misses 93% of LinkedIn-influenced pipeline. LinkedIn drives early-stage awareness, not last clicks.
+
+---
+
+11/14
+Tool 2: Incrementality testing.
+
+Instead of "which channel gets credit," ask "what would have happened if we hadn't run this?"
+
+Run a geo-holdout test. Compare regions where you ran the campaign vs. regions you paused.
+
+The revenue difference is the actual incremental value. Causal proof, not modeled proxy.
+
+This is how Google and Meta validate their own ad products internally.
+
+---
+
+12/14
+Tool 3: Marketing mix modeling (MMM).
+
+Google open-sourced Meridian. Meta open-sourced Robyn. Both free.
+
+MMM uses historical spend and revenue data to model channel contribution over time.
+
+It cannot tell you which individual clicked what. It CAN tell you whether your brand spend is producing revenue growth. That is the CFO's actual question.
+
+---
+
+13/14
+Gartner's 2026 prediction is unusually specific:
+
+By 2027, 40%+ of CMOs who push for larger brand budgets will lose C-suite influence because they cannot demonstrate sufficient returns.
+
+That is not a budget prediction. That is a career prediction.
+
+The companies in the doom loop are already 2x less likely to exceed their growth targets.
+
+---
+
+14/14
+The 90-day escape plan:
+
+Week 1: Add "how did you first hear about us?" to every lead form. Free. No IT required.
+
+Weeks 4-10: Run one geo-holdout test in one channel. Six weeks. Measure the revenue difference.
+
+Month 3: Run a basic MMM model with 2 years of spend data using Meridian or Robyn. Show the CFO.
+
+The loop breaks the moment you stop asking which channel closed the deal and start asking which investments created the demand.
+
+Full post: [link]

@@ -1,0 +1,43 @@
+HERO IMAGE SOURCING NOTES
+Post: Marketing Attribution Created the Doom Loop. Here's How to Break It.
+Date: 2026-07-06
+
+PROXY POLICY NOTE: api.pexels.com and images.pexels.com are blocked by the
+session's egress policy (403 CONNECT rejection). The Pexels API could not be
+called programmatically. Karan: please source the hero image manually using
+the guidance below and save it as hero.jpg in this folder.
+
+PEXELS SEARCH TERMS (use these at pexels.com/search/):
+- "data center abstract"
+- "server room architecture"
+- "data network infrastructure"
+- "abstract architecture grid"
+
+PREFERRED PEXELS SEARCH URL:
+https://www.pexels.com/search/data+center+architecture/?orientation=landscape
+
+SELECTION CRITERIA:
+- Prefer: architectural, industrial, environmental photography — server rows,
+  aerial city grids, abstract light trails, industrial corridors
+- Avoid: people pointing at laptops, robot hands, AI brain graphics,
+  floating money, generic tech blue-glow visuals
+
+RECOMMENDED PHOTO (manual search confirmed via Google image reference):
+Pexels Photo ID: 1181345 (green server room corridor, landscape)
+Or search for photographer: Panumas Nikhomkhai (consistently strong tech photography)
+
+SUGGESTED ALT TEXT:
+"A long corridor of server racks bathed in blue-green light, representing
+the infrastructure of data measurement and the complexity of marketing analytics."
+
+PEXELS LICENSE: Free to use (Pexels License — commercial and editorial use,
+no attribution required but appreciated)
+
+RATIONALE: Server room or data infrastructure photography connects visually
+to the theme of measurement systems and data infrastructure without relying
+on clichéd AI imagery. The industrial aesthetic signals rigor and substance,
+matching the senior marketer audience.
+
+FALLBACK: If Pexels is unavailable, Unsplash (unsplash.com) offers similar
+free photography under the Unsplash License. Search: "server room" or
+"data center" with landscape orientation.

@@ -34,5 +34,11 @@
     "slug": "2026-07-02",
     "title": "Product Led Growth Activation: The 60% Leak in Your Conversion Funnel",
     "chart_types": ["horizontal bar", "line"]
+  },
+  {
+    "date": "2026-07-06",
+    "slug": "2026-07-06",
+    "title": "Marketing Attribution Created the Doom Loop. Here's How to Break It.",
+    "chart_types": ["donut", "area"]
   }
 ]

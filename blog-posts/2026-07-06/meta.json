@@ -1,0 +1,33 @@
+{
+  "title": "Marketing Attribution Created the Doom Loop. Here's How to Break It.",
+  "subtitle": "84% of companies are stuck. Last-touch attribution put them there.",
+  "meta_description": "84% of companies are stuck in Gartner's brand doom loop. Last-touch attribution built it. Here is the three-part measurement system that breaks the cycle.",
+  "tags": [
+    "marketing attribution",
+    "brand doom loop",
+    "CMO",
+    "marketing measurement",
+    "media mix modeling",
+    "incrementality testing",
+    "last-touch attribution",
+    "B2B marketing"
+  ],
+  "category": "Marketing analytics and attribution",
+  "word_count": 2091,
+  "published_date": "2026-07-06",
+  "primary_keyword": "marketing attribution",
+  "secondary_keywords": [
+    "last-touch attribution",
+    "brand doom loop",
+    "incrementality testing",
+    "marketing mix modeling",
+    "CMO measurement",
+    "self-reported attribution"
+  ],
+  "assets": {
+    "hero": "hero.jpg (sourcing instructions in hero-image.txt)",
+    "chart1": "chart1.html",
+    "chart2": "chart2.html",
+    "infographic": "infographic.svg"
+  }
+}

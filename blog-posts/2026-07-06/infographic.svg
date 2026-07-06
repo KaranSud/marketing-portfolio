@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <style>
+    .bg { fill: #FAFAF9; }
+    .title { font-size: 22px; font-weight: 800; fill: #0F172A; }
+    .subtitle { font-size: 13px; fill: #64748B; }
+    .loop-label { font-size: 13px; font-weight: 700; fill: #FFFFFF; }
+    .loop-sub { font-size: 11px; fill: rgba(255,255,255,0.85); }
+    .escape-title { font-size: 14px; font-weight: 700; fill: #0F172A; }
+    .escape-body { font-size: 12px; fill: #475569; }
+    .step-num { font-size: 18px; font-weight: 800; fill: #DC2626; }
+    .arrow-text { font-size: 11px; fill: #94A3B8; }
+    .divider-label { font-size: 12px; font-weight: 700; fill: #DC2626; letter-spacing: 0.08em; }
+    .source { font-size: 10px; fill: #94A3B8; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0F172A; }
+      .title { fill: #F8FAFC; }
+      .subtitle { fill: #94A3B8; }
+      .escape-title { fill: #F8FAFC; }
+      .escape-body { fill: #94A3B8; }
+      .arrow-text { fill: #64748B; }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect class="bg" x="0" y="0" width="800" height="900" rx="12"/>
+
+  <!-- Header -->
+  <text class="title" x="400" y="52" text-anchor="middle">The Brand Doom Loop — and How to Break It</text>
+  <text class="subtitle" x="400" y="74" text-anchor="middle">84% of companies are stuck in this cycle. Last-touch attribution is the entry point.</text>
+
+  <!-- THE DOOM LOOP (circular flow, top section) -->
+  <!-- Circle background for doom loop -->
+  <circle cx="400" cy="250" r="175" fill="none" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="6,4"/>
+
+  <!-- LOOP NODE 1: top — Under-invest in measurement -->
+  <rect x="285" y="100" width="230" height="58" rx="8" fill="#DC2626"/>
+  <text class="loop-label" x="400" y="125" text-anchor="middle">Under-invest in measurement</text>
+  <text class="loop-sub" x="400" y="143" text-anchor="middle">Last-touch looks "good enough"</text>
+
+  <!-- Arrow: top to right -->
+  <path d="M 530 129 Q 575 130 575 190" fill="none" stroke="#DC2626" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text class="arrow-text" x="563" y="165" text-anchor="start">→</text>
+
+  <!-- LOOP NODE 2: right — Brand spend starves -->
+  <rect x="538" y="200" width="200" height="58" rx="8" fill="#475569"/>
+  <text class="loop-label" x="638" y="225" text-anchor="middle">Brand spend starves</text>
+  <text class="loop-sub" x="638" y="243" text-anchor="middle">Acquisition channels win budget</text>
+
+  <!-- Arrow: right to bottom -->
+  <path d="M 575 258 Q 575 340 515 360" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrowGray)"/>
+
+  <!-- LOOP NODE 3: bottom — ROI impossible to prove -->
+  <rect x="285" y="350" width="230" height="58" rx="8" fill="#0F172A"/>
+  <text class="loop-label" x="400" y="375" text-anchor="middle">ROI becomes impossible to prove</text>
+  <text class="loop-sub" x="400" y="393" text-anchor="middle">64% of leaders don't trust their data</text>
+
+  <!-- Arrow: bottom to left -->
+  <path d="M 285 379 Q 230 380 225 320" fill="none" stroke="#0F172A" stroke-width="2" marker-end="url(#arrowDark)"/>
+
+  <!-- LOOP NODE 4: left — C-suite skepticism grows -->
+  <rect x="62" y="200" width="200" height="58" rx="8" fill="#64748B"/>
+  <text class="loop-label" x="162" y="225" text-anchor="middle">C-suite skepticism grows</text>
+  <text class="loop-sub" x="162" y="243" text-anchor="middle">52% of CMOs can't prove value</text>
+
+  <!-- Arrow: left to top -->
+  <path d="M 225 200 Q 225 130 285 129" fill="none" stroke="#64748B" stroke-width="2" marker-end="url(#arrowMid)"/>
+
+  <!-- Center label -->
+  <text x="400" y="256" text-anchor="middle" font-size="28" font-weight="900" fill="#DC2626">DOOM</text>
+  <text x="400" y="282" text-anchor="middle" font-size="28" font-weight="900" fill="#DC2626">LOOP</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#DC2626"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrowDark" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#0F172A"/>
+    </marker>
+    <marker id="arrowMid" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#64748B"/>
+    </marker>
+    <marker id="arrowBreak" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#DC2626"/>
+    </marker>
+  </defs>
+
+  <!-- DIVIDER LINE -->
+  <line x1="60" y1="455" x2="740" y2="455" stroke="#E2E8F0" stroke-width="1"/>
+  <text class="divider-label" x="400" y="449" text-anchor="middle">THREE MOVES TO BREAK THE LOOP</text>
+
+  <!-- STEP 1 -->
+  <rect x="60" y="475" width="210" height="165" rx="10" fill="none" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text class="step-num" x="86" y="507">01</text>
+  <text class="escape-title" x="86" y="528">Kill last-touch as</text>
+  <text class="escape-title" x="86" y="546">your default</text>
+  <text class="escape-body" x="86" y="570">Replace with self-reported</text>
+  <text class="escape-body" x="86" y="586">attribution on every pipeline</text>
+  <text class="escape-body" x="86" y="602">intake form. Ask: "How did</text>
+  <text class="escape-body" x="86" y="618">you first hear about us?"</text>
+  <text class="escape-body" x="86" y="634">This costs nothing.</text>
+
+  <!-- STEP 2 -->
+  <rect x="295" y="475" width="210" height="165" rx="10" fill="none" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text class="step-num" x="321" y="507">02</text>
+  <text class="escape-title" x="321" y="528">Run one incrementality</text>
+  <text class="escape-title" x="321" y="546">test this quarter</text>
+  <text class="escape-body" x="321" y="570">Pick one channel. Run a</text>
+  <text class="escape-body" x="321" y="586">geo-holdout test for 4–6</text>
+  <text class="escape-body" x="321" y="602">weeks. Compare regions.</text>
+  <text class="escape-body" x="321" y="618">Now you have a causal</text>
+  <text class="escape-body" x="321" y="634">proof point, not a proxy.</text>
+
+  <!-- STEP 3 -->
+  <rect x="530" y="475" width="210" height="165" rx="10" fill="none" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text class="step-num" x="556" y="507">03</text>
+  <text class="escape-title" x="556" y="528">Add MMM to your</text>
+  <text class="escape-title" x="556" y="546">budget cycle</text>
+  <text class="escape-body" x="556" y="570">Run marketing mix</text>
+  <text class="escape-body" x="556" y="586">modeling quarterly to</text>
+  <text class="escape-body" x="556" y="602">separate signal from</text>
+  <text class="escape-body" x="556" y="618">noise. Use it to defend</text>
+  <text class="escape-body" x="556" y="634">brand spend to the CFO.</text>
+
+  <!-- Arrows between steps -->
+  <path d="M 270 558 L 295 558" fill="none" stroke="#DC2626" stroke-width="2" marker-end="url(#arrowBreak)"/>
+  <path d="M 505 558 L 530 558" fill="none" stroke="#DC2626" stroke-width="2" marker-end="url(#arrowBreak)"/>
+
+  <!-- RESULT BOX -->
+  <rect x="60" y="665" width="680" height="72" rx="10" fill="#0F172A"/>
+  <text x="400" y="693" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">The result: measurement you can defend in a board meeting,</text>
+  <text x="400" y="714" text-anchor="middle" font-size="13" fill="rgba(255,255,255,0.8)">and a budget case that doesn't collapse when a CFO asks "but did it actually cause revenue?"</text>
+
+  <!-- What the loop costs -->
+  <text x="400" y="775" text-anchor="middle" font-size="12" fill="#64748B">Companies stuck in the doom loop are</text>
+  <text x="400" y="793" text-anchor="middle" font-size="16" font-weight="800" fill="#DC2626">2x less likely to exceed growth targets</text>
+  <text x="400" y="811" text-anchor="middle" font-size="12" fill="#64748B">and risk losing C-suite influence by 2027</text>
+
+  <!-- Source -->
+  <text class="source" x="400" y="860" text-anchor="middle">Sources: Gartner CMO Surveys (2024, 2025, 2026); Forrester Marketing Survey 2024; IAB State of Data 2026</text>
+  <text class="source" x="400" y="876" text-anchor="middle">Post: Marketing Attribution Created the Doom Loop — karansud.substack.com</text>
+</svg>
