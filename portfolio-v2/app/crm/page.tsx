@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 const RESEARCH_URL = "https://account-research-five.vercel.app";
 
@@ -562,14 +563,7 @@ export default function CrmPage() {
           </div>
         )}
       </main>
-      <footer>
-        <div className="footer-inner">
-          <span className="footer-name">Karan Sud</span>
-          <span className="footer-tag">
-            &copy; {new Date().getFullYear()} Brands don&rsquo;t go viral. Systems do.
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

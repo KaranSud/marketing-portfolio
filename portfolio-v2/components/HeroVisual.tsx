@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import CountUp from "./CountUp";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import { EASE } from "@/lib/motion";
 
 const tiles = [
   { val: "7K+", label: "Daily active traders" },

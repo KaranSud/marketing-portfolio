@@ -100,7 +100,9 @@ export default function Nav() {
             <Link
               href="/tools"
               className={
-                pathname?.startsWith("/tools") || pathname?.startsWith("/crm")
+                pathname?.startsWith("/tools") ||
+                pathname?.startsWith("/crm") ||
+                (onHome && active === "labs")
                   ? "active"
                   : undefined
               }

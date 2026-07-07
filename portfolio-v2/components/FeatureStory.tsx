@@ -9,6 +9,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import type { CaseStudy } from "@/lib/caseStudies";
+import CountUp from "./CountUp";
 
 type Chapter = {
   kicker: string;
@@ -41,15 +42,17 @@ function useChapterOpacity(
 ) {
   const start = i / n;
   const end = (i + 1) / n;
-  const fade = 0.35 / n;
-  // Scroll-linked values compile to WAAPI keyframes, so the input range must
-  // be monotonic and span exactly [0, 1].
+  // Crossfades are centered on each chapter boundary so the outgoing and
+  // incoming layers overlap (their opacities sum to ~1) instead of both
+  // hitting zero at the boundary. Scroll-linked values compile to WAAPI
+  // keyframes, so the input range must be monotonic and span exactly [0, 1].
+  const f = 0.06;
   const points =
     i === 0
-      ? [0, end - fade, end, 1]
+      ? [0, end - f, end + f, 1]
       : i === n - 1
-        ? [0, start, start + fade, 1]
-        : [0, start, start + fade, end - fade, end, 1];
+        ? [0, start - f, start + f, 1]
+        : [0, start - f, start + f, end - f, end + f, 1];
   const values =
     i === 0
       ? [1, 1, 0, 0]
@@ -165,7 +168,7 @@ export default function FeatureStory({
               <div className="fs-metrics">
                 {data.cardMetrics.map((m) => (
                   <div className="fs-metric" key={m.label}>
-                    <span className="fs-metric-val">{m.val}</span>
+                    <CountUp className="fs-metric-val" value={m.val} />
                     <span className="fs-metric-label">{m.label}</span>
                   </div>
                 ))}

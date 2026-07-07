@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Samples from "@/components/Samples";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Samples",
@@ -34,14 +35,7 @@ export default function SamplesPage() {
         </header>
         <Samples />
       </main>
-      <footer>
-        <div className="footer-inner">
-          <span className="footer-name">Karan Sud</span>
-          <span className="footer-tag">
-            &copy; {new Date().getFullYear()} Brands don&rsquo;t go viral. Systems do.
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

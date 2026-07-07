@@ -8,6 +8,7 @@ import Labs from "@/components/Labs";
 import Faq from "@/components/Faq";
 import WordMarquee from "@/components/WordMarquee";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -24,14 +25,7 @@ export default function Home() {
         <WordMarquee />
         <Contact />
       </main>
-      <footer>
-        <div className="footer-inner">
-          <span className="footer-name">Karan Sud</span>
-          <span className="footer-tag">
-            &copy; {new Date().getFullYear()} Brands don&rsquo;t go viral. Systems do.
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

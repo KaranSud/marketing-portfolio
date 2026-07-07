@@ -1,7 +1,13 @@
 "use client";
 
 import { useRef, type ReactNode } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 /** Perspective tilt that follows the cursor. Wraps the hero visual card. */
 export default function Tilt({
@@ -12,6 +18,7 @@ export default function Tilt({
   max?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
   const sx = useSpring(px, { stiffness: 160, damping: 20 });
@@ -20,6 +27,7 @@ export default function Tilt({
   const rotateX = useTransform(sy, [0, 1], [max, -max]);
 
   function onMove(e: React.MouseEvent) {
+    if (reduced) return;
     const r = ref.current?.getBoundingClientRect();
     if (!r) return;
     px.set((e.clientX - r.left) / r.width);

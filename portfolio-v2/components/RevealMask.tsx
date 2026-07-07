@@ -2,8 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import { EASE } from "@/lib/motion";
 
 // The OUTER span is the one observed (never transformed, so it reliably
 // triggers in view). It propagates the variant to the INNER span, which is the

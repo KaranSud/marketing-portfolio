@@ -7,8 +7,7 @@ import HeroVisual from "./HeroVisual";
 import KineticHeadline from "./KineticHeadline";
 import Magnetic from "./Magnetic";
 import Tilt from "./Tilt";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import { EASE } from "@/lib/motion";
 
 const trustLogos = [
   { src: "/Logos/fereai.jpg", name: "Fere AI" },

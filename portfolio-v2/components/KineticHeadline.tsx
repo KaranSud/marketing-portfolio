@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import { EASE } from "@/lib/motion";
 
 type Word = { t: string; accent?: boolean };
 

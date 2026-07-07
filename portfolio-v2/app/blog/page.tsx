@@ -3,6 +3,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import { BlogThumb } from "@/components/BlogHeader";
 import { getAllPosts } from "@/lib/blog";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -69,14 +70,7 @@ export default function BlogIndex() {
           )}
         </div>
       </main>
-      <footer>
-        <div className="footer-inner">
-          <span className="footer-name">Karan Sud</span>
-          <span className="footer-tag">
-            &copy; {new Date().getFullYear()} Brands don&rsquo;t go viral. Systems do.
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

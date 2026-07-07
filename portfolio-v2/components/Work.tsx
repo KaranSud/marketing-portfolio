@@ -87,10 +87,16 @@ export default function Work() {
           sub="Twelve engagements across Web3, AI, F&B, and e-commerce. What each looked like before, and where it ended up."
         />
 
-        {/* Featured: pinned scroll story on desktop, card on smaller screens */}
-        <FeatureStory data={featured} onOpen={() => openCase(featured)} />
+        {/* Featured: pinned scroll story on desktop, card on smaller screens.
+            The story's chapter copy is written for the Fere case, so it only
+            renders when that exact case is the featured one. */}
+        {featured.key === "fere" && (
+          <FeatureStory data={featured} onOpen={() => openCase(featured)} />
+        )}
         <motion.div
-          className="feature feature-fallback"
+          className={`feature feature-fallback${
+            featured.key === "fere" ? " has-story" : ""
+          }`}
           onClick={() => openCase(featured)}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

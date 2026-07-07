@@ -5,6 +5,7 @@ import { marked } from "marked";
 import Nav from "@/components/Nav";
 import BlogHeader from "@/components/BlogHeader";
 import { getPost, getSlugs } from "@/lib/blog";
+import Footer from "@/components/Footer";
 
 const SITE = "https://karan-sud-portfolio.vercel.app";
 
@@ -105,14 +106,7 @@ export default async function PostPage({
           </footer>
         </article>
       </main>
-      <footer>
-        <div className="footer-inner">
-          <span className="footer-name">Karan Sud</span>
-          <span className="footer-tag">
-            &copy; {new Date().getFullYear()} Brands don&rsquo;t go viral. Systems do.
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

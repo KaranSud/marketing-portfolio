@@ -3227,7 +3227,8 @@ footer {
     height: 320vh;
     margin-bottom: 24px;
   }
-  .feature.feature-fallback {
+  /* hide the card only when the pinned story is actually rendered */
+  .feature.feature-fallback.has-story {
     display: none;
   }
 }
@@ -3414,6 +3415,9 @@ footer {
 .word-marquee {
   overflow: hidden;
   padding: 26px 0 0;
+  /* skip painting the animated strip while it is offscreen */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 180px;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
@@ -3691,15 +3695,6 @@ footer {
   background: var(--accent-soft);
   font-size: 14px !important;
   color: var(--text) !important;
-}
-.tp-step-outcome span {
-  display: block;
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 3px;
 }
 
 /* what you walk away with */

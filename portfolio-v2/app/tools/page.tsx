@@ -3,11 +3,12 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
 import { PipelineMock, BoardMock } from "@/components/ToolMocks";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Free Tools: Account Research Engine and Outbound CRM",
   description:
-    "Two free tools that run a full outbound motion: an account research engine that writes sourced briefs with fit scores and contacts, and a browser-based CRM to work the pipeline. No signup, no paid data.",
+    "Two free tools that run a full outbound motion: an account research engine that writes sourced briefs with fit scores and contacts, and a browser-based CRM to work the pipeline. Both are free and work without an account.",
   alternates: { canonical: "/tools" },
   openGraph: {
     title: "Free tools by Karan Sud",
@@ -65,7 +66,7 @@ const researchGets = [
   "Leadership contacts and likely emails",
   "A cold email draft grounded in real data",
   "One-click CSV export of everything",
-  "No signup, no paid data, free to run",
+  "Free to run, and it never asks you to sign up",
 ];
 
 const crmSteps: Step[] = [
@@ -177,9 +178,7 @@ function ToolSection({
               <div className="tp-step-body">
                 <h4>{s.title}</h4>
                 <p>{s.desc}</p>
-                <p className="tp-step-outcome">
-                  <span>Result</span> {s.outcome}
-                </p>
+                <p className="tp-step-outcome">{s.outcome}</p>
               </div>
             </div>
           </Reveal>
@@ -215,8 +214,8 @@ export default function ToolsPage() {
           <p className="page-sub">
             I built these to run my own go-to-market, then put them online for
             anyone. Together they take you from &ldquo;who should I even talk
-            to?&rdquo; to a working pipeline, without paid data, a signup, or a
-            single fabricated number.
+            to?&rdquo; to a working pipeline. The whole loop is free, and every
+            number in it is real.
           </p>
         </header>
 
@@ -294,14 +293,7 @@ export default function ToolsPage() {
           </div>
         </Reveal>
       </main>
-      <footer>
-        <div className="footer-inner">
-          <span className="footer-name">Karan Sud</span>
-          <span className="footer-tag">
-            &copy; {new Date().getFullYear()} Brands don&rsquo;t go viral. Systems do.
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
