@@ -260,6 +260,11 @@ nav {
   right: 0;
   z-index: 200;
   height: 64px;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+nav.scrolled {
   background: rgba(10, 10, 11, 0.65);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
@@ -1947,30 +1952,6 @@ footer {
   color: var(--text-3);
   font-size: 11px;
 }
-.hvc-chart {
-  position: relative;
-  height: 140px;
-  margin-bottom: 18px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid var(--border);
-}
-.hvc-chart svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.hvc-chart-cap {
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-3);
-}
 .hvc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3425,83 +3406,6 @@ footer {
   height: 100%;
   background: var(--accent);
   transform-origin: 0 50%;
-}
-
-/* ============================================================
-   WORK CARDS, real media thumbs
-============================================================ */
-.wcard-thumb.media {
-  height: 196px;
-  /* Many result exports are transparent PNGs made for dark UI; give them a
-     consistent dark stage instead of the per-brand gradient. */
-  background:
-    radial-gradient(120% 120% at 20% 0%, rgba(108, 160, 136, 0.08), transparent 55%),
-    #0c0d10;
-}
-.wcard-thumb.media img.wcard-shot {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.wcard:hover .wcard-thumb.media img.wcard-shot {
-  transform: scale(1.05);
-}
-.wcard-shot-fade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10, 10, 11, 0.74) 0%,
-    rgba(10, 10, 11, 0.08) 55%,
-    rgba(10, 10, 11, 0.18) 100%
-  );
-  pointer-events: none;
-}
-.wcard-thumb.media img.wcard-chip {
-  position: absolute;
-  left: 14px;
-  bottom: 12px;
-  width: 34px;
-  height: 34px;
-  max-width: none;
-  max-height: none;
-  border-radius: 50%;
-  object-fit: contain;
-  background: #fff;
-  padding: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-.wcard-chip.text {
-  width: auto;
-  height: auto;
-  font-family: var(--font-display), sans-serif;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(6px);
-  padding: 6px 11px;
-  border-radius: 8px;
-}
-.feature-visual.media {
-  min-height: 420px;
-}
-.feature-visual.media img.feature-shot {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  object-position: center top;
 }
 
 /* ============================================================

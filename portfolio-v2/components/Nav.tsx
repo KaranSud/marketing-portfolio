@@ -15,8 +15,16 @@ const links: [string, string][] = [
 export default function Nav() {
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const onHome = pathname === "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!onHome) return;
@@ -68,7 +76,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav>
+      <nav className={scrolled || menuOpen ? "scrolled" : undefined}>
         <div className="nav-inner">
           <a
             href={onHome ? "#" : "/"}

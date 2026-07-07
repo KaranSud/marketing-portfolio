@@ -98,24 +98,11 @@ export default function Work() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <div
-            className={`feature-visual${featured.screenshots[0] ? " media" : ""}`}
+            className="feature-visual"
             style={{ background: featured.thumb.bg }}
           >
             <span className="feature-badge">Featured</span>
-            {featured.screenshots[0] ? (
-              <>
-                <img
-                  className="feature-shot"
-                  src={featured.screenshots[0]}
-                  alt={`${featured.title} work sample`}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="wcard-shot-fade" />
-              </>
-            ) : (
-              <Thumb c={featured} />
-            )}
+            <Thumb c={featured} />
           </div>
           <div className="feature-body">
             <div className="feature-tag">{featured.tag}</div>
@@ -154,27 +141,9 @@ export default function Work() {
                 delay: (i % 3) * 0.07,
               }}
             >
-              {c.screenshots[0] ? (
-                <div className="wcard-thumb media">
-                  <img
-                    className="wcard-shot"
-                    src={c.screenshots[0]}
-                    alt={`${c.title} work sample`}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="wcard-shot-fade" />
-                  {c.thumb.logo ? (
-                    <img className="wcard-chip" src={c.thumb.logo} alt="" />
-                  ) : (
-                    <span className="wcard-chip text">{c.title}</span>
-                  )}
-                </div>
-              ) : (
-                <div className="wcard-thumb" style={{ background: c.thumb.bg }}>
-                  <Thumb c={c} />
-                </div>
-              )}
+              <div className="wcard-thumb" style={{ background: c.thumb.bg }}>
+                <Thumb c={c} />
+              </div>
               <div className="wcard-body">
                 <span className="wtag">{c.tag}</span>
                 <div className="wtitle">{c.title}</div>
