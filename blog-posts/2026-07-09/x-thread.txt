@@ -1,0 +1,29 @@
+1/ Retention budgets are being cut not because retention stopped working — but because it stopped showing up in attribution reports. A measurement problem is producing a spending problem, and the lag is hiding the damage until it's too late.
+
+2/ Gartner June 2026: loyalty and retention spend is down 29% since 2024. It now accounts for less than 15% of total media spend. Acquisition and awareness command 62.6%. That's not strategy. That's measurement bias at scale.
+
+3/ Here's the mechanism: attribution tools can only track what they can see. And what they can see has been shrinking. iOS ATT, GDPR consent rates of 40-60%, cookie deprecation. MTA tools now cover 30-60% of actual touchpoints. The rest is silence.
+
+4/ In B2B, Forrester found that 68% of buyers already have a preferred vendor in mind before the formal process starts. That front-runner wins 80% of the time. They didn't get there through last-click. They got there through brand work attribution can't see.
+
+5/ So your model tells you paid search drove 40% of pipeline and brand content drove 3%. It isn't lying. It's measuring the 20% of the buying journey it can actually see — the part that happens after the buyer is already almost decided.
+
+6/ The compounding starts when you act on that data. You cut brand investment. You increase acquisition spend. The CFO sees the same reports. It's rational. And it's quietly destroying the trust pipeline your future revenue depends on.
+
+7/ Gartner has a name for where this ends up: the Brand Doom Loop. 84% of companies are stuck in it. The mechanism: no measurement budget → can't prove brand ROI → can't get measurement budget. Companies in the loop are half as likely to exceed growth targets.
+
+8/ The acquisition spike creates an illusion of efficiency. CPA looks fine this quarter — because you're capturing buyers who already trust the brand. That trust was built by the investment you made 18 months ago that you just cut.
+
+9/ The lag between cutting brand investment and the resulting revenue slowdown is 12-18 months. By the time you can see it in the data, you're three budget cycles deep. No single model connects the decision to the outcome.
+
+10/ Three measurement methods work when attribution goes dark: incrementality testing, media mix modeling, and self-reported attribution. Used together, they triangulate toward something honest.
+
+11/ Incrementality: 52% of US marketers now use it. 60% say it's what they trust most. That 8-point gap between trust and adoption is where a meaningful amount of misallocated budget lives. It's the closest thing to a scientific test in marketing.
+
+12/ Self-reported attribution costs almost nothing. Add one question to your sales intake: "Before you engaged with us, what first made you aware of us?" The answers will name channels your model gave zero credit to — podcasts, word of mouth, dark social.
+
+13/ Gartner's February 2026 prediction: over 40% of CMOs who push for larger brand budgets will lose influence with the C-suite. Not because brand investment is wrong. Because they're making the argument with the wrong measurement.
+
+14/ The fix: stop using your attribution report as a budget document. Use it for channel optimization within campaigns. Use MMM and lift tests for portfolio-level decisions. Run them in parallel. They are measuring different things and both are necessary.
+
+15/ Full breakdown: Marketing Attribution Is Destroying Your Brand Budget — link in bio. Follow @karansud for more.

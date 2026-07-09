@@ -40,5 +40,11 @@
     "slug": "2026-07-06",
     "title": "Marketing Attribution Created the Doom Loop. Here's How to Break It.",
     "chart_types": ["donut", "area"]
+  },
+  {
+    "date": "2026-07-09",
+    "slug": "2026-07-09",
+    "title": "Marketing Attribution Is Destroying Your Brand Budget",
+    "chart_types": ["vertical bar", "horizontal bar"]
   }
 ]

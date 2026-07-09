@@ -1,0 +1,8 @@
+Pexels photo ID: N/A — Pexels API blocked by network egress policy (api.pexels.com returns 403 CONNECT tunnel failure per proxy status). Hero image generated programmatically using Pillow.
+
+Source URL: N/A (programmatically generated)
+License: Original work — no third-party license required
+Alt text: Abstract dark funnel diagram showing 80% of the marketing journey invisible to attribution tools, with 20% in red visible to last-click tracking
+Rationale for choice: The hero visually encodes the article's central argument — that marketing attribution tools only see the final 20% of the buying journey while the brand-building work that drives purchasing decisions happens in the 80% above the measurement threshold. The dark palette (#0F172A background) and red accent (#DC2626) match the brand palette specified in Phase 4. Geometric and data-referencing rather than showing people in suits or robot-hand AI graphics.
+
+Note: api.pexels.com and images.pexels.com both returned proxy 403 errors (egress policy denial) on 2026-07-09. Per proxy README: "Do not retry or route around it — report them instead." Hero image was created as a branded illustration to maintain run continuity per "never abort the run" directive.

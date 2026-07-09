@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#FAFAF9;">
+  <!-- Background -->
+  <rect width="800" height="1000" fill="#FAFAF9"/>
+
+  <!-- Title Block -->
+  <rect x="0" y="0" width="800" height="80" fill="#0F172A"/>
+  <text x="400" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#F1F5F9">THE BRAND DOOM LOOP</text>
+  <text x="400" y="54" text-anchor="middle" font-size="12" fill="#94A3B8">How broken measurement compounds into budget collapse</text>
+  <text x="400" y="70" text-anchor="middle" font-size="10" fill="#64748B">Source: Gartner Marketing Survey 2026 (n=426 senior marketing leaders)</text>
+
+  <!-- DOOM LOOP — circular flow diagram -->
+  <!-- Center label -->
+  <circle cx="400" cy="420" r="72" fill="#0F172A" stroke="#1E293B" stroke-width="2"/>
+  <text x="400" y="411" text-anchor="middle" font-size="13" font-weight="700" fill="#DC2626">84%</text>
+  <text x="400" y="428" text-anchor="middle" font-size="10" fill="#CBD5E1">of companies</text>
+  <text x="400" y="443" text-anchor="middle" font-size="10" fill="#CBD5E1">stuck here</text>
+
+  <!-- NODE 1: Top — Underinvest in measurement -->
+  <rect x="262" y="100" width="276" height="68" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="400" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="#F1F5F9">1. Underinvest in</text>
+  <text x="400" y="144" text-anchor="middle" font-size="13" font-weight="700" fill="#F1F5F9">brand measurement</text>
+  <text x="400" y="160" text-anchor="middle" font-size="10" fill="#94A3B8">No budget for proper attribution stack</text>
+
+  <!-- Arrow: Node 1 → Node 2 (top right) -->
+  <path d="M 570 134 Q 620 160 630 240" stroke="#DC2626" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+
+  <!-- NODE 2: Right — Can't prove brand ROI -->
+  <rect x="588" y="248" width="190" height="68" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="683" y="272" text-anchor="middle" font-size="12" font-weight="700" fill="#F1F5F9">2. Can't prove</text>
+  <text x="683" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="#F1F5F9">brand ROI</text>
+  <text x="683" y="304" text-anchor="middle" font-size="10" fill="#94A3B8">Attribution only sees last-click</text>
+
+  <!-- Arrow: Node 2 → Node 3 (bottom right) -->
+  <path d="M 640 316 Q 650 400 588 480" stroke="#DC2626" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+
+  <!-- NODE 3: Bottom Right — Retention spend cut -->
+  <rect x="430" y="670" width="230" height="68" rx="8" fill="#DC2626" stroke="#B91C1C" stroke-width="1.5"/>
+  <text x="545" y="694" text-anchor="middle" font-size="12" font-weight="700" fill="#FEF2F2">3. Retention budget</text>
+  <text x="545" y="710" text-anchor="middle" font-size="12" font-weight="700" fill="#FEF2F2">gets cut 29%</text>
+  <text x="545" y="726" text-anchor="middle" font-size="10" fill="#FECACA">Spend shifts to trackable acquisition</text>
+
+  <!-- Arrow: Node 3 → Node 4 (bottom left) -->
+  <path d="M 430 704 Q 340 730 250 704" stroke="#DC2626" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+
+  <!-- NODE 4: Bottom Left — Acquisition dominates -->
+  <rect x="140" y="670" width="230" height="68" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5"/>
+  <text x="255" y="694" text-anchor="middle" font-size="12" font-weight="700" fill="#F1F5F9">4. Acquisition</text>
+  <text x="255" y="710" text-anchor="middle" font-size="12" font-weight="700" fill="#F1F5F9">dominates at 62.6%</text>
+  <text x="255" y="726" text-anchor="middle" font-size="10" fill="#94A3B8">Brand investment further starved</text>
+
+  <!-- Arrow: Node 4 → Node 1 (top left) -->
+  <path d="M 160 670 Q 140 420 250 170" stroke="#DC2626" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+
+  <!-- Arrow: Node 2 → Node 3 connector through doom loop center -->
+  <path d="M 588 400 Q 560 460 545 670" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="4 3" marker-end="url(#arrow-gray)"/>
+
+  <!-- Doom loop connecting arrows define -->
+  <defs>
+    <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#DC2626"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Connecting line Node 2 down the right -->
+  <!-- Data stat callouts -->
+
+  <!-- THE ESCAPE HATCH section -->
+  <rect x="0" y="780" width="800" height="10" fill="#E2E8F0"/>
+  <rect x="0" y="790" width="800" height="210" fill="#FAFAF9"/>
+
+  <text x="400" y="820" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">THE ESCAPE HATCH: Triangulated Measurement</text>
+
+  <!-- Three escape boxes -->
+  <!-- Box 1 -->
+  <rect x="28" y="835" width="228" height="140" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="28" y="835" width="228" height="36" rx="8" fill="#0F172A"/>
+  <rect x="28" y="853" width="228" height="18" fill="#0F172A"/>
+  <text x="142" y="857" text-anchor="middle" font-size="12" font-weight="700" fill="#F1F5F9">Incrementality Testing</text>
+  <text x="142" y="884" text-anchor="middle" font-size="22" font-weight="800" fill="#DC2626">52%</text>
+  <text x="142" y="900" text-anchor="middle" font-size="10" fill="#64748B">of US marketers currently use</text>
+  <text x="142" y="920" text-anchor="middle" font-size="10" fill="#475569">Proves causal lift — not</text>
+  <text x="142" y="934" text-anchor="middle" font-size="10" fill="#475569">just correlation. Controls</text>
+  <text x="142" y="948" text-anchor="middle" font-size="10" fill="#475569">for confounding factors.</text>
+  <text x="142" y="966" text-anchor="middle" font-size="10" font-weight="600" fill="#DC2626">Start here if you do one thing</text>
+
+  <!-- Box 2 -->
+  <rect x="286" y="835" width="228" height="140" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="286" y="835" width="228" height="36" rx="8" fill="#0F172A"/>
+  <rect x="286" y="853" width="228" height="18" fill="#0F172A"/>
+  <text x="400" y="857" text-anchor="middle" font-size="12" font-weight="700" fill="#F1F5F9">Media Mix Modeling</text>
+  <text x="400" y="884" text-anchor="middle" font-size="22" font-weight="800" fill="#475569">40%</text>
+  <text x="400" y="900" text-anchor="middle" font-size="10" fill="#64748B">investment share 2026</text>
+  <text x="400" y="920" text-anchor="middle" font-size="10" fill="#475569">Aggregated, privacy-safe.</text>
+  <text x="400" y="934" text-anchor="middle" font-size="10" fill="#475569">Captures offline brand</text>
+  <text x="400" y="948" text-anchor="middle" font-size="10" fill="#475569">effects last-click can't see.</text>
+  <text x="400" y="966" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">Best for budget allocation</text>
+
+  <!-- Box 3 -->
+  <rect x="544" y="835" width="228" height="140" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="544" y="835" width="228" height="36" rx="8" fill="#0F172A"/>
+  <rect x="544" y="853" width="228" height="18" fill="#0F172A"/>
+  <text x="658" y="857" text-anchor="middle" font-size="12" font-weight="700" fill="#F1F5F9">Self-Reported Attribution</text>
+  <text x="658" y="884" text-anchor="middle" font-size="22" font-weight="800" fill="#475569">31%</text>
+  <text x="658" y="900" text-anchor="middle" font-size="10" fill="#64748B">current usage — fastest grower</text>
+  <text x="658" y="920" text-anchor="middle" font-size="10" fill="#475569">Ask customers how they</text>
+  <text x="658" y="934" text-anchor="middle" font-size="10" fill="#475569">found you. The dark funnel</text>
+  <text x="658" y="948" text-anchor="middle" font-size="10" fill="#475569">leaves a self-reported trace.</text>
+  <text x="658" y="966" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">Cheapest dark funnel signal</text>
+</svg>
