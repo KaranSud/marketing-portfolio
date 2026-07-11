@@ -114,9 +114,9 @@ export const caseStudies: CaseStudy[] = [
       { val: "10 mo", label: "Duration" },
     ],
     situation:
-      "Prashan Agarwal is CEO of FanTV and former CEO of Gaana.com, one of India's largest music streaming platforms. Moving into Web3 meant he needed a credible personal voice on X and LinkedIn, not a broadcast feed. The accounts existed but had no strategy, no consistent point of view, and little real engagement.",
+      "Prashan Agarwal is CEO of FanTV and former CEO of Gaana.com, one of India's largest music streaming platforms. Moving into Web3 meant he needed a credible personal voice on X and LinkedIn, not a broadcast feed. The accounts existed without a strategy or a consistent point of view, and real engagement was thin.",
     strategy:
-      "I positioned him at the intersection of two stories the audience already cared about: a proven Indian tech operator, and a builder making a serious bet on Web3. Every post laddered up to that positioning, written from his actual perspective so it read as him, not a ghostwritten brand account.",
+      "I positioned him at the intersection of two stories the audience already cared about: a proven Indian tech operator, and a builder making a serious bet on Web3. Every post laddered up to that positioning, written from his actual perspective, so every post sounded like him.",
     execution: [
       "Defined his positioning and content pillars, then built a calendar balancing founder lessons, Web3 commentary, and the FanTV story.",
       "Wrote and managed all content across X and LinkedIn in his voice, run alongside the FanTV brand account so the two reinforced each other.",
@@ -207,9 +207,9 @@ export const caseStudies: CaseStudy[] = [
       { val: "19,000%", label: "Profile Visit Increase" },
     ],
     situation:
-      "Novaswap was a cross-chain stablecoin DEX built on Mynth Protocol with a solid product and nothing around it: no name recognition, no community, and no volume.",
+      "Novaswap was a cross-chain stablecoin DEX built on Mynth Protocol with a solid product and nothing around it. Nobody knew the name, the community did not exist yet, and volume sat near zero.",
     strategy:
-      "Launch it like a brand, not a contract. I built a clear voice and visual direction, seeded the right communities, and tied content directly to on-chain actions so attention turned into trading volume rather than empty impressions.",
+      "Launch it like a brand, not a contract. I built a clear voice and visual direction, seeded the right communities, and tied content directly to on-chain actions so attention turned into trading volume.",
     execution: [
       "Built the full brand presence from scratch: voice, visual direction, posting cadence, and community onboarding.",
       "Seeded targeted KOLs and designed trading incentives that drove real on-chain activity.",
@@ -252,7 +252,7 @@ export const caseStudies: CaseStudy[] = [
       "Drive volume by combining reasons to trade with reasons to stay: incentive-led acquisition through contests and KOLs, backed by organic content and UGC that built credibility around the product.",
     execution: [
       "Designed and ran two trading contests, one self-hosted and one in partnership with Voltrade (voltrade.xyz), to pull active traders onto the platform.",
-      "Built KOL relationships and a community of people actually trading, not just watching.",
+      "Built KOL relationships and a community of people who actually traded.",
       "Produced UGC and organic content to build awareness and trust around the product.",
     ],
     results: [
@@ -288,18 +288,18 @@ export const caseStudies: CaseStudy[] = [
       { val: "144K", label: "Followers" },
     ],
     situation:
-      "BimaBTC had a product worth following. The job was making the account reflect that with real engagement, not a padded follower count.",
+      "BimaBTC had a product worth following. The job was making the account's engagement reflect that.",
     strategy:
-      "Win on consistency and relevance. A disciplined posting system plus timely market commentary would earn engagement that compounds, rather than chasing reach through giveaways.",
+      "Win on consistency and relevance. A disciplined posting system plus timely market commentary would earn engagement that compounds.",
     execution: [
       "Built a disciplined posting system with a regular cadence and clear content pillars.",
       "Layered in timely market commentary so the account stayed relevant to what traders cared about that week.",
-      "Focused on content that gave people a reason to stay engaged, lifting rate rather than just count.",
+      "Focused on content that gave people a reason to stay, so the engagement rate rose along with the count.",
     ],
     results: [
       "2.3M impressions and 58K engagements.",
       "2.4% engagement rate at 144K followers.",
-      "Growth built on consistency rather than paid reach.",
+      "The growth was organic from start to finish.",
     ],
     screenshots: ["/Results/BimaBTC/BimaBTC.png"],
   },
@@ -379,7 +379,7 @@ export const caseStudies: CaseStudy[] = [
     situation:
       "Mohaimina Haque (@attorneyminadc) is the CEO of Tony Roma's and the brand's first female CEO. She had an existing following on Instagram and Facebook but no strategy behind it, and the goal was to give people a real reason to follow.",
     strategy:
-      "Lead with her actual experience as a female CEO in a legacy restaurant brand. Prioritise substance over volume so each post earned attention, building a genuine executive presence rather than chasing follower count.",
+      "Lead with her actual experience as a female CEO in a legacy restaurant brand. Prioritise substance over volume so each post earned attention and built a genuine executive presence.",
     execution: [
       "Ran her personal brand across Instagram and Facebook: positioning, content pillars, copy, and calendar.",
       "Sourced every post from her real perspective and experience as a CEO.",
@@ -387,7 +387,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     results: [
       "1.2M+ organic impressions in six months, with no ad spend.",
-      "Account moved from silent to consistently present with a clear voice.",
+      "A silent account became consistently present, with a clear voice.",
       "Became a profile people actually noticed and engaged with.",
     ],
     screenshots: [
@@ -555,7 +555,7 @@ export const caseStudies: CaseStudy[] = [
     situation:
       "The Sportrush is a sports media brand. When I joined, the Instagram had 26 followers and no real content strategy. I was brought in to build it from the ground up.",
     strategy:
-      "Build a repeatable content engine, not just posts: define formats and pillars that fit short-form sports media, then document them so the team could execute at volume without me in every frame.",
+      "Build a repeatable content engine: define formats and pillars that fit short-form sports media, then document them so the team could execute at volume without me in every frame.",
     execution: [
       "Developed the full content strategy and identity: pillars, original video formats, and production SOPs.",
       "Created formats designed for reach on Instagram's short-form surfaces.",

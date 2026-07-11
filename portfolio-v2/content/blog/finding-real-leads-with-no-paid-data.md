@@ -32,7 +32,7 @@ You describe what you sell. The tool turns that into an ideal customer profile, 
 
 ## The open company graph
 
-The key source is the open data behind Wikipedia, which holds structured records for a huge number of companies, each linked to its official website. A single query can return companies in a given industry and region, every one with a real domain to research. No scraping, no purchase, no API key.
+The key source is the open data behind Wikipedia, which holds structured records for a huge number of companies, each linked to its official website. A single query can return companies in a given industry and region, every one with a real domain to research. Nothing is scraped or bought, and it works without an API key.
 
 ## Making the list usable
 
