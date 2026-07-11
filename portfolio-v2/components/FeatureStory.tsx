@@ -31,7 +31,7 @@ const CHAPTERS: Chapter[] = [
   {
     kicker: "Chapter 3 · The results",
     title: "Attention became traders",
-    body: "The engine compounded. Fere went from unknown to #1 Fintech Product of the Day on Product Hunt, and the email program converted the platform's first paying users.",
+    body: "The engine compounded. Fere took #1 Fintech Product of the Day on Product Hunt, and the email program converted the platform's first paying users.",
   },
 ];
 

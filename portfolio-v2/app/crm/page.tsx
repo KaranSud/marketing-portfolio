@@ -21,7 +21,7 @@ const HOW_STEPS: { title: string; desc: string }[] = [
   },
   {
     title: "Your data stays yours",
-    desc: "Everything is saved in this browser only, with no account and no server. Export a CSV backup whenever you like.",
+    desc: "Everything is saved in this browser only and never touches a server. Export a CSV backup whenever you like.",
   },
 ];
 

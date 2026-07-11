@@ -35,7 +35,7 @@ type Step = { title: string; desc: string; outcome: string };
 const researchSteps: Step[] = [
   {
     title: "Describe what you sell",
-    desc: "Write one or two plain sentences about your offer and who it is for. That is the whole setup. There is nothing to install and nothing to sign up for.",
+    desc: "Write one or two plain sentences about your offer and who it is for. That is the whole setup. It runs in the browser and never asks you to create an account.",
     outcome: "The engine now knows how to judge whether a company is a fit for you.",
   },
   {
@@ -88,7 +88,7 @@ const crmSteps: Step[] = [
   {
     title: "Keep notes, stay private",
     desc: "Every card holds free-form notes. Everything lives in your browser's local storage, so nothing about your pipeline ever leaves your machine. Export a CSV backup anytime.",
-    outcome: "A full outbound system with zero vendors and zero cost.",
+    outcome: "A full outbound system that costs nothing to run.",
   },
 ];
 
@@ -245,7 +245,7 @@ export default function ToolsPage() {
           facts={[
             { label: "Built for", value: "Founders, marketers, and SDRs doing outbound" },
             { label: "Replaces", value: "Paid enrichment tools and hours of manual research" },
-            { label: "Costs", value: "Free. No account, no card" },
+            { label: "Costs", value: "Free, and it never asks for a card" },
           ]}
           steps={researchSteps}
           gets={researchGets}
