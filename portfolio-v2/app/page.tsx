@@ -10,14 +10,16 @@ import Faq from "@/components/Faq";
 import WordMarquee from "@/components/WordMarquee";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { getCaseMediaMap } from "@/lib/caseMedia";
 
 export default function Home() {
+  const mediaMap = getCaseMediaMap();
   return (
     <>
       <Nav />
       <main>
         <Hero />
-        <Work />
+        <Work mediaMap={mediaMap} />
         <Services />
         <Labs />
         <CtaBand />

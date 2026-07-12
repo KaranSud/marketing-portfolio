@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { caseStudies, type CaseStudy } from "@/lib/caseStudies";
+import type { MediaMap } from "@/lib/caseMedia";
 import CaseModal from "./CaseModal";
 import FeatureStory from "./FeatureStory";
 import SectionHead from "./SectionHead";
@@ -38,7 +39,7 @@ function onSpotlight(e: React.MouseEvent<HTMLElement>) {
   el.style.setProperty("--my", `${e.clientY - r.top}px`);
 }
 
-export default function Work() {
+export default function Work({ mediaMap = {} }: { mediaMap?: MediaMap }) {
   const [current, setCurrent] = useState<CaseStudy | null>(null);
   const [open, setOpen] = useState(false);
 
@@ -173,7 +174,12 @@ export default function Work() {
         </div>
       </div>
 
-      <CaseModal data={current} open={open} onClose={closeCase} />
+      <CaseModal
+        data={current}
+        media={current ? mediaMap[current.key] ?? null : null}
+        open={open}
+        onClose={closeCase}
+      />
     </section>
   );
 }

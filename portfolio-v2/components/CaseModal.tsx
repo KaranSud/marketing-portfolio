@@ -3,6 +3,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import type { CaseStudy } from "@/lib/caseStudies";
+import type { CaseMedia } from "@/lib/caseMedia";
 import CountUp from "./CountUp";
 
 const container: Variants = {
@@ -20,10 +21,12 @@ const item: Variants = {
 
 export default function CaseModal({
   data,
+  media = null,
   open,
   onClose,
 }: {
   data: CaseStudy | null;
+  media?: CaseMedia | null;
   open: boolean;
   onClose: () => void;
 }) {
@@ -33,6 +36,8 @@ export default function CaseModal({
 
   const thumb = data?.thumb;
   const screenshots = data?.screenshots ?? [];
+  const creatives = media?.creatives ?? [];
+  const beforeAfter = media?.beforeAfter ?? [];
 
   return (
     <div
@@ -165,6 +170,57 @@ export default function CaseModal({
                 >
                   {screenshots.map((src, i) => (
                     <img key={i} src={src} alt="Analytics screenshot" loading="lazy" />
+                  ))}
+                </div>
+              </motion.div>
+            ) : null}
+
+            {creatives.length > 0 ? (
+              <motion.div className="modal-section" variants={item}>
+                <h3>Creatives</h3>
+                <div
+                  className={`modal-creatives${
+                    creatives.length === 1 ? " single" : ""
+                  }`}
+                >
+                  {creatives.map((m, i) =>
+                    m.type === "video" ? (
+                      <video
+                        key={i}
+                        src={m.src}
+                        controls
+                        muted
+                        playsInline
+                        preload="metadata"
+                      />
+                    ) : (
+                      <img
+                        key={i}
+                        src={m.src}
+                        alt={`${data.title} creative`}
+                        loading="lazy"
+                      />
+                    )
+                  )}
+                </div>
+              </motion.div>
+            ) : null}
+
+            {beforeAfter.length > 0 ? (
+              <motion.div className="modal-section" variants={item}>
+                <h3>Before and after</h3>
+                <div className="modal-ba">
+                  {beforeAfter.map((p, i) => (
+                    <div className="ba-pair" key={i}>
+                      <figure>
+                        <img src={p.before} alt="Before" loading="lazy" />
+                        <figcaption>Before</figcaption>
+                      </figure>
+                      <figure>
+                        <img src={p.after} alt="After" loading="lazy" />
+                        <figcaption>After</figcaption>
+                      </figure>
+                    </div>
                   ))}
                 </div>
               </motion.div>

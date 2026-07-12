@@ -32,11 +32,14 @@ export type CaseStudy = {
   execution: string[];
   results: string[];
   screenshots: string[];
+  /** Folder name under public/Results/ scanned for creatives + before-after media. */
+  mediaDir?: string;
 };
 
 export const caseStudies: CaseStudy[] = [
   {
     key: "fantv",
+    mediaDir: "FanTV",
     tag: "SocialFi / Growth Marketing",
     title: "FanTV AI",
     desc: "Scaled a SocialFi creator platform from a quiet 70K to 300K followers and 1.5M+ monthly users, through a full content system, a 100+ KOL program, airdrops, and paid growth.",
@@ -90,6 +93,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "prashan",
+    mediaDir: "Prashan",
     tag: "Executive Personal Brand / X & LinkedIn",
     title: "Prashan Agarwal",
     desc: "Grew a Web3 CEO's X from 12K to 100K and built out LinkedIn, while running FanTV at the same time.",
@@ -135,6 +139,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "fere",
+    mediaDir: "Fere AI",
     tag: "AI / Growth Marketing",
     title: "Fere AI",
     desc: "Built the Fere AI brand from the ground up to 7K+ daily active traders: a content pipeline, a #1 Product Hunt launch, paid acquisition, referrals, and KOLs.",
@@ -183,6 +188,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "novaswap",
+    mediaDir: "Novaswap",
     tag: "DeFi / Brand Building",
     title: "Novaswap",
     desc: "Launched Novaswap end to end: brand, community, and trading incentives. $650K+ in organic volume in 90 days.",
@@ -224,6 +230,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "defx",
+    mediaDir: "Defx",
     tag: "DeFi / Volume Growth",
     title: "Defx",
     desc: "Grew a perpetuals DEX from under $100K to $50M+ monthly volume, scaling active traders from ~50 to 350+ through trading contests, KOLs, and organic content.",
@@ -264,6 +271,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "bima",
+    mediaDir: "BimaBTC",
     tag: "Web3 / Content Strategy",
     title: "BimaBTC",
     desc: "144K followers, 2.4% engagement rate, 2.3M impressions. Built on posting discipline, not paid reach.",
@@ -305,6 +313,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "tony",
+    mediaDir: "Tony Roma's",
     tag: "F&B / Social + Personal Brand",
     title: "Tony Roma's",
     desc: "Content strategy for a 53-year-old global chain, plus executive personal branding for their first female CEO. 100% organic.",
@@ -353,6 +362,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "mohamina",
+    mediaDir: "Mohaimina Haque",
     tag: "Executive Personal Brand / Instagram & Facebook",
     title: "Mohaimina Haque",
     desc: "Turned a quiet executive Instagram (@attorneyminadc) into a real presence. 1.2M+ impressions in 6 months, nothing spent on ads.",
@@ -398,6 +408,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "potters",
+    mediaDir: "Potters' Hub",
     tag: "E-Commerce / Paid Ads",
     title: "Potters' Hub",
     desc: "Built their Shopify store and ran Meta ads that turned ₹3,500 into ₹20,000 in month one.",
@@ -444,6 +455,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "bones",
+    mediaDir: "B&B",
     tag: "F&B / Organic Growth",
     title: "Bones & Burgers",
     desc: "Inherited an account full of bot followers. Cleaned it up and rebuilt it. No ads, just content.",
@@ -489,6 +501,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "opaque",
+    mediaDir: "Opaque Studio",
     tag: "Luxury D2C / Performance Marketing",
     title: "Opaque Studio",
     desc: "Ran all marketing for a luxury handcrafted home brand: Meta, Google, socials, product launches. 4X ROAS at ₹3L/month.",
@@ -529,6 +542,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     key: "sportrush",
+    mediaDir: "Sportsrush",
     tag: "Sports Media / Content Growth",
     title: "The Sportrush",
     desc: "Built their entire Instagram presence from 26 followers. New content strategy, formats, SOPs. Two reels went viral: 4M and 2M views.",

@@ -891,6 +891,77 @@ nav.scrolled {
   grid-column: 1 / -1;
 }
 
+/* Creatives gallery: campaign graphics + videos */
+.modal-creatives {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+.modal-creatives img,
+.modal-creatives video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+}
+.modal-creatives.single img,
+.modal-creatives.single video {
+  grid-column: 1 / -1;
+}
+
+/* Before and after: labelled feed pairs */
+.modal-ba {
+  display: grid;
+  gap: 20px;
+  margin-top: 16px;
+}
+.ba-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.ba-pair figure {
+  position: relative;
+  margin: 0;
+}
+.ba-pair img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+}
+.ba-pair figcaption {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: rgba(10, 10, 11, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+}
+.ba-pair figure:last-child figcaption {
+  color: #0a0a0b;
+  background: rgba(131, 183, 160, 0.85);
+  border-color: transparent;
+}
+@media (max-width: 560px) {
+  .modal-creatives {
+    grid-template-columns: 1fr;
+  }
+  .ba-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ============================================================
    SERVICES, numbered editorial
 ============================================================ */
@@ -3874,4 +3945,104 @@ footer {
   color: var(--accent);
   font-size: 13px;
   margin-top: 4px;
+}
+
+/* ============================================================
+   GLASS + GRADIENT LAYER (Apple materials pass)
+   Translucent surfaces over a richer two-hue ambient, hairline
+   top highlights, and gradient accent text. Kept at the end of
+   the file so it wins the cascade over the flat surfaces above.
+============================================================ */
+:root {
+  --hue-2: 112, 140, 178; /* cool slate, pairs with the sage accent */
+  --glass-bg: rgba(255, 255, 255, 0.035);
+  --glass-bg-2: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+}
+
+/* Richer ambient: second hue so glass has color to refract */
+.ambient {
+  background:
+    radial-gradient(90% 60% at 80% -5%, rgba(var(--hue-2), 0.07) 0%, transparent 60%),
+    radial-gradient(130% 90% at 50% -10%, #101214 0%, var(--bg) 52%);
+}
+.ambient-glow-2 {
+  background: radial-gradient(circle, rgba(var(--hue-2), 0.1), transparent 70%);
+}
+
+/* Glass card surfaces */
+.wcard,
+.feature,
+.labs-card,
+.cap-item,
+.faq-item,
+.midcta-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+.wcard:hover,
+.cap-item:hover,
+.faq-item:hover {
+  background: var(--glass-bg-2);
+}
+
+/* Frosted nav, richer saturation */
+nav.scrolled {
+  background: rgba(10, 10, 11, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Modal as a thick material */
+.modal {
+  background: rgba(19, 19, 22, 0.82);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+.modal-chip {
+  background: var(--glass-bg-2);
+  border-color: var(--glass-border);
+}
+
+/* Gradient accent text */
+.section-title em,
+.hero h1 em,
+.contact-title em,
+.page-h1 em,
+.tp-tool-title em,
+.tp-cta h2 em {
+  background: linear-gradient(120deg, var(--accent-2) 0%, var(--accent) 55%, #5f8fb0 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accent); /* fallback when clip unsupported */
+}
+
+/* Primary CTA: soft top sheen, Apple-button feel */
+.btn-primary {
+  background: linear-gradient(180deg, #ffffff 0%, #e9e8e2 100%);
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f3ee 100%);
+}
+
+/* Respect reduced transparency: fall back to solid surfaces */
+@media (prefers-reduced-transparency: reduce) {
+  .wcard,
+  .feature,
+  .labs-card,
+  .cap-item,
+  .faq-item,
+  .midcta-card,
+  .modal,
+  nav.scrolled {
+    background: var(--surface);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
