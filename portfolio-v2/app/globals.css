@@ -12,7 +12,7 @@
   --border-2: rgba(255, 255, 255, 0.13);
   --text: #F2F1EC;
   --text-2: #989790;
-  --text-3: #646359;
+  --text-3: #8A897E;
   --accent: #6CA088;
   --accent-2: #83B7A0;
   --accent-soft: rgba(108, 160, 136, 0.12);
@@ -132,7 +132,7 @@ a {
 }
 
 .section {
-  padding: 130px 0;
+  padding: 128px 0;
   position: relative;
 }
 
@@ -296,6 +296,7 @@ nav.scrolled {
 .nav-links a {
   position: relative;
   font-size: 14px;
+  padding: 10px 2px;
   color: var(--text-2);
   transition: color 0.2s;
 }
@@ -315,7 +316,7 @@ nav.scrolled {
   background: var(--accent);
 }
 .nav-cta {
-  padding: 9px 18px;
+  padding: 11px 18px;
   font-size: 13.5px;
 }
 .nav-cta::after {
@@ -475,7 +476,6 @@ nav.scrolled {
 .proof-label {
   font-family: var(--font-mono), monospace;
   font-size: 11px;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-3);
   margin-top: 12px;
@@ -494,7 +494,7 @@ nav.scrolled {
   align-items: center;
   gap: 9px;
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-3);
@@ -549,7 +549,7 @@ nav.scrolled {
   top: 20px;
   left: 20px;
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
@@ -618,8 +618,7 @@ nav.scrolled {
 }
 .metric-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  text-transform: uppercase;
+  font-size: 11px;
   letter-spacing: 0.04em;
   color: var(--text-3);
   margin-top: 8px;
@@ -687,7 +686,7 @@ nav.scrolled {
 }
 .wcard-thumb-sub {
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
@@ -701,7 +700,7 @@ nav.scrolled {
 }
 .wtag {
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
@@ -853,8 +852,7 @@ nav.scrolled {
 }
 .ms-label {
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
-  text-transform: uppercase;
+  font-size: 11px;
   letter-spacing: 0.03em;
   color: var(--text-3);
   line-height: 1.3;
@@ -990,7 +988,7 @@ nav.scrolled {
   align-items: center;
   gap: 7px;
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1026,9 +1024,8 @@ nav.scrolled {
 }
 .labs-mock-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--text-3);
 }
 .labs-mock-rows {
@@ -1973,8 +1970,7 @@ footer {
 }
 .hvc-tlabel {
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  text-transform: uppercase;
+  font-size: 11px;
   letter-spacing: 0.04em;
   color: var(--text-3);
   margin-top: 8px;
@@ -2184,7 +2180,7 @@ footer {
 }
 .post-tags span {
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--text-3);
@@ -2442,9 +2438,8 @@ footer {
 }
 .crm-stat-l {
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--text-3);
 }
 .crm-toolbar {
@@ -2548,7 +2543,7 @@ footer {
 }
 .crm-fit {
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   color: var(--text-2);
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -2582,7 +2577,11 @@ footer {
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
-  padding: 0 2px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .crm-del:hover {
   color: #d98a7a;
@@ -2758,7 +2757,7 @@ footer {
   gap: 8px;
   margin-top: 10px;
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--text-3);
@@ -3130,7 +3129,7 @@ footer {
 .sample-body { padding: 16px 18px 18px; }
 .sample-cat {
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
@@ -3204,7 +3203,7 @@ footer {
 }
 .lightbox-cap span {
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
@@ -3381,9 +3380,8 @@ footer {
 .fs-metric-label {
   display: block;
   font-family: var(--font-mono), monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
   color: var(--text-3);
   margin-top: 10px;
   line-height: 1.4;
@@ -3407,6 +3405,48 @@ footer {
   height: 100%;
   background: var(--accent);
   transform-origin: 0 50%;
+}
+
+/* ============================================================
+   MID-PAGE CTA BAND
+============================================================ */
+.midcta {
+  padding: 8px 0 96px;
+}
+.midcta-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  border: 1px solid var(--border-2);
+  border-radius: 20px;
+  padding: 40px 44px;
+  background:
+    radial-gradient(110% 160% at 0% 0%, var(--accent-soft), transparent 55%),
+    var(--surface);
+}
+.midcta-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
+  max-width: 22ch;
+}
+.midcta-sub {
+  color: var(--text-2);
+  font-size: 15.5px;
+  margin-top: 10px;
+}
+.midcta-btn {
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  .midcta-card {
+    padding: 28px 24px;
+  }
 }
 
 /* ============================================================
@@ -3552,7 +3592,7 @@ footer {
 }
 .tp-fact-label {
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-3);
@@ -3595,7 +3635,7 @@ footer {
 }
 .tp-board-label {
   font-family: var(--font-mono), monospace;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-3);

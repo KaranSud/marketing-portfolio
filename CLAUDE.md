@@ -50,3 +50,6 @@
 - Simplicity First: Make every change as simple as possible. Impact minimal code.
 - No Laziness: Find root causes. No temporary fixes. Senior developer standards.
 - Minimal Impact: Only touch what's necessary. No side effects with new bugs.
+
+## Reply Style: caveman (permanent)
+- Skill vendored at .claude/skills/caveman/SKILL.md. Apply to every reply in this repo: terse, no filler, fragments OK. Code, commands, errors byte-exact. Never announce the mode. Off only if Karan says "normal mode".
