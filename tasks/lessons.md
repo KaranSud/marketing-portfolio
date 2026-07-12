@@ -21,3 +21,8 @@ Karan asked for copy to be checked against Wikipedia's "Signs of AI writing" ess
 - Vague attribution ("industry reports", "widely regarded") and empty summarizers ("In conclusion", "Overall").
 - Title Case Headings and bold-led bullet lists.
 Sweep grep: `grep -nE ', not [a-z]|Not [a-z-]+\.|from [a-z]+ to [a-z]+|, (highlighting|ensuring|reflecting|showcasing)'` on copy files.
+
+## Commit identity (permanent, per Karan 2026-07-12)
+- Author + committer on ALL commits: Karan Sud <karansud98@gmail.com>. Never Claude/Anthropic.
+- No Co-Authored-By Claude, Claude-Session, or "Generated with Claude" lines in messages.
+- Repo git config already set. History rewritten 2026-07-12 (62 commits filtered).
