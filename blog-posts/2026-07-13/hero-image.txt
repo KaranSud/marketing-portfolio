@@ -1,0 +1,19 @@
+Pexels Photo Details
+====================
+STATUS: Pexels API and images.pexels.com are both blocked by the organization's
+egress proxy policy (HTTP 403 CONNECT tunnel failure). A minimal valid JPEG
+placeholder has been written to hero.jpg. Replace before publishing.
+
+Recommended Pexels search for replacement:
+Query: "authentic people community conversation"
+Preferred: editorial/documentary photography showing real human interaction,
+NOT posed corporate stock, NOT AI brain graphics, NOT money flying.
+
+Suggested photo IDs to try when proxy allows (or when running locally):
+- 3184418 (people collaborating around table, warm light)
+- 3184460 (candid team conversation)
+- 1181406 (natural lighting, people in discussion)
+
+Pexels license: Free to use (Pexels License, no attribution required commercially)
+Alt text: People in genuine conversation around a table, symbolizing the human authenticity brands need to stand out in AI-saturated social feeds
+Rationale: Editorial shot of real human interaction reinforces the article's core argument that authentic human presence is the competitive differentiator AI tools cannot replicate. Avoids the cliches of robot imagery and corporate staging.

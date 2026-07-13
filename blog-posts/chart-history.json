@@ -46,5 +46,11 @@
     "slug": "2026-07-09",
     "title": "Marketing Attribution Is Destroying Your Brand Budget",
     "chart_types": ["vertical bar", "horizontal bar"]
+  },
+  {
+    "date": "2026-07-13",
+    "slug": "2026-07-13",
+    "title": "AI Social Media Tools Are Working. Your Brand Isn't.",
+    "chart_types": ["line", "donut"]
   }
 ]
