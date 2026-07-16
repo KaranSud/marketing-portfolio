@@ -1,0 +1,30 @@
+HERO IMAGE — PLACEHOLDER (Pexels API blocked by session proxy policy)
+
+The Pexels API (api.pexels.com) is blocked by the organization's egress proxy for this
+session. The hero.jpg file in this folder is a 1x1 pixel placeholder JPEG.
+
+TO REPLACE: Download any of the following Pexels images manually and overwrite hero.jpg.
+
+RECOMMENDED SEARCH:
+  https://www.pexels.com/search/artisan%20craft%20workshop/?orientation=landscape
+  https://www.pexels.com/search/typewriter%20desk/?orientation=landscape
+  https://www.pexels.com/search/handwriting%20pen%20paper/?orientation=landscape
+
+SELECTION CRITERIA (per brand guidelines):
+  - Prefer: editorial, architectural, industrial, abstract, or environmental photography
+  - Conveys: craft, human touch, deliberate work, authenticity
+  - Avoid: people in suits pointing at laptops, robot hands, AI brain graphics, money flying
+
+SUGGESTED PEXELS PHOTO (manually verify URL on Pexels):
+  Search term: "artisan workshop hands craft" landscape orientation
+  Ideal: a craftsperson at work, a writing desk with paper/pen, a printing press,
+         or an abstract textural shot of something handmade
+
+License: Pexels Free License (free to use, no attribution required, commercial OK)
+
+Alt text (suggested): "A craftsperson's hands at work in a wooden workshop,
+symbolizing deliberate, human-made quality in an era of automated production"
+
+Rationale: The article argues that human-authored content is becoming a scarce,
+valuable asset as AI floods social feeds. The hero should visually signal craft,
+deliberateness, and human skill — not technology.

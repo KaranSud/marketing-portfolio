@@ -3,54 +3,90 @@
     "date": "2026-06-17",
     "slug": "2026-06-17",
     "title": "AI Ad Spend Is Outrunning What Marketers Can Prove",
-    "chart_types": ["horizontal bar", "donut"]
+    "chart_types": [
+      "horizontal bar",
+      "donut"
+    ]
   },
   {
     "date": "2026-06-18",
     "slug": "2026-06-18",
     "title": "AI Ad Fraud Is Draining the Budget AI Ad Buying Wins",
-    "chart_types": ["dumbbell", "vertical bar"]
+    "chart_types": [
+      "dumbbell",
+      "vertical bar"
+    ]
   },
   {
     "date": "2026-06-22",
     "slug": "2026-06-22",
     "title": "The Buying Committee Just Outgrew Your Funnel",
-    "chart_types": ["donut", "line"]
+    "chart_types": [
+      "donut",
+      "line"
+    ]
   },
   {
     "date": "2026-06-25",
     "slug": "2026-06-25",
     "title": "Marketing Budget Allocation Is Backing the Wrong Bet",
-    "chart_types": ["area", "dumbbell"]
+    "chart_types": [
+      "area",
+      "dumbbell"
+    ]
   },
   {
     "date": "2026-06-29",
     "slug": "2026-06-29",
     "title": "Product-Led Growth Was Supposed to Kill Sales Teams",
-    "chart_types": ["vertical bar", "radar"]
+    "chart_types": [
+      "vertical bar",
+      "radar"
+    ]
   },
   {
     "date": "2026-07-02",
     "slug": "2026-07-02",
     "title": "Product Led Growth Activation: The 60% Leak in Your Conversion Funnel",
-    "chart_types": ["horizontal bar", "line"]
+    "chart_types": [
+      "horizontal bar",
+      "line"
+    ]
   },
   {
     "date": "2026-07-06",
     "slug": "2026-07-06",
     "title": "Marketing Attribution Created the Doom Loop. Here's How to Break It.",
-    "chart_types": ["donut", "area"]
+    "chart_types": [
+      "donut",
+      "area"
+    ]
   },
   {
     "date": "2026-07-09",
     "slug": "2026-07-09",
     "title": "Marketing Attribution Is Destroying Your Brand Budget",
-    "chart_types": ["vertical bar", "horizontal bar"]
+    "chart_types": [
+      "vertical bar",
+      "horizontal bar"
+    ]
   },
   {
     "date": "2026-07-13",
     "slug": "2026-07-13",
     "title": "AI Social Media Tools Are Working. Your Brand Isn't.",
-    "chart_types": ["line", "donut"]
+    "chart_types": [
+      "line",
+      "donut"
+    ]
+  },
+  {
+    "date": "2026-07-16",
+    "slug": "2026-07-16",
+    "title": "The Authenticity Arbitrage: 41% of LinkedIn Content Is AI. That's Your Advantage.",
+    "chart_types": [
+      "vertical bar",
+      "area"
+    ]
   }
 ]
