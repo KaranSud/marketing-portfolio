@@ -1,0 +1,43 @@
+HERO IMAGE — PRODUCTION NOTE
+==============================
+
+Pexels API (api.pexels.com) was blocked by the session's org egress policy
+(403 CONNECT tunnel rejection). Direct and CDN access to pexels.com was also
+blocked. Per the proxy README, organization policy denials should be reported
+rather than routed around.
+
+A placeholder PNG (dark brand-palette background, #0F172A) was generated via
+Python and saved as hero.jpg for repo structure purposes.
+
+RECOMMENDED PRODUCTION IMAGE
+------------------------------
+Search Pexels for: "industrial automation systems" or "factory production line"
+or "infrastructure pipeline control room"
+
+Suggested Pexels search URL:
+https://www.pexels.com/search/industrial%20automation/
+
+Selection criteria:
+- Prefer: editorial/architectural/environmental photography showing organized
+  systems, pipelines, control rooms, or manufacturing lines
+- Avoid: people in suits pointing at laptops, robot hands, AI brain graphics,
+  floating data visualizations, money flying
+
+INTENDED IMAGE CONCEPT
+------------------------
+An industrial or infrastructure photograph (pipeline systems, factory floor,
+or architectural environment) that metaphorically represents the gap between
+having powerful tools and having the organizational infrastructure to run them.
+The post's central argument is about organizational readiness vs. tool
+acquisition, so images that suggest "well-built systems" or "foundation
+infrastructure" are most on-theme.
+
+ALT TEXT (for when image is sourced):
+"Aerial view of an industrial pipeline system representing the infrastructure
+required to support AI marketing automation at scale"
+
+PEXELS LICENSE: Free to use under the Pexels License (free for commercial use,
+no attribution required, though appreciated)
+
+PEXELS PHOTO ID: [To be filled when image sourced manually]
+SOURCE URL: [To be filled when image sourced manually]

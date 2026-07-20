@@ -1,0 +1,29 @@
+1/ 70% of CMOs say AI leadership is their top goal for 2026. Only 30% have the organizational maturity to actually scale it. That gap is not closing — it is widening.
+
+2/ CMOs are allocating 15.3% of marketing budgets to AI. The AI-ready 30% allocate 21.3% and extract measurable returns. The other 70% are funding tools their teams cannot use at scale.
+
+3/ "AI adoption" in 2026 means your team uses at least one AI tool for at least one recurring workflow. By that definition, adoption is nearly universal. It tells you almost nothing about business impact.
+
+4/ 87% of marketers use generative AI in at least one workflow (Salesforce, 2026). Using Claude to draft subject lines is not AI marketing automation in any meaningful strategic sense.
+
+5/ There are three distinct levels of AI in marketing: automation, generative AI, and agentic systems. Most organizations treat them as a single category. Each requires different data infrastructure, governance, and capability to extract value from.
+
+6/ Most marketing orgs are stuck between levels one and two and describing it as level three. That gap is where AI budgets disappear without trace.
+
+7/ Gartner predicted in June 2025 that over 40% of agentic AI projects will be canceled by end of 2027 — due to escalating costs, unclear business value, or inadequate risk controls. Not 40% of bad projects. Forty percent of all of them.
+
+8/ The cancellation driver is rarely technology failure. Agentic AI tools often work in demos. The failure is organizational: no clean data, no governance, no measurement framework to attribute results.
+
+9/ The 30% who are scaling AI marketing share three conditions. None of them are about which tools they chose.
+
+10/ First: unified data infrastructure before any AI tool. A CRM with fragmented lead sources produces worse AI outputs than a smaller, cleaner dataset. The personalization is not the problem. The data feeding it is.
+
+11/ Second: governance before autonomy. Define who approves AI outputs and what human review looks like before you deploy. Without it, every AI failure becomes a political event — and political events get programs canceled.
+
+12/ Third: AI marketing ROI measurement built in from day one. Track which AI generated assets and decisions produced the outcome, not just campaign performance. That is what makes the budget argument to the CFO.
+
+13/ Fewer than 10% of marketing organizations have scaled end-to-end AI workflows that generate measurable business value. The ones that have saw 22% efficiency gains and 10–30% revenue growth from AI-enabled personalization.
+
+14/ The 10% are not smarter. They are earlier. They made the infrastructure bets two years ago that most organizations are only beginning to make now.
+
+15/ Full breakdown: AI Marketing Automation Is Scaling, But Your Organization Probably Isn't. — link in bio. Follow @karansud for more.
