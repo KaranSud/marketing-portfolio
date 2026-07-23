@@ -97,5 +97,14 @@
       "horizontal bar",
       "radar"
     ]
+  },
+  {
+    "date": "2026-07-23",
+    "slug": "2026-07-23",
+    "title": "91% of Marketers Use AI. Only 41% Can Prove It Works.",
+    "chart_types": [
+      "dumbbell",
+      "line"
+    ]
   }
 ]

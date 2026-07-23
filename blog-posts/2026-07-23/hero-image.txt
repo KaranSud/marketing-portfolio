@@ -1,0 +1,24 @@
+HERO IMAGE RECORD
+=================
+
+Note: The Pexels API (api.pexels.com) is blocked by the session's egress policy proxy (403 Forbidden on CONNECT tunnel).
+A placeholder 1x1 JPEG was written to hero.jpg. The image described below was the intended selection.
+
+Intended search query: "data analytics technology server infrastructure"
+
+Intended image description:
+  A clean, architectural shot of server infrastructure or abstract data visualization in dark tones,
+  conveying analytical depth without the clichés of AI imagery (no robot hands, no AI brain graphics,
+  no suit-pointing-at-laptop). Ideally: rows of server racks with cool blue/white lighting, or an
+  abstract visualization of data flows.
+
+Pexels Photo ID: N/A (API blocked)
+Source URL: N/A (api.pexels.com blocked by proxy policy)
+License: Pexels free to use license (https://www.pexels.com/license/)
+Alt text: Abstract server infrastructure and data flow visualization representing AI marketing analytics
+Rationale: Editorial/industrial photography of real infrastructure avoids AI clichés and fits the
+  article's argument about structural (not tool-level) problems in AI marketing adoption.
+
+Workaround applied: Created placeholder hero.jpg (minimal valid JPEG, 332 bytes).
+Production action required: Replace hero.jpg with a real Pexels image using the same API key
+  in an environment without proxy restrictions.

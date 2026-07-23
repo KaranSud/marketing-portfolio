@@ -1,0 +1,29 @@
+1/ The share of marketers who can PROVE their AI investments work has declined two years in a row. Adoption is up. Accountability is down. Here's what's actually happening.
+
+2/ 91% of marketers now use AI. But only 41% can demonstrate measurable ROI from it. In 2024, that figure was 49%. More tools, less proof. Every year.
+
+3/ Gartner surveyed 401 CMOs this spring. Finding: companies are putting 15.3% of marketing budgets into AI. But only 30% have the organizational capability to deploy it at scale.
+
+4/ That gap (15.3% of budget vs. 30% readiness) is the real story. Most teams are funding a capability they haven't built yet. Budget without accountability infrastructure is just spend.
+
+5/ McKinsey went wider. Nearly 2,000 respondents, 105 countries. 88% of organizations use AI in at least one business function. But 94% reported not seeing significant value from those investments.
+
+6/ Read that again. 94% of companies have deployed AI and cannot point to it as a meaningful driver of outcomes. That's not a tool problem. That's a structural problem.
+
+7/ The martech landscape hit 15,505 products in 2026, up just 121 from last year. After growing 100x since 2011, it's essentially flat. And 1,367 tools were removed, more than any prior year.
+
+8/ The content AI category, which nearly doubled in two years, just posted its first net decline. The tool accumulation era is ending. Not by choice. By selection pressure.
+
+9/ IDC projects companies will spend $30B on AI for personalized customer experiences by 2027. The budget commitment is happening. The measurement infrastructure to prove it's working mostly isn't.
+
+10/ What separates the 30% who are scaling? They build measurement BEFORE they build a tool stack. What will we track? What's the baseline? How do we attribute AI input to downstream results?
+
+11/ Teams with proven AI ROI treat it as a workflow problem, not a software problem. They ask: which workflow is constrained, what data does it need, and what's the simplest AI capability that fixes it? Almost always ends up with fewer tools, not more.
+
+12/ They also define attribution BEFORE deployment. If you can't describe in advance how you'd know whether the AI worked, you cannot measure it after. That's not a philosophy. It's a design requirement.
+
+13/ And they do quarterly stack reviews with a default toward removal. The question "what should we add?" gets asked constantly. "What should we stop paying for?" barely at all. Flip that.
+
+14/ Start with an audit of proof, not tools. For every AI investment: do I have documented evidence this changed a specific outcome, at a specific magnitude, compared to a baseline? If no, it's unproven — put it on a 90-day measurement plan or sunset it.
+
+15/ Full breakdown: 91% of Marketers Use AI. Only 41% Can Prove It Works. — link in bio. Follow @karansud for more.
