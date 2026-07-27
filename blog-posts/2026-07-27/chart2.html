@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expansion ARR % by Company ARR Band — Chart</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F172A; --text: #F8FAFC;
+      --text-secondary: #94A3B8; --text-muted: #475569; --grid: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A; --text: #F8FAFC;
+    --text-secondary: #94A3B8; --text-muted: #475569; --grid: #1E293B;
+  }
+  :root[data-theme="light"] {
+    --bg: #FFFFFF; --text: #0F172A;
+    --text-secondary: #475569; --text-muted: #94A3B8; --grid: #E2E8F0;
+  }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 320px;
+  }
+  .callout {
+    background: #FEF2F2;
+    border-left: 3px solid #DC2626;
+    padding: 0.6rem 0.9rem;
+    margin-top: 1.2rem;
+    border-radius: 0 4px 4px 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    .callout { background: #1E0000; }
+  }
+  :root[data-theme="dark"] .callout { background: #1E0000; }
+  :root[data-theme="light"] .callout { background: #FEF2F2; }
+  .callout p {
+    font-size: 0.82rem;
+    color: #DC2626;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .source {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    border-top: 1px solid var(--grid);
+    padding-top: 0.6rem;
+  }
+</style>
+</head>
+<body>
+<h2>At $50M ARR, Expansion Revenue Becomes the Majority Growth Source</h2>
+<p class="subtitle">Expansion ARR as a share of total new ARR, by company ARR band</p>
+<div class="chart-wrap">
+  <canvas id="chart2"></canvas>
+</div>
+<div class="callout">
+  <p>The tipping point: companies above $50M ARR generate more revenue from expansion than from new logos</p>
+</div>
+<p class="source">Source: High Alpha &amp; OpenView, 2024 SaaS Benchmarks Report.</p>
+
+<script>
+  const isDark = () =>
+    document.documentElement.getAttribute('data-theme') === 'dark' ||
+    (document.documentElement.getAttribute('data-theme') !== 'light' &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  function getColors() {
+    const dark = isDark();
+    return {
+      grid: dark ? '#1E293B' : '#E2E8F0',
+      tick: dark ? '#94A3B8' : '#475569',
+      label: dark ? '#94A3B8' : '#475569',
+      stem: dark ? '#334155' : '#CBD5E1',
+    };
+  }
+
+  const bands = ['< $1M ARR', '$1–5M ARR', '$5–20M ARR', '$20–50M ARR', '$50M+ ARR'];
+  const expansionPct = [15, 23, 34, 40, 55];
+
+  // Lollipop chart using a scatter + line approach
+  const ctx = document.getElementById('chart2').getContext('2d');
+
+  // Custom lollipop plugin
+  const lollipopPlugin = {
+    id: 'lollipop',
+    afterDraw(chart) {
+      const { ctx: c, scales: { x, y } } = chart;
+      const dataset = chart.data.datasets[0];
+      const meta = chart.getDatasetMeta(0);
+
+      // Draw stems
+      c.save();
+      dataset.data.forEach((val, i) => {
+        const point = meta.data[i];
+        const xPos = x.getPixelForValue(i);
+        const yPos = y.getPixelForValue(val);
+        const yBase = y.getPixelForValue(0);
+
+        c.beginPath();
+        c.moveTo(xPos, yBase);
+        c.lineTo(xPos, yPos);
+        c.strokeStyle = getColors().stem;
+        c.lineWidth = 2;
+        c.stroke();
+      });
+
+      // Draw dots
+      dataset.data.forEach((val, i) => {
+        const xPos = x.getPixelForValue(i);
+        const yPos = y.getPixelForValue(val);
+        const color = val >= 50 ? '#DC2626' : '#475569';
+
+        c.beginPath();
+        c.arc(xPos, yPos, 10, 0, Math.PI * 2);
+        c.fillStyle = color;
+        c.fill();
+
+        // Value label
+        c.fillStyle = '#FFFFFF';
+        c.font = 'bold 10px -apple-system, sans-serif';
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.fillText(val + '%', xPos, yPos);
+      });
+
+      c.restore();
+    }
+  };
+
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: bands,
+      datasets: [{
+        data: expansionPct,
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+      }]
+    },
+    plugins: [lollipopPlugin],
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `Expansion: ${ctx.parsed.y}% of new ARR`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: {
+            color: getColors().tick,
+            font: { family: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif', size: 11 }
+          }
+        },
+        y: {
+          beginAtZero: true,
+          max: 65,
+          grid: { color: getColors().grid },
+          border: { display: false },
+          ticks: {
+            color: getColors().tick,
+            font: { family: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif', size: 12 },
+            callback: v => v + '%'
+          },
+          title: {
+            display: true,
+            text: '% of New ARR from Expansion',
+            color: getColors().label,
+            font: { size: 11 }
+          }
+        }
+      }
+    }
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const c = getColors();
+    chart.options.scales.x.ticks.color = c.tick;
+    chart.options.scales.y.ticks.color = c.tick;
+    chart.options.scales.y.grid.color = c.grid;
+    chart.options.scales.y.title.color = c.label;
+    chart.update();
+  });
+</script>
+</body>
+</html>

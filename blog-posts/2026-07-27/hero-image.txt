@@ -1,0 +1,28 @@
+HERO IMAGE RECORD
+=================
+
+Note: The Pexels API (api.pexels.com) and image CDN (images.pexels.com) are blocked
+by the session's egress policy proxy (403 Forbidden on CONNECT tunnel).
+A placeholder JPEG was written to hero.jpg. The image described below was the intended selection.
+
+Intended Pexels search query: "architecture infrastructure growth scale minimal"
+
+Intended image description:
+  A clean, environmental or architectural photograph — rows of identical structures receding into
+  the distance, an aerial view of a city grid, or a minimal industrial space — conveying scale and
+  systematic growth without AI clichés (no robot hands, no brain graphics, no suit-pointing-at-laptop).
+  Ideally something that communicates "existing infrastructure expanding" rather than "new thing being built."
+  Dark or muted tones preferred.
+
+Pexels Photo ID: N/A (API/CDN blocked by proxy policy)
+Source URL: N/A (api.pexels.com blocked by proxy)
+License: Pexels free to use license (https://www.pexels.com/license/)
+Alt text: Aerial view of expanding urban infrastructure representing SaaS growth through existing customer base
+Rationale: Environmental photography of real-world infrastructure at scale avoids AI clichés and visually
+  reinforces the article's core argument — that growth compounds from what you already have, not just
+  what you build new.
+
+Workaround applied: Created placeholder hero.jpg.
+Production action required: Replace hero.jpg with a real Pexels image using the same API key
+  (2T6uPt9N4jOrYfel6EZvBOBQlakhwh7f6yKvkxb9ymfsA0HpeOCqIVxd) in an environment without proxy restrictions.
+  Suggested search query for Pexels: "architecture infrastructure growth scale"

@@ -1,0 +1,29 @@
+1/ The median SaaS company spends $2.00 in sales and marketing to acquire $1 of new customer ARR. Expansion revenue costs 15-25 cents on the dollar. And yet most marketing teams are still building for acquisition.
+
+2/ McKinsey surveyed 98 B2B SaaS companies and found a gap that should reset how you think about valuation: top-quartile NRR is 113%. Bottom-quartile is 98%. That 15 points = the difference between a 24x and a 5x revenue multiple.
+
+3/ I'm going to say that again, because it gets buried in board decks: a 15-point difference in net revenue retention corresponds to a nearly fivefold gap in enterprise valuation. Not revenue growth. Valuation.
+
+4/ The compounding math is brutal for acquisition-first companies. A 113% NRR business grows 13% per year with zero net new customers. A 98% NRR business is shrinking on the same acquisition budget.
+
+5/ Benchmarkit's 2025 data across 342 companies: median B2B SaaS CAC payback is 16 months. Top quartile: 6 months. Bottom quartile: 24 months. Meanwhile, expansion ARR paybacks in weeks, not months.
+
+6/ The tipping point most marketing teams have missed: median SaaS companies now generate 40% of new ARR from expansion. Above $50M ARR, expansion exceeds new logos. More than half of growth is from customers they already have.
+
+7/ This has been building for 3 years. Expansion as a share of new ARR grew from roughly 25% in 2022 to 40% today. Finance teams already know this. Most marketing teams haven't reorganized around it.
+
+8/ Gartner surveyed 646 B2B buyers in March 2026: 67% prefer a rep-free buying experience. The obvious read is "build PLG." The right read is more nuanced.
+
+9/ Self-service is a preference for the entry point, not the expansion relationship. The accounts that go from 5-seat pilots to 50-seat deployments almost always have a human relationship embedded somewhere in them. Self-service gets buyers in. CS grows them.
+
+10/ Three expansion motions that actually compound: usage-based triggers (automated upsell at 80% of limit), multi-product sequencing (second product lands at half the CAC of the first), seat expansion architecture (champion-driven adoption into adjacent teams).
+
+11/ Marketing's structural problem is treating post-sale as someone else's job. The programs that drive NRR look exactly like demand generation but point at existing customers: lifecycle email, in-app messaging, community, customer content.
+
+12/ Median SaaS NRR slid from 105% in 2021 to 101% in 2024. That 4-point compression was post-pandemic tool rationalization and early AI displacement. Those forces are not pausing. 101% is not a stable position.
+
+13/ The companies building toward 113% NRR are not spending more on acquisition. They are treating expansion as a first-class growth motion with a budget, a team, and a shared metric between CS and marketing.
+
+14/ Your finance team can already see the expansion ARR line growing in your cohort data. The question is whether your marketing team has built the programs to accelerate it.
+
+15/ Full breakdown: SaaS Growth Strategy: Stop Optimizing for New Logos in 2026 — link in bio. Follow @karansud for more.
