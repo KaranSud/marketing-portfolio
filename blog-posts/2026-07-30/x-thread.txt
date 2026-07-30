@@ -1,0 +1,29 @@
+1/ Most SaaS companies are leaving 40-67% of their growth potential sitting in accounts they already own. Here's why expansion ARR now beats new logos — and what to do about it:
+
+2/ SaaS Capital tracked thousands of private B2B companies. Median growth rate: 47% in 2021. 26% in 2025. That's not a blip. It's sustained multi-year compression despite rate cuts and AI tailwinds.
+
+3/ The default response is always the same: more SDRs, more budget, more outbound. That's rational given most teams' incentive structures. It's also the wrong answer to what the data is showing.
+
+4/ McKinsey analyzed 100+ B2B SaaS companies across 6 years of wildly different markets. Top-quartile NRR companies trade at 24x EV/Revenue. Bottom quartile: 5x. That's a 4.8x valuation gap.
+
+5/ The NRR threshold between those two groups? Top quartile: 113%. Bottom quartile: 98%. A 15-point gap in one metric creates a nearly 5x difference in what investors think your business is worth.
+
+6/ The gap held through the 2021 boom, 2022 correction, 2023-24 compression, and the AI recovery. This isn't a frothy-market artifact. It's structural.
+
+7/ ChartMogul + Maxio data (800+ companies): expansion ARR went from 25% of new ARR in 2022 to 40% in 2024. Above $50M ARR? Expansion is now 58-67% of all new revenue. Most of your growth is already in the building.
+
+8/ The economics are stark. Generating $1 of expansion ARR costs $0.20-0.27 in S&M spend. A new logo dollar costs $1.16. Your existing customer base is your cheapest growth channel. It's also your least-invested one.
+
+9/ The structural problem: every compensation plan, pipeline metric, and board headline still optimizes for acquisition. NRR gets buried in a footnote. CS doesn't own a number. Expansion has no quota carrier.
+
+10/ Three things separate high-NRR operators from the rest: usage-correlated expansion triggers, in-product upgrade mechanics, and CS treated as a direct revenue function with ARR quota. None of this is new. Execution is the gap.
+
+11/ The PLG wrinkle: OpenView data shows only 5% of freemium signups convert to paid — yet PLG companies grow 2x faster than sales-led peers. The advantage isn't conversion. It's expansion within converted accounts.
+
+12/ Three moves you can make in the next 90 days: (1) Break out expansion ARR as its own board line. (2) Put at least one quota on expansion ownership. (3) Build one in-product trigger before year-end.
+
+13/ A single in-product expansion trigger, properly instrumented, often generates more expansion ARR in a quarter than a 12-month outbound upsell campaign. One trigger. That's the starting point.
+
+14/ The companies that win the next five years won't be the ones who closed the most logos. They'll be the ones who figured out the most valuable customer is already inside the tent.
+
+15/ Full breakdown with McKinsey data, benchmark charts, and the expansion-led growth playbook → link in bio. Drop your current NRR below — curious where teams are actually sitting. @karansud

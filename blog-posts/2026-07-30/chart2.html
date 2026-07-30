@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expansion ARR as % of New ARR by Company Stage</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  .card {
+    background: #FFFFFF;
+    border: 1px solid #E7E5E4;
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 720px;
+    width: 100%;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: #64748B;
+    margin-bottom: 24px;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 280px;
+  }
+  .source {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-top: 16px;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0F172A; }
+    .card { background: #1E293B; border-color: #334155; }
+    .chart-title { color: #F1F5F9; }
+    .chart-subtitle { color: #94A3B8; }
+    .source { color: #475569; }
+  }
+  :root[data-theme="dark"] body { background: #0F172A; }
+  :root[data-theme="dark"] .card { background: #1E293B; border-color: #334155; }
+  :root[data-theme="dark"] .chart-title { color: #F1F5F9; }
+  :root[data-theme="dark"] .chart-subtitle { color: #94A3B8; }
+  :root[data-theme="dark"] .source { color: #475569; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="chart-title">Expansion ARR as Share of New ARR, by Company Stage</div>
+  <div class="chart-subtitle">Median expansion ARR (upsell + seat growth + cross-sell) as % of total new ARR added</div>
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="source">Source: ChartMogul, Maxio, Growth Unhinged 2025 SaaS Benchmarks (800+ companies)</div>
+</div>
+<script>
+  const isDark = () =>
+    document.documentElement.getAttribute('data-theme') === 'dark' ||
+    (document.documentElement.getAttribute('data-theme') !== 'light' &&
+     window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  function getColors() {
+    const dark = isDark();
+    return {
+      gridColor: dark ? '#1E293B' : '#E2E8F0',
+      tickColor: dark ? '#94A3B8' : '#475569',
+      tooltipBg: dark ? '#1E293B' : '#0F172A',
+      labelColor: dark ? '#CBD5E1' : '#0F172A',
+    };
+  }
+
+  function makeColors(data) {
+    return data.map((v, i) => {
+      const intensity = 0.45 + (i / (data.length - 1)) * 0.55;
+      return `rgba(220, 38, 38, ${intensity.toFixed(2)})`;
+    });
+  }
+
+  const labels = ['<$15M ARR', '$15–30M ARR', '$30–50M ARR', '$50M+ ARR'];
+  const values = [25, 35, 48, 62];
+
+  const ctx = document.getElementById('chart').getContext('2d');
+  const c = getColors();
+
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Expansion ARR %',
+        data: values,
+        backgroundColor: makeColors(values),
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: c.tooltipBg,
+          titleColor: '#FFFFFF',
+          bodyColor: '#CBD5E1',
+          padding: 12,
+          cornerRadius: 8,
+          callbacks: {
+            label: ctx => ` ${ctx.parsed.x}% of new ARR from expansion`
+          }
+        }
+      },
+      scales: {
+        x: {
+          min: 0,
+          max: 80,
+          grid: { color: c.gridColor, drawTicks: false },
+          border: { display: false },
+          ticks: {
+            color: c.tickColor,
+            font: { size: 13 },
+            stepSize: 20,
+            callback: v => v + '%'
+          }
+        },
+        y: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: { color: c.tickColor, font: { size: 13 } }
+        }
+      }
+    }
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const c2 = getColors();
+    chart.options.scales.x.grid.color = c2.gridColor;
+    chart.options.scales.x.ticks.color = c2.tickColor;
+    chart.options.scales.y.ticks.color = c2.tickColor;
+    chart.options.plugins.tooltip.backgroundColor = c2.tooltipBg;
+    chart.update();
+  });
+</script>
+</body>
+</html>

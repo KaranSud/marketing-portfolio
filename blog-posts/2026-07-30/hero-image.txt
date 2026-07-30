@@ -1,0 +1,11 @@
+Pexels Photo ID: 16067732
+Source URL: https://www.pexels.com/photo/a-gas-pipeline-in-the-forest-16067732/
+License: Pexels License (free to use, no attribution required)
+Alt text: Aerial view of industrial gas pipelines running through a dense forest, representing the hidden infrastructure of compounding growth
+Rationale: Industrial pipeline infrastructure evokes the article's central metaphor — expansion revenue as a growth channel that already exists, flowing largely unnoticed beneath the surface of most SaaS go-to-market strategies. The image is editorial and environmental, avoiding the clichés of suit-clad executives, robot hands, or abstract data graphics.
+
+NOTE: The Pexels API (api.pexels.com) and CDN (images.pexels.com) were blocked by the environment's network proxy policy during this run (HTTP 403 CONNECT tunnel failure on both endpoints). The hero.jpg file is a valid JPEG placeholder. To replace it with the actual Pexels image, download it manually using:
+
+  curl -sL "https://images.pexels.com/photos/16067732/pexels-photo-16067732.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" -o blog-posts/2026-07-30/hero.jpg
+
+Alternative Pexels photo considered: ID 29024189 (Monochrome Landscape with Industrial Silos), URL: https://www.pexels.com/photo/monochrome-landscape-with-industrial-silos-29024189/
