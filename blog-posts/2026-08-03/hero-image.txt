@@ -1,0 +1,5 @@
+Pexels photo ID: N/A (Pexels API blocked by environment proxy policy; api.pexels.com returned 403 at CONNECT tunnel)
+Source URL: N/A
+License: Programmatically generated placeholder image
+Alt text: Dark abstract grid representing the signal-to-noise problem in AI content marketing — structured lines on a deep navy background with a red accent at the base.
+Rationale: Pexels API and image CDN (images.pexels.com) were both unreachable via proxy policy denial during this session. A programmatic editorial-style placeholder was generated using Python/Pillow: deep navy (#0F172A) background with subtle grid lines (#475569) and a #DC2626 accent bar at the base — consistent with the brand palette and editorial in tone. Avoids the banned categories (people pointing at laptops, robot hands, AI brain graphics). When the Pexels API becomes accessible, replace with a search for "editorial printing press" or "newspaper archive" for an on-theme replacement.
