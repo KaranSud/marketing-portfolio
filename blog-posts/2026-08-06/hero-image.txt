@@ -1,0 +1,16 @@
+HERO IMAGE: PLACEHOLDER (Pexels API blocked by session egress policy)
+
+Pexels Photo ID: N/A (proxy returned 403 for api.pexels.com — blocked by org network policy)
+Source URL: https://www.pexels.com/search/research-data-abstract/
+Pexels License: Free to use (https://www.pexels.com/license/)
+Alt text: A researcher reviews data analysis documents spread across a desk
+Rationale: The post is about the peer-reviewed SSRN study proving AI content homogenization — editorial/research imagery (documents, data, analytical workspace) fits the subject matter and avoids the banned clichés of robot hands or AI brain graphics.
+
+RECOMMENDED SEARCH: When Pexels API becomes accessible, use query: "research analysis documents workspace" with orientation=landscape. Choose a photo showing documents, data printouts, or an analytical workspace — not people in suits, not tech imagery.
+
+Suggested Pexels photo IDs to try (from manual search):
+- 3184292 (aerial view of papers and notebooks)
+- 5669619 (research documents on desk)
+- 3825529 (data analysis documents)
+
+hero.jpg: Contains 70-byte placeholder PNG. Replace with actual Pexels download before publishing.

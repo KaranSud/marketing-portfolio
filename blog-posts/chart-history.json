@@ -133,5 +133,14 @@
       "vertical bar",
       "line"
     ]
+  },
+  {
+    "date": "2026-08-06",
+    "slug": "2026-08-06",
+    "title": "AI Content Homogenization: What the Peer-Reviewed Data Says",
+    "chart_types": [
+      "lollipop",
+      "area"
+    ]
   }
 ]
