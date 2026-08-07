@@ -5,6 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import type { CaseStudy } from "@/lib/caseStudies";
 import type { CaseMedia } from "@/lib/caseMedia";
 import CountUp from "./CountUp";
+import BeforeAfterSection from "./BeforeAfterSection";
 
 const container: Variants = {
   hidden: {},
@@ -131,6 +132,8 @@ export default function CaseModal({
                 </div>
               ))}
             </motion.div>
+
+            {data.beforeAfter ? <BeforeAfterSection data={data.beforeAfter} /> : null}
 
             <motion.div className="modal-section" variants={item}>
               <h3>The situation</h3>
