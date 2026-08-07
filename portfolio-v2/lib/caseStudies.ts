@@ -14,6 +14,17 @@ export type Thumb = {
   initColor?: string;
 };
 
+export type BeforeAfterPair = { before: string; after: string; label?: string };
+
+export type BeforeAfterVideo = {
+  before: string;
+  after: string;
+  beforePoster: string;
+  afterPoster: string;
+};
+
+export type BeforeAfter = { video: BeforeAfterVideo; screenshots: BeforeAfterPair[] };
+
 export type CaseStudy = {
   key: string;
   // Card face
@@ -32,6 +43,7 @@ export type CaseStudy = {
   execution: string[];
   results: string[];
   screenshots: string[];
+  beforeAfter?: BeforeAfter;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -567,5 +579,66 @@ export const caseStudies: CaseStudy[] = [
       "Followers grew from 26 to 4,500 with zero paid spend.",
     ],
     screenshots: ["/Results/Sportsrush/Sportsrush Viral Reels.png"],
+  },
+  {
+    key: "culturegram",
+    tag: "Complete Website Redesign",
+    title: "The Culturegram",
+    desc: "Redesigned The Culturegram's website from the ground up, replacing a corporate services page with a real publication: new architecture, a hand-coded theme, a working podcast and essay library, and a full editorial report.",
+    cardMetrics: [
+      { val: "Ground-Up", label: "Website Redesign" },
+      { val: "Custom", label: "Hand-Built Theme & Illustrations" },
+      { val: "9", label: "Content Pieces Shipped" },
+    ],
+    thumb: {
+      bg: "linear-gradient(135deg, #f7f2e4 0%, #ece0c4 100%)",
+      logo: "/Logos/Culturegram.png",
+    },
+    role: "Social & Content Strategist",
+    channels: ["Website (Ghost)", "Podcast", "Editorial Report"],
+    stats: [
+      { val: "Ground-Up", label: "Complete Website Redesign" },
+      { val: "5", label: "Podcast Episodes Built" },
+      { val: "3", label: "Essays Published" },
+      { val: "13", label: "Custom Illustrations" },
+      { val: "1", label: "Full Editorial Report" },
+    ],
+    situation:
+      "The Culturegram's old site was a corporate services page: what the company does, not what it publishes. There was no real publishing infrastructure behind it, no way to actually run a podcast library, an essays section, or a research report, and it didn't look or feel like the content brand it was meant to be.",
+    strategy:
+      "Redesign it from the ground up as a content-first publication instead of patching the old services site. I rebuilt the information architecture around content, hand-coded the theme rather than adapting a template, and replaced stock photography with a visual system built for the brand. Everything shipped in phases (brand shell, then podcast, then essays, then the report) so the founder could react and redirect at every stage rather than see one big reveal at the end.",
+    execution: [
+      "Rebuilt the site from scratch on Ghost, with a hand-coded custom theme pixel-matched to an approved mockup.",
+      "Built the content library: 5 podcast episodes with custom templates, guest bios and platform links; a real essays section; and a full editorial research report with 13 custom illustrations in an Atlantic-style layout.",
+      "Built a custom photo-treatment pipeline that hand-draws brand-consistent doodle marks onto licensed photography, so the site never leans on stock photos.",
+      "Ran structured rounds of stakeholder review and mobile polish, verified with real browser testing before every deploy.",
+      "Handled deployment end to end, including working through the CMS's two-factor login and permission limits on the automated deploy scripts.",
+    ],
+    results: [
+      'Turned the old services page into a real content publication: a working podcast library, published essays, and a full editorial report, live where placeholder "coming soon" cards used to sit.',
+      "Built a visual identity that's actually the brand's own: hand-doodled photo treatments and a custom illustrated report instead of stock imagery.",
+      "Verified the whole redesign in phases against an approved mockup, so the live site matches it pixel for pixel.",
+    ],
+    screenshots: [],
+    beforeAfter: {
+      video: {
+        before: "/Results/Culturegram/before.mp4",
+        after: "/Results/Culturegram/after.mp4",
+        beforePoster: "/Results/Culturegram/before-poster.jpg",
+        afterPoster: "/Results/Culturegram/after-poster.jpg",
+      },
+      screenshots: [
+        {
+          before: "/Results/Culturegram/before-home.png",
+          after: "/Results/Culturegram/after-home.png",
+          label: "Homepage",
+        },
+        {
+          before: "/Results/Culturegram/before-content.png",
+          after: "/Results/Culturegram/after-content.png",
+          label: "Content Hub",
+        },
+      ],
+    },
   },
 ];

@@ -42,7 +42,7 @@ export default function Work() {
   const [open, setOpen] = useState(false);
 
   const featured =
-    caseStudies.find((c) => c.key === "fere") ?? caseStudies[0];
+    caseStudies.find((c) => c.key === "culturegram") ?? caseStudies[0];
   const rest = caseStudies.filter((c) => c.key !== featured.key);
 
   function openCase(c: CaseStudy) {
@@ -83,7 +83,7 @@ export default function Work() {
               Brands I took <em>from quiet to known</em>
             </>
           }
-          sub="Twelve engagements across Web3, AI, F&B, and e-commerce. What each looked like before, and where it ended up."
+          sub="Thirteen engagements across Web3, AI, F&B, e-commerce, and web design. What each looked like before, and where it ended up."
         />
 
         {/* Featured */}
