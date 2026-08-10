@@ -1,0 +1,16 @@
+HERO IMAGE: PLACEHOLDER (Pexels API blocked by session egress policy)
+
+Pexels Photo ID: N/A (proxy returned 403 for api.pexels.com — blocked by org network policy)
+Source URL: https://www.pexels.com/search/server-infrastructure-abstract/
+Pexels License: Free to use (https://www.pexels.com/license/)
+Alt text: Abstract industrial infrastructure with rows of routing equipment in cool-toned light, suggesting automated systems running silently in the background
+Rationale: The post's core metaphor is that automated email flows run quietly in the background generating revenue while the team focuses on campaigns. Industrial infrastructure imagery (server rooms, distribution networks, automated systems) captures this without resorting to robot hands, AI brains, or people pointing at laptops. Cool-toned editorial photography fits the analytical, B2B register of the piece.
+
+RECOMMENDED SEARCH: When Pexels API becomes accessible, use query: "server room data center infrastructure" with orientation=landscape. Choose a photo with cool blues/grays and a sense of quiet scale — not people interacting with tech, not warm lighting, not close-up screens.
+
+Suggested Pexels search queries to try:
+- "server room blue light rows"
+- "data center infrastructure abstract"
+- "industrial automation factory overhead"
+
+hero.jpg: Contains 69-byte placeholder PNG. Replace with actual Pexels download before publishing.
