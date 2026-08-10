@@ -652,6 +652,21 @@ export const caseStudies: CaseStudy[] = [
           after: "/Results/Culturegram/after-content.png",
           label: "Content Hub",
         },
+        {
+          before: "/Results/Culturegram/before-podcast.png",
+          after: "/Results/Culturegram/after-podcast.png",
+          label: "Podcast",
+        },
+        {
+          before: "/Results/Culturegram/before-team.png",
+          after: "/Results/Culturegram/after-team.png",
+          label: "Team",
+        },
+        {
+          before: "/Results/Culturegram/before-contact.png",
+          after: "/Results/Culturegram/after-contact.png",
+          label: "Contact",
+        },
       ],
     },
   },
