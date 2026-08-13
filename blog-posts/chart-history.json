@@ -151,5 +151,14 @@
       "horizontal bar",
       "radar"
     ]
+  },
+  {
+    "date": "2026-08-13",
+    "slug": "2026-08-13",
+    "title": "Email Open Rates Are Lying to You (58% of Them)",
+    "chart_types": [
+      "vertical bar",
+      "donut"
+    ]
   }
 ]

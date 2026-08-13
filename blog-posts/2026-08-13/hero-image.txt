@@ -1,0 +1,9 @@
+HERO IMAGE: PLACEHOLDER (Pexels API blocked by session egress policy)
+
+Pexels Photo ID: N/A (proxy returned 403 for api.pexels.com — blocked by org network policy)
+Source URL: https://www.pexels.com/search/inbox+envelope+light+abstract/
+Pexels License: Free to use (https://www.pexels.com/license/)
+Alt text: Close-up of a screen displaying rows of data metrics with soft ambient light, suggesting the quiet accumulation of signals that may or may not reflect reality
+Rationale: The post's central argument is that a ubiquitous marketing metric (email open rate) has been silently corrupted by machine-generated data since 2021. Imagery of screens, data streams, or ambient light through glass conveys measurement and ambiguity without resorting to robot hands, AI brains, or people pointing at laptops. A slightly blurred or moody editorial aesthetic works well here — the data looks real but something is off.
+
+RECOMMENDED SEARCH: When Pexels API becomes accessible, use query: "email inbox screen data light abstract" with orientation=landscape. Prefer editorial or architectural shots with muted blues and grays. Avoid any imagery of people using devices.

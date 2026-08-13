@@ -1,0 +1,29 @@
+1/ Your email platform is showing you a 40% open rate right now. More than half of those opens happened before any human saw your subject line. Here's what that's actually costing you. 🧵
+
+2/ In Sept 2021, Apple launched Mail Privacy Protection. It pre-fetches every image in an email the moment it lands in an Apple Mail inbox — whether the recipient reads it or not. Your analytics platform counts this as an "open."
+
+3/ By Dec 2025, Apple Mail accounted for ~58% of all tracked email opens globally (Litmus data). The majority of what your dashboard calls "opens" are machine-generated signals, not humans engaging with your content.
+
+4/ The industry-wide average open rate was 20-25% before MPP. By 2025 it hit 34-44%. That increase wasn't because people got more interested in marketing email. Apple's servers started opening it for them.
+
+5/ Only 15% of email marketers still use open rate as their primary KPI (Validity/Litmus State of Email 2025). The other 85% have moved on. If your dashboard still leads with open rate, you're in a shrinking, lower-performing group.
+
+6/ The problem isn't the inflated number on the chart. It's the 5 specific decisions your program makes on top of it. Each one breaks differently.
+
+7/ A/B test winners picked by open rate: Apple's servers are voting on your subject lines. The "winner" might be the one Apple's infrastructure happened to pre-fetch more consistently, not the one humans found more compelling.
+
+8/ Re-engagement sequences triggered by "no opens in 90 days": some contacts who never read your email get saved by MPP pings. Others who read everything on Gmail get flagged as inactive. You're optimizing for the wrong signal entirely.
+
+9/ Suppression lists built on open history: real buyers are getting deleted because they use a non-Apple mail client and show fewer "opens." They didn't disengage. Your measurement infrastructure misfired.
+
+10/ 3 metrics that actually do what open rate promised: click-to-open rate (normalizes for MPP inflation), reply rate (literally impossible to fake — Apple's servers don't reply to email), and revenue-per-send (cuts through all ambiguity).
+
+11/ CTOR went from 5.63% to 6.81% in a single year while the industry obsessed over inflated open rates. The metric that tracks real content quality was improving the whole time. Most teams didn't notice because they were watching the wrong number.
+
+12/ McKinsey: 76% of consumers get frustrated when brands don't deliver personalized interactions. Suppressing real customers because your measurement infrastructure is broken is the most expensive way to create that frustration.
+
+13/ The 30-day fix: (1) demote open rate to deliverability indicator only, (2) reconfigure A/B tests to pick winners on click rate, (3) rebuild suppression triggers on 180-day click+purchase silence instead of open silence.
+
+14/ Historical open rate data is still useful for spotting deliverability drops. Keep it in the background. Just stop building your optimization decisions on top of it. Those are two very different uses of the same metric.
+
+15/ Full breakdown: Email Open Rates Are Lying to You (58% of Them) — link in bio. Follow @karansud for more.
