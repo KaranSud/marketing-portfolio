@@ -1,0 +1,15 @@
+HERO IMAGE: PLACEHOLDER (Pexels API blocked by session egress policy)
+
+Pexels Photo ID: N/A (proxy returned 403 for api.pexels.com — blocked by org network policy)
+Source URL: https://www.pexels.com/search/empty+highway+aerial+road/
+Pexels License: Free to use (https://www.pexels.com/license/)
+Alt text: Aerial view of an empty multi-lane highway stretching toward the horizon, with faint lane markings and no traffic visible — a visual metaphor for organic search traffic declining even as the infrastructure remains intact
+Rationale: The post's central argument is that organic rankings still exist and are visible (the highway is there) but clicks (traffic) are no longer flowing through them at the same rate. An aerial shot of an empty or near-empty highway conveys scale, structure, and absence simultaneously — the infrastructure is real but the visitors aren't arriving. Editorial, environmental photography with muted grays and tarmac tones fits the brand palette and avoids all banned image types (no AI brains, no robots, no suits at laptops).
+
+RECOMMENDED SEARCH: When Pexels API becomes accessible, use:
+  curl -s -H "Authorization: 2T6uPt9N4jOrYfel6EZvBOBQlakhwh7f6yKvkxb9ymfsA0HpeOCqIVxd" \
+    "https://api.pexels.com/v1/search?query=empty+highway+aerial+road&per_page=8&orientation=landscape"
+
+Preferred photo IDs to check: search terms "empty highway aerial", "motorway aerial view", "empty road from above"
+Preferred: gray/silver asphalt tones, strong leading lines, no people, no cars if possible
+Fallback search term: "abstract data flow architecture minimal"

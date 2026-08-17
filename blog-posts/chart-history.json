@@ -160,5 +160,14 @@
       "vertical bar",
       "donut"
     ]
+  },
+  {
+    "date": "2026-08-17",
+    "slug": "2026-08-17",
+    "title": "Answer Engine Optimization: The Fix Behind Falling Traffic",
+    "chart_types": [
+      "horizontal bar",
+      "lollipop"
+    ]
   }
 ]
