@@ -1,0 +1,27 @@
+1/ In July 2025, 76% of Google AI citations came from the top-10 search results. By March 2026 that had collapsed to 38%. Ranking first no longer means being cited. The two games have split.
+
+2/ Ahrefs studied 863,000 keywords and 4 million AI Overview URLs to confirm this. 62% of AI citations now come from pages outside the top 10. Some come from pages that don't rank for the query at all.
+
+3/ This means a brand with modest organic authority can earn AI citations that a #1-ranked competitor never gets. And a brand dominating page one can be completely invisible in AI answers.
+
+4/ Why did this happen so fast? Pew Research tracked 68,879 real Google searches. When an AI summary appeared, users clicked through 8% of the time. Without one, 15%. That gap is why the whole model is shifting.
+
+5/ SparkToro confirmed the macro: 68% of US Google searches now end without a click. Up from 60% in 2024. Zero-click isn't a fringe case anymore. It is the default search experience.
+
+6/ The reason AEO and SEO diverged: they use different signals. Backlinks and domain authority predict rankings. Schema markup, answer-first structure, and ecosystem presence predict AI citations. Almost no overlap.
+
+7/ AI systems extract answers from content. A page that opens each H2 with a direct answer gets cited. A page that buries the answer after 400 words of context setting does not, even if it ranks #1.
+
+8/ Structured data is the most underused AEO lever. Pages with FAQ, HowTo, and Article schema are significantly more likely to appear in AI Overviews. Most SaaS teams treat schema as a box to check. It is now a primary channel.
+
+9/ Ecosystem presence matters more than most teams realize. AI models are trained on the full web. Brands showing up consistently in Reddit threads, G2 reviews, and independent coverage earn citation credibility that on-site content alone cannot build.
+
+10/ The stakes: McKinsey estimates $750B in US annual revenue will flow through AI-powered search recommendations by 2028. Half of consumers already use AI search for purchase decisions. Most B2B SaaS brands are invisible there.
+
+11/ The data on what citation is worth: Seer Interactive tracked 3,119 queries across 42 organizations. Brands cited in AI Overviews earned 35% more organic clicks and 91% more paid clicks than brands not cited.
+
+12/ Where to start if you can't do everything: (1) Schema audit your top 20 pages. (2) Rewrite each H2 to answer first, elaborate second. (3) Map your off-site footprint and find the gaps. This is the AEO foundation.
+
+13/ The brands winning in AI answers right now aren't the ones with the strongest domain authority. They're the ones who recognized six months ago that ranking and being cited are two separate disciplines.
+
+14/ Full breakdown: Answer Engine Optimization: The Gap Between Rank and Citation — link in bio. Follow @karansud for more.

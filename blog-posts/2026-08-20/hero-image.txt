@@ -1,0 +1,9 @@
+Pexels Photo ID: N/A — Pexels API (api.pexels.com and images.pexels.com) blocked by network egress proxy during generation. Image generated programmatically.
+
+Source URL: N/A (programmatically generated via Chromium headless screenshot of custom SVG illustration)
+
+License: Proprietary — original work created for this post
+
+Alt text: Dark abstract visualization showing two diverging trend lines, one declining in gray (organic search rank) and one rising in red (AI citation visibility), representing the growing gap between traditional SEO rankings and answer engine optimization performance
+
+Rationale: The visual directly encodes the article's core thesis — that SEO rank and AI citation have diverged into two separate optimization games. The red rising line represents AI citation performance, the gray declining line represents traditional organic traffic, and their point of separation anchors the piece's central data story (citation-rank overlap fell from 76% to 38% in 8 months). Dark editorial aesthetic avoids the generic robot-hands or blue-link imagery common in SEO content.
