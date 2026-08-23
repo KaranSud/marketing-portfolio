@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>B2B Buyer Preference Is Swinging Twice</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+  }
+  h2 {
+    color: #0F172A;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    text-align: center;
+  }
+  p.sub {
+    color: #64748B;
+    font-size: 13px;
+    margin: 0 0 20px 0;
+    text-align: center;
+    max-width: 480px;
+  }
+  .chart-wrap {
+    width: 100%;
+    max-width: 640px;
+  }
+  p.source {
+    color: #94A3B8;
+    font-size: 11px;
+    margin-top: 16px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <h2>B2B Buyers Want No Rep Today. By 2030, Gartner Says That Flips.</h2>
+  <p class="sub">Share of B2B buyers expressing each preference, by survey wave</p>
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <p class="source">Source: Gartner press releases, June 2025, March 2026, and August 2025 (2030 forecast)</p>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [['Prefer rep-free buying', '(Jun 2025)'], ['Prefer rep-free buying', '(Mar 2026)'], ['Prefer human-priority', 'experience (by 2030)']],
+    datasets: [{
+      label: '% of B2B buyers',
+      data: [61, 67, 75],
+      backgroundColor: ['#94A3B8', '#64748B', '#DC2626'],
+      borderRadius: 4,
+      barPercentage: 0.55,
+      categoryPercentage: 0.7
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (item) => item.parsed.y + '% of B2B buyers'
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 100,
+        grid: { color: '#E2E8F0' },
+        ticks: { color: '#475569', callback: (v) => v + '%' }
+      },
+      x: {
+        grid: { display: false },
+        ticks: { color: '#0F172A', font: { size: 12 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

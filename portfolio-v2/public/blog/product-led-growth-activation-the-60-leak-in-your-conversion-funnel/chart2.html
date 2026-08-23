@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activation Score vs. Paid Conversion Probability</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+  .chart-wrap {
+    width: 100%;
+    max-width: 720px;
+  }
+  .chart-header {
+    margin-bottom: 24px;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+  }
+  .chart-container {
+    position: relative;
+    height: 340px;
+  }
+  .chart-note {
+    margin-top: 16px;
+    font-size: 11.5px;
+    color: #94A3B8;
+    line-height: 1.6;
+    border-top: 1px solid #E2E8F0;
+    padding-top: 12px;
+  }
+  .accent { color: #DC2626; font-weight: 600; }
+  .legend-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: #475569;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .zone-label {
+    position: absolute;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <div class="chart-header">
+    <div class="chart-title">Activation Score and Paid Conversion Probability</div>
+    <div class="chart-subtitle">
+      Activation is not a binary event. As users hit more value milestones,
+      conversion probability rises non-linearly. <span class="accent">The dropout zone (0–25%) accounts for 40–60% of all free signups.</span>
+    </div>
+  </div>
+  <div class="chart-container">
+    <canvas id="chart2"></canvas>
+  </div>
+  <div class="legend-row">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#64748B;"></div>
+      <span>Conversion Probability</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626;opacity:0.4;"></div>
+      <span>Dropout Zone (40–60% of signups)</span>
+    </div>
+  </div>
+  <div class="chart-note">
+    Curve is illustrative based on PLG benchmark patterns reported by Kyle Poyar (OpenView/High Alpha, 2024)
+    and the ProductLed 2025 benchmark study. The x-axis represents a composite activation score
+    (0 = signup only, 100 = full aha moment + team invite + paid-tier feature use).
+    Actual curves vary by product complexity and ACV tier.
+  </div>
+</div>
+
+<script>
+const scorePoints = [0, 10, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 100];
+const conversionProbability = [1, 1.5, 2.5, 3.5, 5, 8, 12, 18, 24, 30, 36, 42, 48];
+
+const ctx = document.getElementById('chart2').getContext('2d');
+
+const dropoutZonePlugin = {
+  id: 'dropoutZone',
+  beforeDraw(chart) {
+    const { ctx: c, chartArea, scales } = chart;
+    const x0 = scales.x.getPixelForValue(0);
+    const x25 = scales.x.getPixelForValue(25);
+    c.save();
+    c.fillStyle = 'rgba(220, 38, 38, 0.07)';
+    c.fillRect(x0, chartArea.top, x25 - x0, chartArea.bottom - chartArea.top);
+    c.restore();
+
+    c.save();
+    c.strokeStyle = 'rgba(220, 38, 38, 0.3)';
+    c.setLineDash([4, 4]);
+    c.lineWidth = 1.5;
+    c.beginPath();
+    c.moveTo(x25, chartArea.top);
+    c.lineTo(x25, chartArea.bottom);
+    c.stroke();
+    c.restore();
+
+    c.save();
+    c.fillStyle = 'rgba(220, 38, 38, 0.7)';
+    c.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+    c.textAlign = 'center';
+    c.fillText('Dropout', (x0 + x25) / 2, chartArea.top + 16);
+    c.fillText('Zone', (x0 + x25) / 2, chartArea.top + 30);
+    c.restore();
+  }
+};
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: scorePoints,
+    datasets: [{
+      label: 'Conversion Probability',
+      data: conversionProbability,
+      borderColor: '#475569',
+      backgroundColor: 'rgba(71, 85, 105, 0.06)',
+      borderWidth: 2.5,
+      fill: true,
+      tension: 0.4,
+      pointRadius: scorePoints.map((v, i) => [0, 4, 7, 9].includes(i) ? 5 : 0),
+      pointBackgroundColor: '#475569',
+      pointBorderColor: '#FFFFFF',
+      pointBorderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          title: items => `Activation Score: ${items[0].label}`,
+          label: ctx => ` ~${ctx.parsed.y}% conversion probability`
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#E2E8F0',
+        bodyColor: '#FFFFFF',
+        padding: 10,
+        cornerRadius: 6,
+      }
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Activation Score (0 = signup only, 100 = full aha moment)',
+          color: '#94A3B8',
+          font: { size: 11 },
+          padding: { top: 8 }
+        },
+        grid: { color: '#E2E8F0' },
+        border: { display: false },
+        ticks: {
+          color: '#94A3B8',
+          font: { size: 11.5 },
+          maxTicksLimit: 8
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Free-to-Paid Conversion Probability (%)',
+          color: '#94A3B8',
+          font: { size: 11 },
+          padding: { bottom: 8 }
+        },
+        beginAtZero: true,
+        max: 55,
+        grid: { color: '#E2E8F0' },
+        border: { display: false },
+        ticks: {
+          color: '#94A3B8',
+          font: { size: 11.5 },
+          callback: v => v + '%'
+        }
+      }
+    }
+  },
+  plugins: [dropoutZonePlugin]
+});
+</script>
+</body>
+</html>

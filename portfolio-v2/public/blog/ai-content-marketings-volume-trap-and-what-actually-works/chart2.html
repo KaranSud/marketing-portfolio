@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human vs AI Content: Average Monthly Traffic Per Post (Month 1–5)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 32px 24px 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chart-container {
+    width: 100%;
+    max-width: 780px;
+  }
+  h2 {
+    color: #0F172A;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .subtitle {
+    color: #64748B;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .callout {
+    background: #FAFAF9;
+    border: 1px solid #E7E5E4;
+    border-left: 3px solid #DC2626;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: #0F172A;
+    line-height: 1.5;
+  }
+  .callout strong { color: #DC2626; }
+  .source {
+    color: #94A3B8;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  canvas { width: 100% !important; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0F172A; }
+    h2 { color: #F8FAFC; }
+    .subtitle { color: #94A3B8; }
+    .callout { background: #1E293B; border-color: #334155; border-left-color: #DC2626; color: #CBD5E1; }
+    .source { color: #64748B; }
+  }
+  :root[data-theme="dark"] body { background: #0F172A; }
+  :root[data-theme="dark"] h2 { color: #F8FAFC; }
+  :root[data-theme="dark"] .subtitle { color: #94A3B8; }
+  :root[data-theme="dark"] .callout { background: #1E293B; border-color: #334155; color: #CBD5E1; }
+</style>
+</head>
+<body>
+<div class="chart-container">
+  <h2>Human Content vs. AI Content: Monthly Traffic Per Post</h2>
+  <p class="subtitle">Average page visits per published post over 5 months — 744 articles across 68 websites</p>
+
+  <div class="callout">
+    By month 5, human-written posts averaged <strong>283 visits</strong> vs. <strong>52 visits</strong> for AI-generated posts. The gap widened every month.
+  </div>
+
+  <canvas id="chart2" height="360"></canvas>
+  <p class="source">Source: NP Digital, "AI vs. Human Content" study — 744 articles, 68 websites, 5-month tracking period (neilpatel.com/blog/ai-vs-human-content)</p>
+</div>
+
+<script>
+const ctx = document.getElementById('chart2').getContext('2d');
+
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches ||
+               document.documentElement.getAttribute('data-theme') === 'dark';
+
+const textColor = isDark ? '#94A3B8' : '#475569';
+const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5'],
+    datasets: [
+      {
+        label: 'Human-written content',
+        data: [89, 124, 172, 231, 283],
+        borderColor: '#0F172A',
+        backgroundColor: 'rgba(15, 23, 42, 0.08)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#0F172A',
+        pointRadius: 5,
+        tension: 0.35,
+        fill: true,
+      },
+      {
+        label: 'AI-generated content',
+        data: [48, 57, 44, 61, 52],
+        borderColor: '#94A3B8',
+        backgroundColor: 'rgba(148, 163, 184, 0.08)',
+        borderWidth: 2,
+        pointBackgroundColor: '#94A3B8',
+        pointRadius: 5,
+        borderDash: [5, 4],
+        tension: 0.35,
+        fill: true,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: textColor,
+          font: { size: 12 },
+          padding: 20,
+          usePointStyle: true,
+          pointStyleWidth: 10,
+        }
+      },
+      tooltip: {
+        backgroundColor: isDark ? '#1E293B' : '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        padding: 12,
+        borderColor: '#334155',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y} avg visits`
+        }
+      },
+      annotation: {}
+    },
+    scales: {
+      x: {
+        grid: { color: gridColor },
+        ticks: { color: textColor, font: { size: 12 } },
+      },
+      y: {
+        grid: { color: gridColor },
+        ticks: {
+          color: textColor,
+          font: { size: 11 },
+          callback: v => `${v} visits`
+        },
+        title: {
+          display: true,
+          text: 'Average visits per post',
+          color: textColor,
+          font: { size: 11 }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

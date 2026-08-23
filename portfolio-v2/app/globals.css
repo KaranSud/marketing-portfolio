@@ -4284,3 +4284,30 @@ nav.scrolled {
     -webkit-backdrop-filter: none;
   }
 }
+
+/* Media inside synced blog posts: hero images, infographics, and the
+   standalone Chart.js pages the blog routine generates. */
+.prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin: 28px 0;
+}
+.prose .chart-embed {
+  margin: 28px 0;
+}
+.prose .chart-embed iframe {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+@media (max-width: 640px) {
+  .prose .chart-embed iframe {
+    height: 320px;
+  }
+}

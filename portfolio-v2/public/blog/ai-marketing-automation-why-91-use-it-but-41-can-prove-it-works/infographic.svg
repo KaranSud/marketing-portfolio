@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 820" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;">
+  <defs>
+    <style>
+      .bg { fill: #FAFAF9; }
+      .card { fill: #FFFFFF; }
+      .card-border { fill: none; stroke: #E7E5E4; stroke-width: 1.5; }
+      .alert-card { fill: #FFF5F5; }
+      .alert-border { fill: none; stroke: #DC2626; stroke-width: 1.5; }
+      .title-text { fill: #0F172A; font-size: 20px; font-weight: 700; }
+      .sub-text { fill: #475569; font-size: 12px; }
+      .level-num { fill: #0F172A; font-size: 32px; font-weight: 800; }
+      .level-label { fill: #0F172A; font-size: 15px; font-weight: 700; }
+      .level-desc { fill: #475569; font-size: 12px; }
+      .connector { fill: none; stroke: #E2E8F0; stroke-width: 2; stroke-dasharray: 5 4; }
+      .pct-red { fill: #DC2626; font-size: 28px; font-weight: 800; }
+      .pct-blue { fill: #1E40AF; font-size: 28px; font-weight: 800; }
+      .pct-label { fill: #475569; font-size: 11px; }
+      .arrow { fill: #94A3B8; }
+      .badge { fill: #0F172A; }
+      .badge-text { fill: #FFFFFF; font-size: 10px; font-weight: 600; }
+      .accent-bar { fill: #DC2626; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="820" class="bg" rx="12"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="600" height="80" fill="#0F172A" rx="12"/>
+  <rect x="0" y="68" width="600" height="12" fill="#0F172A"/>
+  <text x="300" y="34" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700">The AI Marketing Accountability Ladder</text>
+  <text x="300" y="58" text-anchor="middle" fill="#94A3B8" font-size="12">Most teams spend 80% of effort at Level 1. Winning teams live at Level 4.</text>
+
+  <!-- Stat row -->
+  <rect x="20" y="96" width="170" height="70" rx="8" class="card"/>
+  <rect x="20" y="96" width="170" height="70" rx="8" class="card-border"/>
+  <text x="105" y="128" text-anchor="middle" class="pct-blue">91%</text>
+  <text x="105" y="148" text-anchor="middle" class="pct-label">using AI in marketing</text>
+  <text x="105" y="162" text-anchor="middle" class="pct-label">(McKinsey, Nov 2025)</text>
+
+  <rect x="215" y="96" width="170" height="70" rx="8" class="alert-card"/>
+  <rect x="215" y="96" width="170" height="70" rx="8" class="alert-border"/>
+  <text x="300" y="128" text-anchor="middle" class="pct-red">41%</text>
+  <text x="300" y="148" text-anchor="middle" class="pct-label">can prove AI ROI</text>
+  <text x="300" y="162" text-anchor="middle" class="pct-label">(Benchmarkit, 2026)</text>
+
+  <rect x="410" y="96" width="170" height="70" rx="8" class="card"/>
+  <rect x="410" y="96" width="170" height="70" rx="8" class="card-border"/>
+  <text x="495" y="128" text-anchor="middle" fill="#475569" font-size="28" font-weight="800">30%</text>
+  <text x="495" y="148" text-anchor="middle" class="pct-label">have mature AI readiness</text>
+  <text x="495" y="162" text-anchor="middle" class="pct-label">(Gartner CMO Survey 2026)</text>
+
+  <!-- Divider -->
+  <line x1="20" y1="184" x2="580" y2="184" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="300" y="200" text-anchor="middle" fill="#94A3B8" font-size="11">CLIMB THE LADDER IN ORDER. SKIPPING LEVELS IS WHERE BUDGETS DISAPPEAR.</text>
+
+  <!-- LEVEL 1 - MOST TEAMS HERE -->
+  <rect x="20" y="212" width="560" height="112" rx="10" class="card"/>
+  <rect x="20" y="212" width="560" height="112" rx="10" class="card-border"/>
+  <rect x="20" y="212" width="4" height="112" fill="#94A3B8" rx="2"/>
+  <!-- Level badge -->
+  <rect x="32" y="228" width="54" height="24" rx="12" fill="#E2E8F0"/>
+  <text x="59" y="244" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">LEVEL 1</text>
+  <!-- Most teams badge -->
+  <rect x="368" y="228" width="100" height="22" rx="11" fill="#F1F5F9"/>
+  <text x="418" y="243" text-anchor="middle" fill="#64748B" font-size="10" font-weight="600">WHERE MOST TEAMS ARE</text>
+  <text x="130" y="244" fill="#0F172A" font-size="15" font-weight="700">Tool Selection</text>
+  <text x="32" y="268" fill="#475569" font-size="12">What AI tools will we use? Which vendors look most impressive?</text>
+  <text x="32" y="286" fill="#475569" font-size="12">Evaluation criteria: demo quality, feature list, pricing tier, analyst</text>
+  <text x="32" y="304" fill="#475569" font-size="12">placement. Measurement criteria: subscription active, team trained.</text>
+
+  <!-- Arrow down 1→2 -->
+  <line x1="300" y1="324" x2="300" y2="348" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="300,352 294,342 306,342" fill="#94A3B8"/>
+
+  <!-- LEVEL 2 -->
+  <rect x="20" y="354" width="560" height="112" rx="10" class="card"/>
+  <rect x="20" y="354" width="560" height="112" rx="10" class="card-border"/>
+  <rect x="20" y="354" width="4" height="112" fill="#3B82F6" rx="2"/>
+  <rect x="32" y="370" width="54" height="24" rx="12" fill="#DBEAFE"/>
+  <text x="59" y="386" text-anchor="middle" fill="#1E40AF" font-size="11" font-weight="600">LEVEL 2</text>
+  <text x="130" y="386" fill="#0F172A" font-size="15" font-weight="700">Workflow Integration</text>
+  <text x="32" y="410" fill="#475569" font-size="12">How do tools connect to each other and to your data infrastructure?</text>
+  <text x="32" y="428" fill="#475569" font-size="12">Which workflows are being redesigned vs. just getting a new UI layer</text>
+  <text x="32" y="446" fill="#475569" font-size="12">over the same broken process? Data flows must be mapped and owned.</text>
+
+  <!-- Arrow down 2→3 -->
+  <line x1="300" y1="466" x2="300" y2="490" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="300,494 294,484 306,484" fill="#94A3B8"/>
+
+  <!-- LEVEL 3 -->
+  <rect x="20" y="496" width="560" height="112" rx="10" class="card"/>
+  <rect x="20" y="496" width="560" height="112" rx="10" class="card-border"/>
+  <rect x="20" y="496" width="4" height="112" fill="#7C3AED" rx="2"/>
+  <rect x="32" y="512" width="54" height="24" rx="12" fill="#EDE9FE"/>
+  <text x="59" y="528" text-anchor="middle" fill="#7C3AED" font-size="11" font-weight="600">LEVEL 3</text>
+  <text x="130" y="528" fill="#0F172A" font-size="15" font-weight="700">Measurement Framework</text>
+  <text x="32" y="552" fill="#475569" font-size="12">What specific outcomes will AI influence, and what is the pre-AI baseline?</text>
+  <text x="32" y="570" fill="#475569" font-size="12">Success criteria written before deployment. Tracked metrics defined</text>
+  <text x="32" y="588" fill="#475569" font-size="12">with enough specificity to distinguish AI impact from other variables.</text>
+
+  <!-- Arrow down 3→4 -->
+  <line x1="300" y1="608" x2="300" y2="632" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="300,636 294,626 306,626" fill="#94A3B8"/>
+
+  <!-- LEVEL 4 - TOP 30% HERE -->
+  <rect x="20" y="638" width="560" height="122" rx="10" fill="#FFF5F5"/>
+  <rect x="20" y="638" width="560" height="122" rx="10" fill="none" stroke="#DC2626" stroke-width="1.5"/>
+  <rect x="20" y="638" width="4" height="122" fill="#DC2626" rx="2"/>
+  <rect x="32" y="654" width="54" height="24" rx="12" fill="#FEE2E2"/>
+  <text x="59" y="670" text-anchor="middle" fill="#DC2626" font-size="11" font-weight="600">LEVEL 4</text>
+  <rect x="350" y="654" width="120" height="22" rx="11" fill="#DC2626"/>
+  <text x="410" y="669" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">TOP 30% LIVE HERE</text>
+  <text x="130" y="670" fill="#0F172A" font-size="15" font-weight="700">Proof Loop</text>
+  <text x="32" y="694" fill="#475569" font-size="12">Attribution from AI input to business outcome, documented and</text>
+  <text x="32" y="712" fill="#475569" font-size="12">repeatable. Can answer: "This specific AI workflow changed this</text>
+  <text x="32" y="730" fill="#475569" font-size="12">metric by this amount in this timeframe, compared to this baseline."</text>
+  <text x="32" y="748" fill="#DC2626" font-size="12" font-weight="600">This is the difference between the 41% and the 30% who can scale.</text>
+
+  <!-- Footer -->
+  <text x="300" y="790" text-anchor="middle" fill="#94A3B8" font-size="10">Sources: Gartner CMO Spend Survey 2026 · McKinsey State of AI Nov 2025 · Benchmarkit / Jasper State of AI in Marketing 2026</text>
+  <text x="300" y="808" text-anchor="middle" fill="#CBD5E1" font-size="9">karansud.substack.com</text>
+</svg>

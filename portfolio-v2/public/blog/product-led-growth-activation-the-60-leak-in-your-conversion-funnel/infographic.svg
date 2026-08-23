@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 580" width="800" height="580" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+
+  <!-- Background -->
+  <rect width="800" height="580" fill="#FAFAF9" rx="12"/>
+
+  <!-- Title -->
+  <text x="400" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#0F172A">The PLG Activation Framework</text>
+  <text x="400" y="64" text-anchor="middle" font-size="13" fill="#475569">From Signup to Paid: Where Users Flow, Where They Leak</text>
+
+  <!-- ============ STAGE BOXES ============ -->
+
+  <!-- Stage 1: Signup -->
+  <rect x="40" y="100" width="130" height="80" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="105" y="132" text-anchor="middle" font-size="11" font-weight="600" fill="#64748B">STAGE 1</text>
+  <text x="105" y="152" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">Signup</text>
+  <text x="105" y="170" text-anchor="middle" font-size="11" fill="#94A3B8">100% of users</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="170" y1="140" x2="210" y2="140" stroke="#E2E8F0" stroke-width="2"/>
+  <polygon points="210,134 222,140 210,146" fill="#E2E8F0"/>
+
+  <!-- Stage 2: Activation Attempt -->
+  <rect x="222" y="100" width="140" height="80" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="292" y="132" text-anchor="middle" font-size="11" font-weight="600" fill="#64748B">STAGE 2</text>
+  <text x="292" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">Activation</text>
+  <text x="292" y="168" text-anchor="middle" font-size="11" fill="#94A3B8">Attempt</text>
+
+  <!-- LEAK bubble Stage 2 -->
+  <rect x="222" y="210" width="140" height="60" rx="8" fill="rgba(220,38,38,0.08)" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="292" y="237" text-anchor="middle" font-size="12" font-weight="700" fill="#DC2626">40–60% LEAK</text>
+  <text x="292" y="255" text-anchor="middle" font-size="11" fill="#DC2626">Never reach aha moment</text>
+  <!-- leak arrow down -->
+  <line x1="292" y1="180" x2="292" y2="210" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="286,210 292,222 298,210" fill="#DC2626"/>
+
+  <!-- Arrow 2->3 -->
+  <line x1="362" y1="140" x2="398" y2="140" stroke="#E2E8F0" stroke-width="2"/>
+  <polygon points="398,134 410,140 398,146" fill="#E2E8F0"/>
+
+  <!-- Stage 3: Aha Moment -->
+  <rect x="410" y="100" width="140" height="80" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="480" y="132" text-anchor="middle" font-size="11" font-weight="600" fill="#64748B">STAGE 3</text>
+  <text x="480" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">Aha Moment</text>
+  <text x="480" y="168" text-anchor="middle" font-size="11" fill="#94A3B8">Core value felt</text>
+
+  <!-- PQL bubble Stage 3 -->
+  <rect x="410" y="210" width="140" height="60" rx="8" fill="rgba(71,85,105,0.08)" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="237" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">PQL SCORE</text>
+  <text x="480" y="255" text-anchor="middle" font-size="11" fill="#475569">Behavioral signal triggered</text>
+  <!-- PQL arrow down -->
+  <line x1="480" y1="180" x2="480" y2="210" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="474,210 480,222 486,210" fill="#475569"/>
+
+  <!-- Arrow 3->4 -->
+  <line x1="550" y1="140" x2="586" y2="140" stroke="#E2E8F0" stroke-width="2"/>
+  <polygon points="586,134 598,140 586,146" fill="#E2E8F0"/>
+
+  <!-- Stage 4: Paid Conversion -->
+  <rect x="598" y="100" width="162" height="80" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="679" y="132" text-anchor="middle" font-size="11" font-weight="600" fill="#64748B">STAGE 4</text>
+  <text x="679" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">Paid Conversion</text>
+  <text x="679" y="168" text-anchor="middle" font-size="11" fill="#94A3B8">PQL converts 3x faster</text>
+
+  <!-- ============ DIVIDER ============ -->
+  <line x1="40" y1="295" x2="760" y2="295" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- ============ THE 34% PROBLEM ============ -->
+  <text x="400" y="330" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">The Tracking Gap</text>
+  <text x="400" y="350" text-anchor="middle" font-size="12" fill="#475569">Only 34% of PLG companies actively measure activation</text>
+
+  <!-- Donut-style stat blocks -->
+  <!-- Block 1: track activation -->
+  <rect x="60" y="368" width="200" height="90" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="160" y="400" text-anchor="middle" font-size="32" font-weight="800" fill="#0F172A">34%</text>
+  <text x="160" y="420" text-anchor="middle" font-size="11" fill="#475569">track activation</text>
+  <text x="160" y="437" text-anchor="middle" font-size="11" fill="#475569">as a metric</text>
+
+  <!-- Block 2: do not track -->
+  <rect x="300" y="368" width="200" height="90" rx="8" fill="rgba(220,38,38,0.06)" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="400" y="400" text-anchor="middle" font-size="32" font-weight="800" fill="#DC2626">66%</text>
+  <text x="400" y="420" text-anchor="middle" font-size="11" fill="#DC2626">do not track it</text>
+  <text x="400" y="437" text-anchor="middle" font-size="11" fill="#DC2626">at all</text>
+
+  <!-- Block 3: PQL adoption -->
+  <rect x="540" y="368" width="200" height="90" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="640" y="400" text-anchor="middle" font-size="32" font-weight="800" fill="#0F172A">25%</text>
+  <text x="640" y="420" text-anchor="middle" font-size="11" fill="#475569">have a PQL</text>
+  <text x="640" y="437" text-anchor="middle" font-size="11" fill="#475569">framework</text>
+
+  <!-- ============ THE FIX ROW ============ -->
+  <line x1="40" y1="478" x2="760" y2="478" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="400" y="508" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">The Fix: Time to Value as a North Star Metric</text>
+
+  <!-- Three action items -->
+  <rect x="40" y="520" width="220" height="44" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="60" y="539" font-size="11" font-weight="700" fill="#0F172A">01</text>
+  <text x="80" y="539" font-size="11" fill="#475569">Define your activation event</text>
+  <text x="80" y="555" font-size="11" fill="#94A3B8">behavioral, not time-based</text>
+
+  <rect x="290" y="520" width="220" height="44" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="310" y="539" font-size="11" font-weight="700" fill="#0F172A">02</text>
+  <text x="330" y="539" font-size="11" fill="#475569">Score PQLs on product signals</text>
+  <text x="330" y="555" font-size="11" fill="#94A3B8">invite, paid-tier touch, aha event</text>
+
+  <rect x="540" y="520" width="220" height="44" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="560" y="539" font-size="11" font-weight="700" fill="#0F172A">03</text>
+  <text x="580" y="539" font-size="11" fill="#475569">Route PQLs to sales at the</text>
+  <text x="580" y="555" font-size="11" fill="#94A3B8">behavioral moment, not by firmographic</text>
+
+  <!-- Source note -->
+  <text x="400" y="577" text-anchor="middle" font-size="10" fill="#94A3B8">Sources: ProductLed 2025 PLG Benchmark (600+ companies) | ChartMogul SaaS Conversion Report 2024 | Gartner Sales Survey March 2026</text>
+
+</svg>

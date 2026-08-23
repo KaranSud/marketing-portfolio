@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMO Measurement Confidence Gap — Marketing Attribution</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px 20px;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0F172A; }
+    .chart-title { color: #F8FAFC; }
+    .chart-subtitle { color: #94A3B8; }
+    .chart-source { color: #64748B; }
+    .legend-label { color: #CBD5E1; }
+  }
+  :root[data-theme="dark"] body { background: #0F172A; }
+  :root[data-theme="dark"] .chart-title { color: #F8FAFC; }
+  :root[data-theme="dark"] .chart-subtitle { color: #94A3B8; }
+  :root[data-theme="dark"] .chart-source { color: #64748B; }
+  :root[data-theme="dark"] .legend-label { color: #CBD5E1; }
+  :root[data-theme="light"] body { background: #FFFFFF; }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 560px;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .donut-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 24px;
+  }
+  .donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+  }
+  .donut-center-number {
+    font-size: 42px;
+    font-weight: 800;
+    color: #DC2626;
+    line-height: 1;
+  }
+  .donut-center-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-label {
+    font-size: 13px;
+    color: #0F172A;
+    line-height: 1.4;
+  }
+  .legend-value {
+    font-weight: 700;
+    margin-left: auto;
+    font-size: 14px;
+  }
+  .chart-source {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-top: 4px;
+    border-top: 1px solid #E2E8F0;
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrapper">
+  <div class="chart-title">The CMO Measurement Confidence Gap</div>
+  <div class="chart-subtitle">How senior marketing leaders rate their ability to prove marketing's value to business outcomes</div>
+
+  <div class="donut-container">
+    <canvas id="donutChart" width="260" height="260"></canvas>
+    <div class="donut-center">
+      <div class="donut-center-number">48%</div>
+      <div class="donut-center-label">Can't prove<br>marketing value</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626;"></div>
+      <span class="legend-label">Cannot prove marketing value and receive credit</span>
+      <span class="legend-value" style="color:#DC2626;">48%</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#475569;"></div>
+      <span class="legend-label">Prove value but only partially receive credit</span>
+      <span class="legend-value" style="color:#475569;">29%</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#0F172A;"></div>
+      <span class="legend-label">Successfully prove value and receive full credit</span>
+      <span class="legend-value" style="color:#0F172A;">52%</span>
+    </div>
+  </div>
+
+  <div class="chart-source">Source: Gartner Marketing Survey, 378 senior marketing leaders, April–May 2024. Note: Respondents who prove value partially overlap categories; 52% total can prove value per Gartner headline; 48% cannot.</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('donutChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Cannot prove value', 'Partial credit only', 'Fully proves value'],
+      datasets: [{
+        data: [48, 19, 33],
+        backgroundColor: ['#DC2626', '#475569', '#0F172A'],
+        borderWidth: 0,
+        hoverOffset: 6
+      }]
+    },
+    options: {
+      responsive: false,
+      cutout: '68%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              return ' ' + ctx.label + ': ' + ctx.raw + '%';
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

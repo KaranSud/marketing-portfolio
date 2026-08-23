@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Marketing ROI Gap: Adoption vs. Proof Ability 2024–2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --adoption: #1E40AF;
+    --proof: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --secondary: #CBD5E1;
+      --muted: #64748B;
+      --mid: #94A3B8;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --secondary: #CBD5E1;
+    --muted: #64748B;
+    --mid: #94A3B8;
+    --grid: #1E293B;
+    --border: #334155;
+  }
+  :root[data-theme="light"] {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 32px 24px 40px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .chart-header { margin-bottom: 28px; }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--secondary);
+    line-height: 1.5;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 360px;
+  }
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--secondary);
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .gap-callout {
+    margin-top: 24px;
+    padding: 14px 16px;
+    background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .gap-callout p {
+    font-size: 12.5px;
+    color: var(--secondary);
+    line-height: 1.6;
+  }
+  .gap-callout strong { color: var(--accent); }
+  .source {
+    margin-top: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-header">
+  <div class="chart-title">Adoption vs. Accountability: The Widening Marketing AI Gap</div>
+  <div class="chart-subtitle">Share of organizations using AI in marketing vs. share that can prove measurable ROI from it</div>
+</div>
+
+<div class="chart-wrap">
+  <canvas id="dumbbell"></canvas>
+</div>
+
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#1E40AF;"></div>
+    <span>Using AI in marketing</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#DC2626;"></div>
+    <span>Can prove AI ROI</span>
+  </div>
+</div>
+
+<div class="gap-callout">
+  <p>In 2024, the gap between AI adoption and ROI proof ability was <strong>22 percentage points</strong>. By 2026, it has grown to <strong>50 percentage points</strong>, even as AI tool budgets increased.</p>
+</div>
+
+<div class="source">Sources: Benchmarkit / Jasper State of AI in Marketing 2026 (n=1,400); McKinsey State of AI 2025 (n=1,993)</div>
+
+<script>
+const years = ['2024', '2025', '2026'];
+const adoption = [71, 79, 91];
+const proof = [49, 45, 41];
+
+const ctx = document.getElementById('dumbbell').getContext('2d');
+
+// Custom dumbbell plugin
+const dumbbellPlugin = {
+  id: 'dumbbell',
+  afterDatasetsDraw(chart) {
+    const {ctx, scales: {x, y}} = chart;
+    const data = chart.data;
+    const yVals = data.labels;
+
+    ctx.save();
+    ctx.strokeStyle = '#94A3B8';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 3]);
+
+    yVals.forEach((label, i) => {
+      const xAdoption = x.getPixelForValue(adoption[i]);
+      const xProof = x.getPixelForValue(proof[i]);
+      const yPos = y.getPixelForValue(label);
+
+      ctx.beginPath();
+      ctx.moveTo(xProof, yPos);
+      ctx.lineTo(xAdoption, yPos);
+      ctx.stroke();
+
+      // Gap label
+      const midX = (xAdoption + xProof) / 2;
+      const gap = adoption[i] - proof[i];
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '11px -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(`${gap}pt gap`, midX, yPos - 14);
+    });
+    ctx.restore();
+  }
+};
+
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const textCol = isDark ? '#CBD5E1' : '#475569';
+const gridCol = isDark ? '#1E293B' : '#E2E8F0';
+
+new Chart(ctx, {
+  type: 'bubble',
+  plugins: [dumbbellPlugin],
+  data: {
+    labels: years,
+    datasets: [
+      {
+        label: 'Using AI in marketing',
+        data: years.map((y, i) => ({x: adoption[i], y: y, r: 10})),
+        backgroundColor: '#1E40AF',
+        borderColor: '#1E40AF',
+      },
+      {
+        label: 'Can prove AI ROI',
+        data: years.map((y, i) => ({x: proof[i], y: y, r: 10})),
+        backgroundColor: '#DC2626',
+        borderColor: '#DC2626',
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return `${ctx.dataset.label}: ${ctx.raw.x}%`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 30,
+        max: 100,
+        grid: { color: gridCol },
+        ticks: {
+          color: textCol,
+          font: { size: 12 },
+          callback: v => v + '%'
+        },
+        border: { color: gridCol }
+      },
+      y: {
+        type: 'category',
+        labels: years,
+        grid: { display: false },
+        ticks: {
+          color: textCol,
+          font: { size: 13, weight: '600' }
+        },
+        border: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

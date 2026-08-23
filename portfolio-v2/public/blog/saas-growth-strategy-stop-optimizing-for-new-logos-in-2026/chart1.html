@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRR vs Valuation Multiple by Quartile — Chart</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #475569;
+      --grid: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A; --text: #F8FAFC;
+    --text-secondary: #94A3B8; --text-muted: #475569; --grid: #1E293B;
+  }
+  :root[data-theme="light"] {
+    --bg: #FFFFFF; --text: #0F172A;
+    --text-secondary: #475569; --text-muted: #94A3B8; --grid: #E2E8F0;
+  }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 340px;
+  }
+  .nrr-labels {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.6rem;
+    padding: 0 2rem;
+  }
+  .nrr-label {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+  .nrr-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .nrr-desc { font-size: 0.72rem; color: var(--text-muted); }
+  .source {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 1.2rem;
+    border-top: 1px solid var(--grid);
+    padding-top: 0.6rem;
+  }
+</style>
+</head>
+<body>
+<h2>A 15-Point NRR Gap Drives a 5x Valuation Difference</h2>
+<p class="subtitle">Enterprise-value-to-revenue multiples by NRR quartile, B2B SaaS companies (n=98)</p>
+<div class="chart-wrap">
+  <canvas id="chart1"></canvas>
+</div>
+<div class="nrr-labels">
+  <div class="nrr-label">
+    <div class="nrr-value">98%</div>
+    <div class="nrr-desc">Bottom quartile NRR</div>
+  </div>
+  <div class="nrr-label">
+    <div class="nrr-value">106%</div>
+    <div class="nrr-desc">Median NRR</div>
+  </div>
+  <div class="nrr-label">
+    <div class="nrr-value" style="color: #DC2626;">113%</div>
+    <div class="nrr-desc">Top quartile NRR</div>
+  </div>
+</div>
+<p class="source">Source: McKinsey &amp; Company, "The net revenue retention advantage: Driving success in B2B tech," November 2025. Survey of 100+ revenue leaders across 98 B2B SaaS companies.</p>
+
+<script>
+  const isDark = () =>
+    document.documentElement.getAttribute('data-theme') === 'dark' ||
+    (document.documentElement.getAttribute('data-theme') !== 'light' &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  function getColors() {
+    const dark = isDark();
+    return {
+      grid: dark ? '#1E293B' : '#E2E8F0',
+      label: dark ? '#94A3B8' : '#475569',
+      tick: dark ? '#94A3B8' : '#475569',
+    };
+  }
+
+  const labels = ['Bottom Quartile', 'Median', 'Top Quartile'];
+  const values = [5, 10, 24];
+  const barColors = ['#64748B', '#475569', '#DC2626'];
+
+  const ctx = document.getElementById('chart1').getContext('2d');
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'EV / Revenue Multiple',
+        data: values,
+        backgroundColor: barColors,
+        borderRadius: 4,
+        borderSkipped: false,
+        barPercentage: 0.55,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.parsed.y}x revenue multiple`
+          }
+        },
+        datalabels: false,
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: {
+            color: getColors().tick,
+            font: { family: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif', size: 12 }
+          }
+        },
+        y: {
+          beginAtZero: true,
+          max: 28,
+          grid: { color: getColors().grid },
+          border: { display: false },
+          ticks: {
+            color: getColors().tick,
+            font: { family: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif', size: 12 },
+            callback: v => v + 'x'
+          },
+          title: {
+            display: true,
+            text: 'EV / Revenue Multiple',
+            color: getColors().label,
+            font: { size: 11 }
+          }
+        }
+      },
+      animation: {
+        onComplete: function() {
+          const chartInstance = this;
+          const ctx2 = chartInstance.ctx;
+          ctx2.font = 'bold 14px -apple-system, sans-serif';
+          ctx2.textAlign = 'center';
+          ctx2.textBaseline = 'bottom';
+          chartInstance.data.datasets[0].data.forEach((val, i) => {
+            const meta = chartInstance.getDatasetMeta(0);
+            const bar = meta.data[i];
+            ctx2.fillStyle = i === 2 ? '#DC2626' : '#64748B';
+            ctx2.fillText(val + 'x', bar.x, bar.y - 4);
+          });
+        }
+      }
+    }
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const c = getColors();
+    chart.options.scales.x.ticks.color = c.tick;
+    chart.options.scales.y.ticks.color = c.tick;
+    chart.options.scales.y.grid.color = c.grid;
+    chart.options.scales.y.title.color = c.label;
+    chart.update();
+  });
+</script>
+</body>
+</html>

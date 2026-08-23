@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Referral Traffic Decline by Publisher Size</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --gridline: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --gridline: #1E293B;
+      --border: #334155;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --gridline: #1E293B;
+    --border: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .canvas-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+  canvas { display: block; max-width: 100%; }
+  .source {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .source a { color: var(--text-muted); text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <div class="chart-title">Search Referral Traffic Decline by Publisher Size (2024–2026)</div>
+  <div class="chart-subtitle">Smaller publishers bore the sharpest losses as AI Overviews absorbed informational queries that once drove their traffic</div>
+  <div class="canvas-wrap">
+    <canvas id="c" height="220"></canvas>
+  </div>
+  <div class="source">Source: <a href="https://www.axios.com/2026/03/17/chartbeat-search-traffic-ai-chatbots" target="_blank">Chartbeat via Axios</a>, March 2026 &bull; Two-year period ending early 2026</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+(function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+    (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  var textColor    = isDark ? '#F8FAFC' : '#0F172A';
+  var secondColor  = isDark ? '#CBD5E1' : '#475569';
+  var mutedColor   = isDark ? '#64748B' : '#94A3B8';
+  var gridColor    = isDark ? '#1E293B' : '#E2E8F0';
+
+  var barColors = [
+    '#DC2626',  // small — alarm red (worst hit)
+    '#64748B',  // medium — mid
+    '#94A3B8',  // large — muted
+  ];
+
+  var ctx = document.getElementById('c').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Small publishers\n(1K–10K daily views)', 'Medium publishers\n(10K–100K daily views)', 'Large publishers\n(100K+ daily views)'],
+      datasets: [{
+        label: '% decline in search referral traffic',
+        data: [-60, -47, -22],
+        backgroundColor: barColors,
+        borderRadius: 4,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) { return Math.abs(ctx.raw) + '% decline'; }
+          }
+        }
+      },
+      scales: {
+        x: {
+          min: -70,
+          max: 0,
+          grid: { color: gridColor },
+          border: { color: gridColor },
+          ticks: {
+            color: mutedColor,
+            callback: function(v) { return Math.abs(v) + '%'; },
+            font: { size: 12 }
+          },
+          title: {
+            display: true,
+            text: 'Search referral traffic decline (%)',
+            color: secondColor,
+            font: { size: 12 }
+          }
+        },
+        y: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: { color: textColor, font: { size: 13 } }
+        }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

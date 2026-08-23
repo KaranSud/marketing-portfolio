@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martech Tool Landscape 2011–2026: 100x Growth Hits a Ceiling</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --secondary: #CBD5E1;
+      --muted: #64748B;
+      --mid: #94A3B8;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A; --text: #F8FAFC; --secondary: #CBD5E1;
+    --muted: #64748B; --mid: #94A3B8; --grid: #1E293B; --border: #334155;
+  }
+  :root[data-theme="light"] {
+    --bg: #FFFFFF; --text: #0F172A; --secondary: #475569;
+    --muted: #94A3B8; --mid: #64748B; --grid: #E2E8F0; --border: #E7E5E4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 32px 24px 40px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .chart-header { margin-bottom: 28px; }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .chart-subtitle { font-size: 13px; color: var(--secondary); line-height: 1.5; }
+  .chart-wrap { position: relative; height: 360px; }
+  .annotation-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .annotation {
+    flex: 1;
+    min-width: 160px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .annotation .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .annotation .value { font-size: 22px; font-weight: 700; color: var(--text); }
+  .annotation .sub { font-size: 12px; color: var(--secondary); margin-top: 2px; }
+  .annotation.alert .value { color: var(--accent); }
+  .source { margin-top: 20px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 12px; }
+</style>
+</head>
+<body>
+<div class="chart-header">
+  <div class="chart-title">Martech Landscape 2011–2026: 100x Growth, Then a Ceiling</div>
+  <div class="chart-subtitle">Total number of products in the global marketing technology landscape — Scott Brinker's annual supergraphic (chiefmartec.com)</div>
+</div>
+
+<div class="chart-wrap">
+  <canvas id="lineChart"></canvas>
+</div>
+
+<div class="annotation-row">
+  <div class="annotation">
+    <div class="label">2011 Baseline</div>
+    <div class="value">~150</div>
+    <div class="sub">tools in the landscape</div>
+  </div>
+  <div class="annotation">
+    <div class="label">2026 Count</div>
+    <div class="value">15,505</div>
+    <div class="sub">100x growth in 15 years</div>
+  </div>
+  <div class="annotation alert">
+    <div class="label">Net growth 2025→2026</div>
+    <div class="value">+121</div>
+    <div class="sub">Flattest growth on record; 1,367 tools removed</div>
+  </div>
+</div>
+
+<div class="source">Source: Chiefmartec / Scott Brinker, 2026 Marketing Technology Landscape Supergraphic (May 2026)</div>
+
+<script>
+const labels = ['2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'];
+const counts = [150, 350, 550, 947, 1876, 3874, 5381, 6829, 7040, 8000, 9932, 10000, 11038, 14106, 15384, 15505];
+
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const textCol = isDark ? '#CBD5E1' : '#475569';
+const gridCol = isDark ? '#1E293B' : '#E2E8F0';
+
+const plateauPlugin = {
+  id: 'plateau',
+  afterDatasetsDraw(chart) {
+    const {ctx, scales: {x, y}, chartArea} = chart;
+    const lastIdx = labels.length - 1;
+    const prevIdx = lastIdx - 1;
+    const x1 = x.getPixelForValue(prevIdx);
+    const x2 = x.getPixelForValue(lastIdx);
+    const y1 = y.getPixelForValue(15384);
+    const y2 = y.getPixelForValue(15505);
+
+    ctx.save();
+    ctx.fillStyle = 'rgba(220, 38, 38, 0.08)';
+    ctx.fillRect(x1, Math.min(y1,y2) - 20, x2 - x1, Math.abs(y1-y2) + 40);
+    ctx.restore();
+  }
+};
+
+const ctx = document.getElementById('lineChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  plugins: [plateauPlugin],
+  data: {
+    labels,
+    datasets: [{
+      label: 'Martech tools',
+      data: counts,
+      borderColor: '#1E40AF',
+      backgroundColor: 'rgba(30, 64, 175, 0.08)',
+      borderWidth: 2.5,
+      fill: true,
+      tension: 0.35,
+      pointBackgroundColor: labels.map(l => l === '2026' ? '#DC2626' : '#1E40AF'),
+      pointRadius: labels.map(l => l === '2026' ? 7 : 4),
+      pointHoverRadius: 7,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.parsed.y.toLocaleString()} tools`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: gridCol },
+        ticks: { color: textCol, font: { size: 11 }, maxRotation: 45 },
+        border: { color: gridCol }
+      },
+      y: {
+        min: 0,
+        grid: { color: gridCol },
+        ticks: {
+          color: textCol,
+          font: { size: 11 },
+          callback: v => v >= 1000 ? (v/1000).toFixed(0) + 'k' : v
+        },
+        border: { color: gridCol }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

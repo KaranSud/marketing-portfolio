@@ -1,0 +1,124 @@
+<svg viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; background: #FAFAF9;">
+
+  <!-- Background -->
+  <rect width="800" height="900" fill="#FAFAF9"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="88" fill="#0F172A"/>
+  <text x="400" y="38" text-anchor="middle" fill="#F8FAFC" font-size="17" font-weight="700">The AI Social Media Trust Framework</text>
+  <text x="400" y="62" text-anchor="middle" fill="#94A3B8" font-size="12">Which AI uses compound brand equity vs. which ones destroy it</text>
+  <text x="400" y="78" text-anchor="middle" fill="#64748B" font-size="10">Based on Gartner, Sprout Social, Buffer and Hootsuite 2025–2026 research</text>
+
+  <!-- Column headers -->
+  <!-- Safe Zone column -->
+  <rect x="30" y="108" width="350" height="44" rx="6" fill="#0F172A"/>
+  <text x="205" y="126" text-anchor="middle" fill="#F8FAFC" font-size="13" font-weight="700">SAFE ZONE</text>
+  <text x="205" y="142" text-anchor="middle" fill="#94A3B8" font-size="10">AI uses that build efficiency without eroding trust</text>
+
+  <!-- Danger Zone column -->
+  <rect x="420" y="108" width="350" height="44" rx="6" fill="#DC2626"/>
+  <text x="595" y="126" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="700">DANGER ZONE</text>
+  <text x="595" y="142" text-anchor="middle" fill="#FCA5A5" font-size="10">AI uses consumers identify and penalize</text>
+
+  <!-- Divider line -->
+  <line x1="400" y1="100" x2="400" y2="840" stroke="#E7E5E4" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <circle cx="400" cy="100" r="4" fill="#E7E5E4"/>
+
+  <!-- SAFE ZONE items -->
+
+  <!-- Item 1: Analytics -->
+  <rect x="40" y="170" width="330" height="78" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <rect x="40" y="170" width="6" height="78" rx="3" fill="#0F172A"/>
+  <text x="62" y="195" fill="#0F172A" font-size="13" font-weight="600">Audience analytics and listening</text>
+  <text x="62" y="213" fill="#475569" font-size="11">Surface what topics your audience cares about.</text>
+  <text x="62" y="229" fill="#475569" font-size="11">AI processes signals; humans shape the response.</text>
+  <text x="62" y="240" fill="#64748B" font-size="10" font-style="italic">Trust impact: neutral to positive</text>
+
+  <!-- Item 2: Scheduling -->
+  <rect x="40" y="260" width="330" height="78" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <rect x="40" y="260" width="6" height="78" rx="3" fill="#0F172A"/>
+  <text x="62" y="285" fill="#0F172A" font-size="13" font-weight="600">Optimal timing and scheduling</text>
+  <text x="62" y="303" fill="#475569" font-size="11">Post at peak engagement windows, auto-queue.</text>
+  <text x="62" y="319" fill="#475569" font-size="11">Content stays human; distribution gets automated.</text>
+  <text x="62" y="330" fill="#64748B" font-size="10" font-style="italic">Trust impact: neutral</text>
+
+  <!-- Item 3: Research/drafts -->
+  <rect x="40" y="350" width="330" height="78" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <rect x="40" y="350" width="6" height="78" rx="3" fill="#0F172A"/>
+  <text x="62" y="375" fill="#0F172A" font-size="13" font-weight="600">Research and first-draft generation</text>
+  <text x="62" y="393" fill="#475569" font-size="11">AI produces raw material. A human rewrites in</text>
+  <text x="62" y="409" fill="#475569" font-size="11">their own voice before anything goes live.</text>
+  <text x="62" y="420" fill="#64748B" font-size="10" font-style="italic">Trust impact: neutral (invisible to audience)</text>
+
+  <!-- Item 4: Comment monitoring -->
+  <rect x="40" y="440" width="330" height="78" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <rect x="40" y="440" width="6" height="78" rx="3" fill="#0F172A"/>
+  <text x="62" y="465" fill="#0F172A" font-size="13" font-weight="600">Comment monitoring and triage</text>
+  <text x="62" y="483" fill="#475569" font-size="11">AI flags negative sentiment, surfaces replies.</text>
+  <text x="62" y="499" fill="#475569" font-size="11">Humans write actual responses.</text>
+  <text x="62" y="510" fill="#64748B" font-size="10" font-style="italic">Trust impact: positive (faster human replies)</text>
+
+  <!-- Item 5: Performance analysis -->
+  <rect x="40" y="530" width="330" height="78" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <rect x="40" y="530" width="6" height="78" rx="3" fill="#0F172A"/>
+  <text x="62" y="555" fill="#0F172A" font-size="13" font-weight="600">Performance analysis and reporting</text>
+  <text x="62" y="573" fill="#475569" font-size="11">AI surfaces what worked and why. Frees human</text>
+  <text x="62" y="589" fill="#475569" font-size="11">time for strategy instead of spreadsheets.</text>
+  <text x="62" y="600" fill="#64748B" font-size="10" font-style="italic">Trust impact: neutral (internal, invisible)</text>
+
+  <!-- DANGER ZONE items -->
+
+  <!-- Danger Item 1: Full AI post copy -->
+  <rect x="430" y="170" width="330" height="78" rx="8" fill="#FFF1F1" stroke="#FECACA" stroke-width="1"/>
+  <rect x="430" y="170" width="6" height="78" rx="3" fill="#DC2626"/>
+  <text x="452" y="195" fill="#DC2626" font-size="13" font-weight="600">AI-written post copy published as-is</text>
+  <text x="452" y="213" fill="#475569" font-size="11">Consumers detect the pattern. 50% of US buyers</text>
+  <text x="452" y="229" fill="#475569" font-size="11">say they'd switch to brands that don't do this.</text>
+  <text x="452" y="240" fill="#DC2626" font-size="10" font-style="italic">Trust impact: HIGH negative (Gartner 2026)</text>
+
+  <!-- Danger Item 2: AI-generated images -->
+  <rect x="430" y="260" width="330" height="78" rx="8" fill="#FFF1F1" stroke="#FECACA" stroke-width="1"/>
+  <rect x="430" y="260" width="6" height="78" rx="3" fill="#DC2626"/>
+  <text x="452" y="285" fill="#DC2626" font-size="13" font-weight="600">AI-generated images without disclosure</text>
+  <text x="452" y="303" fill="#475569" font-size="11">Labeling as AI is the #1 thing consumers want.</text>
+  <text x="452" y="319" fill="#475569" font-size="11">Hidden AI visuals are the top trust violation.</text>
+  <text x="452" y="330" fill="#DC2626" font-size="10" font-style="italic">Trust impact: HIGH negative (Sprout Social 2026)</text>
+
+  <!-- Danger Item 3: Automated DMs and comment replies -->
+  <rect x="430" y="350" width="330" height="78" rx="8" fill="#FFF1F1" stroke="#FECACA" stroke-width="1"/>
+  <rect x="430" y="350" width="6" height="78" rx="3" fill="#DC2626"/>
+  <text x="452" y="375" fill="#DC2626" font-size="13" font-weight="600">AI-generated DMs and comment replies</text>
+  <text x="452" y="393" fill="#475569" font-size="11">Automation pods killed by LinkedIn's 2026 update.</text>
+  <text x="452" y="409" fill="#475569" font-size="11">Detected AI replies drive 12% avg. engagement drop.</text>
+  <text x="452" y="420" fill="#DC2626" font-size="10" font-style="italic">Trust impact: HIGH negative (Hootsuite, LinkedIn)</text>
+
+  <!-- Danger Item 4: AI brand voice -->
+  <rect x="430" y="440" width="330" height="78" rx="8" fill="#FFF1F1" stroke="#FECACA" stroke-width="1"/>
+  <rect x="430" y="440" width="6" height="78" rx="3" fill="#DC2626"/>
+  <text x="452" y="465" fill="#DC2626" font-size="13" font-weight="600">AI replacing founder or exec voice</text>
+  <text x="452" y="483" fill="#475569" font-size="11">Creator-led posts generate 3x engagement of</text>
+  <text x="452" y="499" fill="#475569" font-size="11">branded posts. AI erases the person-signal.</text>
+  <text x="452" y="510" fill="#DC2626" font-size="10" font-style="italic">Trust impact: HIGH negative (LinkedIn data 2026)</text>
+
+  <!-- Danger Item 5: Volume flooding -->
+  <rect x="430" y="530" width="330" height="78" rx="8" fill="#FFF1F1" stroke="#FECACA" stroke-width="1"/>
+  <rect x="430" y="530" width="6" height="78" rx="3" fill="#DC2626"/>
+  <text x="452" y="555" fill="#DC2626" font-size="13" font-weight="600">AI-enabled volume flooding</text>
+  <text x="452" y="573" fill="#475569" font-size="11">Posting 5x per day because AI makes it easy.</text>
+  <text x="452" y="589" fill="#475569" font-size="11">Platforms deprioritize high-volume low-trust accounts.</text>
+  <text x="452" y="600" fill="#DC2626" font-size="10" font-style="italic">Trust impact: MEDIUM negative (Buffer 2026)</text>
+
+  <!-- Summary bar -->
+  <rect x="30" y="628" width="740" height="1" fill="#E2E8F0"/>
+
+  <!-- The rule box -->
+  <rect x="30" y="644" width="740" height="80" rx="8" fill="#0F172A"/>
+  <text x="400" y="672" text-anchor="middle" fill="#F8FAFC" font-size="14" font-weight="700">The Rule: Automate the Process. Never Automate the Voice.</text>
+  <text x="400" y="694" text-anchor="middle" fill="#94A3B8" font-size="11">AI in the back end (research, analytics, timing) compresses costs without touching trust.</text>
+  <text x="400" y="712" text-anchor="middle" fill="#94A3B8" font-size="11">AI in the front end (copy, voice, creative, replies) is where brand equity bleeds.</text>
+
+  <!-- Footer -->
+  <text x="400" y="760" text-anchor="middle" fill="#94A3B8" font-size="10">Sources: Gartner Consumer Survey 2026 · Sprout Social Q4 2025 Pulse Survey · Buffer State of Social Engagement 2026 · Hootsuite Social Trends 2026</text>
+  <text x="400" y="778" text-anchor="middle" fill="#64748B" font-size="10">karansud.com · Social media marketing with AI</text>
+
+</svg>

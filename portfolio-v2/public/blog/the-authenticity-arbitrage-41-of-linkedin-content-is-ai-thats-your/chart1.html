@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Content Saturation by Platform (2026)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --grid: #E2E8F0;
+    --card-border: #E7E5E4;
+    --accent: #DC2626;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --secondary: #CBD5E1;
+      --muted: #64748B;
+      --grid: #1E293B;
+      --card-border: #334155;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #FFFFFF; --text: #0F172A; --secondary: #475569; --muted: #94A3B8;
+    --grid: #E2E8F0; --card-border: #E7E5E4;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A; --text: #F8FAFC; --secondary: #CBD5E1; --muted: #64748B;
+    --grid: #1E293B; --card-border: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 32px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 24px;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 320px;
+  }
+  .source {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="chart-title">AI Content Saturation by Platform (2026)</div>
+<div class="chart-subtitle">Percentage of long-form posts flagged as fully AI-generated — Pangram study, 1M+ posts, July 2026</div>
+<div class="chart-wrap">
+  <canvas id="chart1"></canvas>
+</div>
+<div class="source">Source: Pangram AI Detection Report, July 2026 (pangram.com/blog/ai-in-your-feed)</div>
+
+<script>
+const isDark = () =>
+  document.documentElement.dataset.theme === 'dark' ||
+  (!document.documentElement.dataset.theme &&
+   window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+function getColors() {
+  return {
+    text: getComputedStyle(document.documentElement).getPropertyValue('--text').trim(),
+    secondary: getComputedStyle(document.documentElement).getPropertyValue('--secondary').trim(),
+    grid: getComputedStyle(document.documentElement).getPropertyValue('--grid').trim(),
+    muted: getComputedStyle(document.documentElement).getPropertyValue('--muted').trim(),
+    accent: '#DC2626',
+  };
+}
+
+const platforms = ['LinkedIn', 'X (Twitter)', 'Substack', 'Reddit', 'Medium'];
+const values = [41, 25, 14, 8, 11];
+const barColors = values.map((v, i) => i === 0 ? '#DC2626' : '#64748B');
+
+let chart;
+
+function buildChart() {
+  const c = getColors();
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById('chart1'), {
+    type: 'bar',
+    data: {
+      labels: platforms,
+      datasets: [{
+        label: '% fully AI-generated posts',
+        data: values,
+        backgroundColor: barColors,
+        borderRadius: 4,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.parsed.y}% AI-generated`
+          },
+          backgroundColor: '#0F172A',
+          titleColor: '#F8FAFC',
+          bodyColor: '#CBD5E1',
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: c.grid },
+          ticks: { color: c.secondary, font: { size: 13, family: 'inherit' } },
+          border: { color: c.grid }
+        },
+        y: {
+          beginAtZero: true,
+          max: 55,
+          grid: { color: c.grid },
+          ticks: {
+            color: c.secondary,
+            font: { size: 12, family: 'inherit' },
+            callback: v => v + '%'
+          },
+          border: { color: 'transparent' },
+          title: {
+            display: true,
+            text: '% fully AI-generated (long-form posts)',
+            color: c.muted,
+            font: { size: 11, family: 'inherit' }
+          }
+        }
+      }
+    }
+  });
+}
+
+buildChart();
+
+const observer = new MutationObserver(buildChart);
+observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', buildChart);
+</script>
+</body>
+</html>
