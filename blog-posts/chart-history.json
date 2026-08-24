@@ -178,5 +178,14 @@
       "line",
       "horizontal bar"
     ]
+  },
+  {
+    "date": "2026-08-24",
+    "slug": "2026-08-24",
+    "title": "AI Paid Ads Are Breaking B2B. Signal Quality Is the Fix.",
+    "chart_types": [
+      "vertical bar",
+      "dual-axis line"
+    ]
   }
 ]

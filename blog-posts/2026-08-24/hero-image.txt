@@ -1,0 +1,9 @@
+Pexels Photo ID: N/A — Pexels API (api.pexels.com) blocked by network egress proxy during generation. Image generated programmatically.
+
+Source URL: N/A (generated via Chromium headless screenshot of custom HTML5 Canvas visualization)
+
+License: Proprietary — original work created for this post
+
+Alt text: Dark abstract diagram showing signal nodes on the left connecting to a central AI bidding engine, which routes outputs to green ICP-match nodes and red wrong-buyer nodes on the right — visualizing how signal quality determines who an AI ad platform finds
+
+Rationale: The article's central argument is that AI bidding systems optimize for exactly what you teach them, and garbage signals produce mismatched audiences. The visual encodes this directly: high-quality signals (CRM match, SQL close, revenue events) glow green and connect strongly to the engine; low-quality signals (form fills, page views, email opens) appear dim and dashed. The right side shows the consequence — mixed audience quality — with red nodes representing wrong buyers reached at $5.34 average CPC. Dark editorial aesthetic fits the brand palette and avoids all banned imagery types.

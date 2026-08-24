@@ -1,0 +1,148 @@
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" style="background:#FAFAF9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;">
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" fill="#0F172A" font-size="18" font-weight="700">B2B Signal Architecture for AI Paid Ads</text>
+  <text x="450" y="64" text-anchor="middle" fill="#64748B" font-size="12">The five-stage framework for teaching AI bidding platforms to find your actual buyers</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="76" x2="840" y2="76" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Stage boxes -->
+  <!-- Stage 1: Form Fills Only (red/bad) -->
+  <rect x="60" y="90" width="148" height="220" rx="8" fill="#FFF5F5" stroke="#DC2626" stroke-width="1.5"/>
+  <rect x="60" y="90" width="148" height="32" rx="8" fill="#DC2626"/>
+  <rect x="60" y="110" width="148" height="12" rx="0" fill="#DC2626"/>
+  <text x="134" y="111" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">STAGE 1</text>
+  <text x="134" y="141" text-anchor="middle" fill="#DC2626" font-size="13" font-weight="700">Form Fills Only</text>
+
+  <text x="134" y="168" text-anchor="middle" fill="#7F1D1D" font-size="11">Signals taught:</text>
+  <text x="134" y="186" text-anchor="middle" fill="#475569" font-size="11">• Web form submission</text>
+  <text x="134" y="202" text-anchor="middle" fill="#475569" font-size="11">• Contact page visit</text>
+  <text x="134" y="218" text-anchor="middle" fill="#475569" font-size="11">• Demo request click</text>
+
+  <line x1="80" y1="234" x2="188" y2="234" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="134" y="253" text-anchor="middle" fill="#DC2626" font-size="12" font-weight="700">Avg Cost Per SQL</text>
+  <text x="134" y="273" text-anchor="middle" fill="#DC2626" font-size="20" font-weight="800">$3,200</text>
+  <text x="134" y="291" text-anchor="middle" fill="#94A3B8" font-size="10">AI finds anyone who clicks forms</text>
+
+  <!-- Arrow -->
+  <path d="M210,200 L232,200" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 2 -->
+  <rect x="234" y="90" width="148" height="220" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <rect x="234" y="90" width="148" height="32" rx="8" fill="#D97706"/>
+  <rect x="234" y="110" width="148" height="12" rx="0" fill="#D97706"/>
+  <text x="308" y="111" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">STAGE 2</text>
+  <text x="308" y="141" text-anchor="middle" fill="#92400E" font-size="12" font-weight="700">Engagement Signals</text>
+
+  <text x="308" y="168" text-anchor="middle" fill="#92400E" font-size="11">Add signals:</text>
+  <text x="308" y="186" text-anchor="middle" fill="#475569" font-size="11">• Time on site (&gt;3 min)</text>
+  <text x="308" y="202" text-anchor="middle" fill="#475569" font-size="11">• Pricing page visits</text>
+  <text x="308" y="218" text-anchor="middle" fill="#475569" font-size="11">• Multi-session return</text>
+
+  <line x1="254" y1="234" x2="362" y2="234" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="308" y="253" text-anchor="middle" fill="#D97706" font-size="12" font-weight="700">Avg Cost Per SQL</text>
+  <text x="308" y="273" text-anchor="middle" fill="#D97706" font-size="20" font-weight="800">$2,600</text>
+  <text x="308" y="291" text-anchor="middle" fill="#94A3B8" font-size="10">Better intent proxies emerge</text>
+
+  <!-- Arrow -->
+  <path d="M384,200 L406,200" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 3 -->
+  <rect x="408" y="90" width="148" height="220" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <rect x="408" y="90" width="148" height="32" rx="8" fill="#16A34A"/>
+  <rect x="408" y="110" width="148" height="12" rx="0" fill="#16A34A"/>
+  <text x="482" y="111" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">STAGE 3</text>
+  <text x="482" y="141" text-anchor="middle" fill="#166534" font-size="12" font-weight="700">Lead Scoring Upload</text>
+
+  <text x="482" y="168" text-anchor="middle" fill="#166534" font-size="11">Add signals:</text>
+  <text x="482" y="186" text-anchor="middle" fill="#475569" font-size="11">• MQL score via GCLID</text>
+  <text x="482" y="202" text-anchor="middle" fill="#475569" font-size="11">• Lead grade (A/B/C)</text>
+  <text x="482" y="218" text-anchor="middle" fill="#475569" font-size="11">• Disqualified = 0 value</text>
+
+  <line x1="428" y1="234" x2="536" y2="234" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="482" y="253" text-anchor="middle" fill="#16A34A" font-size="12" font-weight="700">Avg Cost Per SQL</text>
+  <text x="482" y="273" text-anchor="middle" fill="#16A34A" font-size="20" font-weight="800">$1,900</text>
+  <text x="482" y="291" text-anchor="middle" fill="#94A3B8" font-size="10">AI stops chasing junk leads</text>
+
+  <!-- Arrow -->
+  <path d="M558,200 L580,200" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 4 -->
+  <rect x="582" y="90" width="148" height="220" rx="8" fill="#F0FDF4" stroke="#10B981" stroke-width="2"/>
+  <rect x="582" y="90" width="148" height="32" rx="8" fill="#10B981"/>
+  <rect x="582" y="110" width="148" height="12" rx="0" fill="#10B981"/>
+  <text x="656" y="111" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">STAGE 4</text>
+  <text x="656" y="141" text-anchor="middle" fill="#065F46" font-size="12" font-weight="700">CRM Integration</text>
+
+  <text x="656" y="168" text-anchor="middle" fill="#065F46" font-size="11">Add signals:</text>
+  <text x="656" y="186" text-anchor="middle" fill="#475569" font-size="11">• Opportunity created</text>
+  <text x="656" y="202" text-anchor="middle" fill="#475569" font-size="11">• SQL status confirmed</text>
+  <text x="656" y="218" text-anchor="middle" fill="#475569" font-size="11">• Deal stage updates</text>
+
+  <line x1="602" y1="234" x2="710" y2="234" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="656" y="253" text-anchor="middle" fill="#10B981" font-size="12" font-weight="700">Avg Cost Per SQL</text>
+  <text x="656" y="273" text-anchor="middle" fill="#10B981" font-size="20" font-weight="800">$1,300</text>
+  <text x="656" y="291" text-anchor="middle" fill="#94A3B8" font-size="10">Pipeline quality climbs fast</text>
+
+  <!-- Arrow -->
+  <path d="M732,200 L754,200" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Stage 5 -->
+  <rect x="756" y="90" width="148" height="220" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2.5"/>
+  <rect x="756" y="90" width="148" height="32" rx="8" fill="#059669"/>
+  <rect x="756" y="110" width="148" height="12" rx="0" fill="#059669"/>
+  <text x="830" y="111" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">STAGE 5</text>
+  <text x="830" y="141" text-anchor="middle" fill="#064E3B" font-size="12" font-weight="700">Revenue Events</text>
+
+  <text x="830" y="168" text-anchor="middle" fill="#064E3B" font-size="11">Add signals:</text>
+  <text x="830" y="186" text-anchor="middle" fill="#475569" font-size="11">• Closed-won (full value)</text>
+  <text x="830" y="202" text-anchor="middle" fill="#475569" font-size="11">• ARR value via GCLID</text>
+  <text x="830" y="218" text-anchor="middle" fill="#475569" font-size="11">• LTV-weighted bidding</text>
+
+  <line x1="776" y1="234" x2="884" y2="234" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="830" y="253" text-anchor="middle" fill="#059669" font-size="12" font-weight="700">Avg Cost Per SQL</text>
+  <text x="830" y="273" text-anchor="middle" fill="#059669" font-size="20" font-weight="800">$820</text>
+  <text x="830" y="291" text-anchor="middle" fill="#94A3B8" font-size="10">AI optimizes for actual revenue</text>
+
+  <!-- Arrow marker def -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+
+  <!-- Bottom section: prerequisites -->
+  <rect x="60" y="330" width="840" height="140" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="450" y="358" text-anchor="middle" fill="#0F172A" font-size="14" font-weight="700">What You Need Before Stage 4 Will Work</text>
+
+  <!-- 3 columns -->
+  <rect x="80" y="370" width="250" height="80" rx="6" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="205" y="392" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Technical Setup</text>
+  <text x="205" y="410" text-anchor="middle" fill="#475569" font-size="11">Enhanced conversions enabled</text>
+  <text x="205" y="426" text-anchor="middle" fill="#475569" font-size="11">GCLID capture in CRM fields</text>
+  <text x="205" y="442" text-anchor="middle" fill="#475569" font-size="11">Offline conversion import &lt;24h</text>
+
+  <rect x="345" y="370" width="250" height="80" rx="6" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="470" y="392" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Data Requirements</text>
+  <text x="470" y="410" text-anchor="middle" fill="#475569" font-size="11">30+ conversions/month minimum</text>
+  <text x="470" y="426" text-anchor="middle" fill="#475569" font-size="11">Conversion values, not just events</text>
+  <text x="470" y="442" text-anchor="middle" fill="#475569" font-size="11">Negative signal data (disqualified)</text>
+
+  <rect x="610" y="370" width="250" height="80" rx="6" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="735" y="392" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Bidding Strategy</text>
+  <text x="735" y="410" text-anchor="middle" fill="#475569" font-size="11">Target CPA or value-based bidding</text>
+  <text x="735" y="426" text-anchor="middle" fill="#475569" font-size="11">Audience signals from CRM list</text>
+  <text x="735" y="442" text-anchor="middle" fill="#475569" font-size="11">4–6 week learning period protected</text>
+
+  <!-- Key insight bar -->
+  <rect x="60" y="490" width="840" height="60" rx="8" fill="#0F172A"/>
+  <text x="450" y="517" text-anchor="middle" fill="#F1F5F9" font-size="13" font-weight="700">The Core Insight</text>
+  <text x="450" y="537" text-anchor="middle" fill="#94A3B8" font-size="12">AI bidding platforms optimize for exactly what you show them — signal quality is the only lever B2B marketers control.</text>
+
+  <!-- Footer -->
+  <text x="450" y="580" text-anchor="middle" fill="#94A3B8" font-size="10">AI Paid Ads Optimization: B2B Signal Architecture Framework · karan-sud-portfolio.vercel.app</text>
+
+  <!-- Progress arrow at bottom of stages -->
+  <path d="M60,325 C130,315 780,315 840,325" fill="none" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="450" y="320" text-anchor="middle" fill="#94A3B8" font-size="10">Signal Maturity Progression →</text>
+</svg>

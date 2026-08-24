@@ -1,0 +1,27 @@
+1/ 90% of B2B teams running AI paid ads are teaching the algorithm to find more of the wrong person. The tech isn't broken. The signals they feed it are.
+
+2/ Meta's Advantage+ hit a $20B annual revenue run rate. Google's AI bidding is genuinely impressive. What hasn't improved is what B2B teams feed into these systems: form fills, page views, email opens.
+
+3/ Gartner: by 2028, 70% of global ad spend and 80% of US ad spend flows through self-serve platforms where AI materially influences buying, cost, and outcomes. Manual control isn't coming back.
+
+4/ Meanwhile, B2B non-branded Google Ads CPC jumped 29% in 12 months, from $4.13 to $5.34 (Dreamdata benchmark). CTR dropped 26%. More expensive. Less traffic. That's what AI efficiency looks like when your signals are junk.
+
+5/ The mechanism nobody explains clearly: Target CPA builds a probabilistic model of "people who look like your converters." If your converters are form fillers, the AI gets very good at finding more form fillers.
+
+6/ Some of those are ICP. Many are students, competitors, job seekers, and vendors cold pitching. They all look identical in your conversion data if you only track the form event.
+
+7/ State of PPC 2026 survey of 1,306 pros: 62% cite black-box platforms as their top challenge. 53% say paid media is harder than 2 years ago. Right problem. Wrong diagnosis.
+
+8/ The real diagnosis: your conversion events don't predict revenue. AI can only optimize for what you show it. Form fills ≠ pipeline.
+
+9/ High signal quality means importing SQL-confirmed events, opportunity-created events, deals closed with actual ARR values assigned. Uploading disqualified leads with zero value so the AI learns what NOT to find.
+
+10/ The gap between $3,200 per SQL and $820 per SQL isn't the algorithm. It's the signal architecture behind it. Same AI. Different training data.
+
+11/ Five moves that fix this: enhanced conversions, GCLID captured in CRM fields, 3-tier value assignment, offline import within 24h, customer-match audience signals from closed-won accounts.
+
+12/ Gartner's 2026 CMO survey: only 30% of CMOs report mature AI capabilities, even as 15.3% of budgets flows to AI. Forrester: 9 in 10 agencies use AI to cut costs, not improve signal quality. The gap is structural.
+
+13/ The PPC debate about whether to trust AI bidding is over. The productive question: what information is your business giving the algorithm to work with?
+
+14/ Full breakdown: AI Paid Ads Are Breaking B2B. Signal Quality Is the Fix. — link in bio. Follow @karansud for more.
