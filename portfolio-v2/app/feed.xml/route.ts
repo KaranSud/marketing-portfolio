@@ -1,3 +1,4 @@
+import { marked } from "marked";
 import { getAllPosts, getPost } from "@/lib/blog";
 
 const SITE = "https://karan-sud-portfolio.vercel.app";
@@ -12,6 +13,24 @@ function esc(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
+// Strip the italics/emphasis markers a subtitle may carry, since the feed's
+// <description> is plain text and importers print the markup verbatim.
+function plain(s: string): string {
+  return s.replace(/[*_`]/g, "").trim();
+}
+
+// content:encoded must be HTML, not Markdown. Importers (Substack's RSS import
+// especially) paste whatever is inside verbatim, so Markdown arrives with its
+// asterisks and link brackets showing. Render it, then make every src/href
+// absolute because a feed is read far away from this origin.
+function toFeedHtml(markdown: string): string {
+  const html = marked.parse(markdown, { gfm: true, async: false }) as string;
+  return html
+    .replace(/(<img[^>]+src=")\/(?!\/)/g, `$1${SITE}/`)
+    .replace(/(<a[^>]+href=")\/(?!\/)/g, `$1${SITE}/`)
+    .replace(/(<iframe[^>]+src=")\/(?!\/)/g, `$1${SITE}/`);
+}
+
 // Full-text RSS. Medium's "import a story" flow and most syndication tools read
 // content:encoded, so the whole post ships in the feed rather than a teaser.
 export async function GET() {
@@ -22,14 +41,14 @@ export async function GET() {
     .map((meta) => {
       const post = getPost(meta.slug);
       const url = `${SITE}/blog/${meta.slug}`;
-      const body = post?.content ?? "";
+      const body = toFeedHtml(post?.content ?? "");
       return [
         "    <item>",
         `      <title>${esc(meta.title)}</title>`,
         `      <link>${url}</link>`,
         `      <guid isPermaLink="true">${url}</guid>`,
         `      <pubDate>${new Date(meta.date).toUTCString()}</pubDate>`,
-        `      <description>${esc(meta.description)}</description>`,
+        `      <description>${esc(plain(meta.description))}</description>`,
         `      <dc:creator>${esc(meta.author)}</dc:creator>`,
         ...meta.tags.map((t) => `      <category>${esc(t)}</category>`),
         `      <content:encoded><![CDATA[${body.replace(/]]>/g, "]]&gt;")}]]></content:encoded>`,
