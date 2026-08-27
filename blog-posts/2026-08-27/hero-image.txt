@@ -1,0 +1,9 @@
+Pexels Photo ID: N/A — Pexels API (api.pexels.com) blocked by network egress proxy during generation. Image generated programmatically.
+
+Source URL: N/A (generated via Chromium headless screenshot of custom HTML5 Canvas visualization)
+
+License: Proprietary — original work created for this post
+
+Alt text: Dark analytics dashboard showing a rising red line labeled $26.8B in programmatic waste against a grid background, with network nodes in the upper right and the text "AI ad spend hits $57B" — visualizing the paradox of growing waste alongside growing AI automation
+
+Rationale: The article's central argument is that AI paid ads optimization has grown to $57B in spend while programmatic waste simultaneously climbed 34% to $26.8B. The visual encodes this paradox directly: a red area-fill curve rises against a dark grid, with the headline numbers surfaced large. The network node cluster in the upper right represents the AI optimization machinery. Dark editorial aesthetic fits the brand palette and avoids all banned imagery types (no robots, no suits pointing at laptops, no money flying).

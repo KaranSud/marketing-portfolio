@@ -1,0 +1,29 @@
+1/ US brands will spend $57B on AI-powered ads in 2026. The ANA just found $26.8B in annual programmatic waste. Both numbers are growing. That's not a coincidence.
+
+2/ AI ad platforms don't optimize your campaigns. They optimize for the conversions THEY can attribute. That's not the same thing as your actual revenue.
+
+3/ Google's Performance Max optimizes for platform-reported conversions. Meta Advantage+ optimizes for pixel-recorded purchases. Neither knows what your close rate is.
+
+4/ The ANA's Q2 2025 Programmatic Benchmark: $26.8B lost to redundant supply paths, low-quality inventory, and measurement gaps. Up 34% in just two years of increasing AI adoption.
+
+5/ More automation didn't reduce the waste. It scaled alongside it. The AI is buying impressions efficiently. It's not buying GOOD impressions.
+
+6/ IAS's 2025 Media Quality Report: non-optimized campaigns ran fraud rates 15x higher than campaigns using anti-fraud tools. The AI bidding layer has no mandate to fix this.
+
+7/ Adalysis studied 3,300 non-retail Performance Max campaigns. When PMax and Standard Search competed for the same search terms, Standard Search had higher conversion rates 84% of the time.
+
+8/ PMax expands reach to queries your keywords miss, which has value. But when they fight for the same ground, the AI campaign loses 84% of the time. That's not what the dashboard shows you.
+
+9/ Paid CTR for queries where Google shows an AI Overview: collapsed from 19.70% to 6.34% between June 2024 and September 2025. A 68% drop in 15 months. Source: Seer Interactive, 3,119 queries, 42 clients.
+
+10/ The AI's response to fewer clicks? Broaden match to maintain volume. That looks productive on paper and is quietly eroding efficiency in practice.
+
+11/ Platform ROAS is always an overstatement. AI bidding specifically targets high-probability convertors, which means it finds people who were likely to buy anyway. Incrementality gap widens over time.
+
+12/ The fix isn't a new platform. It's a signal audit. Most campaigns have never had one. They set up conversion tracking at launch and left the AI to learn from the wrong proxy ever since.
+
+13/ Three actual levers: offline conversion imports (teach the AI which leads closed), quarterly incrementality tests (find your real ROAS), and correct campaign objective structure (purchases vs. leads is a different AI).
+
+14/ The $57B will keep flowing into AI ad systems. The question is whether you're giving those systems real revenue signal or just telling them to optimize a form fill.
+
+15/ Full breakdown: AI Paid Ads Hit $57B. Here's Why $26.8B of It Disappeared — link in bio. Follow @karansud for more.
