@@ -1,0 +1,9 @@
+Pexels Photo ID: N/A — Pexels API (api.pexels.com) blocked by network egress proxy during generation. Image generated programmatically via Chromium headless Canvas rendering.
+
+Source URL: N/A (original work, generated for this post)
+
+License: Proprietary — original work created for this post
+
+Alt text: Dark network visualization showing buyer touchpoints — Slack community, AI research, peer networks, G2 reviews — feeding into a narrowing red funnel, with the headline "67% of B2B Buyers Choose Their Vendor Before Your Funnel Even Starts" on a dark blue background
+
+Rationale: The article argues that 67% of B2B buying decisions are made in dark channels (peer networks, AI research, Slack communities, reviews) before buyers ever enter a vendor's tracked funnel. The visual encodes this directly: a cluster of interconnected nodes on the left representing dark funnel touchpoints (each labeled) flows with curved paths into the narrow entry of a red-tinted funnel shape. The stat "67%" dominates the right panel alongside the post headline. Dark editorial aesthetic (#0F172A background) matches brand palette. Avoids all banned imagery types (no people in suits, no robot hands, no AI brain graphics, no money flying).
