@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLG Activation Tracking Gap</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --mid: #64748B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  .chart-container {
+    max-width: 520px;
+    width: 100%;
+  }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 0.82rem;
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 1.6rem;
+    line-height: 1.4;
+  }
+  .canvas-wrap {
+    position: relative;
+    height: 300px;
+  }
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .legend-pct {
+    font-weight: 700;
+    margin-left: auto;
+  }
+  .source {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 1.2rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.8rem;
+  }
+</style>
+</head>
+<body>
+<div class="chart-container">
+  <h2>Most PLG Companies Fly Blind on Activation</h2>
+  <p class="subtitle">Share of product-led growth companies actively tracking activation, the metric most predictive of free-to-paid conversion</p>
+  <div class="canvas-wrap">
+    <canvas id="donutChart"></canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626;"></div>
+      <span>Track activation consistently</span>
+      <span class="legend-pct" style="color:#DC2626;">34%</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#E2E8F0;"></div>
+      <span>Don't track activation consistently</span>
+      <span class="legend-pct" style="color:#64748B;">66%</span>
+    </div>
+  </div>
+  <p class="source">Source: Industry benchmarks, OpenView Partners product benchmarks research</p>
+</div>
+
+<script>
+const ctx = document.getElementById('donutChart').getContext('2d');
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Track activation', "Don't track activation"],
+    datasets: [{
+      data: [34, 66],
+      backgroundColor: ['#DC2626', '#E2E8F0'],
+      borderColor: ['#DC2626', '#CBD5E1'],
+      borderWidth: 2,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '68%',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => ` ${ctx.parsed}% of PLG companies`
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        cornerRadius: 6
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

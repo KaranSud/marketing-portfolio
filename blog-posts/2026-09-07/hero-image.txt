@@ -1,0 +1,7 @@
+Pexels photo ID: N/A — external image services (api.pexels.com, source.unsplash.com) were blocked by the environment's egress proxy during this run. Hero image was generated programmatically using Python PIL to approximate the brand-appropriate aesthetic: dark architectural grid on #0F172A background with #334155 mullion lines and a #DC2626 accent panel, simulating a glass curtain-wall facade.
+
+Source URL: generated (blog-posts/2026-09-07/hero.jpg)
+License: generated asset, no third-party rights
+Alt text: Abstract dark glass curtain-wall facade with geometric grid panels and a red accent, representing structured growth systems
+
+Rationale: The grid of dark glass panels evokes both the layered architecture of a hybrid go-to-market system and the structured measurement framework the article argues PLG companies need. Tone is editorial and architectural — no people, no laptops, no AI brain graphics. Colors match the brand palette precisely.

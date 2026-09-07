@@ -1,0 +1,29 @@
+1/ Gartner just confirmed 67% of B2B buyers prefer buying without ever talking to a sales rep. McKinsey analyzed 107 public SaaS companies and found most PLG companies see zero revenue advantage. Both studies came out within weeks of each other.
+
+2/ Here's the contradiction: buyers WANT to self-serve. But the companies built to serve them aren't capturing the revenue. What's breaking?
+
+3/ The answer isn't the strategy. It's the measurement. Only 34% of product-led companies actively track activation — the single metric that predicts whether a free user ever pays.
+
+4/ Two-thirds of companies calling themselves "product-led" are running a self-serve motion without the instrument that tells them if it's working. That's not a PLG problem. That's a prioritization problem.
+
+5/ McKinsey dug into 107 public B2B SaaS companies and found this: on average, PLG companies grow faster than sales-led peers. But a small subset of outperformers is driving the entire average. Most PLG adopters see no boost.
+
+6/ The McKinsey finding that nobody shares: high-performing PLG companies spend 10 percentage points MORE on sales, marketing, and R&D than high-performing sales-led companies. PLG is not cheaper. It just generates more distribution from the same spend.
+
+7/ So what do the winners do differently? They stopped choosing between product and sales. They run hybrid: product handles acquisition, usage data handles qualification, sales handles expansion for the accounts that matter.
+
+8/ The OpenView/High Alpha 2024 benchmarks (800+ companies): 67% of hybrid PLG+sales companies hit their NRR targets. Pure PLG: 58%. That 9-point gap shows up consistently across company sizes and segments.
+
+9/ The conversion data makes the mechanism obvious. Companies routing product qualified leads — users who hit a behavioral threshold before sales touches them — convert at 25-30%. MQL-based routing: 5-10%. Same product, different qualification logic.
+
+10/ Most PLG teams obsess over free-to-paid conversion. The median is 9% across all models. That tells you almost nothing, because it aggregates companies with broken onboarding and companies with tight activation tracking in the same number.
+
+11/ Forrester predicted 50%+ of large B2B transactions over $1M would flow through digital self-serve by end of 2025. That's not an SMB trend. Enterprise buyers are choosing checkout over sales calls. The market is there. Most products aren't designed to serve it.
+
+12/ The fix isn't complex: define your activation event, track it, build a PQL threshold, and layer in sales-assist only when the product signals it. That's the entire operational difference between the top quartile and the rest.
+
+13/ Slack added enterprise sales. Figma added outbound. Atlassian added an enterprise motion. The companies that "proved" pure PLG works are now hybrid companies. The data followed the operators.
+
+14/ The 67% of buyers who prefer rep-free experiences aren't saying they never want to talk to anyone. They're saying they want the product to earn that conversation first. Build to that standard and your sales team becomes more effective, not redundant.
+
+15/ Full breakdown: Product-Led Growth Promised to Kill Sales Teams. The Winners Brought Them Back. — link in bio. Follow @karansud for more.

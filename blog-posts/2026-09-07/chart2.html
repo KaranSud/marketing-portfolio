@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free-to-Paid Conversion by Lead Qualification Method</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --border: #E7E5E4;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --mid: #64748B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  .chart-container { max-width: 640px; width: 100%; }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 0.82rem;
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 1.6rem;
+    line-height: 1.4;
+  }
+  .canvas-wrap { position: relative; height: 320px; }
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text);
+  }
+  .legend-dot {
+    width: 28px;
+    height: 3px;
+    border-radius: 2px;
+  }
+  .source {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 1.2rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.8rem;
+  }
+</style>
+</head>
+<body>
+<div class="chart-container">
+  <h2>Free-to-Paid Conversion Rate by Lead Qualification Method</h2>
+  <p class="subtitle">How conversion rates differ when PLG companies qualify users by behavior (PQL) vs. marketing signals (MQL) vs. no qualification</p>
+  <div class="canvas-wrap">
+    <canvas id="lineChart"></canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626;"></div>
+      <span>Product Qualified Leads (PQL)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#64748B;"></div>
+      <span>All signups (median)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#94A3B8;"></div>
+      <span>Marketing Qualified Leads (MQL)</span>
+    </div>
+  </div>
+  <p class="source">Source: OpenView Partners PLG benchmarks; ChartMogul SaaS Conversion Report</p>
+</div>
+
+<script>
+const stages = ['Visitor', 'Signup', 'Activated', 'Sales-Assist Touch', 'Paid'];
+const pqlData    = [null, 100, 62, 38, 27];
+const medianData = [null, 100, 35, null, 9];
+const mqlData    = [null, 100, 28, 12, 7];
+
+const ctx = document.getElementById('lineChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: stages,
+    datasets: [
+      {
+        label: 'PQL',
+        data: pqlData,
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.08)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#DC2626',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.35,
+        fill: false
+      },
+      {
+        label: 'All signups (median)',
+        data: medianData,
+        borderColor: '#64748B',
+        backgroundColor: 'rgba(100,116,139,0.06)',
+        borderWidth: 2,
+        pointBackgroundColor: '#64748B',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        borderDash: [5, 4],
+        tension: 0.35,
+        fill: false,
+        spanGaps: true
+      },
+      {
+        label: 'MQL',
+        data: mqlData,
+        borderColor: '#94A3B8',
+        backgroundColor: 'rgba(148,163,184,0.05)',
+        borderWidth: 2,
+        pointBackgroundColor: '#94A3B8',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.35,
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            if (ctx.raw === null) return null;
+            return ` ${ctx.dataset.label}: ${ctx.raw}% remaining`;
+          }
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        cornerRadius: 6
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#E2E8F0', lineWidth: 1 },
+        ticks: { color: '#475569', font: { size: 12 } }
+      },
+      y: {
+        min: 0,
+        max: 110,
+        grid: { color: '#E2E8F0', lineWidth: 1 },
+        ticks: {
+          color: '#475569',
+          font: { size: 12 },
+          callback: (v) => v === 100 ? '100% (baseline)' : v + '%'
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
