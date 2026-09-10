@@ -214,5 +214,14 @@
       "donut",
       "line"
     ]
+  },
+  {
+    "date": "2026-09-10",
+    "slug": "product-led-growth-metrics-that-actually-predict-revenue",
+    "title": "Product Led Growth Metrics That Actually Predict Revenue",
+    "chart_types": [
+      "area",
+      "radar"
+    ]
   }
 ]

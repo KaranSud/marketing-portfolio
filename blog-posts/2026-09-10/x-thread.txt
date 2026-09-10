@@ -1,0 +1,29 @@
+1/ Most PLG teams are measuring the wrong thing. 60% of B2B SaaS companies run PLG. Median free-to-paid conversion: 2.6%. Something is broken at scale. Here's what the data says.
+
+2/ The average PLG dashboard: signups, MQLs, email opens. These are all real numbers. None of them predict whether a free user pays. Every metric is a proxy for a proxy.
+
+3/ The two metrics that actually separate fast PLG companies from the rest: time-to-value (TTV) and product-qualified leads (PQLs). Both are tracked by less than 25% of PLG teams.
+
+4/ TTV = the time between signup and the moment a user completes the action that proves the product works. Not login. Not tutorial completion. The actual value moment.
+
+5/ Amplitude benchmarked 2,600 companies: 98% of new users churn within 2 weeks if they never hit a value milestone. If you're not measuring TTV, you're not measuring your biggest churn lever.
+
+6/ PQLs are free users whose in-product behavior signals they're about to convert. Usage depth, session frequency, features activated. These convert at 25-30% vs 5-10% for MQLs. That's a 3x difference.
+
+7/ OpenView found that PLG companies tracking PQLs are 61% more likely to achieve fast growth. Yet only 24% of PLG teams track them. The signal is there. Nobody's reading it.
+
+8/ Why? Marketing teams own the dashboards. Marketing dashboards are built for campaigns and leads. Product behavioral data sits in a different tool, reviewed by a different team, with a different cadence.
+
+9/ The fix is operational, not strategic. Step 1: find the one action that separates your last 50 paid conversions from non-converters. That's your activation event. Measure time to it.
+
+10/ Step 2: run a usage analysis on your free users in the first 30 days. Sessions per week, features used, records created. Your PQL segment is the cluster with the highest historical conversion.
+
+11/ Step 3: export that segment weekly and route it to sales. This is PLG activation in practice. Not a funnel. A recurring signal loop between your product data and your revenue team.
+
+12/ PLG companies that get the measurement right grow 50% faster on 39% less sales and marketing spend. The edge isn't the free tier. It's knowing which free users are already sold.
+
+13/ AI is accelerating this. Menlo Ventures found 27% of AI app spend flows through PLG, 4x the rate of traditional SaaS. The PLG measurement window is narrowing as the motion becomes the default.
+
+14/ The teams building TTV and PQL infrastructure now will have something competitors building it in 2028 won't: 2 years of behavioral data that trains better conversion models.
+
+15/ Full breakdown: Product Led Growth Metrics That Actually Predict Revenue — link in bio. Follow @karansud for more.

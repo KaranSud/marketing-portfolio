@@ -1,0 +1,6 @@
+Pexels photo ID: N/A — api.pexels.com was blocked by the environment's egress proxy (403 policy denial) during this run. Hero image was generated programmatically using Python Pillow to match brand-appropriate aesthetics: dark navy background (#0F172A) with layered signal waveforms in blue-grey, an ascending trend line in brand blue, and a sharply rising red accent signal (#DC2626) with data point markers — evoking behavioral product telemetry.
+
+Source URL: generated (blog-posts/2026-09-10/hero.jpg)
+License: generated asset, no third-party rights
+Alt text: Abstract data signal visualization on a dark navy background, with a rising red trend line and measurement grid representing product behavioral analytics
+Rationale: The layered waveforms represent the multiple data signals inside a PLG product (usage depth, feature adoption, session frequency) that most teams ignore. The red line breaking upward is the PQL signal, distinguishing itself from the noise — matching the article's argument that the right signal is already there but untracked. Tone is editorial and abstract; no people, no laptops, no AI iconography. Colors match brand palette exactly.
