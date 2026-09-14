@@ -1,0 +1,27 @@
+1/ The marketing analytics market is worth $8 billion and growing at 13% annually. Only 21.5% of marketers trust the data it produces. That is not a tools problem.
+
+2/ Gartner surveyed 402 CMOs earlier this year. 59% said they don't have enough budget to execute their strategy. Marketing budgets have been flat at 7.7% of revenue for two years straight.
+
+3/ So: measurement spending is rising. CMO confidence in measurement is falling. Budget allocation based on that measurement is stalled. All three happening at the same time.
+
+4/ Here's what good measurement actually requires: three methods, each doing a different job. Marketing mix modeling for portfolio strategy. Incrementality testing for causal proof. Attribution for tactical optimization. Most teams use only one.
+
+5/ Marketing mix modeling tells you where your total budget should go across channels. Incrementality testing tells you whether a channel is actually causing sales. Attribution tells you which creative is performing. Different questions, different tools.
+
+6/ The IAB State of Data 2026 report: only 39% of buy-side marketers use all three methods together. The rest know they should. They're just not doing it.
+
+7/ Why not? Running an MMM takes months of data preparation before the first output. Incrementality testing requires withholding spend from a control group — every channel manager fights this. Attribution is fast. Fast wins.
+
+8/ The tools industry has responded by adding "MMM" and "incrementality" pages to every attribution vendor's website. In some cases that's real. In many cases it's positioning. Most teams can't tell the difference until they're 12 months in.
+
+9/ 74.5% of marketers want to move away from last-click attribution. 78.4% still use it as their primary measurement model. The gap between knowing and doing is where budget gets misallocated.
+
+10/ The sequence that actually works: start with data infrastructure, not new software. Spend two quarters consolidating channel spend data before building any model. Most failed MMM implementations have a data quality problem, not a modeling problem.
+
+11/ Then run an incrementality test on your largest channel, not your most interesting one. Establish causal lift where the budget is biggest. One validated number is worth more than six dashboard tabs.
+
+12/ The 61% who aren't using the full measurement stack aren't there because they haven't found the right vendor. They haven't built the organizational process to act on what the tools produce.
+
+13/ Gartner projects that organizations with integrated MMM, incrementality, and attribution will outperform single-method organizations by 40% on marketing efficiency by 2028. The gap compounds every planning cycle you wait.
+
+14/ Full breakdown: Marketing Analytics Investment Is Up. Measurement Confidence Is Down. — link in bio. Follow @karansud for more.

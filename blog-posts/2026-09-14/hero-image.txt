@@ -1,0 +1,5 @@
+Pexels photo ID: N/A — Pexels API blocked by environment egress proxy (connect_rejected); hero image generated programmatically using Pillow.
+Source URL: N/A (api.pexels.com blocked)
+License: Original generated image, freely usable.
+Alt text: Abstract bar chart and trend lines in dark slate and red against a dark background, representing marketing analytics measurement data showing investment growth alongside declining confidence.
+Rationale: The image uses the brand palette (#0F172A background, #DC2626 accent red, #475569 secondary) to illustrate the article's central tension — rising analytics investment (tall ascending bars) against a declining confidence trend line (dashed line falling from upper-left to lower-right). Avoids people, laptops, robots, or money imagery. Industrial, data-visualization feel appropriate for a senior marketing audience.

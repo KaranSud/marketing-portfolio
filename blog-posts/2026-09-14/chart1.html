@@ -1,0 +1,162 @@
+<title>Marketing Analytics Market Growth 2022–2031</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --sub: #475569;
+    --muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --border: #E7E5E4;
+    --ground: #FAFAF9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --sub: #94A3B8;
+      --muted: #64748B;
+      --grid: #1E293B;
+      --border: #334155;
+      --ground: #0F172A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --sub: #94A3B8;
+    --muted: #64748B;
+    --grid: #1E293B;
+    --border: #334155;
+    --ground: #0F172A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 32px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  p.sub {
+    font-size: 0.85rem;
+    color: var(--sub);
+    margin-bottom: 28px;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+  }
+  canvas { max-width: 100%; }
+  .source {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+</style>
+
+<h2>Marketing Analytics Market: $8B Now, $14.5B by 2031</h2>
+<p class="sub">Global market size in USD billions — actual and projected (Mordor Intelligence, 2026)</p>
+
+<div class="chart-wrap">
+  <canvas id="chart1"></canvas>
+</div>
+
+<p class="source">Source: Mordor Intelligence, Marketing Analytics Market report, 2026. CAGR: 12.65%. Data points for 2022–2025 back-calculated from reported base; 2026–2031 projection.</p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<script>
+const isDark = document.documentElement.dataset.theme === 'dark' ||
+  (!document.documentElement.dataset.theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+const textColor = isDark ? '#F1F5F9' : '#0F172A';
+const subColor = isDark ? '#94A3B8' : '#475569';
+const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+
+const labels = ['2022','2023','2024','2025','2026','2027','2028','2029','2030','2031'];
+const actual  = [5.61, 6.06, 6.73, null, null, null, null, null, null, null];
+const projected = [null, null, null, 7.12, 8.02, 9.03, 10.17, 11.46, 12.91, 14.55];
+
+const ctx = document.getElementById('chart1').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Actual (USD billions)',
+        data: actual,
+        borderColor: '#0F172A',
+        backgroundColor: 'transparent',
+        borderWidth: 3,
+        pointRadius: 5,
+        pointBackgroundColor: '#0F172A',
+        tension: 0.3,
+        spanGaps: false,
+      },
+      {
+        label: 'Projected (USD billions)',
+        data: projected,
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.08)',
+        borderWidth: 3,
+        borderDash: [6, 4],
+        pointRadius: 5,
+        pointBackgroundColor: '#DC2626',
+        tension: 0.3,
+        spanGaps: false,
+        fill: true,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          color: subColor,
+          font: { size: 12, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' },
+          boxWidth: 20,
+          padding: 16,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => `$${ctx.parsed.y.toFixed(2)}B`
+        },
+        backgroundColor: isDark ? '#1E293B' : '#FFFFFF',
+        titleColor: textColor,
+        bodyColor: subColor,
+        borderColor: gridColor,
+        borderWidth: 1,
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: gridColor },
+        ticks: { color: subColor, font: { size: 11 } }
+      },
+      y: {
+        min: 4,
+        max: 16,
+        grid: { color: gridColor },
+        ticks: {
+          color: subColor,
+          font: { size: 11 },
+          callback: v => `$${v}B`
+        }
+      }
+    }
+  }
+});
+</script>
