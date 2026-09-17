@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Most Reliable Marketing Measurement Methodology</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --accent: #DC2626;
+    --grid: #E2E8F0;
+    --card: #FAFAF9;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --secondary: #94A3B8;
+      --muted: #64748B;
+      --grid: #1E293B;
+      --card: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --secondary: #94A3B8;
+    --muted: #64748B;
+    --grid: #1E293B;
+    --card: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 24px 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .chart-container {
+    background: var(--card);
+    border: 1px solid var(--grid);
+    border-radius: 12px;
+    padding: 32px 24px 24px;
+    width: 100%;
+    max-width: 700px;
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .canvas-wrap {
+    position: relative;
+    height: 340px;
+  }
+  .source {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 16px;
+  }
+  .highlight-note {
+    display: inline-block;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #B91C1C;
+    margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-container">
+  <h2>Which Measurement Methodology Do Marketers Trust Most?</h2>
+  <p class="subtitle">% of US marketers naming each method as their single most reliable measurement methodology — July 2025</p>
+  <div class="canvas-wrap">
+    <canvas id="barChart"></canvas>
+  </div>
+  <p class="highlight-note">MMM now ranks #1 — ahead of multi-touch attribution for the first time.</p>
+  <p class="source">Source: EMARKETER &amp; TransUnion, "Marketing Measurement Confidence," July 2025 (n=196 US marketing professionals)</p>
+</div>
+
+<script>
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const textColor = isDark ? '#94A3B8' : '#475569';
+const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+
+const labels = [
+  'Marketing Mix\nModeling (MMM)',
+  'Multi-Touch\nAttribution (MTA)',
+  'Unified\nMeasurement',
+  'Incrementality\nTesting',
+  'Last-Click\nAttribution',
+  'Other/\nUnsure'
+];
+
+const values = [27.6, 19.4, 18.9, 14.8, 10.2, 9.1];
+
+const backgroundColors = values.map((v, i) => {
+  if (i === 0) return '#DC2626';
+  if (i === 3) return '#B91C1C';
+  return '#475569';
+});
+
+const hoverColors = values.map((v, i) => {
+  if (i === 0) return '#B91C1C';
+  if (i === 3) return '#991B1B';
+  return '#334155';
+});
+
+const config = {
+  type: 'bar',
+  data: {
+    labels: labels.map(l => l.split('\n')),
+    datasets: [{
+      data: values,
+      backgroundColor: backgroundColors,
+      hoverBackgroundColor: hoverColors,
+      borderRadius: 6,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.parsed.y.toFixed(1)}% cite as most reliable`
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: textColor,
+          font: { size: 11 },
+          maxRotation: 0,
+        },
+        grid: { display: false },
+      },
+      y: {
+        min: 0,
+        max: 35,
+        ticks: {
+          callback: v => v + '%',
+          color: textColor,
+          font: { size: 11 }
+        },
+        grid: { color: gridColor },
+        title: {
+          display: true,
+          text: '% naming as most reliable',
+          color: textColor,
+          font: { size: 12 }
+        }
+      }
+    }
+  }
+};
+
+new Chart(document.getElementById('barChart'), config);
+</script>
+</body>
+</html>

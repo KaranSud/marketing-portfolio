@@ -1,0 +1,90 @@
+1/ An incrementality study across ~150 experiments: only 69% of the conversions last-click attribution credits to paid channels were actually *caused* by paid channels.
+
+The other 31% would have converted anyway.
+
+Thread on what this means for your paid media budget.
+
+2/ Those 31% aren't bots or accidental clicks.
+
+They're real buyers who were going to find your product through organic search, referrals, or brand recall. Your retargeting campaign intercepted them at the last step — and collected the credit.
+
+3/ Last-click attribution was built to answer: "which touchpoint came right before conversion?"
+
+Incrementality testing answers: "did our advertising actually *cause* this conversion?"
+
+Two different questions. Very different numbers.
+
+4/ The vertical breakdown from Nico Neumann's analysis of controlled experiments:
+- E-commerce: 76% incremental
+- Retail: 63% incremental
+- Travel: 48% incremental
+
+Travel means >50% of paid ad conversions would have happened without the ad.
+
+5/ Why does this happen? Paid retargeting and paid search target high-intent buyers.
+
+High-intent buyers are — by definition — the most likely to convert without your advertising.
+
+The more your brand has done its job, the bigger the attribution gap.
+
+6/ The platform walled garden problem makes it worse.
+
+Google claims the conversion if there was a click in 30 days. Meta claims it too. Neither can see the other.
+
+When a buyer clicks both: both platforms count 100% of the conversion. Your total "attributed" conversions double-count.
+
+7/ How big is the industry-level confidence gap?
+
+IAB State of Data 2026: 75% of US buy-side leaders say their core measurement approaches underperform on rigor, timeliness, trust, and efficiency.
+
+*Including* teams using "advanced" methods like MMM and incrementality.
+
+8/ Nielsen 2025 Annual Marketing Report: only 32% of marketers measure media spending holistically across digital and traditional channels.
+
+Down from 38% the previous year.
+
+Holistic measurement is declining — at the exact moment B2B buying journeys are getting more complex.
+
+9/ The B2B SaaS math:
+
+$2M paid media budget × 31% over-attribution = ~$620K allocated based on false signal.
+
+Year over year, the mix optimizes for the wrong metric. You defund organic (which built intent) while scaling paid (which captured it).
+
+10/ How to run your first incrementality test without an enterprise vendor:
+
+Option 1: Google Ads experiment framework. 20% holdout, 4-6 weeks, compare conversion rates. Most clarifying data you'll run this year.
+
+Option 2: Matched market test. Split geographic markets instead of audiences.
+
+11/ Option 3 (easiest): Email send-vs-no-send.
+
+Exclude 15-20% of your next nurture sequence randomly. Track 30-60 days.
+
+The conversion gap = incremental lift from email.
+
+Either reassuring or very instructive.
+
+12/ The industry is moving:
+
+EMARKETER/TransUnion: 46.9% of US marketers plan to invest more in MMM in the next 12 months. MMM now ranks #1 as the single most reliable methodology (27.6%) — ahead of multi-touch attribution (19.4%) for the first time.
+
+13/ The upgrade sequence:
+
+Start with holdout experiments (fast, cheap, causal signal on specific campaigns).
+
+Layer in MMM when you have 18+ months of data and the budget to justify it.
+
+They complement each other. Neither replaces the other.
+
+14/ The common objection: "We're sacrificing conversions in the holdout."
+
+The math: 20% holdout on a campaign that's 31% over-attributing = withholding spend from people who were going to convert anyway.
+
+Short-term cost: small. Long-term signal value: large.
+
+15/ Attribution isn't going away. It's still the best fast-feedback loop for creative and audience optimization *within* a channel.
+
+But using it as your primary evidence for budget allocation means you're optimizing for a fiction.
+
+Full post: https://karan-sud-portfolio.vercel.app/blog

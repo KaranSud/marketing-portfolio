@@ -232,5 +232,14 @@
       "line",
       "lollipop"
     ]
+  },
+  {
+    "date": "2026-09-17",
+    "slug": "incrementality-testing-exposes-the-31-percent-flaw-in-your-attribution",
+    "title": "Incrementality Testing Exposes the 31% Flaw in Your Attribution",
+    "chart_types": [
+      "dumbbell",
+      "vertical bar"
+    ]
   }
 ]

@@ -1,0 +1,5 @@
+Pexels photo ID: N/A — Pexels API blocked by environment egress proxy (connect_rejected); hero image generated programmatically using Pillow.
+Source URL: N/A (api.pexels.com blocked by org egress policy)
+License: Original generated image, freely usable.
+Alt text: Abstract bar chart showing two sets of bars per channel — grey reported conversions versus shorter red incremental conversions — against a dark navy background, visualizing the attribution gap in marketing measurement.
+Rationale: The image uses the brand palette (#0F172A background, #DC2626 accent red, #334155 secondary grey) to show the gap between what last-click attribution reports and what incrementality testing finds. Each channel shows a tall grey bar (reported) next to a shorter red bar (actual), with the gap between them representing misattributed budget. Avoids people, laptops, robots, or money imagery. Industrial, data-visualization feel appropriate for a senior marketing audience.
