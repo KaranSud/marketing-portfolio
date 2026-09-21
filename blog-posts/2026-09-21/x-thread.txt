@@ -1,0 +1,29 @@
+1/ Marketers increased AI social content spend by 79% last year. Consumer preference for that content fell from 60% to 26% in the same period. That divergence is the most important chart in marketing right now.
+
+2/ The problem isn't that AI doesn't work for social. It's that most teams are deploying it as a volume machine instead of a thinking partner. The fix requires a different mental model, not a different tool.
+
+3/ Only 26% of consumers now prefer AI creator content over traditional content. Two years ago that number was 60%. Source: Billion Dollar Boy / Censuswide survey of 4,000 consumers, published Oct 2025.
+
+4/ The reason: feeds are saturated with AI-generated content that is generic, unspecific, and indistinguishable from the next 12 posts. When every brand sounds the same, the one that sounds different wins.
+
+5/ Gartner surveyed 1,539 U.S. consumers in March 2026. Half said they'd rather give their business to brands that don't use GenAI in consumer-facing content. That's 50% of your audience leaning away before they've seen a single post.
+
+6/ CMOs are allocating 15.3% of marketing budgets to AI in 2026 (Gartner CMO Spend Survey, 401 leaders). But only 30% of those organizations have mature AI readiness. That gap is where the damage happens.
+
+7/ The LinkedIn algorithm now penalizes "generic content" (posts with near-zero dwell time and no saves). AI output published without human editing almost always lands there. It's not just underperforming, it's training the algorithm against you.
+
+8/ Instagram DM shares now carry 3-5x the algorithmic weight of a like. Content gets shared in DMs when it's specific, surprising, or immediately useful. Generic AI posts almost never get there.
+
+9/ 78% of consumers say explicit AI labeling is "very important" for maintaining trust (Gartner, 335-consumer survey). Disclosure doesn't reduce trust. It builds it. The brands scared to label AI content are losing to the ones who do.
+
+10/ The actual 2028 AI play: Gartner predicts 60% of brands will use agentic AI for one-to-one interactions. That's personalization at scale, not broadcast content volume. The brands investing in AI volume content are optimizing for last year's problem.
+
+11/ How to sequence it correctly: AI handles the work that has no personality (briefs, outlines, research synthesis). Humans handle the work that has all of it (voice, opinion, specific examples). That's the winning stack.
+
+12/ The moat in 2026 is not better AI tools. 87% of marketers already use AI for social. The moat is better human judgment applied to AI output before it's published. That's the scarce resource.
+
+13/ Counter-intuitive read: the organic reach collapse is real. But the brands hurting most aren't victims of the algorithm. They accelerated their own decline by publishing AI content without editorial shaping.
+
+14/ The choice you make about AI social content right now isn't just short-term performance. It's either building or burning the data foundation for what personalized social becomes in two years.
+
+15/ Full breakdown: AI Social Media Marketing Isn't Working. Here's the Fix. — link in bio. Follow @karansud for more.

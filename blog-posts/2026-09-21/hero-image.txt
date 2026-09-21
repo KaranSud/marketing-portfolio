@@ -1,0 +1,5 @@
+Pexels photo ID: N/A (API blocked by network egress policy during generation)
+Source URL: https://www.pexels.com/search/social+media+content+creator+authentic/
+License: Pexels license (free to use)
+Alt text: An open laptop on a wooden desk beside a coffee mug, warm natural light streaming in from a window, the screen showing a social media dashboard — a scene of deliberate, human-driven content work.
+Rationale: Environmental/workspace photography conveys the "human editorial judgment" theme of the post — authentic, unhurried, specific. Avoids AI brain graphics, robot hands, or the generic "person pointing at laptop" cliché. Recommended search terms for manual replacement: "content creator desk workspace natural light" or "social media laptop editorial workspace" on Pexels.

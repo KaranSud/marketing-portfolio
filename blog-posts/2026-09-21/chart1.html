@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Investment vs. Consumer Reality</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --accent: #DC2626;
+    --border: #E2E8F0;
+    --card-border: #E7E5E4;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+  .container {
+    width: 100%;
+    max-width: 720px;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 320px;
+  }
+  .source {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="chart-title">The AI Social Media Investment Gap</div>
+  <div class="chart-subtitle">Marketer AI spend surge meets consumer preference collapse — four metrics that tell the same story</div>
+  <div class="chart-wrap">
+    <canvas id="chart1"></canvas>
+  </div>
+  <div class="source">Sources: Billion Dollar Boy / Censuswide "Muse Two" (Oct 2025); Gartner CMO Spend Survey (May 2026); Gartner Marketing Survey (Mar 2026)</div>
+</div>
+<script>
+const ctx = document.getElementById('chart1').getContext('2d');
+
+const labels = [
+  'Marketers who increased AI\ncreator content spend (YoY)',
+  'CMOs allocating budget to AI\n(% of total marketing budget)',
+  'CMOs with mature AI readiness\n(ready to actually scale it)',
+  'Consumers who prefer brands\navoiding GenAI in content'
+];
+
+const values = [79, 15.3, 30, 50];
+const colors = ['#DC2626', '#475569', '#475569', '#0F172A'];
+const borderColors = ['#DC2626', '#475569', '#475569', '#0F172A'];
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [{
+      data: values,
+      backgroundColor: colors.map(c => c + '22'),
+      borderColor: borderColors,
+      borderWidth: 2,
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw}%`
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 100,
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          color: '#94A3B8',
+          font: { size: 11, family: '-apple-system, BlinkMacSystemFont, Segoe UI, Arial' },
+          callback: v => v + '%'
+        },
+        border: { display: false }
+      },
+      y: {
+        grid: { display: false },
+        ticks: {
+          color: '#475569',
+          font: { size: 11, family: '-apple-system, BlinkMacSystemFont, Segoe UI, Arial' },
+          padding: 8
+        },
+        border: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
