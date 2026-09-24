@@ -250,5 +250,14 @@
       "horizontal bar",
       "line"
     ]
+  },
+  {
+    "date": "2026-09-24",
+    "slug": "ai-influencer-marketings-hidden-fraud-tax",
+    "title": "AI Influencer Marketing's Hidden Fraud Tax (It's 19%)",
+    "chart_types": [
+      "horizontal bar",
+      "donut"
+    ]
   }
 ]

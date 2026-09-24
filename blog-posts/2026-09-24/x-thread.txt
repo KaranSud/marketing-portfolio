@@ -1,0 +1,27 @@
+1/ The influencer marketing industry is worth $32.55B. 81% of brands hit fraud last year. And the detection budget is running at 1/5 the discovery budget. This gap is the fraud tax. (thread)
+
+2/ The World Federation of Advertisers published a 28-country study last week. 1,400 senior marketers. Finding: the median gap between what influencers promised in reach and what brands actually measured was 37%.
+
+3/ That means for a campaign promising 1M impressions, the real number was closer to 630K. And 19.2% of total spend reached audiences that simply do not exist. On a $1M budget: $192K gone.
+
+4/ How did we get here? AI influencer tools scaled discovery faster than fraud scaled with it. Teams that vetted 200 profiles per quarter now process 50,000. The problem: bad actors optimized for discovery tools, not detection.
+
+5/ The IMH 2026 Benchmark Report (3,500+ marketers): 36.67% use AI for creator discovery. Only 7.22% use AI for fraud detection. That is a structural decision, not an oversight. Discovery budgets justify the platform contract.
+
+6/ The fraud generation that matters now is not old-school fake follower spikes. It is AI bot swarms using LLMs to post context-aware comments that look human, staggered across 12-hour windows to mimic organic virality.
+
+7/ Detection tools tuned for legacy behavior miss this class of fraud almost entirely. The fraud has already adapted to the previous generation of detection. You cannot bolt a 2022 vetting layer onto a 2026 discovery stack.
+
+8/ On the consumer side: Harris Poll found 73% of consumers are less likely to trust an ad they suspect is AI generated. 50% of Gen Z have unfollowed accounts they believe are AI. The trust erosion hits authentic creators too.
+
+9/ The fix is not a better detection tool. It is a procurement architecture change. Detection needs to be a pre-contract gate, not a post-campaign audit. The sequence matters more than the technology.
+
+10/ Step 1: Authenticate reach before negotiating rates. Not after. Media kit numbers are not reach. Third party audit before the first dollar is committed.
+
+11/ Step 2: Use a separate vendor for discovery and audience verification. The platform profiting from more creator relationships has an incentive to keep discovery metrics looking strong. That is a structural conflict.
+
+12/ Step 3: Ask every influencer vendor this: what is the difference between discovery verification and audience verification? If they conflate the two, you have found the gap in your stack.
+
+13/ The brands cleaning up their procurement send a signal that compounds. If 81% of the market is running at a 5x discovery-to-detection mismatch, the 19% that isn't has a trust arbitrage that is hard to replicate.
+
+14/ Full breakdown: AI Influencer Marketing's Hidden Fraud Tax (It's 19%) — link in bio. Follow @karansud for more.

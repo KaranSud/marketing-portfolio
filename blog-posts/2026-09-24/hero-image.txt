@@ -1,0 +1,5 @@
+Pexels photo ID: N/A (api.pexels.com blocked by network egress policy during generation)
+Source URL: https://www.pexels.com/search/network+abstract+technology+pattern/
+License: Pexels license (free to use)
+Alt text: An overhead aerial photograph of a sprawling city street grid at dusk, with streams of headlights forming glowing lines through the urban fabric — a metaphor for scale, flow, and the invisible networks that move value.
+Rationale: Aerial/architectural photography of city networks captures the post's core argument: massive scale (social commerce, influencer market) running on infrastructure that is harder to verify than it looks. Avoids AI brain graphics, robot hands, and the laptop-pointing cliché. The network-of-lights aesthetic reinforces both "reach" as a concept and the idea of signals that cannot all be authenticated. Recommended Pexels search terms for manual replacement: "aerial city night lights" or "urban street grid overhead abstract".
