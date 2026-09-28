@@ -1,0 +1,29 @@
+1/ AI marketing tool budgets tripled in 12 months. Campaign timelines got longer, not shorter. This is the data nobody presents at conferences.
+
+2/ Median mid-market AI tool spend went from $1,200/mo (Q1 2025) to $3,400/mo (Q1 2026). Over the same period, share of campaigns taking 30+ days to launch: 5% to 34%.
+
+3/ The teams getting slower are not under-resourced. They are the ones buying the most aggressively. More tools, worse velocity.
+
+4/ McKinsey estimates $463 billion in annual marketing productivity is available from AI. That prize is real. But it only exists for teams that redesign workflows around AI, not teams that stack tools on top of broken workflows.
+
+5/ MIT's Project NANDA studied 300+ enterprise AI deployments. 95% of GenAI pilots produced zero measurable P&L impact. Not because the tools failed. Because the workflows couldn't absorb them.
+
+6/ There are now 15,505 marketing technology products in the 2026 landscape. The martech landscape grew 100x since 2011. The winning teams are running fewer tools than their peers, not more.
+
+7/ When your campaign brief crosses tool boundaries (copy-pasting outputs, reformatting data, reconciling metrics), a human becomes the integration layer. Humans are slow. They make errors. They take vacation.
+
+8/ Gartner surveyed 782 infrastructure leaders. Only 28% of AI projects fully meet ROI expectations. 20% fail outright. The 52% in the middle delivered just enough to justify renewal, not the original business case.
+
+9/ The 28% who win share one trait: they started with data infrastructure, not tool selection. One source of truth. Native connectors. Measurable baselines before any AI tool went live.
+
+10/ GrowthLoop data: companies with a single source of truth for marketing data grew revenue at 44%. Companies without one: 8%. That's a 5.5x gap driven by data architecture, not AI tools.
+
+11/ Before buying another AI tool, 4 questions: (1) Does your data live in one place? (2) Do you have a specific workflow with a measurable baseline? (3) Does it connect natively or do you become the bridge? (4) Can you actually cancel it in 30 days if it fails?
+
+12/ The 2027 budget season is starting. The default move is to spend more on AI tools. The smarter move: put that budget into the data infrastructure that makes your existing tools actually perform.
+
+13/ AI will handle 36% of marketing work by 2028, per Gartner. That's credible for teams making the infrastructure shift. For teams continuing to buy tools without the foundation, that number is fiction.
+
+14/ The teams already at 36% automation got there with cleaner data, fewer integrations, and the discipline to measure every deployment against a baseline. Not the best tools. The best foundation.
+
+15/ Full breakdown: AI Marketing Tools Are Slowing Your Campaigns Down. Link in bio. Follow @karansud for more.

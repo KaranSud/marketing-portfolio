@@ -1,0 +1,5 @@
+Pexels photo ID: N/A (api.pexels.com blocked by network egress policy during generation)
+Source URL: https://www.pexels.com/search/tangled+cables+server+room+infrastructure/
+License: Pexels license (free to use)
+Alt text: A dense tangle of ethernet cables running through a server room, color-coded and converging into a patch panel — a visual metaphor for the fragmented, over-connected AI marketing stack most teams are building.
+Rationale: Server room / infrastructure cable photography captures the post's central argument: adding more connections without a unified architecture creates complexity, not capability. Avoids AI brain graphics, robot hands, suited people pointing at laptops, and money-flying clichés. The tangled-cable aesthetic reinforces integration debt and the argument for consolidation. Recommended Pexels search terms for manual replacement: "server room cables" or "network infrastructure abstract" or "tangled ethernet cables".
