@@ -1,0 +1,91 @@
+1/ The man who built marketing automation's dominant platform just declared the entire architecture obsolete.
+
+Jon Miller, Marketo co-founder, came out of stealth to say rules-based automation is the wrong model. Here's why the data backs him up. 🧵
+
+2/ Forrester predicted B2B companies would lose $10B+ in 2026 from ungoverned AI use.
+
+Not from failing to adopt AI.
+From deploying it without governance structures.
+
+AI doesn't create problems. It amplifies whatever's already broken—faster.
+
+3/ 19% of buyers using AI-assisted purchasing tools reported feeling LESS confident in their decisions.
+
+Citing inaccurate AI-generated information.
+
+1 in 5 of your prospects is getting less confident in you because of how your AI performs.
+
+4/ Most marketing automation platforms in 2026 still run on the same architecture as 2009.
+
+You write rules → define conditions → set branches → launch workflows.
+
+The system executes exactly what you told it. That's the problem.
+
+5/ Rules have real strengths: auditable, deterministic, certifiable.
+
+But they don't generalize. They handle every situation you anticipated. They handle poorly every situation you didn't.
+
+The catalog of rules in a typical enterprise stack is a geological record of urgent past ideas.
+
+6/ Miller's argument with Phave:
+
+Rules = wrong instrument for most of what marketing automation should do.
+Reasoning models have crossed the threshold where you can do better.
+
+"Consent and quiet hours should be rules. Reasoning models can make the choice now."
+
+7/ McKinsey's agentic AI research found organizations that rebuilt workflows—not just added AI on top—are seeing 10-15x faster campaign creation.
+
+Not 10-15% improvement.
+10-15 TIMES.
+
+8/ The adoption gap is brutal.
+
+~90% of CMOs are testing AI applications.
+
+Fewer than 10% have deployed end-to-end agentic workflows generating verifiable business impact.
+
+Only 6% are extracting meaningful bottom-line value.
+
+9/ Why the gap? McKinsey found AI high performers are nearly 3x more likely to have redesigned workflows end-to-end.
+
+55% of high performers vs 20% of everyone else.
+
+Not added AI to existing workflows. Rebuilt the workflows around what AI can own.
+
+10/ Gartner survey of 402 CMOs: AI automation of marketing work expected to go from 16% today to 36% by 2028.
+
+That's a doubling in two years.
+
+Question is whether your architecture will support that scale—or you'll plateau at 22%.
+
+11/ The two-layer stack:
+
+LAYER 1 (Rules): Opt-out, consent, frequency caps, brand standards, legal requirements. Auditable. Stays as rules.
+
+LAYER 2 (Agent): Content selection, timing, channel mix, sequence order, scoring. Computed per-person, per-moment.
+
+12/ Three principles of the next stack:
+
+→ Rules govern, agents decide
+→ Workflow redesign comes before tool purchase (3-6 month project)
+→ AI governance is a marketing leadership responsibility—not IT's problem
+
+13/ Quick audit for your stack:
+
+Pull active workflows. Classify each as compliance rule or optimization decision.
+
+Most teams find 30-40% are real compliance rules.
+The rest? Optimization decisions written as rules because rules were the only tool available.
+
+14/ The structural shift from rules-based to agentic marketing is happening regardless.
+
+Jon Miller coming out of stealth to say rules-based automation is architecturally wrong isn't a lone voice.
+
+It's the creator of the incumbent category announcing the successor is ready.
+
+15/ The question isn't whether your current stack will be replaced.
+
+It's whether you'll lead that replacement or be surprised by it.
+
+Full article: https://karansud.substack.com

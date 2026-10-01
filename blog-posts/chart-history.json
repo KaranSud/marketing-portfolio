@@ -268,5 +268,14 @@
       "area",
       "horizontal bar"
     ]
+  },
+  {
+    "date": "2026-10-01",
+    "slug": "ai-marketing-automation-is-architecturally-broken",
+    "title": "AI Marketing Automation Is Architecturally Broken",
+    "chart_types": [
+      "vertical bar",
+      "vertical bar"
+    ]
   }
 ]

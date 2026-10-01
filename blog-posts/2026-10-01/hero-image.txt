@@ -1,0 +1,7 @@
+Pexels photo ID: N/A (network egress policy blocked api.pexels.com for this session)
+Source URL: https://api.pexels.com/v1/search?query=industrial+control+panel+machinery&per_page=8&orientation=landscape
+License: Pexels free to use license
+Alt text: Industrial control panel with rows of switches and dials representing the complexity of rules-based systems
+Rationale: An industrial control panel with analog rules-based controls represents the article's central thesis — that rules-based marketing automation architecture (like old control panels) is being replaced by reasoning systems. The image avoids the banned robot/AI brain aesthetic while conveying the infrastructure-level nature of the argument.
+
+NOTE: The Pexels API (api.pexels.com) returned a 403 Forbidden response from the session's network egress proxy, which restricts outbound HTTPS to most external domains. A placeholder 1x1 JPEG has been saved as hero.jpg. To replace it: visit pexels.com, search "industrial control panel", and download a landscape-oriented image, then replace hero.jpg in this directory before publishing.
