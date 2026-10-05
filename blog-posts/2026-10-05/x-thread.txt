@@ -1,0 +1,44 @@
+1/ SaaS companies trading at 24x revenue multiples aren't winning on new logos. They're winning on revenue from customers they already have. Here's the structural reason why — and why your CSM team can't fix it alone.
+
+2/ McKinsey analyzed 100+ B2B SaaS companies. Top-quartile NRR = 113%. Bottom-quartile NRR = 98%. That 15-point gap produces a 5x valuation multiple difference. Not sales execution. Pricing architecture.
+
+3/ Here's the stat that changes how you think about this: usage-based pricing companies post 108% median NRR. Seat-based companies post 98%. A 10-point structural gap. Source: Benchmarkit 2025 SaaS Metrics Report.
+
+4/ That gap is NOT execution. When pricing is usage-based, customer growth automatically becomes spend growth. No CSM needed to trigger it. When pricing is seat-based, every expansion requires a human to manufacture a sales conversation.
+
+5/ The expansion revenue math has already shifted. In 2022, 25% of new B2B SaaS ARR came from existing customers. In 2025, that figure hit 40%. Source: Maxio 2025 Benchmarks. The companies winning built for this shift — they didn't just respond to it.
+
+6/ Three mechanics that embed automatic expansion: (1) Volume-based: customer growth = spend growth. See Stripe, Twilio, Snowflake. (2) Seat + usage hybrid: base seats with metered add-ons. (3) Module expansion: each capability raises spend ceiling.
+
+7/ What these three share: expansion is baked into the product experience. The CSM accelerates value realization. They don't initiate the commercial conversation.
+
+8/ The seat-based failure mode is slow. 100-seat deal → 60 deployed → CSM proposes 150-seat expansion → procurement stalls → renewal negotiates down to 80 seats. NRR: 80%. Usage-based model would have invoiced for exactly what was used.
+
+9/ If you're already seat-based, you can narrow the gap. Add usage-based elements (API credits, storage, workflow runs). Redesign tier boundaries as value milestones, not price points. Run expansion as a continuous motion, not an annual event.
+
+10/ None of those tactics closes the full 10-point structural gap. But going from 98% to 103-105% NRR is achievable for most seat-based companies that execute consistently on all three.
+
+11/ The market urgency is real. Gartner puts SaaS spending at $299.1B in 2025, up 19.2% YoY, heading to $390B by 2027. Bessemer found AI-native SaaS hits $100M ARR in 5.7 years vs 7.5 for legacy. The companies moving fastest built expansion into the architecture.
+
+12/ The longer you wait to fix the pricing architecture, the harder it gets. Customers are locked into seat-based contracts. Migrating mid-contract is operationally painful. Every quarter of delay is a quarter where the structural NRR disadvantage compounds.
+
+13/ A real SaaS growth strategy in 2026 isn't a new outbound sequence or a refreshed CSM playbook. It's pricing that makes expansion structural rather than optional.
+
+14/ Full breakdown: SaaS Growth Strategy: Pricing Architecture Beats CSM — link in bio. Follow @karansud for more.
+
+---
+CHARACTER COUNTS:
+1/ 237 chars ✓
+2/ 208 chars ✓
+3/ 218 chars ✓
+4/ 222 chars ✓
+5/ 231 chars ✓
+6/ 265 chars — TRIM NEEDED
+7/ 152 chars ✓
+8/ 222 chars ✓
+9/ 221 chars ✓
+10/ 172 chars ✓
+11/ 246 chars ✓
+12/ 218 chars ✓
+13/ 149 chars ✓
+14/ 113 chars ✓

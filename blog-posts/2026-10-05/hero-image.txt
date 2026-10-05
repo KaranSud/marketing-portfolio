@@ -1,0 +1,7 @@
+Pexels photo ID: N/A (network egress policy blocked api.pexels.com for this session)
+Source URL: https://api.pexels.com/v1/search?query=architecture+building+structure+layers+abstract&per_page=8&orientation=landscape
+License: Pexels free to use license
+Alt text: Abstract architectural structure with layered forms representing the compounding foundation of SaaS pricing architecture
+Rationale: A layered architectural or industrial abstract image would reinforce the post's central argument that SaaS growth is determined by structural foundations (pricing architecture), not by tactical surface decisions. Avoids the banned robot/AI brain and business-suits aesthetic. To replace: visit pexels.com, search "architecture layers structure abstract", download a landscape image, and replace hero.jpg in this directory before publishing.
+
+NOTE: The Pexels API (api.pexels.com) returned a 403 Forbidden response from the session's network egress proxy, which restricts outbound HTTPS to most external domains. A placeholder JPEG has been saved as hero.jpg. To replace it: visit pexels.com, search "architecture abstract layers", and download a landscape-oriented editorial or architectural image, then replace hero.jpg in this directory before publishing.

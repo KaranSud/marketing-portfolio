@@ -277,5 +277,14 @@
       "vertical bar",
       "vertical bar"
     ]
+  },
+  {
+    "date": "2026-10-05",
+    "slug": "saas-growth-strategy-pricing-architecture-beats-csm",
+    "title": "SaaS Growth Strategy: Pricing Architecture Beats CSM",
+    "chart_types": [
+      "lollipop",
+      "area"
+    ]
   }
 ]
