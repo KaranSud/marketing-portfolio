@@ -1,0 +1,98 @@
+1/ Your SaaS pipeline metrics look healthy. MQLs up. Demos booked. Pipeline coverage solid.
+
+And your CAC payback keeps getting worse anyway.
+
+This is not a pipeline problem. Here's what's actually happening:
+
+2/ The median B2B SaaS company now spends $2.00 to acquire every $1.00 of new ARR.
+
+That number is up 14% year over year.
+
+For comparison: expansion ARR costs $1.00 per $1.00.
+
+Most growth plans are built backwards.
+
+3/ The CAC payback trend line is brutal.
+
+Median payback stretched from 13 months in 2021 to 18.5 months by 2025.
+
+That's a 42% deterioration in under four years.
+
+While B2B sales cycles got 29% longer in the same window.
+
+4/ The companies that improved payback during this period didn't do it by generating more pipeline.
+
+They did it by generating more precise pipeline.
+
+Fewer accounts. Higher confidence on each one. Structurally short cycles.
+
+5/ Here's the mechanism nobody names directly.
+
+When a buying committee grows, every deal costs more to close. You're running the same conversations across more people and more organizational functions.
+
+This is the primary driver of sales cycle expansion over the past four years.
+
+6/ Gartner surveyed 632 B2B buyers in May 2025.
+
+74% of buying teams show "unhealthy conflict" during the decision process.
+
+Buying groups range from 5 to 16 people across up to four organizational functions.
+
+5 stakeholders and 16 stakeholders are not the same deal.
+
+7/ If your ICP systematically attracts accounts in the upper half of that 5-to-16 range, your fully loaded cost per closed deal is structurally higher.
+
+Even if your win rate is flat.
+
+Adding more pipeline just fills the funnel with more expensive deals.
+
+8/ This is not a channel efficiency problem.
+
+Optimizing your Google campaigns doesn't reduce how many humans need to approve your contract.
+
+It doesn't shorten the procurement review.
+
+It doesn't eliminate the security questionnaire that adds three weeks to every enterprise deal.
+
+9/ Tomasz Tunguz put it cleanly: "If your sales cycle doubles, your bookings are cut in half."
+
+The inverse is less obvious: adding more deals to a long-cycle funnel doesn't fix the bookings problem.
+
+It amplifies the cost structure that created it.
+
+10/ The segmentation data makes the ICP choice visible.
+
+Enterprise (ACV above $100K): 24-month CAC payback.
+Mid-market ($15K–$100K): 16 months.
+SMB (under $5K): 9 months.
+
+A 2.7x gap. Driven by deal structure, not channel strategy.
+
+11/ McKinsey analyzed 100+ B2B SaaS companies in November 2025.
+
+Top-quartile companies: 24x enterprise value to revenue multiple.
+Bottom-quartile: 5x.
+
+Net revenue retention drives that gap. And NRR is the downstream consequence of selling to the right customers in the first place.
+
+12/ The practical fix is a spreadsheet, not a strategy retreat.
+
+Pull 24 months of closed-won deals. Segment by customer type and buying structure. Calculate CAC and payback per cohort separately.
+
+Most teams find one or two cohorts driving all the efficiency — and a pipeline strategy optimized for the others.
+
+13/ Three moves for the next 90 days:
+
+1. Segment your CAC by cohort, not blended (1 week)
+2. Add decision-structure criteria to your qualification scoring (2 weeks)
+3. Shift a meaningful portion of pipeline budget toward expansion ARR (next quarter)
+
+14/ The obstacle is cultural, not analytical.
+
+Growth teams are measured on pipeline volume, not pipeline efficiency.
+
+Changing the measurement is harder than running another campaign. That's why most teams never do it.
+
+15/ The companies that figure this out in the next two quarters will spend the next two years compounding their advantage over everyone still convinced that more pipeline is the answer.
+
+Full breakdown with data and the 5-question ICP diagnostic: https://karan-sud-portfolio.vercel.app/blog

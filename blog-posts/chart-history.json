@@ -286,5 +286,14 @@
       "lollipop",
       "area"
     ]
+  },
+  {
+    "date": "2026-10-08",
+    "slug": "saas-cac-payback-is-getting-worse-more-pipeline-wont-fix-it",
+    "title": "SaaS CAC Payback Is Getting Worse. More Pipeline Won't Fix It.",
+    "chart_types": [
+      "line",
+      "donut"
+    ]
   }
 ]

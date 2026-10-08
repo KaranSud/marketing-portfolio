@@ -1,0 +1,7 @@
+Pexels photo ID: N/A (network egress policy blocked api.pexels.com for this session)
+Source URL: https://api.pexels.com/v1/search?query=pipeline+industrial+infrastructure+abstract&per_page=8&orientation=landscape
+License: Pexels free to use license
+Alt text: Industrial pipeline infrastructure viewed from below against an overcast sky, conveying scale and structural complexity
+Rationale: An industrial pipeline or infrastructure image reinforces the post's central argument about the mechanics of SaaS acquisition cost — structural, hard to see from the outside, and expensive when it breaks. Avoids the banned robot/AI brain and business-suits-at-laptop aesthetic. To replace: visit pexels.com, search "pipeline infrastructure industrial", download a landscape-oriented editorial or environmental image, then replace hero.jpg in this directory before publishing.
+
+NOTE: The Pexels API (api.pexels.com) returned a 403 from the session's network egress proxy, which restricts outbound HTTPS to most external domains. A placeholder JPEG has been saved as hero.jpg. Replace it before publishing.
