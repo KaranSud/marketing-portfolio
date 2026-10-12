@@ -295,5 +295,14 @@
       "line",
       "donut"
     ]
+  },
+  {
+    "date": "2026-10-12",
+    "slug": "ai-content-marketings-performance-gap-and-how-to-close-it",
+    "title": "AI Content Marketing's Performance Gap (And How to Close It)",
+    "chart_types": [
+      "lollipop",
+      "vertical bar"
+    ]
   }
 ]

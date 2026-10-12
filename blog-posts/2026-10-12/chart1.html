@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Content Marketing: Productivity vs. Performance Gap</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --accent: #DC2626;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text);
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .canvas-container {
+    position: relative;
+    height: 340px;
+    width: 100%;
+  }
+  .source {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>The AI Content Marketing Productivity-Performance Gap</h2>
+  <p class="subtitle">% of B2B marketers using AI for content who report improvement, by area (2026)</p>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#64748B"></div>Reported improvement</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#DC2626"></div>Performance metrics</div>
+  </div>
+  <div class="canvas-container">
+    <canvas id="chart"></canvas>
+  </div>
+  <p class="source">Source: Content Marketing Institute / MarketingProfs, B2B Content &amp; Marketing Trends: Insights for 2026. Survey of 1,015 B2B marketers, June–August 2025.</p>
+</div>
+
+<script>
+const labels = [
+  'Productivity',
+  'Operational\nEfficiency',
+  'Creative\nCapabilities',
+  'Content\nQuality',
+  'Content\nPerformance'
+];
+
+const values = [87, 80, 65, 58, 39];
+const colors = ['#64748B','#64748B','#64748B','#64748B','#DC2626'];
+const borderColors = ['#475569','#475569','#475569','#475569','#B91C1C'];
+
+const ctx = document.getElementById('chart').getContext('2d');
+
+// Lollipop chart via scatter + line plugin
+const lollipopPlugin = {
+  id: 'lollipop',
+  afterDatasetsDraw(chart) {
+    const { ctx, scales } = chart;
+    const meta = chart.getDatasetMeta(0);
+    meta.data.forEach((point, i) => {
+      const x = point.x;
+      const y = scales.y.getPixelForValue(0);
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, point.y);
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = colors[i];
+      ctx.stroke();
+      ctx.restore();
+    });
+  }
+};
+
+new Chart(ctx, {
+  type: 'scatter',
+  plugins: [lollipopPlugin],
+  data: {
+    datasets: [{
+      data: values.map((v, i) => ({ x: i, y: v })),
+      pointBackgroundColor: colors,
+      pointBorderColor: borderColors,
+      pointBorderWidth: 2,
+      pointRadius: 9,
+      pointHoverRadius: 11,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${values[Math.round(ctx.parsed.x)]}% reported improvement`,
+          title: (items) => labels[Math.round(items[0].parsed.x)].replace('\n', ' ')
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#94A3B8',
+        padding: 10,
+        cornerRadius: 6,
+      }
+    },
+    scales: {
+      x: {
+        type: 'linear',
+        min: -0.5,
+        max: 4.5,
+        ticks: {
+          stepSize: 1,
+          callback: (v) => {
+            const idx = Math.round(v);
+            if (idx >= 0 && idx < labels.length) return labels[idx].split('\n');
+            return '';
+          },
+          font: { size: 11, family: '-apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif' },
+          color: '#475569',
+          maxRotation: 0
+        },
+        grid: { display: false },
+        border: { display: false }
+      },
+      y: {
+        min: 0,
+        max: 100,
+        ticks: {
+          callback: (v) => `${v}%`,
+          font: { size: 11, family: '-apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif' },
+          color: '#475569',
+          stepSize: 20
+        },
+        grid: { color: '#E2E8F0', drawBorder: false },
+        border: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

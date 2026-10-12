@@ -1,0 +1,29 @@
+1/ 87% of B2B content teams using AI report better productivity. Only 39% report improved content performance. That gap is the whole story of AI content marketing in 2026.
+
+2/ The CMI surveyed 1,015 B2B marketers. The improvement scores: Productivity 87%, Operational Efficiency 80%, Creative Capabilities 65%, Content Quality 58%, Content Performance 39%. Notice what's last.
+
+3/ Performance is last not because it's hardest to improve — it's because it's the only category the current workflow architecture doesn't optimize for.
+
+4/ Orbit Media's 2026 blogging survey: only 13.9% say their blogs deliver strong results. Lowest in the survey's 12-year history. The year before: 26%. AI adoption in the same population: 92.4%.
+
+5/ Those two trendlines don't prove causation. They prove adoption and results are moving in opposite directions. Something is structurally wrong with how most teams have wired their workflows.
+
+6/ The trap: productivity feels like progress. Posts published, words produced, pages indexed — all moving up. Qualified traffic, lead attribution, sales actually using the content — flat or declining quietly.
+
+7/ AI handles prose generation, topic expansion, tone matching, SEO formatting well. It handles original insight, earned expertise, and genuine audience specificity poorly. Most teams optimized for the former and gave up the latter.
+
+8/ Gartner: 49% of U.S. consumers say GenAI has made the quality of content available worse. Among Gen Z and millennials — the next generation of B2B buyers — that's 57%.
+
+9/ Half your target audience already has a skepticism filter for AI content before they encounter yours. It's not always conscious. Often it's just a faster scroll.
+
+10/ The architecture problem: when the same tools trained on the same data are prompted by thousands of teams with the same keywords and briefs, the output converges. AI content sameness is the problem, not AI content quality.
+
+11/ Three inputs the best teams protect: (1) Original data that doesn't exist on the web yet. (2) Expert substantive editing — not copyediting, actual SME judgment. (3) A performance feedback loop tied to pipeline, not pageviews.
+
+12/ Gartner predicts 50%+ drop in organic site traffic by 2028 as GenAI-powered search takes over. The channel where volume-based content marketing worked best is contracting. ROI math gets worse on both sides.
+
+13/ The teams pulling ahead publish less than they did two years ago and get better results. They use AI for what creates value at speed. They protect the time for what speed destroys.
+
+14/ They're not using less AI. They're using it for what it's actually good at while protecting the inputs that determine whether anyone cares.
+
+Full piece: https://karan-sud-portfolio.vercel.app/blog/ai-content-marketings-performance-gap-and-how-to-close-it
