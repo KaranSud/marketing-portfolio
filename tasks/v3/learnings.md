@@ -15,3 +15,7 @@
 - 2026-10-15 Bash runs in zsh: 'set -- $s' does not word-split; wrap multi-arg loops in bash -c.
 - 2026-10-15 (local) curl works for bundlephobia.com/api/size?package=x@v, cdn.jsdelivr.net file sizes, and api.github.com/repos/<r>/git/trees/main?recursive=1 (repo file lists without cloning). zsh: never echo a bare '=====' (=cmd expansion error).
 - 2026-10-16 Screenshots under tasks/v3/shots/baseline/ and shots/rounds/ are gitignored (42MB per full set); regenerate with shot.mjs.
+- 2026-10-16 shot.mjs resets inline style transform/opacity on every [style] element (meant for framer). Put zooms and crossfades in CSS vars/classes, never inline transform or opacity, or shots lie.
+- 2026-10-16 v2's globals.css has bare element/ID selectors (nav {}, footer {}, #contact {}) that hit new v3 markup; removed nav/footer/#contact. Grep globals.css for ^tag/^#id rules before reusing a tag or id.
+- 2026-10-16 Smooth scrolling (CSS scroll-behavior or Lenis) stalls scripted scrolls: the taste-skill inspector then reports fake long-pin, covered-text and still-page. Lenis removed; html:focus-within keeps smooth anchor jumps.
+- 2026-10-16 Do not rm with globs after cd: Claude Code's safety check blocks it. Write new shots to a fresh rounds/<id> folder instead of clearing an old one.

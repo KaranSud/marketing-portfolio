@@ -25,6 +25,7 @@ and add a line to the index below. Append reusable discoveries to `learnings.md`
 | `workflows/shot.mjs <url> <outPrefix>` | desktop + mobile full-page screenshots in readable chunks. Locally: plain `node` (finds playwright-core in `~/.cache/portfolio-v3-tools` and a cached Chromium). |
 | `workflows/copy-lint.sh <dirs>` | anti-AI copy sweep |
 | `workflows/rubric.md` | the 10-point critic rubric |
+| `workflows/critic.md` | how to run one critic round (fresh agent each time, output critiques/round-NN.md) |
 
 ## Environment facts
 Running LOCALLY now (since 2026-10-15). The block below describes the old cloud container. Locally: X/IG/LinkedIn,
