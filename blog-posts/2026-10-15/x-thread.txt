@@ -1,0 +1,29 @@
+1/ 95% of B2B marketers use AI for content. Only 39% see better performance. That's not a tool problem. It's a raw material problem.
+
+2/ Every AI content tool synthesizes from the same internet. When all your competitors use the same tools, you all produce the same output. The average improves. The differentiation disappears.
+
+3/ IDC found something important: AI raises the average creativity score of individual ideas but reduces diversity across the idea pool. Everyone gets smarter-sounding content that sounds identical. (IDC AI Content Creativity Brief, Apr 2026)
+
+4/ Gartner's 2025 CMO survey is revealing. Marketers get time savings (49%), cost savings (40%), more content capacity (27%) from GenAI. Performance improvement doesn't make the list.
+
+5/ This means most teams are optimizing at the wrong end of the value chain. You sped up production of content that doesn't differentiate. Congratulations on your efficient mediocrity.
+
+6/ The real gap is in the input, not the tool. Orbit Media surveyed 808 marketers and found the clearest performance signal in years: AI used to write complete articles scores BELOW the baseline for strong results.
+
+7/ Meanwhile, marketers using AI to EDIT their own writing? 24% report strong results. That matches teams with multiple human editors. The difference is who supplies the substance.
+
+8/ Original research is the input AI cannot produce. Your customer survey data. Your internal campaign metrics. Your structured interview themes. The patterns only you observed. AI cannot generate any of this. It can only cite it.
+
+9/ Pew (2025, n=5,000 U.S. adults): 76% say distinguishing AI from human content is "very important." Only 12% feel confident they can do it. That uncertainty costs real money.
+
+10/ Raptive ran a controlled study (n=3,000). When readers suspect AI authorship, trust drops ~50%. Purchase consideration falls 14%. Those are revenue numbers, not sentiment numbers.
+
+11/ The practical starting point costs nothing: your CS team's call notes, your sales team's objection log, your marketing team's campaign results. All of it is original research waiting for structure.
+
+12/ The flywheel: original data earns backlinks from other writers. Those writers feed the AI tools buyers use when researching your category. Citations compound. AI-generated summaries of public information do not.
+
+13/ The four-step proprietary data engine: (1) collect original inputs, (2) use AI to structure and scale packaging, (3) publish consistently, (4) measure citations and benchmark downloads, not content volume.
+
+14/ The 39% performance gap in the CMI data exists because teams measure what's easy (volume) instead of what matters (differentiation). Track whether your research is cited. That's the signal.
+
+15/ Full breakdown: AI Content Marketing's Only Moat Is Original Research — link in bio. Follow @karansud for more.

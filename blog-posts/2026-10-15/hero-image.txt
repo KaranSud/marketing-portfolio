@@ -1,0 +1,7 @@
+Pexels photo ID: N/A (network egress policy blocked api.pexels.com for this session)
+Source URL: https://api.pexels.com/v1/search?query=library+archive+research+data+documents+stacks&per_page=8&orientation=landscape
+License: Pexels free to use license
+Alt text: A long row of archive filing cabinets stretching to a vanishing point, evoking the depth and scale of institutional research against a clean neutral background
+Rationale: An archival or library setting reinforces the post's argument that proprietary original research is the durable competitive moat in an AI-saturated content market. Industrial, quiet, and structural in feeling — avoids robot hands, AI brain graphics, laptop stock photography, and suits-pointing-at-whiteboards clichés. To replace: visit pexels.com, search "archive filing cabinets" or "library stacks" or "research documents desk flat", download a landscape editorial image, then replace hero.jpg in this directory before publishing.
+
+NOTE: The Pexels API (api.pexels.com) returned a 403 from the session's network egress proxy, which restricts outbound HTTPS to most external domains. A placeholder JPEG has been saved as hero.jpg. Replace it before publishing.
