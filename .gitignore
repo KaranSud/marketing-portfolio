@@ -10,3 +10,7 @@ index-netflix.html
 node_modules/
 *.tsbuildinfo
 .vercel
+
+# v3 screenshots: regenerate with tasks/v3/workflows/shot.mjs (kept local, too heavy for git)
+tasks/v3/shots/baseline/
+tasks/v3/shots/rounds/

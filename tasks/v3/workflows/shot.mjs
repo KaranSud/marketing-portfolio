@@ -1,13 +1,27 @@
 // Screenshot any page at desktop + mobile, full length, split into readable chunks.
-// Usage: NODE_PATH=/opt/node22/lib/node_modules node shot.mjs <url> <outPrefix> [--motion] [--click "<css selector>"]
+// Usage: node shot.mjs <url> <outPrefix> [--motion] [--click "<css selector>"]
 // Default: reducedMotion=reduce and every framer/IO reveal forced visible, so nothing is caught mid-animation.
 // --click: viewport shots paging through the opened overlay's scroller instead of full-page chunks.
 // Output: <outPrefix>-desktop-01.png ... , <outPrefix>-mobile-01.png ...  (chunks of 1600px desktop / 2400px mobile)
-// ESM ignores NODE_PATH, so resolve playwright via createRequire (NODE_PATH, else the global install).
+// ESM ignores NODE_PATH, so resolve playwright via createRequire: NODE_PATH dirs, the local tools dir
+// (~/.cache/portfolio-v3-tools, playwright-core), then the old cloud global install.
 import { createRequire } from 'module';
+import { existsSync, readdirSync } from 'fs';
+import { homedir } from 'os';
 const require = createRequire(import.meta.url);
-const pwPath = (() => { for (const d of [...(process.env.NODE_PATH || '').split(':').filter(Boolean), '/opt/node22/lib/node_modules']) { try { return require.resolve('playwright', { paths: [d] }); } catch {} } return 'playwright'; })();
+const pwPath = (() => { for (const d of [...(process.env.NODE_PATH || '').split(':').filter(Boolean), `${homedir()}/.cache/portfolio-v3-tools`, '/opt/node22/lib/node_modules']) { for (const m of ['playwright', 'playwright-core']) { try { return require.resolve(m, { paths: [d] }); } catch {} } } return 'playwright'; })();
 const { chromium } = require(pwPath);
+// If Playwright's own browser revision isn't downloaded, fall back to the newest cached Chromium.
+const cachedChrome = () => {
+  for (const root of [`${homedir()}/Library/Caches/ms-playwright`, `${homedir()}/.cache/ms-playwright`, '/opt/pw-browsers']) {
+    if (!existsSync(root)) continue;
+    for (const d of readdirSync(root).filter(n => /^chromium-\d+$/.test(n)).sort((a, b) => b.split('-')[1] - a.split('-')[1])) {
+      for (const exe of ['chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing', 'chrome-mac/Chromium.app/Contents/MacOS/Chromium', 'chrome-linux/chrome']) {
+        if (existsSync(`${root}/${d}/${exe}`)) return `${root}/${d}/${exe}`;
+      }
+    }
+  }
+};
 const [url, out, ...rest] = process.argv.slice(2);
 if (!url || !out) { console.error('usage: shot.mjs <url> <outPrefix> [--motion] [--click sel]'); process.exit(1); }
 const motion = rest.includes('--motion');
@@ -16,7 +30,7 @@ const VIEWPORTS = [
   { name: 'desktop', width: 1440, height: 900, chunk: 1600, mobile: false },
   { name: 'mobile', width: 390, height: 844, chunk: 2400, mobile: true },
 ];
-const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const b = existsSync(chromium.executablePath()) ? await chromium.launch() : await chromium.launch({ executablePath: cachedChrome() });
 for (const v of VIEWPORTS) {
   const ctx = await b.newContext({ viewport: { width: v.width, height: v.height }, isMobile: v.mobile, hasTouch: v.mobile, reducedMotion: motion ? 'no-preference' : 'reduce', deviceScaleFactor: 1 });
   const p = await ctx.newPage();
@@ -24,6 +38,8 @@ for (const v of VIEWPORTS) {
   await p.waitForTimeout(1200);
   // walk the page so IntersectionObserver / whileInView fire
   await p.evaluate(async () => { const h = document.body.scrollHeight; for (let y = 0; y < h; y += 500) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); } window.scrollTo(0, 0); });
+  // lazy images otherwise come out blank: load them all eagerly and wait for decode
+  await p.evaluate(async () => { const imgs = [...document.images]; imgs.forEach(i => { i.loading = 'eager'; }); await Promise.all(imgs.map(i => i.decode().catch(() => {}))); });
   await p.waitForTimeout(500);
   await p.addStyleTag({ content: '*,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;transition:none!important}' });
   await p.evaluate(() => document.querySelectorAll('[style]').forEach(el => { const s = el.style; if (s.opacity !== '' && parseFloat(s.opacity) < 1) s.opacity = '1'; if (s.transform && s.transform !== 'none') s.transform = 'none'; }));

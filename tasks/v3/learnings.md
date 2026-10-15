@@ -5,3 +5,13 @@
 - 2026-10-15 Subagents start without WebSearch/WebFetch loaded: first call ToolSearch "select:WebSearch,WebFetch" before researching.
 - 2026-10-15 shot.mjs: lazy images came out blank because the page walk was too fast; force loading=eager and await img.decode() before capturing (fix not yet applied).
 - 2026-10-15 (cloud) WebFetch was blocked for all external sites; WebSearch worked. On a local machine both should work.
+- 2026-10-15 (local) Playwright: playwright-core lives in ~/.cache/portfolio-v3-tools (outside the repo); shot.mjs resolves it and falls back to the newest cached Chromium in ~/Library/Caches/ms-playwright when its own revision is missing. No NODE_PATH needed.
+- 2026-10-15 (local) shot.mjs lazy-image fix applied: images forced eager + decode() awaited before capture.
+- 2026-10-15 (local) A fresh clone has no repo git identity: run git config user.name 'Karan Sud' and user.email karansud98@gmail.com before any commit (e6d6721 went out with a Mac-local email and a Co-Authored-By line). Also git config pack.threads 1 (SIGBUS on this Mac).
+- 2026-10-15 (local) This Mac's disk has dropped files before: run git diff --cached --name-status | grep '^D' before every commit and restore unexpected deletions.
+- 2026-10-15 LinkedIn: WebFetch returns 999; read profiles via Claude in Chrome (own tab, get_page_text on /details/experience/). /details/education/ rendered empty in one try.
+- 2026-10-15 shot.mjs --click: CountUp ignores reduced motion and the modal is shot 1.2s after click (count runs 1.6s), so modal stats can show mid-count values (299K for 300K); not a data error.
+- 2026-10-15 No Lighthouse locally; LCP/CLS/long tasks can be measured with playwright-core from ~/.cache/portfolio-v3-tools + PerformanceObserver + CDP throttling (v2 mobile LCP 4.6s, CLS 0).
+- 2026-10-15 Bash runs in zsh: 'set -- $s' does not word-split; wrap multi-arg loops in bash -c.
+- 2026-10-15 (local) curl works for bundlephobia.com/api/size?package=x@v, cdn.jsdelivr.net file sizes, and api.github.com/repos/<r>/git/trees/main?recursive=1 (repo file lists without cloning). zsh: never echo a bare '=====' (=cmd expansion error).
+- 2026-10-16 Screenshots under tasks/v3/shots/baseline/ and shots/rounds/ are gitignored (42MB per full set); regenerate with shot.mjs.

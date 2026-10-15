@@ -22,7 +22,7 @@ and add a line to the index below. Append reusable discoveries to `learnings.md`
 | Workflow | Use |
 |----------|-----|
 | `workflows/serve.sh <appDir> <port>` | build + serve a Next app (v2 on :3200, v3 on :3300) |
-| `workflows/shot.mjs <url> <outPrefix>` | desktop + mobile full-page screenshots in readable chunks. Run with `NODE_PATH=/opt/node22/lib/node_modules node`. |
+| `workflows/shot.mjs <url> <outPrefix>` | desktop + mobile full-page screenshots in readable chunks. Locally: plain `node` (finds playwright-core in `~/.cache/portfolio-v3-tools` and a cached Chromium). |
 | `workflows/copy-lint.sh <dirs>` | anti-AI copy sweep |
 | `workflows/rubric.md` | the 10-point critic rubric |
 
@@ -40,6 +40,8 @@ executablePath removed (let Playwright find its own browser).
 - Karan cannot open localhost. Previews reach him as screenshots (SendUserFile) or published Artifacts.
 
 ## Shared outputs (write here, read before starting)
+- `00_context/BRIEF.md` lead-written brief for agents: Karan facts summary, taste, rules, lane table (agents read this, not raw sources)
+- `research/research-log.md` append-only log of every search/fetch (grep before, `printf >>` after; never Edit/Write)
 - `research/facts.md` career fact base + verification status (the only source for numbers)
 - `research/positioning.md` how top content/growth/AI-marketing people position, and Karan's recommended positioning
 - `research/conversion.md` what personal-brand / consultant sites convert, with evidence
