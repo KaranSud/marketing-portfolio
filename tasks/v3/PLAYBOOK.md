@@ -26,7 +26,12 @@ and add a line to the index below. Append reusable discoveries to `learnings.md`
 | `workflows/copy-lint.sh <dirs>` | anti-AI copy sweep |
 | `workflows/rubric.md` | the 10-point critic rubric |
 
-## Environment facts (verified 2026-10-15, don't re-probe)
+## Environment facts
+Running LOCALLY now (since 2026-10-15). The block below describes the old cloud container. Locally: X/IG/LinkedIn,
+WebFetch and localhost previews all work; shot.mjs needs `npx playwright install chromium` and the hard-coded
+executablePath removed (let Playwright find its own browser).
+
+### Old cloud container (historical)
 - WebSearch works. Direct curl to x.com, instagram.com, linkedin.com, awwwards.com, lapa.ninja, karansud.com is
   blocked by egress policy (403). api.github.com and registry.npmjs.org work. github.com HTML does not.
   raw.githubusercontent.com works for raw files. WebFetch may reach sites curl cannot; try it before giving up.
