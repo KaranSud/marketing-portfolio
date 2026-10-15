@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tool Spend vs Campaign Cycle Time (2024–2026)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --brand1: #1E40AF;
+    --brand2: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text);
+    padding: 32px 24px 24px;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .canvas-container {
+    position: relative;
+    height: 320px;
+  }
+  .source {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 14px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--secondary);
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <div class="chart-title">AI Tool Budget Tripled. Campaign Timelines Got Longer.</div>
+  <div class="chart-subtitle">Median mid-market AI marketing tool spend ($/month) vs. share of campaigns taking 30+ days to launch.</div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1E40AF;"></div>
+      <span>AI tool spend ($/mo, left axis)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626;"></div>
+      <span>Campaigns taking 30+ days (%, right axis)</span>
+    </div>
+  </div>
+  <div class="canvas-container">
+    <canvas id="chart1"></canvas>
+  </div>
+  <div class="source">Sources: Median spend — multiple 2025–2026 martech reports; campaign timelines — GrowthLoop 2026 AI Marketing Performance Index (n=300+, May 2026) and Typeface 2026 Signal Report.</div>
+</div>
+<script>
+const ctx = document.getElementById('chart1').getContext('2d');
+new Chart(ctx, {
+  data: {
+    labels: ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'],
+    datasets: [
+      {
+        type: 'line',
+        label: 'AI tool spend ($/mo)',
+        data: [640, 750, 880, 1050, 1200, 1550, 1950, 2600, 3400, 3600],
+        borderColor: '#1E40AF',
+        backgroundColor: 'rgba(30,64,175,0.08)',
+        fill: true,
+        tension: 0.4,
+        pointRadius: 4,
+        pointBackgroundColor: '#1E40AF',
+        borderWidth: 2.5,
+        yAxisID: 'y',
+      },
+      {
+        type: 'line',
+        label: 'Campaigns taking 30+ days (%)',
+        data: [4, 5, 6, 7, 9, 13, 19, 27, 34, 36],
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.07)',
+        fill: true,
+        tension: 0.4,
+        pointRadius: 4,
+        pointBackgroundColor: '#DC2626',
+        borderWidth: 2.5,
+        borderDash: [6, 3],
+        yAxisID: 'y1',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        callbacks: {
+          label: (ctx) => {
+            if (ctx.datasetIndex === 0) return ` Spend: $${ctx.raw.toLocaleString()}/mo`;
+            return ` 30+ day campaigns: ${ctx.raw}%`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#E2E8F0' },
+        ticks: { color: '#64748B', font: { size: 11 } },
+        border: { color: '#E7E5E4' }
+      },
+      y: {
+        position: 'left',
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          color: '#1E40AF',
+          font: { size: 11 },
+          callback: v => '$' + v.toLocaleString()
+        },
+        border: { color: '#E7E5E4' },
+        title: { display: true, text: 'Monthly AI Tool Spend ($)', color: '#1E40AF', font: { size: 11 } }
+      },
+      y1: {
+        position: 'right',
+        grid: { drawOnChartArea: false },
+        ticks: {
+          color: '#DC2626',
+          font: { size: 11 },
+          callback: v => v + '%'
+        },
+        border: { color: '#E7E5E4' },
+        title: { display: true, text: 'Campaigns 30+ Days (%)', color: '#DC2626', font: { size: 11 } },
+        min: 0,
+        max: 50
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

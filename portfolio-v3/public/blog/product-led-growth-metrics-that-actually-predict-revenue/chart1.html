@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLG Adoption Growth 2021–2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --gridline: #E2E8F0;
+    --accent: #DC2626;
+    --blue: #2563EB;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    padding: 32px 24px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  p.sub {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 24px;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 320px;
+  }
+  footer {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<h2>PLG Adoption Rate vs. Traditional SaaS Growth Rate, 2021–2026</h2>
+<p class="sub">Share of B2B SaaS companies self-identifying as product-led (left axis) vs. median ARR growth differential between PLG and non-PLG companies (right axis)</p>
+<div class="chart-wrap">
+  <canvas id="chart"></canvas>
+</div>
+<footer>Sources: High Alpha / OpenView SaaS Benchmarks 2021–2025; ProductLed 2025 Annual Benchmarks. PLG companies = those offering a free trial or freemium motion as a primary GTM.</footer>
+
+<script>
+const labels = ['2021', '2022', '2023', '2024', '2025', '2026'];
+const adoption = [35, 40, 46, 52, 57, 60];
+const growthDiff = [14, 17, 19, 21, 24, 29];
+
+const ctx = document.getElementById('chart').getContext('2d');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'PLG adoption (% of B2B SaaS companies)',
+        data: adoption,
+        fill: true,
+        backgroundColor: 'rgba(37, 99, 235, 0.12)',
+        borderColor: '#2563EB',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#2563EB',
+        pointRadius: 5,
+        tension: 0.35,
+        yAxisID: 'y',
+      },
+      {
+        label: 'Growth rate gap: PLG minus non-PLG (pp)',
+        data: growthDiff,
+        fill: true,
+        backgroundColor: 'rgba(220, 38, 38, 0.08)',
+        borderColor: '#DC2626',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#DC2626',
+        pointRadius: 5,
+        tension: 0.35,
+        yAxisID: 'y2',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: '#475569',
+          font: { size: 12, family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" },
+          boxWidth: 14,
+          padding: 16
+        }
+      },
+      tooltip: {
+        backgroundColor: '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#CBD5E1',
+        padding: 12,
+        callbacks: {
+          label: ctx => {
+            if (ctx.datasetIndex === 0) return ` ${ctx.parsed.y}% of SaaS companies`;
+            return ` +${ctx.parsed.y} pp growth advantage`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#E2E8F0' },
+        ticks: { color: '#64748B', font: { size: 12 } }
+      },
+      y: {
+        position: 'left',
+        min: 0,
+        max: 80,
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          color: '#2563EB',
+          font: { size: 12 },
+          callback: v => v + '%'
+        },
+        title: { display: true, text: 'PLG adoption %', color: '#2563EB', font: { size: 11 } }
+      },
+      y2: {
+        position: 'right',
+        min: 0,
+        max: 40,
+        grid: { drawOnChartArea: false },
+        ticks: {
+          color: '#DC2626',
+          font: { size: 12 },
+          callback: v => '+' + v + 'pp'
+        },
+        title: { display: true, text: 'Growth rate gap (pp)', color: '#DC2626', font: { size: 11 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

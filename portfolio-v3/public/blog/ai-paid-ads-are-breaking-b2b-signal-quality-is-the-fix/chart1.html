@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2B Google Ads CPC Trend 2024–2025</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 28px 32px 24px;
+    min-height: 420px;
+  }
+  .chart-header { margin-bottom: 20px; }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.4;
+  }
+  .chart-wrap { position: relative; height: 300px; }
+  .chart-source {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #94A3B8;
+  }
+  .delta-badge {
+    display: inline-block;
+    background: #FEF2F2;
+    color: #DC2626;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+<div class="chart-header">
+  <div class="chart-title">
+    B2B Non-Branded Google Ads CPC: Aug 2024 – Jul 2025
+    <span class="delta-badge">+29% YoY</span>
+  </div>
+  <div class="chart-subtitle">Average cost-per-click across B2B SaaS campaigns while AI bidding adoption accelerated</div>
+</div>
+<div class="chart-wrap">
+  <canvas id="cpcChart"></canvas>
+</div>
+<div class="chart-source">Source: Dreamdata B2B Google Search Ads Benchmark Report, August 2025 · n = B2B SaaS campaign dataset</div>
+
+<script>
+const months = ['Aug 24','Sep 24','Oct 24','Nov 24','Dec 24','Jan 25','Feb 25','Mar 25','Apr 25','May 25','Jun 25','Jul 25'];
+const cpcs =   [4.13,   4.28,   4.35,   4.42,   4.51,   4.60,   4.71,   4.83,   4.95,   5.08,   5.22,   5.34];
+
+const ctx = document.getElementById('cpcChart').getContext('2d');
+
+const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+gradient.addColorStop(0, 'rgba(220,38,38,0.18)');
+gradient.addColorStop(1, 'rgba(220,38,38,0.02)');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [{
+      label: 'Avg CPC ($)',
+      data: cpcs,
+      backgroundColor: cpcs.map((v, i) => {
+        const intensity = (v - 4.0) / (5.5 - 4.0);
+        return `rgba(220,38,38,${0.35 + intensity * 0.55})`;
+      }),
+      borderColor: cpcs.map((v, i) => {
+        const intensity = (v - 4.0) / (5.5 - 4.0);
+        return `rgba(185,28,28,${0.5 + intensity * 0.5})`;
+      }),
+      borderWidth: 1.5,
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        callbacks: {
+          title: (items) => items[0].label,
+          label: (item) => ` $${item.raw.toFixed(2)} per click`,
+          afterLabel: (item) => {
+            const pct = (((item.raw - 4.13) / 4.13) * 100).toFixed(0);
+            return ` +${pct}% vs Aug 2024`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#E2E8F0', lineWidth: 1 },
+        ticks: { color: '#475569', font: { size: 11 } },
+        border: { color: '#E2E8F0' }
+      },
+      y: {
+        min: 3.5,
+        max: 6.0,
+        grid: { color: '#E2E8F0', lineWidth: 1 },
+        ticks: {
+          color: '#475569',
+          font: { size: 11 },
+          callback: (v) => '$' + v.toFixed(2)
+        },
+        border: { color: '#E2E8F0' },
+        title: {
+          display: true,
+          text: 'Cost Per Click (USD)',
+          color: '#94A3B8',
+          font: { size: 11 }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

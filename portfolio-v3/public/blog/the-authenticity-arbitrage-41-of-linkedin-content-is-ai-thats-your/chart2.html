@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Average Daily Social Media Time per User (2019–2026)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --grid: #E2E8F0;
+    --card-border: #E7E5E4;
+    --accent: #DC2626;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --secondary: #CBD5E1;
+      --muted: #64748B;
+      --grid: #1E293B;
+      --card-border: #334155;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #FFFFFF; --text: #0F172A; --secondary: #475569; --muted: #94A3B8;
+    --grid: #E2E8F0; --card-border: #E7E5E4;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A; --text: #F8FAFC; --secondary: #CBD5E1; --muted: #64748B;
+    --grid: #1E293B; --card-border: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 32px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 24px;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 320px;
+  }
+  .source {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .annotation {
+    font-size: 11px;
+    color: #DC2626;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="chart-title">Average Daily Social Media Time per User (2019–2026)</div>
+<div class="chart-subtitle">Global average in minutes — trend confirms Gartner's 2023 prediction of declining engagement</div>
+<div class="chart-wrap">
+  <canvas id="chart2"></canvas>
+</div>
+<div class="annotation">Peak: 152 min/day in 2022. By 2025: 141 min — a 10% drop as AI content saturation accelerated.</div>
+<div class="source">Sources: DataReportal Global Digital Reports 2019–2026; Gartner Predicts (Dec 2023) confirmed by 2025 data</div>
+
+<script>
+const labels = ['2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026E'];
+const data   = [136, 145, 147, 152, 151, 147, 141, 138];
+
+function getColors() {
+  const style = getComputedStyle(document.documentElement);
+  return {
+    text: style.getPropertyValue('--text').trim(),
+    secondary: style.getPropertyValue('--secondary').trim(),
+    grid: style.getPropertyValue('--grid').trim(),
+    muted: style.getPropertyValue('--muted').trim(),
+  };
+}
+
+let chart;
+
+function buildChart() {
+  const c = getColors();
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById('chart2'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Avg. daily social media time (min)',
+        data,
+        fill: true,
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.08)',
+        pointBackgroundColor: data.map((v, i) => v === 152 ? '#DC2626' : '#64748B'),
+        pointRadius: data.map((v, i) => v === 152 ? 7 : 4),
+        pointHoverRadius: 7,
+        tension: 0.35,
+        borderWidth: 2.5,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.parsed.y} min/day`
+          },
+          backgroundColor: '#0F172A',
+          titleColor: '#F8FAFC',
+          bodyColor: '#CBD5E1',
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: c.grid },
+          ticks: { color: c.secondary, font: { size: 12, family: 'inherit' } },
+          border: { color: c.grid }
+        },
+        y: {
+          min: 120,
+          max: 165,
+          grid: { color: c.grid },
+          ticks: {
+            color: c.secondary,
+            font: { size: 12, family: 'inherit' },
+            callback: v => v + ' min'
+          },
+          border: { color: 'transparent' },
+          title: {
+            display: true,
+            text: 'Minutes per day (global average)',
+            color: c.muted,
+            font: { size: 11, family: 'inherit' }
+          }
+        }
+      }
+    }
+  });
+}
+
+buildChart();
+
+const observer = new MutationObserver(buildChart);
+observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', buildChart);
+</script>
+</body>
+</html>

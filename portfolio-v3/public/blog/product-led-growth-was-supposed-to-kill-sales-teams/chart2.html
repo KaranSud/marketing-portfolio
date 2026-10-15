@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Product-Led Premium Is Concentrated, Not Universal</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+  }
+  h2 {
+    color: #0F172A;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    text-align: center;
+  }
+  p.sub {
+    color: #64748B;
+    font-size: 13px;
+    margin: 0 0 20px 0;
+    text-align: center;
+    max-width: 480px;
+  }
+  .chart-wrap {
+    width: 100%;
+    max-width: 560px;
+  }
+  p.source {
+    color: #94A3B8;
+    font-size: 11px;
+    margin-top: 16px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <h2>The Product-Led Premium Goes to the Outperformers, Not Everyone</h2>
+  <p class="sub">Gap between product-led and sales-led high performers, in percentage points / percent</p>
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <p class="source">Source: McKinsey, analysis of 107 publicly listed B2B SaaS providers, 2023</p>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+new Chart(ctx, {
+  type: 'radar',
+  data: {
+    labels: ['ARR growth advantage (pp)', 'Valuation multiple premium (%)', 'S&M + R&D spend premium (pp)'],
+    datasets: [
+      {
+        label: 'Product-led high performers',
+        data: [10, 50, 10],
+        backgroundColor: 'rgba(220, 38, 38, 0.15)',
+        borderColor: '#DC2626',
+        pointBackgroundColor: '#DC2626',
+        borderWidth: 2
+      },
+      {
+        label: 'Sales-led high performers (baseline)',
+        data: [0, 0, 0],
+        backgroundColor: 'rgba(100, 116, 139, 0.10)',
+        borderColor: '#94A3B8',
+        pointBackgroundColor: '#94A3B8',
+        borderWidth: 2,
+        borderDash: [4, 4]
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#475569', font: { size: 11 } } }
+    },
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 55,
+        grid: { color: '#E2E8F0' },
+        angleLines: { color: '#E2E8F0' },
+        pointLabels: { color: '#0F172A', font: { size: 11 } },
+        ticks: { color: '#94A3B8', backdropColor: '#FFFFFF' }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+
+const RESEARCH_URL = "https://account-research-five.vercel.app";
+
+const HOW_STEPS: { title: string; desc: string }[] = [
+  {
+    title: "Bring in your leads",
+    desc: "Export the CSV from the research engine and hit Import CSV. Companies, contacts, and fit scores map automatically. Or add leads by hand.",
+  },
+  {
+    title: "Drag cards through stages",
+    desc: "Work the board from New to Won. Flip to list view to scan everything, and search across companies, contacts, and notes.",
+  },
+  {
+    title: "Set follow-up dates",
+    desc: "Pick a next-touch date on any card. Due-today leads get marked, overdue ones are flagged red and counted up top.",
+  },
+  {
+    title: "Your data stays yours",
+    desc: "Everything is saved in this browser only and never touches a server. Export a CSV backup whenever you like.",
+  },
+];
+
+type Stage =
+  | "New"
+  | "Researched"
+  | "Contacted"
+  | "Replied"
+  | "Won"
+  | "Lost";
+const STAGES: Stage[] = [
+  "New",
+  "Researched",
+  "Contacted",
+  "Replied",
+  "Won",
+  "Lost",
+];
+
+type Lead = {
+  id: string;
+  company: string;
+  domain: string;
+  contact: string;
+  email: string;
+  fit: string;
+  stage: Stage;
+  notes: string;
+  nextTouch: string; // ISO date (yyyy-mm-dd) or ""
+  createdAt: number;
+};
+
+const KEY = "crm_leads_v1";
+const today = () => new Date().toISOString().slice(0, 10);
+const uid = () =>
+  Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+
+function parseCsv(text: string): string[][] {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let field = "";
+  let q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"') {
+        if (text[i + 1] === '"') {
+          field += '"';
+          i++;
+        } else q = false;
+      } else field += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") {
+      row.push(field);
+      field = "";
+    } else if (c === "\n") {
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = "";
+    } else if (c !== "\r") field += c;
+  }
+  if (field.length || row.length) {
+    row.push(field);
+    rows.push(row);
+  }
+  return rows.filter((r) => r.some((c) => c.trim()));
+}
+
+function isOverdue(l: Lead): boolean {
+  return (
+    !!l.nextTouch &&
+    l.nextTouch < today() &&
+    l.stage !== "Won" &&
+    l.stage !== "Lost"
+  );
+}
+function isDueToday(l: Lead): boolean {
+  return (
+    !!l.nextTouch &&
+    l.nextTouch === today() &&
+    l.stage !== "Won" &&
+    l.stage !== "Lost"
+  );
+}
+
+export default function CrmPage() {
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [loaded, setLoaded] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const [form, setForm] = useState({
+    company: "",
+    domain: "",
+    contact: "",
+    email: "",
+    fit: "",
+  });
+  const [view, setView] = useState<"board" | "list">("board");
+  const [query, setQuery] = useState("");
+  const [showHow, setShowHow] = useState(false);
+  const [dragId, setDragId] = useState<string | null>(null);
+  const [dragOver, setDragOver] = useState<Stage | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        const parsed: Lead[] = JSON.parse(raw);
+        setLeads(parsed.map((l) => ({ ...l, nextTouch: l.nextTouch ?? "" })));
+      }
+    } catch {}
+    setLoaded(true);
+  }, []);
+  useEffect(() => {
+    if (!loaded) return;
+    try {
+      localStorage.setItem(KEY, JSON.stringify(leads));
+    } catch {}
+  }, [leads, loaded]);
+
+  function addLead() {
+    if (!form.company.trim() && !form.domain.trim()) return;
+    setLeads((p) => [
+      {
+        id: uid(),
+        company: form.company.trim() || form.domain.trim(),
+        domain: form.domain.trim(),
+        contact: form.contact.trim(),
+        email: form.email.trim(),
+        fit: form.fit.trim(),
+        stage: "New",
+        notes: "",
+        nextTouch: "",
+        createdAt: Date.now(),
+      },
+      ...p,
+    ]);
+    setForm({ company: "", domain: "", contact: "", email: "", fit: "" });
+    setAdding(false);
+  }
+
+  function update(id: string, patch: Partial<Lead>) {
+    setLeads((p) => p.map((l) => (l.id === id ? { ...l, ...patch } : l)));
+  }
+  function remove(id: string) {
+    setLeads((p) => p.filter((l) => l.id !== id));
+  }
+
+  function importCsv(text: string) {
+    const rows = parseCsv(text);
+    if (rows.length < 2) return;
+    const header = rows[0].map((h) => h.trim().toLowerCase());
+    const idx = (...names: string[]) =>
+      header.findIndex((h) => names.some((n) => h === n || h.includes(n)));
+    const di = idx("domain");
+    const ci = idx("name", "company");
+    const fi = idx("fit score", "fit");
+    const ki = idx("decision makers", "contact");
+    const ei = idx("emails", "email");
+    const li = idx("likely emails");
+    const existing = new Set(leads.map((l) => l.domain.toLowerCase()));
+    const next: Lead[] = [];
+    for (const r of rows.slice(1)) {
+      const get = (i: number) => (i >= 0 ? (r[i] || "").trim() : "");
+      const domain = get(di);
+      const company = get(ci) || domain;
+      if (!domain && !company) continue;
+      if (domain && existing.has(domain.toLowerCase())) continue;
+      const email = (get(ei) || get(li)).split(";")[0].trim();
+      const contact = get(ki).split(";")[0].trim();
+      next.push({
+        id: uid(),
+        company,
+        domain,
+        contact,
+        email,
+        fit: get(fi),
+        stage: "Researched",
+        notes: "",
+        nextTouch: "",
+        createdAt: Date.now(),
+      });
+      if (domain) existing.add(domain.toLowerCase());
+    }
+    if (next.length) setLeads((p) => [...next, ...p]);
+  }
+
+  function onFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => importCsv(String(reader.result || ""));
+    reader.readAsText(file);
+    e.target.value = "";
+  }
+
+  function exportCsv() {
+    if (!leads.length) return;
+    const esc = (s: unknown) => `"${String(s ?? "").replace(/"/g, '""')}"`;
+    const head = [
+      "Company",
+      "Domain",
+      "Contact",
+      "Email",
+      "Fit",
+      "Stage",
+      "Next Touch",
+      "Notes",
+    ];
+    const lines = leads.map((l) =>
+      [
+        l.company,
+        l.domain,
+        l.contact,
+        l.email,
+        l.fit,
+        l.stage,
+        l.nextTouch,
+        l.notes,
+      ]
+        .map(esc)
+        .join(",")
+    );
+    const csv = [head.map(esc).join(","), ...lines].join("\n");
+    const url = URL.createObjectURL(
+      new Blob([csv], { type: "text/csv;charset=utf-8" })
+    );
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "crm-pipeline.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  const q = query.trim().toLowerCase();
+  const matches = (l: Lead) =>
+    !q ||
+    [l.company, l.domain, l.contact, l.email, l.notes]
+      .join(" ")
+      .toLowerCase()
+      .includes(q);
+  const visible = leads.filter(matches);
+  const overdueCount = leads.filter(isOverdue).length;
+
+  function dropOn(stage: Stage) {
+    if (dragId) update(dragId, { stage });
+    setDragId(null);
+    setDragOver(null);
+  }
+
+  function LeadCard({ l }: { l: Lead }) {
+    const over = isOverdue(l);
+    const due = isDueToday(l);
+    return (
+      <div
+        className={`crm-card${over ? " overdue" : ""}`}
+        draggable
+        onDragStart={() => setDragId(l.id)}
+        onDragEnd={() => {
+          setDragId(null);
+          setDragOver(null);
+        }}
+      >
+        <div className="crm-card-top">
+          <div className="crm-card-id">
+            <span className="crm-company">{l.company}</span>
+            {l.domain && (
+              <a
+                className="crm-domain"
+                href={`https://${l.domain}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {l.domain}
+              </a>
+            )}
+          </div>
+          <div className="crm-card-actions">
+            {l.fit && <span className="crm-fit">Fit {l.fit}</span>}
+            {view === "list" && (
+              <select
+                className={`crm-stage stage-${l.stage.toLowerCase()}`}
+                value={l.stage}
+                onChange={(e) =>
+                  update(l.id, { stage: e.target.value as Stage })
+                }
+              >
+                {STAGES.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            )}
+            <button
+              className="crm-del"
+              onClick={() => remove(l.id)}
+              aria-label="Delete lead"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+        {(l.contact || l.email) && (
+          <div className="crm-contact">
+            {l.contact && <span>{l.contact}</span>}
+            {l.email && <a href={`mailto:${l.email}`}>{l.email}</a>}
+          </div>
+        )}
+        <textarea
+          className="crm-notes"
+          placeholder="Notes, next step, last touch…"
+          value={l.notes}
+          rows={2}
+          onChange={(e) => update(l.id, { notes: e.target.value })}
+        />
+        <label className={`crm-touch${over ? " overdue" : due ? " due" : ""}`}>
+          <span>Follow up</span>
+          <input
+            type="date"
+            value={l.nextTouch}
+            onChange={(e) => update(l.id, { nextTouch: e.target.value })}
+          />
+          {over && <span className="crm-touch-flag">overdue</span>}
+          {due && <span className="crm-touch-flag due">today</span>}
+        </label>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <Nav />
+      <main className="page-wrap crm">
+        <header className="page-head">
+          <div className="eyebrow">Labs / Outbound CRM</div>
+          <h1 className="page-h1">
+            Your pipeline, <em>end to end</em>
+          </h1>
+          <p className="page-sub">
+            Import the leads you researched, drag them through stages, set
+            follow-up reminders, and run your outbound. Everything is saved in
+            your browser, no account needed.
+          </p>
+        </header>
+
+        {(showHow || (loaded && leads.length === 0)) && (
+          <div className="crm-how">
+            <div className="crm-how-head">
+              <span className="eyebrow">How this works</span>
+              {leads.length > 0 && (
+                <button
+                  className="crm-how-close"
+                  onClick={() => setShowHow(false)}
+                  aria-label="Hide guide"
+                >
+                  ×
+                </button>
+              )}
+            </div>
+            <div className="crm-how-grid">
+              {HOW_STEPS.map((s, i) => (
+                <div className="crm-how-step" key={s.title}>
+                  <span className="crm-how-num">{i + 1}</span>
+                  <b>{s.title}</b>
+                  <p>{s.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="crm-how-foot">
+              <a
+                className="btn btn-primary"
+                href={RESEARCH_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research leads first
+              </a>
+              <a className="btn btn-ghost" href="/tools#crm">
+                Full step-by-step guide
+              </a>
+            </div>
+          </div>
+        )}
+
+        <div className="crm-stats">
+          {STAGES.map((s) => {
+            const n = leads.filter((l) => l.stage === s).length;
+            return (
+              <div key={s} className="crm-stat">
+                <span className="crm-stat-n">{n}</span>
+                <span className="crm-stat-l">{s}</span>
+              </div>
+            );
+          })}
+          <div className={`crm-stat ${overdueCount ? "alert" : ""}`}>
+            <span className="crm-stat-n">{overdueCount}</span>
+            <span className="crm-stat-l">Overdue</span>
+          </div>
+        </div>
+
+        <div className="crm-toolbar">
+          <div className="crm-viewtoggle">
+            <button
+              className={view === "board" ? "active" : ""}
+              onClick={() => setView("board")}
+            >
+              Board
+            </button>
+            <button
+              className={view === "list" ? "active" : ""}
+              onClick={() => setView("list")}
+            >
+              List
+            </button>
+          </div>
+          <input
+            className="crm-search"
+            placeholder="Search company, contact, notes…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button className="btn btn-primary" onClick={() => setAdding((a) => !a)}>
+            {adding ? "Close" : "Add lead"}
+          </button>
+          <button className="btn btn-ghost" onClick={() => fileRef.current?.click()}>
+            Import CSV
+          </button>
+          <button
+            className="btn btn-ghost"
+            onClick={exportCsv}
+            disabled={!leads.length}
+          >
+            Export CSV
+          </button>
+          {leads.length > 0 && !showHow && (
+            <button className="btn btn-ghost" onClick={() => setShowHow(true)}>
+              How it works
+            </button>
+          )}
+          {leads.length > 0 && (
+            <button
+              className="linkbtn crm-clear"
+              onClick={() => {
+                if (confirm("Clear all leads? This cannot be undone.")) setLeads([]);
+              }}
+            >
+              Clear all
+            </button>
+          )}
+          <input
+            ref={fileRef}
+            type="file"
+            accept=".csv,text/csv"
+            onChange={onFile}
+            hidden
+          />
+        </div>
+
+        {adding && (
+          <div className="crm-add">
+            <input
+              placeholder="Company"
+              value={form.company}
+              onChange={(e) => setForm({ ...form, company: e.target.value })}
+            />
+            <input
+              placeholder="domain.com"
+              value={form.domain}
+              onChange={(e) => setForm({ ...form, domain: e.target.value })}
+            />
+            <input
+              placeholder="Contact"
+              value={form.contact}
+              onChange={(e) => setForm({ ...form, contact: e.target.value })}
+            />
+            <input
+              placeholder="email@domain.com"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+            />
+            <input
+              placeholder="Fit"
+              value={form.fit}
+              onChange={(e) => setForm({ ...form, fit: e.target.value })}
+            />
+            <button className="btn btn-primary" onClick={addLead}>
+              Save
+            </button>
+          </div>
+        )}
+
+        {leads.length === 0 ? (
+          <div className="crm-empty">
+            <h3>Your pipeline is empty</h3>
+            <p>
+              Start with step 1 above: research your targets with the{" "}
+              <a href={RESEARCH_URL} target="_blank" rel="noopener noreferrer">
+                Account Research engine
+              </a>
+              , export the CSV, and import it here. Or just hit{" "}
+              <b>Add lead</b> to enter one by hand.
+            </p>
+          </div>
+        ) : view === "board" ? (
+          <div className="crm-board">
+            {STAGES.map((s) => {
+              const items = visible.filter((l) => l.stage === s);
+              return (
+                <div
+                  key={s}
+                  className={`crm-col${dragOver === s ? " dragover" : ""}`}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    setDragOver(s);
+                  }}
+                  onDragLeave={() => setDragOver((d) => (d === s ? null : d))}
+                  onDrop={() => dropOn(s)}
+                >
+                  <div className="crm-col-head">
+                    <span>{s}</span>
+                    <span className="crm-col-n">{items.length}</span>
+                  </div>
+                  <div className="crm-col-body">
+                    {items.map((l) => (
+                      <LeadCard key={l.id} l={l} />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="crm-list">
+            {visible.map((l) => (
+              <LeadCard key={l.id} l={l} />
+            ))}
+          </div>
+        )}
+      </main>
+      <Footer />
+    </>
+  );
+}

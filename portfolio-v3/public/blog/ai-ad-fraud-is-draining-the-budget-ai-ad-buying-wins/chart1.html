@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Programmatic Transparency: 2020 vs 2022 (ISBA/PwC)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    margin: 0;
+    padding: 32px;
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  .chart-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h2 {
+    color: #0F172A;
+    font-size: 19px;
+    margin: 0 0 4px 0;
+  }
+  p.sub {
+    color: #64748B;
+    font-size: 13px;
+    margin: 0 0 20px 0;
+  }
+  .legend-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: #475569;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .source {
+    color: #94A3B8;
+    font-size: 11px;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>UK Programmatic Audits: What Changed Between Studies</h2>
+  <p class="sub">ISBA / PwC Programmatic Supply Chain Transparency Study, 2020 vs. 2022</p>
+  <canvas id="dumbbell" height="260"></canvas>
+  <div class="legend-row">
+    <div class="legend-item"><span class="dot" style="background:#94A3B8;"></span>2020 study</div>
+    <div class="legend-item"><span class="dot" style="background:#0F172A;"></span>2022 study</div>
+  </div>
+  <p class="source">Source: ISBA / PwC Programmatic Supply Chain Transparency Study, isba.org.uk</p>
+</div>
+<script>
+const categories = ["Unattributable ad spend", "Ad impression match rate"];
+const before = [15, 12];
+const after = [3, 58];
+const connectorData = categories.map((c, i) => [Math.min(before[i], after[i]), Math.max(before[i], after[i])]);
+
+new Chart(document.getElementById('dumbbell'), {
+  type: 'bar',
+  data: {
+    labels: categories,
+    datasets: [
+      {
+        label: 'Range',
+        type: 'bar',
+        data: connectorData,
+        backgroundColor: '#E2E8F0',
+        borderRadius: 6,
+        barThickness: 6,
+        order: 1
+      },
+      {
+        label: '2020 study',
+        type: 'line',
+        showLine: false,
+        data: before,
+        pointRadius: 9,
+        pointBackgroundColor: '#94A3B8',
+        pointBorderColor: '#FFFFFF',
+        pointBorderWidth: 2,
+        order: 0
+      },
+      {
+        label: '2022 study',
+        type: 'line',
+        showLine: false,
+        data: after,
+        pointRadius: 9,
+        pointBackgroundColor: '#0F172A',
+        pointBorderColor: '#FFFFFF',
+        pointBorderWidth: 2,
+        order: 0
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.dataset.label === 'Range') return null;
+            return ctx.dataset.label + ': ' + ctx.raw + '%';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 70,
+        ticks: { color: '#475569', callback: (v) => v + '%' },
+        grid: { color: '#E2E8F0' }
+      },
+      y: {
+        ticks: { color: '#0F172A', font: { size: 13 } },
+        grid: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

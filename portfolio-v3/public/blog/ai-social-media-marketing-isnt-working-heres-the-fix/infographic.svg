@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#FAFAF9;">
+
+  <!-- Background -->
+  <rect width="800" height="560" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="400" y="44" text-anchor="middle" font-size="18" font-weight="700" fill="#0F172A">The AI Social Content Decision Framework</text>
+  <text x="400" y="66" text-anchor="middle" font-size="12" fill="#475569">How to deploy AI in social media without losing the organic advantage</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="82" x2="740" y2="82" stroke="#E7E5E4" stroke-width="1"/>
+
+  <!-- Phase labels -->
+  <!-- STEP 1: Start -->
+  <rect x="330" y="100" width="140" height="48" rx="8" fill="#0F172A"/>
+  <text x="400" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#FFFFFF">START HERE</text>
+  <text x="400" y="138" text-anchor="middle" font-size="11" fill="#94A3B8">New social content piece</text>
+
+  <!-- Arrow down -->
+  <line x1="400" y1="148" x2="400" y2="172" stroke="#64748B" stroke-width="1.5"/>
+  <polygon points="394,170 406,170 400,180" fill="#64748B"/>
+
+  <!-- STEP 2: Decision diamond -->
+  <polygon points="400,185 510,230 400,275 290,230" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="400" y="223" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Does it contain a</text>
+  <text x="400" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">specific human POV?</text>
+
+  <!-- Yes arrow right -->
+  <line x1="510" y1="230" x2="570" y2="230" stroke="#64748B" stroke-width="1.5"/>
+  <polygon points="568,224 580,230 568,236" fill="#64748B"/>
+  <text x="538" y="222" text-anchor="middle" font-size="10" fill="#475569">YES</text>
+
+  <!-- No arrow left -->
+  <line x1="290" y1="230" x2="220" y2="230" stroke="#DC2626" stroke-width="1.5"/>
+  <polygon points="222,224 210,230 222,236" fill="#DC2626"/>
+  <text x="255" y="222" text-anchor="middle" font-size="10" fill="#DC2626">NO</text>
+
+  <!-- No path: rewrite box -->
+  <rect x="80" y="206" width="130" height="48" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="145" y="227" text-anchor="middle" font-size="11" font-weight="600" fill="#DC2626">Back to brief</text>
+  <text x="145" y="244" text-anchor="middle" font-size="10" fill="#475569">Add real perspective</text>
+
+  <!-- Yes path: AI tool box -->
+  <rect x="580" y="206" width="140" height="48" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="650" y="225" text-anchor="middle" font-size="11" font-weight="600" fill="#16A34A">Use AI to draft</text>
+  <text x="650" y="242" text-anchor="middle" font-size="10" fill="#475569">Speed, volume, structure</text>
+
+  <!-- Arrow from AI draft down -->
+  <line x1="650" y1="254" x2="650" y2="300" stroke="#64748B" stroke-width="1.5"/>
+  <polygon points="644,298 656,298 650,308" fill="#64748B"/>
+
+  <!-- STEP 3: Human edit decision -->
+  <polygon points="650,310 750,345 650,380 550,345" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="650" y="338" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Human edit</text>
+  <text x="650" y="354" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">applied?</text>
+
+  <!-- Yes arrow down from edit -->
+  <line x1="650" y1="380" x2="650" y2="416" stroke="#64748B" stroke-width="1.5"/>
+  <polygon points="644,414 656,414 650,424" fill="#64748B"/>
+  <text x="665" y="402" font-size="10" fill="#475569">YES</text>
+
+  <!-- No arrow right from edit -->
+  <line x1="750" y1="345" x2="800" y2="345" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <text x="760" y="338" font-size="10" fill="#DC2626">NO</text>
+  <text x="756" y="358" font-size="9" fill="#DC2626">Risk: algo</text>
+  <text x="756" y="370" font-size="9" fill="#DC2626">suppression</text>
+
+  <!-- STEP 4: Disclosure decision -->
+  <polygon points="650,428 750,463 650,498 550,463" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="650" y="456" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Disclose AI</text>
+  <text x="650" y="472" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">assistance?</text>
+
+  <!-- Yes arrow: publish -->
+  <line x1="550" y1="463" x2="470" y2="463" stroke="#64748B" stroke-width="1.5"/>
+  <polygon points="472,457 460,463 472,469" fill="#64748B"/>
+  <text x="508" y="456" text-anchor="middle" font-size="10" fill="#475569">YES</text>
+
+  <!-- Publish box -->
+  <rect x="330" y="440" width="130" height="48" rx="8" fill="#0F172A"/>
+  <text x="395" y="460" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Publish</text>
+  <text x="395" y="477" text-anchor="middle" font-size="10" fill="#94A3B8">78% of consumers trust</text>
+  <text x="395" y="490" text-anchor="middle" font-size="10" fill="#94A3B8">disclosed AI content</text>
+
+  <!-- No disclosure: risk note -->
+  <line x1="750" y1="463" x2="790" y2="463" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <text x="760" y="456" font-size="10" fill="#DC2626">NO</text>
+  <text x="756" y="474" font-size="9" fill="#DC2626">52% users</text>
+  <text x="756" y="486" font-size="9" fill="#DC2626">concerned</text>
+
+  <!-- Key insight box at bottom -->
+  <rect x="60" y="320" width="460" height="100" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="290" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">The winning formula in 2026</text>
+  <text x="290" y="368" text-anchor="middle" font-size="11" fill="#475569">Human POV + AI draft + Human edit + Disclosure</text>
+  <text x="290" y="388" text-anchor="middle" font-size="11" fill="#475569">= Engagement that compounds. AI alone = reach that decays.</text>
+  <line x1="80" y1="357" x2="500" y2="357" stroke="#E7E5E4" stroke-width="0.75"/>
+
+  <!-- Legend -->
+  <rect x="60" y="440" width="14" height="14" rx="2" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="82" y="452" font-size="10" fill="#475569">Risk path</text>
+  <rect x="145" y="440" width="14" height="14" rx="2" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="167" y="452" font-size="10" fill="#475569">Recommended path</text>
+  <rect x="280" y="440" width="14" height="14" rx="2" fill="#0F172A"/>
+  <text x="302" y="452" font-size="10" fill="#475569">Decision / Output</text>
+
+  <!-- Footer -->
+  <line x1="60" y1="536" x2="740" y2="536" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="400" y="552" text-anchor="middle" font-size="10" fill="#94A3B8">karan-sud-portfolio.vercel.app | Sources: Gartner, Billion Dollar Boy/Censuswide, Sprout Social 2025</text>
+</svg>

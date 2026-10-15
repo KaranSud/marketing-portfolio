@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="900" height="620" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+  <!-- Background -->
+  <rect width="900" height="620" fill="#FAFAF9" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="44" text-anchor="middle" font-size="20" font-weight="700" fill="#0F172A" letter-spacing="-0.4">The Incrementality Test: From Attribution Claim to Causal Proof</text>
+  <text x="450" y="66" text-anchor="middle" font-size="13" fill="#475569">A 3-step framework for separating what your ads claimed from what they actually caused</text>
+
+  <!-- Step connectors / arrow lines -->
+  <!-- Arrow from Step 1 to Step 2 -->
+  <line x1="246" y1="300" x2="318" y2="300" stroke="#E7E5E4" stroke-width="2"/>
+  <polygon points="318,295 330,300 318,305" fill="#94A3B8"/>
+
+  <!-- Arrow from Step 2 to Step 3 -->
+  <line x1="570" y1="300" x2="642" y2="300" stroke="#E7E5E4" stroke-width="2"/>
+  <polygon points="642,295 654,300 642,305" fill="#94A3B8"/>
+
+  <!-- ========= STEP 1 ========= -->
+  <g transform="translate(40, 160)">
+    <!-- Card -->
+    <rect width="206" height="280" rx="10" fill="white" stroke="#E7E5E4" stroke-width="1.5"/>
+    <!-- Step badge -->
+    <rect x="12" y="12" width="36" height="22" rx="4" fill="#DC2626"/>
+    <text x="30" y="27.5" text-anchor="middle" font-size="12" font-weight="700" fill="white">01</text>
+    <!-- Title -->
+    <text x="103" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">Your Dashboard</text>
+    <text x="103" y="78" text-anchor="middle" font-size="13" fill="#475569">Attribution claim</text>
+
+    <!-- Icon: bar chart -->
+    <rect x="30" y="100" width="24" height="60" rx="3" fill="#475569" opacity="0.8"/>
+    <rect x="62" y="85" width="24" height="75" rx="3" fill="#475569" opacity="0.8"/>
+    <rect x="94" y="110" width="24" height="50" rx="3" fill="#475569" opacity="0.8"/>
+    <rect x="126" y="95" width="24" height="65" rx="3" fill="#475569" opacity="0.8"/>
+    <rect x="158" y="78" width="24" height="82" rx="3" fill="#475569" opacity="0.8"/>
+
+    <!-- Divider -->
+    <line x1="16" y1="188" x2="190" y2="188" stroke="#E7E5E4" stroke-width="1"/>
+
+    <!-- Content -->
+    <text x="103" y="210" text-anchor="middle" font-size="12" fill="#0F172A" font-weight="600">Platform reports:</text>
+    <text x="103" y="228" text-anchor="middle" font-size="13" fill="#DC2626" font-weight="700">100 conversions</text>
+    <text x="103" y="248" text-anchor="middle" font-size="11" fill="#94A3B8">attributed to paid ads</text>
+    <text x="103" y="266" text-anchor="middle" font-size="11" fill="#94A3B8">across all channels</text>
+  </g>
+
+  <!-- ========= STEP 2 ========= -->
+  <g transform="translate(330, 160)">
+    <!-- Card -->
+    <rect width="240" height="280" rx="10" fill="white" stroke="#E7E5E4" stroke-width="1.5"/>
+    <!-- Top accent bar -->
+    <rect x="0" y="0" width="240" height="4" rx="2" fill="#DC2626"/>
+    <!-- Step badge -->
+    <rect x="12" y="18" width="36" height="22" rx="4" fill="#DC2626"/>
+    <text x="30" y="33.5" text-anchor="middle" font-size="12" font-weight="700" fill="white">02</text>
+    <!-- Title -->
+    <text x="120" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">Run the Test</text>
+    <text x="120" y="78" text-anchor="middle" font-size="13" fill="#475569">Holdout experiment</text>
+
+    <!-- Icon: two groups side by side -->
+    <!-- Exposed group -->
+    <circle cx="70" cy="130" r="20" fill="#DC2626" opacity="0.15"/>
+    <text x="70" y="127" text-anchor="middle" font-size="10" fill="#DC2626" font-weight="600">Sees</text>
+    <text x="70" y="140" text-anchor="middle" font-size="10" fill="#DC2626" font-weight="600">Ad</text>
+    <!-- Holdout group -->
+    <circle cx="170" cy="130" r="20" fill="#64748B" opacity="0.15"/>
+    <text x="170" y="127" text-anchor="middle" font-size="10" fill="#64748B" font-weight="600">No</text>
+    <text x="170" y="140" text-anchor="middle" font-size="10" fill="#64748B" font-weight="600">Ad</text>
+    <!-- Label -->
+    <text x="120" y="168" text-anchor="middle" font-size="11" fill="#94A3B8">Randomly split identical audience</text>
+
+    <!-- Divider -->
+    <line x1="16" y1="188" x2="224" y2="188" stroke="#E7E5E4" stroke-width="1"/>
+
+    <text x="120" y="210" text-anchor="middle" font-size="12" fill="#0F172A" font-weight="600">Random holdout group</text>
+    <text x="120" y="228" text-anchor="middle" font-size="11" fill="#475569">sees no ads — identical</text>
+    <text x="120" y="246" text-anchor="middle" font-size="11" fill="#475569">to exposed group in</text>
+    <text x="120" y="264" text-anchor="middle" font-size="11" fill="#475569">every other dimension</text>
+  </g>
+
+  <!-- ========= STEP 3 ========= -->
+  <g transform="translate(654, 160)">
+    <!-- Card -->
+    <rect width="206" height="280" rx="10" fill="white" stroke="#E7E5E4" stroke-width="1.5"/>
+    <!-- Step badge -->
+    <rect x="12" y="12" width="36" height="22" rx="4" fill="#0F172A"/>
+    <text x="30" y="27.5" text-anchor="middle" font-size="12" font-weight="700" fill="white">03</text>
+    <!-- Title -->
+    <text x="103" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">The Real Number</text>
+    <text x="103" y="78" text-anchor="middle" font-size="13" fill="#475569">Incremental lift</text>
+
+    <!-- Comparison bars -->
+    <!-- Attributed bar -->
+    <rect x="24" y="92" width="70" height="12" rx="3" fill="#475569" opacity="0.6"/>
+    <text x="100" y="102" font-size="11" fill="#475569">100 attributed</text>
+    <!-- Incremental bar -->
+    <rect x="24" y="115" width="48" height="12" rx="3" fill="#DC2626"/>
+    <text x="78" y="125" font-size="11" fill="#DC2626" font-weight="600">69 actual</text>
+    <!-- Gap label -->
+    <rect x="24" y="138" width="22" height="8" rx="2" fill="#1E3A5F" opacity="0.5"/>
+    <text x="52" y="147" font-size="10" fill="#64748B">31 would have converted anyway</text>
+
+    <!-- Divider -->
+    <line x1="16" y1="168" x2="190" y2="168" stroke="#E7E5E4" stroke-width="1"/>
+
+    <!-- Result -->
+    <text x="103" y="192" text-anchor="middle" font-size="12" fill="#0F172A" font-weight="600">Incremental lift =</text>
+    <text x="103" y="215" text-anchor="middle" font-size="22" fill="#DC2626" font-weight="800">69%</text>
+    <text x="103" y="233" text-anchor="middle" font-size="11" fill="#94A3B8">average across channels</text>
+    <text x="103" y="251" text-anchor="middle" font-size="11" fill="#94A3B8">(31% would have converted</text>
+    <text x="103" y="269" text-anchor="middle" font-size="11" fill="#94A3B8">without your advertising)</text>
+  </g>
+
+  <!-- ========= BOTTOM ROW: Verdict ========= -->
+  <!-- Verdict box -->
+  <rect x="40" y="480" width="820" height="108" rx="10" fill="#0F172A"/>
+  <text x="450" y="516" text-anchor="middle" font-size="15" font-weight="700" fill="white">The measurement arbitrage window is open right now</text>
+
+  <!-- Three outcome items -->
+  <circle cx="130" cy="548" r="14" fill="#DC2626"/>
+  <text x="130" y="553" text-anchor="middle" font-size="11" font-weight="700" fill="white">$</text>
+  <text x="152" y="545" font-size="12" fill="#E2E8F0">Reallocate the 31%</text>
+  <text x="152" y="561" font-size="11" fill="#94A3B8">toward channels that actually cause conversions</text>
+
+  <circle cx="380" cy="548" r="14" fill="#DC2626"/>
+  <text x="380" y="553" text-anchor="middle" font-size="11" font-weight="700" fill="white">≠</text>
+  <text x="402" y="545" font-size="12" fill="#E2E8F0">Stop paying for organic lift</text>
+  <text x="402" y="561" font-size="11" fill="#94A3B8">that would have happened regardless</text>
+
+  <circle cx="630" cy="548" r="14" fill="#DC2626"/>
+  <text x="630" y="553" text-anchor="middle" font-size="11" font-weight="700" fill="white">↑</text>
+  <text x="652" y="545" font-size="12" fill="#E2E8F0">Earn CFO trust</text>
+  <text x="652" y="561" font-size="11" fill="#94A3B8">with causal proof, not correlation</text>
+
+  <!-- Footer source -->
+  <text x="450" y="608" text-anchor="middle" font-size="11" fill="#94A3B8">Methodology: holdout experiments | karan-sud-portfolio.vercel.app</text>
+</svg>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attribution Gap by Channel</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --accent: #DC2626;
+    --grid: #E2E8F0;
+    --card: #FAFAF9;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --secondary: #94A3B8;
+      --muted: #64748B;
+      --grid: #1E293B;
+      --card: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --secondary: #94A3B8;
+    --muted: #64748B;
+    --grid: #1E293B;
+    --card: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 24px 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .chart-container {
+    background: var(--card);
+    border: 1px solid var(--grid);
+    border-radius: 12px;
+    padding: 32px 24px 24px;
+    width: 100%;
+    max-width: 780px;
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .canvas-wrap {
+    position: relative;
+    height: 340px;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--secondary);
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .source {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-container">
+  <h2>Platform-Reported vs. Actual Incremental Conversions by Channel</h2>
+  <p class="subtitle">The gap between what last-click attribution claims and what incrementality testing finds — across five common B2B and e-commerce channels</p>
+  <div class="canvas-wrap">
+    <canvas id="dumbbell"></canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#475569;"></div>
+      <span>Platform-reported (last-click attributed)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626;"></div>
+      <span>Actual incremental conversions</span>
+    </div>
+  </div>
+  <p class="source">Source: Nico Neumann, marketing analytics researcher; aggregated incrementality experiment data, 2025–2026</p>
+</div>
+
+<script>
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const textColor = isDark ? '#94A3B8' : '#475569';
+const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+
+const labels = ['Paid Search', 'Paid Social', 'Display', 'E-commerce Ads', 'Retargeting'];
+const reported = [88, 84, 76, 90, 82];
+const incremental = [69, 58, 51, 76, 63];
+
+// Build a custom dumbbell chart using scatter + annotations
+const data = {
+  datasets: [
+    {
+      label: 'Platform-reported',
+      data: reported.map((v, i) => ({ x: v, y: i })),
+      backgroundColor: '#475569',
+      pointRadius: 10,
+      pointHoverRadius: 12,
+      showLine: false,
+      type: 'scatter',
+    },
+    {
+      label: 'Actual incremental',
+      data: incremental.map((v, i) => ({ x: v, y: i })),
+      backgroundColor: '#DC2626',
+      pointRadius: 10,
+      pointHoverRadius: 12,
+      showLine: false,
+      type: 'scatter',
+    },
+    // Connecting lines (one dataset per channel, using line type)
+    ...reported.map((rep, i) => ({
+      data: [{ x: incremental[i], y: i }, { x: rep, y: i }],
+      borderColor: '#E2E8F0',
+      borderWidth: 2,
+      borderDash: [],
+      pointRadius: 0,
+      type: 'line',
+      label: '',
+      showInLegend: false,
+      fill: false,
+    })),
+  ],
+};
+
+const config = {
+  type: 'scatter',
+  data,
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const name = ctx.dataset.label;
+            if (!name) return null;
+            return `${name}: ${ctx.parsed.x}%`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 30,
+        max: 100,
+        ticks: {
+          callback: v => v + '%',
+          color: textColor,
+          font: { size: 11 }
+        },
+        grid: { color: gridColor },
+        title: {
+          display: true,
+          text: '% of attributed conversions',
+          color: textColor,
+          font: { size: 12 }
+        }
+      },
+      y: {
+        type: 'linear',
+        min: -0.5,
+        max: labels.length - 0.5,
+        ticks: {
+          stepSize: 1,
+          callback: (v) => Number.isInteger(v) ? labels[v] : '',
+          color: textColor,
+          font: { size: 12 },
+        },
+        grid: { display: false },
+      }
+    }
+  }
+};
+
+new Chart(document.getElementById('dumbbell'), config);
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Use in Influencer Marketing: Discovery vs. Detection</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --alarm: #DC2626;
+      --text: #0F172A;
+      --secondary: #475569;
+      --muted: #94A3B8;
+      --mid: #64748B;
+      --bg: #FFFFFF;
+      --grid: #E2E8F0;
+      --border: #E7E5E4;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --text: #F1F5F9;
+        --secondary: #CBD5E1;
+        --muted: #64748B;
+        --bg: #0F172A;
+        --grid: #1E293B;
+        --border: #1E293B;
+      }
+    }
+    :root[data-theme="dark"] {
+      --text: #F1F5F9;
+      --secondary: #CBD5E1;
+      --muted: #64748B;
+      --bg: #0F172A;
+      --grid: #1E293B;
+      --border: #1E293B;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
+    .chart-container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: var(--secondary);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .canvas-wrap {
+      position: relative;
+      height: 320px;
+    }
+    .source {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+    .gap-callout {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--alarm);
+      font-weight: 600;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .gap-callout {
+        background: #1A0000;
+        border-color: #7F1D1D;
+      }
+    }
+    :root[data-theme="dark"] .gap-callout {
+      background: #1A0000;
+      border-color: #7F1D1D;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <h2>AI Use in Influencer Marketing: Discovery vs. Detection</h2>
+    <p class="subtitle">% of marketers using AI for each function — Influencer Marketing Hub Benchmark Report 2026 (n = 3,500+)</p>
+    <div class="canvas-wrap">
+      <canvas id="chart1"></canvas>
+    </div>
+    <div class="gap-callout">
+      5× gap: 36.67% use AI to find creators — only 7.22% use it to catch fakes
+    </div>
+    <p class="source">Source: Influencer Marketing Hub Benchmark Report 2026 · influencermarketinghub.com</p>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('chart1').getContext('2d');
+
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+    const labelColor = isDark ? '#CBD5E1' : '#475569';
+    const textColor = isDark ? '#F1F5F9' : '#0F172A';
+
+    const data = {
+      labels: [
+        'Creator\nDiscovery',
+        'Campaign\nAnalytics',
+        'Content\nCreation',
+        'Audience\nInsights',
+        'Performance\nReporting',
+        'Contract\nManagement',
+        'Fraud\nDetection'
+      ],
+      datasets: [{
+        label: '% Using AI',
+        data: [36.67, 28.4, 22.1, 19.8, 15.3, 9.6, 7.22],
+        backgroundColor: [
+          '#94A3B8',
+          '#94A3B8',
+          '#94A3B8',
+          '#94A3B8',
+          '#94A3B8',
+          '#94A3B8',
+          '#DC2626'
+        ],
+        borderRadius: 4,
+        borderSkipped: false,
+      }]
+    };
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => ` ${ctx.parsed.x.toFixed(2)}%`
+            }
+          }
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            max: 45,
+            ticks: {
+              callback: v => v + '%',
+              color: labelColor,
+              font: { size: 12 }
+            },
+            grid: { color: gridColor },
+            border: { color: gridColor }
+          },
+          y: {
+            ticks: {
+              color: labelColor,
+              font: { size: 12 }
+            },
+            grid: { display: false },
+            border: { display: false }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

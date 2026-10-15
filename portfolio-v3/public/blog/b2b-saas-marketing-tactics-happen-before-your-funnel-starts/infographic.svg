@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#FAFAF9;">
+  <!-- Background -->
+  <rect width="900" height="580" fill="#FAFAF9" rx="8"/>
+
+  <!-- Title area -->
+  <rect x="0" y="0" width="900" height="72" fill="#0F172A" rx="8"/>
+  <rect x="0" y="60" width="900" height="12" fill="#0F172A"/>
+  <text x="450" y="28" text-anchor="middle" fill="#F1F5F9" font-size="17" font-weight="700">The 5 Channels Where B2B Shortlists Are Built</text>
+  <text x="450" y="52" text-anchor="middle" fill="#94A3B8" font-size="11">Where decisions happen before buyers enter any vendor's funnel</text>
+
+  <!-- Central concept label -->
+  <rect x="350" y="90" width="200" height="40" rx="20" fill="#DC2626"/>
+  <text x="450" y="107" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="700">THE DARK FUNNEL</text>
+  <text x="450" y="122" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="9.5">67% of decisions made here</text>
+
+  <!-- Connector lines from center to channels -->
+  <line x1="450" y1="130" x2="165" y2="190" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.4"/>
+  <line x1="450" y1="130" x2="315" y2="240" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.4"/>
+  <line x1="450" y1="130" x2="450" y2="250" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.4"/>
+  <line x1="450" y1="130" x2="590" y2="240" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.4"/>
+  <line x1="450" y1="130" x2="740" y2="190" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.4"/>
+
+  <!-- Channel 1: Peer Communities -->
+  <rect x="60" y="170" width="210" height="160" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="60" y="170" width="210" height="6" rx="10" fill="#DC2626"/>
+  <rect x="60" y="174" width="210" height="2" fill="#DC2626"/>
+  <text x="90" y="204" fill="#DC2626" font-size="22">💬</text>
+  <text x="165" y="203" text-anchor="middle" fill="#0F172A" font-size="13" font-weight="700">Peer Communities</text>
+  <text x="165" y="219" text-anchor="middle" fill="#475569" font-size="9.5">Slack groups, Discord servers,</text>
+  <text x="165" y="232" text-anchor="middle" fill="#475569" font-size="9.5">Pavilion, LinkedIn groups</text>
+  <rect x="78" y="244" width="174" height="1" fill="#E2E8F0"/>
+  <text x="165" y="263" text-anchor="middle" fill="#64748B" font-size="9">What to do:</text>
+  <text x="165" y="279" text-anchor="middle" fill="#0F172A" font-size="9.5" font-weight="600">Be a consistent, named voice</text>
+  <text x="165" y="294" text-anchor="middle" fill="#0F172A" font-size="9.5" font-weight="600">in 2–3 niche communities</text>
+  <text x="165" y="315" text-anchor="middle" fill="#94A3B8" font-size="8.5">Signal: word-of-mouth recommendations</text>
+
+  <!-- Channel 2: AI Research -->
+  <rect x="290" y="222" width="200" height="160" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="290" y="222" width="200" height="6" rx="10" fill="#DC2626"/>
+  <rect x="290" y="226" width="200" height="2" fill="#DC2626"/>
+  <text x="316" y="256" fill="#DC2626" font-size="22">🤖</text>
+  <text x="390" y="255" text-anchor="middle" fill="#0F172A" font-size="13" font-weight="700">AI Research</text>
+  <text x="390" y="271" text-anchor="middle" fill="#475569" font-size="9.5">ChatGPT, Perplexity, Claude,</text>
+  <text x="390" y="284" text-anchor="middle" fill="#475569" font-size="9.5">Gemini — 45% of buyers now use AI</text>
+  <rect x="308" y="296" width="164" height="1" fill="#E2E8F0"/>
+  <text x="390" y="315" text-anchor="middle" fill="#64748B" font-size="9">What to do:</text>
+  <text x="390" y="331" text-anchor="middle" fill="#0F172A" font-size="9.5" font-weight="600">Get cited in third-party content</text>
+  <text x="390" y="346" text-anchor="middle" fill="#0F172A" font-size="9.5" font-weight="600">AI models reference at scale</text>
+  <text x="390" y="367" text-anchor="middle" fill="#94A3B8" font-size="8.5">Signal: AI mentions vendor by name unprompted</text>
+
+  <!-- Channel 3: Peer Reviews -->
+  <rect x="510" y="222" width="200" height="160" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="510" y="222" width="200" height="6" rx="10" fill="#DC2626"/>
+  <rect x="510" y="226" width="200" height="2" fill="#DC2626"/>
+  <text x="536" y="256" fill="#DC2626" font-size="22">⭐</text>
+  <text x="610" y="255" text-anchor="middle" fill="#0F172A" font-size="13" font-weight="700">Peer Reviews</text>
+  <text x="610" y="271" text-anchor="middle" fill="#475569" font-size="9.5">G2, Capterra, TrustRadius,</text>
+  <text x="610" y="284" text-anchor="middle" fill="#475569" font-size="9.5">Product Hunt, Reddit threads</text>
+  <rect x="528" y="296" width="164" height="1" fill="#E2E8F0"/>
+  <text x="610" y="315" text-anchor="middle" fill="#64748B" font-size="9">What to do:</text>
+  <text x="610" y="331" text-anchor="middle" fill="#0F172A" font-size="9.5" font-weight="600">Systematically surface happy</text>
+  <text x="610" y="346" text-anchor="middle" fill="#0F172A" font-size="9.5" font-weight="600">customers to review sites</text>
+  <text x="610" y="367" text-anchor="middle" fill="#94A3B8" font-size="8.5">Signal: branded searches + review page traffic</text>
+
+  <!-- Channel 4: Dark Social / LinkedIn DMs -->
+  <rect x="720" y="170" width="125" height="160" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="720" y="170" width="125" height="6" rx="10" fill="#475569"/>
+  <rect x="720" y="174" width="125" height="2" fill="#475569"/>
+  <text x="753" y="204" fill="#475569" font-size="20">📩</text>
+  <text x="782" y="203" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Dark Social</text>
+  <text x="782" y="219" text-anchor="middle" fill="#475569" font-size="9">LinkedIn DMs,</text>
+  <text x="782" y="232" text-anchor="middle" fill="#475569" font-size="9">private shares, email</text>
+  <rect x="734" y="244" width="97" height="1" fill="#E2E8F0"/>
+  <text x="782" y="261" text-anchor="middle" fill="#64748B" font-size="8.5">What to do:</text>
+  <text x="782" y="276" text-anchor="middle" fill="#0F172A" font-size="9" font-weight="600">Publish content so</text>
+  <text x="782" y="290" text-anchor="middle" fill="#0F172A" font-size="9" font-weight="600">shareable it travels</text>
+  <text x="782" y="304" text-anchor="middle" fill="#0F172A" font-size="9" font-weight="600">through dark channels</text>
+  <text x="782" y="320" text-anchor="middle" fill="#94A3B8" font-size="8">Signal: direct traffic spikes</text>
+
+  <!-- Channel 5: Executive Content -->
+  <rect x="60" y="350" width="780" height="70" rx="10" fill="#0F172A"/>
+  <text x="90" y="375" fill="#DC2626" font-size="18">🎙️</text>
+  <text x="120" y="374" fill="#F1F5F9" font-size="13" font-weight="700">Channel 5: Executive & Founder Voice</text>
+  <text x="120" y="393" fill="#94A3B8" font-size="9.5">Podcasts, YouTube, newsletter, LinkedIn posts — consistent POV content builds brand recall before any search begins</text>
+  <text x="720" y="374" fill="#64748B" font-size="9" text-anchor="end">Direct traffic at HubSpot: 71.6%</text>
+  <text x="720" y="393" fill="#64748B" font-size="9" text-anchor="end">Direct traffic at Gong: 72.1%</text>
+
+  <!-- Flow arrow: dark funnel → visible funnel -->
+  <rect x="200" y="440" width="500" height="58" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="450" y="462" text-anchor="middle" fill="#0F172A" font-size="12" font-weight="700">Then: The Buyer Enters Your Funnel — Already Decided</text>
+  <text x="450" y="480" text-anchor="middle" fill="#475569" font-size="9.5">They fill out a form, book a demo, or start a trial. Your CRM says "inbound."</text>
+  <text x="450" y="494" text-anchor="middle" fill="#DC2626" font-size="9.5">The real acquisition happened 3 months ago, in channels you never tracked.</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="540" width="900" height="40" fill="#F1F5F9" rx="8"/>
+  <rect x="0" y="540" width="900" height="4" fill="#F1F5F9"/>
+  <text x="450" y="565" text-anchor="middle" fill="#94A3B8" font-size="9.5">Source: Gartner B2B Buyer Survey 2026 · McKinsey B2B Pulse 2024 · Forrester Predictions 2025 · Similarweb 2026</text>
+</svg>

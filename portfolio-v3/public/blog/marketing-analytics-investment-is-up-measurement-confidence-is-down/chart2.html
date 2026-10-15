@@ -1,0 +1,200 @@
+<title>Marketing Measurement: Investment vs. Confidence Gap</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --sub: #475569;
+    --muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --border: #E7E5E4;
+    --ground: #FAFAF9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --sub: #94A3B8;
+      --muted: #64748B;
+      --grid: #1E293B;
+      --border: #334155;
+      --ground: #0F172A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --sub: #94A3B8;
+    --muted: #64748B;
+    --grid: #1E293B;
+    --border: #334155;
+    --ground: #0F172A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 32px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  p.sub {
+    font-size: 0.85rem;
+    color: var(--sub);
+    margin-bottom: 28px;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+  }
+  canvas { max-width: 100%; }
+  .source {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .legend-note {
+    font-size: 0.78rem;
+    color: var(--sub);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+  .legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+</style>
+
+<h2>% Investing in Each Method vs. % Who Trust What It Tells Them</h2>
+<p class="sub">Lollipop chart — US buy-side marketers, 2024–2026 combined surveys</p>
+
+<div class="chart-wrap">
+  <canvas id="chart2" height="280"></canvas>
+</div>
+
+<div class="legend-note">
+  <span class="legend-dot" style="background:#DC2626;"></span> Investing or plan to invest &nbsp;&nbsp;
+  <span class="legend-dot" style="background:#475569;"></span> Express high confidence in accuracy
+</div>
+
+<p class="source">Sources: eMarketer/TransUnion (2025) for investment intent; eMarketer/Snap n=282 (2024) for last-click confidence; IAB State of Data 2026 for triangulated-stack adoption. "Full stack" = MMM + incrementality + attribution together.</p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<script>
+const isDark = document.documentElement.dataset.theme === 'dark' ||
+  (!document.documentElement.dataset.theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+const textColor = isDark ? '#F1F5F9' : '#0F172A';
+const subColor = isDark ? '#94A3B8' : '#475569';
+const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+
+const categories = [
+  'Marketing Mix Modeling',
+  'Incrementality Testing',
+  'Last-Click Attribution',
+  'Full Triangulated Stack',
+];
+const investData  = [46.9, 36.2, 78.4, 39.0];
+const confidData  = [null, null, 21.5, null]; // only last-click has a published confidence figure
+
+const ctx = document.getElementById('chart2').getContext('2d');
+
+// Custom lollipop plugin
+const lollipopPlugin = {
+  id: 'lollipopPlugin',
+  afterDatasetsDraw(chart) {
+    const { ctx, data, chartArea } = chart;
+    chart.data.datasets.forEach((ds, di) => {
+      const meta = chart.getDatasetMeta(di);
+      meta.data.forEach((pt, i) => {
+        const x = pt.x;
+        const y = pt.y;
+        const base = chart.scales.x.getPixelForValue(0);
+        ctx.save();
+        ctx.strokeStyle = ds.backgroundColor;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(base, y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.restore();
+      });
+    });
+  }
+};
+
+Chart.register(lollipopPlugin);
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: categories,
+    datasets: [
+      {
+        label: '% Investing',
+        data: investData,
+        backgroundColor: '#DC2626',
+        borderRadius: 12,
+        barThickness: 3,
+        base: 0,
+      },
+      {
+        label: '% High Confidence',
+        data: confidData,
+        backgroundColor: '#475569',
+        borderRadius: 12,
+        barThickness: 3,
+        base: 0,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.raw !== null ? `${ctx.dataset.label}: ${ctx.raw}%` : 'No data'
+        },
+        backgroundColor: isDark ? '#1E293B' : '#FFFFFF',
+        titleColor: textColor,
+        bodyColor: subColor,
+        borderColor: gridColor,
+        borderWidth: 1,
+      }
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 100,
+        grid: { color: gridColor },
+        ticks: { color: subColor, font: { size: 11 }, callback: v => `${v}%` }
+      },
+      y: {
+        grid: { color: 'transparent' },
+        ticks: {
+          color: subColor,
+          font: { size: 12 },
+        }
+      }
+    }
+  }
+});
+
+// Draw circles at end of bars (lollipop heads)
+document.getElementById('chart2').addEventListener('animationcomplete', () => {});
+</script>

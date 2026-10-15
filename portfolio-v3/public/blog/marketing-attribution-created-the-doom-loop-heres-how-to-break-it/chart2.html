@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Spend Shift: Acquisition vs. Loyalty 2022–2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px 20px;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0F172A; }
+    .chart-title { color: #F8FAFC; }
+    .chart-subtitle { color: #94A3B8; }
+    .chart-source { color: #64748B; }
+    .legend-label { color: #CBD5E1; }
+    .annotation { color: #94A3B8; }
+  }
+  :root[data-theme="dark"] body { background: #0F172A; }
+  :root[data-theme="dark"] .chart-title { color: #F8FAFC; }
+  :root[data-theme="dark"] .chart-subtitle { color: #94A3B8; }
+  :root[data-theme="dark"] .chart-source { color: #64748B; }
+  :root[data-theme="dark"] .legend-label { color: #CBD5E1; }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 640px;
+  }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .canvas-wrap {
+    overflow-x: auto;
+  }
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend-swatch {
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+  }
+  .legend-label {
+    font-size: 12px;
+    color: #0F172A;
+  }
+  .callout-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .callout {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border: 1px solid #E7E5E4;
+  }
+  .callout-num {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .callout-label {
+    font-size: 11px;
+    color: #64748B;
+    line-height: 1.4;
+  }
+  .chart-source {
+    font-size: 11px;
+    color: #94A3B8;
+    border-top: 1px solid #E2E8F0;
+    padding-top: 12px;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrapper">
+  <div class="chart-title">Where CMOs Put Their Media Budget: Acquisition vs. Loyalty (2022–2026)</div>
+  <div class="chart-subtitle">As last-touch attribution rewards acquisition channels, spend on awareness and conversion has grown while loyalty investment collapses</div>
+
+  <div class="callout-row">
+    <div class="callout">
+      <div class="callout-num" style="color:#DC2626;">62.6%</div>
+      <div class="callout-label">of total media spend now goes to awareness and conversion (2026)</div>
+    </div>
+    <div class="callout">
+      <div class="callout-num" style="color:#0F172A;">-29%</div>
+      <div class="callout-label">decline in loyalty and retention spend since 2024</div>
+    </div>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="areaChart" width="600" height="320"></canvas>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#DC2626;"></div>
+      <span class="legend-label">Awareness + Conversion (% of media spend)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#94A3B8;"></div>
+      <span class="legend-label">Loyalty + Retention (% of media spend)</span>
+    </div>
+  </div>
+
+  <div class="chart-source">Source: Gartner 2026 CMO Spend Survey, 401 CMOs, Jan–March 2026. Year estimates for 2022–2024 are back-calculated from the reported 10%+ rise in awareness/conversion since 2024 and 29% decline in loyalty spend since 2024.</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const labels = ['2022', '2023', '2024', '2025', '2026'];
+  const acquisitionData = [49, 51, 52, 57, 62.6];
+  const loyaltyData = [26, 24, 21, 17, 14.9];
+
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    || document.documentElement.getAttribute('data-theme') === 'dark';
+
+  const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+  const labelColor = isDark ? '#94A3B8' : '#475569';
+
+  const ctx = document.getElementById('areaChart').getContext('2d');
+
+  const acqGrad = ctx.createLinearGradient(0, 0, 0, 320);
+  acqGrad.addColorStop(0, 'rgba(220,38,38,0.22)');
+  acqGrad.addColorStop(1, 'rgba(220,38,38,0.02)');
+
+  const loyGrad = ctx.createLinearGradient(0, 0, 0, 320);
+  loyGrad.addColorStop(0, 'rgba(148,163,184,0.2)');
+  loyGrad.addColorStop(1, 'rgba(148,163,184,0.02)');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Awareness + Conversion',
+          data: acquisitionData,
+          borderColor: '#DC2626',
+          backgroundColor: acqGrad,
+          borderWidth: 2.5,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 4,
+          pointBackgroundColor: '#DC2626',
+        },
+        {
+          label: 'Loyalty + Retention',
+          data: loyaltyData,
+          borderColor: '#94A3B8',
+          backgroundColor: loyGrad,
+          borderWidth: 2,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 4,
+          pointBackgroundColor: '#94A3B8',
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              return ' ' + ctx.dataset.label + ': ' + ctx.raw + '%';
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          min: 0,
+          max: 80,
+          grid: { color: gridColor },
+          ticks: {
+            color: labelColor,
+            callback: val => val + '%',
+            font: { size: 11 }
+          },
+          border: { display: false }
+        },
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: labelColor,
+            font: { size: 12, weight: '600' }
+          },
+          border: { display: false }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paid CTR Collapse: Queries With vs Without AI Overviews</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --accent: #DC2626;
+    --border: #E2E8F0;
+    --card-border: #E7E5E4;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    padding: 32px 24px 24px;
+    color: var(--text);
+  }
+  .chart-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 28px 28px 20px;
+    background: var(--bg);
+  }
+  .chart-title { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; }
+  .chart-subtitle { font-size: 12px; color: var(--text-secondary); margin-top: 4px; line-height: 1.4; margin-bottom: 16px; }
+  .legend { display: flex; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+  canvas { width: 100% !important; }
+  .annotation {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .source { font-size: 10px; color: var(--text-muted); margin-top: 12px; text-align: right; }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <div class="chart-title">Paid CTR Collapsed 68% Where AI Overviews Appeared</div>
+  <div class="chart-subtitle">Average paid search click-through rate, June 2024 vs. September 2025 — queries with and without AI Overviews</div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626"></div>
+      With AI Overview
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#94A3B8"></div>
+      Without AI Overview
+    </div>
+  </div>
+  <canvas id="chart" height="300"></canvas>
+  <div class="annotation">AI Overview queries lost 13.36 percentage points of paid CTR in 15 months</div>
+  <div class="source">Source: Seer Interactive, September 2025 — 3,119 queries across 42 client accounts (June 2024 – Sept 2025)</div>
+</div>
+
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+
+// Dumbbell / lollipop chart using a custom chart type
+// We'll use a horizontal bar chart with floating bars to simulate dumbbells
+
+const categories = ['With AI Overview', 'Without AI Overview'];
+const june2024 = [19.70, 19.10];
+const sept2025 = [6.34, 13.04];
+const drops = ['–68%', '–32%'];
+
+// Draw custom dumbbell
+function drawDumbbells(chart) {
+  const ctx = chart.ctx;
+  const meta0 = chart.getDatasetMeta(0);
+  const meta1 = chart.getDatasetMeta(1);
+
+  ctx.save();
+  meta0.data.forEach((point, i) => {
+    const x0 = point.x;
+    const x1 = meta1.data[i].x;
+    const y = point.y;
+
+    // Line connecting dots
+    ctx.beginPath();
+    ctx.strokeStyle = i === 0 ? '#FECACA' : '#E2E8F0';
+    ctx.lineWidth = 3;
+    ctx.moveTo(Math.min(x0, x1), y);
+    ctx.lineTo(Math.max(x0, x1), y);
+    ctx.stroke();
+  });
+  ctx.restore();
+}
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: categories,
+    datasets: [
+      {
+        label: 'June 2024',
+        data: june2024,
+        backgroundColor: '#94A3B8',
+        borderRadius: 100,
+        barThickness: 10,
+      },
+      {
+        label: 'September 2025',
+        data: sept2025,
+        backgroundColor: (ctx) => ctx.dataIndex === 0 ? '#DC2626' : '#64748B',
+        borderRadius: 100,
+        barThickness: 10,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+          color: '#475569',
+          font: { size: 11, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' },
+          boxWidth: 10,
+          padding: 16,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` CTR: ${ctx.parsed.x.toFixed(2)}%`,
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#fff',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        cornerRadius: 6,
+      },
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 24,
+        grid: { color: '#E2E8F0', drawBorder: false },
+        ticks: {
+          color: '#475569',
+          font: { size: 12, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' },
+          callback: v => `${v}%`,
+          stepSize: 4,
+        },
+        border: { display: false },
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: '#0F172A', font: { size: 13, weight: '600', family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' } },
+        border: { display: false },
+      }
+    },
+    layout: { padding: { right: 24, top: 8 } },
+    animation: { onComplete: (e) => drawDumbbells(e.chart) },
+  },
+  plugins: [{
+    id: 'drawLines',
+    afterDatasetsDraw: (chart) => drawDumbbells(chart),
+  }, {
+    id: 'dropLabels',
+    afterDatasetsDraw: (chart) => {
+      const ctx = chart.ctx;
+      const meta0 = chart.getDatasetMeta(0);
+      const meta1 = chart.getDatasetMeta(1);
+      ctx.save();
+      ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+      ctx.fillStyle = '#0F172A';
+      meta0.data.forEach((point, i) => {
+        const x0 = point.x;
+        const x1 = meta1.data[i].x;
+        const midX = (x0 + x1) / 2;
+        const y = point.y - 14;
+        ctx.textAlign = 'center';
+        ctx.fillStyle = i === 0 ? '#DC2626' : '#64748B';
+        ctx.fillText(drops[i], midX, y);
+      });
+      ctx.restore();
+    }
+  }]
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rep-Free Preference Rising as Big-Ticket Self-Serve Confidence Falls</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  .chart-wrap {
+    max-width: 620px;
+    margin: 40px auto;
+    padding: 24px;
+    border: 1px solid #E7E5E4;
+    border-radius: 8px;
+    background: #FFFFFF;
+  }
+  h2 {
+    font-size: 17px;
+    color: #0F172A;
+    margin: 0 0 4px;
+  }
+  p.sub {
+    font-size: 13px;
+    color: #64748B;
+    margin: 0 0 16px;
+  }
+  p.source {
+    font-size: 12px;
+    color: #94A3B8;
+    margin: 16px 0 0;
+  }
+</style>
+</head>
+<body>
+  <div class="chart-wrap">
+    <h2>Two Lines Moving in Opposite Directions</h2>
+    <p class="sub">Share of B2B buyers preferring a rep-free experience vs. share of digitally confident "Seeker" buyers willing to self-serve a $500K+ purchase</p>
+    <canvas id="divergeLine" width="572" height="340"></canvas>
+    <p class="source">Sources: Gartner 2026 sales survey (646 buyers); McKinsey 2026 Global B2B Pulse Survey (nearly 4,000 decision makers, 13 countries)</p>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('divergeLine').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2025', '2026'],
+        datasets: [
+          {
+            label: 'Prefer a rep-free experience',
+            data: [61, 67],
+            borderColor: '#DC2626',
+            backgroundColor: '#DC2626',
+            tension: 0.3,
+            pointRadius: 5,
+            borderWidth: 3
+          },
+          {
+            label: 'Seekers willing to self-serve a $500K+ purchase',
+            data: [69, 61],
+            borderColor: '#94A3B8',
+            backgroundColor: '#94A3B8',
+            tension: 0.3,
+            pointRadius: 5,
+            borderWidth: 3,
+            borderDash: [6, 4]
+          }
+        ]
+      },
+      options: {
+        responsive: false,
+        scales: {
+          y: {
+            min: 50,
+            max: 75,
+            ticks: {
+              color: '#475569',
+              callback: (v) => v + '%'
+            },
+            grid: { color: '#E2E8F0' }
+          },
+          x: {
+            ticks: { color: '#475569' },
+            grid: { color: '#E2E8F0' }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#475569',
+              font: { size: 12 }
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: (item) => item.dataset.label + ': ' + item.raw + '%'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

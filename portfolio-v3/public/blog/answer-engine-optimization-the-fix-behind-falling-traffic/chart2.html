@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic CTR: The Citation Gap</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --mid: #64748B;
+    --gridline: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --mid: #94A3B8;
+      --gridline: #1E293B;
+      --border: #334155;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --mid: #94A3B8;
+    --gridline: #1E293B;
+    --border: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+  .chart-wrap { max-width: 680px; margin: 0 auto; }
+  .chart-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+  .chart-subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.5; }
+  .canvas-wrap { width: 100%; overflow-x: auto; }
+  canvas { display: block; max-width: 100%; }
+  .source { margin-top: 14px; font-size: 11px; color: var(--text-muted); }
+  .source a { color: var(--text-muted); text-decoration: underline; }
+  .legend { display: flex; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <div class="chart-title">The Citation Gap: Organic CTR by Query Scenario</div>
+  <div class="chart-subtitle">Where your ranking falls in an AI Overview environment determines how many clicks actually reach your site</div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#94A3B8"></div>No AI Overview present (baseline)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#64748B"></div>AI Overview present, not cited</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#DC2626"></div>Cited inside AI Overview</div>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="c" height="300"></canvas>
+  </div>
+  <div class="source">
+    Sources: <a href="https://www.seerinteractive.com/insights/aio-impact-on-google-ctr-september-2025-update" target="_blank">Seer Interactive</a> (Sept 2025), 3,119 queries / 42 orgs / 25.1M impressions &bull; +35% citation premium is correlated, not proven causal
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+(function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+    (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  var textColor   = isDark ? '#F8FAFC' : '#0F172A';
+  var secondColor = isDark ? '#CBD5E1' : '#475569';
+  var mutedColor  = isDark ? '#64748B' : '#94A3B8';
+  var gridColor   = isDark ? '#1E293B' : '#E2E8F0';
+  var bgColor     = isDark ? '#0F172A' : '#FFFFFF';
+
+  // Lollipop via scatter + line combination
+  var labels = ['#1 rank,\nno AIO', '#1 rank,\nAIO present\n(not cited)', 'Cited in\nAIO'];
+  var values = [1.76, 0.61, 0.82]; // 0.61 × 1.35 ≈ 0.82 for cited
+
+  var dotColors = ['#94A3B8', '#64748B', '#DC2626'];
+
+  var ctx = document.getElementById('c').getContext('2d');
+
+  // Draw lollipop manually with a bar (stem) + scatter (head)
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          // stems (bars)
+          label: 'Organic CTR (%)',
+          data: values,
+          backgroundColor: dotColors,
+          borderColor: dotColors,
+          borderWidth: 0,
+          borderRadius: 0,
+          barThickness: 4,
+        },
+        {
+          // heads (scatter dots drawn via pointRadius trick on a line chart)
+          type: 'scatter',
+          label: '_dots',
+          data: values.map(function(v, i) { return { x: i, y: v }; }),
+          pointBackgroundColor: dotColors,
+          pointBorderColor: bgColor,
+          pointBorderWidth: 2,
+          pointRadius: 10,
+          showLine: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          filter: function(item) { return item.datasetIndex === 0; },
+          callbacks: {
+            label: function(ctx) { return ctx.raw.toFixed(2) + '% CTR'; }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'category',
+          grid: { display: false },
+          border: { display: false },
+          ticks: { color: textColor, font: { size: 13 } }
+        },
+        y: {
+          min: 0,
+          max: 2.2,
+          grid: { color: gridColor },
+          border: { color: gridColor },
+          ticks: {
+            color: mutedColor,
+            callback: function(v) { return v.toFixed(2) + '%'; },
+            font: { size: 12 }
+          },
+          title: {
+            display: true,
+            text: 'Organic click-through rate',
+            color: secondColor,
+            font: { size: 12 }
+          }
+        }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

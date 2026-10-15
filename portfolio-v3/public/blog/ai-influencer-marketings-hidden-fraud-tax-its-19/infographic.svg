@@ -1,0 +1,120 @@
+<svg viewBox="0 0 720 820" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif">
+  <!-- Background -->
+  <rect width="720" height="820" fill="#FAFAF9" rx="12"/>
+
+  <!-- Title block -->
+  <rect x="0" y="0" width="720" height="96" fill="#0F172A" rx="12"/>
+  <rect x="0" y="72" width="720" height="24" fill="#0F172A"/>
+  <text x="360" y="38" text-anchor="middle" fill="#F1F5F9" font-size="20" font-weight="700">The Influencer Procurement Audit Framework</text>
+  <text x="360" y="66" text-anchor="middle" fill="#94A3B8" font-size="13">Moving fraud detection from campaign audit to procurement gate</text>
+
+  <!-- Phase labels: left side -->
+  <text x="36" y="148" fill="#475569" font-size="11" font-weight="600" letter-spacing="1">CURRENT STATE</text>
+  <text x="36" y="460" fill="#475569" font-size="11" font-weight="600" letter-spacing="1">FIXED STATE</text>
+
+  <!-- ====== CURRENT STATE: 3 boxes in sequence ====== -->
+  <!-- Box 1: Discovery -->
+  <rect x="36" y="160" width="180" height="80" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="126" y="193" text-anchor="middle" fill="#0F172A" font-size="14" font-weight="700">AI Discovery</text>
+  <text x="126" y="213" text-anchor="middle" fill="#475569" font-size="12">36.67% adoption</text>
+  <text x="126" y="229" text-anchor="middle" fill="#94A3B8" font-size="11">Scans 50K profiles</text>
+
+  <!-- Arrow 1 -->
+  <line x1="216" y1="200" x2="260" y2="200" stroke="#94A3B8" stroke-width="1.5"/>
+  <polygon points="260,195 270,200 260,205" fill="#94A3B8"/>
+
+  <!-- Box 2: Rate negotiation -->
+  <rect x="270" y="160" width="180" height="80" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="360" y="193" text-anchor="middle" fill="#0F172A" font-size="14" font-weight="700">Rate Negotiation</text>
+  <text x="360" y="213" text-anchor="middle" fill="#475569" font-size="12">On media kit numbers</text>
+  <text x="360" y="229" text-anchor="middle" fill="#94A3B8" font-size="11">Unaudited reach claims</text>
+
+  <!-- Arrow 2 -->
+  <line x1="450" y1="200" x2="494" y2="200" stroke="#94A3B8" stroke-width="1.5"/>
+  <polygon points="494,195 504,200 494,205" fill="#94A3B8"/>
+
+  <!-- Box 3: Campaign runs -->
+  <rect x="504" y="160" width="180" height="80" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="594" y="193" text-anchor="middle" fill="#0F172A" font-size="14" font-weight="700">Campaign Runs</text>
+  <text x="594" y="213" text-anchor="middle" fill="#475569" font-size="12">Fraud audit post-spend</text>
+  <text x="594" y="229" text-anchor="middle" fill="#94A3B8" font-size="11">Too late to recover</text>
+
+  <!-- Problem callout -->
+  <rect x="36" y="256" width="648" height="48" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+  <text x="360" y="278" text-anchor="middle" fill="#DC2626" font-size="13" font-weight="700">Result: 19.2% of spend reaches non-existent audiences — $192K wasted per $1M</text>
+  <text x="360" y="296" text-anchor="middle" fill="#DC2626" font-size="12">(WFA cross-market study, Sept 2026 · 1,400 senior marketers · 28 countries)</text>
+
+  <!-- Divider -->
+  <line x1="36" y1="334" x2="684" y2="334" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="6 4"/>
+
+  <!-- Consumer trust callout -->
+  <rect x="36" y="348" width="648" height="94" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="360" y="375" text-anchor="middle" fill="#0F172A" font-size="14" font-weight="700">Consumer Trust Is Eroding Across the Entire Category</text>
+  <text x="36" y="375" fill="transparent" font-size="1"> </text>
+
+  <!-- 3 stat columns inside callout -->
+  <text x="150" y="402" text-anchor="middle" fill="#DC2626" font-size="24" font-weight="800">73%</text>
+  <text x="150" y="420" text-anchor="middle" fill="#475569" font-size="11">less likely to trust</text>
+  <text x="150" y="434" text-anchor="middle" fill="#475569" font-size="11">AI-suspected ads</text>
+
+  <line x1="288" y1="366" x2="288" y2="432" stroke="#E2E8F0" stroke-width="1"/>
+
+  <text x="360" y="402" text-anchor="middle" fill="#DC2626" font-size="24" font-weight="800">78%</text>
+  <text x="360" y="420" text-anchor="middle" fill="#475569" font-size="11">say AI makes ads</text>
+  <text x="360" y="434" text-anchor="middle" fill="#475569" font-size="11">feel less authentic</text>
+
+  <line x1="432" y1="366" x2="432" y2="432" stroke="#E2E8F0" stroke-width="1"/>
+
+  <text x="570" y="402" text-anchor="middle" fill="#DC2626" font-size="24" font-weight="800">50%</text>
+  <text x="570" y="420" text-anchor="middle" fill="#475569" font-size="11">Gen Z unfollowed</text>
+  <text x="570" y="434" text-anchor="middle" fill="#475569" font-size="11">suspected AI accounts</text>
+
+  <text x="360" y="455" text-anchor="middle" fill="#94A3B8" font-size="10">Source: Harris Poll 2026</text>
+
+  <!-- ====== FIXED STATE: 4 step vertical flow ====== -->
+  <!-- Step 1 -->
+  <rect x="36" y="472" width="648" height="62" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <circle cx="72" cy="503" r="18" fill="#0F172A"/>
+  <text x="72" y="508" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="800">1</text>
+  <text x="106" y="496" fill="#0F172A" font-size="14" font-weight="700">AI Discovery (unchanged)</text>
+  <text x="106" y="516" fill="#475569" font-size="12">Scan at volume using existing tools — this part works fine</text>
+  <rect x="558" y="483" width="112" height="28" rx="4" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="614" y="501" text-anchor="middle" fill="#15803D" font-size="11" font-weight="600">No change needed</text>
+
+  <!-- Arrow down 1 -->
+  <line x1="360" y1="534" x2="360" y2="554" stroke="#94A3B8" stroke-width="1.5"/>
+  <polygon points="355,554 360,564 365,554" fill="#94A3B8"/>
+
+  <!-- Step 2 -->
+  <rect x="36" y="566" width="648" height="62" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <circle cx="72" cy="597" r="18" fill="#0F172A"/>
+  <text x="72" y="602" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="800">2</text>
+  <text x="106" y="590" fill="#0F172A" font-size="14" font-weight="700">Separate Vendor Audience Audit (new gate)</text>
+  <text x="106" y="610" fill="#475569" font-size="12">Third party tool verifies follower authenticity — NOT the same vendor as discovery</text>
+  <rect x="558" y="577" width="112" height="28" rx="4" fill="#FEF3C7" stroke="#FDE68A" stroke-width="1"/>
+  <text x="614" y="595" text-anchor="middle" fill="#92400E" font-size="11" font-weight="600">Critical change</text>
+
+  <!-- Arrow down 2 -->
+  <line x1="360" y1="628" x2="360" y2="648" stroke="#94A3B8" stroke-width="1.5"/>
+  <polygon points="355,648 360,658 365,648" fill="#94A3B8"/>
+
+  <!-- Step 3 -->
+  <rect x="36" y="660" width="648" height="62" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <circle cx="72" cy="691" r="18" fill="#0F172A"/>
+  <text x="72" y="696" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="800">3</text>
+  <text x="106" y="684" fill="#0F172A" font-size="14" font-weight="700">Rate Negotiation on Audited Numbers Only</text>
+  <text x="106" y="704" fill="#475569" font-size="12">Requires verification before any budget commitment — eliminates inflated reach claims</text>
+  <rect x="558" y="671" width="112" height="28" rx="4" fill="#FEF3C7" stroke="#FDE68A" stroke-width="1"/>
+  <text x="614" y="689" text-anchor="middle" fill="#92400E" font-size="11" font-weight="600">Critical change</text>
+
+  <!-- Arrow down 3 -->
+  <line x1="360" y1="722" x2="360" y2="742" stroke="#94A3B8" stroke-width="1.5"/>
+  <polygon points="355,742 360,752 365,742" fill="#94A3B8"/>
+
+  <!-- Step 4 -->
+  <rect x="36" y="754" width="648" height="48" rx="8" fill="#0F172A" stroke="#0F172A" stroke-width="1.5"/>
+  <circle cx="72" cy="778" r="18" fill="#DC2626"/>
+  <text x="72" y="783" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="800">4</text>
+  <text x="106" y="772" fill="#F1F5F9" font-size="14" font-weight="700">Campaign Runs on Verified Reach</text>
+  <text x="106" y="791" fill="#94A3B8" font-size="12">Fraud exposure is a procurement metric — measured before spend, not after</text>
+</svg>

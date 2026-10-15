@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 980" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#FAFAF9;">
+
+  <!-- Background -->
+  <rect width="800" height="980" fill="#FAFAF9"/>
+
+  <!-- Title Block -->
+  <rect x="40" y="30" width="720" height="80" rx="8" fill="#0F172A"/>
+  <text x="400" y="67" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="-0.3">How to Invert Your Email Program</text>
+  <text x="400" y="92" text-anchor="middle" font-size="12" fill="#94A3B8">A framework for shifting effort from campaigns to behavioral automation</text>
+
+  <!-- CURRENT STATE label -->
+  <text x="400" y="148" text-anchor="middle" font-size="11" font-weight="600" fill="#94A3B8" letter-spacing="1.5">CURRENT STATE (most programs)</text>
+
+  <!-- Current State: Two Columns -->
+  <!-- Left: Campaigns box -->
+  <rect x="56" y="162" width="310" height="150" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="56" y="162" width="310" height="32" rx="8" fill="#E2E8F0"/>
+  <rect x="56" y="186" width="310" height="8" fill="#E2E8F0"/>
+  <text x="211" y="182" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">Campaign Emails</text>
+  <text x="211" y="216" text-anchor="middle" font-size="28" font-weight="800" fill="#0F172A">70–80%</text>
+  <text x="211" y="238" text-anchor="middle" font-size="11" fill="#475569">of team time &amp; budget</text>
+  <line x1="76" y1="255" x2="346" y2="255" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="211" y="276" text-anchor="middle" font-size="11" fill="#DC2626">generates $0.11 per send</text>
+  <text x="211" y="295" text-anchor="middle" font-size="10" fill="#94A3B8">59% of send volume → 59% of revenue</text>
+
+  <!-- Right: Flows box -->
+  <rect x="434" y="162" width="310" height="150" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="434" y="162" width="310" height="32" rx="8" fill="#FAFAF9"/>
+  <rect x="434" y="186" width="310" height="8" fill="#FAFAF9"/>
+  <text x="589" y="182" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">Behavioral Flows</text>
+  <text x="589" y="216" text-anchor="middle" font-size="28" font-weight="800" fill="#0F172A">20–30%</text>
+  <text x="589" y="238" text-anchor="middle" font-size="11" fill="#475569">of team time &amp; budget</text>
+  <line x1="454" y1="255" x2="724" y2="255" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="589" y="276" text-anchor="middle" font-size="11" fill="#0F172A">generates $1.94 per send</text>
+  <text x="589" y="295" text-anchor="middle" font-size="10" fill="#94A3B8">5.3% of send volume → 41% of revenue</text>
+
+  <!-- Arrow Down: Inversion -->
+  <text x="400" y="356" text-anchor="middle" font-size="11" font-weight="600" fill="#DC2626" letter-spacing="1.5">INVERT YOUR EFFORT ALLOCATION</text>
+  <line x1="400" y1="330" x2="400" y2="365" stroke="#DC2626" stroke-width="2"/>
+  <polygon points="400,372 394,360 406,360" fill="#DC2626"/>
+
+  <!-- TARGET STATE label -->
+  <text x="400" y="410" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A" letter-spacing="1.5">TARGET STATE</text>
+
+  <!-- Target: Flows (primary) -->
+  <rect x="56" y="424" width="688" height="180" rx="8" fill="#FFFFFF" stroke="#DC2626" stroke-width="2"/>
+  <rect x="56" y="424" width="688" height="38" rx="8" fill="#DC2626"/>
+  <rect x="56" y="454" width="688" height="8" fill="#DC2626"/>
+  <text x="400" y="448" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">PRIMARY INVESTMENT: Behavioral Automation Layer</text>
+
+  <!-- 5 flow types in a row -->
+  <rect x="72" y="476" width="118" height="112" rx="6" fill="#FAFAF9" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="131" y="502" text-anchor="middle" font-size="18">📬</text>
+  <text x="131" y="522" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Welcome Flow</text>
+  <text x="131" y="540" text-anchor="middle" font-size="9" fill="#64748B">Adapts to</text>
+  <text x="131" y="554" text-anchor="middle" font-size="9" fill="#64748B">acquisition source</text>
+  <text x="131" y="572" text-anchor="middle" font-size="10" font-weight="600" fill="#DC2626">Build first</text>
+
+  <rect x="204" y="476" width="118" height="112" rx="6" fill="#FAFAF9" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="263" y="502" text-anchor="middle" font-size="18">🛒</text>
+  <text x="263" y="522" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Cart Abandon</text>
+  <text x="263" y="540" text-anchor="middle" font-size="9" fill="#64748B">3-touch minimum</text>
+  <text x="263" y="554" text-anchor="middle" font-size="9" fill="#64748B">highest ROI flow</text>
+  <text x="263" y="572" text-anchor="middle" font-size="10" font-weight="600" fill="#DC2626">Build second</text>
+
+  <rect x="336" y="476" width="118" height="112" rx="6" fill="#FAFAF9" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="395" y="502" text-anchor="middle" font-size="18">👁</text>
+  <text x="395" y="522" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Browse Abandon</text>
+  <text x="395" y="540" text-anchor="middle" font-size="9" fill="#64748B">Category-specific</text>
+  <text x="395" y="554" text-anchor="middle" font-size="9" fill="#64748B">high-intent trigger</text>
+  <text x="395" y="572" text-anchor="middle" font-size="10" font-weight="600" fill="#DC2626">Build third</text>
+
+  <rect x="468" y="476" width="118" height="112" rx="6" fill="#FAFAF9" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="527" y="502" text-anchor="middle" font-size="18">📦</text>
+  <text x="527" y="522" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Post-Purchase</text>
+  <text x="527" y="540" text-anchor="middle" font-size="9" fill="#64748B">Crosssell by</text>
+  <text x="527" y="554" text-anchor="middle" font-size="9" fill="#64748B">actual purchase</text>
+  <text x="527" y="572" text-anchor="middle" font-size="10" font-weight="600" fill="#DC2626">Build fourth</text>
+
+  <rect x="600" y="476" width="118" height="112" rx="6" fill="#FAFAF9" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="659" y="502" text-anchor="middle" font-size="18">🔄</text>
+  <text x="659" y="522" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">Winback Flow</text>
+  <text x="659" y="540" text-anchor="middle" font-size="9" fill="#64748B">Triggered by</text>
+  <text x="659" y="554" text-anchor="middle" font-size="9" fill="#64748B">purchase recency</text>
+  <text x="659" y="572" text-anchor="middle" font-size="10" font-weight="600" fill="#DC2626">Build fifth</text>
+
+  <!-- Arrow Down to Campaigns -->
+  <line x1="400" y1="620" x2="400" y2="650" stroke="#64748B" stroke-width="1.5"/>
+  <polygon points="400,656 394,644 406,644" fill="#64748B"/>
+
+  <!-- Campaigns: Secondary -->
+  <rect x="56" y="660" width="688" height="120" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="56" y="660" width="688" height="34" rx="8" fill="#F8FAFC"/>
+  <rect x="56" y="686" width="688" height="8" fill="#F8FAFC"/>
+  <text x="400" y="682" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">SECONDARY LAYER: Broadcast Campaigns</text>
+  <text x="400" y="720" text-anchor="middle" font-size="11" fill="#64748B">Use campaigns for: product launches, seasonal promotions, relationship maintenance, list-wide announcements</text>
+  <text x="400" y="744" text-anchor="middle" font-size="11" fill="#64748B">Campaigns amplify moments. Flows capture intent in between moments.</text>
+  <text x="400" y="766" text-anchor="middle" font-size="10" fill="#94A3B8">Run campaigns on top of a healthy automation layer, not instead of one</text>
+
+  <!-- Measurement Rule -->
+  <rect x="56" y="804" width="688" height="100" rx="8" fill="#0F172A"/>
+  <text x="400" y="832" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">The Measurement Fix: Make Flows Visible</text>
+  <text x="400" y="856" text-anchor="middle" font-size="11" fill="#94A3B8">Report flow revenue and campaign revenue separately, monthly, to leadership.</text>
+  <text x="400" y="876" text-anchor="middle" font-size="11" fill="#94A3B8">Run hold-out tests to quantify the flow layer's contribution. Show the 41% number.</text>
+
+  <!-- Source -->
+  <text x="400" y="944" text-anchor="middle" font-size="10" fill="#94A3B8">Data: Klaviyo 2026 Omnichannel Benchmark (183,000+ brands) • Omnisend 2025 Ecommerce Marketing Report</text>
+  <text x="400" y="962" text-anchor="middle" font-size="10" fill="#CBD5E1">karansud.substack.com</text>
+</svg>

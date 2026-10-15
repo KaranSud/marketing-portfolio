@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRR by Pricing Model</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --bar-main: #475569;
+    --bar-accent: #0F172A;
+    --dot-main: #475569;
+    --dot-accent: #DC2626;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --secondary: #94A3B8;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --secondary: #94A3B8;
+    --grid: #1E293B;
+    --border: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 24px 16px 20px;
+    min-height: 100vh;
+  }
+  .chart-header {
+    margin-bottom: 20px;
+  }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .chart-subtitle {
+    font-size: 12px;
+    color: var(--secondary);
+  }
+  .chart-wrap {
+    position: relative;
+    height: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .source {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--secondary);
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+<div class="chart-header">
+  <div class="chart-title">Net Revenue Retention by Pricing Model (2025)</div>
+  <div class="chart-subtitle">Median NRR across B2B SaaS companies by pricing architecture</div>
+</div>
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#DC2626;"></div>
+    <span>Above 100% breakeven</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#94A3B8;"></div>
+    <span>Below 100% breakeven</span>
+  </div>
+</div>
+<div class="chart-wrap">
+  <canvas id="lollipopChart"></canvas>
+</div>
+<div class="source">Sources: Benchmarkit 2025 SaaS Metrics Report; McKinsey analysis of 100+ B2B SaaS companies</div>
+
+<script>
+const labels = [
+  'Seat-based\n(median)',
+  'All B2B SaaS\n(median)',
+  'Hybrid models\n(median)',
+  'Usage-based\n(median)',
+  'McKinsey\ntop quartile',
+  'Best-in-class\npublic SaaS'
+];
+const values = [98, 102, 104, 108, 113, 122];
+const breakeven = 100;
+
+const colors = values.map(v => v >= breakeven ? '#DC2626' : '#94A3B8');
+const dotColors = values.map(v => v >= breakeven ? '#DC2626' : '#64748B');
+
+const ctx = document.getElementById('lollipopChart').getContext('2d');
+
+// Create lollipop using mixed chart: thin bars + scatter points
+const chart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: labels.map(l => l.split('\n')),
+    datasets: [
+      {
+        // The sticks - thin bars from 90% up
+        label: 'NRR',
+        data: values.map(v => v - 90),
+        base: 0,
+        backgroundColor: colors.map(c => c + '60'),
+        borderColor: colors,
+        borderWidth: 0,
+        barThickness: 3,
+        borderRadius: 0,
+        order: 2
+      },
+      {
+        // The dots at the top
+        type: 'bubble',
+        label: 'NRR Value',
+        data: values.map((v, i) => ({ x: i, y: v - 90, r: 8 })),
+        backgroundColor: dotColors,
+        borderColor: '#FFFFFF',
+        borderWidth: 2,
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label(ctx) {
+            if (ctx.datasetIndex === 0) return null;
+            const actual = values[ctx.dataIndex];
+            return `NRR: ${actual}%`;
+          },
+          title(items) {
+            const idx = items[0].dataIndex;
+            return labels[idx].replace('\n', ' ');
+          }
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#94A3B8',
+        padding: 10,
+        cornerRadius: 6
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        border: { display: false },
+        ticks: {
+          color: '#475569',
+          font: { size: 11 },
+          maxRotation: 0
+        }
+      },
+      y: {
+        min: 0,
+        max: 36,
+        grid: {
+          color: '#E2E8F0',
+          drawBorder: false
+        },
+        border: { display: false },
+        ticks: {
+          color: '#475569',
+          font: { size: 11 },
+          callback: v => (v + 90) + '%',
+          stepSize: 5
+        }
+      }
+    },
+    layout: { padding: { top: 16, right: 16, bottom: 8, left: 8 } }
+  }
+});
+
+// Draw breakeven line
+const breakPlugin = {
+  id: 'breakeven',
+  afterDraw(chart) {
+    const { ctx, chartArea: { left, right }, scales: { y } } = chart;
+    const yPos = y.getPixelForValue(breakeven - 90);
+    ctx.save();
+    ctx.strokeStyle = '#0F172A';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(left, yPos);
+    ctx.lineTo(right, yPos);
+    ctx.stroke();
+    ctx.font = '10px -apple-system, sans-serif';
+    ctx.fillStyle = '#0F172A';
+    ctx.textAlign = 'right';
+    ctx.fillText('100% breakeven', right, yPos - 5);
+    ctx.restore();
+  }
+};
+Chart.register(breakPlugin);
+chart.update();
+</script>
+</body>
+</html>
