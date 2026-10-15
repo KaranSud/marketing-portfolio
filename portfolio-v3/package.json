@@ -10,21 +10,27 @@
   },
   "dependencies": {
     "framer-motion": "^12.40.0",
-    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.3.2",
     "lenis": "^1.3.23",
     "marked": "^18.0.5",
-    "next": "16.2.6",
+    "next": "16.3.8",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "16.3.8",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@next/eslint-plugin-next": {
+      "fast-glob": "npm:tinyglobby@^0.2.17"
+    }
   }
 }

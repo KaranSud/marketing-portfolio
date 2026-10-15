@@ -1,8 +1,19 @@
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
+import { load } from "js-yaml";
 
 const BLOG_DIR = path.join(process.cwd(), "content/blog");
+
+type FrontMatter = Record<string, unknown>;
+
+// A leading `---` YAML block, then the markdown body.
+const FRONT_MATTER = /^---\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)/;
+
+function matter(raw: string): { data: FrontMatter; content: string } {
+  const match = FRONT_MATTER.exec(raw);
+  if (!match) return { data: {}, content: raw };
+  return { data: (load(match[1]) ?? {}) as FrontMatter, content: raw.slice(match[0].length) };
+}
 
 export type PostMeta = {
   slug: string;
@@ -21,16 +32,16 @@ function readingTime(text: string): string {
   return `${Math.max(1, Math.round(words / 200))} min read`;
 }
 
-function toMeta(slug: string, data: matter.GrayMatterFile<string>["data"], content: string): PostMeta {
+function toMeta(slug: string, data: FrontMatter, content: string): PostMeta {
   return {
     slug,
     title: typeof data.title === "string" ? data.title : slug,
     description: typeof data.description === "string" ? data.description : "",
-    date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
+    date: data.date ? new Date(data.date as string | number | Date).toISOString() : new Date().toISOString(),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     author: typeof data.author === "string" ? data.author : "Karan Sud",
     readingTime: readingTime(content),
-    accent: ["sage", "teal", "violet", "amber"].includes(data.accent)
+    accent: typeof data.accent === "string" && ["sage", "teal", "violet", "amber"].includes(data.accent)
       ? data.accent
       : "sage",
   };
