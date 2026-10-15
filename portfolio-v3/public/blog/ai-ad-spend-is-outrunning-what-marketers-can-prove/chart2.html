@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Where Every Programmatic Ad Dollar Goes</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    margin: 0;
+    padding: 32px;
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  .chart-wrap {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  h2 {
+    color: #0F172A;
+    font-size: 20px;
+    margin: 0 0 4px 0;
+    text-align: center;
+  }
+  p.sub {
+    color: #64748B;
+    font-size: 13px;
+    margin: 0 0 24px 0;
+    text-align: center;
+  }
+  canvas {
+    max-height: 380px;
+  }
+  p.source {
+    color: #94A3B8;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>Where Every Programmatic Ad Dollar Goes</h2>
+  <p class="sub">Before any AI bidding algorithm ever touches it</p>
+  <canvas id="dollarChart"></canvas>
+  <p class="source">Source: ANA Programmatic Media Supply Chain Transparency Study, conducted with Kroll (December 2023)</p>
+</div>
+<script>
+const ctx = document.getElementById('dollarChart').getContext('2d');
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Reaches the consumer', 'Lost to fees, waste, and the cost waterfall'],
+    datasets: [{
+      data: [36, 64],
+      backgroundColor: ['#0F172A', '#DC2626'],
+      borderColor: '#FFFFFF',
+      borderWidth: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { color: '#475569', font: { size: 12.5 }, padding: 16 }
+      },
+      tooltip: {
+        callbacks: {
+          label: (item) => item.label + ': ' + item.formattedValue + ' cents per dollar'
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Quality vs Cost Per SQL</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 28px 32px 24px;
+    min-height: 420px;
+  }
+  .chart-header { margin-bottom: 20px; }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.4;
+  }
+  .chart-wrap { position: relative; height: 300px; }
+  .chart-source {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #94A3B8;
+  }
+  .legend-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #475569;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="chart-header">
+  <div class="chart-title">Cost Per SQL vs. Signal Architecture Maturity</div>
+  <div class="chart-subtitle">
+    Illustrative model: as B2B teams progress from form-fill-only signals to full CRM and offline conversion integration,
+    cost per sales-qualified lead drops while monthly qualified pipeline rises
+  </div>
+</div>
+<div class="chart-wrap">
+  <canvas id="signalChart"></canvas>
+</div>
+<div class="legend-row">
+  <div class="legend-item"><div class="legend-dot" style="background:#DC2626;opacity:0.7;"></div>Cost Per SQL ($)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#10B981;opacity:0.7;"></div>Qualified Pipeline / Month (index)</div>
+</div>
+<div class="chart-source">
+  Illustrative model based on B2B SaaS accounts integrating CRM data + offline conversions into Google AI bidding.
+  Signal maturity stages: (1) Form fills only &rarr; (2) Page-depth signals &rarr; (3) Lead scoring &rarr; (4) CRM match &rarr; (5) Revenue events
+</div>
+
+<script>
+const stages = [
+  'Stage 1\nForm Fills\nOnly',
+  'Stage 2\nEngagement\nSignals',
+  'Stage 3\nLead\nScoring',
+  'Stage 4\nCRM\nIntegration',
+  'Stage 5\nRevenue\nEvents'
+];
+
+const stageLabels = ['1: Form Fills', '2: Engagement', '3: Lead Scoring', '4: CRM Match', '5: Revenue Events'];
+
+const costPerSQL =      [3200, 2600, 1900, 1300, 820];
+const qualifiedPipeline = [22, 38, 60, 88, 130];
+
+const ctx = document.getElementById('signalChart').getContext('2d');
+
+const redGrad = ctx.createLinearGradient(0, 0, 0, 300);
+redGrad.addColorStop(0, 'rgba(220,38,38,0.25)');
+redGrad.addColorStop(1, 'rgba(220,38,38,0.02)');
+
+const greenGrad = ctx.createLinearGradient(0, 0, 0, 300);
+greenGrad.addColorStop(0, 'rgba(16,185,129,0.25)');
+greenGrad.addColorStop(1, 'rgba(16,185,129,0.03)');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: stageLabels,
+    datasets: [
+      {
+        label: 'Cost Per SQL ($)',
+        data: costPerSQL,
+        borderColor: '#DC2626',
+        backgroundColor: redGrad,
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#DC2626',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        yAxisID: 'y1'
+      },
+      {
+        label: 'Qualified Pipeline / Month (index)',
+        data: qualifiedPipeline,
+        borderColor: '#10B981',
+        backgroundColor: greenGrad,
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#10B981',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        yAxisID: 'y2'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#CBD5E1',
+        padding: 12,
+        callbacks: {
+          label: (item) => {
+            if (item.datasetIndex === 0) return ` Cost Per SQL: $${item.raw.toLocaleString()}`;
+            return ` Qualified Pipeline: ${item.raw} (index)`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#E2E8F0' },
+        ticks: { color: '#475569', font: { size: 11 } },
+        border: { color: '#E2E8F0' }
+      },
+      y1: {
+        position: 'left',
+        min: 0,
+        max: 3800,
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          color: '#DC2626',
+          font: { size: 11 },
+          callback: (v) => '$' + v.toLocaleString()
+        },
+        border: { color: '#E2E8F0' },
+        title: {
+          display: true,
+          text: 'Cost Per SQL ($)',
+          color: '#DC2626',
+          font: { size: 11 }
+        }
+      },
+      y2: {
+        position: 'right',
+        min: 0,
+        max: 160,
+        grid: { drawOnChartArea: false },
+        ticks: {
+          color: '#10B981',
+          font: { size: 11 },
+        },
+        border: { color: '#E2E8F0' },
+        title: {
+          display: true,
+          text: 'Pipeline Index',
+          color: '#10B981',
+          font: { size: 11 }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

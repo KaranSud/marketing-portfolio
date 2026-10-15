@@ -1,0 +1,150 @@
+<svg width="800" height="960" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 960">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica Neue, Arial, sans-serif; }
+    .label-sm { font-size: 11px; fill: #94A3B8; letter-spacing: 0.06em; }
+    .label-category { font-size: 13px; font-weight: 600; fill: #0F172A; }
+    .label-body { font-size: 12px; fill: #475569; }
+    .label-stat { font-size: 22px; font-weight: 700; fill: #DC2626; }
+    .label-stat-sm { font-size: 15px; font-weight: 700; fill: #0F172A; }
+    .title { font-size: 24px; font-weight: 700; fill: #0F172A; }
+    .subtitle { font-size: 13px; fill: #64748B; }
+    .section-header { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; fill: #94A3B8; text-transform: uppercase; }
+    .col-header { font-size: 12px; font-weight: 700; }
+  </style>
+
+  <!-- Background -->
+  <rect width="800" height="960" fill="#FAFAF9" rx="0" />
+
+  <!-- Top accent bar -->
+  <rect x="0" y="0" width="800" height="4" fill="#DC2626" />
+
+  <!-- Header -->
+  <text x="48" y="52" class="title">The Two Optimization Games</text>
+  <text x="48" y="74" class="subtitle">SEO and AEO now reward different signals. Here is what each one actually optimizes for.</text>
+
+  <!-- Thin divider -->
+  <line x1="48" y1="92" x2="752" y2="92" stroke="#E2E8F0" stroke-width="1" />
+
+  <!-- KEY STAT BOX -->
+  <rect x="48" y="108" width="704" height="88" fill="#FFFFFF" rx="6" stroke="#E7E5E4" stroke-width="1" />
+  <text x="400" y="140" class="section-header" text-anchor="middle">THE SIGNAL EVENT</text>
+  <text x="400" y="168" font-size="18" font-weight="700" fill="#0F172A" text-anchor="middle">AI Overview citation-rank overlap: </text>
+  <text x="400" y="190" font-size="14" fill="#64748B" text-anchor="middle">76% in Jul 2025 → 38% in Mar 2026 (Ahrefs, 863K keywords)</text>
+
+  <!-- Stats row -->
+  <rect x="48" y="216" width="220" height="90" fill="#FFFFFF" rx="6" stroke="#E7E5E4" stroke-width="1" />
+  <text x="158" y="248" class="section-header" text-anchor="middle">ZERO-CLICK SEARCH</text>
+  <text x="158" y="278" class="label-stat" text-anchor="middle">68%</text>
+  <text x="158" y="298" font-size="11" fill="#64748B" text-anchor="middle">of Google searches, 2026</text>
+
+  <rect x="288" y="216" width="220" height="90" fill="#FFFFFF" rx="6" stroke="#E7E5E4" stroke-width="1" />
+  <text x="398" y="248" class="section-header" text-anchor="middle">CLICKS WITH AI SUMMARY</text>
+  <text x="398" y="278" class="label-stat" text-anchor="middle">8%</text>
+  <text x="398" y="298" font-size="11" fill="#64748B" text-anchor="middle">vs 15% without (Pew, 2025)</text>
+
+  <rect x="528" y="216" width="224" height="90" fill="#FFFFFF" rx="6" stroke="#E7E5E4" stroke-width="1" />
+  <text x="640" y="248" class="section-header" text-anchor="middle">AI-INFLUENCED REVENUE</text>
+  <text x="640" y="278" class="label-stat" text-anchor="middle">$750B</text>
+  <text x="640" y="298" font-size="11" fill="#64748B" text-anchor="middle">US revenue via AI search by 2028</text>
+
+  <!-- COMPARISON TABLE HEADER -->
+  <text x="48" y="342" class="section-header">SIGNAL COMPARISON</text>
+  <line x1="48" y1="350" x2="752" y2="350" stroke="#E2E8F0" stroke-width="1" />
+
+  <!-- Column headers -->
+  <rect x="48" y="356" width="240" height="36" fill="#F1F5F9" rx="4" />
+  <text x="168" y="379" class="col-header" fill="#475569" text-anchor="middle">Optimization Signal</text>
+
+  <rect x="300" y="356" width="200" height="36" fill="#F1F5F9" rx="4" />
+  <text x="400" y="379" class="col-header" fill="#475569" text-anchor="middle">Traditional SEO</text>
+
+  <rect x="512" y="356" width="240" height="36" fill="#DC2626" rx="4" opacity="0.1" />
+  <rect x="512" y="356" width="240" height="36" fill="none" rx="4" stroke="#DC2626" stroke-width="1" opacity="0.4" />
+  <text x="632" y="379" class="col-header" fill="#DC2626" text-anchor="middle">Answer Engine (AEO)</text>
+
+  <!-- Row data -->
+  <!-- Row 1 -->
+  <rect x="48" y="396" width="704" height="46" fill="#FFFFFF" />
+  <line x1="48" y1="442" x2="752" y2="442" stroke="#E2E8F0" stroke-width="1" />
+  <text x="68" y="424" class="label-category">Backlinks / Domain Authority</text>
+  <text x="68" y="438" class="label-body" font-size="11">Legacy ranking factor</text>
+  <text x="400" y="426" text-anchor="middle" font-size="22" fill="#475569">●●●●○</text>
+  <text x="632" y="426" text-anchor="middle" font-size="22" fill="#DC2626" opacity="0.3">●●○○○</text>
+
+  <!-- Row 2 -->
+  <rect x="48" y="442" width="704" height="46" fill="#FAFAF9" />
+  <line x1="48" y1="488" x2="752" y2="488" stroke="#E2E8F0" stroke-width="1" />
+  <text x="68" y="470" class="label-category">Keyword Density</text>
+  <text x="68" y="484" class="label-body" font-size="11">Matching search query intent</text>
+  <text x="400" y="472" text-anchor="middle" font-size="22" fill="#475569">●●●●○</text>
+  <text x="632" y="472" text-anchor="middle" font-size="22" fill="#DC2626" opacity="0.3">●●○○○</text>
+
+  <!-- Row 3 -->
+  <rect x="48" y="488" width="704" height="46" fill="#FFFFFF" />
+  <line x1="48" y1="534" x2="752" y2="534" stroke="#E2E8F0" stroke-width="1" />
+  <text x="68" y="516" class="label-category">Content Freshness</text>
+  <text x="68" y="530" class="label-body" font-size="11">83% of AI citations from pages updated within 12 months</text>
+  <text x="400" y="518" text-anchor="middle" font-size="22" fill="#475569">●●●○○</text>
+  <text x="632" y="518" text-anchor="middle" font-size="22" fill="#DC2626">●●●●●</text>
+
+  <!-- Row 4 -->
+  <rect x="48" y="534" width="704" height="46" fill="#FAFAF9" />
+  <line x1="48" y1="580" x2="752" y2="580" stroke="#E2E8F0" stroke-width="1" />
+  <text x="68" y="562" class="label-category">Structured Data / Schema</text>
+  <text x="68" y="576" class="label-body" font-size="11">Schema boosts AIO citation rate by 44%</text>
+  <text x="400" y="564" text-anchor="middle" font-size="22" fill="#475569">●●●○○</text>
+  <text x="632" y="564" text-anchor="middle" font-size="22" fill="#DC2626">●●●●●</text>
+
+  <!-- Row 5 -->
+  <rect x="48" y="580" width="704" height="46" fill="#FFFFFF" />
+  <line x1="48" y1="626" x2="752" y2="626" stroke="#E2E8F0" stroke-width="1" />
+  <text x="68" y="608" class="label-category">Answer-First Content Format</text>
+  <text x="68" y="622" class="label-body" font-size="11">Direct answer in first 60 words of each H2</text>
+  <text x="400" y="610" text-anchor="middle" font-size="22" fill="#475569">●●●○○</text>
+  <text x="632" y="610" text-anchor="middle" font-size="22" fill="#DC2626">●●●●●</text>
+
+  <!-- Row 6 -->
+  <rect x="48" y="626" width="704" height="46" fill="#FAFAF9" />
+  <line x1="48" y1="672" x2="752" y2="672" stroke="#E2E8F0" stroke-width="1" />
+  <text x="68" y="654" class="label-category">Ecosystem Presence</text>
+  <text x="68" y="668" class="label-body" font-size="11">Review sites, Reddit, LinkedIn, Wikipedia</text>
+  <text x="400" y="656" text-anchor="middle" font-size="22" fill="#475569">●●○○○</text>
+  <text x="632" y="656" text-anchor="middle" font-size="22" fill="#DC2626">●●●●○</text>
+
+  <!-- Row 7 -->
+  <rect x="48" y="672" width="704" height="46" fill="#FFFFFF" />
+  <line x1="48" y1="718" x2="752" y2="718" stroke="#E2E8F0" stroke-width="1" />
+  <text x="68" y="700" class="label-category">E-E-A-T (Experience, Expertise, Authority)</text>
+  <text x="68" y="714" class="label-body" font-size="11">Author bio, credentials, first-hand evidence</text>
+  <text x="400" y="702" text-anchor="middle" font-size="22" fill="#475569">●●●●○</text>
+  <text x="632" y="702" text-anchor="middle" font-size="22" fill="#DC2626">●●●●●</text>
+
+  <!-- LEGEND for dots -->
+  <text x="400" y="744" text-anchor="middle" font-size="11" fill="#94A3B8">● = High importance    ○ = Low importance</text>
+
+  <!-- ACTION FRAMEWORK -->
+  <line x1="48" y1="762" x2="752" y2="762" stroke="#E2E8F0" stroke-width="1" />
+  <text x="48" y="784" class="section-header">3-STEP AEO AUDIT FOR SAAS TEAMS</text>
+
+  <!-- Step 1 -->
+  <rect x="48" y="796" width="30" height="30" fill="#DC2626" rx="4" />
+  <text x="63" y="816" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">1</text>
+  <text x="92" y="812" class="label-category" font-size="13">Schema Audit</text>
+  <text x="92" y="828" class="label-body" font-size="12">Add FAQ, HowTo, and Article schema to your top 20 pages. Check with Google's Rich Results Test.</text>
+
+  <!-- Step 2 -->
+  <rect x="48" y="848" width="30" height="30" fill="#DC2626" rx="4" />
+  <text x="63" y="868" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">2</text>
+  <text x="92" y="864" class="label-category" font-size="13">Answer-First Rewrite</text>
+  <text x="92" y="880" class="label-body" font-size="12">For each H2, put the answer in the first sentence. AI engines extract the opening of each section.</text>
+
+  <!-- Step 3 -->
+  <rect x="48" y="900" width="30" height="30" fill="#DC2626" rx="4" />
+  <text x="63" y="920" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF">3</text>
+  <text x="92" y="916" class="label-category" font-size="13">Ecosystem Presence Audit</text>
+  <text x="92" y="932" class="label-body" font-size="12">Claim and update profiles on G2, Capterra, Reddit, LinkedIn. Brands with review-site presence are 3x more likely to be cited by ChatGPT.</text>
+
+  <!-- Footer -->
+  <line x1="48" y1="950" x2="752" y2="950" stroke="#E2E8F0" stroke-width="1" />
+  <text x="48" y="956" font-size="10" fill="#94A3B8">Sources: Ahrefs (2026), Pew Research (2025), McKinsey (2026), Seer Interactive (2025) — karansud.com</text>
+</svg>

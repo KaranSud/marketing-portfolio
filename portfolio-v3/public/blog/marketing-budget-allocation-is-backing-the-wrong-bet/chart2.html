@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Retention Leaders vs Laggards, Growth and Valuation Gap</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  .chart-wrap {
+    width: 720px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 24px 24px 12px;
+    background: #FFFFFF;
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F172A;
+    margin: 0 0 4px;
+  }
+  p.sub {
+    font-size: 12px;
+    color: #64748B;
+    margin: 0 0 16px;
+  }
+  p.source {
+    font-size: 11px;
+    color: #94A3B8;
+    margin: 8px 0 0;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>The Gap Between Retention Leaders and Laggards</h2>
+  <p class="sub">Companies with strong net revenue retention vs. weak net revenue retention</p>
+  <canvas id="dumbbellChart" height="280"></canvas>
+  <p class="source">Source: McKinsey, "The net revenue retention advantage," 2025, citing SaaS company benchmark data.</p>
+</div>
+<script>
+const ctx = document.getElementById('dumbbellChart').getContext('2d');
+
+const rows = [
+  { label: 'EV / Revenue Multiple', low: 5, high: 24, unit: 'x' },
+  { label: 'Reporting Double-Digit Growth', low: 21, high: 60, unit: '%' }
+];
+
+const dumbbellPlugin = {
+  id: 'dumbbellLines',
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart;
+    const lowMeta = chart.getDatasetMeta(0);
+    const highMeta = chart.getDatasetMeta(1);
+    ctx.save();
+    ctx.strokeStyle = '#E2E8F0';
+    ctx.lineWidth = 3;
+    lowMeta.data.forEach((lowPoint, i) => {
+      const highPoint = highMeta.data[i];
+      ctx.beginPath();
+      ctx.moveTo(lowPoint.x, lowPoint.y);
+      ctx.lineTo(highPoint.x, highPoint.y);
+      ctx.stroke();
+    });
+    ctx.restore();
+  }
+};
+
+new Chart(ctx, {
+  type: 'scatter',
+  plugins: [dumbbellPlugin],
+  data: {
+    datasets: [
+      {
+        label: 'Retention laggards',
+        data: rows.map((r, i) => ({ x: r.low, y: i })),
+        backgroundColor: '#94A3B8',
+        pointRadius: 8,
+        pointHoverRadius: 9
+      },
+      {
+        label: 'Retention leaders',
+        data: rows.map((r, i) => ({ x: r.high, y: i })),
+        backgroundColor: '#DC2626',
+        pointRadius: 8,
+        pointHoverRadius: 9
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { color: '#0F172A', font: { size: 12 } }
+      },
+      tooltip: {
+        callbacks: {
+          label: (item) => {
+            const row = rows[item.raw.y];
+            return `${item.dataset.label}: ${item.raw.x}${row.unit}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 70,
+        ticks: { color: '#475569' },
+        grid: { color: '#E2E8F0' }
+      },
+      y: {
+        min: -0.5,
+        max: 1.5,
+        ticks: {
+          color: '#0F172A',
+          font: { size: 12 },
+          callback: (val) => rows[val] ? rows[val].label : ''
+        },
+        afterBuildTicks: (axis) => { axis.ticks = [{ value: 0 }, { value: 1 }]; },
+        grid: { color: '#E2E8F0' }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

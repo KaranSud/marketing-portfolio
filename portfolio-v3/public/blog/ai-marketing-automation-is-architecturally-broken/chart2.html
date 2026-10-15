@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Marketing Automation: 2026 vs. 2028 Target</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --accent: #DC2626;
+    --border: #E7E5E4;
+    --grid: #E2E8F0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --border: #1E293B;
+      --grid: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border: #1E293B;
+    --grid: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica Neue, Arial, sans-serif;
+    padding: 32px 16px;
+    min-height: 100vh;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 340px;
+  }
+  .source {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+  .delta-badge {
+    display: inline-block;
+    background: #DC2626;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>AI Marketing Automation: Today vs. 2028 Target</h2>
+  <p class="subtitle">Share of marketing work expected to be AI-automated — Gartner survey of 402 CMOs</p>
+  <span class="delta-badge">+125% growth expected</span>
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <p class="source">Source: Gartner Survey, May 2026. "Marketing Leaders Expect AI Automation of Marketing Work to Double to 36% By 2028." Survey conducted Aug–Oct 2025, n=402 CMOs.</p>
+</div>
+<script>
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const textColor = isDark ? '#94A3B8' : '#475569';
+  const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+
+  const ctx = document.getElementById('chart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['2026 (Current)', '2028 (Target)'],
+      datasets: [{
+        label: '% of marketing work AI-automated',
+        data: [16, 36],
+        backgroundColor: ['#64748B', '#DC2626'],
+        borderColor: ['#64748B', '#DC2626'],
+        borderWidth: 0,
+        borderRadius: 6,
+        barThickness: 100,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.raw}% of marketing work AI-automated`,
+          },
+          backgroundColor: isDark ? '#1E293B' : '#0F172A',
+          titleColor: '#FFFFFF',
+          bodyColor: '#94A3B8',
+          padding: 12,
+          cornerRadius: 6,
+        },
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: {
+            color: textColor,
+            font: {
+              size: 13,
+              weight: '600',
+              family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica Neue, Arial, sans-serif'
+            },
+          }
+        },
+        y: {
+          min: 0,
+          max: 50,
+          grid: { color: gridColor },
+          border: { display: false, dash: [4, 4] },
+          ticks: {
+            color: textColor,
+            callback: v => v + '%',
+            font: { size: 11 },
+          }
+        }
+      },
+      animation: {
+        onComplete: function() {
+          const chart = this;
+          const ctx2 = chart.ctx;
+          chart.data.datasets.forEach(function(dataset, i) {
+            const meta = chart.getDatasetMeta(i);
+            meta.data.forEach(function(bar, index) {
+              const value = dataset.data[index];
+              ctx2.fillStyle = '#FFFFFF';
+              ctx2.font = 'bold 22px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+              ctx2.textAlign = 'center';
+              ctx2.textBaseline = 'bottom';
+              ctx2.fillText(value + '%', bar.x, bar.y - 8);
+            });
+          });
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

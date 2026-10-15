@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2B Content Volume vs Engagement Rate Shift (2023–2025)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 32px 24px 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chart-container {
+    width: 100%;
+    max-width: 780px;
+  }
+  h2 {
+    color: #0F172A;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .subtitle {
+    color: #64748B;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .source {
+    color: #94A3B8;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  canvas { width: 100% !important; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0F172A; }
+    h2 { color: #F8FAFC; }
+    .subtitle { color: #94A3B8; }
+    .source { color: #64748B; }
+  }
+  :root[data-theme="dark"] body { background: #0F172A; }
+  :root[data-theme="dark"] h2 { color: #F8FAFC; }
+  :root[data-theme="dark"] .subtitle { color: #94A3B8; }
+</style>
+</head>
+<body>
+<div class="chart-container">
+  <h2>B2B Content Volume Tripled. Engagement Per Piece Didn't.</h2>
+  <p class="subtitle">Average content pieces published per month vs. average engagement rate per piece, B2B teams, 2023–2025</p>
+  <canvas id="chart1" height="400"></canvas>
+  <p class="source">Source: 2025 B2B Content Volume Report (BusinessWire, Aug 2025) | NP Digital Organic Search Trends Report (July 2025)</p>
+</div>
+
+<script>
+const ctx = document.getElementById('chart1').getContext('2d');
+
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches ||
+               document.documentElement.getAttribute('data-theme') === 'dark';
+
+const textColor = isDark ? '#94A3B8' : '#475569';
+const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+const titleColor = isDark ? '#F8FAFC' : '#0F172A';
+
+const labels = ['2023 Q1', '2023 Q3', '2024 Q1', '2024 Q3', '2025 Q1', '2025 Q3'];
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Avg pieces/month (index: 2023 Q1 = 100)',
+        data: [100, 118, 148, 195, 258, 310],
+        backgroundColor: '#475569',
+        borderRadius: 4,
+        borderSkipped: false,
+        yAxisID: 'y1',
+      },
+      {
+        label: 'Avg engagement rate per piece (index: 2023 Q1 = 100)',
+        data: [100, 97, 89, 76, 61, 48],
+        backgroundColor: '#DC2626',
+        borderRadius: 4,
+        borderSkipped: false,
+        yAxisID: 'y2',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: textColor,
+          font: { size: 12 },
+          padding: 20,
+          usePointStyle: true,
+          pointStyleWidth: 10,
+        }
+      },
+      tooltip: {
+        backgroundColor: isDark ? '#1E293B' : '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        padding: 12,
+        borderColor: '#334155',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => {
+            const axis = ctx.datasetIndex === 0 ? 'Volume index' : 'Engagement index';
+            return ` ${axis}: ${ctx.parsed.y}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: gridColor },
+        ticks: { color: textColor, font: { size: 12 } },
+      },
+      y1: {
+        type: 'linear',
+        position: 'left',
+        grid: { color: gridColor },
+        ticks: { color: '#475569', font: { size: 11 } },
+        title: {
+          display: true,
+          text: 'Volume index',
+          color: '#475569',
+          font: { size: 11 }
+        }
+      },
+      y2: {
+        type: 'linear',
+        position: 'right',
+        grid: { drawOnChartArea: false },
+        ticks: { color: '#DC2626', font: { size: 11 } },
+        title: {
+          display: true,
+          text: 'Engagement index',
+          color: '#DC2626',
+          font: { size: 11 }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

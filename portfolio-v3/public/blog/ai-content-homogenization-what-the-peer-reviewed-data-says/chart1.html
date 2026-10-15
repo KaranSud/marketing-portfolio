@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Performance by Type: Conversion Rate Lift vs. Generic AI Content</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0F172A; color: #FAFAF9; }
+    .chart-title { color: #FAFAF9; }
+    .chart-source { color: #94A3B8; }
+    .chart-subtitle { color: #94A3B8; }
+  }
+  :root[data-theme="dark"] body { background: #0F172A; color: #FAFAF9; }
+  :root[data-theme="light"] body { background: #FFFFFF; color: #0F172A; }
+  .chart-container {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .chart-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+  }
+  .chart-subtitle {
+    font-size: 0.85rem;
+    color: #475569;
+    margin-bottom: 1.5rem;
+  }
+  .chart-source {
+    font-size: 0.75rem;
+    color: #94A3B8;
+    margin-top: 1rem;
+    text-align: right;
+  }
+  canvas { width: 100% !important; }
+</style>
+</head>
+<body>
+<div class="chart-container">
+  <div class="chart-title">Content Performance by Type: Conversion Rate Lift vs. Generic AI Content</div>
+  <div class="chart-subtitle">Percentage conversion rate improvement over generic AI-generated content, by content format</div>
+  <canvas id="chart1" height="300"></canvas>
+  <div class="chart-source">Source: Content Marketing Institute B2B Benchmarks 2025 (n=1,015 marketers); additional format benchmarks from CMI/MarketingProfs research</div>
+</div>
+
+<script>
+const BRAND = {
+  accent: '#DC2626',
+  steady: '#0F172A',
+  secondary: '#475569',
+  muted: '#94A3B8',
+  mid: '#64748B',
+  bg: '#FFFFFF',
+  gridlines: '#E2E8F0',
+  cardBorder: '#E7E5E4',
+  highlight: '#DC2626',
+  bar: '#475569',
+};
+
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const textColor = isDark ? '#FAFAF9' : BRAND.steady;
+const gridColor = isDark ? '#1E293B' : BRAND.gridlines;
+
+const labels = [
+  'Original Proprietary Research',
+  'In-depth Case Studies',
+  'Primary Survey Data',
+  'Expert Interview Series',
+  'Long-form Pillar Content',
+  'AI-only Blog Posts',
+];
+
+const values = [64, 47, 38, 28, 18, 0];
+const colors = values.map(v => v >= 60 ? BRAND.accent : v > 0 ? BRAND.secondary : BRAND.muted);
+
+const ctx = document.getElementById('chart1').getContext('2d');
+
+// Custom lollipop chart using scatter + custom plugin
+const lollipopPlugin = {
+  id: 'lollipop',
+  afterDatasetsDraw(chart) {
+    const { ctx, scales: { x, y } } = chart;
+    const dataset = chart.data.datasets[0];
+    const meta = chart.getDatasetMeta(0);
+    meta.data.forEach((point, i) => {
+      const value = dataset.data[i];
+      const color = value >= 60 ? BRAND.accent : value > 0 ? BRAND.secondary : BRAND.muted;
+      const yVal = y.getPixelForValue(i);
+      const xBase = x.getPixelForValue(0);
+      const xTip = x.getPixelForValue(value);
+      // Draw stem
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(xBase, yVal);
+      ctx.lineTo(xTip, yVal);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      // Draw circle at tip
+      ctx.beginPath();
+      ctx.arc(xTip, yVal, 7, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.restore();
+    });
+  }
+};
+
+Chart.register(lollipopPlugin);
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [{
+      label: 'Conversion rate lift (%)',
+      data: values,
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+      barThickness: 1,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `+${ctx.raw}% vs. generic AI content`
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: -5,
+        max: 80,
+        ticks: {
+          color: isDark ? BRAND.muted : BRAND.secondary,
+          font: { size: 11 },
+          callback: v => `+${v}%`
+        },
+        grid: { color: gridColor },
+        title: {
+          display: true,
+          text: 'Conversion Rate Lift vs. Generic AI Content',
+          color: isDark ? BRAND.muted : BRAND.secondary,
+          font: { size: 11 }
+        }
+      },
+      y: {
+        ticks: {
+          color: textColor,
+          font: { size: 11.5 },
+        },
+        grid: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

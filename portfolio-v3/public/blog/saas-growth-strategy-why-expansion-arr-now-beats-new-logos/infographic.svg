@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;">
+  <!-- Background -->
+  <rect width="800" height="560" fill="#FAFAF9" rx="16"/>
+
+  <!-- Title area -->
+  <text x="400" y="44" text-anchor="middle" font-size="20" font-weight="700" fill="#0F172A">The Expansion-Led Growth Playbook</text>
+  <text x="400" y="68" text-anchor="middle" font-size="13" fill="#64748B">Three structural moves to shift from acquisition-first to expansion-first</text>
+
+  <!-- Connector line -->
+  <line x1="168" y1="220" x2="310" y2="220" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="490" y1="220" x2="632" y2="220" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- STEP 1 -->
+  <rect x="40" y="110" width="256" height="220" rx="12" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <!-- Step badge -->
+  <circle cx="168" cy="110" r="22" fill="#DC2626"/>
+  <text x="168" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">01</text>
+  <!-- Icon: chart/metric -->
+  <rect x="144" y="132" width="48" height="36" rx="4" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+  <line x1="156" y1="158" x2="156" y2="148" stroke="#DC2626" stroke-width="2.5"/>
+  <line x1="166" y1="158" x2="166" y2="144" stroke="#DC2626" stroke-width="2.5"/>
+  <line x1="176" y1="158" x2="176" y2="138" stroke="#DC2626" stroke-width="2.5"/>
+  <line x1="186" y1="158" x2="186" y2="142" stroke="#DC2626" stroke-width="2.5"/>
+  <!-- Title -->
+  <text x="168" y="195" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">Make It a Board Metric</text>
+  <!-- Description -->
+  <foreignObject x="56" y="205" width="224" height="110">
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0;">
+      <p style="font-size:12px;color:#475569;line-height:1.55;margin:0;">Break out expansion ARR as its own line item. Assign one owner. Review monthly. The metric you don't report is the metric your org won't optimize.</p>
+    </body>
+  </foreignObject>
+  <!-- KPI pill -->
+  <rect x="80" y="306" width="176" height="24" rx="12" fill="#FEF2F2"/>
+  <text x="168" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#DC2626">Target: NRR visible to every exec</text>
+
+  <!-- STEP 2 -->
+  <rect x="272" y="110" width="256" height="220" rx="12" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <circle cx="400" cy="110" r="22" fill="#DC2626"/>
+  <text x="400" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">02</text>
+  <!-- Icon: person with quota -->
+  <circle cx="400" cy="150" r="12" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+  <circle cx="400" cy="147" r="5" fill="#DC2626"/>
+  <path d="M389 162 Q400 157 411 162" stroke="#DC2626" stroke-width="2" fill="none"/>
+  <!-- Title -->
+  <text x="400" y="195" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">Put a Quota on Expansion</text>
+  <foreignObject x="288" y="205" width="224" height="110">
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0;">
+      <p style="font-size:12px;color:#475569;line-height:1.55;margin:0;">Dedicate at least one quota carrier to existing accounts: expansion AE, CS with ARR targets, or hybrid AE model. Expansion needs a human with skin in the game.</p>
+    </body>
+  </foreignObject>
+  <rect x="312" y="306" width="176" height="24" rx="12" fill="#FEF2F2"/>
+  <text x="400" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#DC2626">Target: expansion ARR quota owner</text>
+
+  <!-- STEP 3 -->
+  <rect x="504" y="110" width="256" height="220" rx="12" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <circle cx="632" cy="110" r="22" fill="#DC2626"/>
+  <text x="632" y="116" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">03</text>
+  <!-- Icon: in-app trigger -->
+  <rect x="614" y="133" width="36" height="28" rx="4" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+  <rect x="618" y="137" width="28" height="4" rx="2" fill="#DC2626" opacity="0.4"/>
+  <rect x="618" y="143" width="20" height="4" rx="2" fill="#DC2626" opacity="0.4"/>
+  <circle cx="641" cy="157" r="4" fill="#DC2626"/>
+  <!-- Title -->
+  <text x="632" y="195" text-anchor="middle" font-size="14" font-weight="700" fill="#0F172A">Build One In-Product Trigger</text>
+  <foreignObject x="520" y="205" width="224" height="110">
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0;">
+      <p style="font-size:12px;color:#475569;line-height:1.55;margin:0;">Find the behavioral signal that predicts expansion readiness (usage threshold, second-team spread). Build one in-product message that fires on that signal. One trigger beats 12 months of outbound upsell.</p>
+    </body>
+  </foreignObject>
+  <rect x="544" y="306" width="176" height="24" rx="12" fill="#FEF2F2"/>
+  <text x="632" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#DC2626">Target: live in Q4 this year</text>
+
+  <!-- Bottom insight bar -->
+  <rect x="40" y="360" width="720" height="68" rx="10" fill="#0F172A"/>
+  <text x="60" y="389" font-size="13" font-weight="700" fill="#FFFFFF">The NRR Math:</text>
+  <text x="60" y="409" font-size="12" fill="#94A3B8">Top-quartile NRR (113%) trades at 24x EV/Revenue.</text>
+  <text x="60" y="425" font-size="12" fill="#94A3B8">Bottom-quartile NRR (98%) trades at 5x. That 15pp gap is worth 4.8x in enterprise value.</text>
+
+  <!-- Stat pills at bottom -->
+  <rect x="40" y="452" width="220" height="72" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="150" y="480" text-anchor="middle" font-size="22" font-weight="800" fill="#DC2626">$0.25</text>
+  <text x="150" y="498" text-anchor="middle" font-size="12" fill="#475569">cost per $1 expansion ARR</text>
+  <text x="150" y="514" text-anchor="middle" font-size="11" fill="#94A3B8">vs. $1.16 for new logo ARR</text>
+
+  <rect x="290" y="452" width="220" height="72" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="400" y="480" text-anchor="middle" font-size="22" font-weight="800" fill="#DC2626">40%</text>
+  <text x="400" y="498" text-anchor="middle" font-size="12" fill="#475569">of new ARR from expansion</text>
+  <text x="400" y="514" text-anchor="middle" font-size="11" fill="#94A3B8">rising to 62% above $50M ARR</text>
+
+  <rect x="540" y="452" width="220" height="72" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <text x="650" y="480" text-anchor="middle" font-size="22" font-weight="800" fill="#DC2626">7pp</text>
+  <text x="650" y="498" text-anchor="middle" font-size="12" fill="#475569">NRR lift from CS programs</text>
+  <text x="650" y="514" text-anchor="middle" font-size="11" fill="#94A3B8">McKinsey, 100+ B2B SaaS cos.</text>
+</svg>

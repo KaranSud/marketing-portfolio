@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 520" width="680" height="520" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;">
+  <rect width="680" height="520" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="340" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#0F172A">How Pricing Architecture Determines Expansion</text>
+  <text x="340" y="58" text-anchor="middle" font-size="12" fill="#475569">The structural fork in SaaS growth: two pricing models, two NRR outcomes</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="72" x2="640" y2="72" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- LEFT COLUMN HEADER: Usage-Based -->
+  <rect x="40" y="86" width="280" height="36" rx="6" fill="#0F172A"/>
+  <text x="180" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Usage-Based Pricing</text>
+
+  <!-- RIGHT COLUMN HEADER: Seat-Based -->
+  <rect x="360" y="86" width="280" height="36" rx="6" fill="#E2E8F0"/>
+  <text x="500" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">Seat-Based Pricing</text>
+
+  <!-- CENTER DIVIDER -->
+  <line x1="340" y1="130" x2="340" y2="440" stroke="#E7E5E4" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+  <!-- STEP 1 -->
+  <!-- Left: usage -->
+  <rect x="50" y="142" width="260" height="64" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="180" y="165" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Pricing trigger</text>
+  <text x="180" y="182" text-anchor="middle" font-size="11" fill="#475569">Customer pays per unit consumed</text>
+  <text x="180" y="197" text-anchor="middle" font-size="11" fill="#475569">(API calls, seats added, GB used)</text>
+
+  <!-- Right: seat -->
+  <rect x="370" y="142" width="260" height="64" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="500" y="165" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Pricing trigger</text>
+  <text x="500" y="182" text-anchor="middle" font-size="11" fill="#475569">Fixed seat count for contract period</text>
+  <text x="500" y="197" text-anchor="middle" font-size="11" fill="#475569">(annual renegotiation required)</text>
+
+  <!-- Arrow down left -->
+  <line x1="180" y1="208" x2="180" y2="228" stroke="#E2E8F0" stroke-width="1.5"/>
+  <polygon points="175,228 185,228 180,238" fill="#E2E8F0"/>
+
+  <!-- Arrow down right -->
+  <line x1="500" y1="208" x2="500" y2="228" stroke="#E2E8F0" stroke-width="1.5"/>
+  <polygon points="495,228 505,228 500,238" fill="#E2E8F0"/>
+
+  <!-- STEP 2 -->
+  <!-- Left: automatic expansion -->
+  <rect x="50" y="240" width="260" height="64" rx="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5"/>
+  <text x="180" y="263" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Expansion trigger</text>
+  <text x="180" y="280" text-anchor="middle" font-size="11" fill="#475569">Customer growth = automatic spend growth</text>
+  <text x="180" y="295" text-anchor="middle" font-size="11" fill="#475569">No sales motion required</text>
+
+  <!-- Right: CSM-led expansion -->
+  <rect x="370" y="240" width="260" height="64" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="500" y="263" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Expansion trigger</text>
+  <text x="500" y="280" text-anchor="middle" font-size="11" fill="#475569">CSM notices opportunity, builds</text>
+  <text x="500" y="295" text-anchor="middle" font-size="11" fill="#475569">business case, navigates procurement</text>
+
+  <!-- Arrow down left -->
+  <line x1="180" y1="306" x2="180" y2="326" stroke="#E2E8F0" stroke-width="1.5"/>
+  <polygon points="175,326 185,326 180,336" fill="#E2E8F0"/>
+
+  <!-- Arrow down right -->
+  <line x1="500" y1="306" x2="500" y2="326" stroke="#E2E8F0" stroke-width="1.5"/>
+  <polygon points="495,326 505,326 500,336" fill="#E2E8F0"/>
+
+  <!-- STEP 3 -->
+  <!-- Left: compounding outcome -->
+  <rect x="50" y="338" width="260" height="64" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="180" y="361" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Growth dynamic</text>
+  <text x="180" y="378" text-anchor="middle" font-size="11" fill="#475569">Every new use case compounds spend</text>
+  <text x="180" y="393" text-anchor="middle" font-size="11" fill="#475569">CSM accelerates, not initiates</text>
+
+  <!-- Right: adversarial renewal -->
+  <rect x="370" y="338" width="260" height="64" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="500" y="361" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Growth dynamic</text>
+  <text x="500" y="378" text-anchor="middle" font-size="11" fill="#475569">Annual renewal creates adversarial</text>
+  <text x="500" y="393" text-anchor="middle" font-size="11" fill="#475569">pricing conversation at every cycle</text>
+
+  <!-- Arrow down left -->
+  <line x1="180" y1="404" x2="180" y2="424" stroke="#E2E8F0" stroke-width="1.5"/>
+  <polygon points="175,424 185,424 180,434" fill="#E2E8F0"/>
+
+  <!-- Arrow down right -->
+  <line x1="500" y1="404" x2="500" y2="424" stroke="#E2E8F0" stroke-width="1.5"/>
+  <polygon points="495,424 505,424 500,434" fill="#E2E8F0"/>
+
+  <!-- RESULT LEFT: usage-based NRR -->
+  <rect x="50" y="436" width="260" height="52" rx="8" fill="#0F172A"/>
+  <text x="180" y="457" text-anchor="middle" font-size="11" fill="#94A3B8">Median NRR</text>
+  <text x="180" y="479" text-anchor="middle" font-size="22" font-weight="800" fill="#FFFFFF">108%</text>
+
+  <!-- RESULT RIGHT: seat-based NRR -->
+  <rect x="370" y="436" width="260" height="52" rx="8" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="500" y="457" text-anchor="middle" font-size="11" fill="#64748B">Median NRR</text>
+  <text x="500" y="479" text-anchor="middle" font-size="22" font-weight="800" fill="#DC2626">98%</text>
+
+  <!-- GAP LABEL -->
+  <line x1="310" y1="462" x2="370" y2="462" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="340" y="458" text-anchor="middle" font-size="10" font-weight="700" fill="#DC2626">10pt</text>
+  <text x="340" y="470" text-anchor="middle" font-size="9" fill="#DC2626">structural</text>
+  <text x="340" y="481" text-anchor="middle" font-size="9" fill="#DC2626">gap</text>
+
+  <!-- Footer -->
+  <text x="340" y="514" text-anchor="middle" font-size="10" fill="#94A3B8">Source: Benchmarkit 2025 SaaS Metrics Report — 300+ B2B SaaS companies</text>
+</svg>

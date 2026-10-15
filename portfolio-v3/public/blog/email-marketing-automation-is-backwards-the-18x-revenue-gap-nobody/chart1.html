@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Revenue Split: Automated Flows vs Campaigns</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: #FFFFFF;
+    color: #0F172A;
+    padding: 32px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .subtitle {
+    font-size: 0.82rem;
+    color: #64748B;
+    margin-bottom: 28px;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 280px;
+  }
+  .source {
+    font-size: 0.72rem;
+    color: #94A3B8;
+    margin-top: 20px;
+  }
+  .legend-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.78rem;
+    color: #475569;
+  }
+  .legend-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<h2>The 18x Revenue Gap: Where Your Sends Go vs. Where Revenue Comes From</h2>
+<p class="subtitle">Automated flows vs. broadcast campaigns — share of sends vs. share of revenue</p>
+
+<div class="legend-row">
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#DC2626;"></div>
+    <span>Share of revenue</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#E2E8F0; border: 1px solid #94A3B8;"></div>
+    <span>Share of sends</span>
+  </div>
+</div>
+
+<div class="chart-wrap">
+  <canvas id="chart1"></canvas>
+</div>
+<p class="source">Source: Klaviyo 2026 Omnichannel Benchmark Report, 183,000+ brands</p>
+
+<script>
+const ctx = document.getElementById('chart1').getContext('2d');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Automated Flows', 'Broadcast Campaigns'],
+    datasets: [
+      {
+        label: 'Share of Revenue (%)',
+        data: [41, 59],
+        backgroundColor: ['#DC2626', '#DC262622'],
+        borderColor: ['#DC2626', '#DC262644'],
+        borderWidth: 1.5,
+        borderRadius: 4,
+      },
+      {
+        label: 'Share of Sends (%)',
+        data: [5.3, 94.7],
+        backgroundColor: ['#0F172A22', '#E2E8F0'],
+        borderColor: ['#0F172A44', '#CBD5E1'],
+        borderWidth: 1.5,
+        borderRadius: 4,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return ctx.dataset.label + ': ' + ctx.raw + '%';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        max: 100,
+        grid: { color: '#E2E8F0' },
+        border: { color: '#E2E8F0' },
+        ticks: {
+          color: '#64748B',
+          font: { size: 11, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' },
+          callback: v => v + '%'
+        }
+      },
+      y: {
+        grid: { display: false },
+        border: { display: false },
+        ticks: {
+          color: '#0F172A',
+          font: { size: 12, weight: '600', family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

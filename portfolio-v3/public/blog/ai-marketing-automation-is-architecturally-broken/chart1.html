@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Marketing Value Cascade</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --accent: #DC2626;
+    --border: #E7E5E4;
+    --grid: #E2E8F0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --border: #1E293B;
+      --grid: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border: #1E293B;
+    --grid: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica Neue, Arial, sans-serif;
+    padding: 32px 16px;
+    min-height: 100vh;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 340px;
+  }
+  .source {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>The AI Marketing Value Cascade</h2>
+  <p class="subtitle">From adoption to measurable impact — where organizations actually land</p>
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <p class="source">Sources: McKinsey State of AI 2025; McKinsey "Reinventing Marketing Workflows with Agentic AI" 2026</p>
+</div>
+<script>
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const textColor = isDark ? '#94A3B8' : '#475569';
+  const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+
+  const labels = [
+    'Organizations\nUsing AI in\nMarketing',
+    'CMOs with Deployed\nAgentic Workflows\n(Measurable Value)',
+    'Organizations\nExtracting Bottom-Line\nValue from AI'
+  ];
+  const values = [88, 10, 6];
+  const colors = ['#475569', '#64748B', '#DC2626'];
+
+  const ctx = document.getElementById('chart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels.map(l => l.split('\n')),
+      datasets: [{
+        label: '% of Organizations',
+        data: values,
+        backgroundColor: colors,
+        borderColor: colors,
+        borderWidth: 0,
+        borderRadius: 4,
+        barThickness: 72,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.raw}% of organizations`,
+          },
+          backgroundColor: isDark ? '#1E293B' : '#0F172A',
+          titleColor: '#FFFFFF',
+          bodyColor: '#94A3B8',
+          padding: 12,
+          cornerRadius: 6,
+        },
+        datalabels: { display: false },
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: {
+            color: textColor,
+            font: { size: 11, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica Neue, Arial, sans-serif' },
+          }
+        },
+        y: {
+          min: 0,
+          max: 100,
+          grid: { color: gridColor },
+          border: { display: false, dash: [4, 4] },
+          ticks: {
+            color: textColor,
+            callback: v => v + '%',
+            font: { size: 11 },
+          }
+        }
+      },
+      animation: {
+        onComplete: function() {
+          const chart = this;
+          const ctx2 = chart.ctx;
+          chart.data.datasets.forEach(function(dataset, i) {
+            const meta = chart.getDatasetMeta(i);
+            meta.data.forEach(function(bar, index) {
+              const value = dataset.data[index];
+              ctx2.fillStyle = isDark ? '#F1F5F9' : '#0F172A';
+              ctx2.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial';
+              ctx2.textAlign = 'center';
+              ctx2.textBaseline = 'bottom';
+              ctx2.fillText(value + '%', bar.x, bar.y - 6);
+            });
+          });
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

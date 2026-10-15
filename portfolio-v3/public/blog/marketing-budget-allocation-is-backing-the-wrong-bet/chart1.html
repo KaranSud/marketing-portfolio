@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Marketing Budget Allocation Shift, 2024 to 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  .chart-wrap {
+    width: 720px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 24px 24px 12px;
+    background: #FFFFFF;
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F172A;
+    margin: 0 0 4px;
+  }
+  p.sub {
+    font-size: 12px;
+    color: #64748B;
+    margin: 0 0 16px;
+  }
+  p.source {
+    font-size: 11px;
+    color: #94A3B8;
+    margin: 8px 0 0;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>Where Marketing Spend Is Actually Moving</h2>
+  <p class="sub">Share of marketing budget allocated to acquisition vs. retention functions, 2024 to 2026</p>
+  <canvas id="spendChart" height="380"></canvas>
+  <p class="source">Source: Gartner CMO Spend Survey data, cited in marketing budget allocation coverage, 2026.</p>
+</div>
+<script>
+const ctx = document.getElementById('spendChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['2024', '2025', '2026'],
+    datasets: [
+      {
+        label: 'Acquisition (awareness + conversion)',
+        data: [54, 59, 62.6],
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220, 38, 38, 0.12)',
+        fill: true,
+        tension: 0.35,
+        pointBackgroundColor: '#DC2626',
+        pointRadius: 4,
+        borderWidth: 2.5
+      },
+      {
+        label: 'Retention (loyalty + lifecycle)',
+        data: [27, 22, 19.2],
+        borderColor: '#475569',
+        backgroundColor: 'rgba(71, 85, 105, 0.10)',
+        fill: true,
+        tension: 0.35,
+        pointBackgroundColor: '#475569',
+        pointRadius: 4,
+        borderWidth: 2.5
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { color: '#0F172A', font: { size: 12 } }
+      },
+      tooltip: {
+        callbacks: {
+          label: (item) => `${item.dataset.label}: ${item.formattedValue}%`
+        }
+      }
+    },
+    scales: {
+      y: {
+        min: 0,
+        max: 70,
+        ticks: { color: '#475569', callback: (v) => v + '%' },
+        grid: { color: '#E2E8F0' }
+      },
+      x: {
+        ticks: { color: '#475569' },
+        grid: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

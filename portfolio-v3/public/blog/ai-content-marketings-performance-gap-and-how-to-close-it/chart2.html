@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consumer Verdict on AI Content Quality (2026)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --accent: #DC2626;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text);
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .canvas-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+  }
+  .source {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>Consumer Verdict on AI Content Quality</h2>
+  <p class="subtitle">% who agree GenAI has made the quality of available content worse (2026)</p>
+  <div class="canvas-container">
+    <canvas id="chart"></canvas>
+  </div>
+  <p class="source">Source: Gartner Survey, June 2026. Survey of 307 U.S. consumers, conducted March 2026. Presented at Gartner Marketing Symposium/Xpo, Denver.</p>
+</div>
+
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['All U.S. Consumers', 'Gen Z & Millennials'],
+    datasets: [{
+      data: [49, 57],
+      backgroundColor: ['#475569', '#DC2626'],
+      borderColor: ['#334155', '#B91C1C'],
+      borderWidth: 1.5,
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: 'x',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.parsed.y}% say GenAI made content quality worse`
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#94A3B8',
+        padding: 10,
+        cornerRadius: 6,
+      },
+      annotation: {
+        annotations: {}
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: { size: 13, weight: '500', family: '-apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif' },
+          color: '#475569'
+        },
+        grid: { display: false },
+        border: { display: false }
+      },
+      y: {
+        min: 0,
+        max: 75,
+        ticks: {
+          callback: (v) => `${v}%`,
+          font: { size: 11, family: '-apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif' },
+          color: '#94A3B8',
+          stepSize: 25
+        },
+        grid: { color: '#E2E8F0' },
+        border: { display: false }
+      }
+    },
+    layout: { padding: { top: 30 } }
+  },
+  plugins: [{
+    id: 'valueLabels',
+    afterDatasetsDraw(chart) {
+      const { ctx } = chart;
+      chart.data.datasets.forEach((dataset, i) => {
+        chart.getDatasetMeta(i).data.forEach((bar, j) => {
+          ctx.save();
+          ctx.fillStyle = '#0F172A';
+          ctx.font = 'bold 20px -apple-system, BlinkMacSystemFont, Segoe UI, Arial, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(`${dataset.data[j]}%`, bar.x, bar.y - 6);
+          ctx.restore();
+        });
+      });
+    }
+  }]
+});
+</script>
+</body>
+</html>

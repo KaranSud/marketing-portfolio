@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Content Use Case: Adoption vs. Strong Results Rate</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --text: #0F172A;
+      --secondary: #475569;
+      --muted: #94A3B8;
+      --mid: #64748B;
+      --accent: #DC2626;
+      --grid: #E2E8F0;
+      --border: #E7E5E4;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0F172A;
+        --text: #F1F5F9;
+        --secondary: #CBD5E1;
+        --muted: #64748B;
+        --mid: #94A3B8;
+        --grid: #1E293B;
+        --border: #334155;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --secondary: #CBD5E1;
+      --muted: #64748B;
+      --mid: #94A3B8;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      padding: 32px 16px;
+      min-height: 100vh;
+    }
+    .chart-container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .chart-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .chart-subtitle {
+      font-size: 13px;
+      color: var(--secondary);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .legend {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--secondary);
+    }
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .canvas-wrap {
+      position: relative;
+      height: 360px;
+    }
+    .source {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .gap-note {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <div class="chart-title">The AI Content Use Case Gap: Adoption vs. Strong Results</div>
+    <div class="chart-subtitle">How B2B marketers use AI for content (% using each approach) vs. those reporting strong results from that approach (% of strong-results reporters)</div>
+    <div class="gap-note">The widest gaps reveal where scale is not translating to performance</div>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#0F172A; opacity:0.7;"></div>
+        <span>% Using this AI approach</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#DC2626;"></div>
+        <span>% Reporting strong results from this approach</span>
+      </div>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="dumbbellChart"></canvas>
+    </div>
+    <div class="source">Sources: CMI B2B Content Marketing Trends 2026 (n=1,015, fielded June–August 2025); Orbit Media 12th Annual Blogger Survey 2025 (n=808). "Strong results" defined as top performance tier in each study.</div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('dumbbellChart');
+    const ctx = canvas.getContext('2d');
+
+    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+    const textColor = isDark ? '#CBD5E1' : '#475569';
+    const bgColor = isDark ? '#0F172A' : '#FFFFFF';
+
+    const labels = [
+      'Write complete articles',
+      'Generate ideas/topics',
+      'Edit & refine drafts',
+      'Repurpose content',
+      'Amplify original research'
+    ];
+
+    // Adoption rate (% using each approach)
+    const adoptionData = [89, 76, 66, 58, 34];
+    // Strong results rate (% of strong-results reporters using each)
+    const resultsData = [17, 23, 24, 21, 31];
+
+    const dumbbellPlugin = {
+      id: 'dumbbell',
+      afterDatasetsDraw(chart) {
+        const { ctx, scales: { x, y } } = chart;
+        const datasets = chart.data.datasets;
+
+        chart.data.labels.forEach((label, i) => {
+          const adoptVal = datasets[0].data[i];
+          const resultVal = datasets[1].data[i];
+
+          const xAdopt = x.getPixelForValue(adoptVal);
+          const xResult = x.getPixelForValue(resultVal);
+          const yPos = y.getPixelForValue(i);
+
+          ctx.save();
+          ctx.strokeStyle = isDark ? '#334155' : '#CBD5E1';
+          ctx.lineWidth = 2;
+          ctx.setLineDash([4, 3]);
+          ctx.beginPath();
+          ctx.moveTo(Math.min(xAdopt, xResult), yPos);
+          ctx.lineTo(Math.max(xAdopt, xResult), yPos);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.restore();
+        });
+      }
+    };
+
+    new Chart(ctx, {
+      type: 'scatter',
+      plugins: [dumbbellPlugin],
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: '% Using this AI approach',
+            data: adoptionData.map((v, i) => ({ x: v, y: i })),
+            backgroundColor: 'rgba(15, 23, 42, 0.75)',
+            borderColor: 'rgba(15, 23, 42, 0.9)',
+            borderWidth: 2,
+            pointRadius: 9,
+            pointHoverRadius: 11
+          },
+          {
+            label: '% Reporting strong results',
+            data: resultsData.map((v, i) => ({ x: v, y: i })),
+            backgroundColor: '#DC2626',
+            borderColor: '#DC2626',
+            borderWidth: 2,
+            pointRadius: 9,
+            pointHoverRadius: 11
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: isDark ? '#1E293B' : '#0F172A',
+            titleColor: '#F1F5F9',
+            bodyColor: '#CBD5E1',
+            padding: 12,
+            cornerRadius: 6,
+            callbacks: {
+              title: function(items) {
+                return labels[items[0].parsed.y];
+              },
+              label: function(item) {
+                const prefix = item.datasetIndex === 0 ? 'Adoption rate' : 'Strong results rate';
+                return ' ' + prefix + ': ' + item.parsed.x + '%';
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            min: 0,
+            max: 100,
+            title: {
+              display: true,
+              text: 'Percentage (%)',
+              color: textColor,
+              font: { size: 12 }
+            },
+            ticks: {
+              color: textColor,
+              font: { size: 11 },
+              callback: v => v + '%'
+            },
+            grid: { color: gridColor }
+          },
+          y: {
+            type: 'category',
+            labels: labels,
+            ticks: {
+              color: textColor,
+              font: { size: 12 }
+            },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

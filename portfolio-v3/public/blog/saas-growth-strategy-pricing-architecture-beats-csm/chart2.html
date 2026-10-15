@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expansion ARR Share Trend</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --area-fill: rgba(71,85,105,0.12);
+    --area-stroke: #475569;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --secondary: #94A3B8;
+      --grid: #1E293B;
+      --border: #334155;
+      --area-fill: rgba(148,163,184,0.12);
+      --area-stroke: #94A3B8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --secondary: #94A3B8;
+    --grid: #1E293B;
+    --border: #334155;
+    --area-fill: rgba(148,163,184,0.12);
+    --area-stroke: #94A3B8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 24px 16px 20px;
+    min-height: 100vh;
+  }
+  .chart-header { margin-bottom: 20px; }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .chart-subtitle { font-size: 12px; color: var(--secondary); }
+  .chart-wrap {
+    position: relative;
+    height: 300px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .source {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .callout {
+    display: inline-block;
+    background: #DC262610;
+    border: 1px solid #DC262630;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #DC2626;
+    font-weight: 600;
+    margin-bottom: 16px;
+    max-width: 640px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-header">
+  <div class="chart-title">Expansion ARR as Share of Total New ARR (2021–2026E)</div>
+  <div class="chart-subtitle">Percentage of new ARR generated from existing customers vs. new logos</div>
+</div>
+<div class="callout">+15 percentage points in 4 years</div>
+<div class="chart-wrap">
+  <canvas id="areaChart"></canvas>
+</div>
+<div class="source">Source: Maxio 2025 B2B SaaS Benchmarks Report; 2026E = Maxio estimate</div>
+
+<script>
+const labels = ['2021', '2022', '2023', '2024', '2025', '2026E'];
+const data   = [25, 28, 32, 38, 40, 43];
+
+const ctx = document.getElementById('areaChart').getContext('2d');
+
+const gradient = ctx.createLinearGradient(0, 0, 0, 280);
+gradient.addColorStop(0, 'rgba(71,85,105,0.25)');
+gradient.addColorStop(1, 'rgba(71,85,105,0.02)');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [{
+      label: 'Expansion ARR %',
+      data,
+      fill: true,
+      backgroundColor: gradient,
+      borderColor: '#475569',
+      borderWidth: 2.5,
+      pointBackgroundColor: data.map((v, i) => i === data.length - 1 ? '#DC2626' : '#475569'),
+      pointRadius: data.map((v, i) => i === data.length - 1 ? 7 : 5),
+      pointHoverRadius: 8,
+      pointBorderColor: '#FFFFFF',
+      pointBorderWidth: 2,
+      tension: 0.35
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => `Expansion ARR: ${ctx.parsed.y}% of new ARR`
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#94A3B8',
+        padding: 10,
+        cornerRadius: 6
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        border: { display: false },
+        ticks: { color: '#475569', font: { size: 12 } }
+      },
+      y: {
+        min: 15,
+        max: 50,
+        grid: { color: '#E2E8F0', drawBorder: false },
+        border: { display: false },
+        ticks: {
+          color: '#475569',
+          font: { size: 12 },
+          callback: v => v + '%',
+          stepSize: 5
+        }
+      }
+    },
+    layout: { padding: { top: 16, right: 24, bottom: 8, left: 8 } }
+  },
+  plugins: [{
+    id: 'dataLabels',
+    afterDatasetsDraw(chart) {
+      const { ctx, data, chartArea } = chart;
+      const meta = chart.getDatasetMeta(0);
+      data.datasets[0].data.forEach((val, i) => {
+        const pt = meta.data[i];
+        if (!pt) return;
+        const label = val + '%';
+        ctx.save();
+        ctx.font = 'bold 11px -apple-system, sans-serif';
+        ctx.fillStyle = i === data.datasets[0].data.length - 1 ? '#DC2626' : '#475569';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, pt.x, pt.y - 14);
+        ctx.restore();
+      });
+    }
+  }]
+});
+</script>
+</body>
+</html>

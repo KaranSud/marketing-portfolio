@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS CAC Payback Period Trend 2021–2025</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --mid: #64748B;
+    --accent: #DC2626;
+    --grid: #E2E8F0;
+    --card-border: #E7E5E4;
+    --surface: #FAFAF9;
+    --brand-blue: #1D4ED8;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --mid: #94A3B8;
+      --grid: #1E293B;
+      --card-border: #1E293B;
+      --surface: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --mid: #94A3B8;
+    --grid: #1E293B;
+    --card-border: #1E293B;
+    --surface: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 740px;
+    margin: 0 auto;
+  }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 300px;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .source {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="chart-title">B2B SaaS CAC Payback Period: Median vs. Top Quartile (2021–2025)</div>
+  <div class="chart-subtitle">Months to recover customer acquisition cost from gross profit</div>
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626;"></div>
+      <span>Median SaaS company</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1D4ED8;"></div>
+      <span>Top quartile (sub-12 month target)</span>
+    </div>
+  </div>
+  <div class="source">Sources: Emulent SaaS Marketing Projection Report 2026; Benchmarkit / Pavilion 2025 survey of 583 B2B SaaS companies; Growth Unhinged / Kyle Poyar (public SaaS reference: 57 months gross-margin adjusted, Q1 2025).</div>
+</div>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+const tickColor = isDark ? '#94A3B8' : '#64748B';
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['2021', '2022', '2023', '2024', '2025'],
+    datasets: [
+      {
+        label: 'Median SaaS company',
+        data: [13, 14.5, 16, 17.5, 18.5],
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.08)',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointBackgroundColor: '#DC2626',
+        pointBorderColor: '#FFFFFF',
+        pointBorderWidth: 2,
+        tension: 0.35,
+        fill: true
+      },
+      {
+        label: 'Top quartile target',
+        data: [8, 8.5, 9, 10, 11],
+        borderColor: '#1D4ED8',
+        backgroundColor: 'rgba(29,78,216,0.06)',
+        borderWidth: 2,
+        pointRadius: 4,
+        pointBackgroundColor: '#1D4ED8',
+        pointBorderColor: '#FFFFFF',
+        pointBorderWidth: 2,
+        tension: 0.35,
+        fill: true,
+        borderDash: [5, 3]
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: isDark ? '#1E293B' : '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y} months`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: gridColor, drawBorder: false },
+        ticks: { color: tickColor, font: { size: 12 } }
+      },
+      y: {
+        min: 0,
+        max: 24,
+        grid: { color: gridColor, drawBorder: false },
+        ticks: {
+          color: tickColor,
+          font: { size: 12 },
+          callback: val => val + ' mo'
+        },
+        title: {
+          display: true,
+          text: 'Months',
+          color: tickColor,
+          font: { size: 11 }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

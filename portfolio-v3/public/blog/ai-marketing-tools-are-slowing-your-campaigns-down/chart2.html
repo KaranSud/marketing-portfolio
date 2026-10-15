@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Marketing ROI: Winners vs. The Pack</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    color: var(--text);
+    padding: 32px 24px 24px;
+    min-height: 100vh;
+  }
+  .chart-wrap { max-width: 680px; margin: 0 auto; }
+  .chart-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+  .chart-subtitle { font-size: 13px; color: var(--secondary); margin-bottom: 28px; line-height: 1.5; }
+  .canvas-container { position: relative; height: 360px; }
+  .source { font-size: 11px; color: var(--muted); margin-top: 14px; border-top: 1px solid var(--border); padding-top: 10px; }
+  .annotation {
+    font-size: 11px;
+    color: var(--accent);
+    margin-top: 10px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <div class="chart-title">The 28% Problem: Who Actually Wins at AI Marketing ROI</div>
+  <div class="chart-subtitle">Share of teams reporting meaningful ROI across five AI marketing use cases, compared against the overall enterprise AI success rate.</div>
+  <div class="canvas-container">
+    <canvas id="chart2"></canvas>
+  </div>
+  <div class="annotation">Only 28% of AI projects fully deliver ROI across all enterprise contexts (Gartner, Apr 2026)</div>
+  <div class="source">Sources: Gartner AI ROI survey (n=782 I&O leaders, Nov–Dec 2025, Apr 2026); McKinsey Global AI Survey 2025; GrowthLoop 2026 Marketing Performance Index; MIT Project NANDA GenAI Divide report (Jul 2025).</div>
+</div>
+<script>
+const ctx = document.getElementById('chart2').getContext('2d');
+
+const labels = [
+  'Email personalization',
+  'Content drafting',
+  'Audience segmentation',
+  'Ad copy generation',
+  'Campaign analytics'
+];
+const winnerValues = [71, 68, 64, 59, 47];
+const avgValues = [28, 28, 28, 28, 28];
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Teams reporting ROI (%)',
+        data: winnerValues,
+        backgroundColor: labels.map((_, i) => winnerValues[i] > 55 ? '#1E40AF' : '#64748B'),
+        borderRadius: 0,
+        barThickness: 22,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        callbacks: {
+          label: ctx => ` ${ctx.raw}% report positive ROI`
+        }
+      },
+      annotation: {}
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 100,
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          color: '#64748B',
+          font: { size: 11 },
+          callback: v => v + '%'
+        },
+        border: { color: '#E7E5E4' }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: '#0F172A', font: { size: 12 } },
+        border: { color: '#E7E5E4' }
+      }
+    }
+  },
+  plugins: [{
+    id: 'referenceLinePlugin',
+    afterDatasetsDraw(chart) {
+      const { ctx, scales: { x, y } } = chart;
+      const xPos = x.getPixelForValue(28);
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(xPos, y.top);
+      ctx.lineTo(xPos, y.bottom);
+      ctx.strokeStyle = '#DC2626';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#DC2626';
+      ctx.font = 'bold 10px ' + getComputedStyle(document.body).fontFamily;
+      ctx.textAlign = 'left';
+      ctx.fillText('Avg: 28%', xPos + 5, y.top + 14);
+      ctx.restore();
+    }
+  }]
+});
+</script>
+</body>
+</html>
