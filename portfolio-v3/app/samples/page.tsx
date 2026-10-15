@@ -21,7 +21,7 @@ export default function SamplesPage() {
   return (
     <>
       <Nav />
-      <main className="page-wrap">
+      <main id="main" className="page-wrap">
         <header className="page-head">
           <div className="eyebrow">Samples</div>
           <h1 className="page-h1">

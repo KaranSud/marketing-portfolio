@@ -356,7 +356,7 @@ export default function CrmPage() {
   return (
     <>
       <Nav />
-      <main className="page-wrap crm">
+      <main id="main" className="page-wrap crm">
         <header className="page-head">
           <div className="eyebrow">Labs / Outbound CRM</div>
           <h1 className="page-h1">

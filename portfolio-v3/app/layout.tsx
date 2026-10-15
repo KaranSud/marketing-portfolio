@@ -1,69 +1,68 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
-import ScrollProgress from "@/components/ScrollProgress";
-import AmbientBackground from "@/components/AmbientBackground";
+import "./v3.css";
 import JsonLd from "@/components/JsonLd";
 import MotionProvider from "@/components/MotionProvider";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
+// Still used by the blog, tools and samples pages; the home page uses none.
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
+  preload: false,
 });
 
 const siteUrl = "https://karan-sud-portfolio.vercel.app";
 const description =
-  "Senior content and growth strategist. 5+ years building brands across Web3, AI, F&B, and e-commerce through content, community, and paid media.";
+  "Karan Sud, growth and content marketing for AI and crypto products. Case studies with public numbers, the tools he builds, and how to book a call.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Karan Sud, Content & Growth Strategist",
+  title: "Karan Sud, growth and content for AI products",
   description,
   keywords: [
     "Karan Sud",
+    "growth marketing",
     "content marketing",
-    "growth strategist",
-    "social media manager",
-    "Web3 marketing",
+    "AI product marketing",
+    "crypto marketing",
     "community building",
-    "personal branding",
   ],
   authors: [{ name: "Karan Sud" }],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Karan Sud, Content & Growth Strategist",
+    title: "Karan Sud, growth and content for AI products",
     description,
     siteName: "Karan Sud",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karan Sud, Content & Growth Strategist",
+    title: "Karan Sud, growth and content for AI products",
     description,
     creator: "@KaranSudSocial",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08090C",
+  themeColor: "#0A0A0B",
   colorScheme: "dark",
 };
 
@@ -76,11 +75,16 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* Entrance animations only hide content once script is known to run. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
-        <AmbientBackground />
-        <SmoothScroll />
-        <ScrollProgress />
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
         <MotionProvider>{children}</MotionProvider>
         <JsonLd />
       </body>

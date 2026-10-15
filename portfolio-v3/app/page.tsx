@@ -1,35 +1,31 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Work from "@/components/Work";
-import Services from "@/components/Services";
-import Brands from "@/components/Brands";
-import Skills from "@/components/Skills";
-import Labs from "@/components/Labs";
-import CtaBand from "@/components/CtaBand";
+import Method from "@/components/Method";
+import Tools from "@/components/Tools";
+import About from "@/components/About";
 import Faq from "@/components/Faq";
-import WordMarquee from "@/components/WordMarquee";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { getCaseMediaMap } from "@/lib/caseMedia";
+import StickyCta from "@/components/StickyCta";
+import RevealObserver from "@/components/RevealObserver";
 
 export default function Home() {
-  const mediaMap = getCaseMediaMap();
   return (
     <>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
-        <Work mediaMap={mediaMap} />
-        <Services />
-        <Labs />
-        <CtaBand />
-        <Brands />
-        <Skills />
+        <Work />
+        <Method />
+        <Tools />
+        <About />
         <Faq />
-        <WordMarquee />
         <Contact />
       </main>
       <Footer />
+      <StickyCta />
+      <RevealObserver />
     </>
   );
 }

@@ -79,7 +79,7 @@ export default async function PostPage({
   return (
     <>
       <Nav />
-      <main className="page-wrap article">
+      <main id="main" className="page-wrap article">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

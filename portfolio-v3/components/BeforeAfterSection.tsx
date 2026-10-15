@@ -33,7 +33,7 @@ type FullscreenVideo = HTMLVideoElement & {
 // size, the "before" image is clipped over it, and a native range input
 // (invisible, full-frame) drives the clip so the whole thing gets mouse
 // drag, touch, and keyboard support for free.
-function CompareSlider({ before, after, label }: BeforeAfterPair) {
+export function CompareSlider({ before, after, label }: BeforeAfterPair) {
   const [pos, setPos] = useState(50);
   return (
     <div className="ba-compare">

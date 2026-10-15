@@ -1,24 +1,46 @@
 export type Faq = { q: string; a: string };
 
+// First person, shown on the home page. Every answer traces to facts.md or to
+// Karan's own published words (v2 copy: "open to select projects", "within 24 hours").
+export const homeFaqs: Faq[] = [
+  {
+    q: "What do you work on?",
+    a: "Growth and content for AI and crypto products: the content system, KOL and community programs, launches, and the campaigns that turn attention into signups and trades. I have also run brand content for restaurants and for founders.",
+  },
+  {
+    q: "Do you take freelance projects?",
+    a: "Yes, select ones. Past freelance work includes Tony Roma's, Bones & Burgers and Potters' Hub.",
+  },
+  {
+    q: "Are you open to full-time roles?",
+    a: "Yes. I have worked on the team at FanTV AI and at Crowwd Labs. Send me the role or book a call.",
+  },
+  {
+    q: "How fast do you reply?",
+    a: "Within 24 hours. I work from Noida, India, on IST.",
+  },
+  {
+    q: "Where do the numbers come from?",
+    a: "My own analytics screenshots and public pages like DefiLlama and Product Hunt. Every case shows its source and dates.",
+  },
+  {
+    q: "What happens after I book?",
+    a: "Calendly sends you an invite, and we talk for 30 minutes about the product and who should be using it.",
+  },
+];
+
+// Third person, for JSON-LD only (answer engines quote it out of context).
 export const faqs: Faq[] = [
   {
     q: "What does Karan Sud do?",
-    a: "Karan Sud is a senior content and growth strategist. He builds brands end to end across Web3, AI, F&B, and e-commerce, running content, community, KOL programs, and paid media as one connected system, from strategy through hands-on execution.",
+    a: "Karan Sud is a growth and content marketer for AI and crypto products. He builds content systems, KOL and community programs, and launch campaigns, and he builds his own marketing software.",
   },
   {
-    q: "What industries has Karan worked in?",
-    a: "Web3 and DeFi, AI products, food and beverage, e-commerce and D2C, luxury home goods, sports media, and executive personal branding for founders and CEOs.",
+    q: "What results has Karan Sud driven?",
+    a: "He took FanTV AI's X account from 70K to 297.7K followers in 11 months, helped Defx reach $1.5B in cumulative perp volume (public on DefiLlama), and launched Fere AI to #2 Product of the Day on Product Hunt.",
   },
   {
-    q: "What kind of results has Karan driven?",
-    a: "Highlights include 12,000+ signups for an AI product (Fere AI), growing a brand account from 70K to 300K followers (FanTV), taking a perpetuals DEX from under $100K to $50M+ in monthly volume (Defx), and a 471% month-one ROI on paid social (Potters' Hub).",
-  },
-  {
-    q: "Does Karan only do strategy, or execution too?",
-    a: "Both. He sets the strategy and does the hands-on work, from content calendars and community management to paid campaigns and reporting. He also builds his own web frontends, including this site.",
-  },
-  {
-    q: "Is Karan available, and how do you work with him?",
-    a: "He is open to select projects. You can email contactkaransud@gmail.com or book a free 30-minute intro call via Calendly to talk through your brand and goals.",
+    q: "How do you work with Karan Sud?",
+    a: "He takes on select freelance projects and is open to full-time roles. Book a 30-minute call at calendly.com/contactkaransud/30min or email contactkaransud@gmail.com.",
   },
 ];

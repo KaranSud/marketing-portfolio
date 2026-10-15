@@ -32,13 +32,6 @@ html {
   scroll-behavior: smooth;
   background: var(--bg);
 }
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
 
 body {
   background: transparent;
@@ -245,22 +238,6 @@ a {
 /* ============================================================
    NAV
 ============================================================ */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-  height: 64px;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background 0.35s ease, border-color 0.35s ease;
-}
-nav.scrolled {
-  background: rgba(10, 10, 11, 0.65);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
 .nav-inner {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -1641,17 +1618,6 @@ nav.scrolled {
 /* ============================================================
    CONTACT
 ============================================================ */
-#contact {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  background: transparent;
-}
-#contact .glow-amber {
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 .contact-inner {
   position: relative;
   z-index: 2;
@@ -1892,10 +1858,6 @@ nav.scrolled {
 /* ============================================================
    FOOTER
 ============================================================ */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 36px 0;
-}
 .footer-inner {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -4228,12 +4190,6 @@ footer {
   background: var(--glass-bg-2);
 }
 
-/* Frosted nav, richer saturation */
-nav.scrolled {
-  background: rgba(10, 10, 11, 0.55);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
 
 /* Modal as a thick material */
 .modal {

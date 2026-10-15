@@ -205,7 +205,7 @@ export default function ToolsPage() {
   return (
     <>
       <Nav />
-      <main className="page-wrap tools-page">
+      <main id="main" className="page-wrap tools-page">
         <header className="page-head">
           <div className="eyebrow">Free tools</div>
           <h1 className="page-h1">

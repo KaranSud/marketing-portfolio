@@ -36,12 +36,13 @@ for (const v of VIEWPORTS) {
   const p = await ctx.newPage();
   await p.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
   await p.waitForTimeout(1200);
-  // walk the page so IntersectionObserver / whileInView fire
+  // walk the page so IntersectionObserver / whileInView fire (instant scroll: smooth scroll-behavior would stall the walk)
+  await p.addStyleTag({ content: "html{scroll-behavior:auto!important}" });
   await p.evaluate(async () => { const h = document.body.scrollHeight; for (let y = 0; y < h; y += 500) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); } window.scrollTo(0, 0); });
   // lazy images otherwise come out blank: load them all eagerly and wait for decode
   await p.evaluate(async () => { const imgs = [...document.images]; imgs.forEach(i => { i.loading = 'eager'; }); await Promise.all(imgs.map(i => i.decode().catch(() => {}))); });
   await p.waitForTimeout(500);
-  await p.addStyleTag({ content: '*,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;transition:none!important}' });
+  await p.addStyleTag({ content: '*,*::before,*::after{animation-duration:0s!important;animation-delay:0s!important;transition:none!important} [data-reveal]{opacity:1!important;transform:none!important}' });
   await p.evaluate(() => document.querySelectorAll('[style]').forEach(el => { const s = el.style; if (s.opacity !== '' && parseFloat(s.opacity) < 1) s.opacity = '1'; if (s.transform && s.transform !== 'none') s.transform = 'none'; }));
   if (clickSel) {
     // Overlay mode: click, then page through the overlay's own scroller (largest scrollable element) with viewport shots.
