@@ -99,7 +99,7 @@ export default async function PostPage({
         <div className="v3-casepage-next">
           <div>
             <p className="v3-statement">
-              I run growth and content for AI and crypto products. If your product needs users, let&apos;s talk.
+              I run growth and content for AI products. If your product needs users, let&apos;s talk.
             </p>
             <div style={{ marginTop: 24 }}>
               <BookButton />

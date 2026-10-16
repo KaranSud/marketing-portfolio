@@ -228,3 +228,18 @@ organic (the X analytics show most of the gain in a January 2025 airdrop window,
 4. Fix factual copy on the way: "The SportsRush" spelling, Tony Roma's as "founded in 1972" with partner-franchise
    launches, LinkedIn link to /in/karansud-marketing, and one consistent brand and industry count.
 5. Karan answers the 15 questions in (c) before copy lock. Anything still unanswered stays off the site.
+
+## (e) Karan's confirmations, 16 Oct 2026 (tasks/v3/ANSWERS-2026-10-16.md)
+Status KP-confirmed: Karan answered the matching (c) question directly. These may now appear on the site.
+| Claim | Wording on v3 | Notes |
+|---|---|---|
+| Fere AI daily active traders, signups | 7K+ daily active traders, 12K+ signups | Karan: keep the old site numbers; growth had zero paid budget (Product Hunt and other launch sites, email). #1 Fintech still to verify on the launch-day Product Hunt page |
+| Novaswap organic volume | $800K+ in 3 months | Dates still to confirm from @Novaswap on X |
+| FanTV impressions | 9.5M+ FanTV AI alone; 12M+ with Prashan Agarwal's account | Replaces the 12M CONFLICT |
+| FanTV monthly budget | ₹45 to 50L | Karan: OK to publish |
+| FanTV MAU 1.5M | dropped | Karan agreed |
+| Titles | FanTV: Social Media Marketing Manager; Crowwd Labs: Senior Content Manager, Sep 2025 to May 2026 | |
+| Opaque Studio dates | Mar 2024 to May 2024 (Mach1 Digital dates) | |
+| The Culturegram, Bones & Burgers | Current clients; The Culturegram since June 2026 | One video podcast episode made, not launched; no essays written by Karan |
+| Counts | 13+ brands and founders, 7+ industries | |
+| Defx | Brand has closed; no trader screenshots exist | |

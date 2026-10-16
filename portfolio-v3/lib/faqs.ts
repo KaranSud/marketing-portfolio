@@ -5,15 +5,19 @@ export type Faq = { q: string; a: string };
 export const homeFaqs: Faq[] = [
   {
     q: "What do you work on?",
-    a: "Growth and content for AI and crypto products: the content system, KOL and community programs, launches, and the campaigns that turn attention into signups and trades. I have also run brand content for restaurants and for founders.",
+    a: "Growth and content for AI products: the content system, KOL and community programs, launches, and the campaigns that turn attention into signups and trades. I have also run brand content for restaurants and for founders.",
   },
   {
-    q: "Freelance projects or a full-time role?",
-    a: "Both. Past freelance work includes Tony Roma's, Bones & Burgers and Potters' Hub, and I have worked on the team at FanTV AI and at Crowwd Labs. I work from Noida, India, on IST.",
+    q: "Do you take projects or part-time work?",
+    a: "Both. Past projects include Tony Roma's, Bones & Burgers and Potters' Hub, and I have worked on the team at FanTV AI and at Crowwd Labs. I work from Noida, India, on IST.",
   },
   {
     q: "Where do the numbers come from?",
     a: "My own analytics screenshots and public pages like DefiLlama and Product Hunt. Each case page shows the screenshot and the dates it covers where I have them; Opaque Studio is the one case without a screenshot.",
+  },
+  {
+    q: "What does it cost?",
+    a: "It depends on scope. We agree the price after the 30-minute call, once we know what the work is.",
   },
   {
     q: "What happens after I book?",
@@ -25,7 +29,7 @@ export const homeFaqs: Faq[] = [
 export const faqs: Faq[] = [
   {
     q: "What does Karan Sud do?",
-    a: "Karan Sud is a growth and content marketer for AI and crypto products. He builds content systems, KOL and community programs, and launch campaigns, and he builds his own marketing software.",
+    a: "Karan Sud is a growth and content marketer for AI products, with deep experience in crypto-native AI. He builds content systems, KOL and community programs, and launch campaigns, and he builds his own marketing software.",
   },
   {
     q: "What results has Karan Sud driven?",
@@ -33,6 +37,6 @@ export const faqs: Faq[] = [
   },
   {
     q: "How do you work with Karan Sud?",
-    a: "He takes on select freelance projects and is open to full-time roles. Book a 30-minute call at calendly.com/contactkaransud/30min or email contactkaransud@gmail.com.",
+    a: "He takes on new client projects and some part-time work. Book a 30-minute call at calendly.com/contactkaransud/30min or email contactkaransud@gmail.com.",
   },
 ];

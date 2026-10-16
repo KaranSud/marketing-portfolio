@@ -24,10 +24,10 @@ const ways = [
     lead: "As for",
   },
   {
-    name: "A full-time role",
-    what: "Growth or content, inside your team.",
-    proof: [["FanTV AI", "fantv"], ["Crowwd Labs", "fere"]],
-    lead: "As at",
+    name: "Part-time support",
+    what: "Ongoing content and growth work alongside your team.",
+    proof: [["Bones & Burgers", "bones"], ["The Culturegram", "culturegram"]],
+    lead: "As for my current clients",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function Offer() {
         </ul>
         <div className="v3-offer-cta" data-reveal style={{ ["--i" as string]: 2 }}>
           <BookButton />
-          <p>Tell me which of these fits, or what you need instead.</p>
+          <p>Tell me which of these fits, or what you need instead. Pricing depends on scope; we agree it after the call.</p>
         </div>
       </div>
     </section>

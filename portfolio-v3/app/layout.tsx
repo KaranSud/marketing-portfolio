@@ -29,7 +29,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const siteUrl = "https://karan-sud-portfolio.vercel.app";
 const description =
-  "Karan Sud, growth and content marketing for AI and crypto products. Case studies with public numbers, the tools he builds, and how to book a call.";
+  "Karan Sud, growth and content marketing for AI products. Case studies with public numbers, the tools he builds, and how to book a call.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

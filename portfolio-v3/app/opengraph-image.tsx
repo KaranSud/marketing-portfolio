@@ -24,7 +24,7 @@ export default function OpengraphImage() {
           <div>You built the AI product.</div>
           <div>I find the people who use it.</div>
           <div style={{ marginTop: 22, fontSize: 28, color: "#A9A89F", letterSpacing: 0 }}>
-            Growth and content marketing for AI and crypto products
+            Growth and content marketing for AI products
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>

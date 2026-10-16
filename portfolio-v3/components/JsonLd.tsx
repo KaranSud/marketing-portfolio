@@ -14,7 +14,7 @@ export default function JsonLd() {
         url: siteUrl,
         image: `${siteUrl}/karan.jpg`,
         jobTitle: "Growth and content marketer",
-        description: "Growth and content marketing for AI and crypto products.",
+        description: "Growth and content marketing for AI products.",
         email: "mailto:contactkaransud@gmail.com",
         address: { "@type": "PostalAddress", addressLocality: "Noida", addressCountry: "IN" },
         knowsAbout: [

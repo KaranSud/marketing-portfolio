@@ -12,6 +12,7 @@ export default function About() {
         <ul className="v3-about-facts" data-reveal>
           <li>Noida, India</li>
           <li>In marketing since 2023</li>
+          <li>13+ brands and founders, 7+ industries</li>
           <li>
             <a className="tlink" href="mailto:contactkaransud@gmail.com">
               Email me
@@ -24,7 +25,7 @@ export default function About() {
               <Image src="/karan.jpg" alt="Karan Sud" fill sizes="120px" />
             </span>
             <strong>Karan Sud.</strong> A mechanical engineer who worked in CFD, then moved into marketing in 2023. I run
-            growth and content for AI and crypto products.
+            growth and content for AI products.
           </p>
           <p className="v3-about-body" data-reveal style={{ ["--i" as string]: 1 }}>
             I have also run brand content for restaurants and for founders, and I wrote for brands as a freelancer from

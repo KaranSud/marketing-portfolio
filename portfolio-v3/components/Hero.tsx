@@ -25,8 +25,8 @@ export default function Hero() {
           <span>You built the AI product.</span> <span>I find the people who use it.</span>
         </p>
         <p className="v3-hero-support">
-          Growth and content marketing for AI and crypto products, as a project or as part of your team. I build
-          software too.
+          Growth and content marketing for AI products, as a project or as part-time support. I build software
+          too.
         </p>
         <div className="v3-hero-actions">
           <div className="v3-hero-cta">
