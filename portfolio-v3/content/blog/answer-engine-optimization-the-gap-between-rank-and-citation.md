@@ -1,5 +1,5 @@
 ---
-title: "Answer Engine Optimization: The Gap Between Rank and Citation"
+title: "Answer engine optimization: the gap between rank and citation"
 description: "Answer engine optimization and SEO are diverging: Ahrefs data shows only 38% of AI citations now come from Google's top 10. The SaaS playbook for earning AI visibility in 2026."
 date: "2026-08-20"
 tags: ["SEO", "AEO", "Answer Engine Optimization", "AI Search", "Google AI Overviews", "SaaS Marketing", "Content Marketing", "Zero-Click Search"]

@@ -8,16 +8,8 @@ export const homeFaqs: Faq[] = [
     a: "Growth and content for AI and crypto products: the content system, KOL and community programs, launches, and the campaigns that turn attention into signups and trades. I have also run brand content for restaurants and for founders.",
   },
   {
-    q: "Do you take freelance projects?",
-    a: "Yes, select ones. Past freelance work includes Tony Roma's, Bones & Burgers and Potters' Hub.",
-  },
-  {
-    q: "Are you open to full-time roles?",
-    a: "Yes. I have worked on the team at FanTV AI and at Crowwd Labs. Send me the role or book a call.",
-  },
-  {
-    q: "How fast do you reply?",
-    a: "Within 24 hours. I work from Noida, India, on IST.",
+    q: "Freelance projects or a full-time role?",
+    a: "Both. Past freelance work includes Tony Roma's, Bones & Burgers and Potters' Hub, and I have worked on the team at FanTV AI and at Crowwd Labs. I work from Noida, India, on IST.",
   },
   {
     q: "Where do the numbers come from?",

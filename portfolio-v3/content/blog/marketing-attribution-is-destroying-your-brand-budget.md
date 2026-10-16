@@ -1,6 +1,6 @@
 ---
-title: "Marketing Attribution Is Destroying Your Brand Budget"
-description: "Marketing attribution can't see 80% of the buying journey—yet it's driving CMOs to cut retention spend 29%. Here's the measurement doom loop costing you growth."
+title: "Marketing attribution is destroying your brand budget"
+description: "Marketing attribution can't see 80% of the buying journey, yet it's driving CMOs to cut retention spend 29%. Here's the measurement doom loop costing you growth."
 date: "2026-07-09"
 tags: ["marketing analytics", "marketing attribution", "brand measurement", "incrementality testing", "B2B marketing", "CMO strategy", "media mix modeling", "marketing ROI"]
 author: "Karan Sud"

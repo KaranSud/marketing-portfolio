@@ -5,7 +5,7 @@ import BookButton from "./BookButton";
 // Every number here is in tasks/v3/research/facts.md table (a): rows 1, 2, 4.
 const proof = [
   { num: "297.7K", label: "FanTV AI's followers on X, up from 70K in 11 months, with airdrops and a 100+ KOL program" },
-  { num: "$1.5B", label: "Cumulative perp volume on Defx, public on DefiLlama. I helped it get there." },
+  { num: "$1.5B", label: "Cumulative perp volume I helped Defx reach, public on DefiLlama" },
   { num: "#2", label: "Product of the Day on Product Hunt, for the Fere AI launch" },
 ];
 
@@ -14,7 +14,10 @@ export default function Hero() {
     <section className="v3-hero" aria-label="Introduction">
       <div className="v3-hero-panel">
         <HeroField maskSelector=".v3-hero-name, .v3-hero-fieldnote" />
-        <p className="v3-hero-fieldnote">Before marketing I was a CFD engineer. Move your pointer through the flow.</p>
+        <p className="v3-hero-fieldnote">
+          Before marketing I was a CFD engineer. <span className="v3-on-hover">Move your pointer through the flow.</span>
+          <span className="v3-on-touch">Tap the field.</span>
+        </p>
       </div>
 
       <div className="v3-hero-copy">

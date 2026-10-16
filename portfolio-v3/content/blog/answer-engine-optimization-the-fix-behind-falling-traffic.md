@@ -1,6 +1,6 @@
 ---
-title: "Answer Engine Optimization: The Fix Behind Falling Traffic"
-description: "Answer engine optimization explains why 61% fewer people click your #1 Google result—and how to win the citation economy before your competitors do."
+title: "Answer engine optimization: the fix behind falling traffic"
+description: "Answer engine optimization explains why 61% fewer people click your #1 Google result, and how to win the citation economy before your competitors do."
 date: "2026-08-17"
 tags: ["SEO", "AEO", "Answer Engine Optimization", "AI Overviews", "Zero-Click Search", "Content Marketing", "SaaS Marketing", "B2B Marketing", "GEO", "Organic Traffic"]
 author: "Karan Sud"

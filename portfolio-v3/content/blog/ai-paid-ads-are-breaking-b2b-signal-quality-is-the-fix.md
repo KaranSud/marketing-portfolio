@@ -1,5 +1,5 @@
 ---
-title: "AI Paid Ads Are Breaking B2B. Signal Quality Is the Fix."
+title: "AI paid ads are breaking B2B. Signal quality is the fix."
 description: "AI paid ads optimization for B2B fails when signals stay junk: CPCs rose 29% to $5.34, yet only 30% of CMOs can scale AI. Here is the fix."
 date: "2026-08-24"
 tags: ["Paid Ads", "AI Marketing", "B2B SaaS", "Performance Max", "PPC", "Marketing Ops"]

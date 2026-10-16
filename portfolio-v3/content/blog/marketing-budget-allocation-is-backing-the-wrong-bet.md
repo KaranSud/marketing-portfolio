@@ -1,5 +1,5 @@
 ---
-title: "Marketing Budget Allocation Is Backing the Wrong Bet"
+title: "Marketing budget allocation is backing the wrong bet"
 description: "Gartner finds acquisition now takes 62.6% of media spend while retention spend fell 29% since 2024, even as McKinsey ties retention to a 24x valuation multiple."
 date: "2026-06-25"
 tags: ["marketing budget allocation", "B2B SaaS marketing", "net revenue retention", "customer acquisition cost", "marketing ROI"]

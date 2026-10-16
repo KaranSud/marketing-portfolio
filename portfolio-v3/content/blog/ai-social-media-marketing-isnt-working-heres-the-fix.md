@@ -1,6 +1,6 @@
 ---
-title: "AI Social Media Marketing Isn't Working. Here's the Fix."
-description: "AI social media marketing spend is up 79%—but consumer preference for AI content just fell by more than half. The data explains the gap."
+title: "AI social media marketing isn't working. Here's the fix."
+description: "AI social media marketing spend is up 79%, while consumer preference for AI content fell by more than half. The data explains the gap."
 date: "2026-09-21"
 tags: ["social media marketing", "AI marketing", "organic reach", "content strategy", "LinkedIn algorithm", "authenticity"]
 author: "Karan Sud"

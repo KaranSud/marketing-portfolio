@@ -1,5 +1,5 @@
 ---
-title: "The Buying Committee Just Outgrew Your Funnel"
+title: "The buying committee just outgrew your funnel"
 description: "Forrester counts 13 stakeholders in the average B2B deal, yet most SaaS funnels still build for one buyer. Here is what a real buying committee needs."
 date: "2026-06-22"
 tags: ["B2B SaaS", "buying committee", "marketing strategy", "self-serve", "sales and marketing alignment"]

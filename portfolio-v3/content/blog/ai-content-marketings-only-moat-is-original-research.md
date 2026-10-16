@@ -1,5 +1,5 @@
 ---
-title: "AI Content Marketing's Only Moat Is Original Research"
+title: "AI content marketing's only moat is original research"
 description: "AI content marketing tools are near-universal, but only 39% of B2B teams see results. The teams pulling ahead publish data nobody can replicate."
 date: "2026-10-15"
 tags: ["AI content marketing", "B2B content marketing", "original research", "content strategy", "content marketing ROI"]

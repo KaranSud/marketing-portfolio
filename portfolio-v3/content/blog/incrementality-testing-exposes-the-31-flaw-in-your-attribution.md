@@ -1,5 +1,5 @@
 ---
-title: "Incrementality Testing Exposes the 31% Flaw in Your Attribution"
+title: "Incrementality testing exposes the 31% flaw in your attribution"
 description: "An incrementality study across 150 experiments shows only 69% of last-click attributed conversions are actually caused by paid channels. Here's the math, the method, and how to run your first holdout test."
 date: "2026-09-17"
 tags: ["marketing analytics", "attribution", "incrementality testing", "B2B SaaS", "marketing measurement", "paid media", "MMM"]

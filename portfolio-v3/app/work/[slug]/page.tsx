@@ -65,7 +65,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         ) : null}
 
         {lead ? (
-          <figure className="v3-casepage-hero">
+          <figure className="v3-casepage-hero" style={{ aspectRatio: (({ width, height }) => `${width} / ${height}`)(imageSize(lead.src)) }}>
             <Image src={lead.src} alt={lead.caption} fill priority sizes="100vw" />
           </figure>
         ) : null}

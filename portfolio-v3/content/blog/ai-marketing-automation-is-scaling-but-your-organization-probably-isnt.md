@@ -1,5 +1,5 @@
 ---
-title: "AI Marketing Automation Is Scaling, But Your Organization Probably Isn't."
+title: "AI marketing automation is scaling, but your organization probably isn't."
 description: "AI marketing automation is a stated priority for 70% of CMOs, yet Gartner finds only 30% can actually scale it. Here's the exact readiness gap costing teams millions."
 date: "2026-07-20"
 tags: ["AI marketing", "marketing automation", "CMO strategy", "martech", "agentic AI", "B2B marketing", "marketing ops", "SaaS marketing"]

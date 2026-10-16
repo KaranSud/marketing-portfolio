@@ -1,6 +1,6 @@
 ---
-title: "Email Marketing Automation Is Backwards: The 18x Revenue Gap Nobody Talks About"
-description: "Automated email flows earn 18x more per send than campaigns — yet most teams spend 80% of their time on the wrong email type. Here's how to fix the ratio."
+title: "Email marketing automation is backwards: the 18x revenue gap nobody talks about"
+description: "Automated email flows earn 18x more per send than campaigns, yet most teams spend 80% of their time on the wrong email type. Here's how to fix the ratio."
 date: "2026-08-10"
 tags: ["email marketing", "email automation", "marketing operations", "SaaS marketing", "email strategy", "behavioral marketing", "marketing analytics"]
 author: "Karan Sud"

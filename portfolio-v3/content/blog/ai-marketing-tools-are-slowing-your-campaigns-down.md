@@ -1,5 +1,5 @@
 ---
-title: "AI Marketing Tools Are Slowing Your Campaigns Down"
+title: "AI marketing tools are slowing your campaigns down"
 description: "AI marketing tools spending tripled in 2026, but 41% of teams say campaigns now take 30+ days. Here's why more tools means slower marketing and the fix."
 date: "2026-09-28"
 tags: ["AI marketing", "martech", "marketing automation", "marketing ops", "SaaS marketing", "AI tools"]

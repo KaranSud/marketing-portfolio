@@ -1,5 +1,5 @@
 ---
-title: "Product-Led Growth Was Supposed to Kill Sales Teams"
+title: "Product-led growth was supposed to kill sales teams"
 description: "Product-led growth promised to replace sales teams. McKinsey's analysis of 107 SaaS firms and Gartner's 2030 forecast show why hybrid selling wins instead."
 date: "2026-06-29"
 tags: ["product-led growth", "B2B SaaS", "sales strategy", "go-to-market", "marketing tech"]

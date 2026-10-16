@@ -1,5 +1,5 @@
 ---
-title: "B2B SaaS Marketing Tactics Happen Before Your Funnel Starts"
+title: "B2B SaaS marketing tactics happen before your funnel starts"
 description: "B2B SaaS marketing tactics that work now: 67% of buyers decide before they talk to a rep. Here's how to win the shortlist before the funnel begins."
 date: "2026-09-03"
 tags: ["B2B SaaS", "Marketing Strategy", "Dark Funnel", "Demand Generation", "Buyer Behavior", "Account-Based Marketing"]

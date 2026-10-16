@@ -1,5 +1,5 @@
 ---
-title: "AI Content Marketing's Performance Gap (And How to Close It)"
+title: "AI content marketing's performance gap (and how to close it)"
 description: "87% of AI content teams report better productivity. Only 39% see improved content performance. This post diagnoses the workflow architecture problem and the three inputs that close the gap."
 date: "2026-10-12"
 tags: ["content marketing", "AI", "B2B marketing", "content strategy", "workflow"]

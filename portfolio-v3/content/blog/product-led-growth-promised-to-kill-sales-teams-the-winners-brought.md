@@ -1,5 +1,5 @@
 ---
-title: "Product-Led Growth Promised to Kill Sales Teams. The Winners Brought Them Back."
+title: "Product-led growth promised to kill sales teams. The winners brought them back."
 description: "McKinsey analyzed 107 public SaaS companies: most PLG adopters see no revenue boost. Yet 67% of buyers want rep-free. The resolution is simpler than it looks."
 date: "2026-09-07"
 tags: ["product-led growth", "PLG strategy", "SaaS", "hybrid GTM", "product qualified leads", "SaaS conversion rate", "B2B marketing", "go-to-market"]

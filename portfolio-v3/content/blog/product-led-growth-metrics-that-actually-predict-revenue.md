@@ -1,5 +1,5 @@
 ---
-title: "Product Led Growth Metrics That Actually Predict Revenue"
+title: "Product-led growth metrics that actually predict revenue"
 description: "Product led growth teams that track PQLs grow 61% faster, yet 76% don't. Here's what two overlooked metrics predict about your free-to-paid conversion."
 date: "2026-09-10"
 tags: ["product led growth", "PLG", "SaaS marketing", "B2B SaaS", "marketing metrics", "product qualified leads", "time to value", "activation rate"]

@@ -1,5 +1,5 @@
 ---
-title: "Product Led Growth Activation: The 60% Leak in Your Conversion Funnel"
+title: "Product-led growth activation: the 60% leak in your conversion funnel"
 description: "40-60% of free users vanish before reaching your aha moment. Here is why product led growth activation is the most important metric most PLG teams never measure, and how to fix it."
 date: "2026-07-02"
 tags: ["Product Led Growth", "PLG", "SaaS Growth", "Activation", "Product Qualified Leads", "Freemium", "Conversion Optimization", "Marketing Ops"]

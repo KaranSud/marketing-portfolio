@@ -1,5 +1,5 @@
 ---
-title: "The Authenticity Arbitrage: 41% of LinkedIn Content Is AI. That's Your Advantage."
+title: "The authenticity arbitrage: 41% of LinkedIn content is AI. That's your advantage."
 description: "41% of LinkedIn posts are now AI-generated and earn 45% less engagement. Here's how brands treating human content as scarce compound a durable advantage."
 date: "2026-07-16"
 tags: ["social media marketing", "AI content", "LinkedIn marketing", "content strategy", "brand authenticity", "B2B marketing", "marketing operations"]

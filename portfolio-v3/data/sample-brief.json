@@ -1,18 +1,20 @@
 {
  "recordedAt": "2026-10-16",
- "domain": "aspendental.com",
- "name": "Aspendental",
- "offer": "Patient acquisition and reputation marketing for healthcare and dental groups: local search, reviews, and online booking.",
+ "domain": "elevenlabs.io",
+ "company": "ElevenLabs",
+ "offer": "Launch content, KOL programs and community growth for AI products: more people trying the product and sticking with it.",
  "fitScore": 90,
- "fitReason": "Large multi-location dental group with clear need for scaled local patient acquisition and reputation management.",
- "executiveSummary": "Aspen Dental manages over 1100 dental offices nationwide, focusing on accessible care for a broad patient base. Their recent initiatives, like the Motto Smile Complete Club, highlight a continuous drive for patient acquisition and service expansion. This account is a strong fit for solutions enhancing local patient acquisition and reputation marketing at scale.",
+ "fitReason": "Rapidly expanding AI product suite requires strong content, KOLs, and community for adoption and retention.",
  "email": {
-  "subject": "quick thought on new patient growth",
-  "body": "Saw your recent 'Motto Smile Complete Club' for SmileDirectClub patients. That's a smart move for patient acquisition. With 1100+ locations, scaling local search and online booking consistently must be a challenge. We help large dental groups like yours streamline how new patients find and book appointments locally. Worth a quick look?"
+  "subject": "elevencreative adoption",
+  "body": "Hi Mati, saw your work on ElevenCreative, especially with the new v4 model. Getting creators to try and stick with advanced AI tools is key. We help AI companies like yours drive initial adoption and build lasting communities around new product launches. Worth a quick look at how?"
  },
- "linkedin": "Aspen Dental's 1100+ locations are impressive. Scaling local patient acquisition and reputation across that many offices is a huge undertaking.",
  "sources": [
-  "Wikipedia / Wikidata: Aspen Dental",
-  "Google News"
+  "Wikipedia / Wikidata: ElevenLabs",
+  "Company website (structured data)",
+  "Sitemap",
+  "GitHub: elevenlabs",
+  "Google News",
+  "Hacker News (Algolia)"
  ]
 }

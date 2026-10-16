@@ -1,5 +1,5 @@
 ---
-title: "AI Marketing Automation Is Architecturally Broken"
+title: "AI marketing automation is architecturally broken"
 description: "AI marketing automation's rules-based era is ending. McKinsey says under 10% of CMOs get measurable value from AI tools. Here's what the new architecture looks like."
 date: "2026-10-01"
 tags: ["AI marketing", "marketing automation", "agentic AI", "AI governance", "SaaS marketing", "MarTech", "B2B marketing"]

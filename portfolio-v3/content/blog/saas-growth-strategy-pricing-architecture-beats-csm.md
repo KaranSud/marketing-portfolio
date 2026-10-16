@@ -1,5 +1,5 @@
 ---
-title: "SaaS Growth Strategy: Pricing Architecture Beats CSM"
+title: "SaaS growth strategy: pricing architecture beats CSM"
 description: "SaaS growth strategy comes down to pricing architecture. Usage-based companies hit 108% NRR vs 98% for seat-based. Here's how the 10-point gap widens."
 date: "2026-10-05"
 tags: ["SaaS", "Growth Strategy", "Net Revenue Retention", "Pricing", "Expansion Revenue", "Customer Success", "Usage-Based Pricing"]

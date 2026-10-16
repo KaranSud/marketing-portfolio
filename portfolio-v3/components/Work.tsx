@@ -9,13 +9,8 @@ type Flagship = {
   visual: string;
   visualAlt: string;
   visualCaption: string;
-  height: string;
-  /** Crop: zoom factor, transform origin and object-position. */
-  zoom: number;
-  origin: string;
-  pos: string;
-  /** A second, different artefact, or none. */
-  thumb?: { src: string; alt: string; zoom: number; origin: string; pos: string };
+  /** Width over height of the cropped screenshot: shown whole, never sliced. */
+  ratio: number;
   big: string;
   bigLabel: string;
   desc: string;
@@ -26,46 +21,30 @@ type Flagship = {
 const flagships: Flagship[] = [
   {
     key: "fantv",
-    visual: "/Results/FanTV/FanTV_Web1.png",
+    visual: "/Results/FanTV/crop-analytics.png",
     visualAlt: "FanTV AI X analytics for January 2025: daily reposts and replies, and follows over time",
-    visualCaption: "FanTV AI on X, 1 to 31 January 2025. Inset: the account at 297.7K followers.",
-    height: "80svh",
-    zoom: 1,
-    origin: "100% 50%",
-    pos: "100% 50%",
-    thumb: {
-      src: "/Results/FanTV/FanTV X Mobile SS.png",
-      alt: "FanTV AI's X account showing 297.7K followers",
-      zoom: 2.1,
-      origin: "0% 0%",
-      pos: "0% 0%",
-    },
+    visualCaption: "FanTV AI on X, 1 to 31 January 2025.",
+    ratio: 1305 / 952,
     big: "297.7K",
     bigLabel: "X followers, up from 70K in 11 months, with airdrops and a 100+ KOL program",
-    desc: "A SocialFi app for creators with a quiet feed. I built the content system for the brand and its founder, grew the KOL program from about 10 to 100+, and ran airdrops. Discord and Telegram passed 150K members.",
+    desc: "A SocialFi app for creators with about 70K followers on X and under 1,000 community members. I built the content system for the brand and its founder, grew the KOL program from about 10 to 100+, and ran airdrops. Discord and Telegram passed 150K members.",
   },
   {
     key: "defx",
-    visual: "/Results/Defx/Defx.png",
-    visualAlt: "Defx perp volume chart on DefiLlama",
-    visualCaption: "Defx on DefiLlama: perp volume over time, $1.529b cumulative.",
-    height: "70svh",
-    zoom: 1.55,
-    origin: "100% 26%",
-    pos: "100% 26%",
+    visual: "/Results/Defx/crop-chart.png",
+    visualAlt: "Defx TVL and perp volume chart on DefiLlama, 2025 to 2026",
+    visualCaption: "Defx on DefiLlama: TVL and daily perp volume. Cumulative perp volume there reads $1.529b.",
+    ratio: 1915 / 895,
     big: "50 to 350",
-    bigLabel: "Active traders, from about 50 to about 350. Defx has since passed $1.5B in cumulative volume.",
+    bigLabel: "Active traders, from about 50 to about 350. I helped Defx reach $1.5B in cumulative perp volume.",
     desc: "A perpetuals DEX with 40 to 50 active traders when I joined. I designed two trading contests, one with Voltrade, built KOL relationships, and made the content around them.",
   },
   {
     key: "fere",
-    visual: "/Results/Fere AI/Fere AI.png",
+    visual: "/Results/Fere AI/crop-analytics.png",
     visualAlt: "Fere AI X analytics from 1 September 2025 to 27 April 2026, with 6.8M impressions",
     visualCaption: "Fere AI on X, 1 Sep 2025 to 27 Apr 2026.",
-    height: "64svh",
-    zoom: 1,
-    origin: "100% 0%",
-    pos: "100% 0%",
+    ratio: 1946 / 1968,
     big: "6.8M",
     bigLabel: "X impressions, 1 Sep 2025 to 27 Apr 2026",
     desc: "An AI trading agent whose brand did not exist yet. I built its X content pipeline of trading threads, data drops, market takes and demos, and ran referral and points campaigns. In May 2026 I launched it on Product Hunt, where it finished #2 Product of the Day.",
@@ -86,26 +65,12 @@ export default function Work() {
           <article key={f.key} className="v3-case" aria-labelledby={`case-${f.key}`}>
             <figure
               className="v3-case-visual"
-              style={{
-                ["--h" as string]: f.height,
-                ["--zoom" as string]: f.zoom,
-                ["--origin" as string]: f.origin,
-                ["--pos" as string]: f.pos,
-              }}
+              style={{ aspectRatio: String(f.ratio) }}
               data-reveal
             >
               <Image src={f.visual} alt={f.visualAlt} fill sizes="(max-width: 860px) 100vw, 60vw" />
             </figure>
             <div className="v3-case-cluster">
-              {f.thumb ? (
-                <figure
-                  className="v3-case-thumb"
-                  data-reveal
-                  style={{ ["--zoom" as string]: f.thumb.zoom, ["--origin" as string]: f.thumb.origin, ["--pos" as string]: f.thumb.pos }}
-                >
-                  <Image src={f.thumb.src} alt={f.thumb.alt} fill sizes="(max-width: 860px) 70vw, 30vw" />
-                </figure>
-              ) : null}
               <h3 id={`case-${f.key}`} className="v3-case-title" data-reveal style={{ ["--i" as string]: 1 }}>
                 {c.title}
               </h3>
@@ -130,7 +95,13 @@ export default function Work() {
 
       <div className="v3-work-close" data-reveal>
         <BookButton />
-        <p>Or keep reading. Ten more projects below.</p>
+        <p>
+          Not ready to talk? Read{" "}
+          <Link className="tlink" href="/blog/why-i-built-my-own-outbound-tool">
+            why I built my own outbound engine
+          </Link>
+          , or keep reading: ten more projects below.
+        </p>
       </div>
 
       <h2 className="v3-h2 v3-more-title" data-reveal>
@@ -141,9 +112,9 @@ export default function Work() {
           key: c.key,
           title: c.title,
           kind: c.kind,
-          image: c.preview?.poster ?? c.screenshots[0]?.src ?? c.logo ?? null,
+          image: c.indexImage ?? c.preview?.poster ?? c.screenshots[0]?.src ?? c.logo ?? null,
           video: c.preview?.video ?? null,
-          isLogo: !c.preview && !c.screenshots[0],
+          isLogo: Boolean(c.indexImage) || (!c.preview && !c.screenshots[0]),
         }))}
       />
     </section>

@@ -1,5 +1,5 @@
 ---
-title: "AI Paid Ads Hit $57B. Here's Why $26.8B of It Disappeared."
+title: "AI paid ads hit $57B. Here's why $26.8B of it disappeared."
 description: "AI paid ads optimization hit $57B in 2026, yet the ANA found $26.8B in programmatic waste. Here's why automation alone won't fix your ROAS."
 date: "2026-08-27"
 tags: ["paid advertising", "AI marketing", "programmatic advertising", "Google Ads", "Performance Max", "signal quality", "marketing analytics"]

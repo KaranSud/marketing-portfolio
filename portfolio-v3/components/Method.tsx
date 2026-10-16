@@ -16,8 +16,6 @@ const stages = [
     img: "/Results/Sportsrush/Sportsrush Viral Reels.png",
     alt: "The SportsRush reels on Instagram, at 2M, 4M and 314K views",
     frag: "The SportsRush on Instagram, 2024.",
-    zoom: 1,
-    origin: "50% 50%",
   },
   {
     name: "Reach",
@@ -28,8 +26,6 @@ const stages = [
     img: "/Results/Novaswap/Novaswap.png",
     alt: "Novaswap X analytics from 1 November 2025 to 27 April 2026",
     frag: "Novaswap on X, 1 Nov 2025 to 27 Apr 2026.",
-    zoom: 1.18,
-    origin: "100% 20%",
   },
   {
     name: "Trust",
@@ -40,8 +36,6 @@ const stages = [
     img: "/Results/Prashan/Prashan_2.png",
     alt: "Prashan Agarwal X analytics for January 2025",
     frag: "Prashan Agarwal on X, January 2025.",
-    zoom: 1.18,
-    origin: "100% 20%",
   },
   {
     name: "Revenue",
@@ -49,11 +43,9 @@ const stages = [
     num: "₹20,000",
     numLabel: "Potters' Hub's month-one revenue from ₹3,500 of Meta ads, a 471% return",
     caption: "Paid social aimed at people who already showed interest, with organic reels pulling new people in.",
-    img: "/Results/Potters' Hub/Potters' Hub_1.png",
-    alt: "Potters' Hub Facebook insights from January to May 2025",
-    frag: "Potters' Hub on Facebook, 1 Jan to 31 May 2025.",
-    zoom: 1.12,
-    origin: "100% 0%",
+    img: "/Results/Potters' Hub/crop-top-content.png",
+    alt: "Potters' Hub's top Instagram posts by views, the top one at 57.9K",
+    frag: "Potters' Hub's top Instagram posts by views, February to April 2025.",
   },
 ];
 
@@ -78,17 +70,20 @@ export default function Method() {
             </p>
             <p className="v3-method-caption">{s.caption}</p>
           </div>
+          <ol className="v3-ledger" aria-label="The parts so far">
+            {stages.map((st, k) => (
+              <li key={st.name} className={k <= i ? "is-on" : undefined}>
+                <strong>{k <= i ? st.num : "·"}</strong>
+                <span>{st.name}</span>
+              </li>
+            ))}
+          </ol>
         </div>
         <div className="v3-method-right">
           <div className="v3-method-fragwrap">
             <div className="v3-method-frag" data-ui>
               {stages.map((st, k) => (
-                <div
-                  key={st.img}
-                  className={`v3-method-layer${k === i ? " is-active" : ""}`}
-                  style={{ ["--zoom" as string]: st.zoom, ["--origin" as string]: st.origin }}
-                  aria-hidden={k !== i}
-                >
+                <div key={st.img} className={`v3-method-layer${k === i ? " is-active" : ""}`} aria-hidden={k !== i}>
                   <Image src={st.img} alt={k === i ? st.alt : ""} fill sizes="(max-width: 860px) 92vw, 46vw" />
                 </div>
               ))}

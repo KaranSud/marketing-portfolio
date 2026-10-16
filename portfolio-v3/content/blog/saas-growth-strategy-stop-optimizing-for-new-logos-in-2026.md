@@ -1,5 +1,5 @@
 ---
-title: "SaaS Growth Strategy: Stop Optimizing for New Logos in 2026"
+title: "SaaS growth strategy: stop optimizing for new logos in 2026"
 description: "SaaS growth strategy in 2026 favors expansion over acquisition. McKinsey links a 15-point NRR gap to a 5x valuation spread. Here's the playbook."
 date: "2026-07-27"
 tags: ["SaaS", "Growth Strategy", "Net Revenue Retention", "Expansion Revenue", "Customer Success", "B2B SaaS", "Marketing Strategy", "NRR"]

@@ -1,6 +1,6 @@
 ---
-title: "AI Influencer Marketing's Hidden Fraud Tax (It's 19%)"
-description: "AI influencer marketing tools scale creator discovery 5x faster than fraud detection — and 81% of brands hit fake reach in 2026. Here's the structural fix."
+title: "AI influencer marketing's hidden fraud tax (it's 19%)"
+description: "AI influencer marketing tools scale creator discovery 5x faster than fraud detection, and 81% of brands hit fake reach in 2026. Here's the structural fix."
 date: "2026-09-24"
 tags: ["AI influencer marketing", "influencer fraud detection", "social commerce", "synthetic influencer", "social media marketing", "marketing ROI"]
 author: "Karan Sud"

@@ -1,5 +1,5 @@
 ---
-title: "AI Ad Spend Is Outrunning What Marketers Can Prove"
+title: "AI ad spend is outrunning what marketers can prove"
 description: "AI ad spend now eats 15.3% of marketing budgets, but only 30% of CMOs feel ready to scale it. Here is what that readiness gap actually costs marketers."
 date: "2026-06-17"
 tags: ["AI marketing", "paid ads", "Performance Max", "marketing budgets", "agentic AI", "programmatic advertising"]

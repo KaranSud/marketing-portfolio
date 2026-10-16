@@ -1,3 +1,4 @@
+import Link from "next/link";
 import BookButton from "./BookButton";
 
 // Engagement shapes taken only from work the cases show. No prices, durations or
@@ -6,22 +7,27 @@ const ways = [
   {
     name: "A launch",
     what: "The brand voice, a content system, KOL seeding and launch day itself.",
-    proof: "As for Fere AI and Novaswap",
+    proof: [["Fere AI", "fere"], ["Novaswap", "novaswap"]],
+    lead: "As for",
   },
   {
     name: "Ongoing growth",
     what: "Weekly content, community and KOL programs, with paid growth tracked through the funnel.",
-    proof: "As at FanTV AI, for 11 months",
+    proof: [["FanTV AI", "fantv"]],
+    lead: "As at",
+    tail: ", for 11 months",
   },
   {
     name: "A founder's voice",
     what: "Positioning, content pillars and posts written in the founder's own voice.",
-    proof: "As for Prashan Agarwal and Mohaimina Haque",
+    proof: [["Prashan Agarwal", "prashan"], ["Mohaimina Haque", "mohaimina"]],
+    lead: "As for",
   },
   {
     name: "A full-time role",
     what: "Growth or content, inside your team.",
-    proof: "As at FanTV AI and Crowwd Labs",
+    proof: [["FanTV AI", "fantv"], ["Crowwd Labs", "fere"]],
+    lead: "As at",
   },
 ];
 
@@ -37,7 +43,18 @@ export default function Offer() {
             <li key={w.name} className="v3-offer-row" data-reveal style={{ ["--i" as string]: k }}>
               <div className="v3-offer-top">
                 <h3 className="v3-offer-name">{w.name}</h3>
-                <span className="v3-offer-proof">{w.proof}</span>
+                <span className="v3-offer-proof">
+                  {w.lead}{" "}
+                  {w.proof.map(([label, key], n) => (
+                    <span key={key + label}>
+                      {n > 0 ? " and " : ""}
+                      <Link className="tlink" href={`/work/${key}`}>
+                        {label}
+                      </Link>
+                    </span>
+                  ))}
+                  {w.tail ?? ""}
+                </span>
               </div>
               <p className="v3-offer-what">{w.what}</p>
             </li>

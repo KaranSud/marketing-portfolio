@@ -1,6 +1,6 @@
 ---
-title: "SaaS CAC Payback Is Getting Worse. More Pipeline Won't Fix It."
-description: "SaaS CAC payback stretched 42% since 2021. The companies fixing it aren't generating more pipeline — they're rethinking who they sell to."
+title: "SaaS CAC payback is getting worse. More pipeline won't fix it."
+description: "SaaS CAC payback stretched 42% since 2021. The companies fixing it are rethinking who they sell to."
 date: "2026-10-08"
 tags: ["SaaS", "Growth Strategy", "CAC", "Sales Cycle", "ICP", "B2B Marketing", "Pipeline"]
 author: "Karan Sud"

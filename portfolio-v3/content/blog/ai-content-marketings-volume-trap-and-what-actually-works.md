@@ -1,5 +1,5 @@
 ---
-title: "AI Content Marketing's Volume Trap (And What Actually Works)"
+title: "AI content marketing's volume trap (and what actually works)"
 description: "74% of new pages are AI-generated, yet human-written content earns 5.44x more traffic. Why the AI content volume strategy is costing marketers real results."
 date: "2026-08-03"
 tags: ["content marketing", "AI marketing", "content strategy", "SEO", "B2B marketing", "marketing ops"]

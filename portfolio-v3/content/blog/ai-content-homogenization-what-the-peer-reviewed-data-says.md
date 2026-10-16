@@ -1,6 +1,6 @@
 ---
-title: "AI Content Homogenization: What the Peer-Reviewed Data Says"
-description: "AI content differentiation matters more than ever. A 2025 peer-reviewed study proves ChatGPT makes brand content 15% more similar—and costs you 3.5% in engagement."
+title: "AI content homogenization: what the peer-reviewed data says"
+description: "AI content differentiation matters more than ever. A 2025 peer-reviewed study proves ChatGPT makes brand content 15% more similar, and costs you 3.5% in engagement."
 date: "2026-08-06"
 tags: ["content marketing", "AI", "brand differentiation", "original research", "content strategy", "SaaS marketing", "B2B marketing"]
 author: "Karan Sud"

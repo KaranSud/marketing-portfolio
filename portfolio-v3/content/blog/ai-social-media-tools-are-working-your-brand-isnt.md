@@ -1,5 +1,5 @@
 ---
-title: "AI Social Media Tools Are Working. Your Brand Isn't."
+title: "AI social media tools are working. Your brand isn't."
 description: "AI social media marketing tools are saving marketers hours. A Gartner survey says 50% of consumers now prefer brands that avoid AI content entirely."
 date: "2026-07-13"
 tags: ["social media marketing", "AI marketing", "brand trust", "content strategy", "authenticity", "marketing ops", "SaaS marketing"]

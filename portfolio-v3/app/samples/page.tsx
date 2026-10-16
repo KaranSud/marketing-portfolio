@@ -4,6 +4,8 @@ import Samples from "@/components/Samples";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  // v2-era page: kept reachable, out of search until it is rebuilt on v3.
+  robots: { index: false, follow: true },
   title: "Samples",
   description:
     "A gallery of work samples by Karan Sud: emails, landing pages, SEO articles, blogs, designs, and social posts.",

@@ -15,7 +15,7 @@ export default function StickyCta() {
     let typing = false;
     const update = () => setOn(pastHero && covering.size === 0 && !typing);
     const hero = document.querySelector(".v3-hero");
-    const blockers = document.querySelectorAll("#contact, .v3-tool-card, .v3-offer-cta, .v3-casepage-next");
+    const blockers = document.querySelectorAll("#contact, .v3-tool-card, .v3-offer-cta, .v3-casepage-next, .v3-method-controls, .v3-index-list, #faq");
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.target === hero) pastHero = !e.isIntersecting;

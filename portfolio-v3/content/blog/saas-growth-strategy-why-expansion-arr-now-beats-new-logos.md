@@ -1,5 +1,5 @@
 ---
-title: "SaaS Growth Strategy: Why Expansion ARR Now Beats New Logos"
+title: "SaaS growth strategy: why expansion ARR now beats new logos"
 description: "SaaS growth strategy is broken for most founders. McKinsey data shows a 4.8x valuation gap between companies with 113% vs 98% NRR. Here's the fix."
 date: "2026-07-30"
 tags: ["SaaS", "growth", "expansion revenue", "net revenue retention", "PLG", "product-led growth", "NRR", "benchmarks", "B2B", "customer success"]

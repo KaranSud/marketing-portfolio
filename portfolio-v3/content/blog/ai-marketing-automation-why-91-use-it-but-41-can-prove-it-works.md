@@ -1,6 +1,6 @@
 ---
-title: "AI Marketing Automation: Why 91% Use It But 41% Can Prove It Works"
-description: "AI marketing automation has hit 91% adoption, but only 41% of marketers can prove ROI — down from 49%. Here's the integration gap driving that decline."
+title: "AI marketing automation: why 91% use it but 41% can prove it works"
+description: "AI marketing automation has hit 91% adoption, but only 41% of marketers can prove ROI, down from 49%. Here's the integration gap driving that decline."
 date: "2026-07-23"
 tags: ["AI marketing", "martech", "marketing automation", "marketing ROI", "martech consolidation", "marketing ops", "SaaS marketing"]
 author: "Karan Sud"

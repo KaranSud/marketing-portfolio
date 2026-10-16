@@ -1,5 +1,5 @@
 ---
-title: "Marketing Analytics Investment Is Up. Measurement Confidence Is Down."
+title: "Marketing analytics investment is up. Measurement confidence is down."
 description: "The marketing analytics market hit $8B in 2026, yet only 39% of teams measure effectively. Here's why spending more on tools isn't fixing attribution."
 date: "2026-09-14"
 tags: ["marketing analytics", "marketing attribution", "marketing mix modeling", "incrementality testing", "CMO strategy", "measurement", "SaaS marketing"]

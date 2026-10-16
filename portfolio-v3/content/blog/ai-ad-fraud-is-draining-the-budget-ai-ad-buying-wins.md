@@ -1,5 +1,5 @@
 ---
-title: "AI Ad Fraud Is Draining the Budget AI Ad Buying Wins"
+title: "AI ad fraud is draining the budget AI ad buying wins"
 description: "AI ad fraud now drains $26.8 billion a year from programmatic budgets, even as AI ad buying tools promise smarter targeting and steadily lower costs at scale."
 date: "2026-06-18"
 tags: ["AI ad fraud", "programmatic advertising", "marketing technology", "ad verification", "paid media"]

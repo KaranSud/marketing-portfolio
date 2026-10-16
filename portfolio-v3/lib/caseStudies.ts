@@ -35,6 +35,8 @@ export type CaseStudy = {
   screenshots: Shot[];
   /** Preview for the work index when a case has no screenshot. */
   logo?: string;
+  /** Index preview when the case's screenshot already appears in "How I work". */
+  indexImage?: string;
   /** A short muted loop of the real work, used as the index preview. */
   preview?: { video: string; poster: string };
   /** Folder under public/Results/ scanned for before-after pairs. */
@@ -49,7 +51,7 @@ export const caseStudies: CaseStudy[] = [
     title: "FanTV AI",
     kind: "Social media and community, 2024 to 2025",
     meta: "Social media and community · Oct 2024 to Aug 2025",
-    lede: "A SocialFi app for creators with a quiet feed. With airdrops and a 100+ KOL program, the X account went from 70K to 297.7K followers in 11 months, and Discord and Telegram passed 150K members.",
+    lede: "A SocialFi app for creators that started with about 70K followers on X and under 1,000 community members. With airdrops and a 100+ KOL program, the X account went from 70K to 297.7K followers in 11 months, and Discord and Telegram passed 150K members.",
     channels: ["X", "Instagram", "Discord", "Telegram"],
     stats: [
       { val: "297.7K", label: "X followers, up from 70K in 11 months, with airdrops and a 100+ KOL program" },
@@ -86,7 +88,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Defx",
     kind: "Trading contests, KOLs and content for a perps DEX",
     meta: "Crowwd Labs · Sep 2025 to Jan 2026",
-    lede: "A perpetuals DEX with 40 to 50 active traders when I joined. Active traders went from about 50 to about 350, and Defx has since passed $1.5B in cumulative perp volume on DefiLlama.",
+    lede: "A perpetuals DEX with 40 to 50 active traders when I joined. Active traders went from about 50 to about 350, and I helped Defx reach $1.5B in cumulative perp volume, public on DefiLlama.",
     channels: ["X", "Telegram", "Discord"],
     stats: [
       { val: "$1.5B", label: "Cumulative perp volume on DefiLlama, which I helped Defx reach" },
@@ -104,7 +106,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     results: [
       "Active traders grew from around 40 to 50 to around 300 to 350.",
-      "Defx has passed $1.5B in cumulative perp volume, public on DefiLlama. I helped it get there.",
+      "I helped Defx reach $1.5B in cumulative perp volume, public on DefiLlama.",
     ],
     screenshots: [{ src: "/Results/Defx/Defx.png", caption: "Defx on DefiLlama: $1.529b cumulative perp volume." }],
   },
@@ -145,6 +147,7 @@ export const caseStudies: CaseStudy[] = [
     key: "novaswap",
     mediaDir: "Novaswap",
     title: "Novaswap",
+    indexImage: "/Logos/Novaswap.jpg",
     kind: "Launching a stablecoin DEX on X",
     meta: "Crowwd Labs · Analytics 1 Nov 2025 to 27 Apr 2026",
     lede: "A cross-chain stablecoin DEX that nobody had heard of. The X account opened in November 2025 and earned 1.1M impressions and 53.9K engagements by the end of April 2026.",
@@ -263,6 +266,7 @@ export const caseStudies: CaseStudy[] = [
     key: "sportsrush",
     mediaDir: "Sportsrush",
     title: "The SportsRush",
+    indexImage: "/Logos/sportsrush.jpg",
     kind: "Instagram from 26 followers, 2024",
     meta: "Instagram content · Jun 2024 to Sep 2024",
     lede: "A sports media brand's Instagram, from 26 to 4,500 followers in three months, with reels at 4M and 2M views and no ad spend.",
@@ -327,7 +331,7 @@ export const caseStudies: CaseStudy[] = [
     mediaDir: "Opaque Studio",
     title: "Opaque Studio",
     kind: "Performance and social, via Mach1 Digital",
-    meta: "Through Mach1 Digital · Meta, Google and social · No screenshot",
+    meta: "Through Mach1 Digital · Meta, Google and social",
     lede: "Marketing for a luxury handcrafted home brand made with 700+ artisans: 4X ROAS on ₹3L a month of ad spend.",
     logo: "/Logos/Opaque-Studio.png",
     channels: ["Instagram", "Facebook", "Google Ads"],
@@ -378,7 +382,7 @@ export const caseStudies: CaseStudy[] = [
     mediaDir: "B&B",
     title: "Bones & Burgers",
     kind: "Social media, organic only",
-    meta: "Freelance social media · Facebook and Instagram · Dates not shown",
+    meta: "Freelance social media · Facebook and Instagram",
     lede: "An account full of bot followers, cleaned up and rebuilt with no ad spend.",
     channels: ["Facebook", "Instagram"],
     stats: [

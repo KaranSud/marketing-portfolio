@@ -1,5 +1,5 @@
 ---
-title: "Marketing Attribution Created the Doom Loop. Here's How to Break It."
+title: "Marketing attribution created the doom loop. Here's how to break it."
 description: "84% of companies are stuck in Gartner's brand doom loop. Last-touch attribution built it. Here is the three-part measurement system that breaks the cycle."
 date: "2026-07-06"
 tags: ["marketing attribution", "brand doom loop", "CMO", "marketing measurement", "media mix modeling", "incrementality testing", "last-touch attribution", "B2B marketing"]

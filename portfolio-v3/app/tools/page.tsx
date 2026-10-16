@@ -7,6 +7,8 @@ import { PipelineMock, BoardMock } from "@/components/ToolMocks";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  // v2-era page: kept reachable, out of search until it is rebuilt on v3.
+  robots: { index: false, follow: true },
   title: "Free Tools: Account Research Engine and Outbound CRM",
   description:
     "Two free tools that run a full outbound motion: an account research engine that writes sourced briefs with fit scores and contacts, and a browser-based CRM to work the pipeline. Both are free and work without an account.",
