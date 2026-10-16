@@ -12,6 +12,14 @@ import { caseStudies, getCase } from "@/lib/caseStudies";
 import { getCaseMediaMap } from "@/lib/caseMedia";
 import { imageSize } from "@/lib/imageSize";
 
+// The closing line matches the kind of client the case was for.
+function closer(key: string) {
+  if (["prashan", "mohaimina"].includes(key)) return "Want this for your founder?";
+  if (["tony", "bones", "potters", "opaque", "sportsrush"].includes(key)) return "Want this for your brand?";
+  if (key === "culturegram") return "Want this for your site?";
+  return "Want this for your product?";
+}
+
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.key }));
 }
@@ -41,16 +49,10 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
     <>
       <Nav />
       <main id="main" className="v3-casepage">
-        <p className="v3-casepage-meta" data-reveal>
-          <Link className="tlink" href="/#work">
-            Work
-          </Link>{" "}
-          · {c.meta}
-        </p>
-        <h1 data-reveal>{c.title}</h1>
-        <p className="v3-statement v3-casepage-lede" data-reveal style={{ ["--i" as string]: 1 }}>
-          {c.lede}
-        </p>
+        {/* Title, lede and meta paint from server HTML (no entrance), so they can be the LCP. */}
+        <h1>{c.title}</h1>
+        <p className="v3-statement v3-casepage-lede">{c.lede}</p>
+        <p className="v3-casepage-meta">{c.meta}</p>
         {c.stats.length ? (
           <ul className="v3-casepage-stats v3-proof" aria-label="Results">
             {c.stats.map((s, k) => (
@@ -63,11 +65,16 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         ) : null}
 
         {lead ? (
-          <figure className="v3-casepage-hero" data-reveal>
+          <figure className="v3-casepage-hero">
             <Image src={lead.src} alt={lead.caption} fill priority sizes="100vw" />
           </figure>
         ) : null}
         {lead ? <p className="v3-caption">{lead.caption}</p> : null}
+        {!lead && c.beforeAfter ? (
+          <div className="v3-casepage-compare">
+            <CompareSlider {...c.beforeAfter.screenshots[0]} />
+          </div>
+        ) : null}
 
         <div className="v3-casepage-body">
           <section data-reveal>
@@ -104,7 +111,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           ) : null}
           {c.beforeAfter ? (
             <section>
-              <BeforeAfterSection data={c.beforeAfter} />
+              <BeforeAfterSection data={{ ...c.beforeAfter, screenshots: c.beforeAfter.screenshots.slice(1) }} />
             </section>
           ) : null}
           {restShots.length ? (
@@ -124,7 +131,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
 
         <div className="v3-casepage-next">
           <div>
-            <p className="v3-statement">Want this for your product?</p>
+            <p className="v3-statement">{closer(c.key)}</p>
             <div style={{ marginTop: 24 }}>
               <BookButton />
             </div>

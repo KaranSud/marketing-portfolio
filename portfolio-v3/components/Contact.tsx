@@ -8,13 +8,15 @@ export default function Contact() {
       </h2>
       <div className="v3-contact-top" data-reveal>
         <p>Tell me about the product and who should be using it.</p>
-        <BookButton className="cta cta-dark" />
       </div>
       <a className="v3-contact-mail" href="mailto:contactkaransud@gmail.com" data-reveal style={{ ["--i" as string]: 1 }}>
         contactkaransud@gmail.com
       </a>
       <div className="v3-contact-foot">
-        <span>Noida, India · Replies within 24 hours</span>
+        <div className="v3-contact-book">
+          <BookButton className="cta cta-dark" />
+          <span>Noida, India · Replies within 24 hours</span>
+        </div>
         <div>
           <a href="https://www.linkedin.com/in/karansud-marketing" target="_blank" rel="noopener noreferrer">
             LinkedIn

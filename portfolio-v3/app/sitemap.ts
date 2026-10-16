@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { caseStudies } from "@/lib/caseStudies";
 
 const siteUrl = "https://karan-sud-portfolio.vercel.app";
 
@@ -11,6 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const cases = caseStudies.map((c) => ({
+    url: `${siteUrl}/work/${c.key}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   return [
     {
       url: siteUrl,
@@ -18,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    ...cases,
     {
       url: `${siteUrl}/blog`,
       lastModified: new Date(),
@@ -28,13 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}/tools`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/crm`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.6,
     },
     ...posts,
   ];

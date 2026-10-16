@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Karan Sud, Content & Growth Strategist";
+export const alt = "Karan Sud, growth and content for AI products";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -14,73 +14,22 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background:
-            "radial-gradient(900px circle at 80% -10%, rgba(108,160,136,0.22), transparent 55%), #0A0A0B",
-          padding: "72px",
+          background: "#0A0A0B",
+          padding: "64px 72px 48px",
           fontFamily: "sans-serif",
+          color: "#F2F1EC",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-            color: "#989790",
-            fontSize: 26,
-            letterSpacing: 2,
-          }}
-        >
-          <div
-            style={{
-              width: 10,
-              height: 10,
-              borderRadius: 999,
-              background: "#6CA088",
-            }}
-          />
-          PORTFOLIO
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              color: "#F2F1EC",
-              fontSize: 84,
-              fontWeight: 700,
-              lineHeight: 1.02,
-              letterSpacing: -3,
-            }}
-          >
-            Brands don&rsquo;t go viral.
-          </div>
-          <div
-            style={{
-              fontSize: 84,
-              fontWeight: 700,
-              lineHeight: 1.02,
-              letterSpacing: -3,
-              display: "flex",
-              gap: 20,
-            }}
-          >
-            <span style={{ color: "#6CA088" }}>Systems</span>
-            <span style={{ color: "#F2F1EC" }}>do.</span>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: 54, lineHeight: 1.08, letterSpacing: -1.5 }}>
+          <div>You built the AI product.</div>
+          <div>I find the people who use it.</div>
+          <div style={{ marginTop: 22, fontSize: 28, color: "#A9A89F", letterSpacing: 0 }}>
+            Growth and content marketing for AI and crypto products
           </div>
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            color: "#989790",
-            fontSize: 28,
-          }}
-        >
-          <div style={{ color: "#F2F1EC", fontSize: 34, fontWeight: 600 }}>
-            Karan Sud
-          </div>
-          <div>Content &amp; Growth Strategist</div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <div style={{ fontSize: 150, lineHeight: 0.8, letterSpacing: -7 }}>karan sud</div>
+          <div style={{ width: 120, height: 10, background: "#6CA088", marginBottom: 12 }} />
         </div>
       </div>
     ),

@@ -15,8 +15,19 @@ type Item = {
 
 function Media({ it, sizes }: { it: Item; sizes: string }) {
   if (it.video) {
+    // Plays only for visitors who have not asked for reduced motion.
     return (
-      <video src={it.video} poster={it.image ?? undefined} muted loop playsInline autoPlay preload="metadata" />
+      <video
+        src={it.video}
+        poster={it.image ?? undefined}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        ref={(v) => {
+          if (v && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) v.play().catch(() => {});
+        }}
+      />
     );
   }
   return it.image ? <Image src={it.image} alt="" fill sizes={sizes} loading="lazy" /> : null;

@@ -1,9 +1,10 @@
+import Image from "next/image";
 import HeroField from "./HeroField";
 import BookButton from "./BookButton";
 
 // Every number here is in tasks/v3/research/facts.md table (a): rows 1, 2, 4.
 const proof = [
-  { num: "297.7K", label: "FanTV AI's followers on X, up from 70K in 11 months" },
+  { num: "297.7K", label: "FanTV AI's followers on X, up from 70K in 11 months, with airdrops and a 100+ KOL program" },
   { num: "$1.5B", label: "Cumulative perp volume on Defx, public on DefiLlama. I helped it get there." },
   { num: "#2", label: "Product of the Day on Product Hunt, for the Fere AI launch" },
 ];
@@ -12,7 +13,8 @@ export default function Hero() {
   return (
     <section className="v3-hero" aria-label="Introduction">
       <div className="v3-hero-panel">
-        <HeroField maskSelector=".v3-hero-name" />
+        <HeroField maskSelector=".v3-hero-name, .v3-hero-fieldnote" />
+        <p className="v3-hero-fieldnote">Before marketing I was a CFD engineer. Move your pointer through the flow.</p>
       </div>
 
       <div className="v3-hero-copy">
@@ -20,12 +22,22 @@ export default function Hero() {
           <span>You built the AI product.</span> <span>I find the people who use it.</span>
         </p>
         <p className="v3-hero-support">
-          Growth and content marketing for AI and crypto products. I take on select projects.
+          Growth and content marketing for AI and crypto products, as a project or as part of your team. I build
+          software too.
         </p>
         <div className="v3-hero-actions">
-          <BookButton />
+          <div className="v3-hero-cta">
+            <span className="v3-hero-face">
+              <Image src="/karan.jpg" alt="Karan Sud" fill sizes="72px" priority />
+            </span>
+            <BookButton />
+          </div>
           <span className="v3-hero-note">
-            Pick a time on my calendar. Prefer email? I reply within 24 hours.
+            Pick a time on my calendar. Prefer{" "}
+            <a className="tlink" href="mailto:contactkaransud@gmail.com">
+              email
+            </a>
+            ? I reply within 24 hours.
           </span>
         </div>
         <ul className="v3-proof" aria-label="Results">

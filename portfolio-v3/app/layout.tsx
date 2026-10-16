@@ -3,7 +3,6 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "./v3.css";
 import JsonLd from "@/components/JsonLd";
-import MotionProvider from "@/components/MotionProvider";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
@@ -85,7 +84,7 @@ export default function RootLayout({
         <a className="skip-link" href="#main">
           Skip to content
         </a>
-        <MotionProvider>{children}</MotionProvider>
+        {children}
         <JsonLd />
       </body>
     </html>

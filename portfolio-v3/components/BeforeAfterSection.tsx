@@ -70,23 +70,42 @@ export default function BeforeAfterSection({ data }: { data: BeforeAfter }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [active, setActive] = useState<Which>("before");
   const videoRef = useRef<HTMLVideoElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const returnRef = useRef<HTMLElement | null>(null);
 
-  // Capture phase + stopPropagation so this doesn't also trigger Work.tsx's
-  // own (bubble-phase) Escape handler, which would close the whole case
-  // modal on the same keypress.
+  // A real modal dialog: focus moves to Close on open, Tab stays inside, Escape
+  // closes, and focus returns to the button that opened it.
   useEffect(() => {
     if (!lightboxOpen) return;
+    closeRef.current?.focus();
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
         e.stopPropagation();
         setLightboxOpen(false);
+        return;
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const f = dialogRef.current.querySelectorAll<HTMLElement>("button, video[controls], [href], [tabindex]:not([tabindex='-1'])");
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     }
     document.addEventListener("keydown", onKey, true);
-    return () => document.removeEventListener("keydown", onKey, true);
+    return () => {
+      document.removeEventListener("keydown", onKey, true);
+      returnRef.current?.focus();
+    };
   }, [lightboxOpen]);
 
   function open(which: Which) {
+    returnRef.current = document.activeElement as HTMLElement | null;
     setActive(which);
     setLightboxOpen(true);
   }
@@ -109,7 +128,7 @@ export default function BeforeAfterSection({ data }: { data: BeforeAfter }) {
   return (
     <>
       <motion.div className="modal-section" variants={item}>
-        <h3>Before / After</h3>
+        <h2>Before and after</h2>
         <div className="ba-videos">
           <button
             type="button"
@@ -146,8 +165,16 @@ export default function BeforeAfterSection({ data }: { data: BeforeAfter }) {
 
       {lightboxOpen
         ? createPortal(
-            <div className="ba-lightbox" onClick={onOverlayClick}>
+            <div
+              className="ba-lightbox"
+              onClick={onOverlayClick}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Before and after walkthrough video"
+              ref={dialogRef}
+            >
               <button
+                ref={closeRef}
                 className="ba-lightbox-close"
                 onClick={() => setLightboxOpen(false)}
                 aria-label="Close"

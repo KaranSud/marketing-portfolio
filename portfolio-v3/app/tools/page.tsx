@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
+import MotionProvider from "@/components/MotionProvider";
 import { PipelineMock, BoardMock } from "@/components/ToolMocks";
 import Footer from "@/components/Footer";
 
@@ -205,6 +206,7 @@ export default function ToolsPage() {
   return (
     <>
       <Nav />
+      <MotionProvider>
       <main id="main" className="page-wrap tools-page">
         <header className="page-head">
           <div className="eyebrow">Free tools</div>
@@ -293,6 +295,7 @@ export default function ToolsPage() {
           </div>
         </Reveal>
       </main>
+      </MotionProvider>
       <Footer />
     </>
   );

@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { marked } from "marked";
 import Nav from "@/components/Nav";
-import BlogHeader from "@/components/BlogHeader";
+import BookButton from "@/components/BookButton";
+import StickyCta from "@/components/StickyCta";
 import { getPost, getSlugs } from "@/lib/blog";
 import Footer from "@/components/Footer";
 
@@ -79,34 +80,39 @@ export default async function PostPage({
   return (
     <>
       <Nav />
-      <main id="main" className="page-wrap article">
+      <main id="main" className="v3-casepage v3-post">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Link className="back-link" href="/blog">
-          ← All posts
-        </Link>
         <article>
-          <BlogHeader
-            title={post.title}
-            dateLabel={formatDate(post.date)}
-            readingTime={post.readingTime}
-            tags={post.tags}
-            accent={post.accent}
-          />
-          <p className="article-desc">{post.description}</p>
+          <h1>{post.title}</h1>
+          <p className="v3-statement v3-casepage-lede">{post.description}</p>
+          <p className="v3-casepage-meta">
+            {formatDate(post.date)} · {post.readingTime} · {post.author}
+          </p>
           <div
             className="prose"
             dangerouslySetInnerHTML={{ __html: html }}
           />
-          <footer className="article-foot">
-            <span>Written by {post.author}</span>
-            <Link href="/blog">More posts →</Link>
-          </footer>
         </article>
+        <div className="v3-casepage-next">
+          <div>
+            <p className="v3-statement">
+              I run growth and content for AI and crypto products. If your product needs users, let us talk.
+            </p>
+            <div style={{ marginTop: 24 }}>
+              <BookButton />
+            </div>
+          </div>
+          <Link className="v3-next" href="/blog">
+            <small>More writing</small>
+            <span>All posts</span>
+          </Link>
+        </div>
       </main>
       <Footer />
+      <StickyCta />
     </>
   );
 }

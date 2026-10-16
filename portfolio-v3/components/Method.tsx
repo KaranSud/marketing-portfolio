@@ -3,53 +3,64 @@
 import { useState } from "react";
 import Image from "next/image";
 
-// Copy from tasks/v3/copy-deck.md. Each stage shows a real analytics screenshot
-// from the case where that part of the work happened.
+// Four parts of the work, each shown with one real artefact and one number from
+// tasks/v3/research/facts.md. None of these images appears elsewhere on the home page.
 const stages = [
   {
     name: "Content",
     clause: "A feed worth following",
+    num: "4M",
+    numLabel: "views on one SportsRush reel, with no ad spend",
     caption:
-      "Recurring formats on a weekly cadence. For Fere AI: trading threads, data drops, market takes and demos.",
-    img: "/Results/Fere AI/Fere AI.png",
-    alt: "Fere AI X analytics showing 6.8M impressions",
-    frag: "Fere AI on X, 1 Sep 2025 to 27 Apr 2026: 6.8M impressions.",
-    zoom: { scale: 1.3, origin: "72% 46%" },
+      "Formats built for the platform, on a steady cadence. The SportsRush's Instagram went from 26 to 4,500 followers in three months.",
+    img: "/Results/Sportsrush/Sportsrush Viral Reels.png",
+    alt: "The SportsRush reels on Instagram, at 2M, 4M and 314K views",
+    frag: "The SportsRush on Instagram, 2024.",
+    zoom: 1,
+    origin: "50% 50%",
   },
   {
     name: "Reach",
     clause: "Other people's audiences",
-    caption: "KOLs, ambassadors, AMAs and airdrops. At FanTV AI the KOL program grew from about 10 to 100+.",
-    img: "/Results/FanTV/FanTV_Web1.png",
-    alt: "FanTV AI X analytics for January 2025",
-    frag: "FanTV AI on X, January 2025.",
-    zoom: { scale: 1.3, origin: "76% 34%" },
+    num: "1.1M",
+    numLabel: "X impressions for Novaswap, an account opened in November 2025",
+    caption: "KOLs, ambassadors and community seeding. For Novaswap I seeded targeted KOLs and built the community from nothing.",
+    img: "/Results/Novaswap/Novaswap.png",
+    alt: "Novaswap X analytics from 1 November 2025 to 27 April 2026",
+    frag: "Novaswap on X, 1 Nov 2025 to 27 Apr 2026.",
+    zoom: 1.18,
+    origin: "100% 20%",
   },
   {
     name: "Trust",
     clause: "A founder people trust",
-    caption:
-      "I wrote Prashan Agarwal's posts in his voice, alongside the FanTV AI account. His X went from 12K to over 90K followers.",
-    img: "/Results/Prashan/Prashan_1.png",
-    alt: "Prashan Agarwal X analytics from October 2024 to August 2025",
-    frag: "Prashan Agarwal on X, 1 Oct 2024 to 29 Aug 2025.",
-    zoom: { scale: 1.3, origin: "74% 34%" },
+    num: "90K+",
+    numLabel: "X followers for Prashan Agarwal, up from 12K",
+    caption: "I wrote Prashan Agarwal's posts in his voice, alongside the FanTV AI brand account, so the two fed each other.",
+    img: "/Results/Prashan/Prashan_2.png",
+    alt: "Prashan Agarwal X analytics for January 2025",
+    frag: "Prashan Agarwal on X, January 2025.",
+    zoom: 1.18,
+    origin: "100% 20%",
   },
   {
-    name: "Use",
-    clause: "A reason to act today",
-    caption:
-      "Contests, referrals and points. Defx ran two trading contests, and active traders went from about 50 to about 350.",
-    img: "/Results/Defx/Defx.png",
-    alt: "Defx on DefiLlama showing $1.529b cumulative perp volume",
-    frag: "Defx on DefiLlama: $1.529b cumulative perp volume.",
-    zoom: { scale: 1.35, origin: "58% 30%" },
+    name: "Revenue",
+    clause: "Attention that pays",
+    num: "₹20,000",
+    numLabel: "Potters' Hub's month-one revenue from ₹3,500 of Meta ads, a 471% return",
+    caption: "Paid social aimed at people who already showed interest, with organic reels pulling new people in.",
+    img: "/Results/Potters' Hub/Potters' Hub_1.png",
+    alt: "Potters' Hub Facebook insights from January to May 2025",
+    frag: "Potters' Hub on Facebook, 1 Jan to 31 May 2025.",
+    zoom: 1.12,
+    origin: "100% 0%",
   },
 ];
 
 export default function Method() {
   const [i, setI] = useState(0);
   const s = stages[i];
+  const last = stages.length - 1;
   return (
     <section id="method" className="v3-method" aria-labelledby="method-title">
       <div className="v3-method-head">
@@ -60,25 +71,25 @@ export default function Method() {
       <div className="v3-method-stage">
         <div className="v3-method-left">
           <div aria-live="polite">
-            <p className="v3-method-clause" key={`c${i}`}>
-              {s.clause}
+            <p className="v3-method-clause">{s.clause}</p>
+            <p className="v3-method-num">
+              <strong>{s.num}</strong>
+              <span>{s.numLabel}</span>
             </p>
-            <p className="v3-method-caption" key={`p${i}`}>
-              {s.caption}
-            </p>
+            <p className="v3-method-caption">{s.caption}</p>
           </div>
         </div>
         <div className="v3-method-right">
-          <div>
+          <div className="v3-method-fragwrap">
             <div className="v3-method-frag" data-ui>
               {stages.map((st, k) => (
                 <div
                   key={st.img}
                   className={`v3-method-layer${k === i ? " is-active" : ""}`}
-                  style={{ ["--zoom" as string]: st.zoom.scale, ["--origin" as string]: st.zoom.origin }}
+                  style={{ ["--zoom" as string]: st.zoom, ["--origin" as string]: st.origin }}
                   aria-hidden={k !== i}
                 >
-                  <Image src={st.img} alt={k === i ? st.alt : ""} fill sizes="(max-width: 860px) 92vw, 560px" />
+                  <Image src={st.img} alt={k === i ? st.alt : ""} fill sizes="(max-width: 860px) 92vw, 46vw" />
                 </div>
               ))}
             </div>
@@ -87,16 +98,16 @@ export default function Method() {
         </div>
         <div className="v3-method-controls">
           <label htmlFor="stage-range" className="sr-only">
-            Stage of the work
+            Part of the work
           </label>
-          <div className="v3-range-wrap" style={{ ["--fill" as string]: `${(i / (stages.length - 1)) * 100}%` }}>
+          <div className="v3-range-wrap" style={{ ["--fill" as string]: `${(i / last) * 100}%` }}>
             <span className="v3-range-fill" aria-hidden="true" />
             <input
               id="stage-range"
               className="v3-range"
               type="range"
               min={0}
-              max={stages.length - 1}
+              max={last}
               step={1}
               value={i}
               aria-valuetext={`${s.name}: ${s.clause}`}
@@ -105,7 +116,7 @@ export default function Method() {
           </div>
           <ul className="v3-stops">
             {stages.map((st, k) => (
-              <li key={st.name}>
+              <li key={st.name} style={{ ["--at" as string]: `${(k / last) * 100}%` }}>
                 <button type="button" aria-pressed={k === i} onClick={() => setI(k)}>
                   {st.name}
                 </button>

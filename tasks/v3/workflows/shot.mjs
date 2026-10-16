@@ -62,6 +62,8 @@ for (const v of VIEWPORTS) {
     }
     await ctx.close(); continue;
   }
+  // Fixed bottom bars (v3 sticky CTA) land mid-page in stitched full-page captures; probe them with viewport shots instead.
+  await p.addStyleTag({ content: ".v3-sticky{visibility:hidden!important}" });
   const H = await p.evaluate(() => document.documentElement.scrollHeight);
   let i = 0;
   for (let y = 0; y < H; y += v.chunk) {

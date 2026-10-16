@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Work from "@/components/Work";
 import Method from "@/components/Method";
+import Offer from "@/components/Offer";
 import Tools from "@/components/Tools";
 import About from "@/components/About";
 import Faq from "@/components/Faq";
@@ -18,6 +19,7 @@ export default function Home() {
         <Hero />
         <Work />
         <Method />
+        <Offer />
         <Tools />
         <About />
         <Faq />

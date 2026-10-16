@@ -21,7 +21,7 @@ export const homeFaqs: Faq[] = [
   },
   {
     q: "Where do the numbers come from?",
-    a: "My own analytics screenshots and public pages like DefiLlama and Product Hunt. Every case shows its source and dates.",
+    a: "My own analytics screenshots and public pages like DefiLlama and Product Hunt. Each case page shows the screenshot and the dates it covers where I have them; Opaque Studio is the one case without a screenshot.",
   },
   {
     q: "What happens after I book?",

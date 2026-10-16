@@ -1,30 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
-import { BlogThumb } from "@/components/BlogHeader";
-import { getAllPosts } from "@/lib/blog";
 import Footer from "@/components/Footer";
+import StickyCta from "@/components/StickyCta";
+import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Writing on AI marketing",
   description:
-    "How I built a free account research and outbound engine, why I built it, and how it works, by Karan Sud.",
+    "Essays by Karan Sud on how AI is changing marketing, content and growth, plus three posts on building his own outbound engine.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Blog by Karan Sud",
-    description:
-      "How I built a free account research and outbound engine, why, and how it works.",
+    title: "Writing on AI marketing, by Karan Sud",
+    description: "Essays on how AI is changing marketing, content and growth.",
     url: "/blog",
     type: "website",
   },
 };
 
 function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  return new Date(iso).toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" });
 }
 
 export default function BlogIndex() {
@@ -32,45 +27,28 @@ export default function BlogIndex() {
   return (
     <>
       <Nav />
-      <main id="main" className="page-wrap">
-        <header className="page-head">
-          <div className="eyebrow">Blog</div>
-          <h1 className="page-h1">
-            Building the <em>outbound engine</em>
-          </h1>
-          <p className="page-sub">
-            How I built a free account research and outreach tool, why it made
-            sense to build it myself, and how it works under the hood.
-          </p>
-        </header>
-
-        <div className="post-list">
-          {posts.length === 0 ? (
-            <p className="page-sub">Posts are on the way.</p>
-          ) : (
-            posts.map((p) => (
-              <Link className="post-card" href={`/blog/${p.slug}`} key={p.slug}>
-                <BlogThumb accent={p.accent} />
-                <div className="post-card-body">
-                  <div className="post-meta">
-                    <time dateTime={p.date}>{formatDate(p.date)}</time>
-                    <span aria-hidden>·</span>
-                    <span>{p.readingTime}</span>
-                  </div>
-                  <h2 className="post-title">{p.title}</h2>
-                  <p className="post-desc">{p.description}</p>
-                  <div className="post-tags">
-                    {p.tags.map((t) => (
-                      <span key={t}>{t}</span>
-                    ))}
-                  </div>
-                </div>
+      <main id="main" className="v3-casepage v3-blog">
+        <h1>Writing on AI marketing</h1>
+        <p className="v3-statement v3-casepage-lede">
+          Essays on how AI is changing marketing, content and growth, plus three posts on building my own outbound
+          engine.
+        </p>
+        <ol className="v3-blog-list">
+          {posts.map((p) => (
+            <li key={p.slug}>
+              <Link className="v3-blog-row" href={`/blog/${p.slug}`}>
+                <span className="v3-blog-title">{p.title}</span>
+                <span className="v3-blog-desc">{p.description}</span>
+                <span className="v3-blog-meta">
+                  <time dateTime={p.date}>{formatDate(p.date)}</time> · {p.readingTime}
+                </span>
               </Link>
-            ))
-          )}
-        </div>
+            </li>
+          ))}
+        </ol>
       </main>
       <Footer />
+      <StickyCta />
     </>
   );
 }

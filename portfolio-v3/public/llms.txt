@@ -1,32 +1,33 @@
 # Karan Sud
 
-> Senior content and growth strategist with 5+ years building brands from the
-> ground up across Web3, DeFi, AI, F&B, e-commerce, and creator/personal brands.
-> Runs content, community, and paid acquisition as one connected system.
+> Growth and content marketer for AI and crypto products. He builds content systems,
+> KOL and community programs and launch campaigns, and he builds his own marketing software.
 
 ## Who he is
-Karan Sud is a marketer who pairs strategy with hands-on execution: brand
-positioning, content systems, community building (Discord/Telegram), KOL and
-influencer programs, paid media (Meta/Google), email, and executive personal
-branding. He also builds and ships his own web frontends (this site is a custom
-Next.js build).
+Karan Sud studied mechanical engineering and worked as a CFD engineer before moving into
+marketing in November 2023. He works from Noida, India. He runs content, community and growth
+for AI and crypto products, and has also run brand content for restaurants and founders.
+He builds software too: a free Account Research Engine and SlouchGuard, a posture app for Mac.
 
-## Selected results
-- Fere AI: 7,000+ daily active traders, 10M+ AI agent executions across 90+ automated strategies, 12,000+ signups; launched to #1 Fintech Product of the Day on Product Hunt.
-- FanTV AI: grew a brand account from 70K to 300K followers; built a 150K+ member community.
-- Defx: grew a perpetuals DEX from under $100K to $50M+ monthly volume ($1.5B cumulative, verified on DefiLlama).
-- Novaswap: $650K+ organic trading volume in 90 days from a standing start.
-- Tony Roma's: 729K Facebook views, +448% 3-second video views, fully organic.
-- Potters' Hub: 471% month-one ROI on paid social for a D2C launch.
-- The Sportrush: grew Instagram from 26 to 4,500 followers with 7M+ views in 3 months.
+## Selected results (each with its public or screenshot source on the site)
+- FanTV AI: X account from 70K to 297.7K followers in 11 months, with airdrops and a 100+ KOL program; Discord and Telegram past 150K members.
+- Defx: helped the perpetuals DEX reach $1.5B in cumulative perp volume, public on DefiLlama; active traders from about 50 to about 350.
+- Fere AI: launched to #2 Product of the Day on Product Hunt (17 May 2026); 6.8M X impressions from 1 Sep 2025 to 27 Apr 2026.
+- Novaswap: 1.1M X impressions and 53.9K engagements on an account opened in November 2025.
+- Prashan Agarwal (founder of FanTV): X from 12K to over 90K followers.
+- Mohaimina Haque (CEO of Tony Roma's): 1.2M+ organic impressions in six months.
+- Tony Roma's: 678.5K organic Facebook views from 1 Sep 2025 to 27 Apr 2026.
+- The SportsRush: Instagram from 26 to 4,500 followers in three months, reels at 4M and 2M views, no ad spend.
+- Potters' Hub: month one, ₹20,000 in revenue from ₹3,500 of Meta ads.
 
-## Industries
-Web3 and DeFi, AI products, food and beverage, e-commerce / D2C, luxury home,
-sports media, and executive/founder personal brands.
+## Case studies
+https://karan-sud-portfolio.vercel.app/work/fantv
+https://karan-sud-portfolio.vercel.app/work/defx
+https://karan-sud-portfolio.vercel.app/work/fere
 
 ## How to work with him
+- Book a 30-minute call: https://calendly.com/contactkaransud/30min
 - Email: contactkaransud@gmail.com
-- LinkedIn: https://linkedin.com/in/karansud7
-- X: https://twitter.com/KaranSudSocial
-- Book a call: https://calendly.com/contactkaransud/30min
-- Status: open to select projects.
+- LinkedIn: https://www.linkedin.com/in/karansud-marketing
+- X: https://x.com/KaranSudSocial
+- Open to select freelance projects and to full-time roles.

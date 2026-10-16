@@ -10,62 +10,65 @@ type Flagship = {
   visualAlt: string;
   visualCaption: string;
   height: string;
+  /** Crop: zoom factor, transform origin and object-position. */
+  zoom: number;
   origin: string;
   pos: string;
-  thumb: string;
-  thumbAlt: string;
-  thumbZoom: { scale: number; origin: string };
+  /** A second, different artefact, or none. */
+  thumb?: { src: string; alt: string; zoom: number; origin: string; pos: string };
   big: string;
   bigLabel: string;
   desc: string;
 };
 
-// Copy from tasks/v3/copy-deck.md; numbers from facts.md table (a).
+// Copy from tasks/v3/copy-deck.md; numbers from facts.md table (a). Each crop keeps
+// the claimed number as the largest figure in frame, or shows no figure at all.
 const flagships: Flagship[] = [
   {
     key: "fantv",
-    visual: "/Results/FanTV/FanTV X Mobile SS.png",
-    visualAlt: "FanTV AI's X analytics on mobile, showing 297.7K followers",
-    visualCaption: "FanTV AI on X, from Karan's analytics.",
+    visual: "/Results/FanTV/FanTV_Web1.png",
+    visualAlt: "FanTV AI X analytics for January 2025: daily reposts and replies, and follows over time",
+    visualCaption: "FanTV AI on X, 1 to 31 January 2025. Inset: the account at 297.7K followers.",
     height: "80svh",
-    origin: "0% 0%",
-    pos: "0% 0%",
-    thumb: "/Results/FanTV/FanTV_Web1.png",
-    thumbAlt: "FanTV AI X analytics for January 2025",
-    thumbZoom: { scale: 1.35, origin: "70% 30%" },
+    zoom: 1,
+    origin: "100% 50%",
+    pos: "100% 50%",
+    thumb: {
+      src: "/Results/FanTV/FanTV X Mobile SS.png",
+      alt: "FanTV AI's X account showing 297.7K followers",
+      zoom: 2.1,
+      origin: "0% 0%",
+      pos: "0% 0%",
+    },
     big: "297.7K",
-    bigLabel: "X followers, up from 70K in 11 months",
-    desc: "A SocialFi app for creators, with a strong product and a quiet feed. I built the content system for the brand and its founder, grew the KOL program from about 10 to 100+, and ran airdrops. Discord and Telegram passed 150K members.",
+    bigLabel: "X followers, up from 70K in 11 months, with airdrops and a 100+ KOL program",
+    desc: "A SocialFi app for creators with a quiet feed. I built the content system for the brand and its founder, grew the KOL program from about 10 to 100+, and ran airdrops. Discord and Telegram passed 150K members.",
   },
   {
     key: "defx",
     visual: "/Results/Defx/Defx.png",
-    visualAlt: "Defx on DefiLlama, showing $1.529b cumulative perp volume and the volume chart",
-    visualCaption: "Defx on DefiLlama.",
-    height: "60svh",
-    origin: "62% 30%",
-    pos: "50% 30%",
-    thumb: "/Results/Defx/Defx.png",
-    thumbAlt: "Defx key metrics on DefiLlama",
-    thumbZoom: { scale: 2.2, origin: "16% 34%" },
+    visualAlt: "Defx perp volume chart on DefiLlama",
+    visualCaption: "Defx on DefiLlama: perp volume over time, $1.529b cumulative.",
+    height: "70svh",
+    zoom: 1.55,
+    origin: "100% 26%",
+    pos: "100% 26%",
     big: "50 to 350",
-    bigLabel: "Active traders, about. Defx has since passed $1.5B cumulative volume.",
-    desc: "A perpetuals DEX with a working product and few traders. I designed two trading contests, one with Voltrade, built KOL relationships, and made the content around them.",
+    bigLabel: "Active traders, from about 50 to about 350. Defx has since passed $1.5B in cumulative volume.",
+    desc: "A perpetuals DEX with 40 to 50 active traders when I joined. I designed two trading contests, one with Voltrade, built KOL relationships, and made the content around them.",
   },
   {
     key: "fere",
     visual: "/Results/Fere AI/Fere AI.png",
-    visualAlt: "Fere AI X analytics from 1 September 2025 to 27 April 2026",
+    visualAlt: "Fere AI X analytics from 1 September 2025 to 27 April 2026, with 6.8M impressions",
     visualCaption: "Fere AI on X, 1 Sep 2025 to 27 Apr 2026.",
-    height: "90svh",
-    origin: "62% 40%",
-    pos: "62% 40%",
-    thumb: "/Results/Fere AI/Fere AI.png",
-    thumbAlt: "Fere AI X metrics: 6.8M impressions and 192.4K engagements",
-    thumbZoom: { scale: 2.1, origin: "68% 88%" },
+    height: "64svh",
+    zoom: 1,
+    origin: "100% 0%",
+    pos: "100% 0%",
     big: "6.8M",
-    bigLabel: "X impressions in eight months, after a #2 Product of the Day launch",
-    desc: "An AI trading agent that worked and that few people used. I built its X content pipeline of trading threads, data drops, market takes and demos, ran referral and points campaigns, and launched it on Product Hunt.",
+    bigLabel: "X impressions, 1 Sep 2025 to 27 Apr 2026",
+    desc: "An AI trading agent whose brand did not exist yet. I built its X content pipeline of trading threads, data drops, market takes and demos, and ran referral and points campaigns. In May 2026 I launched it on Product Hunt, where it finished #2 Product of the Day.",
   },
 ];
 
@@ -81,18 +84,28 @@ export default function Work() {
         const c = caseStudies.find((x) => x.key === f.key)!;
         return (
           <article key={f.key} className="v3-case" aria-labelledby={`case-${f.key}`}>
-            <figure className="v3-case-visual" style={{ ["--h" as string]: f.height, ["--origin" as string]: f.origin, ["--pos" as string]: f.pos }} data-reveal>
+            <figure
+              className="v3-case-visual"
+              style={{
+                ["--h" as string]: f.height,
+                ["--zoom" as string]: f.zoom,
+                ["--origin" as string]: f.origin,
+                ["--pos" as string]: f.pos,
+              }}
+              data-reveal
+            >
               <Image src={f.visual} alt={f.visualAlt} fill sizes="(max-width: 860px) 100vw, 60vw" />
             </figure>
             <div className="v3-case-cluster">
-              <figure className="v3-case-thumb" data-reveal style={{ ["--zoom" as string]: f.thumbZoom.scale, ["--origin" as string]: f.thumbZoom.origin }}>
-                <Image
-                  src={f.thumb}
-                  alt={f.thumbAlt}
-                  fill
-                  sizes="(max-width: 860px) 70vw, 30vw"
-                />
-              </figure>
+              {f.thumb ? (
+                <figure
+                  className="v3-case-thumb"
+                  data-reveal
+                  style={{ ["--zoom" as string]: f.thumb.zoom, ["--origin" as string]: f.thumb.origin, ["--pos" as string]: f.thumb.pos }}
+                >
+                  <Image src={f.thumb.src} alt={f.thumb.alt} fill sizes="(max-width: 860px) 70vw, 30vw" />
+                </figure>
+              ) : null}
               <h3 id={`case-${f.key}`} className="v3-case-title" data-reveal style={{ ["--i" as string]: 1 }}>
                 {c.title}
               </h3>
@@ -120,7 +133,7 @@ export default function Work() {
         <p>Or keep reading. Ten more projects below.</p>
       </div>
 
-      <h2 className="v3-h2" style={{ marginTop: 140 }} data-reveal>
+      <h2 className="v3-h2 v3-more-title" data-reveal>
         More work
       </h2>
       <WorkIndex
