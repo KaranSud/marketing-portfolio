@@ -19,3 +19,5 @@
 - 2026-10-16 v2's globals.css has bare element/ID selectors (nav {}, footer {}, #contact {}) that hit new v3 markup; removed nav/footer/#contact. Grep globals.css for ^tag/^#id rules before reusing a tag or id.
 - 2026-10-16 Smooth scrolling (CSS scroll-behavior or Lenis) stalls scripted scrolls: the taste-skill inspector then reports fake long-pin, covered-text and still-page. Lenis removed; html:focus-within keeps smooth anchor jumps.
 - 2026-10-16 Do not rm with globs after cd: Claude Code's safety check blocks it. Write new shots to a fresh rounds/<id> folder instead of clearing an old one.
+- 2026-10-16 app/template.tsx (framer opacity-0 route fade) hid every page's server HTML until hydration; deleted. Never animate a wrapper around page content from opacity 0.
+- 2026-10-16 CSS prune: scan app, components, lib AND content/blog (posts embed chart HTML with classes); verify with byte-compared full-page shots (diffs from lazy images are timing, not CSS).
