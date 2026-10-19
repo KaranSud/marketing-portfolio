@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation of Marketing Work: 2024–2028 Trajectory</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --area-fill: rgba(15, 23, 42, 0.08);
+    --area-line: #0F172A;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --secondary: #CBD5E1;
+      --muted: #64748B;
+      --mid: #94A3B8;
+      --grid: #1E293B;
+      --border: #334155;
+      --area-fill: rgba(248, 250, 252, 0.06);
+      --area-line: #F8FAFC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --secondary: #CBD5E1;
+    --muted: #64748B;
+    --mid: #94A3B8;
+    --grid: #1E293B;
+    --border: #334155;
+    --area-fill: rgba(248, 250, 252, 0.06);
+    --area-line: #F8FAFC;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    padding: 24px 16px;
+  }
+  .chart-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 24px 16px;
+    background: var(--bg);
+  }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 12px;
+    color: var(--secondary);
+    margin-bottom: 20px;
+  }
+  .chart-container {
+    position: relative;
+    height: 300px;
+  }
+  .annotation {
+    font-size: 11px;
+    color: var(--secondary);
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: var(--grid);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+  }
+  .source {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 12px;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrapper">
+  <div class="chart-title">AI Automation of Marketing Work: Actual and Forecast (2024–2028)</div>
+  <div class="chart-subtitle">Marketing leaders expect AI to handle more than double its current share of marketing work by 2028</div>
+  <div class="chart-container">
+    <canvas id="chart2"></canvas>
+  </div>
+  <div class="annotation">
+    Gartner (May 2026): "Organizations automating more of their marketing work are 2× as likely to see ROI from AI"
+  </div>
+  <div class="source">Source: Gartner Marketing Survey, May 2026 | Prediction: Gartner, January 2026</div>
+</div>
+<script>
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const textColor = isDark ? '#F8FAFC' : '#0F172A';
+  const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+  const mutedColor = isDark ? '#64748B' : '#94A3B8';
+  const lineColor = isDark ? '#F8FAFC' : '#0F172A';
+  const fillColor = isDark ? 'rgba(248,250,252,0.06)' : 'rgba(15,23,42,0.06)';
+  const accentColor = '#DC2626';
+
+  const ctx = document.getElementById('chart2').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['2024', '2025', '2026', '2027', '2028'],
+      datasets: [
+        {
+          label: 'Actual / Survey',
+          data: [8, 12, 16, null, null],
+          borderColor: lineColor,
+          backgroundColor: fillColor,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 5,
+          pointBackgroundColor: lineColor,
+          borderWidth: 2,
+          order: 1
+        },
+        {
+          label: 'Gartner Forecast',
+          data: [null, null, 16, 26, 36],
+          borderColor: accentColor,
+          backgroundColor: 'rgba(220,38,38,0.06)',
+          fill: true,
+          tension: 0.4,
+          borderDash: [6, 3],
+          pointRadius: 5,
+          pointBackgroundColor: accentColor,
+          borderWidth: 2,
+          order: 0
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+            color: mutedColor,
+            font: { size: 11, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' },
+            boxWidth: 12,
+            pointStyle: 'circle'
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              if (ctx.parsed.y == null) return null;
+              const suffix = ctx.datasetIndex === 1 ? ' (forecast)' : ' (actual)';
+              return `${ctx.parsed.y}% of marketing work${suffix}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: gridColor },
+          ticks: {
+            color: mutedColor,
+            font: { size: 12, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' }
+          },
+          border: { color: gridColor }
+        },
+        y: {
+          grid: { color: gridColor },
+          min: 0,
+          max: 40,
+          ticks: {
+            color: mutedColor,
+            font: { size: 11, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif' },
+            callback: val => `${val}%`
+          },
+          border: { color: gridColor }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

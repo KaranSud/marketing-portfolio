@@ -1,0 +1,9 @@
+Pexels photo ID: N/A (API blocked by session proxy policy)
+Source URL: https://www.pexels.com/search/data+pipeline+server+architecture/
+License: Pexels License (free to use)
+Alt text: Abstract view of a server room corridor with rows of illuminated racks, representing data flow and automated systems
+Rationale: Industrial/architectural photography of server infrastructure reinforces the "data pipeline" and AI stack framing of the article without resorting to clichéd robot imagery. The symmetry of server racks echoes the structured, systematic nature of behavioral email triggers vs. volume-based batch sending.
+
+Note: api.pexels.com and www.pexels.com are blocked by the session proxy. A placeholder 1x1 JPEG was written to hero.jpg. To replace with a real image, run:
+curl -s -H "Authorization: 2T6uPt9N4jOrYfel6EZvBOBQlakhwh7f6yKvkxb9ymfsA0HpeOCqIVxd" "https://api.pexels.com/v1/search?query=server+room+data+pipeline+industrial&per_page=8&orientation=landscape"
+Then download the chosen photo's src.large2x URL.

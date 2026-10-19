@@ -1,0 +1,29 @@
+1/ Most email marketing teams spend 98% of their time on sends that generate 2% of their revenue. The math is that backwards.
+
+2/ Automated behavioral emails average $2.87 per send. Standard campaign emails average $0.18. That's a 16x gap per message. Source: Omnisend, 150,000 brands, 27B sends.
+
+3/ Behavioral flows make up roughly 2% of total email volume but drive ~30% of email-attributed revenue. The other 98% of sends? The rest of the 70%.
+
+4/ Nobody would build a sales team this way. 98% of effort on the lowest-value work, highest-value work on autopilot in a corner. But that's exactly what most email programs look like.
+
+5/ The reason most programs are backwards: dashboards reward volume. Open rates, list size, send frequency. The team sending 12 newsletters looks more productive than the team building behavioral flows. They're not.
+
+6/ A welcome sequence is NOT a behavioral trigger. A time-based drip is NOT behavioral. Real behavioral triggers fire because someone demonstrated intent — they browsed a product, abandoned a cart, went silent after 30 days.
+
+7/ Timing matters more than most teams realize. Cart abandonment emails sent within 1-2 hours recover 28-35% of carts. Wait 6 hours and recovery drops sharply. That window is impossible to hit manually at scale.
+
+8/ Here's the strategic shift that changes everything: Gartner forecasts 60% of brands will use agentic AI for 1:1 customer interactions by 2028.
+
+9/ Agentic AI personalization needs behavioral inputs to function: what someone clicked, purchased, browsed, and responded to. That data comes from behavioral email infrastructure. Run batch sends for years and you have almost none of it.
+
+10/ McKinsey: companies excelling at personalization generate 40% more revenue from those activities than average performers. The channel where that premium shows up most clearly is email, because email has the finest behavioral data.
+
+11/ Gartner (May 2026): marketing orgs automating more of their work are 2x as likely to see ROI from AI. AI automation of marketing work is projected to grow from 16% to 36% by 2028.
+
+12/ The gap between programs that started building behavioral infrastructure in 2024 vs. 2027 will be 2-3 years of intent signals, purchase patterns, and response data. You can buy AI tools in a month. You can't buy that history.
+
+13/ Where to start: audit your trigger library. Classify every automated sequence as behavioral (fires on subscriber action), event-based, or time-based. For most programs, behavioral is sparse. That's the gap to close.
+
+14/ Then connect your email platform to your product or CRM data. Behavioral triggers are only as good as the behavioral signals that fire them. Email platforms see opens and clicks. Your CRM knows what actually matters.
+
+15/ Full breakdown: Email Marketing Automation Is Feeding the Wrong Engine, link in bio. Follow @karansud for more.

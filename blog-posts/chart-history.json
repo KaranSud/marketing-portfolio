@@ -313,5 +313,14 @@
       "radar",
       "dumbbell"
     ]
+  },
+  {
+    "date": "2026-10-19",
+    "slug": "email-marketing-automation-is-feeding-the-wrong-engine",
+    "title": "Email Marketing Automation Is Feeding the Wrong Engine",
+    "chart_types": [
+      "vertical bar",
+      "area"
+    ]
   }
 ]
