@@ -14,7 +14,9 @@ Remaining batches (check usage before each; weekly was 86% on 16 Oct, resets 19 
      (@thesportsrushus unavailable), Opaque Studio (2024 posts ~600 deep, IG API 429), Potters' Hub (no handle).
      Checks: tsc, build, copy-lint 0, taste inspector 0 FAIL (1 WARN, palette-cream, pre-existing).
      Next for 3: Opaque scroll pass once IG's limit clears; ask Karan for the SportsRush and Potters' Hub handles.
-  4. Rewrite branch history (author Karan, no Claude lines), critic round 03, then push after Karan approves.
+  4. History rewrite DONE 21 Oct: all 17 branch commits now Karan Sud <karansud98@gmail.com>, no Claude lines, tree
+     unchanged; commit hashes changed (old tip kept as local branch backup/pre-history-rewrite). Remaining: critic round 03
+     (fresh session, after the 5-hour reset), then force-push the branch once Karan approves.
 Ceiling without Karan's input is about 8.4; 9+ needs the answers in QUESTIONS-FOR-KARAN.md.
 Loop per workflows/critic.md until three consecutive 9.5+; round 01 judged about 0.9 points blocked on Karan.
 Open for Karan: the 15 questions in research/facts.md (c) plus PLAN.md section 10 (prices, testimonials, headshot,
