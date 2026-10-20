@@ -695,6 +695,24 @@ main [id], main section[id] { scroll-margin-top: 88px; }
 .v3-casepage-shots { display: grid; gap: 48px; margin-top: 8px; }
 .v3-casepage-shots figure { margin: 0; }
 .v3-casepage-shots img { width: 100%; height: auto; display: block; }
+
+/* Real posts: each one whole on a square field, linked to the original. */
+.v3-posts { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 8px; }
+.v3-casepage-body .v3-posts li { padding-left: 0; }
+.v3-casepage-body .v3-posts li + li { margin-top: 0; }
+.v3-casepage-body .v3-posts li::before { content: none; }
+.v3-post { position: relative; display: block; aspect-ratio: 1; background: var(--field); outline: 1px solid transparent; transition: outline-color 0.15s var(--ease-out); }
+.v3-post img { object-fit: contain; }
+a.v3-post:hover, .v3-method-post:hover .v3-post { outline-color: var(--muted); }
+.v3-case-posts { grid-column: 1 / span 7; margin-top: 24px; }
+.v3-method-post { display: flex; align-items: center; gap: 16px; margin-top: 20px; max-width: 420px; }
+.v3-method-post .v3-post { flex: 0 0 168px; aspect-ratio: 16 / 10; background: var(--bg-2); }
+.v3-method-post .v3-caption { margin-top: 0; }
+@media (max-width: 860px) {
+  .v3-posts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .v3-case-posts { margin-top: 20px; }
+  .v3-method-post .v3-post { flex-basis: 128px; }
+}
 .v3-casepage-next { margin-top: 160px; padding: 72px var(--m) 80px; margin-left: calc(-1 * var(--m)); margin-right: calc(-1 * var(--m)); background: var(--bg-2); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
 .v3-casepage-next .v3-statement { max-width: 22ch; }
 .v3-casepage-next a.v3-next {

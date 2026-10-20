@@ -75,7 +75,7 @@ Fere AI and Novaswap are the pattern to copy.
 
 ## Notes
 
-- The FanTV `creatives/` and `before-after/` files currently in here are
-  placeholders (copies of existing screenshots) so the layout can be
-  previewed. Replace them with real creatives.
+- v3 shows creatives from `lib/creatives.ts` (caption with account and date,
+  link to the original post), not from the folder scan. Add a file here and an
+  entry there. Sources: `tasks/v3/research/creatives-log.md`.
 - Filenames become URLs; spaces are fine but simple names are safer.

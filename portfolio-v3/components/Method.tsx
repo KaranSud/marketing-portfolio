@@ -2,10 +2,22 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { creatives, type Creative } from "@/lib/creatives";
 
 // Four parts of the work, each shown with one real artefact and one number from
 // tasks/v3/research/facts.md. None of these images appears elsewhere on the home page.
-const stages = [
+// Where the account has one, a post Karan made sits beside the analytics.
+const stages: {
+  name: string;
+  clause: string;
+  num: string;
+  numLabel: string;
+  caption: string;
+  img: string;
+  alt: string;
+  frag: string;
+  post?: Creative;
+}[] = [
   {
     name: "Content",
     clause: "A feed worth following",
@@ -26,6 +38,7 @@ const stages = [
     img: "/Results/Novaswap/Novaswap.png",
     alt: "Novaswap X analytics from 1 November 2025 to 27 April 2026",
     frag: "Novaswap on X, 1 Nov 2025 to 27 Apr 2026.",
+    post: creatives.novaswap[0],
   },
   {
     name: "Trust",
@@ -36,6 +49,7 @@ const stages = [
     img: "/Results/Prashan/Prashan_2.png",
     alt: "Prashan Agarwal X analytics for January 2025",
     frag: "Prashan Agarwal on X, January 2025.",
+    post: creatives.prashan[0],
   },
   {
     name: "Revenue",
@@ -89,6 +103,17 @@ export default function Method() {
               ))}
             </div>
             <p className="v3-method-frag-caption">{s.frag}</p>
+            {s.post ? (
+              <a key={s.post.src} className="v3-method-post" href={s.post.href} target="_blank" rel="noopener noreferrer">
+                <span className="v3-post">
+                  <Image src={s.post.src} alt={s.post.alt} fill sizes="200px" />
+                </span>
+                <span className="v3-caption">
+                  A post I made: {s.post.caption}
+                  <span className="sr-only"> (opens the original post)</span>
+                </span>
+              </a>
+            ) : null}
           </div>
         </div>
         <div className="v3-method-controls">

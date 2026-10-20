@@ -8,7 +8,12 @@ Karan answered the questions: tasks/v3/ANSWERS-2026-10-16.md. Batch 1 DONE (0579
 Remaining batches (check usage before each; weekly was 86% on 16 Oct, resets 19 Oct 10:30 IST):
   2. DONE 21 Oct: Fere #1 Fintech not found (site keeps #2); Novaswap 3-month dates not found (undated); client logo
      row added under Ways to work; Calendly copy drafted in tasks/v3/CALENDLY-COPY.md for Karan to paste.
-  3. Creatives: pull real posts from each account in his tenure (see ANSWERS) and use them in Method, flagships, cases.
+  3. DONE 21 Oct: 22 real posts (FanTV 3, Prashan 2, Fere 3, Novaswap 2, BimaBTC 3, Mohaimina 3, Tony Roma's 3,
+     B&B 3) in lib/creatives.ts, shown on /work/[slug] ("Posts I made"), under the FanTV and Fere flagships, and in
+     How I work (Reach: Novaswap, Trust: Prashan). Log: research/creatives-log.md. Not reached: The SportsRush
+     (@thesportsrushus unavailable), Opaque Studio (2024 posts ~600 deep, IG API 429), Potters' Hub (no handle).
+     Checks: tsc, build, copy-lint 0, taste inspector 0 FAIL (1 WARN, palette-cream, pre-existing).
+     Next for 3: Opaque scroll pass once IG's limit clears; ask Karan for the SportsRush and Potters' Hub handles.
   4. Rewrite branch history (author Karan, no Claude lines), critic round 03, then push after Karan approves.
 Ceiling without Karan's input is about 8.4; 9+ needs the answers in QUESTIONS-FOR-KARAN.md.
 Loop per workflows/critic.md until three consecutive 9.5+; round 01 judged about 0.9 points blocked on Karan.

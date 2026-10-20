@@ -126,3 +126,5 @@
 20:28 | facts | Chrome: linkedin.com/in/karansud-marketing (profile + activity) | headline Brand & Content Strategist; no current employer; reposts Cyberwave; 655 followers; own post claims 12K signups zero paid, 9.5M impressions, 728K views, 10+ brands
 20:28 | facts | Chrome: linkedin.com/in/karansud-marketing/details/experience | Crowwd Sep25-May26, Independent Sep24-Aug26, FanTV Oct24-Aug25, SportsRush Jun-Sep24, Mach1 Nov23-May24; Fere 300K+ signups/400-500 DAU/7k MAU; Novaswap 800K+; FanTV 9.5M impressions
 20:28 | facts | Chrome: linkedin.com/in/karansud7 | redirects to karansud-marketing (v2 site still links the old slug)
+21:30 | creatives | x.com search from:prashan_agarwal, from:BimaBTC, from:fere_ai/Novaswap/FanTV_official (Chrome) + api.fxtwitter.com x52 | in-tenure post ids and images; see creatives-log.md
+21:30 | creatives | ig.py profile + post (tonyromaslegendarygrill, tonyromasbonesandburgers, attorneyminadc, opaque.studio) + Chrome grid scroll attorneyminadc | in-tenure codes; IG api 429; thesportsrushus unavailable

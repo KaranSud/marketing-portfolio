@@ -8,6 +8,8 @@ import BookButton from "@/components/BookButton";
 import RevealObserver from "@/components/RevealObserver";
 import StickyCta from "@/components/StickyCta";
 import BeforeAfterSection, { CompareSlider } from "@/components/BeforeAfterSection";
+import Posts from "@/components/Posts";
+import { creatives } from "@/lib/creatives";
 import { caseStudies, getCase } from "@/lib/caseStudies";
 import { getCaseMediaMap } from "@/lib/caseMedia";
 import { imageSize } from "@/lib/imageSize";
@@ -43,6 +45,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
   const i = caseStudies.findIndex((x) => x.key === c.key);
   const next = caseStudies[(i + 1) % caseStudies.length];
   const pairs = getCaseMediaMap()[c.key]?.beforeAfter ?? [];
+  const posts = creatives[c.key] ?? [];
   const [lead, ...restShots] = c.screenshots;
 
   return (
@@ -101,6 +104,12 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
               ))}
             </ul>
           </section>
+          {posts.length ? (
+            <section>
+              <h2>Posts I made</h2>
+              <Posts items={posts} label={`Posts on ${c.title}'s account`} />
+            </section>
+          ) : null}
           {pairs.length ? (
             <section>
               <h2>Before and after</h2>

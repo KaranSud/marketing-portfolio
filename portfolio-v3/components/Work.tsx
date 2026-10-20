@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import BookButton from "./BookButton";
 import WorkIndex from "./WorkIndex";
+import Posts from "./Posts";
 import { caseStudies, flagshipKeys } from "@/lib/caseStudies";
+import { creatives } from "@/lib/creatives";
 
 type Flagship = {
   key: (typeof flagshipKeys)[number];
@@ -89,6 +91,9 @@ export default function Work() {
               </Link>
               <p className="v3-caption">{f.visualCaption}</p>
             </div>
+            {creatives[f.key] ? (
+              <Posts items={creatives[f.key]} label={`Posts I made for ${c.title}`} className="v3-case-posts" />
+            ) : null}
           </article>
         );
       })}

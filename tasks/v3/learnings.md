@@ -21,3 +21,7 @@
 - 2026-10-16 Do not rm with globs after cd: Claude Code's safety check blocks it. Write new shots to a fresh rounds/<id> folder instead of clearing an old one.
 - 2026-10-16 app/template.tsx (framer opacity-0 route fade) hid every page's server HTML until hydration; deleted. Never animate a wrapper around page content from opacity 0.
 - 2026-10-16 CSS prune: scan app, components, lib AND content/blog (posts embed chart HTML with classes); verify with byte-compared full-page shots (diffs from lazy images are timing, not CSS).
+- 2026-10-21 fxtwitter needs /<handle>/status/<id> (a bare /<handle>/<id> returns 404). Many brand posts are X Articles: no media, the image is article.cover_media.media_info.original_img_url.
+- 2026-10-21 X search in Claude in Chrome (from:<handle> since: until: filter:media) lists in-tenure posts in one page load; read ids with JS, then fetch each via fxtwitter. JS output containing a URL query string is blocked by the extension; return ids only.
+- 2026-10-21 Instagram: the logged-in /api/v1 endpoints hit 429 after about 15 calls; profile pages still load. An IG shortcode's post date = ((base64 id) >> 23) + 1314220021721 ms (upload time; scheduled posts can differ by days).
+- 2026-10-21 @thesportsrushus (linked from thesportsrush.com) shows 'page isn't available'; Potters' Hub IG handle unknown.
