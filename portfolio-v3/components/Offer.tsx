@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import BookButton from "./BookButton";
 
@@ -29,6 +30,21 @@ const ways = [
     proof: [["Bones & Burgers", "bones"], ["The Culturegram", "culturegram"]],
     lead: "As for my current clients",
   },
+];
+
+// Every client logo, shown with permission (Karan, 16 Oct 2026). Square tiles of one size.
+const clients: [string, string, string][] = [
+  ["FanTV AI", "fantv", "fantv-ai"],
+  ["Fere AI", "fere", "fere-ai"],
+  ["Defx", "defx", "defx"],
+  ["Novaswap", "novaswap", "novaswap"],
+  ["BimaBTC", "bima", "bima-btc"],
+  ["Tony Roma's", "tony", "tony-romas"],
+  ["Bones & Burgers", "bones", "bones-and-burgers"],
+  ["Potters' Hub", "potters", "potters-hub"],
+  ["Opaque Studio", "opaque", "opaque-studio"],
+  ["The SportsRush", "sportsrush", "sportsrush"],
+  ["The Culturegram", "culturegram", "culturegram"],
 ];
 
 export default function Offer() {
@@ -65,6 +81,16 @@ export default function Offer() {
           <p>Tell me which of these fits, or what you need instead. Pricing depends on scope; we agree it after the call.</p>
         </div>
       </div>
+      <ul className="v3-logos" aria-label="Clients" data-reveal>
+        {clients.map(([name, key, file]) => (
+          <li key={key}>
+            <Link href={`/work/${key}`} title={name}>
+              <Image src={`/Logos/tiles/${file}.png`} alt={name} width={72} height={72} />
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <p className="v3-caption">13+ brands and founders across 7+ industries, shown with their permission.</p>
     </section>
   );
 }

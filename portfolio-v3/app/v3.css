@@ -780,3 +780,10 @@ html { scroll-behavior: auto; }
   .v3-tool-row { display: block; padding-top: 24px; }
   .v3-tool-row-text { margin-top: 20px; }
 }
+
+/* client logo row: one square size, each brand on its own ground */
+.v3-logos { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 72px; }
+.v3-logos a { display: block; transition: transform 0.15s var(--ease-out); }
+.v3-logos a:hover { transform: translateY(-2px); }
+.v3-logos img { display: block; width: 72px; height: 72px; }
+@media (max-width: 860px) { .v3-logos { margin-top: 48px; gap: 10px; } .v3-logos img { width: 56px; height: 56px; } }

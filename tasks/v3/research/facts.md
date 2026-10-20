@@ -243,3 +243,5 @@ Status KP-confirmed: Karan answered the matching (c) question directly. These ma
 | The Culturegram, Bones & Burgers | Current clients; The Culturegram since June 2026 | One video podcast episode made, not launched; no essays written by Karan |
 | Counts | 13+ brands and founders, 7+ industries | |
 | Defx | Brand has closed; no trader screenshots exist | |
+| Fere AI "#1 Fintech" (checked 21 Oct 2026) | not found | producthunt.com/products/fere-ai shows "ranked #2 of the day for May 17th, 2026" and no category ranking; site keeps #2 only |
+| Novaswap 3-month window (checked 21 Oct 2026) | not found | @Novaswap joined 5 Nov 2025 (api.fxtwitter.com/Novaswap); no public post or page dates the $800K+ window; stays undated until Karan gives dates |
