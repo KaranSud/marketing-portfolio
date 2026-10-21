@@ -248,7 +248,9 @@ export default function HeroField({ maskSelector }: { maskSelector?: string }) {
     const w = window as Window & { requestIdleCallback?: (f: () => void, o?: { timeout: number }) => number };
     const idle = (cb: () => void) =>
       w.requestIdleCallback ? w.requestIdleCallback(cb, { timeout: 900 }) : setTimeout(cb, 200);
+    let disposed = false;
     idle(() => {
+      if (disposed) return;
       io.observe(panel);
       ro.observe(panel);
       document.addEventListener("visibilitychange", onVis);
@@ -258,6 +260,7 @@ export default function HeroField({ maskSelector }: { maskSelector?: string }) {
     });
 
     return () => {
+      disposed = true;
       stop();
       io.disconnect();
       ro.disconnect();

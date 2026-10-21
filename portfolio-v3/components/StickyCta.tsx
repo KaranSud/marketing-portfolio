@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import BookButton from "./BookButton";
 
 // Phones only (CSS). Shows once the hero has scrolled away; hides at the contact
@@ -8,6 +9,7 @@ import BookButton from "./BookButton";
 // When hidden it is inert, so keyboard focus can never land on it.
 export default function StickyCta() {
   const [on, setOn] = useState(false);
+  const pathname = usePathname();
   useEffect(() => {
     // Pages without the home hero (case pages, blog) show it from the start.
     let pastHero = !document.querySelector(".v3-hero");
@@ -38,7 +40,7 @@ export default function StickyCta() {
       document.removeEventListener("focusin", onFocus);
       document.removeEventListener("focusout", onFocus);
     };
-  }, []);
+  }, [pathname]);
   return (
     <div className={`v3-sticky${on ? " is-on" : ""}`} aria-hidden={!on} inert={!on}>
       <BookButton />

@@ -15,10 +15,13 @@ let loading: Promise<void> | null = null;
 function loadCalendly(): Promise<void> {
   if (loading) return loading;
   loading = new Promise((resolve, reject) => {
-    const css = document.createElement("link");
-    css.rel = "stylesheet";
-    css.href = "https://assets.calendly.com/assets/external/widget.css";
-    document.head.appendChild(css);
+    const href = "https://assets.calendly.com/assets/external/widget.css";
+    if (!document.querySelector(`link[href="${href}"]`)) {
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = href;
+      document.head.appendChild(css);
+    }
     const s = document.createElement("script");
     s.src = "https://assets.calendly.com/assets/external/widget.js";
     s.async = true;

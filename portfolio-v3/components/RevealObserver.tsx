@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 // One observer for every [data-reveal] element on the page: each part of a
 // section rises in once, staggered by its --i. Content is only hidden when
 // html.js is set, and a fallback timer shows everything if observing fails.
 export default function RevealObserver() {
+  // Re-run on every route: client navigation between case pages keeps this component mounted.
+  const pathname = usePathname();
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const showAll = () => els.forEach((el) => el.classList.add("is-in"));
@@ -23,6 +26,6 @@ export default function RevealObserver() {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [pathname]);
   return null;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,21 +14,13 @@ type Item = {
 };
 
 function Media({ it, sizes }: { it: Item; sizes: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  // Plays once on mount, only for visitors who have not asked for reduced motion.
+  useEffect(() => {
+    if (ref.current && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) ref.current.play().catch(() => {});
+  }, []);
   if (it.video) {
-    // Plays only for visitors who have not asked for reduced motion.
-    return (
-      <video
-        src={it.video}
-        poster={it.image ?? undefined}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        ref={(v) => {
-          if (v && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) v.play().catch(() => {});
-        }}
-      />
-    );
+    return <video ref={ref} src={it.video} poster={it.image ?? undefined} muted loop playsInline preload="metadata" />;
   }
   return it.image ? <Image src={it.image} alt="" fill sizes={sizes} loading="lazy" /> : null;
 }
@@ -48,7 +40,7 @@ export default function WorkIndex({ items }: { items: Item[] }) {
               onPointerEnter={() => setActive(it.key)}
               onFocus={() => setActive(it.key)}
             >
-              {it.image ? (
+              {it.image && !it.video ? (
                 <span className={`v3-index-inline${it.isLogo ? " is-logo" : ""}`} aria-hidden="true">
                   <Media it={it} sizes="100vw" />
                 </span>
