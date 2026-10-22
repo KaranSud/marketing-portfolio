@@ -1,13 +1,16 @@
 import Image from "next/image";
 import HeroField from "./HeroField";
 import BookButton from "./BookButton";
+import { linkify } from "@/lib/linkify";
 
-// Every number here is in tasks/v3/research/facts.md table (a): rows 1, 2, 4.
+// Every number here is in tasks/v3/research/facts.md: table (a) rows 1 and 4, and the
+// Fere AI signups row in (e). The promise is users, so the tiles count people.
 const proof = [
   { num: "297.7K", label: "FanTV AI's followers on X, up from 70K in 11 months, with airdrops and a 100+ KOL program" },
-  { num: "$1.5B", label: "Cumulative perp volume I helped Defx reach, public on DefiLlama" },
+  { num: "12K+", label: "Signups for Fere AI, an AI trading agent, with zero paid budget" },
   { num: "#2", label: "Product of the Day on Product Hunt, for the Fere AI launch" },
 ];
+const sources = { "Product Hunt": "https://www.producthunt.com/products/fere-ai" };
 
 export default function Hero() {
   return (
@@ -47,7 +50,7 @@ export default function Hero() {
           {proof.map((p) => (
             <li key={p.num}>
               <span className="v3-proof-num">{p.num}</span>
-              <span className="v3-proof-label">{p.label}</span>
+              <span className="v3-proof-label">{linkify(p.label, sources)}</span>
             </li>
           ))}
         </ul>

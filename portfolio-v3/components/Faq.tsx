@@ -1,4 +1,5 @@
 import { homeFaqs } from "@/lib/faqs";
+import BookButton from "./BookButton";
 
 export default function Faq() {
   return (
@@ -13,6 +14,11 @@ export default function Faq() {
             <p className="v3-faq-a">{f.a}</p>
           </li>
         ))}
+        <li className="v3-faq-row v3-faq-book" data-reveal>
+          <div className="v3-faq-a">
+            <BookButton />
+          </div>
+        </li>
       </ul>
     </section>
   );

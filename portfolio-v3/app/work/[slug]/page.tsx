@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -10,9 +11,10 @@ import StickyCta from "@/components/StickyCta";
 import BeforeAfterSection, { CompareSlider } from "@/components/BeforeAfterSection";
 import Posts from "@/components/Posts";
 import { creatives } from "@/lib/creatives";
-import { caseStudies, getCase } from "@/lib/caseStudies";
+import { caseStudies, getCase, type Shot } from "@/lib/caseStudies";
 import { getCaseMediaMap } from "@/lib/caseMedia";
 import { imageSize } from "@/lib/imageSize";
+import { linkify } from "@/lib/linkify";
 
 // The closing line matches the kind of client the case was for.
 function closer(key: string) {
@@ -20,6 +22,35 @@ function closer(key: string) {
   if (["tony", "bones", "potters", "opaque", "sportsrush"].includes(key)) return "Want this for your brand?";
   if (key === "culturegram") return "Want this for your site?";
   return "Want this for your product?";
+}
+
+// The lead screenshot: the analytics panel without the app's sidebar, linked to the
+// full screenshot. Under 860px a tighter crop of the stat cards keeps the claimed
+// numbers legible.
+function Lead({ shot }: { shot: Shot }) {
+  const desk = shot.crop ?? shot.src;
+  const d = imageSize(desk);
+  const vars = { ["--ar" as string]: `${d.width} / ${d.height}` } as CSSProperties;
+  if (!shot.mobile) {
+    return (
+      <figure className="v3-casepage-hero" style={vars}>
+        <Image src={desk} alt={shot.caption} fill priority sizes="100vw" />
+      </figure>
+    );
+  }
+  const m = imageSize(shot.mobile);
+  const common = { alt: shot.caption, sizes: "100vw", fetchPriority: "high" as const, loading: "eager" as const };
+  const { props: mobile } = getImageProps({ ...common, src: shot.mobile, width: m.width, height: m.height });
+  const { props: desktop } = getImageProps({ ...common, src: desk, width: d.width, height: d.height });
+  return (
+    <figure className="v3-casepage-hero" style={{ ...vars, ["--ar-m" as string]: `${m.width} / ${m.height}` }}>
+      <picture>
+        <source media="(max-width: 860px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
+        {/* eslint-disable-next-line jsx-a11y/alt-text -- alt comes from getImageProps */}
+        <img {...desktop} />
+      </picture>
+    </figure>
+  );
 }
 
 export function generateStaticParams() {
@@ -54,28 +85,36 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
       <main id="main" className="v3-casepage">
         {/* Title, lede and meta paint from server HTML (no entrance), so they can be the LCP. */}
         <h1>{c.title}</h1>
-        <p className="v3-statement v3-casepage-lede">{c.lede}</p>
+        <p className="v3-statement v3-casepage-lede">{linkify(c.lede, c.links)}</p>
         <p className="v3-casepage-meta">{c.meta}</p>
         {c.stats.length ? (
           <ul className="v3-casepage-stats v3-proof" aria-label="Results">
             {c.stats.map((s, k) => (
               <li key={s.label} data-reveal style={{ ["--i" as string]: k + 1 }}>
                 <span className="v3-proof-num">{s.val}</span>
-                <span className="v3-proof-label">{s.label}</span>
+                <span className="v3-proof-label">{linkify(s.label, c.links)}</span>
               </li>
             ))}
           </ul>
         ) : null}
 
+        {lead ? <Lead shot={lead} /> : null}
         {lead ? (
-          <figure className="v3-casepage-hero" style={{ aspectRatio: (({ width, height }) => `${width} / ${height}`)(imageSize(lead.src)) }}>
-            <Image src={lead.src} alt={lead.caption} fill priority sizes="100vw" />
-          </figure>
+          <p className="v3-caption">
+            {linkify(lead.caption, c.links)}
+            {lead.crop ? (
+              <>
+                {" "}
+                <a className="tlink" href={lead.src} target="_blank" rel="noopener noreferrer">
+                  See the full screenshot
+                </a>
+              </>
+            ) : null}
+          </p>
         ) : null}
-        {lead ? <p className="v3-caption">{lead.caption}</p> : null}
         {!lead && c.beforeAfter ? (
           <div className="v3-casepage-compare">
-            <CompareSlider {...c.beforeAfter.screenshots[0]} />
+            <CompareSlider {...c.beforeAfter.screenshots[0]} first />
           </div>
         ) : null}
 
@@ -100,7 +139,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             <h2>What happened</h2>
             <ul>
               {c.results.map((r) => (
-                <li key={r}>{r}</li>
+                <li key={r}>{linkify(r, c.links)}</li>
               ))}
             </ul>
           </section>
@@ -127,12 +166,16 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             <section>
               <h2>More proof</h2>
               <div className="v3-casepage-shots">
-                {restShots.map((s) => (
-                  <figure key={s.src}>
-                    <Image src={s.src} alt={s.caption} {...imageSize(s.src)} sizes="(max-width: 860px) 100vw, 66vw" />
-                    <figcaption className="v3-caption">{s.caption}</figcaption>
-                  </figure>
-                ))}
+                {restShots.map((s) => {
+                  const size = imageSize(s.src);
+                  return (
+                    <figure key={s.src}>
+                      {/* Never upscaled: a small crop shows at its own width. */}
+                      <Image src={s.src} alt={s.caption} {...size} style={{ maxWidth: size.width }} sizes="(max-width: 860px) 100vw, 66vw" />
+                      <figcaption className="v3-caption">{linkify(s.caption, c.links)}</figcaption>
+                    </figure>
+                  );
+                })}
               </div>
             </section>
           ) : null}

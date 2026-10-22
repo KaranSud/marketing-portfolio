@@ -179,7 +179,7 @@ organic (the X analytics show most of the gain in a January 2025 airdrop window,
 | Claim | Source | Status | Notes |
 |---|---|---|---|
 | Account Research & Outreach Engine is live and free | Labs.tsx:45 to 66; account-research-five.vercel.app | VP | Live page credits Karan Sud |
-| Feature list: Wikidata, news, GitHub, Hacker News; 0 to 100 fit score; contact discovery; CSV export | Labs.tsx:7 to 10, 47 to 50 | CONFLICT | The live page describes reading a company's homepage, about and pricing pages, up to 10 companies a run, an email plus a LinkedIn opener, a free Gemini tier, and no fit score |
+| Feature list: Wikidata, news, GitHub, Hacker News; 0 to 100 fit score; contact discovery; CSV export | Labs.tsx:7 to 10, 47 to 50 | CONFLICT, resolved 21 Oct 2026 (see (e), engine runs) | The live page describes reading a company's homepage, about and pricing pages, up to 10 companies a run, an email plus a LinkedIn opener, a free Gemini tier, and no fit score |
 | Outbound CRM | Labs.tsx:13 to 17; app/crm | KP | In-repo page |
 | 38 blog posts | portfolio-v3/content/blog | VP (repo count) | 3 are about the tool; 35 are industry essays |
 | SlouchGuard, a posture app for Mac | slouchguard-site.vercel.app | VP | macOS 14+, free plus a $12 one-time Pro unlock, © Karan Sud. No usage numbers exist, so the site should not cite any |
@@ -245,3 +245,4 @@ Status KP-confirmed: Karan answered the matching (c) question directly. These ma
 | Defx | Brand has closed; no trader screenshots exist | |
 | Fere AI "#1 Fintech" (checked 21 Oct 2026) | not found | producthunt.com/products/fere-ai shows "ranked #2 of the day for May 17th, 2026" and no category ranking; site keeps #2 only |
 | Novaswap 3-month window (checked 21 Oct 2026) | not found | @Novaswap joined 5 Nov 2025 (api.fxtwitter.com/Novaswap); no public post or page dates the $800K+ window; stays undated until Karan gives dates |
+| Account Research Engine: fit score and sources (checked 16 and 21 Oct 2026) | Reads the company website and public sources such as Wikipedia, GitHub and Google News, scores the fit out of 100, drafts a brief, a first email and a LinkedIn opener | Primary source: recorded runs of the live API, POST https://account-research-five.vercel.app/api/research with {domain, offer}. 16 Oct: elevenlabs.io (fit 90). 21 Oct: synthesia.io (fit 88; sources Wikipedia / Wikidata, Sitemap, GitHub, Google News, Hacker News), saved unedited in tasks/v3/research/engine-runs/2026-10-21-synthesia.json and excerpted in portfolio-v3/data/sample-brief.json. The API output wins over the landing page copy (homepage, about, pricing; no fit score). Resolves the feature-list CONFLICT in "Things he built" |

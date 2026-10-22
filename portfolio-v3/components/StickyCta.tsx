@@ -4,31 +4,43 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import BookButton from "./BookButton";
 
-// Phones only (CSS). Shows once the hero has scrolled away; hides at the contact
-// section, over cards that carry their own button, and while a text field has focus.
+// Phones only (CSS). One Book button is always on screen: this one shows whenever no
+// other Book button is (mostly) in view, and hides while a text field has focus.
 // When hidden it is inert, so keyboard focus can never land on it.
 export default function StickyCta() {
   const [on, setOn] = useState(false);
   const pathname = usePathname();
   useEffect(() => {
-    // Pages without the home hero (case pages, blog) show it from the start.
-    let pastHero = !document.querySelector(".v3-hero");
-    const covering = new Set<Element>();
+    const inView = new Set<Element>();
     let typing = false;
-    const update = () => setOn(pastHero && covering.size === 0 && !typing);
-    const hero = document.querySelector(".v3-hero");
-    const blockers = document.querySelectorAll("#contact, .v3-tool-card, .v3-offer-list, .v3-offer-cta,.v3-casepage-next, .v3-method-controls, .v3-index-list, #faq");
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.target === hero) pastHero = !e.isIntersecting;
-        else if (e.isIntersecting) covering.add(e.target);
-        else covering.delete(e.target);
-      }
-      update();
-    });
-    if (hero) io.observe(hero);
-    blockers.forEach((b) => io.observe(b));
-    update();
+    // Big type and controls it must never sit on: hidden while one reaches the bottom band it occupies.
+    const quiet = new Set<Element>();
+    const update = () => setOn(inView.size === 0 && quiet.size === 0 && !typing);
+    const zio = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) quiet.add(e.target);
+          else quiet.delete(e.target);
+        }
+        update();
+      },
+      { rootMargin: "-78% 0px 0px 0px" }
+    );
+    document.querySelectorAll(".v3-index-list, .v3-offer-list, .v3-method-controls").forEach((z) => zio.observe(z));
+    const others = [...document.querySelectorAll('a[href*="calendly.com"]')].filter((a) => !a.closest(".v3-sticky"));
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.intersectionRatio >= 0.6) inView.add(e.target);
+          else inView.delete(e.target);
+        }
+        update();
+      },
+      { threshold: [0, 0.6, 1] }
+    );
+    others.forEach((a) => io.observe(a));
+    // The observer reports every target once on start; without targets, decide now.
+    if (!others.length) update();
     const onFocus = (e: FocusEvent) => {
       typing = e.type === "focusin" && (e.target as HTMLElement).matches("input:not([type=range]), textarea");
       update();
@@ -37,6 +49,7 @@ export default function StickyCta() {
     document.addEventListener("focusout", onFocus);
     return () => {
       io.disconnect();
+      zio.disconnect();
       document.removeEventListener("focusin", onFocus);
       document.removeEventListener("focusout", onFocus);
     };

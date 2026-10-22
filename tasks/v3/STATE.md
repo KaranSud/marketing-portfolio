@@ -16,8 +16,9 @@ Remaining batches (check usage before each; weekly was 86% on 16 Oct, resets 19 
      22 Oct: Opaque Studio added (3 posts, Mar and May 2024; total 25 posts, 9 accounts). SportsRush: @thesportsrushus
      gone, @thesportsrush is a dormant 2017 account, so screenshot only. Potters' Hub: handle still needed from Karan.
      Phone rule (375/414/768) now passes: workflows/phone-check.mjs (44px taps on text links and nav name, sticky
-     hidden while the menu is open). NOTE: the round-03 fixes left uncommitted in the tree (StickyCta rewrite, flagship
-     figure layout) fail the taste inspector: sticky over the index names at 390px, captions read as kickers at 768/390.
+     hidden while the menu is open). Round-03 fixes are still uncommitted in the tree; on 22 Oct their two inspector
+     fails were fixed (sticky hides over the index list, offer list and method controls; phone flagship cluster 40px
+     below the caption). Full tree: inspector 0 FAIL, phone-check 0 FAIL. Commit the round-03 set once reviewed.
   4. History rewrite DONE 21 Oct: all 17 branch commits now Karan Sud <karansud98@gmail.com>, no Claude lines, tree
      unchanged; commit hashes changed (old tip kept as local branch backup/pre-history-rewrite). Remaining: critic round 03
      (fresh session, after the 5-hour reset), then force-push the branch once Karan approves.

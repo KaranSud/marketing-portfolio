@@ -29,7 +29,7 @@ export const homeFaqs: Faq[] = [
 export const faqs: Faq[] = [
   {
     q: "What does Karan Sud do?",
-    a: "Karan Sud is a growth and content marketer for AI products, with deep experience in crypto-native AI. He builds content systems, KOL and community programs, and launch campaigns, and he builds his own marketing software.",
+    a: "Karan Sud is a growth and content marketer for AI products. He builds content systems, KOL and community programs, and launch campaigns, and he builds his own marketing software.",
   },
   {
     q: "What results has Karan Sud driven?",

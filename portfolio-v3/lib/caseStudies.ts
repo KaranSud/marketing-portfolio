@@ -5,7 +5,10 @@
 // LinkedIn are written neutrally.
 
 export type Metric = { val: string; label: string };
-export type Shot = { src: string; caption: string };
+/** A screenshot. On a case page's lead, `crop` (the analytics panel without the app's
+ * sidebar) is shown and links to the full `src`; under 860px `mobile` (the stat cards
+ * with the claimed numbers) is shown instead, so the numbers stay legible. */
+export type Shot = { src: string; caption: string; crop?: string; mobile?: string };
 
 export type BeforeAfterPair = { before: string; after: string; label?: string };
 
@@ -39,6 +42,8 @@ export type CaseStudy = {
   indexImage?: string;
   /** A short muted loop of the real work, used as the index preview. */
   preview?: { video: string; poster: string };
+  /** Public pages that verify a claim: each phrase is linked where the case shows it. */
+  links?: Record<string, string>;
   /** Folder under public/Results/ scanned for before-after pairs. */
   mediaDir?: string;
   beforeAfter?: BeforeAfter;
@@ -78,10 +83,10 @@ export const caseStudies: CaseStudy[] = [
       "9.5M+ impressions on the FanTV AI account, and 12M+ including Prashan Agarwal's founder account.",
     ],
     screenshots: [
-      { src: "/Results/FanTV/FanTV_Web1.png", caption: "FanTV AI X analytics, 1 to 31 January 2025." },
-      { src: "/Results/FanTV/FanTV X Mobile SS.png", caption: "FanTV AI on X: 297.7K followers." },
+      { src: "/Results/FanTV/FanTV_Web1.png", crop: "/Results/FanTV/crop-analytics.png", caption: "FanTV AI X analytics, 1 to 31 January 2025." },
+      { src: "/Results/FanTV/crop-followers.png", caption: "FanTV AI on X: 297.7K followers." },
       { src: "/Results/FanTV/FanTV_Web3.png", caption: "FanTV AI X analytics." },
-      { src: "/Results/FanTV/FanTV_Web2.png", caption: "FanTV AI X analytics, June to August 2025." },
+      { src: "/Results/FanTV/FanTV_Web2.png", caption: "FanTV AI X analytics, June to August 2025. Daily follows ran net negative in these months." },
     ],
   },
   {
@@ -92,6 +97,7 @@ export const caseStudies: CaseStudy[] = [
     meta: "Senior Content Manager, Crowwd Labs · Sep 2025 to Jan 2026",
     lede: "A perpetuals DEX with 40 to 50 active traders when I joined. Active traders went from about 50 to about 350, and I helped Defx reach $1.5B in cumulative perp volume, public on DefiLlama. Defx has since closed, so its public DefiLlama page is the one screenshot I can show.",
     channels: ["X", "Telegram", "Discord"],
+    links: { DefiLlama: "https://defillama.com/protocol/defx" },
     stats: [
       { val: "$1.5B", label: "Cumulative perp volume on DefiLlama, which I helped Defx reach" },
       { val: "50 to 350", label: "Active traders, from about 50 to about 350" },
@@ -120,6 +126,7 @@ export const caseStudies: CaseStudy[] = [
     meta: "Senior Content Manager, Crowwd Labs · Sep 2025 to May 2026",
     lede: "An AI trading agent whose brand did not exist yet. The X account earned 6.8M impressions in eight months, and in May 2026 Fere launched to #2 Product of the Day on Product Hunt.",
     channels: ["X", "Telegram", "Email", "YouTube", "Blog", "Medium", "Farcaster"],
+    links: { "Product Hunt": "https://www.producthunt.com/products/fere-ai" },
     stats: [
       { val: "7K+", label: "Daily active traders" },
       { val: "12K+", label: "Signups, with zero paid budget" },
@@ -146,7 +153,14 @@ export const caseStudies: CaseStudy[] = [
       "6.8M X impressions and 192.4K engagements between 1 September 2025 and 27 April 2026.",
       "Email marketing brought in Fere's first paying users.",
     ],
-    screenshots: [{ src: "/Results/Fere AI/Fere AI.png", caption: "Fere AI X analytics, 1 Sep 2025 to 27 Apr 2026." }],
+    screenshots: [
+      {
+        src: "/Results/Fere AI/Fere AI.png",
+        crop: "/Results/Fere AI/crop-analytics.png",
+        mobile: "/Results/Fere AI/crop-stats.png",
+        caption: "Fere AI X analytics, 1 Sep 2025 to 27 Apr 2026.",
+      },
+    ],
   },
   {
     key: "novaswap",
@@ -175,7 +189,14 @@ export const caseStudies: CaseStudy[] = [
       "$800K+ in organic trading volume in 3 months.",
       "1.1M X impressions and 53.9K engagements on an account opened in November 2025.",
     ],
-    screenshots: [{ src: "/Results/Novaswap/Novaswap.png", caption: "Novaswap X analytics, 1 Nov 2025 to 27 Apr 2026." }],
+    screenshots: [
+      {
+        src: "/Results/Novaswap/Novaswap.png",
+        crop: "/Results/Novaswap/crop-analytics.png",
+        mobile: "/Results/Novaswap/crop-stats.png",
+        caption: "Novaswap X analytics, 1 Nov 2025 to 27 Apr 2026.",
+      },
+    ],
   },
   {
     key: "prashan",
@@ -200,7 +221,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     results: ["X grew from 12K to over 90K followers.", "LinkedIn grew from 5K to 10K followers."],
     screenshots: [
-      { src: "/Results/Prashan/Prashan_1.png", caption: "Prashan Agarwal X analytics, 1 Oct 2024 to 29 Aug 2025." },
+      { src: "/Results/Prashan/Prashan_1.png", crop: "/Results/Prashan/crop-analytics.png", caption: "Prashan Agarwal X analytics, 1 Oct 2024 to 29 Aug 2025." },
       { src: "/Results/Prashan/Prashan_2.png", caption: "Prashan Agarwal analytics." },
       { src: "/Results/Prashan/Prashan_3.png", caption: "Prashan Agarwal analytics." },
     ],
@@ -228,7 +249,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     results: ["1.2M+ organic impressions in six months, with no ad spend."],
     screenshots: [
-      { src: "/Results/Mohaimina Haque/Mohaimina.png", caption: "Mohaimina Haque analytics." },
+      { src: "/Results/Mohaimina Haque/Mohaimina.png", caption: "Mohaimina Haque on Instagram: 6,519 followers." },
       { src: "/Results/Mohaimina Haque/Posts Feed.png", caption: "Posts feed." },
       { src: "/Results/Mohaimina Haque/Reels Feed.png", caption: "Reels feed." },
     ],
@@ -261,7 +282,12 @@ export const caseStudies: CaseStudy[] = [
       "Top post: 130.1K views. The CEO's account stands at 6,519 followers.",
     ],
     screenshots: [
-      { src: "/Results/Tony Roma's/TR_FacebookContent.png", caption: "Tony Roma's Facebook content, 1 Sep 2025 to 27 Apr 2026." },
+      {
+        src: "/Results/Tony Roma's/TR_FacebookContent.png",
+        crop: "/Results/Tony Roma's/crop-content.png",
+        mobile: "/Results/Tony Roma's/crop-stats.png",
+        caption: "Tony Roma's Facebook content, 1 Sep 2025 to 27 Apr 2026.",
+      },
       { src: "/Results/Tony Roma's/TR_Facebook.png", caption: "Tony Roma's Facebook insights." },
       { src: "/Results/Tony Roma's/TR_Instagram.png", caption: "Tony Roma's Instagram insights." },
       { src: "/Results/Tony Roma's/TR_InstagramContent.png", caption: "Tony Roma's Instagram content." },
@@ -382,7 +408,14 @@ export const caseStudies: CaseStudy[] = [
       "Added timely market commentary so the account stayed relevant to what traders cared about that week.",
     ],
     results: ["1.9M impressions and 30.5K engagements, at a 1.6% engagement rate, between 1 September 2025 and 27 April 2026."],
-    screenshots: [{ src: "/Results/BimaBTC/BimaBTC.png", caption: "BimaBTC X analytics, 1 Sep 2025 to 27 Apr 2026." }],
+    screenshots: [
+      {
+        src: "/Results/BimaBTC/BimaBTC.png",
+        crop: "/Results/BimaBTC/crop-analytics.png",
+        mobile: "/Results/BimaBTC/crop-stats.png",
+        caption: "BimaBTC X analytics, 1 Sep 2025 to 27 Apr 2026.",
+      },
+    ],
   },
   {
     key: "bones",

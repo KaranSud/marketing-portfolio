@@ -9,12 +9,15 @@ export default function Footer() {
         <Link href="/#method">How I work</Link>
         <Link href="/#tools">Tools</Link>
         <Link href="/blog">Writing</Link>
-        <a href="https://www.linkedin.com/in/karansud-marketing" target="_blank" rel="noopener noreferrer">
-          LinkedIn
-        </a>
-        <a href="https://x.com/KaranSudSocial" target="_blank" rel="noopener noreferrer">
-          X
-        </a>
+        {/* The two profiles wrap as a pair, so "X" never sits alone on a line. */}
+        <span className="v3-footer-pair">
+          <a href="https://www.linkedin.com/in/karansud-marketing" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href="https://x.com/KaranSudSocial" target="_blank" rel="noopener noreferrer">
+            X
+          </a>
+        </span>
       </nav>
       <span className="v3-footer-end">© 2026 Karan Sud</span>
     </footer>

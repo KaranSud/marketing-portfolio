@@ -4,13 +4,21 @@ import brief from "@/data/sample-brief.json";
 
 // Both products are live (facts.md "Things he built", VP). The engine card describes
 // exactly what the recorded run shows: data/sample-brief.json is an unedited excerpt
-// of one real run (fit score, first email, sources), so card and sample agree.
+// of one real run of the live API (fit score, first email, sources; the full response
+// is in tasks/v3/research/engine-runs/), so card and sample agree (facts.md (e)).
 const engine = {
   name: "Account Research Engine",
   variant: "Free, built and run by me",
   fact: "Reads a company's website and public sources such as Wikipedia, GitHub and Google News, scores the fit out of 100, then drafts an account brief, a first email and a LinkedIn opener. Up to 10 companies a run.",
   href: "https://account-research-five.vercel.app",
 };
+
+const recorded = new Date(`${brief.recordedAt}T00:00:00Z`).toLocaleDateString("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 export default function Tools() {
   return (
@@ -56,7 +64,7 @@ export default function Tools() {
             <p className="v3-brief-src">Sources: {brief.sources.join(", ")}</p>
           </div>
           <figcaption className="v3-caption">
-            An unedited excerpt of one real run on 16 Oct 2026: the fit score, the first email and the sources. The
+            An unedited excerpt of one real run on {recorded}: the fit score, the first email and the sources. The
             full brief also has a summary and a LinkedIn opener. The offer entered was: {brief.offer}
           </figcaption>
         </figure>

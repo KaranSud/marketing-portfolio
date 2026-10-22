@@ -5,6 +5,7 @@ import WorkIndex from "./WorkIndex";
 import Posts from "./Posts";
 import { caseStudies, flagshipKeys } from "@/lib/caseStudies";
 import { creatives } from "@/lib/creatives";
+import { linkify } from "@/lib/linkify";
 
 type Flagship = {
   key: (typeof flagshipKeys)[number];
@@ -65,12 +66,11 @@ export default function Work() {
         const c = caseStudies.find((x) => x.key === f.key)!;
         return (
           <article key={f.key} className="v3-case" aria-labelledby={`case-${f.key}`}>
-            <figure
-              className="v3-case-visual"
-              style={{ aspectRatio: String(f.ratio) }}
-              data-reveal
-            >
-              <Image src={f.visual} alt={f.visualAlt} fill sizes="(max-width: 860px) 100vw, 60vw" />
+            <figure className="v3-case-fig" data-reveal>
+              <div className="v3-case-visual" style={{ aspectRatio: String(f.ratio) }}>
+                <Image src={f.visual} alt={f.visualAlt} fill sizes="(max-width: 860px) 100vw, 60vw" />
+              </div>
+              <figcaption className="v3-caption">{linkify(f.visualCaption, c.links)}</figcaption>
             </figure>
             <div className="v3-case-cluster">
               <h3 id={`case-${f.key}`} className="v3-case-title" data-reveal style={{ ["--i" as string]: 1 }}>
@@ -81,7 +81,7 @@ export default function Work() {
                 <span>{f.bigLabel}</span>
               </p>
               <p className="v3-case-desc" data-reveal style={{ ["--i" as string]: 3 }}>
-                {f.desc}
+                {linkify(f.desc, c.links)}
               </p>
               <p className="v3-case-meta" data-reveal style={{ ["--i" as string]: 3 }}>
                 {c.meta}
@@ -89,10 +89,14 @@ export default function Work() {
               <Link className="tlink v3-case-link" href={`/work/${f.key}`} data-reveal style={{ ["--i" as string]: 4 }}>
                 Read the {c.title} case
               </Link>
-              <p className="v3-caption">{f.visualCaption}</p>
             </div>
             {creatives[f.key] ? (
-              <Posts items={creatives[f.key]} label={`Posts I made for ${c.title}`} className="v3-case-posts" />
+              <Posts
+                items={creatives[f.key]}
+                label={`Posts I made for ${c.title}`}
+                title="Posts I made"
+                className="v3-case-posts"
+              />
             ) : null}
           </article>
         );

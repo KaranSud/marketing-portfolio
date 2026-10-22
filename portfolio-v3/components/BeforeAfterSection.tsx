@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { createPortal } from "react-dom";
 import { motion, type Variants } from "framer-motion";
 import type { BeforeAfter, BeforeAfterPair } from "@/lib/caseStudies";
@@ -32,16 +33,19 @@ type FullscreenVideo = HTMLVideoElement & {
 // Drag-to-reveal comparison: the "after" image sits underneath at full
 // size, the "before" image is clipped over it, and a native range input
 // (invisible, full-frame) drives the clip so the whole thing gets mouse
-// drag, touch, and keyboard support for free.
-export function CompareSlider({ before, after, label }: BeforeAfterPair) {
+// drag, touch, and keyboard support for free. `first` marks the slider that
+// leads a case page: both images load eagerly at high priority (the LCP).
+export function CompareSlider({ before, after, label, first }: BeforeAfterPair & { first?: boolean }) {
   const [pos, setPos] = useState(50);
+  const load = first ? ({ loading: "eager", fetchPriority: "high" } as const) : ({ loading: "lazy" } as const);
+  const sizes = first ? "100vw" : "(max-width: 860px) 100vw, 66vw";
   return (
     <div className="ba-compare">
       {label ? <div className="ba-shot-caption">{label}</div> : null}
       <div className="ba-compare-frame">
-        <img src={after} alt={`${label ?? "After"}: after`} className="ba-compare-img" loading="lazy" />
+        <Image src={after} alt={`${label ?? "After"}: after`} className="ba-compare-img" fill sizes={sizes} {...load} />
         <div className="ba-compare-clip" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-          <img src={before} alt={`${label ?? "Before"}: before`} className="ba-compare-img" loading="lazy" />
+          <Image src={before} alt={`${label ?? "Before"}: before`} className="ba-compare-img" fill sizes={sizes} {...load} />
         </div>
         <div className="ba-compare-line" style={{ left: `${pos}%` }}>
           <span className="ba-compare-grip" aria-hidden>
@@ -136,7 +140,7 @@ export default function BeforeAfterSection({ data }: { data: BeforeAfter }) {
             onClick={() => open("before")}
             aria-label="Watch the before walkthrough, full size"
           >
-            <img src={data.video.beforePoster} alt="Before: video preview" />
+            <img src={data.video.beforePoster} alt="Before: video preview" loading="lazy" />
             <span className="ba-tag">Before</span>
             <span className="ba-play" aria-hidden>
               ▶
@@ -148,7 +152,7 @@ export default function BeforeAfterSection({ data }: { data: BeforeAfter }) {
             onClick={() => open("after")}
             aria-label="Watch the after walkthrough, full size"
           >
-            <img src={data.video.afterPoster} alt="After: video preview" />
+            <img src={data.video.afterPoster} alt="After: video preview" loading="lazy" />
             <span className="ba-tag">After</span>
             <span className="ba-play" aria-hidden>
               ▶
@@ -220,6 +224,7 @@ export default function BeforeAfterSection({ data }: { data: BeforeAfter }) {
                   controls
                   muted
                   playsInline
+                  preload="none"
                 />
               </div>
             </div>,

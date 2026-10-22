@@ -14,6 +14,8 @@ const stages: {
   numLabel: string;
   caption: string;
   img: string;
+  /** Pixel width over height of img, so the frame hugs the artefact. */
+  ratio: number;
   alt: string;
   frag: string;
   post?: Creative;
@@ -26,6 +28,7 @@ const stages: {
     caption:
       "Formats built for the platform, on a steady cadence. The SportsRush's Instagram went from 26 to 4,500 followers in three months.",
     img: "/Results/Sportsrush/Sportsrush Viral Reels.png",
+    ratio: 1932 / 1016,
     alt: "The SportsRush reels on Instagram, at 2M, 4M and 314K views",
     frag: "The SportsRush on Instagram, 2024.",
   },
@@ -36,6 +39,7 @@ const stages: {
     numLabel: "X impressions for Novaswap, an account opened in November 2025",
     caption: "KOLs, ambassadors and community seeding. For Novaswap I seeded targeted KOLs and built the community from nothing.",
     img: "/Results/Novaswap/Novaswap.png",
+    ratio: 3420 / 1970,
     alt: "Novaswap X analytics from 1 November 2025 to 27 April 2026",
     frag: "Novaswap on X, 1 Nov 2025 to 27 Apr 2026.",
     post: creatives.novaswap[0],
@@ -47,6 +51,7 @@ const stages: {
     numLabel: "X followers for Prashan Agarwal, up from 12K",
     caption: "I wrote Prashan Agarwal's posts in his voice, alongside the FanTV AI brand account, so the two fed each other.",
     img: "/Results/Prashan/Prashan_2.png",
+    ratio: 1887 / 957,
     alt: "Prashan Agarwal X analytics for January 2025",
     frag: "Prashan Agarwal on X, January 2025.",
     post: creatives.prashan[0],
@@ -58,6 +63,7 @@ const stages: {
     numLabel: "Potters' Hub's month-one revenue from ₹3,500 of Meta ads, a 471% return",
     caption: "Paid social aimed at people who already showed interest, with organic reels pulling new people in.",
     img: "/Results/Potters' Hub/crop-top-content.png",
+    ratio: 1949 / 739,
     alt: "Potters' Hub's top Instagram posts by views, the top one at 57.9K",
     frag: "Potters' Hub's top Instagram posts by views, February to April 2025.",
   },
@@ -95,7 +101,7 @@ export default function Method() {
         </div>
         <div className="v3-method-right">
           <div className="v3-method-fragwrap">
-            <div className="v3-method-frag" data-ui>
+            <div className="v3-method-frag" style={{ aspectRatio: String(s.ratio) }} data-ui>
               {stages.map((st, k) => (
                 <div key={st.img} className={`v3-method-layer${k === i ? " is-active" : ""}`} aria-hidden={k !== i}>
                   <Image src={st.img} alt={k === i ? st.alt : ""} fill sizes="(max-width: 860px) 92vw, 46vw" />
@@ -105,7 +111,7 @@ export default function Method() {
             <p className="v3-method-frag-caption">{s.frag}</p>
             {s.post ? (
               <a key={s.post.src} className="v3-method-post" href={s.post.href} target="_blank" rel="noopener noreferrer">
-                <span className="v3-post">
+                <span className="v3-post-tile">
                   <Image src={s.post.src} alt={s.post.alt} fill sizes="200px" />
                 </span>
                 <span className="v3-caption">

@@ -18,12 +18,11 @@ export default function JsonLd() {
         email: "mailto:contactkaransud@gmail.com",
         address: { "@type": "PostalAddress", addressLocality: "Noida", addressCountry: "IN" },
         knowsAbout: [
+          "AI Product Marketing",
           "Growth Marketing",
           "Content Marketing",
           "Community Building",
           "KOL Marketing",
-          "Crypto Marketing",
-          "AI Product Marketing",
         ],
         sameAs: ["https://www.linkedin.com/in/karansud-marketing", "https://x.com/KaranSudSocial"],
       },

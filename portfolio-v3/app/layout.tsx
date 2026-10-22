@@ -40,7 +40,6 @@ export const metadata: Metadata = {
     "growth marketing",
     "content marketing",
     "AI product marketing",
-    "crypto marketing",
     "community building",
   ],
   authors: [{ name: "Karan Sud" }],

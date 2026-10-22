@@ -1,19 +1,18 @@
 {
- "recordedAt": "2026-10-16",
- "domain": "elevenlabs.io",
- "company": "ElevenLabs",
+ "recordedAt": "2026-10-21",
+ "domain": "synthesia.io",
+ "company": "Synthesia",
  "offer": "Launch content, KOL programs and community growth for AI products: more people trying the product and sticking with it.",
- "fitScore": 90,
- "fitReason": "Rapidly expanding AI product suite requires strong content, KOLs, and community for adoption and retention.",
+ "fitScore": 88,
+ "fitReason": "Synthesia's growth and new AI products demand strong content and community for adoption.",
  "email": {
-  "subject": "elevencreative adoption",
-  "body": "Hi Mati, saw your work on ElevenCreative, especially with the new v4 model. Getting creators to try and stick with advanced AI tools is key. We help AI companies like yours drive initial adoption and build lasting communities around new product launches. Worth a quick look at how?"
+  "subject": "quick thought on syren adoption",
+  "body": "Your new Syren AI model and interactive avatars are truly innovative. We often see great AI products struggle to get users trying and sticking with advanced features. We help AI companies drive trial conversions and long-term engagement through targeted content and community programs. Worth a quick look?"
  },
  "sources": [
-  "Wikipedia / Wikidata: ElevenLabs",
-  "Company website (structured data)",
+  "Wikipedia / Wikidata: Synthesia (company)",
   "Sitemap",
-  "GitHub: elevenlabs",
+  "GitHub: Synthesia-Technologies",
   "Google News",
   "Hacker News (Algolia)"
  ]
