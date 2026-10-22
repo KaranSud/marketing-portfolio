@@ -30,6 +30,9 @@ Instagram dates for Tony Roma's and B&B come from the profile feed (taken_at); M
 | Mohaimina Haque | Mohaimina Haque/creatives/1-ig-2026-02.jpg | https://www.instagram.com/p/DU3q2f2ERY8/ | Feb 2026 (post ID 17 Feb) | case |
 | Mohaimina Haque | Mohaimina Haque/creatives/2-ig-2026-03.jpg | https://www.instagram.com/p/DWE9DJTEdUh/ | Mar 2026 (post ID 19 Mar) | case |
 | Mohaimina Haque | Mohaimina Haque/creatives/3-ig-2026-04.jpg | https://www.instagram.com/p/DWmOz9GEWdJ/ | Apr 2026 (post ID 1 Apr) | case |
+| Opaque Studio | Opaque Studio/creatives/1-ig-2024-03.jpg | https://www.instagram.com/p/C42nx62pw0Z/ | Mar 2024 (post ID 23 Mar) | case |
+| Opaque Studio | Opaque Studio/creatives/2-ig-2024-05.jpg | https://www.instagram.com/p/C6gfYXfx9Ek/ | May 2024 (post ID 3 May) | case |
+| Opaque Studio | Opaque Studio/creatives/3-ig-2024-05.jpg | https://www.instagram.com/p/C66Q7-JJJmS/ | May 2024 (post ID 13 May) | case |
 | Tony Roma's | Tony Roma's/creatives/1-ig-2026-10-20.jpg | https://www.instagram.com/p/DeuUbKZDxev/ | 20 Oct 2026 | case |
 | Tony Roma's | Tony Roma's/creatives/2-ig-2026-10-18.jpg | https://www.instagram.com/p/DepK1afgQRN/ | 18 Oct 2026 | case |
 | Tony Roma's | Tony Roma's/creatives/3-ig-2026-10-17.jpg | https://www.instagram.com/p/DemmCnvjOPD/ | 17 Oct 2026 | case |
@@ -46,6 +49,8 @@ Instagram dates for Tony Roma's and B&B come from the profile feed (taken_at); M
 - Mohaimina Haque on Instagram, Mar to Apr 2026: DV1c3dcEdEN, DV3_o8giV2j, DV_P5MulvK- (law office), DWCPLlmEfgM, DWThLSLlImJ (law office), DWZVD6FkczD, DW1ODCkEaoQ, DXEqGnlkQy5 (law office). Pinned DOlG5IVjU1M is from Sep 2025, before her tenure.
 
 ## Not reached
-- **The SportsRush:** the site links instagram.com/thesportsrushus, which Instagram says is not available (checked 21 Oct 2026 in Chrome). The account may have been renamed or removed. The existing v2 screenshot of the viral reels stays the only creative.
-- **Opaque Studio (@opaque.studio):** 2,072 posts; the Mar to May 2024 window sits about 600 posts down the grid. Instagram's logged-in API returned 429 (rate limit) on 21 Oct, so the deep scroll was skipped. Next pass: in Karan's Chrome, scroll the grid with the drive-ig-kit recipe once the limit clears, decode dates from shortcodes (see igdate note in learnings.md).
-- **Potters' Hub:** no Instagram handle found on disk, in his screenshots (Facebook page name only) or by web search. Needs the handle from Karan.
+- **The SportsRush:** the site links instagram.com/thesportsrushus, which Instagram says is not available (checked 21 Oct 2026 in Chrome, twice). @thesportsrush exists but is a dormant 2017 to 2018 account with 1,547 followers, so it is not the one he grew. The existing v2 screenshot of the viral reels stays the only creative.
+- **Potters' Hub:** no Instagram handle found on disk, in his screenshots (Facebook page name only) or by web search; @pottershub is unavailable, @potters_hub is an empty account and @thepottershub is a Stoke City fan page. Needs the handle from Karan.
+
+## Opaque Studio pass (21 Oct 2026, after the reset)
+Scrolled @opaque.studio's grid in Chrome to Feb 2024 (492 posts) and dated each code from its post ID. 42 posts fall in Mar to May 2024; 17 image posts were pulled with ig.py and 3 used. Others in the window: C4GV4QDPq1_, C4QSbY6AdI6, C4Ut-xBpobO, C4agxhCpam6, C4iWByXRQ-_, C4xvYrbvhTT, C5ECGENCSc-, C5QpFJ3S1c5, C5TKQsErUaE, C5qaAdePQC5, C5-9pEwv0Mv, C6B4oJXOqQn, C6YvL2NiT0I, C6tY84nsDw5, plus 25 reels.

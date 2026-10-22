@@ -128,3 +128,4 @@
 20:28 | facts | Chrome: linkedin.com/in/karansud7 | redirects to karansud-marketing (v2 site still links the old slug)
 21:30 | creatives | x.com search from:prashan_agarwal, from:BimaBTC, from:fere_ai/Novaswap/FanTV_official (Chrome) + api.fxtwitter.com x52 | in-tenure post ids and images; see creatives-log.md
 21:30 | creatives | ig.py profile + post (tonyromaslegendarygrill, tonyromasbonesandburgers, attorneyminadc, opaque.studio) + Chrome grid scroll attorneyminadc | in-tenure codes; IG api 429; thesportsrushus unavailable
+11:00 | creatives | Chrome IG pages: thesportsrush (dormant 2017-18), pottershub/potters_hub/thepottershub (not his), opaque.studio grid to Feb 2024 + ig.py post x17 | 3 Opaque posts used; IG api still 429

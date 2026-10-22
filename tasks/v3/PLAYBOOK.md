@@ -25,6 +25,7 @@ and add a line to the index below. Append reusable discoveries to `learnings.md`
 | `workflows/shot.mjs <url> <outPrefix>` | desktop + mobile full-page screenshots in readable chunks. Locally: plain `node` (finds playwright-core in `~/.cache/portfolio-v3-tools` and a cached Chromium). |
 | `workflows/copy-lint.sh <dirs>` | anti-AI copy sweep |
 | `workflows/elshot.mjs <url> "<selector>" <out.png> [width]` | screenshot one element at 2x for close checks (crops, logo rows) |
+| `workflows/phone-check.mjs <baseUrl> [paths]` | Karan's phone rule: 375/414/768, no sideways scroll, 44px taps, menu opens/closes (button + Escape), sticky CTA never over the menu or end-of-page content. Exit 1 on FAIL |
 | `workflows/rubric.md` | the 10-point critic rubric |
 | `workflows/critic.md` | how to run one critic round (fresh agent each time, output critiques/round-NN.md) |
 

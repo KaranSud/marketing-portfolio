@@ -13,7 +13,11 @@ Remaining batches (check usage before each; weekly was 86% on 16 Oct, resets 19 
      How I work (Reach: Novaswap, Trust: Prashan). Log: research/creatives-log.md. Not reached: The SportsRush
      (@thesportsrushus unavailable), Opaque Studio (2024 posts ~600 deep, IG API 429), Potters' Hub (no handle).
      Checks: tsc, build, copy-lint 0, taste inspector 0 FAIL (1 WARN, palette-cream, pre-existing).
-     Next for 3: Opaque scroll pass once IG's limit clears; ask Karan for the SportsRush and Potters' Hub handles.
+     22 Oct: Opaque Studio added (3 posts, Mar and May 2024; total 25 posts, 9 accounts). SportsRush: @thesportsrushus
+     gone, @thesportsrush is a dormant 2017 account, so screenshot only. Potters' Hub: handle still needed from Karan.
+     Phone rule (375/414/768) now passes: workflows/phone-check.mjs (44px taps on text links and nav name, sticky
+     hidden while the menu is open). NOTE: the round-03 fixes left uncommitted in the tree (StickyCta rewrite, flagship
+     figure layout) fail the taste inspector: sticky over the index names at 390px, captions read as kickers at 768/390.
   4. History rewrite DONE 21 Oct: all 17 branch commits now Karan Sud <karansud98@gmail.com>, no Claude lines, tree
      unchanged; commit hashes changed (old tip kept as local branch backup/pre-history-rewrite). Remaining: critic round 03
      (fresh session, after the 5-hour reset), then force-push the branch once Karan approves.

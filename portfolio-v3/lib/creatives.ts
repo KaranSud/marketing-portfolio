@@ -122,6 +122,26 @@ export const creatives: Record<string, Creative[]> = {
       href: ig("DWmOz9GEWdJ"),
     },
   ],
+  opaque: [
+    {
+      src: "/Results/Opaque Studio/creatives/1-ig-2024-03.jpg",
+      alt: "Opaque Studio Earth Hour post: a cane lamp over a glowing globe, Go dark, shine bright",
+      caption: "Opaque Studio on Instagram, March 2024",
+      href: ig("C42nx62pw0Z"),
+    },
+    {
+      src: "/Results/Opaque Studio/creatives/2-ig-2024-05.jpg",
+      alt: "Opaque Studio post: the Aviary cane cabinet beside its bird illustrations",
+      caption: "Opaque Studio on Instagram, May 2024",
+      href: ig("C6gfYXfx9Ek"),
+    },
+    {
+      src: "/Results/Opaque Studio/creatives/3-ig-2024-05.jpg",
+      alt: "Opaque Studio launch teaser: the word Tartan set in a green and black check",
+      caption: "Opaque Studio on Instagram, May 2024",
+      href: ig("C66Q7-JJJmS"),
+    },
+  ],
   tony: [
     {
       src: "/Results/Tony Roma's/creatives/1-ig-2026-10-20.jpg",

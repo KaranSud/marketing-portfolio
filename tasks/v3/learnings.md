@@ -25,3 +25,5 @@
 - 2026-10-21 X search in Claude in Chrome (from:<handle> since: until: filter:media) lists in-tenure posts in one page load; read ids with JS, then fetch each via fxtwitter. JS output containing a URL query string is blocked by the extension; return ids only.
 - 2026-10-21 Instagram: the logged-in /api/v1 endpoints hit 429 after about 15 calls; profile pages still load. An IG shortcode's post date = ((base64 id) >> 23) + 1314220021721 ms (upload time; scheduled posts can differ by days).
 - 2026-10-21 @thesportsrushus (linked from thesportsrush.com) shows 'page isn't available'; Potters' Hub IG handle unknown.
+- 2026-10-22 IG grid scroll in Claude in Chrome: keep each javascript_tool call under ~20 scroll steps (45s CDP timeout); keep state in window.* and call a saved window.__step(n) again. 22 steps reach about 130 posts.
+- 2026-10-22 Inline-link tap targets: on <=860px, .tlink gets padding 13px 4px with margin-inline -4px (44px box, no layout shift). Watch for the padded box overlapping a heading above it; the taste inspector reports that as covered-text.

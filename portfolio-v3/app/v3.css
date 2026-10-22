@@ -92,6 +92,8 @@ body {
   transition: text-decoration-color 0.2s, color 0.2s;
 }
 .tlink:hover { text-decoration-color: var(--accent); }
+/* Touch widths: padding grows inline links to a 44px tap area without moving the text. */
+@media (max-width: 860px) { .tlink { padding: 13px 4px; margin-inline: -4px; } }
 
 /* ---------- nav ---------- */
 .v3-nav {
@@ -115,6 +117,9 @@ main [id], main section[id] { scroll-margin-top: 88px; }
   color: var(--ink);
   text-decoration: none;
   transition: opacity 0.3s var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .v3-nav.at-hero .v3-nav-mark { opacity: 0; pointer-events: none; visibility: hidden; }
 .v3-nav-links { display: flex; align-items: center; gap: 28px; }
@@ -515,7 +520,7 @@ main [id], main section[id] { scroll-margin-top: 88px; }
 @media (max-width: 860px) {
   .v3-offer-body { display: block; margin-top: 32px; }
   .v3-offer-top { display: block; }
-  .v3-offer-proof { display: block; text-align: left; margin-top: 4px; }
+  .v3-offer-proof { display: block; text-align: left; margin-top: 14px; }
   .v3-offer-row + .v3-offer-row { margin-top: 32px; }
   .v3-offer-cta { margin-top: 40px; }
 }
@@ -666,6 +671,8 @@ main [id], main section[id] { scroll-margin-top: 88px; }
 .v3-sticky .cta { min-height: 48px; padding: 0 18px; }
 .v3-sticky.is-on { transform: none; }
 @media (max-width: 860px) { .v3-sticky { display: block; } }
+/* The open menu always wins over the sticky CTA. */
+body:has(.v3-nav-menu[aria-expanded="true"]) .v3-sticky { display: none; }
 
 /* ---------- case pages ---------- */
 .v3-casepage { padding: 140px var(--m) 0; }
