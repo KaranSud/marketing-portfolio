@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email Program Practice Gaps 2025</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --bar: #0F172A;
+    --surface: #FAFAF9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --border: #334155;
+      --surface: #1E293B;
+      --bar: #CBD5E1;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --grid: #1E293B;
+    --border: #334155;
+    --surface: #1E293B;
+    --bar: #CBD5E1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); padding: 24px 16px; }
+  .card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px 20px 16px; max-width: 640px; margin: 0 auto; }
+  h2 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+  .chart-wrap { position: relative; height: 220px; }
+  .source { font-size: 11px; color: var(--text-muted); margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>Email Program Practice Gaps, 2025</h2>
+  <p class="subtitle">Share of senders using each list health practice</p>
+  <div class="chart-wrap">
+    <canvas id="c"></canvas>
+  </div>
+  <p class="source">Source: Sinch Mailgun State of Email Deliverability 2025, n=1,100+ senders globally.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script>
+const labels = [
+  'Conduct list hygiene regularly',
+  'Monitor blocklists',
+  'Monitor sender reputation',
+  'Use sunset policies'
+];
+const values = [61, 47, 30, 24];
+
+const root = getComputedStyle(document.documentElement);
+const barColor = root.getPropertyValue('--bar').trim() || '#0F172A';
+const accent = '#DC2626';
+
+const colors = values.map((v, i) => i === values.length - 1 ? accent : barColor);
+
+const ctx = document.getElementById('c').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [{
+      label: '% of senders',
+      data: values,
+      backgroundColor: colors,
+      borderRadius: 3,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.parsed.x}% of senders`,
+          afterLabel: ctx => ctx.dataIndex === values.length - 1 ? '← Critical gap' : ''
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 80,
+        ticks: {
+          color: '#64748B',
+          font: { size: 11 },
+          callback: v => v + '%'
+        },
+        grid: { color: '#E2E8F0' },
+        border: { display: false }
+      },
+      y: {
+        ticks: { color: '#64748B', font: { size: 11 } },
+        grid: { display: false },
+        border: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

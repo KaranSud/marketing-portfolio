@@ -1,0 +1,9 @@
+Pexels photo ID: N/A (api.pexels.com blocked by session proxy policy)
+Source URL: https://www.pexels.com/search/abandoned+warehouse+empty+industrial/
+License: Pexels License (free to use)
+Alt text: Empty industrial corridor with receding perspective, representing silent data decay and neglected infrastructure
+Rationale: An empty warehouse or corridor communicates the "gone dark" theme of list decay — contacts that exist in the database but are no longer active — without resorting to AI robot imagery or laptop clichés. The architectural depth mirrors the compounding nature of the problem.
+
+Note: api.pexels.com is blocked by the session proxy. A placeholder 1x1 JPEG was written to hero.jpg. To replace with a real image, run:
+curl -s -H "Authorization: 2T6uPt9N4jOrYfel6EZvBOBQlakhwh7f6yKvkxb9ymfsA0HpeOCqIVxd" "https://api.pexels.com/v1/search?query=abandoned+warehouse+empty+industrial&per_page=8&orientation=landscape"
+Then download the chosen photo's src.large2x URL to hero.jpg.

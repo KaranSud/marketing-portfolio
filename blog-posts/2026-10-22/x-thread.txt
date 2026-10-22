@@ -1,0 +1,81 @@
+1/ A quarter of your email list has already gone dark.
+
+Not bounced. Not unsubscribed. Just silent — sitting there counted in your list size and routed into every automation you've built.
+
+Here's what that actually costs you (and most teams have no idea):
+
+2/ Email list decay runs at 28% annually.
+
+That's the verified rate from ZeroBounce's 2025 report, which analyzed real email verification data from 2024. The trend: 23% in 2021 → 22% → 25% → 28% peak in 2024.
+
+A 100k list is losing ~77 valid contacts per day. Every day.
+
+3/ The math nobody runs:
+
+100,000 contacts × 28% decay = 28,000 gone per year
+= 2,300 per month
+= 77 per day
+
+Unless acquisition is adding that many verified subscribers, your real list is shrinking while your reported list size grows.
+
+4/ Here's where it gets worse.
+
+Those inactive addresses don't just fail to convert. Some of them — 0.05% to 0.15% — hit the spam button instead of unsubscribing.
+
+Google's complaint threshold is 0.1%. Above 0.3% sustained: filtering and blocking.
+
+Your decayed list is filing a complaint against your domain.
+
+5/ The feedback loop that eats programs:
+
+Decay → spam signals → lower inbox placement → less engagement → weaker sender reputation → harder to re-engage the contacts still left → decay accelerates.
+
+This is not a one-time cleanup problem. It compounds.
+
+6/ And yet 39% of email senders rarely or never clean their lists.
+
+That's from Sinch Mailgun's State of Email Deliverability survey of 1,100+ senders in 2025.
+
+Only 24% use sunset policies — the automated rule that suppresses contacts who haven't engaged in 90 days.
+
+7/ The monitoring gap is even worse:
+
+→ 70% don't use Google Postmaster Tools
+→ 53% don't monitor blocklists
+
+Postmaster Tools is free. It shows your domain's spam rate exactly as Gmail sees it. Not using it is choosing to fly blind.
+
+8/ Why does this keep happening?
+
+List hygiene doesn't show up in open rate reports. Sunset policies don't generate conversions you can point to in a quarterly review.
+
+The incentive structure rewards more sends. The maintenance work keeps getting deprioritized.
+
+9/ The consequence, documented:
+
+Spam placement rates across commercial email nearly doubled between Q1 and Q4 2024 — from 4.5% to 8.6%.
+
+That spike tracked exactly with AI-driven volume increases. Programs ramped sending without touching list quality. The inbox providers noticed.
+
+10/ The fix is four ongoing operations, not one annual campaign:
+
+1. Verify at point of capture — API check on every new signup
+2. Sunset policy — 90 days inactive → re-engage → 30 days no response → suppress
+3. Reputation monitoring — Postmaster Tools + MS JMRP, weekly
+4. Quarterly review — bounce rate, complaint rate, engagement distribution
+
+11/ On the ROI math everyone cites:
+
+The industry says email returns $36–$42 per dollar spent. That figure is real — in programs where it's measured.
+
+A program with 28% decay and no hygiene workflow isn't getting $42 on the decayed portion. It's getting negative returns, because those contacts are actively degrading placement for the other 72%.
+
+12/ The underlying formula: reach × engagement × conversion.
+
+Decay hits reach directly.
+Spam signals hit engagement indirectly through inbox placement.
+The compounding works against you until you fix the list.
+
+Email's compound returns work exactly like interest, but only if the principal — your list — is real.
+
+[Full breakdown: karansud.com/blog/email-list-decay-is-the-leak-nobody-sees-until-its-too-late]

@@ -322,5 +322,14 @@
       "vertical bar",
       "area"
     ]
+  },
+  {
+    "date": "2026-10-22",
+    "slug": "email-list-decay-is-the-leak-nobody-sees-until-its-too-late",
+    "title": "Email List Decay Is the Leak Nobody Sees Until It's Too Late",
+    "chart_types": [
+      "line",
+      "horizontal bar"
+    ]
   }
 ]
