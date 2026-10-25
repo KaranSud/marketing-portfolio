@@ -29,17 +29,17 @@ const jetbrainsMono = JetBrains_Mono({
 
 const siteUrl = "https://karan-sud-portfolio.vercel.app";
 const description =
-  "Karan Sud, growth and content marketing for AI products. Case studies with public numbers, the tools he builds, and how to book a call.";
+  "Karan Sud, growth and content marketing for brands and founders. Case studies with public numbers, the tools he builds, and how to book a call.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Karan Sud, growth and content for AI products",
+  title: "Karan Sud, growth and content for brands and founders",
   description,
   keywords: [
     "Karan Sud",
     "growth marketing",
     "content marketing",
-    "AI product marketing",
+    "social media marketing",
     "community building",
   ],
   authors: [{ name: "Karan Sud" }],
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Karan Sud, growth and content for AI products",
+    title: "Karan Sud, growth and content for brands and founders",
     description,
     siteName: "Karan Sud",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karan Sud, growth and content for AI products",
+    title: "Karan Sud, growth and content for brands and founders",
     description,
     creator: "@KaranSudSocial",
   },

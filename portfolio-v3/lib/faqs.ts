@@ -5,7 +5,7 @@ export type Faq = { q: string; a: string };
 export const homeFaqs: Faq[] = [
   {
     q: "What do you work on?",
-    a: "Growth and content for AI products: the content system, KOL and community programs, launches, and the campaigns that turn attention into signups and trades. I have also run brand content for restaurants and for founders.",
+    a: "Growth and content for brands and founders: the content system, KOL and community programs, launches, and the campaigns that turn attention into signups and sales. Clients so far include AI and crypto apps, restaurants, home brands, sports media and executives.",
   },
   {
     q: "Do you take projects or part-time work?",
@@ -29,7 +29,7 @@ export const homeFaqs: Faq[] = [
 export const faqs: Faq[] = [
   {
     q: "What does Karan Sud do?",
-    a: "Karan Sud is a growth and content marketer for AI products. He builds content systems, KOL and community programs, and launch campaigns, and he builds his own marketing software.",
+    a: "Karan Sud is a growth and content marketer for brands and founders. He builds content systems, KOL and community programs, and launch campaigns, and he builds his own marketing software.",
   },
   {
     q: "What results has Karan Sud driven?",

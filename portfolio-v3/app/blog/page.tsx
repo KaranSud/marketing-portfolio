@@ -65,7 +65,7 @@ export default function BlogIndex() {
         <PostList posts={essays} />
         <div className="v3-casepage-next">
           <div>
-            <p className="v3-statement">I run growth and content for AI products. If yours needs users, let&apos;s talk.</p>
+            <p className="v3-statement">I run growth and content for brands and founders. If yours needs an audience, let&apos;s talk.</p>
             <div style={{ marginTop: 24 }}>
               <BookButton />
             </div>

@@ -25,7 +25,7 @@ export default function About() {
               <Image src="/karan.jpg" alt="Karan Sud" fill sizes="120px" />
             </span>
             <strong>Karan Sud.</strong> A mechanical engineer who worked in CFD, then moved into marketing in 2023. I run
-            growth and content for AI products.
+            growth and content for brands and founders.
           </p>
           <p className="v3-about-body" data-reveal style={{ ["--i" as string]: 1 }}>
             I have also run brand content for restaurants and for founders, and I wrote for brands as a freelancer from

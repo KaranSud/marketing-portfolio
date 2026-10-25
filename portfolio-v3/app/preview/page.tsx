@@ -56,10 +56,10 @@ export default function Preview() {
           </div>
           <div className="pv-hero-copy">
             <h1 id="pv-hero-title">
-              <span>You built the AI product.</span> <span>I find the people who use it.</span>
+              <span>I make the content that grows</span> <span>brands and founders.</span>
             </h1>
             <p className="pv-sub">
-              Growth and content marketing for AI products, as a project or part-time support. Every post on this page
+              Growth and content marketing as a project or part-time support, for 13+ brands and founders in 7+ industries, including AI and crypto apps, restaurants, home brands, sports media and executives. Every post on this page
               comes from an account I worked on.
             </p>
             <BookButton className="pv-btn" />
@@ -113,7 +113,7 @@ export default function Preview() {
         </section>
 
         <section className="pv-final" aria-label="Book a call">
-          <p className="pv-final-line pv-reveal">Want this for your product?</p>
+          <p className="pv-final-line pv-reveal">Want this for your brand?</p>
           <p className="pv-muted pv-reveal">The call is free. Pricing comes after it, once we agree the scope.</p>
           <div className="pv-reveal">
             <BookButton className="pv-btn" />

@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Karan Sud, growth and content for AI products";
+export const alt = "Karan Sud, growth and content for brands and founders";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,10 +21,10 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", fontSize: 54, lineHeight: 1.08, letterSpacing: -1.5 }}>
-          <div>You built the AI product.</div>
-          <div>I find the people who use it.</div>
+          <div>I make the content that grows</div>
+          <div>brands and founders.</div>
           <div style={{ marginTop: 22, fontSize: 28, color: "#A9A89F", letterSpacing: 0 }}>
-            Growth and content marketing for AI products
+            13+ brands and founders, 7+ industries
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
