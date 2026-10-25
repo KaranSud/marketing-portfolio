@@ -53,3 +53,16 @@
 
 ## Reply Style: caveman (permanent)
 - Skill vendored at .claude/skills/caveman/SKILL.md. Apply to every reply in this repo: terse, no filler, fragments OK. Code, commands, errors byte-exact. Never announce the mode. Off only if Karan says "normal mode".
+
+## Client logos: never change them (Karan, 25 Oct 2026)
+- Use the client logos exactly as portfolio-v2 shows them: the files in `public/Logos/` that v2 uses
+  (FanTV-AI.jpg, Novaswap.jpg, fereai.jpg, defx-logomark.png, Bima-BTC.jpg, Tony-Romas.jpg, bones-and-burgers.jpg,
+  Potters-Hub.jpg, Opaque-Studio.png, sportsrush.jpg), in v2's treatment: round 30px logo on a white circle with
+  2px padding, object-fit contain, the brand name beside it (`.bchip` in portfolio-v2/app/globals.css).
+- Never crop, recolour, greyscale, swap files (Fere AI is fereai.jpg, not Fere-AI.png), or put logos on coloured tiles.
+- Do not use client brand colours in the site design; they clash with each other.
+
+## Positioning (Karan, 25 Oct 2026)
+- Lead with "engineer turned marketer": a mechanical engineer who worked in CFD, then moved into marketing (Nov 2023).
+- Brands and founders across industries, never "AI products" only.
+- Karan wants dynamic, flowing, motion-led sites, not static layouts or app mock-ups.
