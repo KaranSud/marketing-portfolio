@@ -29,3 +29,11 @@ titles and dates); e6d6721 and four earlier branch commits carry the wrong autho
 needs a force-push he has not approved.
 
 2026-10-16 15:27 IST: batch 2 skipped for usage (weekly window at 90%, stop line is 89%; resets 19 Oct 05:00 UTC). No steps run, no files changed.
+
+2026-10-25 REWORK (Karan disliked round-03 site): plan = tasks/v3/REPLAN-2026-10-23.md (v2, elayadesign skills);
+his answers at the bottom of ANSWERS-2026-10-16.md. Step 1 DONE (f268a7b): prototype at /preview (island nav,
+hero over drifting post wall, word-by-word tagline, FanTV chapter with 24 posts and 3 videos, large view, 3 steps,
+free-call close). Phone check 0 FAIL. Taste inspector on /preview: 3 FAIL that clash with the landing skill
+(focal-point 48px headline, headline-lines on the tagline and on phones) plus pill-nav and side-scroll WARNs.
+NEXT: Karan reviews /preview; then pull 20-25 posts per client with workflows/x-search-collect.js, x-pull.py,
+post-media.py (IG: ig.py + grid scroll); curate only strong, creative, well performing reels and posts.
