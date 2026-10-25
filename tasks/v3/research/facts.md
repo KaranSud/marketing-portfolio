@@ -249,3 +249,4 @@ Status KP-confirmed: Karan answered the matching (c) question directly. These ma
 | Potters' Hub posting window (25 Oct 2026) | 1 Feb 2025 to 30 Apr 2025 | Karan: first post live 1 Feb 2025 (reel DFiYYmNyEwo), last 30 Apr 2025 (reel DJEed54R99V); handle @potters.hub |
 | Free call (25 Oct 2026) | "The call is free" | Karan confirmed; risk reversal line may say so |
 | Who made the posts (25 Oct 2026) | Karan made every post on these accounts during his tenure | "Posts I made" label is correct |
+| Moved into marketing (25 Oct 2026) | June 2023 | Karan: "not in Nov 2023, just say in June 2023". Supersedes Nov 2023 (first agency role, Mach1) for the career story |

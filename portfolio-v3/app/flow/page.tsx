@@ -49,24 +49,31 @@ export default function FlowPreview() {
         <section className="fl-hero" aria-labelledby="fl-title">
           <FlowField />
           <div className="fl-hero-in">
-            <p className="fl-hello">Hi, I&apos;m Karan</p>
-            <h1 id="fl-title">Engineer turned marketer.</h1>
-            <p className="fl-lede">
-              I studied mechanical engineering and worked in CFD, simulating how air flows. In November 2023 I moved
-              into marketing. Now I make attention flow for brands and founders.
-            </p>
-            <div className="fl-facts">
-              <div><span>Works with</span>Brands and founders, as a project or part-time</div>
-              <div><span>Previously</span>FanTV AI, Crowwd Labs, Mach1 Digital</div>
-              <div><span>Based in</span>Noida, India</div>
+            <div className="fl-hero-main">
+              <h1 id="fl-title">
+                <span>Hi, I&apos;m Karan Sud.</span>
+                <span className="fl-h1-sub">Engineer turned marketer.</span>
+              </h1>
+              <div className="fl-facts">
+                <div><span>Works with</span>Brands and founders, as a project or part-time</div>
+                <div><span>Previously</span>FanTV AI, Crowwd Labs, Mach1 Digital</div>
+                <div><span>Based in</span>Noida, India</div>
+              </div>
+              <div className="fl-cta">
+                <BookButton className="fl-btn" />
+                <span className="fl-hint">Move your cursor through the flow</span>
+              </div>
             </div>
-            <div className="fl-cta">
-              <BookButton className="fl-btn" />
-              <span className="fl-hint">Move your cursor through the flow</span>
-            </div>
-          </div>
-          <div className="fl-photo">
-            <Image src="/karan.jpg" alt="Karan Sud" fill sizes="120px" priority />
+            <aside className="fl-card-me" aria-label="About Karan">
+              <div className="fl-photo">
+                <Image src="/karan.jpg" alt="Karan Sud" fill sizes="96px" priority />
+              </div>
+              <p className="fl-card-title">Glad you&apos;re here</p>
+              <p className="fl-lede">
+                I studied mechanical engineering and worked in CFD, simulating how air flows. In June 2023 I moved into
+                marketing. Now I make attention flow for brands and founders.
+              </p>
+            </aside>
           </div>
         </section>
 
