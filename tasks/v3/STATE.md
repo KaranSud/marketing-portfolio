@@ -53,3 +53,5 @@ https://portfolio-v3-eliunndaf-karansuds-projects.vercel.app . Production (v2) u
 Phone check 0 FAIL on home, 4 case pages, blog. Taste inspector: 6 style FAILs that clash with the approved
 anushriya-like look (headline lines, timeline date labels, emoji in real posts, FAQ dividers, outlined boxes).
 Old home components (Hero, Work, Method, Offer, Tools, About, Faq, Contact, StickyCta) are now unused; left in place.
+
+2026-10-26: blog index and posts in Flow (c576f78). Latest preview: https://portfolio-v3-9gwjklbyn-karansuds-projects.vercel.app (Vercel login). Whole site now in Flow.
