@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
-import Image, { getImageProps } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import BookButton from "@/components/BookButton";
-import RevealObserver from "@/components/RevealObserver";
-import StickyCta from "@/components/StickyCta";
 import BeforeAfterSection, { CompareSlider } from "@/components/BeforeAfterSection";
-import Posts from "@/components/Posts";
+import FlowNav from "@/components/flow/FlowNav";
+import Stream from "@/components/flow/Stream";
+import RollNumber from "@/components/flow/RollNumber";
+import Reveal from "@/components/preview/Reveal";
+import { flowFonts } from "@/components/flow/fonts";
+import { caseStudies, getCase } from "@/lib/caseStudies";
+import { posts } from "@/lib/posts";
 import { creatives } from "@/lib/creatives";
-import { caseStudies, getCase, type Shot } from "@/lib/caseStudies";
-import { getCaseMediaMap } from "@/lib/caseMedia";
 import { imageSize } from "@/lib/imageSize";
 import { linkify } from "@/lib/linkify";
+import "@/app/flow/flow.css";
+
+// Case pages in the Flow style: the client's own posts first, then the story in short blocks,
+// then the analytics proof. Every number comes from caseStudies.ts (facts-checked).
 
 // The closing line matches the kind of client the case was for.
 function closer(key: string) {
@@ -22,35 +25,6 @@ function closer(key: string) {
   if (["tony", "bones", "potters", "opaque", "sportsrush"].includes(key)) return "Want this for your brand?";
   if (key === "culturegram") return "Want this for your site?";
   return "Want this for your product?";
-}
-
-// The lead screenshot: the analytics panel without the app's sidebar, linked to the
-// full screenshot. Under 860px a tighter crop of the stat cards keeps the claimed
-// numbers legible.
-function Lead({ shot }: { shot: Shot }) {
-  const desk = shot.crop ?? shot.src;
-  const d = imageSize(desk);
-  const vars = { ["--ar" as string]: `${d.width} / ${d.height}` } as CSSProperties;
-  if (!shot.mobile) {
-    return (
-      <figure className="v3-casepage-hero" style={vars}>
-        <Image src={desk} alt={shot.caption} fill priority sizes="100vw" />
-      </figure>
-    );
-  }
-  const m = imageSize(shot.mobile);
-  const common = { alt: shot.caption, sizes: "100vw", fetchPriority: "high" as const, loading: "eager" as const };
-  const { props: mobile } = getImageProps({ ...common, src: shot.mobile, width: m.width, height: m.height });
-  const { props: desktop } = getImageProps({ ...common, src: desk, width: d.width, height: d.height });
-  return (
-    <figure className="v3-casepage-hero" style={{ ...vars, ["--ar-m" as string]: `${m.width} / ${m.height}` }}>
-      <picture>
-        <source media="(max-width: 860px)" srcSet={mobile.srcSet} sizes={mobile.sizes} />
-        {/* eslint-disable-next-line jsx-a11y/alt-text -- alt comes from getImageProps */}
-        <img {...desktop} />
-      </picture>
-    </figure>
-  );
 }
 
 export function generateStaticParams() {
@@ -75,128 +49,89 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
   if (!c) notFound();
   const i = caseStudies.findIndex((x) => x.key === c.key);
   const next = caseStudies[(i + 1) % caseStudies.length];
-  const pairs = getCaseMediaMap()[c.key]?.beforeAfter ?? [];
-  const posts = creatives[c.key] ?? [];
-  const [lead, ...restShots] = c.screenshots;
+  const own = posts[c.key] ?? (creatives[c.key] ?? []).map((p) => {
+    const { width, height } = imageSize(p.src);
+    return { src: p.src, w: width, h: height, alt: p.alt, caption: p.caption, href: p.href, date: "" };
+  });
 
   return (
-    <>
-      <Nav />
-      <main id="main" className="v3-casepage">
-        {/* Title, lede and meta paint from server HTML (no entrance), so they can be the LCP. */}
-        <h1>{c.title}</h1>
-        <p className="v3-statement v3-casepage-lede">{linkify(c.lede, c.links)}</p>
-        <p className="v3-casepage-meta">{c.meta}</p>
-        {c.stats.length ? (
-          <ul className="v3-casepage-stats v3-proof" aria-label="Results">
-            {c.stats.map((s, k) => (
-              <li key={s.label} data-reveal style={{ ["--i" as string]: k + 1 }}>
-                <span className="v3-proof-num">{s.val}</span>
-                <span className="v3-proof-label">{linkify(s.label, c.links)}</span>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-
-        {lead ? <Lead shot={lead} /> : null}
-        {lead ? (
-          <p className="v3-caption">
-            {linkify(lead.caption, c.links)}
-            {lead.crop ? (
-              <>
-                {" "}
-                <a className="tlink" href={lead.src} target="_blank" rel="noopener noreferrer">
-                  See the full screenshot
-                </a>
-              </>
-            ) : null}
-          </p>
-        ) : null}
-        {!lead && c.beforeAfter ? (
-          <div className="v3-casepage-compare">
-            <CompareSlider {...c.beforeAfter.screenshots[0]} first />
-          </div>
-        ) : null}
-
-        <div className="v3-casepage-body">
-          <section data-reveal>
-            <h2>The situation</h2>
-            <p>{c.situation}</p>
-          </section>
-          <section data-reveal>
-            <h2>The plan</h2>
-            <p>{c.strategy}</p>
-          </section>
-          <section data-reveal>
-            <h2>What I did</h2>
-            <ul>
-              {c.execution.map((e) => (
-                <li key={e}>{e}</li>
+    <div className={`fl ${flowFonts}`}>
+      <FlowNav />
+      <main className="fl-case">
+        <header className="fl-case-head">
+          <p className="fl-muted fl-reveal">{c.kind}</p>
+          <h1>{c.title}</h1>
+          <p className="fl-case-meta">{c.meta}</p>
+          <p className="fl-case-lede">{linkify(c.lede, c.links)}</p>
+          {c.stats.length ? (
+            <div className="fl-stats fl-case-stats">
+              {c.stats.map((s) => (
+                <p key={s.label}><b><RollNumber value={s.val} /></b><span>{s.label}</span></p>
               ))}
-            </ul>
-          </section>
-          <section data-reveal>
-            <h2>What happened</h2>
-            <ul>
-              {c.results.map((r) => (
-                <li key={r}>{linkify(r, c.links)}</li>
-              ))}
-            </ul>
-          </section>
-          {posts.length ? (
-            <section>
-              <h2>Posts I made</h2>
-              <Posts items={posts} label={`Posts on ${c.title}'s account`} />
-            </section>
-          ) : null}
-          {pairs.length ? (
-            <section>
-              <h2>Before and after</h2>
-              {pairs.map((p) => (
-                <CompareSlider key={p.before} before={p.before} after={p.after} />
-              ))}
-            </section>
-          ) : null}
-          {c.beforeAfter ? (
-            <section>
-              <BeforeAfterSection data={{ ...c.beforeAfter, screenshots: c.beforeAfter.screenshots.slice(1) }} />
-            </section>
-          ) : null}
-          {restShots.length ? (
-            <section>
-              <h2>More proof</h2>
-              <div className="v3-casepage-shots">
-                {restShots.map((s) => {
-                  const size = imageSize(s.src);
-                  return (
-                    <figure key={s.src}>
-                      {/* Never upscaled: a small crop shows at its own width. */}
-                      <Image src={s.src} alt={s.caption} {...size} style={{ maxWidth: size.width }} sizes="(max-width: 860px) 100vw, 66vw" />
-                      <figcaption className="v3-caption">{linkify(s.caption, c.links)}</figcaption>
-                    </figure>
-                  );
-                })}
-              </div>
-            </section>
-          ) : null}
-        </div>
-
-        <div className="v3-casepage-next">
-          <div>
-            <p className="v3-statement">{closer(c.key)}</p>
-            <div style={{ marginTop: 24 }}>
-              <BookButton />
             </div>
-          </div>
-          <Link className="v3-next" href={`/work/${next.key}`}>
-            <small>Next case</small>
-            <span>{next.title}</span>
-          </Link>
+          ) : null}
+        </header>
+
+        {own.length ? (
+          <section className="fl-case-posts" aria-label={`Posts I made for ${c.title}`}>
+            <p className="fl-kicker">Posts I made for {c.title}{own.length > 3 ? `, ${own.length} of the best` : ""}. Tap one to open it.</p>
+            <Stream posts={own} account={c.title} speed={Math.max(50, own.length * 4)} />
+          </section>
+        ) : null}
+
+        {c.beforeAfter ? (
+          <section className="fl-case-block">
+            <CompareSlider {...c.beforeAfter.screenshots[0]} first />
+            <BeforeAfterSection data={{ ...c.beforeAfter, screenshots: c.beforeAfter.screenshots.slice(1) }} />
+          </section>
+        ) : null}
+
+        <div className="fl-case-body">
+          <section className="fl-reveal">
+            <h2>The situation</h2>
+            <p>{linkify(c.situation, c.links)}</p>
+          </section>
+          <section className="fl-reveal">
+            <h2>The plan</h2>
+            <p>{linkify(c.strategy, c.links)}</p>
+          </section>
+          <section className="fl-reveal">
+            <h2>What I did</h2>
+            <ul>{c.execution.map((e) => <li key={e}>{linkify(e, c.links)}</li>)}</ul>
+          </section>
+          <section className="fl-reveal">
+            <h2>What happened</h2>
+            <ul>{c.results.map((r) => <li key={r}>{linkify(r, c.links)}</li>)}</ul>
+          </section>
         </div>
+
+        {c.screenshots.length ? (
+          <section className="fl-case-proof" aria-labelledby="fl-proof-title">
+            <h2 id="fl-proof-title" className="fl-reveal">The proof</h2>
+            <div className="fl-proof-grid">
+              {c.screenshots.map((s) => (
+                <figure key={s.src} className="fl-reveal">
+                  <Image src={s.src} alt={s.caption} {...imageSize(s.src)} sizes="(max-width: 860px) 100vw, 50vw" />
+                  <figcaption className="fl-muted">{s.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <Link className="fl-next fl-reveal" href={`/work/${next.key}`}>
+          <span className="fl-muted">Next case</span>
+          <strong>{next.title}</strong>
+        </Link>
       </main>
-      <Footer />
-      <StickyCta />
-      <RevealObserver />
-    </>
+
+      <footer className="fl-night">
+        <div className="fl-shooting" aria-hidden="true"><i /><i /><i /></div>
+        <p className="fl-night-kicker">{closer(c.key)} The call is free. Pricing comes after it, once we agree the scope.</p>
+        <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
+        <BookButton className="fl-btn fl-btn-light fl-call" />
+      </footer>
+      <Reveal selector=".fl-reveal" />
+    </div>
   );
 }

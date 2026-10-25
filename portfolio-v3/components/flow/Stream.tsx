@@ -6,33 +6,7 @@ import type { Post } from "@/lib/posts";
 
 // One client as a moving stream: their posts drift sideways forever (pause on hover
 // or focus), reels play muted while visible, tap opens the post large with sound,
-// next and previous. Numbers count up once when they enter.
-export function CountUp({ value }: { value: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const m = value.match(/^([^\d]*)([\d.,]+)(.*)$/);
-  const [shown, setShown] = useState(value);
-  useEffect(() => {
-    if (!m || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const target = parseFloat(m[2].replace(/,/g, ""));
-    const decimals = (m[2].split(".")[1] ?? "").length;
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
-      const t0 = performance.now();
-      const tick = (now: number) => {
-        const k = Math.min(1, (now - t0) / 1400);
-        const eased = 1 - Math.pow(1 - k, 4);
-        setShown(`${m[1]}${(target * eased).toFixed(decimals)}${m[3]}`);
-        if (k < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }, { threshold: 0.6 });
-    io.observe(ref.current!);
-    return () => io.disconnect();
-  }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
-  return <span ref={ref} aria-label={value}>{shown}</span>;
-}
-
+// next and previous. The large view grows out of the tapped tile (easyui Morphing Dialog, ported).
 export default function Stream({ posts, account, reverse = false, speed = 60 }: { posts: Post[]; account: string; reverse?: boolean; speed?: number }) {
   const track = useRef<HTMLDivElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -47,14 +21,31 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
     vids.forEach((v) => io.observe(v));
     return () => io.disconnect();
   }, []);
-  const show = (i: number) => { setOpen((i + posts.length) % posts.length); if (!dialog.current?.open) dialog.current?.showModal(); };
+  const from = useRef<DOMRect | null>(null);
+  const show = (i: number, tile?: HTMLElement) => {
+    setOpen((i + posts.length) % posts.length);
+    if (tile) from.current = tile.getBoundingClientRect();
+    if (!dialog.current?.open) dialog.current?.showModal();
+  };
+  useEffect(() => {
+    const d = dialog.current, r = from.current;
+    if (open === null || !d || !r || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const box = d.querySelector(".fl-view-media") as HTMLElement | null;
+    if (!box) return;
+    const t = box.getBoundingClientRect();
+    from.current = null;
+    box.animate(
+      [{ transform: `translate(${r.left - t.left}px, ${r.top - t.top}px) scale(${r.width / t.width}, ${r.height / t.height})`, borderRadius: "16px" }, { transform: "none" }],
+      { duration: 520, easing: "cubic-bezier(0.32, 0.72, 0, 1)" }
+    );
+  }, [open]);
   const cur = open === null ? null : posts[open];
   return (
     <div className="fl-stream">
       <div ref={track} className={`fl-stream-track${reverse ? " is-rev" : ""}`} style={{ ["--dur" as string]: `${speed}s` }}>
         {[...posts, ...posts].map((p, k) => (
           <button key={k} type="button" className="fl-tile" style={{ aspectRatio: `${Math.min(1.9, Math.max(0.56, p.w / p.h))}` }}
-            onClick={() => show(k % posts.length)} tabIndex={k < posts.length ? 0 : -1} aria-hidden={k >= posts.length}
+            onClick={(e) => show(k % posts.length, e.currentTarget)} tabIndex={k < posts.length ? 0 : -1} aria-hidden={k >= posts.length}
             aria-label={k < posts.length ? `Open ${account} post, ${p.caption}` : undefined}>
             {p.text && !p.src ? (
               <span className="fl-text-card"><span>{p.text}</span><small>{p.caption}</small></span>
