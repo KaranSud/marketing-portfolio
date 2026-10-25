@@ -45,3 +45,11 @@ cards for SportsRush/Defx/Culturegram, built-things cards, night footer, phone m
 Phone check 0 FAIL. NEXT: port the remaining easyui pieces (number morph, notification-stack testimonials,
 morphing dialog, timeline, shooting stars), restyle case pages to Flow, make /flow the home page, critic round,
 then a Vercel preview for Karan's phone. Posts per client are in portfolio-v3/data/posts/*.json.
+
+2026-10-26: Flow is the home page (commit ad2e567). Case pages and 404 restyled to Flow; easyui pieces ported
+(rolling digits, milestone notifications, morphing post view, timeline, shooting stars, FAQ accordion).
+Vercel preview (project portfolio-v3, scope karansuds-projects, behind Vercel Authentication):
+https://portfolio-v3-eliunndaf-karansuds-projects.vercel.app . Production (v2) untouched.
+Phone check 0 FAIL on home, 4 case pages, blog. Taste inspector: 6 style FAILs that clash with the approved
+anushriya-like look (headline lines, timeline date labels, emoji in real posts, FAQ dividers, outlined boxes).
+Old home components (Hero, Work, Method, Offer, Tools, About, Faq, Contact, StickyCta) are now unused; left in place.
