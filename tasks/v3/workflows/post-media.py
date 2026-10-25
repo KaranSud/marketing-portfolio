@@ -20,6 +20,18 @@ for n, i in enumerate(ids, 1):
     t = json.load(open(f"{raw}/{stem}.json"))["tweet"]
     a = t.get("article") or {}
     nn = f"{n:02d}"
+    if os.path.exists(f"{raw}/{stem}.mp4"):
+        dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f"{raw}/{stem}.mp4"], capture_output=True, text=True).stdout or 0)
+        if dur > 90:
+            print("skip long video", i, round(dur)); continue
+    if not os.path.exists(f"{raw}/{stem}.jpg"):
+        # text-only post: rendered as a text card on the site
+        text = re.sub(r"https?://\S+", "", t.get("text") or "").strip()
+        if not text:
+            print("skip empty", i); continue
+        d = datetime.datetime.strptime(t["created_at"], "%a %b %d %H:%M:%S %z %Y")
+        out.append({"src": "", "w": 4, "h": 5, "text": text, "alt": text[:140], "caption": f"{label} on {platform}, {d.day} {d:%b %Y}", "date": d.strftime("%Y-%m-%d"), "href": t["url"]})
+        continue
     jpg = f"{pub}/{nn}.jpg"
     subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "80", "-Z", "1200", f"{raw}/{stem}.jpg", "--out", jpg], capture_output=True)
     w, h = dims(jpg)

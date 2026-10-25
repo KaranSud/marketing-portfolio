@@ -56,7 +56,9 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
           <button key={k} type="button" className="fl-tile" style={{ aspectRatio: `${Math.min(1.9, Math.max(0.56, p.w / p.h))}` }}
             onClick={() => show(k % posts.length)} tabIndex={k < posts.length ? 0 : -1} aria-hidden={k >= posts.length}
             aria-label={k < posts.length ? `Open ${account} post, ${p.caption}` : undefined}>
-            {p.video ? <video src={p.video} poster={p.src} muted loop playsInline preload="none" /> : <Image src={p.src} alt="" fill sizes="260px" />}
+            {p.text && !p.src ? (
+              <span className="fl-text-card"><span>{p.text}</span><small>{p.caption}</small></span>
+            ) : p.video ? <video src={p.video} poster={p.src} muted loop playsInline preload="none" /> : <Image src={p.src} alt="" fill sizes="260px" />}
           </button>
         ))}
       </div>
@@ -64,7 +66,9 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
         {cur ? (
           <div className="fl-view-in">
             <div className="fl-view-media" style={{ aspectRatio: `${cur.w} / ${cur.h}` }}>
-              {cur.video ? <video key={cur.video} src={cur.video} poster={cur.src} controls autoPlay playsInline /> : <Image key={cur.src} src={cur.src} alt={`${account} post: ${cur.alt}`} fill sizes="90vw" />}
+              {cur.text && !cur.src ? (
+                <p className="fl-view-text">{cur.text}</p>
+              ) : cur.video ? <video key={cur.video} src={cur.video} poster={cur.src} controls autoPlay playsInline /> : <Image key={cur.src} src={cur.src} alt={`${account} post: ${cur.alt}`} fill sizes="90vw" />}
             </div>
             <div className="fl-view-bar">
               <p>{cur.caption}. <a href={cur.href} target="_blank" rel="noopener noreferrer">Open the original</a></p>

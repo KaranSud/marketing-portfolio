@@ -21,7 +21,7 @@
 .fl-nav nav { display: flex; gap: 4px; margin-left: auto; }
 .fl-nav nav a { color: var(--ink-2); text-decoration: none; font-size: 15px; padding: 12px; }
 .fl-nav nav a:hover { color: var(--ink); }
-@media (max-width: 640px) { .fl-nav nav { display: none; } .fl-nav .fl-btn-sm { margin-left: auto; } }
+@media (max-width: 640px) { .fl-nav nav { display: none; } .fl-burger { margin-left: auto; } }
 
 /* hero */
 .fl-hero { position: relative; min-height: 100dvh; display: flex; align-items: center; padding: 120px 24px 64px; overflow: hidden; }
@@ -140,4 +140,44 @@
 @media (prefers-reduced-motion: reduce) {
   .fl *, .fl *::before, .fl *::after { animation: none !important; transition: none !important; }
   .fl-reveal { opacity: 1; transform: none; filter: none; }
+}
+
+/* text posts (founder X posts without media) */
+.fl-text-card { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; padding: 20px; background: #FFFFFF; color: var(--ink); text-align: left; }
+.fl-text-card > span { font-family: var(--fl-serif), serif; font-size: 17px; line-height: 24px; display: -webkit-box; -webkit-line-clamp: 9; -webkit-box-orient: vertical; overflow: hidden; white-space: pre-line; }
+.fl-text-card small { color: var(--ink-2); font-size: 12px; }
+.fl-view-text { position: absolute; inset: 0; overflow: auto; padding: 32px; background: #FFFFFF; color: var(--ink); font-family: var(--fl-serif), serif; font-size: 20px; line-height: 30px; white-space: pre-line; }
+
+/* other clients without a stream */
+.fl-also { max-width: 1100px; margin: 64px auto 0; padding: 0 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.fl-also-card { display: flex; flex-direction: column; gap: 8px; padding: 24px; border-radius: 24px; background: #FFFFFF; color: var(--ink); text-decoration: none; transition: transform 0.7s var(--ease); }
+.fl-also-card:hover { transform: translateY(-4px); }
+.fl-also-card strong { font-family: var(--fl-serif), serif; font-weight: 400; font-size: 30px; line-height: 36px; }
+.fl-also-card b { font-family: var(--fl-serif), serif; font-weight: 400; font-size: 24px; }
+@media (max-width: 767px) { .fl-also { grid-template-columns: 1fr; } }
+
+/* call button (easyui "Book Call Button", ported): a sage capsule grows across the pill on hover */
+.fl-call { position: relative; overflow: hidden; isolation: isolate; }
+.fl-call::before { content: ""; position: absolute; z-index: -1; left: 4px; top: 4px; bottom: 4px; width: 36px; border-radius: 9999px; background: var(--sage); transition: width 0.6s var(--ease); }
+.fl-call:hover::before { width: calc(100% - 8px); }
+.fl-call { padding-left: 52px; }
+.fl-call::after { content: "→"; position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--paper); font-weight: 600; transition: transform 0.6s var(--ease); }
+.fl-call:hover::after { transform: translate(4px, -50%); }
+
+/* phone menu */
+.fl-burger { display: none; position: relative; width: 44px; height: 44px; border: 0; border-radius: 9999px; background: var(--ink); cursor: pointer; margin-left: 8px; }
+.fl-burger span { position: absolute; left: 13px; right: 13px; height: 2px; border-radius: 2px; background: var(--paper); transition: transform 0.6s var(--ease), top 0.6s var(--ease); }
+.fl-burger span:first-child { top: 17px; }
+.fl-burger span:last-child { top: 25px; }
+.fl-burger[aria-expanded="true"] span:first-child { top: 21px; transform: rotate(45deg); }
+.fl-burger[aria-expanded="true"] span:last-child { top: 21px; transform: rotate(-45deg); }
+.fl-menu { position: fixed; inset: 0; z-index: 25; display: flex; flex-direction: column; justify-content: center; gap: 32px; padding: 96px 24px 48px; background: var(--paper); opacity: 0; pointer-events: none; transition: opacity 0.6s var(--ease); }
+.fl-menu.is-open { opacity: 1; pointer-events: auto; }
+.fl-menu nav { display: flex; flex-direction: column; gap: 8px; }
+.fl-menu nav a { font-family: var(--fl-serif), serif; font-size: 48px; line-height: 1.1; color: var(--ink); text-decoration: none; padding: 8px 0; }
+.fl-menu nav a, .fl-menu-cta { transform: translateY(40px); opacity: 0; transition: transform 0.7s var(--ease), opacity 0.7s var(--ease); transition-delay: calc(var(--k) * 60ms + 80ms); }
+.fl-menu.is-open nav a, .fl-menu.is-open .fl-menu-cta { transform: none; opacity: 1; }
+@media (max-width: 640px) {
+  .fl-burger { display: block; margin-left: auto; }
+  .fl-nav .fl-btn-sm { display: none; }
 }

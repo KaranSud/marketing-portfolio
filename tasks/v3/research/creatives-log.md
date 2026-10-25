@@ -54,3 +54,6 @@ Instagram dates for Tony Roma's and B&B come from the profile feed (taken_at); M
 
 ## Opaque Studio pass (21 Oct 2026, after the reset)
 Scrolled @opaque.studio's grid in Chrome to Feb 2024 (492 posts) and dated each code from its post ID. 42 posts fall in Mar to May 2024; 17 image posts were pulled with ig.py and 3 used. Others in the window: C4GV4QDPq1_, C4QSbY6AdI6, C4Ut-xBpobO, C4agxhCpam6, C4iWByXRQ-_, C4xvYrbvhTT, C5ECGENCSc-, C5QpFJ3S1c5, C5TKQsErUaE, C5qaAdePQC5, C5-9pEwv0Mv, C6B4oJXOqQn, C6YvL2NiT0I, C6tY84nsDw5, plus 25 reels.
+
+## Full pull for the Flow build (25 Oct 2026)
+Every post now on the site is listed with its link and date in `portfolio-v3/data/posts/<client>.json` (href, date, caption). Picks: top posts by views inside each tenure (X via fxtwitter; Instagram reels by the view counts on the reels tab), then curated by eye to drop low-effort, screenshot, chart, copyrighted-meme and near-black posts. Counts: FanTV 24, Prashan 24 (6 text posts as cards), Fere 25, Novaswap 25, BimaBTC 25, Tony Roma's 25 (12 reels), Bones & Burgers 25 (10 reels), Mohaimina 25 (12 reels), Opaque Studio 25 (12 reels), Potters' Hub 17 (every post from 1 Feb to 30 Apr 2025). Videos over 90s skipped; reels over 2.5MB re-encoded to 540p.

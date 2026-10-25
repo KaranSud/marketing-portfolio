@@ -8,6 +8,8 @@ import Turn from "@/components/flow/Turn";
 import Stream, { CountUp } from "@/components/flow/Stream";
 import Reveal from "@/components/preview/Reveal";
 import { posts, wallPosts } from "@/lib/posts";
+import { caseStudies } from "@/lib/caseStudies";
+import FlowNav from "@/components/flow/FlowNav";
 import "./flow.css";
 
 // Preview of plan v4 "Flow" (tasks/v3/PLAN-v4-2026-10-25.md): engineer turned marketer,
@@ -27,23 +29,18 @@ const row2 = [
   ["Potters' Hub", "/Logos/Potters-Hub.jpg"], ["Opaque Studio", "/Logos/Opaque-Studio.png"], ["The SportsRush", "/Logos/sportsrush.jpg"],
 ];
 
+// Clients with a stream of their own posts, in this order; the rest get a card.
+const ORDER = ["fantv", "prashan", "fere", "novaswap", "bima", "tony", "mohaimina", "bones", "opaque", "potters"];
+const ALSO = ["sportsrush", "defx", "culturegram"];
+
 // Deterministic stars for the night footer.
 const stars = Array.from({ length: 70 }, (_, i) => ({ x: (i * 37.7) % 100, y: (i * 61.3) % 100, d: (i % 7) * 0.6 }));
 
 export default function FlowPreview() {
   const wall = wallPosts();
-  const others = wall.filter((p) => !p.src.includes("/FanTV/"));
   return (
     <div className={`fl ${serif.variable} ${sans.variable}`}>
-      <header className="fl-nav">
-        <Link href="/flow" className="fl-name">Karan Sud</Link>
-        <nav aria-label="Main">
-          <a href="#work">Work</a>
-          <a href="#built">Built</a>
-          <Link href="/blog">Writing</Link>
-        </nav>
-        <BookButton className="fl-btn fl-btn-sm" />
-      </header>
+      <FlowNav />
 
       <main>
         <section className="fl-hero" aria-labelledby="fl-title">
@@ -60,7 +57,7 @@ export default function FlowPreview() {
                 <div><span>Based in</span>Noida, India</div>
               </div>
               <div className="fl-cta">
-                <BookButton className="fl-btn" />
+                <BookButton className="fl-btn fl-call" />
                 <span className="fl-hint">Move your cursor through the flow</span>
               </div>
             </div>
@@ -97,25 +94,36 @@ export default function FlowPreview() {
         </section>
 
         <section id="work" className="fl-work" aria-label="Work">
-          <article className="fl-client">
-            <div className="fl-client-head fl-reveal">
-              <h2>FanTV AI</h2>
-              <p className="fl-muted">Social Media Marketing Manager · Oct 2024 to Aug 2025</p>
-              <div className="fl-stats">
-                <p><b><CountUp value="297.7K" /></b><span>X followers, up from 70K in 11 months, with airdrops and a 100+ KOL program</span></p>
-                <p><b><CountUp value="150K+" /></b><span>members across Discord and Telegram</span></p>
-              </div>
-              <Link href="/work/fantv" className="fl-link">Read the FanTV AI case</Link>
-            </div>
-            <Stream posts={posts.fantv} account="FanTV AI" speed={90} />
-          </article>
-          <article className="fl-client">
-            <div className="fl-client-head fl-reveal">
-              <h2>More streams</h2>
-              <p className="fl-muted">Tony Roma&apos;s, Bones &amp; Burgers, Mohaimina Haque, Fere AI, Novaswap, BimaBTC, Opaque Studio. Each gets its own stream of 20 to 25 posts in the full build.</p>
-            </div>
-            <Stream posts={others} account="Client" reverse speed={110} />
-          </article>
+          {ORDER.filter((k) => posts[k]?.length).map((k, i) => {
+            const c = caseStudies.find((x) => x.key === k)!;
+            return (
+              <article key={k} className="fl-client">
+                <div className="fl-client-head fl-reveal">
+                  <h2>{c.title}</h2>
+                  <p className="fl-muted">{c.meta}</p>
+                  <div className="fl-stats">
+                    {c.stats.slice(0, 2).map((s) => (
+                      <p key={s.label}><b><CountUp value={s.val} /></b><span>{s.label}</span></p>
+                    ))}
+                  </div>
+                  <Link href={`/work/${k}`} className="fl-link">Read the {c.title} case</Link>
+                </div>
+                <Stream posts={posts[k]} account={c.title} reverse={i % 2 === 1} speed={70 + (i % 3) * 18} />
+              </article>
+            );
+          })}
+          <div className="fl-also fl-reveal">
+            {ALSO.map((k) => {
+              const c = caseStudies.find((x) => x.key === k)!;
+              return (
+                <Link key={k} href={`/work/${k}`} className="fl-also-card">
+                  <span className="fl-muted">{c.kind}</span>
+                  <strong>{c.title}</strong>
+                  {c.stats[0] ? <span><b>{c.stats[0].val}</b> {c.stats[0].label}</span> : null}
+                </Link>
+              );
+            })}
+          </div>
         </section>
 
         <section id="built" className="fl-built" aria-labelledby="fl-built-title">
@@ -141,7 +149,7 @@ export default function FlowPreview() {
         </div>
         <p className="fl-night-kicker">The call is free. Pricing comes after it, once we agree the scope.</p>
         <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
-        <BookButton className="fl-btn fl-btn-light" />
+        <BookButton className="fl-btn fl-btn-light fl-call" />
       </footer>
       <Reveal selector=".fl-reveal" />
     </div>

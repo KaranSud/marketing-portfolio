@@ -1,37 +1,42 @@
-// Real posts per client for the work-first layout. Data files are built by
-// tasks/v3/workflows/post-media.py from posts Karan made during each tenure (sources in
-// tasks/v3/research/creatives-log.md).
-import fantv from "@/data/posts/fantv.json";
+// Real posts per client for the work-first layouts. Data files in data/posts/<key>.json are built by
+// tasks/v3/workflows/post-media.py (X) and ig-media.py (Instagram) from posts Karan made during each
+// tenure (sources in tasks/v3/research/creatives-log.md). Server only: reads the folder at build time.
+import fs from "node:fs";
+import path from "node:path";
 import { creatives } from "./creatives";
 import { imageSize } from "./imageSize";
 
 export type Post = {
-  src: string;
+  src: string; // "" for a text-only post
   w: number;
   h: number;
   video?: string;
+  text?: string;
   alt: string;
   caption: string;
   date: string;
   href: string;
 };
 
-export const posts: Record<string, Post[]> = { fantv };
+const dir = path.join(process.cwd(), "data", "posts");
+export const posts: Record<string, Post[]> = Object.fromEntries(
+  (fs.existsSync(dir) ? fs.readdirSync(dir) : [])
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => [f.replace(/\.json$/, ""), JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Post[]])
+);
 
-/** Every image post on the site, for the hero wall. Server only (reads image sizes). */
+/** Every image post on the site, for walls. Interleaved so neighbours come from different clients. */
 export function wallPosts(): Post[] {
   const older = Object.entries(creatives)
     .filter(([key]) => !posts[key])
     .flatMap(([, list]) =>
-      list.map((c) => ({ ...imageSize(c.src), src: c.src, alt: c.alt, caption: c.caption, href: c.href, date: "" }))
-    )
-    .map(({ width, height, ...rest }) => ({ ...rest, w: width, h: height }));
-  const fresh = Object.values(posts).flat().filter((p) => !p.video);
-  // Interleave so neighbouring tiles come from different clients.
+      list.map((c) => {
+        const { width, height } = imageSize(c.src);
+        return { src: c.src, w: width, h: height, alt: c.alt, caption: c.caption, href: c.href, date: "" };
+      })
+    );
+  const lists = [...Object.values(posts).map((l) => l.filter((p) => p.src && !p.video)), older];
   const out: Post[] = [];
-  for (let i = 0; i < Math.max(older.length, fresh.length); i++) {
-    if (fresh[i]) out.push(fresh[i]);
-    if (older[i]) out.push(older[i]);
-  }
+  for (let i = 0; lists.some((l) => l[i]); i++) for (const l of lists) if (l[i]) out.push(l[i]);
   return out;
 }
