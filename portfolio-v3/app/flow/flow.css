@@ -278,3 +278,30 @@
 
 /* paper behind overscroll on Flow pages */
 html:has(.fl), body:has(.fl) { background: #F4F1EA; }
+
+/* blog */
+.fl-blog-group { max-width: 1100px; margin: 0 auto; padding: 32px 24px 48px; }
+.fl-blog-group h2 { font-size: 36px; line-height: 40px; margin-bottom: 16px; }
+.fl-blog-list { list-style: none; border-top: 1px solid var(--line); }
+.fl-blog-list li { border-bottom: 1px solid var(--line); }
+.fl-blog-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 24px; padding: 24px 0; color: var(--ink); text-decoration: none; transition: padding-left 0.5s var(--ease); }
+.fl-blog-row:hover { padding-left: 8px; }
+.fl-blog-title { font-family: var(--fl-serif), serif; font-size: 24px; line-height: 32px; }
+.fl-blog-row:hover .fl-blog-title { color: #3F6B57; }
+.fl-blog-desc { grid-column: 1; color: var(--ink-2); font-size: 16px; line-height: 24px; }
+.fl-blog-meta { grid-column: 2; grid-row: 1; color: var(--ink-2); font-size: 14px; white-space: nowrap; }
+@media (max-width: 767px) { .fl-blog-row { grid-template-columns: 1fr; } .fl-blog-meta { grid-column: 1; grid-row: auto; } .fl-blog-title { font-size: 20px; line-height: 28px; } }
+.fl-post .fl-case-head h1 { font-size: 60px; line-height: 1.05; }
+@media (max-width: 767px) { .fl-post .fl-case-head h1 { font-size: 36px; line-height: 40px; } }
+.fl-prose { max-width: 720px; margin: 0 auto; padding: 0 24px 64px; font-size: 18px; line-height: 30px; color: var(--ink); }
+.fl-prose h2 { font-family: var(--fl-serif), serif; font-weight: 400; font-size: 30px; line-height: 36px; margin: 48px 0 16px; }
+.fl-prose h3 { font-size: 20px; line-height: 28px; font-weight: 600; margin: 32px 0 12px; }
+.fl-prose p, .fl-prose ul, .fl-prose ol { margin: 0 0 20px; }
+.fl-prose ul, .fl-prose ol { padding-left: 24px; }
+.fl-prose li { margin-bottom: 8px; }
+.fl-prose a { color: var(--ink); text-decoration-color: var(--sage); text-underline-offset: 4px; }
+.fl-prose blockquote { border-left: 3px solid var(--sage); padding-left: 20px; color: var(--ink-2); margin: 24px 0; }
+.fl-prose img, .fl-prose figure { max-width: 100%; height: auto; border-radius: 12px; }
+.fl-prose table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 24px 0; display: block; overflow-x: auto; }
+.fl-prose th, .fl-prose td { border-bottom: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+.fl-prose code { font-size: 0.9em; background: var(--paper-2); padding: 2px 6px; border-radius: 6px; }

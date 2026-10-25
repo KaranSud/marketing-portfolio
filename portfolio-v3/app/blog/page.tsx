@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import StickyCta from "@/components/StickyCta";
+import FlowNav from "@/components/flow/FlowNav";
+import { flowFonts } from "@/components/flow/fonts";
+import "@/app/flow/flow.css";
 import BookButton from "@/components/BookButton";
 import { getAllPosts } from "@/lib/blog";
 
@@ -30,13 +30,13 @@ type PostMeta = ReturnType<typeof getAllPosts>[number];
 
 function PostList({ posts }: { posts: PostMeta[] }) {
   return (
-    <ol className="v3-blog-list">
+    <ol className="fl-blog-list">
       {posts.map((p) => (
         <li key={p.slug}>
-          <Link className="v3-blog-row" href={`/blog/${p.slug}`}>
-            <span className="v3-blog-title">{p.title}</span>
-            <span className="v3-blog-desc">{p.description}</span>
-            <span className="v3-blog-meta">
+          <Link className="fl-blog-row" href={`/blog/${p.slug}`}>
+            <span className="fl-blog-title">{p.title}</span>
+            <span className="fl-blog-desc">{p.description}</span>
+            <span className="fl-blog-meta">
               <time dateTime={p.date}>{formatDate(p.date)}</time> · {p.readingTime}
             </span>
           </Link>
@@ -51,33 +51,31 @@ export default function BlogIndex() {
   const builder = BUILDER.map((s) => all.find((p) => p.slug === s)).filter((p): p is PostMeta => Boolean(p));
   const essays = all.filter((p) => !BUILDER.includes(p.slug));
   return (
-    <>
-      <Nav />
-      <main id="main" className="v3-casepage v3-blog">
-        <h1>Writing on AI marketing</h1>
-        <p className="v3-statement v3-casepage-lede">
-          Essays on how AI is changing marketing, content and growth, plus three posts on building my own outbound
-          engine.
-        </p>
-        <h2 className="v3-h2 v3-blog-group">Building my own outbound engine</h2>
-        <PostList posts={builder} />
-        <h2 className="v3-h2 v3-blog-group">Essays on AI marketing</h2>
-        <PostList posts={essays} />
-        <div className="v3-casepage-next">
-          <div>
-            <p className="v3-statement">I run growth and content for brands and founders. If yours needs an audience, let&apos;s talk.</p>
-            <div style={{ marginTop: 24 }}>
-              <BookButton />
-            </div>
-          </div>
-          <Link className="v3-next" href="/#work">
-            <small>See the work</small>
-            <span>Case studies</span>
-          </Link>
-        </div>
+    <div className={`fl ${flowFonts}`}>
+      <FlowNav />
+      <main id="main" className="fl-case fl-blog">
+        <header className="fl-case-head">
+          <h1>Writing on AI marketing</h1>
+          <p className="fl-case-lede">
+            Essays on how AI is changing marketing, content and growth, plus three posts on building my own outbound
+            engine.
+          </p>
+        </header>
+        <section className="fl-blog-group">
+          <h2>Building my own outbound engine</h2>
+          <PostList posts={builder} />
+        </section>
+        <section className="fl-blog-group">
+          <h2>Essays on AI marketing</h2>
+          <PostList posts={essays} />
+        </section>
       </main>
-      <Footer />
-      <StickyCta />
-    </>
+      <footer className="fl-night">
+        <div className="fl-shooting" aria-hidden="true"><i /><i /><i /></div>
+        <p className="fl-night-kicker">I run growth and content for brands and founders. If yours needs an audience, let&apos;s talk. The call is free.</p>
+        <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
+        <BookButton className="fl-btn fl-btn-light fl-call" />
+      </footer>
+    </div>
   );
 }

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { marked } from "marked";
-import Nav from "@/components/Nav";
+import FlowNav from "@/components/flow/FlowNav";
+import { flowFonts } from "@/components/flow/fonts";
+import "@/app/flow/flow.css";
 import BookButton from "@/components/BookButton";
-import StickyCta from "@/components/StickyCta";
 import { getPost, getSlugs } from "@/lib/blog";
-import Footer from "@/components/Footer";
 
 const SITE = "https://karan-sud-portfolio.vercel.app";
 
@@ -78,41 +78,29 @@ export default async function PostPage({
   };
 
   return (
-    <>
-      <Nav />
-      <main id="main" className="v3-casepage v3-post">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+    <div className={`fl ${flowFonts}`}>
+      <FlowNav />
+      <main id="main" className="fl-case fl-post">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <article>
-          <h1>{post.title}</h1>
-          <p className="v3-statement v3-casepage-lede">{post.description}</p>
-          <p className="v3-casepage-meta">
-            {formatDate(post.date)} · {post.readingTime} · {post.author}
-          </p>
-          <div
-            className="prose"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+          <header className="fl-case-head">
+            <h1>{post.title}</h1>
+            <p className="fl-case-lede">{post.description}</p>
+            <p className="fl-case-meta">{formatDate(post.date)} · {post.readingTime} · {post.author}</p>
+          </header>
+          <div className="prose fl-prose" dangerouslySetInnerHTML={{ __html: html }} />
         </article>
-        <div className="v3-casepage-next">
-          <div>
-            <p className="v3-statement">
-              I run growth and content for brands and founders. If yours needs an audience, let&apos;s talk.
-            </p>
-            <div style={{ marginTop: 24 }}>
-              <BookButton />
-            </div>
-          </div>
-          <Link className="v3-next" href="/blog">
-            <small>More writing</small>
-            <span>All posts</span>
-          </Link>
-        </div>
+        <Link className="fl-next" href="/blog">
+          <span className="fl-muted">More writing</span>
+          <strong>All posts</strong>
+        </Link>
       </main>
-      <Footer />
-      <StickyCta />
-    </>
+      <footer className="fl-night">
+        <div className="fl-shooting" aria-hidden="true"><i /><i /><i /></div>
+        <p className="fl-night-kicker">I run growth and content for brands and founders. If yours needs an audience, let&apos;s talk. The call is free.</p>
+        <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
+        <BookButton className="fl-btn fl-btn-light fl-call" />
+      </footer>
+    </div>
   );
 }
