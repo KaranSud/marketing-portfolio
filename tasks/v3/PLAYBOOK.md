@@ -26,6 +26,9 @@ and add a line to the index below. Append reusable discoveries to `learnings.md`
 | `workflows/copy-lint.sh <dirs>` | anti-AI copy sweep |
 | `workflows/elshot.mjs <url> "<selector>" <out.png> [width]` | screenshot one element at 2x for close checks (crops, logo rows) |
 | `workflows/phone-check.mjs <baseUrl> [paths]` | Karan's phone rule: 375/414/768, no sideways scroll, 44px taps, menu opens/closes (button + Escape), sticky CTA never over the menu or end-of-page content. Exit 1 on FAIL |
+| `workflows/x-search-collect.js` | paste into javascript_tool on an x.com search page (from:handle since: until: filter:media min_faves:N); returns handle;id;date lines |
+| `workflows/x-pull.py <ids.txt> <out>` | fxtwitter fetch + media download (photo, video mp4, article cover) + index.tsv ranked by views |
+| `workflows/post-media.py <key> <mediaDir> "<Account>" <X|Instagram> <raw> <ids...>` | picked posts to site media (1200px jpg, 720p mp4) + portfolio-v3/data/posts/<key>.json |
 | `workflows/rubric.md` | the 10-point critic rubric |
 | `workflows/critic.md` | how to run one critic round (fresh agent each time, output critiques/round-NN.md) |
 
