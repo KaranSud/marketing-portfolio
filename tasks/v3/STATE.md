@@ -37,3 +37,11 @@ free-call close). Phone check 0 FAIL. Taste inspector on /preview: 3 FAIL that c
 (focal-point 48px headline, headline-lines on the tagline and on phones) plus pill-nav and side-scroll WARNs.
 NEXT: Karan reviews /preview; then pull 20-25 posts per client with workflows/x-search-collect.js, x-pull.py,
 post-media.py (IG: ig.py + grid scroll); curate only strong, creative, well performing reels and posts.
+
+2026-10-25 FLOW (approved direction, Karan: "much better, i like it"): plan tasks/v3/PLAN-v4-2026-10-25.md.
+/flow (commit cb7e826): name-led hero on a live CFD flow field, photo card, the turn (posts ride lanes),
+v2 logo marquee unchanged, ten client streams (17-25 posts each, reels play, text cards for Prashan),
+cards for SportsRush/Defx/Culturegram, built-things cards, night footer, phone menu, easyui-style call button.
+Phone check 0 FAIL. NEXT: port the remaining easyui pieces (number morph, notification-stack testimonials,
+morphing dialog, timeline, shooting stars), restyle case pages to Flow, make /flow the home page, critic round,
+then a Vercel preview for Karan's phone. Posts per client are in portfolio-v3/data/posts/*.json.
