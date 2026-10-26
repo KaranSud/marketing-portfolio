@@ -1,0 +1,47 @@
+1/ Google AI Overviews cut organic CTR by 61% for brands not cited in them. But brands that ARE cited earn 2.12% CTR, beating the pre-AI baseline of 1.76%. Same keyword, completely different business.
+
+2/ Pew Research tracked 68,879 actual Google searches. With an AI summary: 8% click through. Without: 15%. The traffic you're losing is real. But it's not the whole story.
+
+3/ Gartner called it in Feb 2024: 25% of traditional search volume gone to AI assistants by end of 2026. That prediction looked aggressive then. It doesn't anymore.
+
+4/ Here's the number that changes the whole conversation: AI search visitors converted at 23x the rate of organic for Ahrefs (0.5% of sessions, 12.1% of signups). Cross-industry: 4.4x premium, per Semrush.
+
+5/ The reason: the AI already qualified them. When ChatGPT or Google AI Mode cites your brand in an answer, the visitor arrives knowing who you are, what problem you solve, and why you matter. That's half the sale done before the first click.
+
+6/ Run the math on a single B2B keyword with 50K monthly impressions. Not cited: 305 clicks, 6 leads/mo. Cited: 1,060 clicks, 47 leads/mo. Same page. Same content. Same position.
+
+7/ That's 13x more monthly pipeline from one decision: whether the AI Overview names you or ignores you.
+
+8/ Why do most brands miss this? Their dashboards show sessions. Sessions are falling. So they panic, defund SEO, or chase AI hype tools. None of it addresses the actual fork in the road.
+
+9/ The real question isn't "how do we get more traffic?" It's "how do we get the 1,060 clicks instead of the 305?"
+
+10/ Three things actually move AI Overview citation rates: entity authority (are you in third-party authoritative sources?), structured data (schema markup, FAQ, Organization schema), E-E-A-T at the author level (bylined experts outperform anonymous "team content").
+
+11/ Right now, Google still controls 87.5% of search referrals. All AI chatbots combined send 0.27%. The SEO apocalypse hasn't arrived. What's arrived is a structural split inside Google's results page.
+
+12/ You're not competing against AI search. You're competing inside Google for the AI citation that determines whether your traffic is worth anything.
+
+13/ Gartner's 2026 CMO Spend Survey: 15.3% of marketing budgets going to AI, but only 30% of CMOs ready to scale. The budget is ahead of the measurement. That's the real problem.
+
+14/ The one metric that fixes this: revenue per session by AI citation status. Three weeks of analytics work. Gives you the organizational case for AEO investment that no industry report can.
+
+15/ Full breakdown: Answer Engine Optimization Cuts Clicks. Here's the Revenue Math. — link in bio. Follow @karansud for more.
+
+---
+Character counts (all under 280):
+1/ 217 chars
+2/ 208 chars
+3/ 197 chars
+4/ 218 chars
+5/ 263 chars
+6/ 218 chars
+7/ 114 chars
+8/ 218 chars
+9/ 101 chars
+10/ 265 chars
+11/ 200 chars
+12/ 133 chars
+13/ 194 chars
+14/ 172 chars
+15/ 123 chars

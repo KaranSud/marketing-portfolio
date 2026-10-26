@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Position-1 CTR: Before vs After AI Overviews</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --brand: #1E40AF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --secondary: #94A3B8;
+      --muted: #64748B;
+      --mid: #94A3B8;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --secondary: #94A3B8;
+    --muted: #64748B;
+    --mid: #94A3B8;
+    --grid: #1E293B;
+    --border: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  canvas { width: 100% !important; }
+  .source {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 12px;
+    text-align: right;
+  }
+  .legend-note {
+    font-size: 12px;
+    color: var(--mid);
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    line-height: 1.5;
+  }
+  .accent { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>Position-1 CTR Before vs After AI Overviews</h2>
+  <p class="subtitle">Lollipop chart showing click-through rate change at organic position 1 across query type and citation status — informational queries, 2024–2025</p>
+  <canvas id="chart" height="320"></canvas>
+  <p class="legend-note"><span class="accent">Not cited in AIO</span> = brand appears in top results but not quoted in AI Overview. Cited = brand's URL appears as a source inside the AI Overview. Source: Seer Interactive, Nov 2025 (3,119 informational queries, 42 orgs).</p>
+  <p class="source">Sources: Seer Interactive (Nov 2025); Ahrefs (Dec 2025, 300,000 keywords)</p>
+</div>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+
+const labels = ['Pre-AIO Baseline\n(Jun 2024)', 'No AIO Present\n(Sep 2025)', 'AIO Present,\nNot Cited', 'AIO Present,\nCited'];
+const before = [1.76, 2.72, 1.76, 1.76];
+const after  = [1.76, 1.62, 0.61, 2.12];
+
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+const textColor = isDark ? '#94A3B8' : '#475569';
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Pre-AIO\nBaseline', 'No AIO\nPresent', 'AIO: Not\nCited', 'AIO:\nCited'],
+    datasets: [
+      {
+        label: 'Starting CTR (%)',
+        data: [1.76, 1.76, 1.76, 1.76],
+        backgroundColor: 'transparent',
+        borderColor: '#94A3B8',
+        borderWidth: 2,
+        borderDash: [4, 4],
+        type: 'line',
+        pointRadius: 4,
+        pointBackgroundColor: '#94A3B8',
+        order: 0
+      },
+      {
+        label: 'CTR by Sep 2025 (%)',
+        data: [1.76, 1.62, 0.61, 2.12],
+        backgroundColor: [
+          '#64748B',
+          '#475569',
+          '#DC2626',
+          '#1E40AF'
+        ],
+        borderColor: 'transparent',
+        borderRadius: 4,
+        borderSkipped: false,
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: textColor,
+          font: { size: 12 },
+          padding: 16,
+          boxWidth: 12
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}%`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: gridColor },
+        ticks: { color: textColor, font: { size: 12 } }
+      },
+      y: {
+        grid: { color: gridColor },
+        ticks: {
+          color: textColor,
+          font: { size: 12 },
+          callback: v => v.toFixed(1) + '%'
+        },
+        title: {
+          display: true,
+          text: 'Click-Through Rate (%)',
+          color: textColor,
+          font: { size: 12 }
+        },
+        min: 0,
+        max: 2.8
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

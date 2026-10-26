@@ -331,5 +331,14 @@
       "line",
       "horizontal bar"
     ]
+  },
+  {
+    "date": "2026-10-26",
+    "slug": "answer-engine-optimization-cuts-clicks-heres-the-revenue-math",
+    "title": "Answer Engine Optimization Cuts Clicks. Here's the Revenue Math.",
+    "chart_types": [
+      "vertical bar",
+      "donut"
+    ]
   }
 ]
