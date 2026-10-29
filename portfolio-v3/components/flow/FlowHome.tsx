@@ -31,6 +31,21 @@ const row2 = [
 const ORDER = ["fantv", "prashan", "fere", "novaswap", "bima", "tony", "mohaimina", "bones", "opaque", "potters"];
 const ALSO = ["sportsrush", "defx", "culturegram"];
 
+// What a client gets, each line backed by a case (facts.md).
+const SERVICES = [
+  { title: "Content and social", body: "A content system with formats, cadence and the posts themselves, on X, Instagram and LinkedIn.", proof: "FanTV AI, Fere AI, Tony Roma's, Bones & Burgers" },
+  { title: "Founder and CEO brands", body: "Writing in a founder's own voice, so the person and the company lift each other.", proof: "Prashan Agarwal, 12K to over 90K on X. Mohaimina Haque, 1.2M+ organic impressions" },
+  { title: "Community, KOLs and launches", body: "KOL and ambassador programs, Discord and Telegram, Product Hunt and launch campaigns.", proof: "FanTV AI, 150K+ community members. Fere AI, #2 Product of the Day" },
+  { title: "Ads that pay back", body: "Meta and Google ads aimed at people who already showed interest, with organic reels pulling new people in.", proof: "Potters' Hub, ₹20,000 in month-one revenue from ₹3,500 of Meta ads" },
+];
+const GROUPS = [
+  { name: "AI and crypto apps", keys: ["fantv", "fere", "novaswap", "bima"] },
+  { name: "Founders and CEOs", keys: ["prashan", "mohaimina"] },
+  { name: "Restaurants", keys: ["tony", "bones"] },
+  { name: "Home and craft brands", keys: ["opaque", "potters"] },
+];
+const NAMES: Record<string, string> = { fantv: "FanTV AI", fere: "Fere AI", novaswap: "Novaswap", bima: "BimaBTC", prashan: "Prashan Agarwal", mohaimina: "Mohaimina Haque", tony: "Tony Roma's", bones: "Bones & Burgers", opaque: "Opaque Studio", potters: "Potters' Hub" };
+
 // Deterministic stars for the night footer.
 const stars = Array.from({ length: 70 }, (_, i) => ({ x: (i * 37.7) % 100, y: (i * 61.3) % 100, d: (i % 7) * 0.6 }));
 
@@ -91,11 +106,34 @@ export default function FlowHome() {
           </div>
         </section>
 
+        <section className="fl-services" aria-labelledby="fl-services-title">
+          <h2 id="fl-services-title" className="fl-reveal">What I can do for you</h2>
+          <div className="fl-services-grid">
+            {SERVICES.map((s) => (
+              <div key={s.title} className="fl-service fl-reveal">
+                <strong>{s.title}</strong>
+                <p>{s.body}</p>
+                <span className="fl-muted">{s.proof}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <nav className="fl-jump fl-reveal" aria-label="Jump to work by industry">
+          <span className="fl-muted">Jump to the work closest to yours</span>
+          {GROUPS.map((g) => (
+            <div key={g.name} className="fl-jump-group">
+              <span>{g.name}</span>
+              {g.keys.map((k) => <a key={k} href={`#c-${k}`}>{NAMES[k]}</a>)}
+            </div>
+          ))}
+        </nav>
+
         <section id="work" className="fl-work" aria-label="Work">
           {ORDER.filter((k) => posts[k]?.length).map((k, i) => {
             const c = caseStudies.find((x) => x.key === k)!;
             return (
-              <article key={k} className="fl-client">
+              <article key={k} id={`c-${k}`} className="fl-client">
                 <div className="fl-client-head fl-reveal">
                   <h2>{c.title}</h2>
                   <p className="fl-muted">{c.meta}</p>

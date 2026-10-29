@@ -14,7 +14,9 @@ export default function RollNumber({ value }: { value: string }) {
     return () => io.disconnect();
   }, []);
   return (
-    <span ref={ref} className={`fl-roll${on ? " is-on" : ""}`} aria-label={value}>
+    <span ref={ref} className="fl-roll-wrap">
+    <span className="sr-only">{value}</span>
+    <span className={`fl-roll${on ? " is-on" : ""}`} aria-hidden="true">
       {[...value].map((ch, i) =>
         /\d/.test(ch) ? (
           <span key={i} className="fl-roll-col" aria-hidden="true" style={{ ["--d" as string]: ch, ["--i" as string]: i }}>{ch}</span>
@@ -22,6 +24,7 @@ export default function RollNumber({ value }: { value: string }) {
           <span key={i} aria-hidden="true">{ch}</span>
         )
       )}
+    </span>
     </span>
   );
 }

@@ -305,3 +305,22 @@ html:has(.fl), body:has(.fl) { background: #F4F1EA; }
 .fl-prose table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 24px 0; display: block; overflow-x: auto; }
 .fl-prose th, .fl-prose td { border-bottom: 1px solid var(--line); padding: 8px 12px; text-align: left; }
 .fl-prose code { font-size: 0.9em; background: var(--paper-2); padding: 2px 6px; border-radius: 6px; }
+
+/* what I can do for you */
+.fl-services { max-width: 1100px; margin: 0 auto; padding: 64px 24px 32px; }
+.fl-services h2 { font-size: 48px; line-height: 1.05; }
+.fl-services-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.fl-service { display: flex; flex-direction: column; gap: 8px; padding: 28px; border-radius: 24px; background: #FFFFFF; }
+.fl-service strong { font-family: var(--fl-serif), serif; font-weight: 400; font-size: 30px; line-height: 36px; }
+.fl-service p { color: var(--ink); font-size: 17px; line-height: 26px; }
+.fl-service .fl-muted { font-size: 15px; line-height: 22px; color: #3F6B57; }
+@media (max-width: 767px) { .fl-services-grid { grid-template-columns: 1fr; } .fl-services h2 { font-size: 36px; } }
+
+/* jump to work by industry */
+.fl-jump { max-width: 1100px; margin: 32px auto 0; padding: 0 24px; display: flex; flex-direction: column; gap: 12px; }
+.fl-jump-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.fl-jump-group > span { min-width: 180px; font-size: 15px; font-weight: 600; }
+.fl-jump-group a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border-radius: 9999px; background: #FFFFFF; color: var(--ink); text-decoration: none; font-size: 15px; transition: background-color 0.3s var(--ease), transform 0.5s var(--ease); }
+.fl-jump-group a:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+.fl-client { scroll-margin-top: 96px; }
+@media (max-width: 767px) { .fl-jump-group > span { min-width: 100%; } }
