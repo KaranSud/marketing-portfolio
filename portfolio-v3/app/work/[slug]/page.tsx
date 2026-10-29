@@ -7,7 +7,7 @@ import BeforeAfterSection, { CompareSlider } from "@/components/BeforeAfterSecti
 import FlowNav from "@/components/flow/FlowNav";
 import Stream from "@/components/flow/Stream";
 import RollNumber from "@/components/flow/RollNumber";
-import Reveal from "@/components/preview/Reveal";
+import Reveal from "@/components/flow/Reveal";
 import { flowFonts } from "@/components/flow/fonts";
 import { caseStudies, getCase } from "@/lib/caseStudies";
 import { posts } from "@/lib/posts";

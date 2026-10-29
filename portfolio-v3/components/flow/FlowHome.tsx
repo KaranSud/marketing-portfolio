@@ -4,7 +4,7 @@ import BookButton from "@/components/BookButton";
 import FlowField from "./FlowField";
 import Turn from "./Turn";
 import Stream from "./Stream";
-import Reveal from "@/components/preview/Reveal";
+import Reveal from "@/components/flow/Reveal";
 import { posts, wallPosts } from "@/lib/posts";
 import { caseStudies } from "@/lib/caseStudies";
 import FlowNav from "./FlowNav";
