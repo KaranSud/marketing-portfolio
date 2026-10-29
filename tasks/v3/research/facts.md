@@ -250,3 +250,4 @@ Status KP-confirmed: Karan answered the matching (c) question directly. These ma
 | Free call (25 Oct 2026) | "The call is free" | Karan confirmed; risk reversal line may say so |
 | Who made the posts (25 Oct 2026) | Karan made every post on these accounts during his tenure | "Posts I made" label is correct |
 | Moved into marketing (25 Oct 2026) | June 2023 | Karan: "not in Nov 2023, just say in June 2023". Supersedes Nov 2023 (first agency role, Mach1) for the career story |
+| B&B top reels (29 Oct 2026) | 104K views (reel DZD_CbaREQV, 1 Jun 2026), 29.4K (Dai9o1dpMHe, 8 Jul 2026) | VP: view counts on instagram.com/tonyromasbonesandburgers/reels, read 25 Oct 2026. MBS Instagram last 30 days (29 Sep to 28 Oct 2026): 2.4K views, 6 follows, 100 unfollows, so not used as proof |

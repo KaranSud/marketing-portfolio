@@ -426,9 +426,9 @@ export const caseStudies: CaseStudy[] = [
     lede: "An account full of bot followers, cleaned up and rebuilt with no ad spend.",
     channels: ["Facebook", "Instagram"],
     stats: [
+      { val: "104K", label: "Views on the top reel, 1 Jun 2026, no ad spend" },
+      { val: "29.4K", label: "Views on the second reel, 8 Jul 2026" },
       { val: "+160%", label: "Content interactions" },
-      { val: "+287%", label: "Watch time" },
-      { val: "+359%", label: "3-second views" },
     ],
     situation:
       "Bones & Burgers had an account full of bot followers, no posting schedule, and almost no real engagement. Before any growth, it needed a clean foundation.",
