@@ -9,8 +9,6 @@ source: "blog-posts/2026-10-26"
 ---
 *The traffic quality flip rewriting SEO ROI for B2B SaaS in 2026*
 
-![Light streaking through a dark architectural tunnel, representing the narrowing but intensifying channel of high-intent search traffic](/blog/answer-engine-optimization-cuts-clicks-heres-the-revenue-math/hero.jpg)
-
 Gartner predicted that search engine volume would fall 25% by 2026, and every CMO in the room nodded, updated their forecast models, and then went right back to optimizing for the same traffic metrics they've used since 2018.
 
 That is not a knock on those CMOs. It is a description of how performance frameworks work. You build dashboards around what you measure. You fund channels based on those dashboards. When the numbers fall, you defend them, not because you're intellectually dishonest, but because sessions-based thinking is the default and replacing it is painful. Every analyst, every quarterly review, every channel-mix comparison you've run for the last eight years was built on the assumption that more traffic equals more revenue.
