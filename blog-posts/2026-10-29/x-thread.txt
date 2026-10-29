@@ -1,0 +1,27 @@
+1/ Between 62 and 83% of the pages AI search cites do NOT rank in the organic top 10 for that same query. Your SEO rankings and your AI citations are two different lists. Here's what that means for your budget.
+
+2/ Pew Research analyzed 69,000 Google searches in July 2025. When an AI Overview appeared, users clicked a website link just 8% of the time. Without an AI Overview: 15%. That's a 47% drop from one interface change.
+
+3/ Seer Interactive quantified the same trend differently: organic CTR on AI Overview queries fell 61%, from 1.76% to 0.61%. Paid CTR on those same queries fell 68%. Even queries WITHOUT AI Overviews saw a 41% CTR drop.
+
+4/ The "SEO is dead" crowd misses the important part. A buyer who reads your brand cited in an AI Overview, then searches your brand directly 3 days later, shows up in your analytics as DIRECT traffic. Zero attribution credit.
+
+5/ Bain surveyed 1,117 consumers in February 2025. 80% now rely on zero-click search results in at least 40% of their searches. 60% of all searches end without a click to any website. Zero click does not mean zero influence.
+
+6/ HubSpot found that AI search visitors convert at 3x the rate of traditional organic search visitors. They come in further along in the research process. Lower click volume. Dramatically higher intent. Your attribution model is hiding this.
+
+7/ The citation gap is the real crisis. Only 17-38% of pages cited in AI Overviews also hold a top-10 ranking. The systems that decide what to rank and what to cite are running on different signals. Most teams are only optimizing for one.
+
+8/ What does AI actually cite? Three signals: answer-first structure (conclusion in paragraph one), original verifiable data (facts that exist nowhere else), and entity clarity (no ambiguity about what or who you are). None of these show up on most SEO scorecards.
+
+9/ In May 2026, Gartner found CMOs allocate 15.3% of marketing budgets to AI. But only 30% are ready to scale those capabilities. Most of that budget goes to AI content tools, AI email, AI ads. Not to getting cited in AI search, which converts at 3x.
+
+10/ The specific irony: AI tools are being used to produce more content faster. Most of that content is optimized for Google rankings, not for AI citation signals. So teams are scaling the wrong output while the high-intent channel gets no attention.
+
+11/ What the brands getting cited are doing differently: funding original research (not roundups), writing for extraction not engagement, and tracking citation rate across AI engines separately from organic rankings.
+
+12/ Citation rate is the metric that matters now. What percentage of your monitored AI query types does your brand appear in as a cited source? If you can not answer that question, you have no visibility into the channel with the highest conversion rate.
+
+13/ Traffic down 2.5% YoY sounds fine. But position-one CTR is down 40%+ on any query with an AI Overview. The gap between "traffic is flat" and "click value is falling" is closing. The teams that measure it now will have the advantage.
+
+14/ Full breakdown: SEO Rankings Don't Predict AI Citations. Here's What Does. — link in bio. Follow @karansud for more.

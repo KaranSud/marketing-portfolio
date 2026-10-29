@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Zero-Click Rise: How AI Overviews Are Changing Search</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --border: #E7E5E4;
+    --bg-page: #FAFAF9;
+    --blue: #2563EB;
+    --slate: #64748B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1E293B;
+      --text: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --grid: #334155;
+      --border: #334155;
+      --bg-page: #0F172A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1E293B;
+    --text: #F1F5F9;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --grid: #334155;
+    --border: #334155;
+    --bg-page: #0F172A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg-page);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 32px 16px;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 320px;
+  }
+  .source {
+    margin-top: 18px;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    line-height: 1.6;
+  }
+  .key-stat {
+    display: inline-block;
+    margin-top: 16px;
+    background: #FEF2F2;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #FECACA;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>The Zero-Click Rise: How AI Overviews Changed Search Behavior</h2>
+  <p class="subtitle">Click-through rate on traditional search results when an AI Overview is present vs. absent (Pew Research, July 2025) alongside rising share of zero-click searches</p>
+  <div class="chart-wrap">
+    <canvas id="chart1"></canvas>
+  </div>
+  <div class="key-stat">Pew Research: AI Overviews cut CTR from 15% to 8% — a 47% drop</div>
+  <div class="source">
+    Sources: Pew Research Center, "What Web Browsing Data Tells Us About How AI Appears Online" (July 22, 2025), n≈69,000 searches from ~900 U.S. adults; Bain &amp; Company, "Goodbye Clicks, Hello AI: Zero-Click Search Redefines Marketing" (February 2025), n=1,117 Bain-Dynata survey; Seer Interactive organic CTR analysis (September 2025). Zero-click share figures are estimates based on published ranges from SparkToro, Bain, and Similarweb research (2018–2026).
+  </div>
+</div>
+<script>
+const ctx = document.getElementById('chart1').getContext('2d');
+
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  || document.documentElement.dataset.theme === 'dark';
+
+const gridColor = isDark ? '#334155' : '#E2E8F0';
+const labelColor = isDark ? '#CBD5E1' : '#475569';
+const textColor = isDark ? '#F1F5F9' : '#0F172A';
+
+const labels = ['2018', '2019', '2020', '2021', '2022', '2023', '2024 H1', '2025 H1', '2025 H2\n(AI Overviews)', '2026'];
+const zeroClickData = [45, 49, 51, 55, 57, 60, 62, 64, 65, 68];
+const ctrWithAIO = [null, null, null, null, null, null, null, null, 8, null];
+const ctrWithoutAIO = [null, null, null, null, null, null, null, null, 15, null];
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Zero-click search share (%)',
+        data: zeroClickData,
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.08)',
+        borderWidth: 2.5,
+        tension: 0.35,
+        fill: true,
+        pointRadius: [3,3,3,3,3,3,3,3,6,3],
+        pointBackgroundColor: '#DC2626',
+        yAxisID: 'y',
+      },
+      {
+        label: 'CTR with AI Overview (Pew, July 2025)',
+        data: ctrWithAIO,
+        borderColor: '#0F172A',
+        backgroundColor: '#0F172A',
+        borderWidth: 0,
+        pointRadius: [0,0,0,0,0,0,0,0,10,0],
+        pointStyle: 'rectRot',
+        pointBackgroundColor: '#DC2626',
+        pointBorderColor: '#DC2626',
+        showLine: false,
+        yAxisID: 'y',
+      },
+      {
+        label: 'CTR without AI Overview (Pew, July 2025)',
+        data: ctrWithoutAIO,
+        borderColor: '#2563EB',
+        backgroundColor: '#2563EB',
+        borderWidth: 0,
+        pointRadius: [0,0,0,0,0,0,0,0,10,0],
+        pointStyle: 'triangle',
+        pointBackgroundColor: '#2563EB',
+        pointBorderColor: '#2563EB',
+        showLine: false,
+        yAxisID: 'y',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: labelColor,
+          font: { size: 12, family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" },
+          padding: 16,
+          usePointStyle: true,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y !== null ? ctx.parsed.y + '%' : 'N/A'}`
+        }
+      }
+    },
+    scales: {
+      y: {
+        min: 0,
+        max: 80,
+        grid: { color: gridColor },
+        ticks: {
+          color: labelColor,
+          font: { size: 11 },
+          callback: (v) => v + '%'
+        },
+        title: { display: true, text: 'Percentage (%)', color: labelColor, font: { size: 11 } }
+      },
+      x: {
+        grid: { color: gridColor },
+        ticks: { color: labelColor, font: { size: 10 }, maxRotation: 35 }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

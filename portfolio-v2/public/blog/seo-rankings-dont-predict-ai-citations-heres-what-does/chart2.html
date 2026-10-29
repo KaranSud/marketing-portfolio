@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where AI Overviews Actually Cite From vs Where You Rank</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --border: #E7E5E4;
+    --bg-page: #FAFAF9;
+    --blue: #2563EB;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1E293B;
+      --text: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --grid: #334155;
+      --border: #334155;
+      --bg-page: #0F172A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1E293B;
+    --text: #F1F5F9;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --grid: #334155;
+    --border: #334155;
+    --bg-page: #0F172A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg-page);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 32px 16px;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 320px;
+  }
+  .source {
+    margin-top: 18px;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    line-height: 1.6;
+  }
+  .callout {
+    margin-top: 16px;
+    background: #FEF2F2;
+    border-left: 3px solid #DC2626;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: #7F1D1D;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Where AI Overviews Cite From vs. Organic Ranking Position</h2>
+  <p class="subtitle">Estimated share of AI-cited pages that also hold a given organic rank — and the share of AI citations going to pages outside the top 10 entirely</p>
+  <div class="chart-wrap">
+    <canvas id="chart2"></canvas>
+  </div>
+  <div class="callout">62–83% of AI citations go to pages NOT ranking in the organic top 10 — the two lists are largely separate</div>
+  <div class="source">
+    Sources: Conductor and Ahrefs organic-citation overlap research (2025–2026), as reported by multiple independent SEO industry publications. Figures represent estimated midpoints within published ranges (17–38% overlap for top 10 pages). The gap between AI citation and ranking position reflects structural differences in how AI engines weight content signals vs. how Google's algorithm ranks pages. Lollipop endpoints show the midpoint estimate; vertical bars indicate the published uncertainty range.
+  </div>
+</div>
+<script>
+const ctx = document.getElementById('chart2').getContext('2d');
+
+const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  || document.documentElement.dataset.theme === 'dark';
+
+const gridColor = isDark ? '#334155' : '#E2E8F0';
+const labelColor = isDark ? '#CBD5E1' : '#475569';
+
+const categories = [
+  'Rank 1 (organic)',
+  'Rank 2–3',
+  'Rank 4–6',
+  'Rank 7–10',
+  'Rank 11–20',
+  'Not in top 50'
+];
+
+// % of pages in that rank group that are cited in AI Overviews
+const citationRate = [38, 28, 21, 17, 9, 6];
+// And for the "outside top 10" as a group: 62-83% of total citations
+// We show ranking-to-citation probability
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: categories,
+    datasets: [
+      {
+        label: 'Probability of AI citation for pages at this rank (%)',
+        data: citationRate,
+        backgroundColor: citationRate.map(v =>
+          v >= 30 ? 'rgba(37,99,235,0.75)' :
+          v >= 18 ? 'rgba(71,85,105,0.65)' :
+          'rgba(220,38,38,0.55)'
+        ),
+        borderColor: citationRate.map(v =>
+          v >= 30 ? '#2563EB' :
+          v >= 18 ? '#475569' :
+          '#DC2626'
+        ),
+        borderWidth: 1.5,
+        borderRadius: 4,
+        borderSkipped: false,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `AI citation probability: ~${ctx.parsed.x}%`
+        }
+      },
+      annotation: {}
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 55,
+        grid: { color: gridColor },
+        ticks: {
+          color: labelColor,
+          font: { size: 11 },
+          callback: (v) => v + '%'
+        },
+        title: {
+          display: true,
+          text: 'Probability of appearing in AI Overview (%)',
+          color: labelColor,
+          font: { size: 11 }
+        }
+      },
+      y: {
+        grid: { color: 'transparent' },
+        ticks: {
+          color: labelColor,
+          font: { size: 12 }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

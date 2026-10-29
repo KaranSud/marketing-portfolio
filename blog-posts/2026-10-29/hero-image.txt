@@ -1,0 +1,11 @@
+Pexels photo ID: N/A — api.pexels.com is outside this session's allowed network domains and could not be reached.
+Source URL: N/A
+License: N/A
+
+Fallback: Hero image generated locally with ImageMagick as a branded placeholder.
+Image dimensions: 1200×630px
+Background: dark slate gradient (#0F172A to #1E293B)
+
+Alt text: Abstract dark gradient image with the text "AI Search Citations vs SEO Rankings" representing the growing gap between traditional search rankings and AI answer engine citation signals.
+
+Rationale: Pexels was blocked by the session's egress proxy (connect_rejected on api.pexels.com:443). A locally generated placeholder was created using ImageMagick with brand palette colors. To replace with a proper editorial photo, search Pexels for "data signal network abstract" or "server architecture digital" and download a landscape photo.
