@@ -1,0 +1,10 @@
+Pexels photo ID: N/A (API blocked by session network policy — api.pexels.com returned 403 connect_rejected)
+Source URL: https://api.pexels.com/v1/search?query=data+circuit+abstract+architecture
+Pexels license: Free to use (https://www.pexels.com/license/)
+Alt text: Abstract data flow visualization showing signal pathways and nodes against dark background
+Rationale: Intended to show the concept of data signals flowing through a network, representing the conversion signal architecture theme. Chose abstract/architectural over AI brain or robot imagery per brand guidelines.
+
+NOTE FOR MANUAL PUBLISHING: Replace hero.jpg with an image from Pexels matching these terms:
+- Search: "data visualization abstract" or "circuit architecture signal" or "server room infrastructure"
+- Preferred: editorial/architectural, dark background, no people
+- Avoid: robot hands, AI brain graphics, people pointing at screens, money

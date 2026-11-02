@@ -349,5 +349,14 @@
       "line",
       "horizontal bar"
     ]
+  },
+  {
+    "date": "2026-11-02",
+    "slug": "ai-paid-advertising-works-you-just-broke-it",
+    "title": "AI Paid Advertising Works. You Just Broke It.",
+    "chart_types": [
+      "donut",
+      "area"
+    ]
   }
 ]

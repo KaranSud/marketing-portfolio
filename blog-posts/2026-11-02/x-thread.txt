@@ -1,0 +1,86 @@
+1/ The platforms are not failing you. You are failing the platforms.
+
+Most B2B marketers blame Smart Bidding and Advantage+ for bad results. The algorithm is fine. The signal you gave it is broken.
+
+Thread on why — and how to fix it.
+
+2/ A B2B SaaS company running Target CPA against form fills is asking Google to find more people who fill out forms.
+
+Google oblige. It finds students, researchers, consultants, and tire kickers.
+
+Cost per form fill drops. Pipeline does not grow. The algorithm worked exactly as designed.
+
+3/ The scale of this matters.
+
+U.S. AI-powered ad spend hit $57B in 2026, up 63% YoY. Meta's Advantage+ alone crossed $75B annual run rate.
+
+Nearly 10M advertisers now use at least one AI creative tool. Most are training their models on the wrong signal.
+
+4/ Smart Bidding requires 15 conversions in 30 days to exit learning mode. Stable optimization needs ~50/month.
+
+Most B2B SaaS accounts never produce 50 qualified pipeline leads from paid search. So teams default to form fills. That is where the problem starts.
+
+5/ Every conversion event is a vote.
+
+Form fill votes say: find more people who look like this.
+
+In a 90-day sales cycle, the whitepaper downloader and the Series B CFO requesting a demo look identical to Smart Bidding. It has no way to distinguish them. So it optimizes for form fillers.
+
+6/ Accounts that run form fill optimization for 2+ quarters have typically trained their model to avoid high intent audiences.
+
+Their best buyers behave differently from the form fill population. The algorithm has learned to pass on them. Every single auction.
+
+7/ There are 4 signal tiers for B2B AI bidding:
+
+T1: Form fill only (62% of accounts)
+T2: Form fill + delayed MQL upload (19%)
+T3: CRM-connected pipeline event, real time (14%)
+T4: Offline closed-won with revenue value (5%)
+
+The gap between T1 and T4 is not a platform difference. It is an input difference.
+
+8/ Signal debt compounds.
+
+Every week on bad signals = another week reinforcing the wrong audience profile.
+
+Accounts that ran form fill optimization for 18 months face a 60-90 day recovery window after switching to pipeline signals. Performance drops before it recovers.
+
+9/ The fix is sequenced, not instant.
+
+1. Find highest quality event you can generate at 30+/month
+2. Set as primary optimization target
+3. Add downstream CRM event as secondary with value
+4. Run both in parallel for 30 days minimum
+5. Only then switch primary target
+
+That 30-day window is not optional.
+
+10/ Three things to do before scaling another AI campaign:
+
+First: Audit your primary conversion event. Trace 90 days of Smart Bidding conversions into your CRM. If under 5% became sales opps, you are optimizing on noise.
+
+11/ Second: Connect your CRM.
+
+Google Enhanced Conversions + Offline Conversion Upload. Meta Conversions API. Both accept pipeline data. Most major CRMs have native integrations.
+
+Two to four hours of dev work. The return routinely outweighs months of creative testing.
+
+12/ Third: Sequence before you scale.
+
+Adding budget to a poorly signaled campaign does not fix the signal. It funds the wrong audience at greater volume.
+
+Fix the signal. Validate for one full learning cycle. Then scale.
+
+13/ The top quartile of B2B advertisers using value based bidding with real time CRM signals see results that look unfair.
+
+They are not using a different platform. They are using a different input. The algorithm is the same for everyone.
+
+14/ With global ad spend above $1 trillion and AI buying growing at 63% per year, every advertiser running clean CRM signals is improving their model while yours stagnates.
+
+The question is not whether to fix your signal architecture. It is how much debt you can afford to accumulate first.
+
+15/ The algorithm has never been the bottleneck.
+
+Your definition of success always has been.
+
+Full piece with the 4-tier signal framework, data, and the 30-day fix sequence: karansud.com
