@@ -1,0 +1,29 @@
+1/ AI bidding tools promise to cut your CPA. They do. Right up until every competitor in your category runs the same tools — then the auction prices everything back up and you're exactly where you started, just moving faster.
+
+2/ Google's Smart Bidding Exploration delivered 19% more conversions in internal testing. Meta's Advantage+ reports ROAS lifts across the platform. These numbers are real. The problem is they're real for everyone simultaneously.
+
+3/ When every advertiser's AI finds the same high-probability users and bids into the same range, the clearing price rises. Google and Meta report record ad revenue precisely as they report efficiency gains. Those facts aren't contradictory — they're the same fact.
+
+4/ Gartner now forecasts that by 2028, more than 70% of global ad spend will flow through AI-influenced self-serve platforms. In the US, that number reaches 80%. That's roughly $910 billion of a $1.3 trillion market.
+
+5/ At 70% AI adoption across the ecosystem, there are no more manual bidders to outmaneuver. The only variables left are the inputs you give the platform and the signal quality you give the algorithm.
+
+6/ Here's the thing most AI bidding guides skip: CMOs are spending 15.3% of budgets on AI tools and platforms (Gartner 2026 CMO Spend Survey), while marketing budgets themselves have barely moved — 7.7% of revenue in 2025 to 7.8% in 2026.
+
+7/ Only 30% of those same CMOs say they're actually ready to scale AI capabilities. Everyone's paying for the platform. Few have built the infrastructure to make it work. That 51-point gap is where budget disappears.
+
+8/ Meanwhile, 81% of US consumers aim to actively tune out ads (Gartner, April 2026). AI-driven delivery efficiency doesn't help you if the ad itself can't hold attention. You can win the auction and still lose the moment.
+
+9/ The durable edge isn't better automation. It's better inputs. Chester Scott at Lunio put it plainly: "You cannot control the black box of AI bidding, but you can control the data going into it."
+
+10/ Three inputs that arbitrage can't touch: revenue-qualified conversion events (not page views or form fills), LTV-segmented customer lists uploaded as custom audiences, and deliberate exclusion lists so you're not paying to re-acquire customers you already have.
+
+11/ The fourth input nobody adds: independent measurement. A campaign that shows positive ROAS in-platform while producing zero incremental lift is wasting budget with algorithmic precision. Platform attribution gets worse as AI influence grows.
+
+12/ McKinsey's 2026 State of AI report found marketing and sales is the top function for AI revenue attribution — but only 37% of organizations see any EBIT contribution from AI at all. The gap between 100% adoption and 6% seeing meaningful profit is the input quality gap.
+
+13/ The teams winning this aren't running better algorithms. They're feeding better data to the same platforms. That's the whole thing. That's the entire AI bidding strategy that survives the consolidation point.
+
+14/ By 2028, 70% of global ad spend flows through AI platforms. The only question: are you one of the 30% who built the input architecture to make it work, or the 70% that handed the keys to an algorithm and called it a strategy?
+
+15/ Full breakdown: AI Paid Advertising Optimization Has an Arbitrage Problem — link in bio. Follow @karansud for more.

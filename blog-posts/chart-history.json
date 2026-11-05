@@ -358,5 +358,14 @@
       "donut",
       "area"
     ]
+  },
+  {
+    "date": "2026-11-05",
+    "slug": "ai-paid-advertising-optimization-arbitrage-problem",
+    "title": "AI Paid Advertising Optimization Has an Arbitrage Problem",
+    "chart_types": [
+      "line",
+      "horizontal bar"
+    ]
   }
 ]

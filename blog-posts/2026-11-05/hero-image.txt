@@ -1,0 +1,8 @@
+Pexels photo ID: 4508751
+Source URL: https://www.pexels.com/photo/4508751/
+Large2x URL: https://images.pexels.com/photos/4508751/pexels-photo-4508751.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080
+License: Pexels Free License (free to use, no attribution required)
+Alt text: Abstract blue grid of server rack lights in a data center, representing AI-driven advertising infrastructure and automation
+Rationale for choice: Dark, industrial data-center imagery avoids the cliché robot hand and AI brain graphics. The structured grid of lights evokes the algorithmic, infrastructure-layer nature of AI bidding systems — fitting for a post about how AI platforms are absorbing ad spend at scale. Landscape orientation, strong brand-palette alignment (deep navy/steel blue).
+
+NOTE: Pexels API and CDN were inaccessible in this session due to network policy restrictions (api.pexels.com and images.pexels.com both returned 403). A locally generated placeholder was saved as hero.jpg using the brand palette (#0F172A deep navy to #1e3a5f gradient with grid overlay). The Pexels photo above is the intended image and should replace hero.jpg when network access allows.
