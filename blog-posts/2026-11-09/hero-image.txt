@@ -1,0 +1,17 @@
+Pexels photo ID: PLACEHOLDER (api.pexels.com blocked by session network policy)
+Source URL: https://www.pexels.com/search/conference%20room%20architecture/
+Pexels license: Free to use
+
+Alt text: Empty modern conference room with long table and chairs, seen through glass walls, representing the many-person B2B buying committee
+
+Rationale: An architectural shot of a large, empty conference room conveys the "13-person room" thesis directly without relying on stock clichés. The absence of people reinforces the article's argument that most marketing funnels operate as if the room is empty when buyers are actually present, forming opinions off-stage.
+
+DOWNLOAD NOTE: The Pexels API (api.pexels.com) is blocked by this session's network policy. To replace the placeholder hero.jpg, run:
+  curl -s -H "Authorization: 2T6uPt9N4jOrYfel6EZvBOBQlakhwh7f6yKvkxb9ymfsA0HpeOCqIVxd" \
+    "https://api.pexels.com/v1/search?query=conference+room+architecture+modern&per_page=8&orientation=landscape"
+  Then download the chosen photo's src.large2x URL to hero.jpg.
+
+Recommended Pexels search queries:
+  - conference room architecture modern
+  - boardroom empty chairs table
+  - industrial abstract corridor architecture

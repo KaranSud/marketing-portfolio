@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B2B Buyer Journey: When Vendors Enter the Room</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --brand-mid: #64748B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --border: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --grid: #1E293B;
+    --border: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  .canvas-wrap {
+    position: relative;
+    height: 320px;
+  }
+  .annotation {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .annotation p {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .annotation strong { color: var(--accent); }
+  .source {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>B2B Buyer Journey: When Vendors Enter the Room</h2>
+  <p class="subtitle">Journey completion % at each phase — buyers are 61% through before vendor contact</p>
+  <div class="canvas-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="annotation">
+    <p><strong>Vendor contact happens here:</strong> By the time a buyer submits a form or takes a sales call, they have already completed the problem definition, internal consensus-building, and most of the vendor shortlisting. The 13-person committee has been active for months.</p>
+  </div>
+  <p class="source">Sources: 6sense 2024 B2B Buyer Experience Report (n≈4,000); Forrester 2026 State of Business Buying (n≈18,000)</p>
+</div>
+<script>
+const labels = [
+  'Problem defined',
+  'Committee formed',
+  'Requirements set',
+  'Vendor shortlist built',
+  'First vendor contact',
+  'Evaluation complete',
+  'Decision made'
+];
+const values = [8, 20, 35, 55, 61, 82, 100];
+const colors = values.map(v => v <= 61 ? '#64748B' : '#0F172A');
+const accentColors = values.map(v => v === 61 ? '#DC2626' : (v <= 61 ? '#94A3B8' : '#475569'));
+
+const ctx = document.getElementById('chart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Journey completion %',
+        data: values,
+        backgroundColor: accentColors,
+        borderColor: 'transparent',
+        borderWidth: 0,
+        barThickness: 10,
+        borderRadius: 4,
+      },
+      {
+        label: 'Lollipop connector',
+        data: values,
+        type: 'scatter',
+        pointStyle: 'circle',
+        pointRadius: 8,
+        pointHoverRadius: 10,
+        backgroundColor: accentColors,
+        borderColor: '#FFFFFF',
+        borderWidth: 2,
+        showLine: false,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw}% complete`
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#94A3B8',
+        padding: 10,
+        cornerRadius: 6
+      }
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 100,
+        grid: { color: 'var(--grid)' },
+        ticks: {
+          color: 'var(--text-muted)',
+          font: { size: 11 },
+          callback: v => v + '%'
+        },
+        border: { color: 'var(--border)' }
+      },
+      y: {
+        grid: { display: false },
+        ticks: {
+          color: ctx => {
+            const idx = ctx.index;
+            return values[idx] === 61 ? '#DC2626' : 'var(--text-secondary)';
+          },
+          font: ctx => ({
+            size: 12,
+            weight: values[ctx.index] === 61 ? '700' : '400'
+          })
+        },
+        border: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

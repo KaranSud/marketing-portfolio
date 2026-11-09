@@ -1,0 +1,81 @@
+1/ Forrester 2026: the average B2B SaaS purchase involves 13 internal stakeholders + 9 external influencers.
+
+Most marketing funnels are built for 1 of them.
+
+That's the 92% problem. Thread on what it costs you and how to fix it.
+
+2/ If your strategy is: build a persona → gate content → score an MQL → hand off to sales...
+
+You're influencing 1 of 13 people before the deal enters your pipeline.
+
+The other 12 are forming opinions in private Slack channels, analyst calls, and G2 reviews.
+
+3/ Procurement now participates in 53% of B2B buying cycles.
+
+Most SaaS marketing teams have produced zero content for procurement.
+
+No TCO docs. No vendor risk frameworks. Nothing that speaks to their actual job.
+
+Then deals die in legal review and nobody knows why.
+
+4/ The timing problem makes this worse.
+
+6sense 2024 (n=4,000): buyers are 61% through a 10.1-month journey before they contact a vendor.
+
+Your first MQL doesn't start the journey. It lands two-thirds of the way through it.
+
+5/ What's happening in those 6 months before first contact?
+
+The 13-person committee is comparing vendors, sharing articles, checking reviews, and forming opinions about whether your company feels credible.
+
+Before a single contact enters your CRM.
+
+6/ McKinsey 2026 B2B Pulse (n=4,000, 13 countries):
+
+60% of market leaders reported double-digit revenue growth.
+21% of laggards did.
+
+The gap isn't budget. It's architecture. Leaders market to the room. Laggards market to the contact record.
+
+7/ The AI marketing budget surge is making the problem worse, not better.
+
+15.3% of CMO budgets now go to AI tools (Gartner 2026, n=401).
+
+Most of that is making the same single-persona funnel faster. Faster content. Faster email. Faster MQL scoring.
+
+You can't automate your way out of marketing to the wrong unit.
+
+8/ Fix 1: Expand the content unit from persona to committee role.
+
+Procurement needs TCO models and vendor risk frameworks.
+Legal needs compliance docs.
+IT needs integration specs.
+
+Without these, your champion is selling internally with assets built for external consumption.
+
+9/ Fix 2: Invest in dark funnel channels.
+
+G2 review management. LinkedIn content your champion can forward without it looking like a sales pitch. Analyst brief programs. Peer communities.
+
+These don't generate MQL attribution. They generate the conditions under which a champion can close a committee.
+
+10/ Fix 3: Change the measurement unit from MQL to account activation (MQA).
+
+An MQL = 1 person crossed a threshold.
+An MQA = multiple roles at a target account engaging simultaneously.
+
+That predicts pipeline velocity better than any single-contact score.
+
+11/ Gartner August 2025: by 2030, 75% of B2B buyers will prefer human interaction over AI.
+
+Right now 67% prefer rep-free. That preference inverts over the next 4 years.
+
+The companies building committee-level authority now are setting up for that inversion.
+
+12/ These things compound slowly. Committee relationships, analyst credibility, community presence, peer reputation.
+
+They cannot be turned on in a quarter when demand drops.
+
+The room has been deciding without you for months. The question is whether you're part of the conversation.
+
+Full breakdown: B2B SaaS Marketing Tactics Miss 92% of Decision-Makers — link in bio. Follow @karansud for more.

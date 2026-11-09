@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Single-Persona vs Committee-Level Marketing Coverage</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --brand-mid: #64748B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --border: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --grid: #1E293B;
+    --border: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  .canvas-wrap {
+    position: relative;
+    height: 360px;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .source {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>Marketing Coverage Across Committee Roles</h2>
+  <p class="subtitle">Score (0–10): how well each marketing approach reaches each stakeholder type</p>
+  <div class="canvas-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background: rgba(220,38,38,0.8)"></div>
+      <span>Single-persona funnel</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background: rgba(15,23,42,0.85)"></div>
+      <span>Committee-level approach</span>
+    </div>
+  </div>
+  <p class="source">Framework derived from Forrester 2026 State of Business Buying; McKinsey 2026 B2B Pulse</p>
+</div>
+<script>
+const labels = [
+  'Economic buyer\n(CFO / VP)',
+  'Champion\n(day-to-day owner)',
+  'Procurement',
+  'Legal / Security',
+  'IT / Integration lead',
+  'End-user reps'
+];
+
+const ctx = document.getElementById('chart').getContext('2d');
+new Chart(ctx, {
+  type: 'radar',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Single-persona funnel',
+        data: [3, 9, 1, 1, 2, 2],
+        backgroundColor: 'rgba(220,38,38,0.12)',
+        borderColor: '#DC2626',
+        borderWidth: 2,
+        pointBackgroundColor: '#DC2626',
+        pointRadius: 4,
+        pointHoverRadius: 6,
+      },
+      {
+        label: 'Committee-level approach',
+        data: [8, 9, 7, 7, 8, 7],
+        backgroundColor: 'rgba(15,23,42,0.08)',
+        borderColor: '#0F172A',
+        borderWidth: 2,
+        pointBackgroundColor: '#0F172A',
+        pointRadius: 4,
+        pointHoverRadius: 6,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#94A3B8',
+        padding: 10,
+        cornerRadius: 6,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}/10`
+        }
+      }
+    },
+    scales: {
+      r: {
+        min: 0,
+        max: 10,
+        ticks: {
+          stepSize: 2,
+          color: 'var(--text-muted)',
+          font: { size: 10 },
+          backdropColor: 'transparent'
+        },
+        grid: { color: 'var(--grid)' },
+        angleLines: { color: 'var(--grid)' },
+        pointLabels: {
+          color: 'var(--text-secondary)',
+          font: { size: 11 },
+          padding: 8
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
