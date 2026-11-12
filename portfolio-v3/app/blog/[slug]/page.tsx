@@ -5,7 +5,7 @@ import { marked } from "marked";
 import FlowNav from "@/components/flow/FlowNav";
 import { flowFonts } from "@/components/flow/fonts";
 import "@/app/flow/flow.css";
-import BookButton from "@/components/BookButton";
+import FlowFooter from "@/components/flow/FlowFooter";
 import { getPost, getSlugs } from "@/lib/blog";
 
 const SITE = "https://karan-sud-portfolio.vercel.app";
@@ -83,6 +83,10 @@ export default async function PostPage({
       <main id="main" className="fl-case fl-post">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <article>
+          <figure className="fl-post-cover">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/blog/${slug}/opengraph-image`} alt="" width={1200} height={630} />
+          </figure>
           <header className="fl-case-head">
             <h1>{post.title}</h1>
             <p className="fl-case-lede">{post.description}</p>
@@ -95,12 +99,7 @@ export default async function PostPage({
           <strong>All posts</strong>
         </Link>
       </main>
-      <footer className="fl-night">
-        <div className="fl-shooting" aria-hidden="true"><i /><i /><i /></div>
-        <p className="fl-night-kicker">I run growth and content for brands and founders. If yours needs an audience, let&apos;s talk. The call is free.</p>
-        <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
-        <BookButton className="fl-btn fl-btn-light fl-call" />
-      </footer>
+      <FlowFooter />
     </div>
   );
 }

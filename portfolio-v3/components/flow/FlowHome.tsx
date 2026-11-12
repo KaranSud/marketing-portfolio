@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BookButton from "@/components/BookButton";
+import FlowFooter from "./FlowFooter";
 import FlowField from "./FlowField";
 import Turn from "./Turn";
 import Stream from "./Stream";
@@ -14,6 +15,7 @@ import Milestones from "./Milestones";
 import Timeline from "./Timeline";
 import RollNumber from "./RollNumber";
 import { homeFaqs } from "@/lib/faqs";
+import { getAllPosts } from "@/lib/blog";
 
 // The home page: plan v4 "Flow" (tasks/v3/PLAN-v4-2026-10-25.md). Engineer turned marketer, a live CFD flow
 // field on paper, posts riding the flow, v2's logo marquee unchanged, a stream of real posts per client.
@@ -51,6 +53,8 @@ const stars = Array.from({ length: 70 }, (_, i) => ({ x: (i * 37.7) % 100, y: (i
 
 export default function FlowHome() {
   const wall = wallPosts();
+  const all = getAllPosts();
+  const writing = ["why-i-built-my-own-outbound-tool", ...all.filter((p) => p.slug !== "why-i-built-my-own-outbound-tool").slice(0, 2).map((p) => p.slug)].map((s) => all.find((p) => p.slug === s)!).filter(Boolean);
   return (
     <div className={`fl ${flowFonts}`}>
       <FlowNav />
@@ -188,6 +192,23 @@ export default function FlowHome() {
           </div>
         </section>
 
+      <section id="writing" className="fl-writing" aria-labelledby="fl-writing-title">
+        <div className="fl-writing-head fl-reveal">
+          <h2 id="fl-writing-title">I write about marketing as it changes</h2>
+          <p className="fl-muted">{all.length} essays so far, on AI in marketing, content and growth, and on the tools I build.</p>
+        </div>
+        <div className="fl-writing-grid">
+          {writing.map((p) => (
+            <Link key={p.slug} href={`/blog/${p.slug}`} className="fl-writing-card fl-reveal">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/blog/${p.slug}/opengraph-image`} alt={p.title} width={600} height={315} loading="lazy" />
+              <span className="fl-muted">{p.description}</span>
+            </Link>
+          ))}
+        </div>
+        <Link href="/blog" className="fl-link">Read all {all.length} essays</Link>
+      </section>
+
       <section className="fl-faq" aria-labelledby="fl-faq-title">
         <h2 id="fl-faq-title" className="fl-reveal">Questions people ask</h2>
         <div className="fl-faq-list">
@@ -201,15 +222,7 @@ export default function FlowHome() {
       </section>
       </main>
 
-      <footer className="fl-night">
-        <div className="fl-shooting" aria-hidden="true"><i /><i /><i /></div>
-        <div className="fl-stars" aria-hidden="true">
-          {stars.map((s, i) => <i key={i} style={{ left: `${s.x}%`, top: `${s.y}%`, animationDelay: `${s.d}s` }} />)}
-        </div>
-        <p className="fl-night-kicker">The call is free. Pricing comes after it, once we agree the scope.</p>
-        <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
-        <BookButton className="fl-btn fl-btn-light fl-call" />
-      </footer>
+      <FlowFooter />
       <Reveal selector=".fl-reveal" />
     </div>
   );

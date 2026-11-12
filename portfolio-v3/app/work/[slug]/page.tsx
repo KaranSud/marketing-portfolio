@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import BookButton from "@/components/BookButton";
+import FlowFooter from "@/components/flow/FlowFooter";
 import BeforeAfterSection, { CompareSlider } from "@/components/BeforeAfterSection";
 import FlowNav from "@/components/flow/FlowNav";
 import Stream from "@/components/flow/Stream";
@@ -125,12 +125,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         </Link>
       </main>
 
-      <footer className="fl-night">
-        <div className="fl-shooting" aria-hidden="true"><i /><i /><i /></div>
-        <p className="fl-night-kicker">{closer(c.key)} The call is free. Pricing comes after it, once we agree the scope.</p>
-        <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
-        <BookButton className="fl-btn fl-btn-light fl-call" />
-      </footer>
+      <FlowFooter ask={closer(c.key)} />
       <Reveal selector=".fl-reveal" />
     </div>
   );

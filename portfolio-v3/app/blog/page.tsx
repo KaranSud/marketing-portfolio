@@ -3,7 +3,7 @@ import Link from "next/link";
 import FlowNav from "@/components/flow/FlowNav";
 import { flowFonts } from "@/components/flow/fonts";
 import "@/app/flow/flow.css";
-import BookButton from "@/components/BookButton";
+import FlowFooter from "@/components/flow/FlowFooter";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -34,6 +34,8 @@ function PostList({ posts }: { posts: PostMeta[] }) {
       {posts.map((p) => (
         <li key={p.slug}>
           <Link className="fl-blog-row" href={`/blog/${p.slug}`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="fl-blog-thumb" src={`/blog/${p.slug}/opengraph-image`} alt="" width={240} height={126} loading="lazy" />
             <span className="fl-blog-title">{p.title}</span>
             <span className="fl-blog-desc">{p.description}</span>
             <span className="fl-blog-meta">
@@ -70,12 +72,7 @@ export default function BlogIndex() {
           <PostList posts={essays} />
         </section>
       </main>
-      <footer className="fl-night">
-        <div className="fl-shooting" aria-hidden="true"><i /><i /><i /></div>
-        <p className="fl-night-kicker">I run growth and content for brands and founders. If yours needs an audience, let&apos;s talk. The call is free.</p>
-        <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
-        <BookButton className="fl-btn fl-btn-light fl-call" />
-      </footer>
+      <FlowFooter />
     </div>
   );
 }
