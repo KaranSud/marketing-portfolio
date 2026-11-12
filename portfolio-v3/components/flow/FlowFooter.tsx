@@ -17,7 +17,7 @@ export default function FlowFooter({ ask = "Tell me what you are building." }: {
       <a className="fl-email" href="mailto:contactkaransud@gmail.com">contactkaransud@gmail.com</a>
       <div className="fl-night-cta">
         <BookButton className="fl-btn fl-btn-light fl-call" />
-        <span>Or email me directly.</span>
+        <span>I reply within 24 hours.</span>
       </div>
       <div className="fl-night-base">
         <nav aria-label="Footer">

@@ -1,59 +1,83 @@
 import fs from "node:fs";
 import path from "node:path";
 import { ImageResponse } from "next/og";
+import { hooks, type Hook } from "@/lib/hooks";
 
-// Article header image: paper, sage streamlines unique to each post (seeded by its slug),
-// the topic, the title in serif and the read time. Used at the top of each post, on the
-// writing cards and as the share image. No full stops in the title (graphics rule).
+// Article header and share image (research: tasks/v3/research/article-headers.md).
+// The title already shows under the image everywhere it appears, so the image carries what the
+// title cannot: the post's one number, huge, a short line that sets it up, the number drawn,
+// and Karan's face so a feed knows whose analysis it is. Dark card so it stands out on white feeds.
 export const HEADER_SIZE = { width: 1200, height: 630 };
-const font = (f: string) => fs.readFileSync(path.join(process.cwd(), "assets", "fonts", f));
+const file = (...p: string[]) => fs.readFileSync(path.join(process.cwd(), ...p));
+const INK = "#0F1411", CREAM = "#F2EEE4", SAGE = "#8CC3A6", DIM = "rgba(242,238,228,0.18)", MUTED = "#A6A49B";
 
-function lines(seed: string) {
-  let h = 0;
-  for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
-  const rnd = () => ((h = (h * 1664525 + 1013904223) >>> 0) / 4294967296);
-  const cx = 760 + rnd() * 260, cy = 180 + rnd() * 280, r = 70 + rnd() * 40;
-  const out: string[] = [];
-  for (let i = 0; i < 26; i++) {
-    const y0 = 20 + i * 24;
-    let d = `M -10 ${y0}`;
-    for (let x = 0; x <= 1220; x += 20) {
-      const dx = x - cx, dy = y0 - cy, r2 = dx * dx + dy * dy;
-      const push = (r * r * dy) / (r2 + r * r); // smooth, bounded deflection past a round obstacle
-      d += ` L ${x} ${(y0 + push + Math.sin(x / 140 + i) * 3).toFixed(1)}`;
-    }
-    out.push(d);
+function Viz({ v }: { v: NonNullable<Hook["viz"]> }) {
+  if (v.kind === "pct") {
+    return (
+      <div style={{ display: "flex", flexWrap: "wrap", width: 330, gap: 9 }}>
+        {Array.from({ length: 100 }, (_, i) => (
+          <div key={i} style={{ width: 24, height: 24, borderRadius: 12, background: i < v.value ? SAGE : DIM }} />
+        ))}
+      </div>
+    );
   }
-  return { paths: out, cx, cy, r };
+  if (v.kind === "count") {
+    return (
+      <div style={{ display: "flex", flexWrap: "wrap", width: 330, gap: 18 }}>
+        {Array.from({ length: v.value }, (_, i) => (
+          <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+            <div style={{ width: 26, height: 26, borderRadius: 13, background: SAGE }} />
+            <div style={{ width: 44, height: 30, borderRadius: "22px 22px 6px 6px", background: SAGE }} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+  const max = Math.max(v.a[1], v.b[1]);
+  const bar = ([label, val, shown]: [string, number, string], hi: boolean) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "Geist", fontSize: 26, color: hi ? CREAM : MUTED }}>
+        <span>{label}</span><span>{shown}</span>
+      </div>
+      <div style={{ display: "flex", width: 340, height: 40, borderRadius: 8, background: DIM }}>
+        <div style={{ width: Math.max(14, (val / max) * 340), height: 40, borderRadius: 8, background: hi ? SAGE : MUTED }} />
+      </div>
+    </div>
+  );
+  return <div style={{ display: "flex", flexDirection: "column", gap: 44 }}>{bar(v.a, false)}{bar(v.b, true)}</div>;
 }
 
-export function articleHeader({ slug, title, topic, readingTime }: { slug: string; title: string; topic: string; readingTime: string }) {
-  const { paths, cx, cy, r } = lines(slug);
-  const clean = title.replace(/[.]\s*$/, "");
+export function articleHeader({ slug, topic }: { slug: string; topic: string }) {
+  const h: Hook = hooks[slug] ?? { stat: "Karan Sud", line: "notes on marketing as it changes" };
+  const photo = `data:image/jpeg;base64,${file("public", "karan.jpg").toString("base64")}`;
+  const wide = !h.viz;
+  const statSize = h.stat.length > 7 ? (wide ? 170 : 120) : wide ? 210 : 200;
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", background: "#F4F1EA", position: "relative" }}>
-        <svg width="1200" height="630" viewBox="0 0 1200 630" style={{ position: "absolute", left: 0, top: 0 }}>
-          {paths.map((d, i) => (
-            <path key={i} d={d} fill="none" stroke={i % 5 === 2 ? "#6CA088" : "#1A1A17"} strokeOpacity={i % 5 === 2 ? 0.85 : 0.14} strokeWidth={i % 5 === 2 ? 2.5 : 1.5} />
-          ))}
-        </svg>
-        <div style={{ position: "absolute", left: 72, top: 72, right: 72, bottom: 72, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-          <div style={{ display: "flex" }}>
-            <div style={{ display: "flex", background: "#1A1A17", color: "#F4F1EA", fontFamily: "Geist", fontSize: 26, padding: "10px 22px", borderRadius: 999 }}>{topic}</div>
+      <div style={{ width: "100%", height: "100%", display: "flex", background: INK, padding: "64px 72px", color: CREAM }}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: wide ? "center" : "stretch", flex: 1 }}>
+          <div style={{ display: "flex", justifyContent: wide ? "center" : "flex-start", fontFamily: "Geist", fontSize: 28, color: wide ? MUTED : SAGE }}>{topic}</div>
+          <div style={{ display: "flex", flexDirection: "column", maxWidth: wide ? 1056 : 640, alignItems: wide ? "center" : "flex-start", textAlign: wide ? "center" : "left" }}>
+            <div style={{ fontFamily: "Fraunces", fontSize: statSize, lineHeight: 0.95, letterSpacing: -4, color: wide ? SAGE : CREAM }}>{h.stat}</div>
+            <div style={{ fontFamily: "Fraunces", fontSize: 46, lineHeight: 1.12, marginTop: 18, color: CREAM, letterSpacing: -0.5 }}>{h.line}</div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 28, maxWidth: 900 }}>
-            <div style={{ fontFamily: "Fraunces", fontSize: clean.length > 60 ? 62 : 74, lineHeight: 1.05, color: "#1A1A17", letterSpacing: -1.5, background: "rgba(244,241,234,0.82)" }}>{clean}</div>
-            <div style={{ display: "flex", fontFamily: "Geist", fontSize: 26, color: "#57554E" }}>Karan Sud · {readingTime}</div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: wide ? "center" : "flex-start", gap: 18 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={photo} width={64} height={64} style={{ borderRadius: 32 }} alt="" />
+            <div style={{ display: "flex", flexDirection: "column", fontFamily: "Geist", fontSize: 24, lineHeight: 1.25 }}>
+              <span style={{ color: CREAM }}>Karan Sud</span>
+              <span style={{ color: MUTED }}>Engineer turned marketer</span>
+            </div>
           </div>
         </div>
+        {h.viz ? <div style={{ display: "flex", alignItems: "center", paddingLeft: 40 }}><Viz v={h.viz} /></div> : null}
       </div>
     ),
     {
       ...HEADER_SIZE,
       fonts: [
-        { name: "Fraunces", data: font("Fraunces-400.ttf"), weight: 400, style: "normal" },
-        { name: "Geist", data: font("Geist-500.ttf"), weight: 500, style: "normal" },
+        { name: "Fraunces", data: file("assets", "fonts", "Fraunces-400.ttf"), weight: 400, style: "normal" },
+        { name: "Geist", data: file("assets", "fonts", "Geist-500.ttf"), weight: 500, style: "normal" },
       ],
     }
   );

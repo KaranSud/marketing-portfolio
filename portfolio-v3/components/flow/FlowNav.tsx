@@ -24,7 +24,7 @@ export default function FlowNav() {
   return (
     <>
       <header className="fl-nav">
-        <Link href="/flow" className="fl-name">Karan Sud</Link>
+        <Link href="/" className="fl-name">Karan Sud</Link>
         <nav aria-label="Main">
           {links.map((l) => <a key={l.href} href={l.href}>{l.label}</a>)}
         </nav>

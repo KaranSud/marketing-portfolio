@@ -423,7 +423,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Bones & Burgers",
     kind: "Social media, organic only",
     meta: "Freelance social media · Facebook and Instagram · Current client",
-    lede: "An account full of bot followers, cleaned up and rebuilt with no ad spend.",
+    lede: "An account full of bot followers, cleaned up and rebuilt with no ad spend. The top reel reached 104K views.",
     channels: ["Facebook", "Instagram"],
     stats: [
       { val: "104K", label: "Views on the top reel, 1 Jun 2026, no ad spend" },
@@ -455,7 +455,7 @@ export const caseStudies: CaseStudy[] = [
     title: "The Culturegram",
     kind: "Website redesign on Ghost",
     meta: "Social and content strategy · Client since June 2026",
-    lede: "A ground-up revamp of The Culturegram's website on Ghost, a library of custom illustrations, and the groundwork for a proper video podcast.",
+    lede: "A ground-up revamp of The Culturegram's website on Ghost, a library of custom illustrations, and the groundwork for a video podcast.",
     logo: "/Logos/Culturegram.png",
     preview: { video: "/Results/Culturegram/after-loop.mp4", poster: "/Results/Culturegram/after-loop-poster.jpg" },
     channels: ["Website (Ghost)", "Podcast", "Editorial report"],

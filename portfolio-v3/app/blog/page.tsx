@@ -59,8 +59,8 @@ export default function BlogIndex() {
         <header className="fl-case-head">
           <h1>Writing on AI marketing</h1>
           <p className="fl-case-lede">
-            Essays on how AI is changing marketing, content and growth, plus three posts on building my own outbound
-            engine.
+            Each essay starts from one number in a recent study and works out what a marketing team should do about
+            it. Plus three posts on building my own outbound engine.
           </p>
         </header>
         <section className="fl-blog-group">

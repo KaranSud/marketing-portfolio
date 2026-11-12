@@ -82,7 +82,7 @@ export default function FlowHome() {
               <div className="fl-photo">
                 <Image src="/karan.jpg" alt="Karan Sud" fill sizes="96px" priority />
               </div>
-              <p className="fl-card-title">Glad you&apos;re here</p>
+              <p className="fl-card-title">From CFD to content</p>
               <p className="fl-lede">
                 I studied mechanical engineering and worked in CFD, simulating how air flows. In June 2023 I moved into
                 marketing. Now I make attention flow for brands and founders.
@@ -111,7 +111,7 @@ export default function FlowHome() {
         </section>
 
         <section className="fl-services" aria-labelledby="fl-services-title">
-          <h2 id="fl-services-title" className="fl-reveal">What I can do for you</h2>
+          <h2 id="fl-services-title" className="fl-reveal">What you can hire me for</h2>
           <div className="fl-services-grid">
             {SERVICES.map((s) => (
               <div key={s.title} className="fl-service fl-reveal">
@@ -194,15 +194,16 @@ export default function FlowHome() {
 
       <section id="writing" className="fl-writing" aria-labelledby="fl-writing-title">
         <div className="fl-writing-head fl-reveal">
-          <h2 id="fl-writing-title">I write about marketing as it changes</h2>
-          <p className="fl-muted">{all.length} essays so far, on AI in marketing, content and growth, and on the tools I build.</p>
+          <h2 id="fl-writing-title">I write about what the numbers say</h2>
+          <p className="fl-muted">{all.length} essays on AI in marketing, growth and measurement, most built on one recent study, plus notes on the tools I build.</p>
         </div>
         <div className="fl-writing-grid">
           {writing.map((p) => (
             <Link key={p.slug} href={`/blog/${p.slug}`} className="fl-writing-card fl-reveal">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/blog/${p.slug}/opengraph-image`} alt={p.title} width={600} height={315} loading="lazy" />
-              <span className="fl-muted">{p.description}</span>
+              <img src={`/blog/${p.slug}/opengraph-image`} alt="" width={600} height={315} loading="lazy" />
+              <strong>{p.title}</strong>
+              <span className="fl-muted">{p.readingTime}</span>
             </Link>
           ))}
         </div>

@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 // lights up as the line reaches it. Dates from Karan's resume and his own words (facts.md).
 const stops = [
   { when: "Degree", title: "Mechanical engineering", body: "B.Tech, APJ Abdul Kalam Technical University." },
-  { when: "2022 to 2023", title: "Worked in CFD", body: "Simulating how air flows. Systems, models and a lot of iteration." },
+  { when: "2022 to 2023", title: "Worked in CFD", body: "Simulating how air flows." },
   { when: "June 2023", title: "Moved into marketing", body: "Same instinct, new fluid: attention." },
   { when: "2023 to 2024", title: "Mach1 Digital and The SportsRush", body: "Agency accounts including Tony Roma's and Opaque Studio, then US sports on Instagram." },
   { when: "2024 to 2025", title: "FanTV AI", body: "Social Media Marketing Manager, and the founder's own brand on X." },
