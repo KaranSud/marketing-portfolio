@@ -1,0 +1,6 @@
+Pexels Photo ID: N/A — api.pexels.com is blocked by session network policy (proxy 403). Hero image generated locally with ImageMagick: deep navy-to-slate abstract gradient with geometric triangle overlay, evoking the invisible/dark space where B2B buying decisions form.
+
+Source URL: N/A (network policy)
+License: Generated asset, no third-party rights
+Alt text: Abstract dark navy geometric gradient representing the invisible phases of B2B buying research
+Rationale: The article argues most B2B SaaS buying happens in channels marketers cannot see. A dark, abstract image reinforces the "invisible" theme without resorting to AI robot graphics or people-on-laptops clichés. Deep navy (#0F172A) is on-brand per the site's color system.

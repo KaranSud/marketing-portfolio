@@ -1,0 +1,103 @@
+1/
+By the time your SDR sequence fires, the buyer has already decided if you're on their shortlist.
+
+6sense surveyed 4,000 B2B buyers. First vendor contact happens at 61% of the journey.
+
+The ranking is done before you're in the room.
+
+2/
+Most B2B SaaS marketing tactics are built for hand-raisers -- form fills, demo requests, ad clicks.
+
+Those are lagging indicators. The actual decision happened weeks, sometimes months, earlier.
+
+The buying process runs in two phases. Standard SaaS marketing misses both.
+
+3/
+Phase 1 is rep-free.
+
+Gartner (March 2026): 67% of B2B buyers prefer a rep-free buying experience.
+
+A separate Gartner survey found 45% of those same buyers used AI tools during a recent purchase.
+
+4/
+Phase 2 is human -- but not for discovery.
+
+Gartner (May 2026): 69% of B2B buyers turn to sales reps to validate AI-generated insights.
+
+The buyer already has an answer. They want confirmation, not education.
+
+5/
+Put those two data points together:
+
+Phase 1 = AI and peer sources build the shortlist (rep-free)
+Phase 2 = human rep confirms what AI said (validation, not discovery)
+
+This is the actual map of a B2B deal in 2026.
+
+6/
+The timing makes this urgent.
+
+The winning vendor was already ranked #1 on the buyer's initial shortlist in 80% of deals (6sense).
+
+Competing at the demo stage is not where wins are determined.
+
+7/
+The shortlist itself is shrinking.
+
+Average vendors evaluated per deal: ~3.2 a few years ago. Now ~2.5.
+
+Fewer chances to make the list at all. And AI is compressing the research phase, not extending it.
+
+8/
+The phase-one problem = your content strategy has a second audience.
+
+ChatGPT, Claude, Perplexity -- these tools are synthesizing vendor comparisons before buyers ever visit your website.
+
+If you're not in those answers, you're not on the shortlist.
+
+9/
+I call this the day-zero layer.
+
+It's the signals and presence that exist before a buyer fills a form:
+- AI-readable content
+- G2 reviews in ICP language
+- Genuine community presence in the 2-3 Slacks where your buyers ask vendor questions
+
+10/
+None of this shows up in standard attribution.
+
+That's a feature, not a bug. It means your competitors aren't tracking it either.
+
+11/
+The rep's job is shifting.
+
+It's not shrinking -- it's being repositioned from early-stage education to late-stage confirmation.
+
+Gartner predicts: by 2030, 75% of B2B buyers will prefer sales experiences that prioritize human interaction over AI.
+
+The human moment moves later. It doesn't disappear.
+
+12/
+Phase-two prep requires new inputs:
+
+Run regular AI audit queries. Search for your company in ChatGPT and Perplexity with ICP-phrased questions.
+
+What AI says is what your buyer's priors look like before the call. Marketing can fix inaccuracies before the rep walks in.
+
+13/
+Metrics for phase-one performance:
+
+- Branded search volume (buyers who first heard of you via AI then searched directly)
+- Direct traffic share from ICP accounts
+- Demo-to-close win rate on first-touch-unknown deals vs. campaign-sourced
+
+None are in most SaaS dashboards. All are more predictive than MQL volume.
+
+14/
+The teams that win won't have the best demos.
+
+They'll be the ones whose names appear in the right AI answers at the moment nobody is watching.
+
+Full writeup with data and the two-phase framework: [link]
+
+@karansud
