@@ -59,3 +59,5 @@ Old home components (Hero, Work, Method, Offer, Tools, About, Faq, Contact, Stic
 2026-10-26: Vercel Authentication (SSO protection) turned OFF on project portfolio-v3 at Karan's request (vercel project protection disable portfolio-v3 --sso). Preview links are now public.
 
 2026-10-29: all-caps labels removed; /preview, /concepts and old home components deleted (06c55e8); client-lens review 8.6 (critiques/client-lens-2026-10-29.md), services + industry jump links added (42aca99). Public preview: https://portfolio-v3-64i63usrf-karansuds-projects.vercel.app . Testimonials parked by Karan. Go-live (force-push + production) waits for his OK.
+
+2026-11-12: data-led article headers (lib/hooks.ts, one number per post drawn as dots/bars, face + byline; research/article-headers.md) and a home/blog/footer copy pass (4f89973). Preview: https://portfolio-v3-f0lgu3ke1-karansuds-projects.vercel.app
