@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" width="720" height="540" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; background: #FAFAF9;">
+
+  <!-- Background -->
+  <rect width="720" height="540" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="360" y="38" text-anchor="middle" font-size="17" font-weight="700" fill="#0F172A">The AEO Revenue Math: Two Paths Through the Same Search</text>
+  <text x="360" y="58" text-anchor="middle" font-size="12" fill="#64748B">Same keyword. Same position. Completely different outcomes based on AI Overview citation.</text>
+
+  <!-- Divider -->
+  <line x1="48" y1="72" x2="672" y2="72" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Column headers -->
+  <rect x="48" y="84" width="290" height="36" rx="6" fill="#E2E8F0"/>
+  <text x="193" y="107" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">NOT CITED IN AI OVERVIEW</text>
+
+  <rect x="382" y="84" width="290" height="36" rx="6" fill="#1E40AF"/>
+  <text x="527" y="107" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">CITED IN AI OVERVIEW</text>
+
+  <!-- VS label -->
+  <circle cx="360" cy="102" r="18" fill="#0F172A"/>
+  <text x="360" y="107" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">VS</text>
+
+  <!-- Step 1: Traffic Volume -->
+  <!-- Left -->
+  <rect x="48" y="136" width="290" height="72" rx="6" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="76" y="158" font-size="10" fill="#94A3B8" font-weight="600" letter-spacing="0.5">MONTHLY IMPRESSIONS</text>
+  <text x="76" y="180" font-size="28" font-weight="700" fill="#0F172A">50,000</text>
+  <text x="76" y="198" font-size="12" fill="#475569">CTR: 0.61% → <tspan font-weight="700" fill="#DC2626">305 clicks</tspan></text>
+
+  <!-- Right -->
+  <rect x="382" y="136" width="290" height="72" rx="6" fill="#FFFFFF" stroke="#1E40AF" stroke-width="1.5"/>
+  <text x="410" y="158" font-size="10" fill="#94A3B8" font-weight="600" letter-spacing="0.5">MONTHLY IMPRESSIONS</text>
+  <text x="410" y="180" font-size="28" font-weight="700" fill="#0F172A">50,000</text>
+  <text x="410" y="198" font-size="12" fill="#475569">CTR: 2.12% → <tspan font-weight="700" fill="#1E40AF">1,060 clicks</tspan></text>
+
+  <!-- Arrow down -->
+  <text x="360" y="228" text-anchor="middle" font-size="18" fill="#94A3B8">↓</text>
+
+  <!-- Step 2: Conversion Rate -->
+  <!-- Left -->
+  <rect x="48" y="240" width="290" height="72" rx="6" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1"/>
+  <text x="76" y="262" font-size="10" fill="#94A3B8" font-weight="600" letter-spacing="0.5">CONVERSION RATE (TYPICAL B2B SaaS)</text>
+  <text x="76" y="287" font-size="28" font-weight="700" fill="#0F172A">2.1<tspan font-size="16">%</tspan></text>
+  <text x="76" y="305" font-size="12" fill="#475569">305 × 2.1% = <tspan font-weight="700" fill="#DC2626">6 leads/mo</tspan></text>
+
+  <!-- Right -->
+  <rect x="382" y="240" width="290" height="72" rx="6" fill="#FFFFFF" stroke="#1E40AF" stroke-width="1.5"/>
+  <text x="410" y="262" font-size="10" fill="#94A3B8" font-weight="600" letter-spacing="0.5">CONVERSION RATE (AI-REFERRED)</text>
+  <text x="410" y="287" font-size="28" font-weight="700" fill="#0F172A">4.4<tspan font-size="16">%+</tspan></text>
+  <text x="410" y="305" font-size="12" fill="#475569">1,060 × 4.4% = <tspan font-weight="700" fill="#1E40AF">47 leads/mo</tspan></text>
+
+  <!-- Arrow down -->
+  <text x="360" y="336" text-anchor="middle" font-size="18" fill="#94A3B8">↓</text>
+
+  <!-- Step 3: Pipeline -->
+  <!-- Left -->
+  <rect x="48" y="348" width="290" height="72" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1"/>
+  <text x="76" y="370" font-size="10" fill="#94A3B8" font-weight="600" letter-spacing="0.5">MONTHLY PIPELINE (@ $18K ACV)</text>
+  <text x="76" y="395" font-size="26" font-weight="700" fill="#DC2626">$108K</text>
+  <text x="76" y="413" font-size="12" fill="#475569">6 leads × 18% close × $10K ACV</text>
+
+  <!-- Right -->
+  <rect x="382" y="348" width="290" height="72" rx="6" fill="#EFF6FF" stroke="#1E40AF" stroke-width="1.5"/>
+  <text x="410" y="370" font-size="10" fill="#94A3B8" font-weight="600" letter-spacing="0.5">MONTHLY PIPELINE (@ $18K ACV)</text>
+  <text x="410" y="395" font-size="26" font-weight="700" fill="#1E40AF">$1.5M</text>
+  <text x="410" y="413" font-size="12" fill="#475569">47 leads × 18% close × $18K ACV</text>
+
+  <!-- VS label step 3 -->
+  <circle cx="360" cy="384" r="18" fill="#0F172A"/>
+  <text x="360" y="389" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">13×</text>
+
+  <!-- Bottom insight bar -->
+  <rect x="48" y="438" width="624" height="52" rx="8" fill="#0F172A"/>
+  <text x="360" y="462" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Same keyword. Same page. 13× more pipeline.</text>
+  <text x="360" y="480" text-anchor="middle" font-size="12" fill="#94A3B8">The only difference: whether the AI Overview cites you or ignores you.</text>
+
+  <!-- Footer -->
+  <text x="360" y="524" text-anchor="middle" font-size="10" fill="#94A3B8">Math: Seer Interactive CTR data (Nov 2025) × Semrush cross-industry conversion premium (4.4×) × illustrative ACV. Actual results vary.</text>
+
+</svg>

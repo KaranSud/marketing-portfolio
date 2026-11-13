@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" width="760" height="520" style="background:#FAFAF9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;">
+
+  <!-- Background -->
+  <rect width="760" height="520" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="380" y="38" text-anchor="middle" font-size="17" font-weight="700" fill="#0F172A">Why Your B2B SaaS Funnel Is Missing the Room</text>
+  <text x="380" y="58" text-anchor="middle" font-size="12" fill="#64748B">Single-persona funnel vs. committee-level marketing architecture</text>
+
+  <!-- Divider line -->
+  <line x1="380" y1="74" x2="380" y2="490" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+  <!-- LEFT SIDE: Single-Persona Funnel -->
+  <text x="190" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#DC2626">Single-Persona Funnel</text>
+  <text x="190" y="107" text-anchor="middle" font-size="11" fill="#94A3B8">Most B2B SaaS teams today</text>
+
+  <!-- Champion persona box -->
+  <rect x="130" y="118" width="120" height="38" rx="6" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="190" y="133" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">1 Persona</text>
+  <text x="190" y="148" text-anchor="middle" font-size="10" fill="#475569">Champion (VP / Head of)</text>
+
+  <!-- Arrow down -->
+  <line x1="190" y1="156" x2="190" y2="175" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+
+  <!-- Gated content -->
+  <rect x="130" y="175" width="120" height="38" rx="6" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="190" y="190" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Gated Content</text>
+  <text x="190" y="205" text-anchor="middle" font-size="10" fill="#475569">1 content track</text>
+
+  <!-- Arrow down -->
+  <line x1="190" y1="213" x2="190" y2="232" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+
+  <!-- MQL box -->
+  <rect x="130" y="232" width="120" height="38" rx="6" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="190" y="247" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">MQL Threshold</text>
+  <text x="190" y="262" text-anchor="middle" font-size="10" fill="#475569">1 contact crosses it</text>
+
+  <!-- Arrow down -->
+  <line x1="190" y1="270" x2="190" y2="289" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arrow-gray)"/>
+
+  <!-- Sales handoff -->
+  <rect x="130" y="289" width="120" height="38" rx="6" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1.2"/>
+  <text x="190" y="304" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Sales Handoff</text>
+  <text x="190" y="319" text-anchor="middle" font-size="10" fill="#475569">1 contact in CRM</text>
+
+  <!-- Problem callout -->
+  <rect x="60" y="345" width="260" height="58" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="190" y="362" text-anchor="middle" font-size="11" font-weight="700" fill="#DC2626">The 92% Problem</text>
+  <text x="190" y="378" text-anchor="middle" font-size="10" fill="#475569">12 of 13 stakeholders never</text>
+  <text x="190" y="393" text-anchor="middle" font-size="10" fill="#475569">received relevant content</text>
+
+  <!-- RIGHT SIDE: Committee-Level Architecture -->
+  <text x="570" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">Committee-Level Architecture</text>
+  <text x="570" y="107" text-anchor="middle" font-size="11" fill="#94A3B8">Market leaders approach (McKinsey 2026)</text>
+
+  <!-- Committee roles row -->
+  <text x="570" y="128" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">ALL 13 INTERNAL ROLES GET CONTENT</text>
+
+  <!-- Role boxes in a grid -->
+  <!-- Row 1 -->
+  <rect x="410" y="135" width="85" height="30" rx="5" fill="#E0E7FF" stroke="#C7D2FE" stroke-width="1"/>
+  <text x="452" y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#3730A3">Champion</text>
+  <text x="452" y="161" text-anchor="middle" font-size="9" fill="#6366F1">Your persona</text>
+
+  <rect x="505" y="135" width="85" height="30" rx="5" fill="#D1FAE5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="547" y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">CFO / Finance</text>
+  <text x="547" y="161" text-anchor="middle" font-size="9" fill="#059669">ROI docs</text>
+
+  <rect x="600" y="135" width="85" height="30" rx="5" fill="#D1FAE5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="642" y="148" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">Procurement</text>
+  <text x="642" y="161" text-anchor="middle" font-size="9" fill="#059669">Vendor eval</text>
+
+  <!-- Row 2 -->
+  <rect x="410" y="172" width="85" height="30" rx="5" fill="#D1FAE5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="452" y="185" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">Legal / Security</text>
+  <text x="452" y="198" text-anchor="middle" font-size="9" fill="#059669">Compliance</text>
+
+  <rect x="505" y="172" width="85" height="30" rx="5" fill="#D1FAE5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="547" y="185" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">IT / Integration</text>
+  <text x="547" y="198" text-anchor="middle" font-size="9" fill="#059669">Tech docs</text>
+
+  <rect x="600" y="172" width="85" height="30" rx="5" fill="#D1FAE5" stroke="#A7F3D0" stroke-width="1"/>
+  <text x="642" y="185" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">End Users</text>
+  <text x="642" y="198" text-anchor="middle" font-size="9" fill="#059669">Use cases</text>
+
+  <!-- Plus external influencers -->
+  <text x="570" y="218" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">+ 9 EXTERNAL INFLUENCERS</text>
+  <rect x="430" y="225" width="280" height="28" rx="5" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="570" y="237" text-anchor="middle" font-size="10" fill="#475569">Analysts  |  Consultants  |  Peer references</text>
+  <text x="570" y="250" text-anchor="middle" font-size="9" fill="#94A3B8">G2 reviews  |  Community presence  |  Analyst briefs</text>
+
+  <!-- Dark funnel phase -->
+  <rect x="410" y="262" width="320" height="38" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="570" y="277" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Dark Funnel Phase (Months 1-6 of 10)</text>
+  <text x="570" y="292" text-anchor="middle" font-size="10" fill="#64748B">61% of journey complete before vendor contact</text>
+
+  <!-- Measurement -->
+  <rect x="410" y="310" width="320" height="38" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="570" y="325" text-anchor="middle" font-size="11" font-weight="600" fill="#0F172A">Measurement: Account Activation (MQA)</text>
+  <text x="570" y="340" text-anchor="middle" font-size="10" fill="#64748B">Multiple roles engage across channels, not 1 MQL</text>
+
+  <!-- Outcome callout -->
+  <rect x="410" y="358" width="320" height="45" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2"/>
+  <text x="570" y="374" text-anchor="middle" font-size="11" font-weight="700" fill="#15803D">The Revenue Gap</text>
+  <text x="570" y="389" text-anchor="middle" font-size="10" fill="#475569">60% of leaders report double-digit growth</text>
+  <text x="570" y="402" text-anchor="middle" font-size="10" fill="#475569">vs. 21% of laggards (McKinsey 2026)</text>
+
+  <!-- Bottom legend -->
+  <text x="380" y="442" text-anchor="middle" font-size="10" fill="#94A3B8">Forrester 2026 State of Business Buying (n=18,000)  |  McKinsey 2026 B2B Pulse (n=4,000)  |  Gartner March 2026</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L8,4 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+</svg>
