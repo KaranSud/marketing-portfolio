@@ -47,6 +47,8 @@ export type CaseStudy = {
   /** Folder under public/Results/ scanned for before-after pairs. */
   mediaDir?: string;
   beforeAfter?: BeforeAfter;
+  /** One standout piece shown large on the case page, with its own numbers. */
+  feature?: { title: string; body: string; video: string; poster: string; href: string; hrefLabel: string; stats: Metric[]; source: string };
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -264,6 +266,7 @@ export const caseStudies: CaseStudy[] = [
     channels: ["Instagram", "Facebook"],
     stats: [
       { val: "678.5K", label: "Organic Facebook views, 1 Sep 2025 to 27 Apr 2026" },
+      { val: "85K", label: "Accounts reached by one creator reel with @seandoesmagic, Oct 2026" },
       { val: "130.1K", label: "Views on the top post" },
       { val: "289.0K", label: "Instagram views" },
     ],
@@ -280,7 +283,24 @@ export const caseStudies: CaseStudy[] = [
       "Facebook: 678.5K organic views, 3-second views up 371.3%, content interactions up 135.1%, watch time up 339.3%.",
       "Instagram: 289.0K views, reach up 52.7%, 6.1K content interactions.",
       "Top post: 130.1K views. The CEO's account stands at 6,519 followers.",
+      "October 2026: a creator reel with magician Sean (@seandoesmagic) at the Tony Roma's food truck reached 84,958 accounts by the day after it went live, about 29 times the brand's best own post of the previous 90 days.",
+      "The brand's own reels found a format too: \"What if a rack of ribs came with a launch ramp?\" reached 2,946 on Instagram, about 9 times a typical Tony Roma's reel.",
     ],
+    feature: {
+      title: "Sean took over the food truck",
+      body: "A creator collaboration with magician Sean (@seandoesmagic), who did his tricks at the Tony Roma's food truck. Posted on 23 October 2026 as a collab with the brand's account.",
+      video: "/Results/Tony Roma's/posts/01.mp4",
+      poster: "/Results/Tony Roma's/posts/01.jpg",
+      href: "https://www.instagram.com/reel/De2mHC8Bukf/",
+      hrefLabel: "Watch it on Instagram",
+      stats: [
+        { val: "84,958", label: "Accounts reached by the day after it went live" },
+        { val: "29x", label: "The reach of the brand's best own post in the previous 90 days" },
+        { val: "586", label: "Likes" },
+        { val: "509", label: "Comments" },
+      ],
+      source: "Reach and likes from Meta Business Suite, read 24 Oct 2026. Comments from the public post, 13 Nov 2026.",
+    },
     screenshots: [
       {
         src: "/Results/Tony Roma's/TR_FacebookContent.png",

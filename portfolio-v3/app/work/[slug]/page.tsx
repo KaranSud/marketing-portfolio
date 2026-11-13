@@ -72,6 +72,23 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           ) : null}
         </header>
 
+        {c.feature ? (
+          <section className="fl-feature" aria-labelledby="fl-feature-title">
+            <video className="fl-feature-video" src={c.feature.video} poster={c.feature.poster} controls playsInline preload="none" />
+            <div className="fl-feature-copy">
+              <h2 id="fl-feature-title">{c.feature.title}</h2>
+              <p>{c.feature.body}</p>
+              <div className="fl-feature-stats">
+                {c.feature.stats.map((s) => (
+                  <p key={s.label}><b>{s.val}</b><span>{s.label}</span></p>
+                ))}
+              </div>
+              <p className="fl-muted fl-feature-src">{c.feature.source}</p>
+              <a className="fl-link" href={c.feature.href} target="_blank" rel="noopener noreferrer">{c.feature.hrefLabel}</a>
+            </div>
+          </section>
+        ) : null}
+
         {own.length ? (
           <section className="fl-case-posts" aria-label={`Posts I made for ${c.title}`}>
             <p className="fl-kicker">Posts I made for {c.title}{own.length > 3 ? `, ${own.length} of the best` : ""}. Tap one to open it.</p>

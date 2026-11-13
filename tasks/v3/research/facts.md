@@ -33,6 +33,8 @@ Chrome; WebFetch gets HTTP 999). `LI-post` = his own LinkedIn post of 15 Oct 202
 | 10 | Grew FanTV founder Prashan Agarwal's X from 12K to over 90K followers | Prashan Agarwal | cs:142; fx (93,181 today) | KP start, VP end |
 | 11 | Built FanTV's Discord and Telegram to 150K+ members | FanTV AI | cs:95; LI-exp | KP |
 | 12 | 4X ROAS on ₹3L a month of ad spend for Opaque Studio | Opaque Studio | cs:549; LI-exp | KP (no screenshot; case page, not hero) |
+| 13 | Creator reel with magician Sean (@seandoesmagic) at the Tony Roma's food truck, 23 Oct 2026: 84,958 accounts reached, 586 likes, 23 shares, about 29x the brand's best own post of the prior 90 days (2,946) | Tony Roma's | Meta Business Suite > Content > Published, read 24 Oct 2026 (Romacorp/Tony Roma's/content_studio/schedule/TR_performance_notes.md); 509 comments from the public post data, 13 Nov 2026 (instagram.com/reel/De2mHC8Bukf) | KP (MBS read; reach is a day-one figure, so it is a floor) |
+| 14 | Own reel "What if a rack of ribs came with a launch ramp?", 18 Oct 2026: 2,946 Instagram reach, about 9x a typical Tony Roma's reel (median 352) | Tony Roma's | same MBS read, 24 Oct 2026 | KP |
 
 Rules for these: keep the money context on #8 (the 471% is on a ₹3,500 spend, so it cannot sit alone as "peak
 campaign ROI"); always write "helped" on #2; keep "airdrops and a 100+ KOL program" next to #1 and never call it

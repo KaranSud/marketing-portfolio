@@ -9,6 +9,7 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
+  preload: false,
 });
 
 const inter = Inter({
@@ -16,6 +17,7 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
+  preload: false,
 });
 
 // Still used by the blog, tools and samples pages; the home page uses none.

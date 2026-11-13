@@ -14,9 +14,13 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const vids = track.current?.querySelectorAll("video") ?? [];
+    // Reels fetch nothing until their tile is on screen: the src is attached on first view.
     const io = new IntersectionObserver((es) => es.forEach((e) => {
       const v = e.target as HTMLVideoElement;
-      if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
+      if (e.isIntersecting) {
+        if (!v.src && v.dataset.src) v.src = v.dataset.src;
+        v.play().catch(() => {});
+      } else v.pause();
     }), { threshold: 0.5 });
     vids.forEach((v) => io.observe(v));
     return () => io.disconnect();
@@ -49,7 +53,12 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
             aria-label={k < posts.length ? `Open ${account} post, ${p.caption}` : undefined}>
             {p.text && !p.src ? (
               <span className="fl-text-card"><span>{p.text}</span><small>{p.caption}</small></span>
-            ) : p.video ? <video src={p.video} poster={p.src} muted loop playsInline preload="none" /> : <Image src={p.src} alt="" fill sizes="260px" />}
+            ) : p.video ? (
+              <>
+                <Image src={p.src} alt="" fill sizes="200px" />
+                <video data-src={p.video} muted loop playsInline preload="none" />
+              </>
+            ) : <Image src={p.src} alt="" fill sizes="200px" />}
           </button>
         ))}
       </div>
