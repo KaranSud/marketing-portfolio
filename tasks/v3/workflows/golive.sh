@@ -7,7 +7,7 @@
 #    project (only the dashboard can move it), so a v3 deploy does not pick it up on its own.
 #    The old project's git link was disconnected on 13 Nov 2026 so it cannot take the address back.
 set -e
-cd "$(dirname "$0")/../.."
+cd "$(dirname "$0")/../../.."
 DOMAIN=karan-sud-portfolio.vercel.app
 git fetch -q origin main
 new=""
