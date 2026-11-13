@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Actually Drives Your Email "Opens" in 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --label-bg: #FAFAF9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --border: #334155;
+      --label-bg: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --grid: #1E293B;
+    --border: #334155;
+    --label-bg: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 32px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .chart-header { margin-bottom: 20px; }
+  .chart-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+  }
+  .legend {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .legend-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-left: auto;
+  }
+  .callout {
+    margin-top: 20px;
+    padding: 12px 14px;
+    border-left: 3px solid var(--accent);
+    background: var(--label-bg);
+    border-radius: 2px;
+  }
+  .callout p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .callout strong { color: var(--accent); }
+  .source {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="chart-header">
+  <div class="chart-title">What Actually Drives Your "Opens" in 2026</div>
+  <div class="chart-subtitle">Estimated breakdown of a typical email "open" report for a B2C or consumer SaaS list with significant iOS exposure.</div>
+</div>
+<div class="chart-wrap">
+  <canvas id="chart"></canvas>
+</div>
+
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#DC2626"></div>
+    <div class="legend-label">Apple MPP auto-opens (machine-generated)</div>
+    <div class="legend-value">58%</div>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#475569"></div>
+    <div class="legend-label">Genuine human opens</div>
+    <div class="legend-value">33%</div>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#94A3B8"></div>
+    <div class="legend-label">Gmail image proxy</div>
+    <div class="legend-value">6%</div>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#CBD5E1"></div>
+    <div class="legend-label">Security bots and filter pre-scans</div>
+    <div class="legend-value">3%</div>
+  </div>
+</div>
+
+<div class="callout">
+  <p><strong>Only 33% of what your dashboard calls "opens" are genuine human reads.</strong> The remaining 67% are machine-generated signals from Apple's privacy system, Google's image proxy, and security infrastructure. Teams making A/B, suppression, and re-engagement decisions on these numbers are optimizing for server behavior, not subscriber behavior.</p>
+</div>
+<div class="source">Sources: Litmus Email Client Market Share Report (Dec 2025); Validity State of Email 2025; multiple deliverability research reports. Percentages are estimates for an iOS-heavy consumer list and will vary by audience composition.</div>
+
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Apple MPP (machine)', 'Genuine human opens', 'Gmail image proxy', 'Security bots'],
+    datasets: [{
+      data: [58, 33, 6, 3],
+      backgroundColor: ['#DC2626', '#475569', '#94A3B8', '#CBD5E1'],
+      borderColor: '#FFFFFF',
+      borderWidth: 3,
+      hoverOffset: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    cutout: '62%',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.label}: ${ctx.parsed}%`
+        },
+        backgroundColor: '#0F172A',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        cornerRadius: 4,
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

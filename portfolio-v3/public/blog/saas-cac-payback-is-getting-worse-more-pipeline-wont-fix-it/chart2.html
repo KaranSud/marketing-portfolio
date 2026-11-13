@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS CAC Payback by Customer Segment 2024</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --mid: #64748B;
+    --accent: #DC2626;
+    --grid: #E2E8F0;
+    --card-border: #E7E5E4;
+    --surface: #FAFAF9;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #CBD5E1;
+      --text-muted: #64748B;
+      --mid: #94A3B8;
+      --grid: #1E293B;
+      --card-border: #1E293B;
+      --surface: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+    --mid: #94A3B8;
+    --grid: #1E293B;
+    --card-border: #1E293B;
+    --surface: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 280px;
+  }
+  .legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .legend-val {
+    margin-left: auto;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .source {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="chart-title">Median CAC Payback Period by Customer Segment (2024)</div>
+  <div class="chart-subtitle">The gap between segments reveals an ICP choice, not a channel problem</div>
+  <div class="chart-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#1D4ED8;"></div>
+      <span>SMB (ACV under $5K)</span>
+      <span class="legend-val">9 months</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#64748B;"></div>
+      <span>Mid-market (ACV $15K–$100K)</span>
+      <span class="legend-val">16 months</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#DC2626;"></div>
+      <span>Enterprise (ACV above $100K)</span>
+      <span class="legend-val">24 months</span>
+    </div>
+  </div>
+  <div class="source">Source: Benchmarkit 2024 B2B SaaS benchmark analysis via ScaleXP; Pavilion + Benchmarkit survey of 583 SaaS companies, 2025.</div>
+</div>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['SMB (9 months)', 'Mid-market (16 months)', 'Enterprise (24 months)'],
+    datasets: [{
+      data: [9, 16, 24],
+      backgroundColor: ['#1D4ED8', '#64748B', '#DC2626'],
+      borderColor: isDark ? '#0F172A' : '#FFFFFF',
+      borderWidth: 3,
+      hoverOffset: 6
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '62%',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: isDark ? '#1E293B' : '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#CBD5E1',
+        padding: 10,
+        callbacks: {
+          label: ctx => ` Payback: ${ctx.parsed} months`
+        }
+      }
+    }
+  },
+  plugins: [{
+    id: 'centerText',
+    afterDraw(chart) {
+      const { ctx: c, chartArea: { left, top, right, bottom } } = chart;
+      const cx = (left + right) / 2;
+      const cy = (top + bottom) / 2;
+      c.save();
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      c.fillStyle = isDark ? '#F1F5F9' : '#0F172A';
+      c.font = 'bold 22px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
+      c.fillText('2.7×', cx, cy - 8);
+      c.fillStyle = isDark ? '#94A3B8' : '#64748B';
+      c.font = '12px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
+      c.fillText('payback gap', cx, cy + 12);
+      c.restore();
+    }
+  }]
+});
+</script>
+</body>
+</html>

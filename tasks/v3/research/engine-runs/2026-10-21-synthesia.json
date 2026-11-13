@@ -1,0 +1,200 @@
+{
+ "request": {
+  "domain": "synthesia.io",
+  "offer": "Launch content, KOL programs and community growth for AI products: more people trying the product and sticking with it."
+ },
+ "recordedAt": "2026-10-21",
+ "endpoint": "https://account-research-five.vercel.app/api/research",
+ "response": {
+  "domain": "synthesia.io",
+  "title": "Synthesia: #1 AI Video Platform for Business",
+  "name": "Synthesia",
+  "siteReachable": true,
+  "snapshot": {
+   "description": "Synthesia Limited is a British multinational artificial intelligence company based in London, United Kingdom. It is a synthetic media-generation software developer and creator of AI-generated video content, including audio-visual agents and cloned avatars. Britain's largest generative-AI firm, it is used by 70% of FTSE 100 and over 90% of Fortune 100 companies.",
+   "wikipediaUrl": "https://en.wikipedia.org/wiki/Synthesia_(company)",
+   "founded": "2017",
+   "hq": "London"
+  },
+  "profiles": null,
+  "facts": {
+   "schemaTypes": [],
+   "sameAs": [],
+   "cmsHints": [
+    "Webflow"
+   ],
+   "ogType": "website",
+   "description": "Official Synthesia site. The AI video platform trusted by 90%+ of the Fortune 100 to communicate, train, and upskill teams in 140+ languages."
+  },
+  "scope": {
+   "urls": 864,
+   "products": 0,
+   "locations": 0,
+   "articles": 276
+  },
+  "hiring": {
+   "hiring": true,
+   "source": "Careers page"
+  },
+  "classification": {
+   "category": "professional_services",
+   "label": "Professional / B2B services",
+   "confidence": "medium",
+   "reason": "Content keywords on site"
+  },
+  "news": [
+   {
+    "title": "I created an interactive digital avatar of myself — and you can talk to it",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONGNLaUpob1NNVjhYR2hzaGZWM3ZKN2tieEJUdkZRQzVhYmZSUXdJNThIVVJjNkZRaVl0T19XZURnSWozZUNzM1A2YXNlMFh5VGc2MG5XZTVUNDFyZWZXVmx1ZW8wS29YazM4Yl96SjhkNnF4X2M1aFR6WW0yU0d4MDh2ZlJzMjVsN3lSWklJb1NmdW5nM283SXdCOHpEcGdHU1VnRU8xUHpnelE?oc=5",
+    "date": "2026-09-26",
+    "source": "TechCrunch"
+   },
+   {
+    "title": "Victor Riparbelli, Synthesia CEO: A Fortt Knox Update",
+    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQX0t2NWZza1h6dEo1VlVHbXBlb2FvLW9XOWpIb1FJWnFJcTQ0OUZLT2tadjA1NmpqOTZMNWUzblJPVWhwMUdCdEtIX0I0SmRUdnFseFllQ2t6RjUzZVM3YXVIQmpZSXY2RjFQQ3R4OTdIdDl6Wi1ueldZSkFIM3VFUmNWbmNybzRXZ0dubnlYR3BPc0FtX0FjNjhn?oc=5",
+    "date": "2026-10-01",
+    "source": "CNBC"
+   },
+   {
+    "title": "British AI star Synthesia boosts revenue by 94%",
+    "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPNEdXYUtUWW9DOEtnZGk5WHdXaWsyck0zZGVXUDJjenRxLXpMNVMxS3JsSlNjUTFtZkh6Tnpkay02dWFjdkZDYVR3dGZmUm5rYmVtVmtBeDRJNXZSMjd5ZmhQQmFrWGJEVHVRMXVRZlhzXzVrX2RiMmJTNVVtZ19zbFhoSUh0Z1UxaUJialhTNnhoVnVFcEJPTXFMcFRldkxDU3JQUjM0b3FDcFkwNlVKTmFkcFZVSVVCNHRjSmFpSENpVkgy?oc=5",
+    "date": "2026-10-07",
+    "source": "The Times"
+   },
+   {
+    "title": "Teaching an AI Avatar to Read the Room",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE15TjNNSlRvY21qTEk4TmhlU2kwMFN0dnpTaHpNLUlHdEtKZW5fOVFvbEc3UXk5RXA3aThXNllCUkV0SmVaR2FZZko4dmtjbFRDbTJlTzRQRVZ5Ny1FOFpqTVNzZU1JNF9GSXZ1N3ZENTRCemJlRUpv?oc=5",
+    "date": "2026-10-08",
+    "source": "The AI Economy | Ken Yeung"
+   },
+   {
+    "title": "Synthesia Review: AI Avatars So Real I Got Spooked",
+    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBOWl8tSDI4S1FpYm9FQUpzRzFqazJRbnBNZTMzZFpwUmc4QmMwcDBHV1ZNZzdEeUx0Z0ViZUVybzg5eTVSeGszbk9hSEZqSVE?oc=5",
+    "date": "2026-10-01",
+    "source": "Unite.AI"
+   }
+  ],
+  "hn": {
+   "stories": 5775,
+   "points": 43,
+   "top": {
+    "title": "Heygem AI: China's Open Source Heygen and Synthesia Alternative",
+    "url": "https://github.com/GuijiAI/HeyGem.ai",
+    "points": 6
+   },
+   "searchUrl": "https://hn.algolia.com/?query=Synthesia&type=story"
+  },
+  "github": {
+   "org": "Synthesia-Technologies",
+   "repos": 2,
+   "stars": 0,
+   "url": "https://github.com/Synthesia-Technologies"
+  },
+  "tech": [
+   {
+    "name": "Webflow",
+    "category": "CMS / Builder"
+   },
+   {
+    "name": "Google Analytics",
+    "category": "Analytics"
+   },
+   {
+    "name": "HubSpot",
+    "category": "Marketing"
+   },
+   {
+    "name": "Intercom",
+    "category": "Support"
+   },
+   {
+    "name": "Cloudflare",
+    "category": "Hosting / CDN"
+   }
+  ],
+  "contacts": {
+   "emails": [],
+   "linkedin": "https://www.linkedin.com/company/synthesia-technologies",
+   "twitter": "https://twitter.com/synthesiaio",
+   "teamLinkedins": [],
+   "linkedinPeopleSearch": "https://www.linkedin.com/search/results/people/?keywords=Synthesia",
+   "likelyEmails": []
+  },
+  "sources": [
+   {
+    "label": "Wikipedia / Wikidata: Synthesia (company)",
+    "url": "https://en.wikipedia.org/wiki/Synthesia_(company)"
+   },
+   {
+    "label": "Sitemap",
+    "url": "https://synthesia.io/sitemap.xml"
+   },
+   {
+    "label": "GitHub: Synthesia-Technologies",
+    "url": "https://github.com/Synthesia-Technologies"
+   },
+   {
+    "label": "Google News",
+    "url": "https://news.google.com/rss/search?q=%22Synthesia%22&hl=en-US&gl=US&ceid=US:en"
+   },
+   {
+    "label": "Hacker News (Algolia)",
+    "url": "https://hn.algolia.com/?query=Synthesia&type=story"
+   }
+  ],
+  "brief": {
+   "fitScore": 88,
+   "fitReason": "Synthesia's growth and new AI products demand strong content and community for adoption.",
+   "executiveSummary": "Synthesia, Britain's largest generative-AI firm, is a leading AI video platform used by 90%+ of the Fortune 100. They are actively expanding their product suite with interactive avatars and API capabilities, signaling a clear focus on driving adoption and engagement for their advanced offerings. This account presents a strong fit for services that enhance product trial conversion and user stickiness.",
+   "strategicRead": "Synthesia positions itself as the #1 AI video platform, emphasizing ease of use across diverse business functions like L&D, sales, and marketing. Their recent focus on interactive avatars, conversational surveys, and API integration suggests a push towards deeper, more complex product use cases. They are clearly prioritizing continued innovation and broader market penetration, requiring robust content and community strategies to support new feature adoption and sustained user engagement.",
+   "fit": "The seller's offer directly aligns with Synthesia's need to drive adoption and retention for its expanding AI video products, particularly new models like Syren and interactive features. The best angle is to focus on how content, KOL programs, and community growth can accelerate trial-to-paid conversions and long-term stickiness for their advanced AI offerings.",
+   "pains": [
+    "Converting 'Try for free' users into loyal customers for new AI video features.",
+    "Ensuring sustained engagement and retention across their diverse business use cases.",
+    "Differentiating and driving adoption for advanced capabilities like interactive avatars and API integrations.",
+    "Effectively launching and gaining traction for new AI models like Syren in a competitive market."
+   ],
+   "hook": "Synthesia's new Syren AI video model and interactive avatar capabilities are impressive.",
+   "email": {
+    "subject": "quick thought on syren adoption",
+    "body": "Your new Syren AI model and interactive avatars are truly innovative. We often see great AI products struggle to get users trying and sticking with advanced features. We help AI companies drive trial conversions and long-term engagement through targeted content and community programs. Worth a quick look?"
+   },
+   "linkedin": "Saw the buzz around Synthesia's Syren model and interactive avatars. Very impressive tech.",
+   "sequence": [
+    {
+     "day": 3,
+     "channel": "email",
+     "label": "Bump",
+     "subject": "re: quick thought on syren adoption",
+     "body": "Just circling back on my previous email. With Synthesia's 'try for free' model, getting users to fully explore and adopt new features like Syren is key. Our content and community strategies are designed to boost that initial stickiness. Any thoughts on this?"
+    },
+    {
+     "day": 5,
+     "channel": "linkedin",
+     "label": "LinkedIn DM",
+     "body": "Hey, enjoyed seeing Synthesia's continued growth. Curious how you're thinking about driving adoption for new features like Syren and interactive avatars?"
+    },
+    {
+     "day": 7,
+     "channel": "email",
+     "label": "Proof",
+     "subject": "boosting synthesia product stickiness",
+     "body": "When launching new AI products, showing users how to integrate them into their workflow is crucial for stickiness. We recently helped [a similar brand we helped] achieve [a recent result you can drop in] by focusing on user-centric content and community. Open to a 2-line idea on how this might apply to Synthesia?"
+    },
+    {
+     "day": 12,
+     "channel": "email",
+     "label": "Breakup",
+     "subject": "checking in one last time",
+     "body": "It looks like my timing might be off, which is totally fine. If driving more user trials and long-term stickiness for Synthesia's AI products ever becomes a priority, my door is always open. No pressure at all."
+    },
+    {
+     "day": 1,
+     "channel": "call",
+     "label": "Cold-call opener",
+     "body": "Hi, I'm [Seller Name] from [Seller Company]. I'm calling because I saw the exciting work Synthesia is doing with interactive avatars and new AI models like Syren. We help AI products like yours get more users trying and sticking with new features. Is now a bad time?"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,29 @@
+# v3 learnings (append, dated, one line each)
+- 2026-10-15 Container was refreshed between sessions; scratchpad is ephemeral, keep anything reusable under tasks/v3/.
+- 2026-10-15 shot.mjs: ESM import ignores NODE_PATH; fixed by resolving playwright with createRequire (NODE_PATH dirs, fallback /opt/node22/lib/node_modules).
+- 2026-10-15 shot.mjs --click: full-page chunking can't capture fixed modals; --click now pages the largest scrollable element with viewport shots.
+- 2026-10-15 Subagents start without WebSearch/WebFetch loaded: first call ToolSearch "select:WebSearch,WebFetch" before researching.
+- 2026-10-15 shot.mjs: lazy images came out blank because the page walk was too fast; force loading=eager and await img.decode() before capturing (fix not yet applied).
+- 2026-10-15 (cloud) WebFetch was blocked for all external sites; WebSearch worked. On a local machine both should work.
+- 2026-10-15 (local) Playwright: playwright-core lives in ~/.cache/portfolio-v3-tools (outside the repo); shot.mjs resolves it and falls back to the newest cached Chromium in ~/Library/Caches/ms-playwright when its own revision is missing. No NODE_PATH needed.
+- 2026-10-15 (local) shot.mjs lazy-image fix applied: images forced eager + decode() awaited before capture.
+- 2026-10-15 (local) A fresh clone has no repo git identity: run git config user.name 'Karan Sud' and user.email karansud98@gmail.com before any commit (e6d6721 went out with a Mac-local email and a Co-Authored-By line). Also git config pack.threads 1 (SIGBUS on this Mac).
+- 2026-10-15 (local) This Mac's disk has dropped files before: run git diff --cached --name-status | grep '^D' before every commit and restore unexpected deletions.
+- 2026-10-15 LinkedIn: WebFetch returns 999; read profiles via Claude in Chrome (own tab, get_page_text on /details/experience/). /details/education/ rendered empty in one try.
+- 2026-10-15 shot.mjs --click: CountUp ignores reduced motion and the modal is shot 1.2s after click (count runs 1.6s), so modal stats can show mid-count values (299K for 300K); not a data error.
+- 2026-10-15 No Lighthouse locally; LCP/CLS/long tasks can be measured with playwright-core from ~/.cache/portfolio-v3-tools + PerformanceObserver + CDP throttling (v2 mobile LCP 4.6s, CLS 0).
+- 2026-10-15 Bash runs in zsh: 'set -- $s' does not word-split; wrap multi-arg loops in bash -c.
+- 2026-10-15 (local) curl works for bundlephobia.com/api/size?package=x@v, cdn.jsdelivr.net file sizes, and api.github.com/repos/<r>/git/trees/main?recursive=1 (repo file lists without cloning). zsh: never echo a bare '=====' (=cmd expansion error).
+- 2026-10-16 Screenshots under tasks/v3/shots/baseline/ and shots/rounds/ are gitignored (42MB per full set); regenerate with shot.mjs.
+- 2026-10-16 shot.mjs resets inline style transform/opacity on every [style] element (meant for framer). Put zooms and crossfades in CSS vars/classes, never inline transform or opacity, or shots lie.
+- 2026-10-16 v2's globals.css has bare element/ID selectors (nav {}, footer {}, #contact {}) that hit new v3 markup; removed nav/footer/#contact. Grep globals.css for ^tag/^#id rules before reusing a tag or id.
+- 2026-10-16 Smooth scrolling (CSS scroll-behavior or Lenis) stalls scripted scrolls: the taste-skill inspector then reports fake long-pin, covered-text and still-page. Lenis removed; html:focus-within keeps smooth anchor jumps.
+- 2026-10-16 Do not rm with globs after cd: Claude Code's safety check blocks it. Write new shots to a fresh rounds/<id> folder instead of clearing an old one.
+- 2026-10-16 app/template.tsx (framer opacity-0 route fade) hid every page's server HTML until hydration; deleted. Never animate a wrapper around page content from opacity 0.
+- 2026-10-16 CSS prune: scan app, components, lib AND content/blog (posts embed chart HTML with classes); verify with byte-compared full-page shots (diffs from lazy images are timing, not CSS).
+- 2026-10-21 fxtwitter needs /<handle>/status/<id> (a bare /<handle>/<id> returns 404). Many brand posts are X Articles: no media, the image is article.cover_media.media_info.original_img_url.
+- 2026-10-21 X search in Claude in Chrome (from:<handle> since: until: filter:media) lists in-tenure posts in one page load; read ids with JS, then fetch each via fxtwitter. JS output containing a URL query string is blocked by the extension; return ids only.
+- 2026-10-21 Instagram: the logged-in /api/v1 endpoints hit 429 after about 15 calls; profile pages still load. An IG shortcode's post date = ((base64 id) >> 23) + 1314220021721 ms (upload time; scheduled posts can differ by days).
+- 2026-10-21 @thesportsrushus (linked from thesportsrush.com) shows 'page isn't available'; Potters' Hub IG handle unknown.
+- 2026-10-22 IG grid scroll in Claude in Chrome: keep each javascript_tool call under ~20 scroll steps (45s CDP timeout); keep state in window.* and call a saved window.__step(n) again. 22 steps reach about 130 posts.
+- 2026-10-22 Inline-link tap targets: on <=860px, .tlink gets padding 13px 4px with margin-inline -4px (44px box, no layout shift). Watch for the padded box overlapping a heading above it; the taste inspector reports that as covered-text.

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Content Strategy Dimensions: Automation vs. Original Inputs</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --text: #0F172A;
+      --secondary: #475569;
+      --muted: #94A3B8;
+      --mid: #64748B;
+      --accent: #DC2626;
+      --grid: #E2E8F0;
+      --border: #E7E5E4;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0F172A;
+        --text: #F1F5F9;
+        --secondary: #CBD5E1;
+        --muted: #64748B;
+        --mid: #94A3B8;
+        --grid: #1E293B;
+        --border: #334155;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --secondary: #CBD5E1;
+      --muted: #64748B;
+      --mid: #94A3B8;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      padding: 32px 16px;
+      min-height: 100vh;
+    }
+    .chart-container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .chart-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .chart-subtitle {
+      font-size: 13px;
+      color: var(--secondary);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    canvas { width: 100% !important; }
+    .source {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .legend {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--secondary);
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <div class="chart-title">Content Strategy Effectiveness Across Five Dimensions</div>
+    <div class="chart-subtitle">AI-first full automation vs. AI-assisted original research approach, scored 1–10</div>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#0F172A; opacity:0.8;"></div>
+        <span>AI-First (Full Automation)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#DC2626;"></div>
+        <span>AI-Assisted Original Research</span>
+      </div>
+    </div>
+    <canvas id="radarChart" height="420"></canvas>
+    <div class="source">Sources: CMI B2B Content Marketing Trends 2026 (n=1,015); Orbit Media Blogger Survey 2025 (n=808); Raptive Consumer Trust Study 2025 (n=3,000); IDC AI Content Creativity Brief, April 2026. Scores are researcher-synthesized from reported performance gaps and adoption data.</div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('radarChart').getContext('2d');
+
+    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+    const textColor = isDark ? '#CBD5E1' : '#475569';
+
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: [
+          'Differentiation',
+          'Buyer Trust',
+          'Organic Reach',
+          'Content Velocity',
+          'Pipeline Impact'
+        ],
+        datasets: [
+          {
+            label: 'AI-First (Full Automation)',
+            data: [3, 4, 5, 9, 3],
+            backgroundColor: 'rgba(15, 23, 42, 0.12)',
+            borderColor: 'rgba(15, 23, 42, 0.7)',
+            borderWidth: 2,
+            pointBackgroundColor: 'rgba(15, 23, 42, 0.7)',
+            pointRadius: 5,
+            pointHoverRadius: 7
+          },
+          {
+            label: 'AI-Assisted Original Research',
+            data: [8, 8, 7, 6, 8],
+            backgroundColor: 'rgba(220, 38, 38, 0.10)',
+            borderColor: '#DC2626',
+            borderWidth: 2,
+            pointBackgroundColor: '#DC2626',
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: isDark ? '#1E293B' : '#0F172A',
+            titleColor: '#F1F5F9',
+            bodyColor: '#CBD5E1',
+            padding: 12,
+            cornerRadius: 6,
+            callbacks: {
+              label: function(context) {
+                return ' ' + context.dataset.label + ': ' + context.parsed.r + '/10';
+              }
+            }
+          }
+        },
+        scales: {
+          r: {
+            min: 0,
+            max: 10,
+            ticks: {
+              stepSize: 2,
+              color: textColor,
+              font: { size: 11 },
+              backdropColor: 'transparent'
+            },
+            pointLabels: {
+              color: textColor,
+              font: { size: 13, weight: '600' }
+            },
+            grid: {
+              color: gridColor
+            },
+            angleLines: {
+              color: gridColor
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

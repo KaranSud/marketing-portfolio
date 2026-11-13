@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2B Paid Ad Conversion Signal Types</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --mid: #64748B;
+    --accent: #DC2626;
+    --border: #E7E5E4;
+    --grid: #E2E8F0;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+  .chart-container {
+    width: 100%;
+    max-width: 640px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 32px 24px;
+  }
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  p.subtitle {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+  .canvas-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .legend {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-label { color: var(--text); font-weight: 500; }
+  .legend-pct { color: var(--secondary); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .legend-note { color: var(--muted); font-size: 11px; }
+  .source {
+    margin-top: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--grid);
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-container">
+  <h2>What B2B Advertisers Feed Their AI Bidding</h2>
+  <p class="subtitle">Primary conversion events sent to Smart Bidding and Advantage+, by type</p>
+  <div class="canvas-wrap">
+    <canvas id="donut" aria-label="Donut chart showing conversion signal types"></canvas>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="source">Source: Practitioner survey estimates based on B2B SaaS PPC benchmarks (Optmyzr, Directive Consulting, 2025–2026 agency research). Values are indicative.</div>
+</div>
+
+<script>
+const data = [
+  { label: 'Form fill only (no CRM signal)', pct: 62, color: '#DC2626', note: 'Optimizes for curiosity, not intent' },
+  { label: 'Form fill + MQL upload (delayed)', pct: 19, color: '#475569', note: 'Partial signal, attribution lag' },
+  { label: 'CRM-connected pipeline event', pct: 14, color: '#64748B', note: 'Quality signal, low volume risk' },
+  { label: 'Offline closed-won with value', pct: 5, color: '#94A3B8', note: 'Ideal signal — rarely used alone' },
+];
+
+const ctx = document.getElementById('donut').getContext('2d');
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: data.map(d => d.label),
+    datasets: [{
+      data: data.map(d => d.pct),
+      backgroundColor: data.map(d => d.color),
+      borderColor: '#FFFFFF',
+      borderWidth: 3,
+      hoverOffset: 6
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '65%',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => ` ${ctx.parsed}%`
+        }
+      }
+    }
+  }
+});
+
+const legend = document.getElementById('legend');
+data.forEach(d => {
+  legend.innerHTML += `
+    <div class="legend-item">
+      <div class="legend-dot" style="background:${d.color}"></div>
+      <span class="legend-label">${d.label}</span>
+      <span class="legend-pct">${d.pct}%</span>
+    </div>
+    <div style="padding-left:22px; margin-top:-4px; margin-bottom:4px;"><span class="legend-note">${d.note}</span></div>
+  `;
+});
+</script>
+</body>
+</html>

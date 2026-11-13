@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Ad Platform Share of Global Ad Spend</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --brand-blue: #1d4ed8;
+    --brand-blue-light: #3b82f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1e293b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --grid: #1e293b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    width: 100%;
+    max-width: 760px;
+  }
+  h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+  .canvas-wrap {
+    position: relative;
+    height: 320px;
+  }
+  .annotation {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .dot-actual {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--brand-blue);
+    flex-shrink: 0;
+  }
+  .dot-forecast {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .legend-line {
+    width: 20px; height: 3px;
+  }
+  .source {
+    margin-top: 12px;
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>AI-Influenced Self-Serve Platforms: Share of Global Ad Spend</h2>
+  <p class="subtitle">Percentage of worldwide advertising budget flowing through AI-driven self-serve platforms, 2020–2028</p>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-line" style="background:#1d4ed8;"></div>
+      Actual / estimated
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#DC2626;border-top:2px dashed #DC2626;height:0;"></div>
+      Gartner forecast
+    </div>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="chart1"></canvas>
+  </div>
+
+  <p class="source">Source: Gartner, "More Than 70% of Global Ad Spend Will Flow Through AI-Influenced Self-Serve Advertising Platforms by 2028" (Aug 6, 2026)</p>
+</div>
+
+<script>
+const ctx = document.getElementById('chart1').getContext('2d');
+
+const labels = ['2020','2021','2022','2023','2024','2025','2026','2027','2028'];
+const actualData = [18, 23, 31, 42, 52, 60, 65, null, null];
+const forecastData = [null, null, null, null, null, 60, 65, 68, 70];
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Actual / estimated share (%)',
+        data: actualData,
+        borderColor: '#1d4ed8',
+        backgroundColor: 'rgba(29,78,216,0.08)',
+        fill: true,
+        borderWidth: 2.5,
+        pointRadius: 4,
+        pointBackgroundColor: '#1d4ed8',
+        tension: 0.35,
+        spanGaps: false,
+      },
+      {
+        label: 'Gartner forecast (%)',
+        data: forecastData,
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.05)',
+        fill: false,
+        borderWidth: 2.5,
+        borderDash: [6,4],
+        pointRadius: (ctx) => ctx.dataIndex === 8 ? 6 : 3,
+        pointBackgroundColor: '#DC2626',
+        tension: 0.35,
+        spanGaps: false,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (item) => ` ${item.dataset.label}: ${item.raw}%`
+        }
+      },
+      annotation: {}
+    },
+    scales: {
+      x: {
+        grid: { color: '#E2E8F0' },
+        ticks: { color: '#475569', font: { size: 11 } }
+      },
+      y: {
+        min: 0,
+        max: 80,
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          color: '#475569',
+          font: { size: 11 },
+          callback: (v) => v + '%'
+        },
+        title: {
+          display: true,
+          text: '% of global ad spend',
+          color: '#94A3B8',
+          font: { size: 10 }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

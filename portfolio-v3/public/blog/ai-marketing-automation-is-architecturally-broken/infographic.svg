@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" style="background:#FAFAF9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica Neue,Arial,sans-serif;">
+
+  <!-- Background -->
+  <rect width="800" height="560" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="400" y="44" text-anchor="middle" font-size="20" font-weight="700" fill="#0F172A">The Two-Layer AI Marketing Stack Architecture</text>
+  <text x="400" y="68" text-anchor="middle" font-size="13" fill="#475569">What belongs to rules. What belongs to reasoning. Who owns what.</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="84" x2="740" y2="84" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- LAYER 1: RULES LAYER (top, slate) -->
+  <rect x="60" y="100" width="680" height="140" rx="10" fill="#1E293B"/>
+  <rect x="60" y="100" width="8" height="140" rx="4" fill="#475569"/>
+
+  <text x="92" y="130" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="2">LAYER 1 — RULES ENGINE</text>
+  <text x="92" y="152" font-size="16" font-weight="700" fill="#F1F5F9">Governance, Compliance, and Brand Guardrails</text>
+  <text x="92" y="172" font-size="12" fill="#94A3B8">Hard constraints that never change without a human decision. Auditable. Certifiable.</text>
+
+  <!-- Rule pills -->
+  <rect x="92" y="188" width="120" height="28" rx="14" fill="#334155"/>
+  <text x="152" y="207" text-anchor="middle" font-size="11" fill="#CBD5E1">Opt-out / Consent</text>
+
+  <rect x="224" y="188" width="120" height="28" rx="14" fill="#334155"/>
+  <text x="284" y="207" text-anchor="middle" font-size="11" fill="#CBD5E1">Frequency Caps</text>
+
+  <rect x="356" y="188" width="120" height="28" rx="14" fill="#334155"/>
+  <text x="416" y="207" text-anchor="middle" font-size="11" fill="#CBD5E1">Brand Standards</text>
+
+  <rect x="488" y="188" width="120" height="28" rx="14" fill="#334155"/>
+  <text x="548" y="207" text-anchor="middle" font-size="11" fill="#CBD5E1">Legal / Privacy</text>
+
+  <rect x="620" y="188" width="100" height="28" rx="14" fill="#334155"/>
+  <text x="670" y="207" text-anchor="middle" font-size="11" fill="#CBD5E1">SLA Triggers</text>
+
+  <!-- Arrow down -->
+  <line x1="400" y1="250" x2="400" y2="286" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="393,282 400,296 407,282" fill="#E2E8F0"/>
+
+  <!-- Label in arrow -->
+  <text x="420" y="274" font-size="10" fill="#94A3B8">Constraints passed to</text>
+
+  <!-- LAYER 2: REASONING LAYER (middle, red accent) -->
+  <rect x="60" y="304" width="680" height="140" rx="10" fill="#FEF2F2"/>
+  <rect x="60" y="304" width="8" height="140" rx="4" fill="#DC2626"/>
+
+  <text x="92" y="334" font-size="11" font-weight="700" fill="#DC2626" letter-spacing="2">LAYER 2 — REASONING ENGINE (AGENT)</text>
+  <text x="92" y="356" font-size="16" font-weight="700" fill="#0F172A">Dynamic Optimization Within the Rules</text>
+  <text x="92" y="376" font-size="12" fill="#475569">Decisions made per-person, per-account, per-moment. Not pre-written. Computed.</text>
+
+  <!-- Decision pills -->
+  <rect x="92" y="392" width="118" height="28" rx="14" fill="#FECACA"/>
+  <text x="151" y="411" text-anchor="middle" font-size="11" fill="#991B1B">Content Selection</text>
+
+  <rect x="222" y="392" width="118" height="28" rx="14" fill="#FECACA"/>
+  <text x="281" y="411" text-anchor="middle" font-size="11" fill="#991B1B">Send Timing</text>
+
+  <rect x="352" y="392" width="118" height="28" rx="14" fill="#FECACA"/>
+  <text x="411" y="411" text-anchor="middle" font-size="11" fill="#991B1B">Channel Mix</text>
+
+  <rect x="482" y="392" width="118" height="28" rx="14" fill="#FECACA"/>
+  <text x="541" y="411" text-anchor="middle" font-size="11" fill="#991B1B">Sequence Order</text>
+
+  <rect x="612" y="392" width="108" height="28" rx="14" fill="#FECACA"/>
+  <text x="666" y="411" text-anchor="middle" font-size="11" fill="#991B1B">Account Scoring</text>
+
+  <!-- Arrow down -->
+  <line x1="400" y1="454" x2="400" y2="490" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="393,486 400,500 407,486" fill="#E2E8F0"/>
+
+  <!-- LAYER 3: Human ownership (bottom) -->
+  <rect x="60" y="504" width="680" height="42" rx="8" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="400" y="522" text-anchor="middle" font-size="11" font-weight="700" fill="#475569" letter-spacing="1">HUMAN OWNERSHIP</text>
+  <text x="400" y="538" text-anchor="middle" font-size="11" fill="#94A3B8">Set objectives and KPIs · Define guardrails · Review performance · Expand agent scope</text>
+
+</svg>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High-Value B2B Deals Moving to Self-Serve Digital Channels</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --surface: #FAFAF9;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border: #E7E5E4;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --surface: #1E293B;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --border: #334155;
+      --grid: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --surface: #1E293B;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border: #334155;
+    --grid: #1E293B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    padding: 32px 28px 24px;
+    min-height: 380px;
+  }
+  .chart-header { margin-bottom: 24px; }
+  .chart-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+  .chart-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .chart-wrap { position: relative; height: 290px; }
+  .source { margin-top: 14px; font-size: 11px; color: var(--text-muted); }
+  .annotation {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 12px; font-size: 11px; color: var(--text-secondary);
+  }
+  .annotation span { background: rgba(220,38,38,0.12); color: #DC2626; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="chart-header">
+  <div class="chart-title">Self-Serve Buying Is Eating Enterprise B2B Deals</div>
+  <div class="chart-subtitle">% of B2B buyers willing to complete purchases of each size through digital self-serve or remote channels</div>
+</div>
+<div class="annotation">
+  <span>+11pp jump</span> in buyers willing to spend $500K+ through self-serve channels since 2022
+</div>
+<div class="chart-wrap">
+  <canvas id="ch2"></canvas>
+</div>
+<div class="source">Sources: McKinsey B2B Pulse Survey 2024 (mckinsey.com); Forrester B2B Predictions 2025 (investor.forrester.com)</div>
+
+<script>
+const isDark = () =>
+  document.documentElement.dataset.theme === 'dark' ||
+  (!document.documentElement.dataset.theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+const categories = [
+  'Under\n$10K', '$10K–\n$50K', '$50K–\n$100K', '$100K–\n$500K', '$500K–\n$1M', 'Over\n$1M'
+];
+const pct2022 = [78, 65, 54, 42, 28, 12];
+const pct2024 = [88, 76, 67, 54, 39, 31];
+
+const ctx = document.getElementById('ch2').getContext('2d');
+
+// Custom lollipop plugin
+const lollipopPlugin = {
+  id: 'lollipop',
+  afterDatasetsDraw(chart) {
+    const { ctx, data, chartArea } = chart;
+    const ds0 = chart.getDatasetMeta(0);
+    const ds1 = chart.getDatasetMeta(1);
+
+    data.labels.forEach((label, i) => {
+      const old = ds0.data[i];
+      const cur = ds1.data[i];
+
+      // Stem from old to current
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(220,38,38,0.3)';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([3, 2]);
+      ctx.moveTo(old.x, old.y);
+      ctx.lineTo(cur.x, cur.y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+  }
+};
+
+const chart = new Chart(ctx, {
+  type: 'bar',
+  plugins: [lollipopPlugin],
+  data: {
+    labels: categories.map(c => c.split('\n')),
+    datasets: [
+      {
+        label: '2022',
+        data: pct2022,
+        backgroundColor: 'rgba(148,163,184,0.6)',
+        borderColor: 'rgba(148,163,184,0.9)',
+        borderWidth: 1.5,
+        borderRadius: 50,
+        barThickness: 8,
+      },
+      {
+        label: '2024',
+        data: pct2024,
+        backgroundColor: '#DC2626',
+        borderColor: '#991B1B',
+        borderWidth: 1.5,
+        borderRadius: 50,
+        barThickness: 8,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: isDark() ? '#94A3B8' : '#475569',
+          font: { size: 11 },
+          usePointStyle: true,
+          pointStyle: 'circle',
+          padding: 16
+        }
+      },
+      tooltip: {
+        backgroundColor: isDark() ? '#1E293B' : '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#94A3B8',
+        padding: 10,
+        callbacks: {
+          title: (items) => 'Deal size: ' + items[0].label.join(''),
+          label: (item) => ` ${item.dataset.label}: ${item.parsed.y}% willing to self-serve`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'transparent' },
+        ticks: {
+          color: isDark() ? '#64748B' : '#94A3B8',
+          font: { size: 10 },
+          maxRotation: 0
+        },
+        border: { color: isDark() ? '#1E293B' : '#E2E8F0' }
+      },
+      y: {
+        min: 0,
+        max: 100,
+        grid: { color: isDark() ? '#1E293B' : '#E2E8F0' },
+        ticks: {
+          color: isDark() ? '#64748B' : '#94A3B8',
+          font: { size: 10 },
+          callback: (v) => v + '%'
+        },
+        border: { color: 'transparent' }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

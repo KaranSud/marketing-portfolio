@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="Three SaaS expansion motions that compound NRR">
+  <title>Three Expansion Motions That Compound</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="560" fill="#FAFAF9" rx="12"/>
+
+  <!-- Header -->
+  <text x="400" y="44" text-anchor="middle" font-size="18" font-weight="700" fill="#0F172A">Three Expansion Motions That Compound</text>
+  <text x="400" y="66" text-anchor="middle" font-size="12" fill="#64748B">The structural levers behind 110%+ NRR</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="82" x2="760" y2="82" stroke="#E7E5E4" stroke-width="1"/>
+
+  <!-- === COLUMN 1: Usage-Based Triggers === -->
+  <!-- Column header background -->
+  <rect x="40" y="96" width="222" height="42" rx="6" fill="#0F172A"/>
+  <text x="151" y="112" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">01</text>
+  <text x="151" y="129" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Usage-Based Triggers</text>
+
+  <!-- Step boxes col 1 -->
+  <!-- Step 1 -->
+  <rect x="54" y="156" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="78" cy="188" r="14" fill="#E2E8F0"/>
+  <text x="78" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">1</text>
+  <text x="100" y="182" font-size="11" font-weight="600" fill="#0F172A">Product Usage Data</text>
+  <text x="100" y="198" font-size="10" fill="#64748B">Seats, events, API calls tracked</text>
+  <text x="100" y="212" font-size="10" fill="#64748B">in real time</text>
+
+  <!-- Arrow -->
+  <line x1="151" y1="220" x2="151" y2="238" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="146,236 156,236 151,244" fill="#CBD5E1"/>
+
+  <!-- Step 2 -->
+  <rect x="54" y="244" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="78" cy="276" r="14" fill="#E2E8F0"/>
+  <text x="78" y="280" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">2</text>
+  <text x="100" y="270" font-size="11" font-weight="600" fill="#0F172A">Threshold Alert</text>
+  <text x="100" y="286" font-size="10" fill="#64748B">Automated trigger fires when</text>
+  <text x="100" y="300" font-size="10" fill="#64748B">customer hits 80% of limit</text>
+
+  <!-- Arrow -->
+  <line x1="151" y1="308" x2="151" y2="326" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="146,324 156,324 151,332" fill="#CBD5E1"/>
+
+  <!-- Step 3 -->
+  <rect x="54" y="332" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="78" cy="364" r="14" fill="#E2E8F0"/>
+  <text x="78" y="368" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">3</text>
+  <text x="100" y="358" font-size="11" font-weight="600" fill="#0F172A">CS Engagement</text>
+  <text x="100" y="374" font-size="10" fill="#64748B">Timely outreach with context</text>
+  <text x="100" y="388" font-size="10" fill="#64748B">already in hand</text>
+
+  <!-- Arrow -->
+  <line x1="151" y1="396" x2="151" y2="414" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="146,412 156,412 151,420" fill="#CBD5E1"/>
+
+  <!-- Outcome col 1 -->
+  <rect x="54" y="420" width="194" height="44" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="151" y="438" text-anchor="middle" font-size="11" font-weight="700" fill="#DC2626">Upsell Conversion</text>
+  <text x="151" y="454" text-anchor="middle" font-size="10" fill="#DC2626">at the moment of peak value</text>
+
+  <!-- === COLUMN 2: Multi-Product Sequencing === -->
+  <rect x="289" y="96" width="222" height="42" rx="6" fill="#0F172A"/>
+  <text x="400" y="112" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">02</text>
+  <text x="400" y="129" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Multi-Product Sequencing</text>
+
+  <rect x="303" y="156" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="327" cy="188" r="14" fill="#E2E8F0"/>
+  <text x="327" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">1</text>
+  <text x="349" y="182" font-size="11" font-weight="600" fill="#0F172A">Trust Established</text>
+  <text x="349" y="198" font-size="10" fill="#64748B">Customer proven, contracts</text>
+  <text x="349" y="212" font-size="10" fill="#64748B">live, workflow integrated</text>
+
+  <line x1="400" y1="220" x2="400" y2="238" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="395,236 405,236 400,244" fill="#CBD5E1"/>
+
+  <rect x="303" y="244" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="327" cy="276" r="14" fill="#E2E8F0"/>
+  <text x="327" y="280" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">2</text>
+  <text x="349" y="270" font-size="11" font-weight="600" fill="#0F172A">Adjacent Need Surfaced</text>
+  <text x="349" y="286" font-size="10" fill="#64748B">QBR or usage data reveals</text>
+  <text x="349" y="300" font-size="10" fill="#64748B">natural next-product need</text>
+
+  <line x1="400" y1="308" x2="400" y2="326" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="395,324 405,324 400,332" fill="#CBD5E1"/>
+
+  <rect x="303" y="332" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="327" cy="364" r="14" fill="#E2E8F0"/>
+  <text x="327" y="368" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">3</text>
+  <text x="349" y="358" font-size="11" font-weight="600" fill="#0F172A">Second Product Pitched</text>
+  <text x="349" y="374" font-size="10" fill="#64748B">Lands 2x faster than</text>
+  <text x="349" y="388" font-size="10" fill="#64748B">primary product acquisition</text>
+
+  <line x1="400" y1="396" x2="400" y2="414" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="395,412 405,412 400,420" fill="#CBD5E1"/>
+
+  <rect x="303" y="420" width="194" height="44" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="400" y="438" text-anchor="middle" font-size="11" font-weight="700" fill="#DC2626">Lower CAC Close</text>
+  <text x="400" y="454" text-anchor="middle" font-size="10" fill="#DC2626">fraction of new-logo cost</text>
+
+  <!-- === COLUMN 3: Seat Expansion === -->
+  <rect x="538" y="96" width="222" height="42" rx="6" fill="#0F172A"/>
+  <text x="649" y="112" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">03</text>
+  <text x="649" y="129" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Seat Expansion Architecture</text>
+
+  <rect x="552" y="156" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="576" cy="188" r="14" fill="#E2E8F0"/>
+  <text x="576" y="192" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">1</text>
+  <text x="598" y="182" font-size="11" font-weight="600" fill="#0F172A">Champion Mapped</text>
+  <text x="598" y="198" font-size="10" fill="#64748B">Power users and internal</text>
+  <text x="598" y="212" font-size="10" fill="#64748B">advocates identified</text>
+
+  <line x1="649" y1="220" x2="649" y2="238" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="644,236 654,236 649,244" fill="#CBD5E1"/>
+
+  <rect x="552" y="244" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="576" cy="276" r="14" fill="#E2E8F0"/>
+  <text x="576" y="280" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">2</text>
+  <text x="598" y="270" font-size="11" font-weight="600" fill="#0F172A">Adoption Tracked</text>
+  <text x="598" y="286" font-size="10" fill="#64748B">Low-utilization accounts</text>
+  <text x="598" y="300" font-size="10" fill="#64748B">flagged proactively</text>
+
+  <line x1="649" y1="308" x2="649" y2="326" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="644,324 654,324 649,332" fill="#CBD5E1"/>
+
+  <rect x="552" y="332" width="194" height="64" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="576" cy="364" r="14" fill="#E2E8F0"/>
+  <text x="576" y="368" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">3</text>
+  <text x="598" y="358" font-size="11" font-weight="600" fill="#0F172A">Adjacent Team Warm Intro</text>
+  <text x="598" y="374" font-size="10" fill="#64748B">Champion introduces CS to</text>
+  <text x="598" y="388" font-size="10" fill="#64748B">neighboring team</text>
+
+  <line x1="649" y1="396" x2="649" y2="414" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <polygon points="644,412 654,412 649,420" fill="#CBD5E1"/>
+
+  <rect x="552" y="420" width="194" height="44" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="649" y="438" text-anchor="middle" font-size="11" font-weight="700" fill="#DC2626">Organic Seat Growth</text>
+  <text x="649" y="454" text-anchor="middle" font-size="10" fill="#DC2626">without a sales cycle</text>
+
+  <!-- Bottom bar -->
+  <rect x="40" y="484" width="720" height="56" rx="6" fill="#0F172A"/>
+  <text x="400" y="508" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">All three motions compound into NRR above 110%</text>
+  <text x="400" y="526" text-anchor="middle" font-size="11" fill="#94A3B8">None require new customer acquisition. All require investment in post-sale infrastructure.</text>
+
+</svg>

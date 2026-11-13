@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Media Spend Shift: Acquisition vs. Retention (2024–2026)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 24px 40px;
+    min-height: 100vh;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0F172A; }
+    h2, p { color: #F1F5F9; }
+    .subtitle { color: #94A3B8; }
+    .source { color: #64748B; }
+  }
+  :root[data-theme="dark"] body { background: #0F172A; }
+  :root[data-theme="dark"] h2, :root[data-theme="dark"] p { color: #F1F5F9; }
+  :root[data-theme="dark"] .subtitle { color: #94A3B8; }
+  :root[data-theme="dark"] .source { color: #64748B; }
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0F172A;
+    text-align: center;
+    max-width: 640px;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #475569;
+    text-align: center;
+    max-width: 560px;
+    margin-bottom: 28px;
+  }
+  .chart-container {
+    width: 100%;
+    max-width: 720px;
+    position: relative;
+  }
+  .stat-callout {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .stat-box {
+    text-align: center;
+    padding: 14px 20px;
+    background: #FAFAF9;
+    border: 1px solid #E7E5E4;
+    border-radius: 8px;
+    min-width: 140px;
+  }
+  @media (prefers-color-scheme: dark) {
+    .stat-box { background: #1E293B; border-color: #334155; }
+  }
+  :root[data-theme="dark"] .stat-box { background: #1E293B; border-color: #334155; }
+  .stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #DC2626;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: #64748B;
+    font-weight: 500;
+  }
+  .source {
+    font-size: 12px;
+    color: #94A3B8;
+    text-align: center;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<h2>How Attribution Blindness Rewrote the Marketing Budget</h2>
+<p class="subtitle">Share of total media spend by objective — CMOs shifted toward measurable acquisition channels while untrackable brand and retention investment fell</p>
+
+<div class="chart-container">
+  <canvas id="chart1"></canvas>
+</div>
+
+<div class="stat-callout">
+  <div class="stat-box">
+    <div class="stat-number">62.6%</div>
+    <div class="stat-label">Acquisition + Awareness spend in 2026</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-number" style="color:#0F172A">↓29%</div>
+    <div class="stat-label">Retention spend decline since 2024</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-number">&lt;15%</div>
+    <div class="stat-label">Retention share of media spend 2026</div>
+  </div>
+</div>
+
+<p class="source">Source: Gartner 2026 CMO Spend Survey (n=401 CMOs, Jan–Mar 2026) — gartner.com/en/newsroom/press-releases/2026-06-08</p>
+
+<script>
+const isDark = () =>
+  document.documentElement.getAttribute('data-theme') === 'dark' ||
+  (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches &&
+   document.documentElement.getAttribute('data-theme') !== 'light');
+
+const labels = ['Awareness', 'Conversion / Acquisition', 'Consideration', 'Loyalty / Retention', 'Other'];
+const data2024 = [24.5, 27.3, 16.2, 21.0, 11.0];
+const data2026 = [30.1, 32.5, 14.2, 14.8, 8.4];
+
+const ctx = document.getElementById('chart1').getContext('2d');
+
+const chart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: '2024',
+        data: data2024,
+        backgroundColor: '#94A3B8',
+        borderColor: '#64748B',
+        borderWidth: 1,
+        borderRadius: 4,
+      },
+      {
+        label: '2026',
+        data: data2026,
+        backgroundColor: (ctx) => {
+          const index = ctx.dataIndex;
+          return index === 3 ? '#DC2626' : '#0F172A';
+        },
+        borderColor: (ctx) => {
+          const index = ctx.dataIndex;
+          return index === 3 ? '#B91C1C' : '#1E293B';
+        },
+        borderWidth: 1,
+        borderRadius: 4,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: () => isDark() ? '#CBD5E1' : '#0F172A',
+          font: { size: 13, family: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif' }
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => ` ${ctx.dataset.label}: ${ctx.raw}%`
+        }
+      },
+      annotation: {}
+    },
+    scales: {
+      x: {
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          color: () => isDark() ? '#94A3B8' : '#475569',
+          font: { size: 12 }
+        }
+      },
+      y: {
+        beginAtZero: true,
+        max: 40,
+        grid: { color: '#E2E8F0' },
+        ticks: {
+          color: () => isDark() ? '#94A3B8' : '#475569',
+          font: { size: 12 },
+          callback: (v) => v + '%'
+        },
+        title: {
+          display: true,
+          text: '% of Total Media Spend',
+          color: '#64748B',
+          font: { size: 12 }
+        }
+      }
+    }
+  }
+});
+
+// Re-render on theme toggle
+const observer = new MutationObserver(() => chart.update());
+observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+</script>
+</body>
+</html>

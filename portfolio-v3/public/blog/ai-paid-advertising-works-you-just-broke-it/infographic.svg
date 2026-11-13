@@ -1,0 +1,61 @@
+<svg width="800" height="680" viewBox="0 0 800 680" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="800" height="680" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="400" y="46" text-anchor="middle" font-size="18" font-weight="700" fill="#0F172A" letter-spacing="-0.3">The B2B Signal Architecture</text>
+  <text x="400" y="68" text-anchor="middle" font-size="13" fill="#475569">Four conversion event tiers — in order of signal quality for AI bidding</text>
+
+  <!-- Tier labels and vertical connector -->
+  <line x1="400" y1="90" x2="400" y2="600" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- TIER 1 -->
+  <rect x="80" y="98" width="640" height="110" rx="10" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+  <rect x="80" y="98" width="6" height="110" rx="3" fill="#DC2626"/>
+  <text x="106" y="125" font-size="11" font-weight="700" fill="#DC2626" letter-spacing="1" text-transform="uppercase">TIER 1 — LOWEST QUALITY</text>
+  <text x="106" y="146" font-size="16" font-weight="700" fill="#0F172A">Form Fill Conversion Only</text>
+  <text x="106" y="166" font-size="13" fill="#475569">Trains the algorithm on curiosity, not intent. A content download and a</text>
+  <text x="106" y="183" font-size="13" fill="#475569">qualified VP look identical. Every additional week compounds signal debt.</text>
+  <text x="660" y="148" text-anchor="end" font-size="28" font-weight="800" fill="#FECACA">62%</text>
+  <text x="660" y="168" text-anchor="end" font-size="11" fill="#DC2626">of B2B accounts</text>
+  <circle cx="400" cy="220" r="10" fill="#E2E8F0"/>
+  <text x="400" y="224" text-anchor="middle" font-size="12" fill="#94A3B8">↓</text>
+
+  <!-- TIER 2 -->
+  <rect x="80" y="238" width="640" height="110" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="80" y="238" width="6" height="110" rx="3" fill="#64748B"/>
+  <text x="106" y="265" font-size="11" font-weight="700" fill="#64748B" letter-spacing="1">TIER 2 — PARTIAL SIGNAL</text>
+  <text x="106" y="286" font-size="16" font-weight="700" fill="#0F172A">Form Fill + Delayed MQL Upload</text>
+  <text x="106" y="306" font-size="13" fill="#475569">CRM data uploaded manually, weeks after the event. Better than nothing, but</text>
+  <text x="106" y="323" font-size="13" fill="#475569">attribution lag weakens the bidding model. Improves with automation.</text>
+  <text x="660" y="288" text-anchor="end" font-size="28" font-weight="800" fill="#CBD5E1">19%</text>
+  <text x="660" y="308" text-anchor="end" font-size="11" fill="#64748B">of B2B accounts</text>
+  <circle cx="400" cy="360" r="10" fill="#E2E8F0"/>
+  <text x="400" y="364" text-anchor="middle" font-size="12" fill="#94A3B8">↓</text>
+
+  <!-- TIER 3 -->
+  <rect x="80" y="378" width="640" height="110" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="80" y="378" width="6" height="110" rx="3" fill="#475569"/>
+  <text x="106" y="405" font-size="11" font-weight="700" fill="#475569" letter-spacing="1">TIER 3 — QUALITY SIGNAL</text>
+  <text x="106" y="426" font-size="16" font-weight="700" fill="#0F172A">CRM-Connected Pipeline Event (Real-Time)</text>
+  <text x="106" y="446" font-size="13" fill="#475569">Sales-qualified opportunity or pipeline stage fired via Conversions API or</text>
+  <text x="106" y="463" font-size="13" fill="#475569">offline upload within 48h. Volume risk: may need micro-conversion proxy.</text>
+  <text x="660" y="428" text-anchor="end" font-size="28" font-weight="800" fill="#CBD5E1">14%</text>
+  <text x="660" y="448" text-anchor="end" font-size="11" fill="#475569">of B2B accounts</text>
+  <circle cx="400" cy="500" r="10" fill="#E2E8F0"/>
+  <text x="400" y="504" text-anchor="middle" font-size="12" fill="#94A3B8">↓</text>
+
+  <!-- TIER 4 -->
+  <rect x="80" y="518" width="640" height="110" rx="10" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.5"/>
+  <rect x="80" y="518" width="6" height="110" rx="3" fill="#16A34A"/>
+  <text x="106" y="545" font-size="11" font-weight="700" fill="#16A34A" letter-spacing="1">TIER 4 — IDEAL SIGNAL</text>
+  <text x="106" y="566" font-size="16" font-weight="700" fill="#0F172A">Offline Closed-Won with Revenue Value</text>
+  <text x="106" y="586" font-size="13" fill="#475569">Closed deal + contract value uploaded via offline conversions. Enables value-</text>
+  <text x="106" y="603" font-size="13" fill="#475569">based bidding. Almost always needs a proxy event to reach volume threshold.</text>
+  <text x="660" y="568" text-anchor="end" font-size="28" font-weight="800" fill="#86EFAC">5%</text>
+  <text x="660" y="588" text-anchor="end" font-size="11" fill="#16A34A">of B2B accounts</text>
+
+  <!-- Footer -->
+  <text x="400" y="652" text-anchor="middle" font-size="11" fill="#94A3B8">Source: Practitioner estimates based on B2B SaaS PPC agency benchmarks (2025–2026)</text>
+  <text x="400" y="668" text-anchor="middle" font-size="11" fill="#94A3B8">karansud.com</text>
+</svg>

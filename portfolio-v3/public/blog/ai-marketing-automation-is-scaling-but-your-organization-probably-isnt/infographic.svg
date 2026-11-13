@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1080" width="900" height="1080" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <style>
+      .bg { fill: #FAFAF9; }
+      .card { fill: #FFFFFF; rx: 10; }
+      .card-border { stroke: #E7E5E4; stroke-width: 1.5; fill: #FFFFFF; }
+      .title-text { font-size: 22px; font-weight: 700; fill: #0F172A; }
+      .subtitle-text { font-size: 13px; fill: #64748B; }
+      .q-label { font-size: 11px; font-weight: 700; fill: #94A3B8; letter-spacing: 0.08em; }
+      .q-text { font-size: 14px; font-weight: 600; fill: #0F172A; }
+      .q-sub { font-size: 12px; fill: #475569; }
+      .yes-label { font-size: 12px; font-weight: 700; fill: #16A34A; }
+      .no-label { font-size: 12px; font-weight: 700; fill: #DC2626; }
+      .result-box-green { fill: #DCFCE7; rx: 8; }
+      .result-box-yellow { fill: #FEF9C3; rx: 8; }
+      .result-box-red { fill: #FEE2E2; rx: 8; }
+      .result-title-green { font-size: 15px; font-weight: 700; fill: #15803D; }
+      .result-title-yellow { font-size: 15px; font-weight: 700; fill: #854D0E; }
+      .result-title-red { font-size: 15px; font-weight: 700; fill: #991B1B; }
+      .result-desc { font-size: 12px; fill: #374151; }
+      .connector { stroke: #CBD5E1; stroke-width: 1.5; fill: none; }
+      .connector-yes { stroke: #16A34A; stroke-width: 1.5; fill: none; stroke-dasharray: 4,3; }
+      .connector-no { stroke: #DC2626; stroke-width: 1.5; fill: none; stroke-dasharray: 4,3; }
+      .step-circle { fill: #0F172A; }
+      .step-number { font-size: 12px; font-weight: 700; fill: #FFFFFF; }
+      .accent-line { stroke: #DC2626; stroke-width: 3; fill: none; }
+      .source-text { font-size: 10px; fill: #94A3B8; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="1080" class="bg"/>
+
+  <!-- Top accent line -->
+  <line x1="60" y1="56" x2="160" y2="56" class="accent-line"/>
+
+  <!-- Header -->
+  <text x="60" y="42" class="title-text">The CMO AI Readiness Diagnostic</text>
+  <text x="60" y="75" class="subtitle-text">Answer 4 questions to find where your team actually sits on the AI marketing scale</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="94" x2="840" y2="94" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- ─────────────── Q1 ─────────────── -->
+  <rect x="60" y="112" width="780" height="102" rx="10" class="card-border"/>
+  <circle cx="90" cy="163" r="16" class="step-circle"/>
+  <text x="90" y="168" text-anchor="middle" class="step-number">1</text>
+  <text x="118" y="136" class="q-label">DATA INFRASTRUCTURE</text>
+  <text x="118" y="157" class="q-text">Can you name the single source of truth for</text>
+  <text x="118" y="175" class="q-text">your customer data — in one sentence?</text>
+  <text x="118" y="198" class="q-sub">One fragmented CRM + multiple ad platforms + undocumented spreadsheets = no.</text>
+
+  <!-- Q1 connectors -->
+  <!-- YES arrow down-left to Q2 -->
+  <path d="M 208 214 L 208 234 L 208 254" class="connector-yes" marker-end="url(#arrowGreen)"/>
+  <text x="215" y="247" class="yes-label">YES ✓</text>
+
+  <!-- NO arrow right to result-red-1 -->
+  <path d="M 450 163 L 620 163" class="connector-no" marker-end="url(#arrowRed)"/>
+  <text x="480" y="155" class="no-label">NO →</text>
+  <!-- Red result box 1 -->
+  <rect x="628" y="128" width="212" height="72" rx="8" fill="#FEE2E2"/>
+  <text x="644" y="152" class="result-title-red">Foundation Phase</text>
+  <text x="644" y="170" class="result-desc">Fix data infrastructure</text>
+  <text x="644" y="186" class="result-desc">before buying more AI tools.</text>
+
+  <!-- ─────────────── Q2 ─────────────── -->
+  <rect x="60" y="260" width="780" height="102" rx="10" class="card-border"/>
+  <circle cx="90" cy="311" r="16" class="step-circle"/>
+  <text x="90" y="316" text-anchor="middle" class="step-number">2</text>
+  <text x="118" y="284" class="q-label">GOVERNANCE</text>
+  <text x="118" y="305" class="q-text">Do you have a documented approval process</text>
+  <text x="118" y="323" class="q-text">for AI-generated outputs before publication?</text>
+  <text x="118" y="346" class="q-sub">If AI outputs go live without human review, you are running ungoverned AI.</text>
+
+  <!-- Q2 connectors -->
+  <path d="M 208 362 L 208 382 L 208 402" class="connector-yes" marker-end="url(#arrowGreen)"/>
+  <text x="215" y="395" class="yes-label">YES ✓</text>
+
+  <path d="M 450 311 L 620 311" class="connector-no" marker-end="url(#arrowRed)"/>
+  <text x="480" y="303" class="no-label">NO →</text>
+  <rect x="628" y="276" width="212" height="72" rx="8" fill="#FEE2E2"/>
+  <text x="644" y="300" class="result-title-red">Governance Gap</text>
+  <text x="644" y="318" class="result-desc">Define review + approval</text>
+  <text x="644" y="334" class="result-desc">before scaling any workflow.</text>
+
+  <!-- ─────────────── Q3 ─────────────── -->
+  <rect x="60" y="408" width="780" height="110" rx="10" class="card-border"/>
+  <circle cx="90" cy="463" r="16" class="step-circle"/>
+  <text x="90" y="468" text-anchor="middle" class="step-number">3</text>
+  <text x="118" y="432" class="q-label">MEASUREMENT</text>
+  <text x="118" y="453" class="q-text">Can you tell a CFO how much revenue your</text>
+  <text x="118" y="471" class="q-text">AI-assisted marketing drove last quarter?</text>
+  <text x="118" y="492" class="q-sub">"Time saved" is not a revenue number. The CFO will eventually notice.</text>
+  <text x="118" y="507" class="q-sub">If the answer is vague, you have a measurement problem.</text>
+
+  <!-- Q3 connectors -->
+  <path d="M 208 518 L 208 538 L 208 558" class="connector-yes" marker-end="url(#arrowGreen)"/>
+  <text x="215" y="551" class="yes-label">YES ✓</text>
+
+  <path d="M 450 463 L 620 463" class="connector-no" marker-end="url(#arrowRed)"/>
+  <text x="480" y="455" class="no-label">NO →</text>
+  <rect x="628" y="428" width="212" height="72" rx="8" fill="#FEF9C3"/>
+  <text x="644" y="452" class="result-title-yellow">Measurement Gap</text>
+  <text x="644" y="470" class="result-desc">Build AI-specific attribution</text>
+  <text x="644" y="486" class="result-desc">or the budget question comes.</text>
+
+  <!-- ─────────────── Q4 ─────────────── -->
+  <rect x="60" y="564" width="780" height="110" rx="10" class="card-border"/>
+  <circle cx="90" cy="619" r="16" class="step-circle"/>
+  <text x="90" y="624" text-anchor="middle" class="step-number">4</text>
+  <text x="118" y="588" class="q-label">REPEATABILITY</text>
+  <text x="118" y="609" class="q-text">When your best AI-generated campaign worked,</text>
+  <text x="118" y="627" class="q-text">do you know exactly which AI decisions drove it?</text>
+  <text x="118" y="648" class="q-sub">Asset-level + decision-level granularity is what allows you to repeat success,</text>
+  <text x="118" y="663" class="q-sub">not just reproduce the same workflow and hope.</text>
+
+  <!-- Q4 connectors -->
+  <path d="M 208 674 L 208 694 L 208 714" class="connector-yes" marker-end="url(#arrowGreen)"/>
+  <text x="215" y="707" class="yes-label">YES ✓</text>
+
+  <path d="M 450 619 L 620 619" class="connector-no" marker-end="url(#arrowRed)"/>
+  <text x="480" y="611" class="no-label">NO →</text>
+  <rect x="628" y="584" width="212" height="72" rx="8" fill="#FEF9C3"/>
+  <text x="644" y="608" class="result-title-yellow">Insight Gap</text>
+  <text x="644" y="626" class="result-desc">Build granular tracking before</text>
+  <text x="644" y="642" class="result-desc">the next campaign launches.</text>
+
+  <!-- ─────────────── RESULTS ─────────────── -->
+  <!-- All YES result -->
+  <rect x="60" y="724" width="360" height="130" rx="10" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.5"/>
+  <text x="88" y="754" class="result-title-green">You're in the 30% — Scale Now</text>
+  <text x="88" y="774" class="result-desc">Your organization has the prerequisites.</text>
+  <text x="88" y="792" class="result-desc">Layer in more sophisticated AI workflows</text>
+  <text x="88" y="810" class="result-desc">and agentic tooling. Focus on expansion,</text>
+  <text x="88" y="828" class="result-desc">optimization, and competitive differentiation.</text>
+
+  <!-- 1-2 NO result -->
+  <rect x="452" y="724" width="388" height="130" rx="10" fill="#FEF9C3" stroke="#FDE047" stroke-width="1.5"/>
+  <text x="476" y="754" class="result-title-yellow">You're in the 70% — Sequence First</text>
+  <text x="476" y="774" class="result-desc">Pause new tool purchases. Fix the specific</text>
+  <text x="476" y="792" class="result-desc">prerequisite(s) where you answered NO.</text>
+  <text x="476" y="810" class="result-desc">The next AI tool you buy will perform at the</text>
+  <text x="476" y="828" class="result-desc">level of your weakest readiness dimension.</text>
+
+  <!-- Connector line to results -->
+  <path d="M 208 714 L 208 724" class="connector-yes"/>
+
+  <!-- ─────────────── KEY INSIGHT BOX ─────────────── -->
+  <rect x="60" y="884" width="780" height="100" rx="10" fill="#0F172A"/>
+  <text x="80" y="916" style="font-size: 13px; font-weight: 700; fill: #F1F5F9;">The key insight:</text>
+  <text x="80" y="937" style="font-size: 13px; fill: #CBD5E1;">The 30% of CMOs successfully scaling AI marketing are not using better tools.</text>
+  <text x="80" y="957" style="font-size: 13px; fill: #CBD5E1;">They built these four organizational prerequisites before their tools were even selected.</text>
+
+  <!-- Source line -->
+  <text x="60" y="1020" class="source-text">Framework derived from Gartner 2026 CMO Spend Survey · McKinsey "Reinventing Marketing Workflows with Agentic AI" (2026) · CMO Survey 2026, Duke Fuqua School of Business</text>
+  <text x="60" y="1036" class="source-text">© 2026 Karan Sud · karansud.substack.com</text>
+
+  <!-- Arrowhead markers -->
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#16A34A"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLG Metric Tracking vs Revenue Prediction Power</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #475569;
+    --muted: #94A3B8;
+    --gridline: #E2E8F0;
+    --accent: #DC2626;
+    --blue: #2563EB;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    padding: 32px 24px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  p.sub {
+    font-size: 13px;
+    color: var(--secondary);
+    margin-bottom: 24px;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 360px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .insight-box {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: #FEF2F2;
+    border-left: 3px solid #DC2626;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #0F172A;
+    line-height: 1.55;
+  }
+  footer {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<h2>PLG Metrics: How Many Teams Track Them vs. How Well They Predict Revenue</h2>
+<p class="sub">Radar showing the gap between tracking adoption (% of PLG companies measuring this metric) and its predictive power for free-to-paid conversion</p>
+<div class="chart-wrap">
+  <canvas id="chart"></canvas>
+</div>
+<div class="insight-box">
+  <strong>The measurement inversion:</strong> The metrics PLG teams track least (Time-to-Value at 17%, PQL signals at 24%) are the ones with the highest predictive power for revenue. Signups and MQLs — tracked by nearly everyone — are the weakest predictors of conversion.
+</div>
+<footer>Sources: ProductLed 2025 Annual Benchmarks Survey; OpenView Partners Product Benchmarks 2023–2025; High Alpha 2025 SaaS Benchmarks. Revenue prediction power = correlation with free-to-paid conversion rate, normalized 0–100.</footer>
+
+<script>
+const labels = [
+  'Free Signups',
+  'MQL Volume',
+  'Activation Rate',
+  'Product Qualified Leads',
+  'Time-to-Value',
+  'NRR / Expansion'
+];
+
+const trackingRate = [91, 87, 34, 24, 17, 68];
+const predictionPower = [18, 22, 74, 88, 92, 79];
+
+const ctx = document.getElementById('chart').getContext('2d');
+
+new Chart(ctx, {
+  type: 'radar',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: '% of PLG teams tracking',
+        data: trackingRate,
+        fill: true,
+        backgroundColor: 'rgba(37, 99, 235, 0.12)',
+        borderColor: '#2563EB',
+        borderWidth: 2,
+        pointBackgroundColor: '#2563EB',
+        pointRadius: 4
+      },
+      {
+        label: 'Revenue prediction power (normalized)',
+        data: predictionPower,
+        fill: true,
+        backgroundColor: 'rgba(220, 38, 38, 0.10)',
+        borderColor: '#DC2626',
+        borderWidth: 2,
+        pointBackgroundColor: '#DC2626',
+        pointRadius: 4
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: '#475569',
+          font: { size: 12, family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" },
+          boxWidth: 14,
+          padding: 16
+        }
+      },
+      tooltip: {
+        backgroundColor: '#0F172A',
+        titleColor: '#F1F5F9',
+        bodyColor: '#CBD5E1',
+        padding: 12,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.r}`
+        }
+      }
+    },
+    scales: {
+      r: {
+        min: 0,
+        max: 100,
+        ticks: {
+          stepSize: 25,
+          color: '#94A3B8',
+          font: { size: 11 },
+          backdropColor: 'transparent',
+          callback: v => v + '%'
+        },
+        grid: { color: '#E2E8F0' },
+        angleLines: { color: '#E2E8F0' },
+        pointLabels: {
+          color: '#0F172A',
+          font: { size: 12, family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

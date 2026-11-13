@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:#FAFAF9;">
+
+  <!-- Background -->
+  <rect width="800" height="560" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-size="17" font-weight="700" fill="#0F172A">The PLG Winner's Stack</text>
+  <text x="400" y="58" text-anchor="middle" font-size="12" fill="#475569">How high-performing SaaS companies combine product and sales into one motion</text>
+
+  <!-- Connector line -->
+  <line x1="100" y1="130" x2="700" y2="130" stroke="#E7E5E4" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="100" y1="130" x2="100" y2="460" stroke="#E7E5E4" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="700" y1="130" x2="700" y2="460" stroke="#E7E5E4" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="100" y1="460" x2="700" y2="460" stroke="#E7E5E4" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- Arrow between stages -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <line x1="228" y1="280" x2="258" y2="280" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="378" y1="280" x2="408" y2="280" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="528" y1="280" x2="558" y2="280" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- STAGE 1: ACQUIRE -->
+  <rect x="112" y="170" width="116" height="220" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="112" y="170" width="116" height="36" rx="10" fill="#0F172A"/>
+  <rect x="112" y="194" width="116" height="12" fill="#0F172A"/>
+  <text x="170" y="193" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">1. ACQUIRE</text>
+  <text x="170" y="225" text-anchor="middle" font-size="10" font-weight="600" fill="#0F172A">Product-Led</text>
+  <circle cx="170" cy="256" r="18" fill="#F1F5F9"/>
+  <text x="170" y="261" text-anchor="middle" font-size="18" fill="#475569">🎯</text>
+  <text x="170" y="295" text-anchor="middle" font-size="9.5" fill="#475569">Free trial or</text>
+  <text x="170" y="308" text-anchor="middle" font-size="9.5" fill="#475569">freemium signup</text>
+  <text x="170" y="328" text-anchor="middle" font-size="9.5" fill="#475569">No sales touch</text>
+  <text x="170" y="341" text-anchor="middle" font-size="9.5" fill="#475569">required at entry</text>
+  <rect x="130" y="360" width="80" height="18" rx="4" fill="#F1F5F9"/>
+  <text x="170" y="373" text-anchor="middle" font-size="9" fill="#64748B">Low CAC</text>
+
+  <!-- STAGE 2: ACTIVATE -->
+  <rect x="262" y="170" width="116" height="220" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="262" y="170" width="116" height="36" rx="10" fill="#DC2626"/>
+  <rect x="262" y="194" width="116" height="12" fill="#DC2626"/>
+  <text x="320" y="193" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">2. ACTIVATE</text>
+  <text x="320" y="225" text-anchor="middle" font-size="10" font-weight="600" fill="#0F172A">Define the Moment</text>
+  <circle cx="320" cy="256" r="18" fill="#FEF2F2"/>
+  <text x="320" y="261" text-anchor="middle" font-size="18" fill="#DC2626">⚡</text>
+  <text x="320" y="295" text-anchor="middle" font-size="9.5" fill="#475569">Track the aha moment:</text>
+  <text x="320" y="308" text-anchor="middle" font-size="9.5" fill="#475569">first meaningful output</text>
+  <text x="320" y="328" text-anchor="middle" font-size="9.5" fill="#475569">Target under 24h</text>
+  <text x="320" y="341" text-anchor="middle" font-size="9.5" fill="#475569">for B2B tools</text>
+  <rect x="280" y="360" width="80" height="18" rx="4" fill="#FEF2F2"/>
+  <text x="320" y="373" text-anchor="middle" font-size="9" fill="#DC2626">Critical gate</text>
+
+  <!-- STAGE 3: QUALIFY -->
+  <rect x="412" y="170" width="116" height="220" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="412" y="170" width="116" height="36" rx="10" fill="#334155"/>
+  <rect x="412" y="194" width="116" height="12" fill="#334155"/>
+  <text x="470" y="193" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">3. QUALIFY</text>
+  <text x="470" y="225" text-anchor="middle" font-size="10" font-weight="600" fill="#0F172A">PQL Threshold</text>
+  <circle cx="470" cy="256" r="18" fill="#F8FAFC"/>
+  <text x="470" y="261" text-anchor="middle" font-size="18" fill="#334155">🔍</text>
+  <text x="470" y="295" text-anchor="middle" font-size="9.5" fill="#475569">Activated user hits</text>
+  <text x="470" y="308" text-anchor="middle" font-size="9.5" fill="#475569">product qualified</text>
+  <text x="470" y="321" text-anchor="middle" font-size="9.5" fill="#475569">lead threshold</text>
+  <text x="470" y="341" text-anchor="middle" font-size="9.5" fill="#475569">25-30% convert</text>
+  <rect x="430" y="360" width="80" height="18" rx="4" fill="#F1F5F9"/>
+  <text x="470" y="373" text-anchor="middle" font-size="9" fill="#64748B">Intent signal</text>
+
+  <!-- STAGE 4: EXPAND -->
+  <rect x="562" y="170" width="116" height="220" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="562" y="170" width="116" height="36" rx="10" fill="#0F172A"/>
+  <rect x="562" y="194" width="116" height="12" fill="#0F172A"/>
+  <text x="620" y="193" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">4. EXPAND</text>
+  <text x="620" y="225" text-anchor="middle" font-size="10" font-weight="600" fill="#0F172A">Sales-Assisted</text>
+  <circle cx="620" cy="256" r="18" fill="#F1F5F9"/>
+  <text x="620" y="261" text-anchor="middle" font-size="18" fill="#475569">📈</text>
+  <text x="620" y="295" text-anchor="middle" font-size="9.5" fill="#475569">Sales-assist for</text>
+  <text x="620" y="308" text-anchor="middle" font-size="9.5" fill="#475569">mid-market and</text>
+  <text x="620" y="321" text-anchor="middle" font-size="9.5" fill="#475569">enterprise accounts</text>
+  <text x="620" y="341" text-anchor="middle" font-size="9.5" fill="#475569">SMB stays self-serve</text>
+  <rect x="580" y="360" width="80" height="18" rx="4" fill="#F1F5F9"/>
+  <text x="620" y="373" text-anchor="middle" font-size="9" fill="#64748B">NRR driver</text>
+
+  <!-- Bottom outcome bar -->
+  <rect x="112" y="410" width="566" height="32" rx="8" fill="#0F172A"/>
+  <text x="395" y="431" text-anchor="middle" font-size="11" font-weight="600" fill="#FFFFFF">Outcome: 67% of hybrid PLG companies hit NRR targets vs. 58% pure PLG  (OpenView / High Alpha 2024)</text>
+
+  <!-- Footer note -->
+  <text x="400" y="490" text-anchor="middle" font-size="10" fill="#94A3B8">Winners don't choose product or sales. They use product to pre-qualify and sales to close expansion.</text>
+  <text x="400" y="510" text-anchor="middle" font-size="9.5" fill="#94A3B8">Sources: OpenView Partners, High Alpha 2024 SaaS Benchmarks (800+ companies); McKinsey PLG analysis (107 public SaaS cos.)</text>
+
+</svg>

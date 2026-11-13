@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif">
+  <!-- Background -->
+  <rect width="800" height="560" fill="#FAFAF9"/>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-size="17" font-weight="700" fill="#0F172A">AI Content Workflow: Volume-Optimized vs. Performance-Optimized</text>
+  <text x="400" y="58" text-anchor="middle" font-size="12" fill="#64748B">The inputs you protect determine the outcomes you get</text>
+
+  <!-- LEFT COLUMN: Volume-Optimized (what most teams do) -->
+  <rect x="30" y="78" width="350" height="452" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="30" y="78" width="350" height="46" rx="10" fill="#475569"/>
+  <rect x="30" y="108" width="350" height="16" rx="0" fill="#475569"/>
+  <text x="205" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Volume-Optimized Workflow</text>
+  <text x="205" y="124" text-anchor="middle" font-size="11" fill="#CBD5E1">What most AI content teams build</text>
+
+  <!-- Steps LEFT -->
+  <!-- Step 1 -->
+  <circle cx="65" cy="168" r="16" fill="#E2E8F0"/>
+  <text x="65" y="173" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">1</text>
+  <text x="95" y="163" font-size="13" font-weight="600" fill="#0F172A">Topic + keyword</text>
+  <text x="95" y="180" font-size="11" fill="#64748B">Keyword tool → AI prompt → draft</text>
+
+  <line x1="65" y1="184" x2="65" y2="208" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Step 2 -->
+  <circle cx="65" cy="224" r="16" fill="#E2E8F0"/>
+  <text x="65" y="229" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">2</text>
+  <text x="95" y="219" font-size="13" font-weight="600" fill="#0F172A">AI generates draft</text>
+  <text x="95" y="236" font-size="11" fill="#64748B">Full article from prompt, no original data</text>
+
+  <line x1="65" y1="240" x2="65" y2="264" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Step 3 -->
+  <circle cx="65" cy="280" r="16" fill="#E2E8F0"/>
+  <text x="65" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">3</text>
+  <text x="95" y="275" font-size="13" font-weight="600" fill="#0F172A">Light copyedit</text>
+  <text x="95" y="292" font-size="11" fill="#64748B">Grammar, tone, formatting check</text>
+
+  <line x1="65" y1="296" x2="65" y2="320" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Step 4 -->
+  <circle cx="65" cy="336" r="16" fill="#E2E8F0"/>
+  <text x="65" y="341" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">4</text>
+  <text x="95" y="331" font-size="13" font-weight="600" fill="#0F172A">Publish</text>
+  <text x="95" y="348" font-size="11" fill="#64748B">Schedule and move to next piece</text>
+
+  <line x1="65" y1="352" x2="65" y2="376" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Step 5 -->
+  <circle cx="65" cy="392" r="16" fill="#E2E8F0"/>
+  <text x="65" y="397" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">5</text>
+  <text x="95" y="387" font-size="13" font-weight="600" fill="#0F172A">Measure volume</text>
+  <text x="95" y="404" font-size="11" fill="#64748B">Posts published, words produced</text>
+
+  <!-- Result box LEFT -->
+  <rect x="50" y="430" width="310" height="80" rx="8" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <text x="205" y="453" text-anchor="middle" font-size="12" font-weight="700" fill="#DC2626">RESULT</text>
+  <text x="205" y="470" text-anchor="middle" font-size="11" fill="#7F1D1D">87% report better productivity</text>
+  <text x="205" y="487" text-anchor="middle" font-size="11" fill="#7F1D1D">Only 39% see improved performance</text>
+  <text x="205" y="500" text-anchor="middle" font-size="10" font-style="italic" fill="#9CA3AF">(CMI B2B 2026, n=1,015)</text>
+
+  <!-- RIGHT COLUMN: Performance-Optimized -->
+  <rect x="420" y="78" width="350" height="452" rx="10" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="420" y="78" width="350" height="46" rx="10" fill="#0F172A"/>
+  <rect x="420" y="108" width="350" height="16" rx="0" fill="#0F172A"/>
+  <text x="595" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF">Performance-Optimized Workflow</text>
+  <text x="595" y="124" text-anchor="middle" font-size="11" fill="#94A3B8">What the teams with results actually do</text>
+
+  <!-- Steps RIGHT -->
+  <!-- Step 1 -->
+  <circle cx="455" cy="168" r="16" fill="#E2E8F0"/>
+  <text x="455" y="173" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">1</text>
+  <text x="485" y="163" font-size="13" font-weight="600" fill="#0F172A">Audience insight first</text>
+  <text x="485" y="180" font-size="11" fill="#64748B">What does this audience actually need to know?</text>
+
+  <line x1="455" y1="184" x2="455" y2="208" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Step 2 -->
+  <circle cx="455" cy="224" r="16" fill="#E2E8F0"/>
+  <text x="455" y="229" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">2</text>
+  <text x="485" y="219" font-size="13" font-weight="600" fill="#0F172A">Original data input</text>
+  <text x="485" y="236" font-size="11" fill="#64748B">Survey, internal analysis, or primary research</text>
+
+  <line x1="455" y1="240" x2="455" y2="264" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Step 3 -->
+  <circle cx="455" cy="280" r="16" fill="#E2E8F0"/>
+  <text x="455" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">3</text>
+  <text x="485" y="275" font-size="13" font-weight="600" fill="#0F172A">AI drafts structure</text>
+  <text x="485" y="292" font-size="11" fill="#64748B">Outline, draft, formatting, variation</text>
+
+  <line x1="455" y1="296" x2="455" y2="320" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Step 4 -->
+  <circle cx="455" cy="336" r="16" fill="#E2E8F0"/>
+  <text x="455" y="341" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">4</text>
+  <text x="485" y="331" font-size="13" font-weight="600" fill="#0F172A">Expert substantive edit</text>
+  <text x="485" y="348" font-size="11" fill="#64748B">SME adds nuance, counterpoint, real detail</text>
+
+  <line x1="455" y1="352" x2="455" y2="376" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Step 5 -->
+  <circle cx="455" cy="392" r="16" fill="#E2E8F0"/>
+  <text x="455" y="397" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A">5</text>
+  <text x="485" y="387" font-size="13" font-weight="600" fill="#0F172A">Measure performance inputs</text>
+  <text x="485" y="404" font-size="11" fill="#64748B">Time on page, attribution, sales usage</text>
+
+  <!-- Result box RIGHT -->
+  <rect x="440" y="430" width="310" height="80" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
+  <text x="595" y="453" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">RESULT</text>
+  <text x="595" y="470" text-anchor="middle" font-size="11" fill="#14532D">Differentiated content that earns attention</text>
+  <text x="595" y="487" text-anchor="middle" font-size="11" fill="#14532D">Performance improves alongside productivity</text>
+  <text x="595" y="500" text-anchor="middle" font-size="10" font-style="italic" fill="#9CA3AF">(Orbit Media 2026: expert collab = strongest predictor)</text>
+
+  <!-- Middle arrow -->
+  <text x="400" y="295" text-anchor="middle" font-size="22" fill="#94A3B8">→</text>
+</svg>

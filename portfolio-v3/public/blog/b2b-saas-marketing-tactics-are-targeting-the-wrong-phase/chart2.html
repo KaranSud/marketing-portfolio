@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B2B Buying Committee Size: Average Stakeholders Involved in a Purchase Decision (2015–2026)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --brand-blue: #1E40AF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --border: #334155;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --grid: #1E293B;
+    --border: #334155;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .chart-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 4px 0;
+    line-height: 1.35;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0 0 24px 0;
+  }
+  .canvas-wrap {
+    position: relative;
+    height: 340px;
+  }
+  .annotation-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .annotation {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .annotation-line {
+    width: 20px;
+    height: 2px;
+    background: var(--accent);
+    display: inline-block;
+    border-top: 2px dashed var(--accent);
+  }
+  .source {
+    margin-top: 20px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="chart-wrap">
+  <h2>B2B Buying Committee Size: Average Stakeholders Involved in a Purchase Decision (2015–2026)</h2>
+  <p class="subtitle">Area chart showing the expansion of buying groups over 11 years — from 5.4 to 11.2 average stakeholders per deal</p>
+  <div class="canvas-wrap">
+    <canvas id="chart2"></canvas>
+  </div>
+  <div class="annotation-row">
+    <div class="annotation">
+      <span class="annotation-line"></span>
+      <span>AI research tools widely adopted (2023+)</span>
+    </div>
+  </div>
+  <p class="source">Sources: Gartner B2B Buyer Survey 2026; CEB/Gartner "The Challenger Customer" (2015 baseline); Forrester B2B Buying Study 2026</p>
+</div>
+<script>
+const labels = ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'];
+const data   = [5.4, 5.8, 6.4, 7.1, 7.8, 8.3, 9.1, 9.6, 10.2, 10.7, 11.0, 11.2];
+
+const getStyle = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+const ctx = document.getElementById('chart2').getContext('2d');
+
+const gradient = ctx.createLinearGradient(0, 0, 0, 340);
+gradient.addColorStop(0, 'rgba(30,64,175,0.28)');
+gradient.addColorStop(1, 'rgba(30,64,175,0.02)');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [{
+      label: 'Avg. stakeholders per deal',
+      data,
+      fill: true,
+      backgroundColor: gradient,
+      borderColor: '#1E40AF',
+      borderWidth: 2.5,
+      pointBackgroundColor: (ctx) => ctx.dataIndex === 11 ? '#DC2626' : '#1E40AF',
+      pointBorderColor: (ctx) => ctx.dataIndex === 11 ? '#DC2626' : '#1E40AF',
+      pointRadius: (ctx) => ctx.dataIndex === 11 ? 6 : 3,
+      pointHoverRadius: 6,
+      tension: 0.4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => ` ${ctx.raw} stakeholders`
+        }
+      },
+      annotation: { annotations: {} }
+    },
+    scales: {
+      x: {
+        grid: { color: () => getStyle('--grid') || '#E2E8F0' },
+        ticks: { color: () => getStyle('--text-secondary') || '#475569', font: { size: 11 } }
+      },
+      y: {
+        min: 4,
+        max: 13,
+        grid: { color: () => getStyle('--grid') || '#E2E8F0' },
+        ticks: {
+          color: () => getStyle('--text-secondary') || '#475569',
+          callback: (v) => `${v}`
+        },
+        title: {
+          display: true,
+          text: 'Avg. stakeholders per deal',
+          color: () => getStyle('--text-secondary') || '#475569',
+          font: { size: 11 }
+        }
+      }
+    }
+  }
+});
+
+// draw vertical reference line for 2023 (AI adoption inflection)
+const originalDraw = Chart.registry.plugins.get('tooltip').afterDraw;
+Chart.register({
+  id: 'aiInflection',
+  afterDraw(chart) {
+    const { ctx, scales: { x, y } } = chart;
+    const idx = chart.data.labels.indexOf('2023');
+    if (idx === -1) return;
+    const xPos = x.getPixelForValue(idx);
+    ctx.save();
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = getStyle('--accent') || '#DC2626';
+    ctx.lineWidth = 1.5;
+    ctx.globalAlpha = 0.55;
+    ctx.beginPath();
+    ctx.moveTo(xPos, y.top);
+    ctx.lineTo(xPos, y.bottom);
+    ctx.stroke();
+    ctx.restore();
+  }
+});
+</script>
+</body>
+</html>

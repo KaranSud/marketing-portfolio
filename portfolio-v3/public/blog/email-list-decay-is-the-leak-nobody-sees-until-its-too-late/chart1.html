@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email List Decay Rate Trend 2021–2025</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --border: #E7E5E4;
+    --accent: #DC2626;
+    --chart-line: #0F172A;
+    --surface: #FAFAF9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --border: #334155;
+      --surface: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --grid: #1E293B;
+    --border: #334155;
+    --surface: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); padding: 24px 16px; }
+  .card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px 20px 16px; max-width: 640px; margin: 0 auto; }
+  h2 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+  .chart-wrap { position: relative; height: 240px; }
+  .source { font-size: 11px; color: var(--text-muted); margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>Email Database Decay Rate, 2021–2025</h2>
+  <p class="subtitle">Share of email addresses that became invalid or undeliverable each year</p>
+  <div class="chart-wrap">
+    <canvas id="c"></canvas>
+  </div>
+  <p class="source">Source: ZeroBounce Email List Decay Report, Feb 2025. Figures represent annual verification data.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script>
+const root = getComputedStyle(document.documentElement);
+const get = (v) => root.getPropertyValue(v).trim();
+
+const labels = ['2021', '2022', '2023', '2024', '2025'];
+const values = [23, 22, 25, 28, 23];
+
+const ctx = document.getElementById('c').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [{
+      label: 'Decay rate (%)',
+      data: values,
+      borderColor: '#0F172A',
+      backgroundColor: 'rgba(15,23,42,0.07)',
+      pointBackgroundColor: values.map((v, i) => i === 3 ? '#DC2626' : '#0F172A'),
+      pointRadius: values.map((v, i) => i === 3 ? 7 : 5),
+      pointHoverRadius: 7,
+      borderWidth: 2.5,
+      tension: 0.35,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.parsed.y}% annual decay`,
+          afterLabel: ctx => ctx.dataIndex === 3 ? '← Peak year' : ''
+        }
+      }
+    },
+    scales: {
+      y: {
+        min: 18,
+        max: 32,
+        ticks: {
+          color: '#64748B',
+          font: { size: 11 },
+          callback: v => v + '%'
+        },
+        grid: { color: '#E2E8F0' },
+        border: { display: false }
+      },
+      x: {
+        ticks: { color: '#64748B', font: { size: 12 } },
+        grid: { display: false },
+        border: { display: false }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
