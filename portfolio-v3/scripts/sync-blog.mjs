@@ -6,8 +6,9 @@
 // post folder into a site post, copies its images and charts into public/, and
 // swaps the [HERO IMAGE HERE] style markers for real embeds.
 //
-// Safe to re-run. Existing site posts that did not come from a dated folder
-// (the three portfolio pieces) are left alone.
+// Safe to re-run. Only adds posts the site does not have yet: existing posts are
+// hand-edited on the site (sentence-case titles, copy passes), so they are never
+// overwritten. Pass --force to rewrite them from the dated folders anyway.
 //
 //   node scripts/sync-blog.mjs          write the posts
 //   node scripts/sync-blog.mjs --dry    report what would change
@@ -23,6 +24,7 @@ const CONTENT_DIR = path.join(SITE_ROOT, "content", "blog");
 const ASSET_DIR = path.join(SITE_ROOT, "public", "blog");
 
 const DRY = process.argv.includes("--dry");
+const FORCE = process.argv.includes("--force");
 const ACCENTS = ["sage", "teal", "violet", "amber"];
 const DATED = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -107,6 +109,10 @@ dirs.forEach((day, i) => {
 
   const title = meta.title || day;
   const slug = slugify(title);
+  if (!FORCE && fs.existsSync(path.join(CONTENT_DIR, `${slug}.md`))) {
+    skipped++;
+    return;
+  }
   const assetDir = path.join(ASSET_DIR, slug);
   const assetBase = `/blog/${slug}`;
 
