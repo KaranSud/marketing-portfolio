@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLG Conversion Rates by Model Type</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --card-bg: #FAFAF9;
+    --border: #E7E5E4;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --grid: #1E293B;
+      --card-bg: #1E293B;
+      --border: #334155;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --grid: #1E293B;
+    --card-bg: #1E293B;
+    --border: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: var(--font);
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .header {
+    margin-bottom: 24px;
+  }
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .chart-wrap {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 16px;
+    position: relative;
+    height: 360px;
+  }
+  .source {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: right;
+  }
+  .source a {
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="label">Product-led growth</div>
+    <h2>Free-to-paid conversion rates by PLG model type</h2>
+    <p class="subtitle">The same product, different onboarding mechanics, a 12x spread in conversion outcomes.</p>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="chart1"></canvas>
+  </div>
+  <p class="source">Sources: <a href="https://productled.com/blog/product-led-growth-benchmarks" target="_blank">ProductLed Benchmarks 2025</a>; ChartMogul / ProductLed survey of 200 B2B products, January 2026; OpenView Partners Product Benchmarks 2025</p>
+</div>
+<script>
+  const ctx = document.getElementById('chart1').getContext('2d');
+  const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  const data = {
+    labels: [
+      'Freemium\n(no sales assist)',
+      'Freemium\n(with sales assist)',
+      'Free trial\n(no credit card)',
+      'Free trial\n(credit card required)'
+    ],
+    datasets: [{
+      label: 'Median free-to-paid conversion rate (%)',
+      data: [2.6, 5.5, 8.5, 30],
+      backgroundColor: [
+        'rgba(100, 116, 139, 0.7)',
+        'rgba(100, 116, 139, 0.85)',
+        'rgba(71, 85, 105, 0.9)',
+        'rgba(220, 38, 38, 0.85)',
+      ],
+      borderColor: [
+        '#64748B',
+        '#64748B',
+        '#475569',
+        '#DC2626',
+      ],
+      borderWidth: 1.5,
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  };
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (context) => ` ${context.parsed.y}% conversion rate`,
+          },
+          backgroundColor: isDark ? '#1E293B' : '#0F172A',
+          titleColor: '#F8FAFC',
+          bodyColor: '#94A3B8',
+          borderColor: '#334155',
+          borderWidth: 1,
+          padding: 10,
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: {
+            color: isDark ? '#94A3B8' : '#475569',
+            font: { size: 12, family: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' },
+            maxRotation: 0,
+            callback: function(val, index) {
+              return this.getLabelForValue(val).split('\n');
+            }
+          }
+        },
+        y: {
+          beginAtZero: true,
+          max: 35,
+          grid: {
+            color: isDark ? '#1E293B' : '#E2E8F0',
+            drawBorder: false,
+          },
+          border: { display: false, dash: [4, 4] },
+          ticks: {
+            color: isDark ? '#94A3B8' : '#475569',
+            font: { size: 12 },
+            callback: (val) => val + '%',
+            stepSize: 5,
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

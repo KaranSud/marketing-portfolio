@@ -55,4 +55,5 @@ export const hooks: Record<string, Hook> = {
   "saas-growth-strategy-why-expansion-arr-now-beats-new-logos": { stat: "4.8x", line: "the valuation gap between 113% and 98% NRR", viz: { kind: "vs", a: ["113% NRR", 24, "24x revenue"], b: ["98% NRR", 5, "5x revenue"] } },
   "the-authenticity-arbitrage-41-of-linkedin-content-is-ai-thats-your": { stat: "41%", line: "of LinkedIn posts are AI, and they earn 45% less", viz: { kind: "pct", value: 41 } },
   "the-buying-committee-just-outgrew-your-funnel": { stat: "13", line: "people in the average B2B deal", viz: { kind: "count", value: 13 } },
+  "product-led-growth-activation-is-your-real-conversion-problem": { stat: "66%", line: "of PLG teams don't track the metric that predicts revenue", viz: { kind: "pct", value: 66 } },
 };

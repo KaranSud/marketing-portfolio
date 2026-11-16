@@ -1,0 +1,95 @@
+1/ The 2.6% freemium conversion rate isn't a goal.
+
+It's a confession that most PLG teams are optimizing the wrong stage of the funnel.
+
+Here's the upstream problem nobody talks about 🧵
+
+2/ Most teams spend quarters on:
+- Pricing page copy tests
+- Email drip sequences
+- Conversion flows
+
+Then the needle doesn't move.
+
+The free-to-paid number stays at 2-3% and nobody knows why.
+
+3/ The honest answer: you can't fix conversion when activation is broken.
+
+Activation is not "user completes onboarding."
+
+It's the moment a new user FIRST experiences the core value your product was built to deliver.
+
+4/ Proxy metrics that don't predict conversion:
+❌ Onboarding checklist complete
+❌ 3 logins in first week
+❌ Email verified
+
+What actually matters: did they reach the value moment?
+
+5/ The 5x gap hiding in your trial data:
+
+Free trial (CC required): ~30% conversion
+Free trial (no CC): 5-8%
+Freemium: 2.6%
+
+Most people read this as "CC = intent."
+
+The real mechanism is structural.
+
+6/ A time-limited trial with a CC forces the team to define the activation event.
+
+You have 14 days to prove value. That pressure builds better products.
+
+Freemium products rarely have that clarity — and their conversion rates show it.
+
+7/ OpenView's 2025 Product Benchmarks: median B2B freemium-to-paid conversion = 2.6%
+
+ProductLed survey of 600+ B2B SaaS companies: only 34% track activation rate as a formal metric.
+
+Two-thirds of PLG companies don't know their activation rate.
+
+8/ This is the most expensive measurement gap in product-led SaaS.
+
+Without activation rate, there's no leading indicator for conversion.
+
+Your first signal is a low number at month end — after those users already left.
+
+9/ PQL conversion rates run 25-30%.
+MQL conversion: 5-10%.
+
+That gap isn't magic. It's what happens when a company actually knows who has activated.
+
+The 2.6% median reflects what happens when they don't.
+
+10/ McKinsey studied 107 publicly listed PLG companies.
+
+Average PLG company: no meaningful growth premium over sales-led peers.
+
+Top decile PLG executors: +10pp ARR growth, ~50% higher valuation ratios.
+
+The differentiator? Precision on product usage signals.
+
+11/ What the best PLG teams do differently:
+
+→ Define activation in a cross-functional session (product + marketing + CS)
+→ Set time-to-value target from their best cohort, not the average
+→ Build a secondary trigger that fires when activated users don't convert
+
+12/ The single operational change that moves the needle:
+
+Replace "free-to-paid conversion rate" as your primary metric with "activation-to-paid conversion rate."
+
+Keep tracking the first. Make the second your signal.
+
+13/ When you track activation-to-paid:
+- You force a definition of the activation event
+- Marketing optimizes for activated users, not signups
+- Sales knows exactly which accounts to touch and when
+
+The aggregate 2.6% stays — but inside it, your activation-to-paid might be 18-25%.
+
+14/ Every percentage point you add to your activation rate is worth more than a full campaign budget rerouted to free-tier acquisition.
+
+The data has been saying so for two years.
+
+Full breakdown with charts + the activation audit framework: [link]
