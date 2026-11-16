@@ -7,7 +7,7 @@ author: "Karan Sud"
 accent: "violet"
 source: "blog-posts/2026-08-03"
 ---
-### The data says more AI content = less performance
+*The data says more AI content = less performance*
 
 ![Dark abstract grid representing the signal-to-noise problem in AI content marketing — structured lines on a deep navy background with a red accent at the base.](/blog/ai-content-marketings-volume-trap-and-what-actually-works/hero.jpg)
 

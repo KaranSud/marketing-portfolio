@@ -5,8 +5,8 @@ import Link from "next/link";
 import BookButton from "../BookButton";
 
 const links = [
-  { href: "#work", label: "Work" },
-  { href: "#built", label: "Built" },
+  { href: "/#work", label: "Work" },
+  { href: "/#built", label: "Built" },
   { href: "/blog", label: "Writing" },
 ];
 

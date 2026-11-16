@@ -7,7 +7,7 @@ import FlowFooter from "@/components/flow/FlowFooter";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Writing on AI marketing",
+  title: "Writing on AI marketing, by Karan Sud",
   description:
     "Essays by Karan Sud on how AI is changing marketing, content and growth, plus three posts on building his own outbound engine.",
   alternates: { canonical: "/blog" },
@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     description: "Essays on how AI is changing marketing, content and growth.",
     url: "/blog",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Writing on AI marketing, by Karan Sud",
+    description: "Essays on how AI is changing marketing, content and growth.",
   },
 };
 

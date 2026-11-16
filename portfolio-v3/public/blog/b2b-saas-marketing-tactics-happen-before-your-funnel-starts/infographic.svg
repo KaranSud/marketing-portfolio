@@ -80,7 +80,7 @@
   <!-- Channel 5: Executive Content -->
   <rect x="60" y="350" width="780" height="70" rx="10" fill="#0F172A"/>
   <text x="90" y="375" fill="#DC2626" font-size="18">🎙️</text>
-  <text x="120" y="374" fill="#F1F5F9" font-size="13" font-weight="700">Channel 5: Executive & Founder Voice</text>
+  <text x="120" y="374" fill="#F1F5F9" font-size="13" font-weight="700">Channel 5: Executive &amp; Founder Voice</text>
   <text x="120" y="393" fill="#94A3B8" font-size="9.5">Podcasts, YouTube, newsletter, LinkedIn posts — consistent POV content builds brand recall before any search begins</text>
   <text x="720" y="374" fill="#64748B" font-size="9" text-anchor="end">Direct traffic at HubSpot: 71.6%</text>
   <text x="720" y="393" fill="#64748B" font-size="9" text-anchor="end">Direct traffic at Gong: 72.1%</text>

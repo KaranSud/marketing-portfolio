@@ -39,7 +39,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${c.title}, a case study by Karan Sud`,
     description: c.lede,
     alternates: { canonical: `/work/${c.key}` },
-    openGraph: { title: `${c.title}, a case study by Karan Sud`, description: c.lede, type: "article" },
+    openGraph: { title: `${c.title}, a case study by Karan Sud`, description: c.lede, url: `/work/${c.key}`, type: "article" },
+    twitter: { card: "summary_large_image", title: `${c.title}, a case study by Karan Sud`, description: c.lede },
   };
 }
 
@@ -57,7 +58,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
   return (
     <div className={`fl ${flowFonts}`}>
       <FlowNav />
-      <main className="fl-case">
+      <main id="main" className="fl-case">
         <header className="fl-case-head">
           <p className="fl-muted fl-reveal">{c.kind}</p>
           <h1>{c.title}</h1>

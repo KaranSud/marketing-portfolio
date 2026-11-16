@@ -61,13 +61,21 @@ export function getAllPosts(): PostMeta[] {
   return posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
 }
 
+// When the routine cannot fetch a hero photo it saves a 1x1 placeholder; drop that image from the body.
+function dropEmptyHero(slug: string, content: string): string {
+  const file = path.join(process.cwd(), "public/blog", slug, "hero.jpg");
+  if (fs.existsSync(file) && fs.statSync(file).size > 2048) return content;
+  return content.replace(new RegExp(`^!\\[[^\\]]*\\]\\(/blog/${slug}/hero\\.jpg\\)[ \\t]*\\r?\\n`, "m"), "");
+}
+
 export function getPost(slug: string): Post | null {
   const md = path.join(BLOG_DIR, `${slug}.md`);
   const mdx = path.join(BLOG_DIR, `${slug}.mdx`);
   const file = fs.existsSync(md) ? md : fs.existsSync(mdx) ? mdx : null;
   if (!file) return null;
   const raw = fs.readFileSync(file, "utf8");
-  const { data, content } = matter(raw);
+  const { data, content: body } = matter(raw);
+  const content = dropEmptyHero(slug, body);
   return { ...toMeta(slug, data, content), content };
 }
 

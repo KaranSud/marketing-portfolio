@@ -6,7 +6,9 @@ import FlowNav from "@/components/flow/FlowNav";
 import { flowFonts } from "@/components/flow/fonts";
 import "@/app/flow/flow.css";
 import FlowFooter from "@/components/flow/FlowFooter";
+import ChartFrames from "@/components/flow/ChartFrames";
 import { getPost, getSlugs } from "@/lib/blog";
+import { hooks } from "@/lib/hooks";
 
 const SITE = "https://karan-sud-portfolio.vercel.app";
 
@@ -85,7 +87,7 @@ export default async function PostPage({
         <article>
           <figure className="fl-post-cover">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/blog/${slug}/opengraph-image`} alt="" width={1200} height={630} />
+            <img src={`/blog/${slug}/opengraph-image`} alt={hooks[slug] ? `${hooks[slug].stat} ${hooks[slug].line}` : ""} width={1200} height={630} />
           </figure>
           <header className="fl-case-head">
             <h1>{post.title}</h1>
@@ -93,6 +95,7 @@ export default async function PostPage({
             <p className="fl-case-meta">{formatDate(post.date)} · {post.readingTime} · {post.author}</p>
           </header>
           <div className="prose fl-prose" dangerouslySetInnerHTML={{ __html: html }} />
+          <ChartFrames />
         </article>
         <Link className="fl-next" href="/blog">
           <span className="fl-muted">More writing</span>

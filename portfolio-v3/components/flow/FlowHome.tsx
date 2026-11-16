@@ -59,7 +59,7 @@ export default function FlowHome() {
     <div className={`fl ${flowFonts}`}>
       <FlowNav />
 
-      <main>
+      <main id="main">
         <section className="fl-hero" aria-labelledby="fl-title">
           <FlowField />
           <div className="fl-hero-in">

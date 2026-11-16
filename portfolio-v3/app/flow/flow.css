@@ -127,7 +127,7 @@
 .fl-stars i { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #F4F1EA; opacity: 0.3; animation: fl-twinkle 3.2s ease-in-out infinite; }
 @keyframes fl-twinkle { 50% { opacity: 0.9; } }
 .fl-night-kicker { color: #BDB9AD; }
-.fl-email { font-family: var(--fl-serif), serif; font-size: clamp(20px, 6vw, 40px); line-height: 1.1; color: #F4F1EA; text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.fl-email { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--fl-serif), serif; font-size: clamp(20px, 6vw, 40px); line-height: 1.1; color: #F4F1EA; text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
 .fl-email:hover { color: var(--sage); }
 
 /* rise on enter */
@@ -181,7 +181,7 @@
 }
 
 /* rolling digits (easyui Animated Number Morph) */
-.fl-roll { display: inline-flex; overflow: hidden; line-height: 1; height: 1em; vertical-align: top; }
+.fl-roll { display: inline-flex; white-space: pre; overflow: hidden; line-height: 1; height: 1em; vertical-align: top; }
 /* each digit keeps its own width (the real digit, invisible) while a 0 to 9 strip rolls over it */
 .fl-roll-col { position: relative; color: transparent; }
 .fl-roll-col::before { content: "0\a 1\a 2\a 3\a 4\a 5\a 6\a 7\a 8\a 9"; white-space: pre; position: absolute; left: 50%; top: 0; line-height: 1em; color: var(--ink); text-align: center; transform: translate(-50%, 0); transition: transform 1.4s var(--ease); transition-delay: calc(var(--i) * 70ms); }
@@ -304,6 +304,7 @@ html:has(.fl), body:has(.fl) { background: #F4F1EA; }
 .fl-prose { max-width: 720px; margin: 0 auto; padding: 0 24px 64px; font-size: 18px; line-height: 30px; color: var(--ink); }
 .fl-prose h2 { font-family: var(--fl-serif), serif; font-weight: 400; font-size: 30px; line-height: 36px; margin: 48px 0 16px; }
 .fl-prose h3 { font-size: 20px; line-height: 28px; font-weight: 600; margin: 32px 0 12px; }
+.fl-prose h2, .fl-prose h3, .fl-prose h4, .fl-prose strong:not(.ig *), .fl-prose b:not(.ig *) { color: var(--ink); }
 .fl-prose p, .fl-prose ul, .fl-prose ol { margin: 0 0 20px; }
 .fl-prose ul, .fl-prose ol { padding-left: 24px; }
 .fl-prose li { margin-bottom: 8px; }
@@ -362,3 +363,7 @@ html:has(.fl), body:has(.fl) { background: #F4F1EA; }
 .fl-writing-card img { width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--line); }
 .fl-writing-card strong { font-family: var(--fl-serif), serif; font-weight: 400; font-size: 22px; line-height: 30px; }
 @media (max-width: 767px) { .fl-writing-grid { grid-template-columns: 1fr; } .fl-writing-head h2 { font-size: 36px; } }
+/* Before/after labels and post infographic labels were set for the old dark theme (tiny mono, sage on grey). */
+.fl .ba-tag { font-family: inherit; font-size: 13px; line-height: 18px; font-weight: 500; color: #F4F1EA; background: rgba(18, 19, 15, 0.78); border: 0; border-radius: 9999px; padding: 4px 12px; backdrop-filter: none; }
+.fl .ba-shot-caption { font-family: inherit; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+.fl .ig-kicker { font-family: inherit; font-size: 13px; line-height: 18px; }

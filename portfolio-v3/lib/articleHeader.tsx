@@ -47,19 +47,24 @@ function Viz({ v }: { v: NonNullable<Hook["viz"]> }) {
   return <div style={{ display: "flex", flexDirection: "column", gap: 44 }}>{bar(v.a, false)}{bar(v.b, true)}</div>;
 }
 
-export function articleHeader({ slug, topic }: { slug: string; topic: string }) {
-  const h: Hook = hooks[slug] ?? { stat: "Karan Sud", line: "notes on marketing as it changes" };
+export function articleHeader({ slug, topic, hook }: { slug: string; topic: string; hook?: Hook }) {
+  const h: Hook = hook ?? hooks[slug] ?? { stat: "Karan Sud", line: "notes on marketing as it changes" };
   const photo = `data:image/jpeg;base64,${file("public", "karan.jpg").toString("base64")}`;
   const wide = !h.viz;
-  const statSize = h.stat.length > 7 ? (wide ? 170 : 120) : wide ? 210 : 200;
+  const statSize = h.stat.length > 12 ? 120 : h.stat.length > 7 ? (wide ? 170 : 120) : wide ? 210 : 200;
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", background: INK, padding: "64px 72px", color: CREAM }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: wide ? "center" : "stretch", flex: 1 }}>
           <div style={{ display: "flex", justifyContent: wide ? "center" : "flex-start", fontFamily: "Geist", fontSize: 28, color: wide ? MUTED : SAGE }}>{topic}</div>
           <div style={{ display: "flex", flexDirection: "column", maxWidth: wide ? 1056 : 640, alignItems: wide ? "center" : "flex-start", textAlign: wide ? "center" : "left" }}>
-            <div style={{ fontFamily: "Fraunces", fontSize: statSize, lineHeight: 0.95, letterSpacing: -4, color: wide ? SAGE : CREAM }}>{h.stat}</div>
-            <div style={{ fontFamily: "Fraunces", fontSize: 46, lineHeight: 1.12, marginTop: 18, color: CREAM, letterSpacing: -0.5 }}>{h.line}</div>
+            {/* The serif's plus sign breaks apart in the image renderer, so a plus is set in the sans. */}
+            <div style={{ display: "flex", alignItems: "baseline", fontFamily: "Fraunces", fontSize: statSize, lineHeight: 0.95, letterSpacing: -4, color: wide ? SAGE : CREAM }}>
+              {h.stat.split(/(\+)/).filter(Boolean).map((part, i) => (
+                <span key={i} style={part === "+" ? { fontFamily: "Geist", fontSize: statSize * 0.8, letterSpacing: 0, marginLeft: 6 } : {}}>{part}</span>
+              ))}
+            </div>
+            <div style={{ fontFamily: "Fraunces", fontSize: 46, lineHeight: 1.12, marginTop: 18, color: CREAM, letterSpacing: -0.5, textWrap: "balance" }}>{h.line}</div>
           </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: wide ? "center" : "flex-start", gap: 18 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}

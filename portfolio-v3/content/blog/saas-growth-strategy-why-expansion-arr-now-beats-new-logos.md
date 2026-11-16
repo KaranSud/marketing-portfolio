@@ -53,7 +53,7 @@ The trend intensifies at scale. For companies above $50M ARR, expansion now acco
 
 This shift isn't primarily happening because companies are running sophisticated upsell programs. A lot of it is structural: seat expansion as customer organizations grow, usage expansion in consumption-priced products, cross-sell into adjacent modules as product lines mature. The expansion is happening with relatively little deliberate investment from most GTM teams.
 
-[Recurly's 2025 Churn Report](https://recurly.com/resources/the-churn-report) puts median monthly B2B SaaS churn at 3.5%, broken into 2.6% voluntary cancellations and 0.8% from billing failures. On the expansion side, the economics look fundamentally different from new logo acquisition: industry benchmark data consistently shows that generating a dollar of expansion ARR costs roughly $0.20 to $0.27 in sales and marketing spend, versus $1.16 for a dollar of new logo ARR. Your existing customer base is your cheapest growth channel. It's also your least-measured, least-invested, and least-compensated one.
+Recurly's 2025 Churn Report puts median monthly B2B SaaS churn at 3.5%, broken into 2.6% voluntary cancellations and 0.8% from billing failures. On the expansion side, the economics look fundamentally different from new logo acquisition: industry benchmark data consistently shows that generating a dollar of expansion ARR costs roughly $0.20 to $0.27 in sales and marketing spend, versus $1.16 for a dollar of new logo ARR. Your existing customer base is your cheapest growth channel. It's also your least-measured, least-invested, and least-compensated one.
 
 ## Why most SaaS GTM teams are organized for the wrong problem
 
@@ -93,7 +93,7 @@ None of these ideas are new. The execution gap is wide specifically because the 
 
 Product-led growth is often framed as the model that naturally solves the expansion problem, letting the product drive adoption until revenue follows automatically.
 
-The reality is more layered. [OpenView's SaaS benchmark data](https://openviewpartners.com/2023-saas-benchmarks-report/) found that only 5% of freemium signups convert from free to paid, yet product-led companies grow roughly twice as fast as sales-led peers over time. Both statistics are true. Reading them together is instructive.
+The reality is more layered. OpenView's SaaS benchmark data found that only 5% of freemium signups convert from free to paid, yet product-led companies grow roughly twice as fast as sales-led peers over time. Both statistics are true. Reading them together is instructive.
 
 The 2x growth advantage of PLG companies doesn't come primarily from better free-to-paid conversion rates. It comes from expansion within accounts that have already converted. PLG creates a natural surface for in-product upsell through usage-based pricing, seat growth mechanics, and feature tier progression. But activating that surface still requires deliberate effort: pricing architecture that rewards growth, product instrumentation that surfaces expansion opportunities, and a CS function that follows product signals and acts on them before accounts plateau.
 
