@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLG Conversion by Stage</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text2: #475569;
+    --muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --brand: #1E40AF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text2: #94A3B8;
+      --muted: #64748B;
+      --grid: #1E293B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; padding: 32px 16px; }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  h2 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .sub { font-size: 13px; color: var(--text2); margin-bottom: 28px; }
+  .chart-box { position: relative; height: 320px; }
+  .source { font-size: 11px; color: var(--muted); margin-top: 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h2>Free-to-paid conversion rate by funnel stage</h2>
+  <p class="sub">B2B SaaS median — the gap between unqualified and product-qualified users</p>
+  <div class="chart-box">
+    <canvas id="chart"></canvas>
+  </div>
+  <p class="source">Sources: OpenView Product Benchmarks 2024/2025 (freemium median); ProductLed PLG Benchmarks 2025 (PQL conversion); industry median estimate (activated user stage)</p>
+</div>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+const labels = ['Random freemium signup', 'Activated user\n(reached core value)', 'Product qualified lead\n(PQL)'];
+const values = [2.8, 9.5, 27];
+const colors = values.map((v, i) => i === 2 ? '#DC2626' : '#1E40AF');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Random freemium\nsignup', 'Activated user\n(reached core value)', 'Product qualified\nlead (PQL)'],
+    datasets: [{
+      data: values,
+      backgroundColor: colors,
+      borderRadius: 4,
+      barThickness: 48,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw}% conversion rate`
+        }
+      },
+      datalabels: false
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 35,
+        ticks: {
+          callback: v => v + '%',
+          color: getComputedStyle(document.body).getPropertyValue('--text2') || '#475569',
+          font: { size: 12 }
+        },
+        grid: { color: '#E2E8F0' },
+        border: { display: false }
+      },
+      y: {
+        ticks: {
+          color: getComputedStyle(document.body).getPropertyValue('--text') || '#0F172A',
+          font: { size: 12 },
+          autoSkip: false
+        },
+        grid: { display: false },
+        border: { display: false }
+      }
+    }
+  },
+  plugins: [{
+    afterDatasetsDraw(chart) {
+      const ctx = chart.ctx;
+      chart.data.datasets[0].data.forEach((val, i) => {
+        const meta = chart.getDatasetMeta(0);
+        const bar = meta.data[i];
+        ctx.fillStyle = i === 2 ? '#DC2626' : '#1E40AF';
+        ctx.font = 'bold 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(`${val}%`, bar.x + 8, bar.y + 5);
+      });
+    }
+  }]
+});
+</script>
+</body>
+</html>

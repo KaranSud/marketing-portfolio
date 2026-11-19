@@ -56,4 +56,5 @@ export const hooks: Record<string, Hook> = {
   "the-authenticity-arbitrage-41-of-linkedin-content-is-ai-thats-your": { stat: "41%", line: "of LinkedIn posts are AI, and they earn 45% less", viz: { kind: "pct", value: 41 } },
   "the-buying-committee-just-outgrew-your-funnel": { stat: "13", line: "people in the average B2B deal", viz: { kind: "count", value: 13 } },
   "product-led-growth-activation-is-your-real-conversion-problem": { stat: "66%", line: "of PLG teams don't track the metric that predicts revenue", viz: { kind: "pct", value: 66 } },
+  "product-led-growth-has-a-silent-10x-conversion-gap": { stat: "108%", line: "usage-based NRR vs 98% for seat-based models", viz: { kind: "vs", a: ["Seat-based", 98, "98%"], b: ["Usage-based", 108, "108%"] } },
 };

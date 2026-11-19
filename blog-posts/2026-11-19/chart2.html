@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRR by Pricing Model</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text2: #475569;
+    --muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --mid: #64748B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F1F5F9;
+      --text2: #94A3B8;
+      --muted: #64748B;
+      --grid: #1E293B;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; padding: 32px 16px; }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  h2 { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .sub { font-size: 13px; color: var(--text2); margin-bottom: 28px; }
+  .chart-box { position: relative; height: 300px; }
+  .legend { display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .leg-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text2); }
+  .leg-dot { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+  .source { font-size: 11px; color: var(--muted); margin-top: 16px; }
+  .threshold { font-size: 11px; color: var(--muted); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h2>Median net revenue retention by pricing model (2022–2025)</h2>
+  <p class="sub">Usage-based pricing shows a 10-point structural NRR advantage over seat-based models</p>
+  <div class="chart-box">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#DC2626"></div>Usage-based pricing</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#94A3B8"></div>Seat-based pricing</div>
+  </div>
+  <p class="source">Source: Benchmarkit × Aleph 2026 (FY2025, 342 companies); OpenView Product Benchmarks 2022–2024 historical series</p>
+</div>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+const years = ['2022', '2023', '2024', '2025'];
+const usageBased = [125, 118, 113, 108];
+const seatBased = [110, 106, 101, 98];
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: years,
+    datasets: [
+      {
+        label: 'Usage-based',
+        data: usageBased,
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.08)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#DC2626',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        fill: true,
+        tension: 0.3
+      },
+      {
+        label: 'Seat-based',
+        data: seatBased,
+        borderColor: '#94A3B8',
+        backgroundColor: 'rgba(148,163,184,0.06)',
+        borderWidth: 2,
+        pointBackgroundColor: '#94A3B8',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        fill: true,
+        tension: 0.3
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}% NRR`
+        }
+      },
+      annotation: {
+        annotations: {
+          breakeven: {
+            type: 'line',
+            yMin: 100,
+            yMax: 100,
+            borderColor: 'rgba(100,116,139,0.4)',
+            borderWidth: 1.5,
+            borderDash: [4, 4],
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: '#475569',
+          font: { size: 12 }
+        },
+        grid: { color: '#E2E8F0' },
+        border: { display: false }
+      },
+      y: {
+        min: 90,
+        max: 135,
+        ticks: {
+          callback: v => v + '%',
+          color: '#475569',
+          font: { size: 12 }
+        },
+        grid: { color: '#E2E8F0' },
+        border: { display: false }
+      }
+    }
+  },
+  plugins: [{
+    afterDraw(chart) {
+      const { ctx, scales } = chart;
+      const y100 = scales.y.getPixelForValue(100);
+      ctx.save();
+      ctx.fillStyle = 'rgba(100,116,139,0.6)';
+      ctx.font = '11px -apple-system, Arial, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText('100% breakeven', scales.x.right - 4, y100 - 5);
+      ctx.restore();
+    }
+  }]
+});
+</script>
+</body>
+</html>

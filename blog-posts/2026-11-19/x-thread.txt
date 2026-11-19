@@ -1,0 +1,27 @@
+1/ Your free tier is not your growth engine. It is a waiting room. 97 out of 100 people who sign up will never pay you. That is not pessimism. That is the median. So why are PLG teams optimizing for all of them?
+
+2/ Amplitude studied 10,600 digital products. For half of them, 98%+ of new users go inactive within 2 weeks of their first action. Not "fail to convert." Go inactive. They were never going to convert.
+
+3/ The median B2B SaaS freemium conversion rate: 2.6-3.8%. Top quartile: 5-8%. If you are near the median, one in ten activated users ever pays. The funnel is not broken. You are measuring the wrong people.
+
+4/ There is a small, identifiable subset of your free users who convert at 10x the median rate. They are called product qualified leads. Only 34% of PLG teams are scoring them.
+
+5/ A PQL is a free user who has hit a behavioral threshold that correlates with paid conversion. Not a form fill. Not an email click. In-product behavior: file created and shared, workflow automated, teammate invited to workspace.
+
+6/ The PQL-to-paid conversion rate: 25-30%. Against a 2.6-5% baseline for unqualified free users. That is not a marginal improvement. It is a complete change in what the funnel is measuring.
+
+7/ Most teams misidentify their PQLs. They score activation events: someone created a project, connected an integration, ran a report. That tells you the product works. It does not tell you a person is ready to buy.
+
+8/ The real signal is dependency. A user who pulled in a teammate, hit a workflow limit, or created something the team now depends on. That is not activation. That is qualification. The gap between them is usually days and collaboration.
+
+9/ Pricing architecture fights the flywheel too. Seat-based with a free tier means expansion happens at friction events. The person who loved your product most now has to justify a budget to their manager. That is where most PLG flywheels stall.
+
+10/ Usage-based pricing companies post a median NRR of 108%. Seat-based: 98%. A 10-point spread that compounds annually. That is the structural difference between a business that expands with product love and one that only expands when someone picks up the phone.
+
+11/ Practical steps to build a PQL system: (1) Pull last 90 days of conversions. What did those accounts do before paying? The behavior clusters around 2-3 events. Those are your triggers. (2) Score your current free base against them. (3) Route thoughtfully.
+
+12/ Calibration: PQL list longer than 15% of your free base? Definition too loose. Shorter than 2%? Too strict. The PQL list should be the minority of free users who showed real product investment, not everyone who clicked past the welcome screen.
+
+13/ The PQL is also your activation design brief. If the trigger is "workflow automated 3 times," your product team's most important job is removing every obstacle between signup and that third automation. Known behavioral milestone. Known revenue consequence.
+
+14/ PLG teams that win this decade are not building better onboarding. They are building the precision to tell a paying customer from a free one at the moment it matters. Full breakdown: [LINK]

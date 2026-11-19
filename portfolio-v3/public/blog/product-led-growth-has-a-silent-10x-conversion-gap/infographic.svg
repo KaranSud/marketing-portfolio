@@ -1,0 +1,70 @@
+<svg viewBox="0 0 720 580" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <rect width="720" height="580" fill="#FAFAF9" rx="8"/>
+
+  <!-- Title -->
+  <text x="360" y="40" text-anchor="middle" font-size="18" font-weight="700" fill="#0F172A">The PQL Signal Stack</text>
+  <text x="360" y="60" text-anchor="middle" font-size="12" fill="#64748B">Three filters that identify a product qualified lead</text>
+
+  <!-- Layer 1: Fit Filter -->
+  <rect x="40" y="88" width="640" height="118" rx="6" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.5"/>
+  <text x="64" y="112" font-size="11" font-weight="700" fill="#1D4ED8" letter-spacing="1">LAYER 1 — FIT FILTER</text>
+  <text x="64" y="134" font-size="13" font-weight="600" fill="#0F172A">Company and role criteria</text>
+
+  <!-- Fit criteria boxes -->
+  <rect x="64" y="148" width="168" height="44" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="148" y="166" text-anchor="middle" font-size="11" fill="#1E40AF" font-weight="600">Company size</text>
+  <text x="148" y="182" text-anchor="middle" font-size="10" fill="#3B82F6">2–500 employees</text>
+
+  <rect x="244" y="148" width="168" height="44" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="328" y="166" text-anchor="middle" font-size="11" fill="#1E40AF" font-weight="600">Job title / persona</text>
+  <text x="328" y="182" text-anchor="middle" font-size="10" fill="#3B82F6">ICP role match</text>
+
+  <rect x="424" y="148" width="232" height="44" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="540" y="166" text-anchor="middle" font-size="11" fill="#1E40AF" font-weight="600">Signup source</text>
+  <text x="540" y="182" text-anchor="middle" font-size="10" fill="#3B82F6">Work email domain, not generic</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="360" y1="206" x2="360" y2="230" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="354,228 360,238 366,228" fill="#CBD5E1"/>
+
+  <!-- Layer 2: Usage Threshold -->
+  <rect x="40" y="244" width="640" height="118" rx="6" fill="#FEF9C3" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="64" y="268" font-size="11" font-weight="700" fill="#B45309" letter-spacing="1">LAYER 2 — USAGE THRESHOLD</text>
+  <text x="64" y="290" font-size="13" font-weight="600" fill="#0F172A">In-product behavior signals</text>
+
+  <rect x="64" y="304" width="168" height="44" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="148" y="322" text-anchor="middle" font-size="11" fill="#92400E" font-weight="600">Session frequency</text>
+  <text x="148" y="338" text-anchor="middle" font-size="10" fill="#D97706">3+ sessions in 7 days</text>
+
+  <rect x="244" y="304" width="168" height="44" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="328" y="322" text-anchor="middle" font-size="11" fill="#92400E" font-weight="600">Core feature used</text>
+  <text x="328" y="338" text-anchor="middle" font-size="10" fill="#D97706">The workflow that retains</text>
+
+  <rect x="424" y="304" width="232" height="44" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+  <text x="540" y="322" text-anchor="middle" font-size="11" fill="#92400E" font-weight="600">Data invested</text>
+  <text x="540" y="338" text-anchor="middle" font-size="10" fill="#D97706">Real content created, not test data</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="360" y1="362" x2="360" y2="386" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="354,384 360,394 366,384" fill="#CBD5E1"/>
+
+  <!-- Layer 3: Collaboration Signal -->
+  <rect x="40" y="400" width="640" height="118" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+  <text x="64" y="424" font-size="11" font-weight="700" fill="#991B1B" letter-spacing="1">LAYER 3 — COLLABORATION SIGNAL</text>
+  <text x="64" y="446" font-size="13" font-weight="600" fill="#0F172A">Team adoption indicator (highest-weight trigger)</text>
+
+  <rect x="64" y="460" width="168" height="44" rx="4" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
+  <text x="148" y="478" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="600">Teammate invited</text>
+  <text x="148" y="494" text-anchor="middle" font-size="10" fill="#DC2626">Any colleague added</text>
+
+  <rect x="244" y="460" width="168" height="44" rx="4" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
+  <text x="328" y="478" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="600">Shared asset created</text>
+  <text x="328" y="494" text-anchor="middle" font-size="10" fill="#DC2626">Shareable output made</text>
+
+  <rect x="424" y="460" width="232" height="44" rx="4" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
+  <text x="540" y="478" text-anchor="middle" font-size="11" fill="#991B1B" font-weight="600">Plan limit approached</text>
+  <text x="540" y="494" text-anchor="middle" font-size="10" fill="#DC2626">Upgrade prompt triggered</text>
+
+  <!-- Score labels at bottom -->
+  <text x="360" y="548" text-anchor="middle" font-size="11" fill="#64748B">3 layers met = High-priority PQL  ·  2 layers = Watch list  ·  0–1 = Nurture track</text>
+</svg>
