@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
     imageSizes: [128, 200, 256, 384, 480],
     minimumCacheTTL: 2592000,
   },
+  // Every page is prebuilt and public/ is served by the CDN, but lib/imageSize and lib/posts read public/ at
+  // build time, so file tracing packed all the media into each server function (past Vercel's 250 MB cap).
+  // Keep only the photo the share-image routes read.
+  outputFileTracingExcludes: { "*": ["public/**"] },
+  outputFileTracingIncludes: { "*": ["public/karan.jpg"] },
   async headers() {
     return ["/Results/:path*", "/Logos/:path*", "/karan.jpg"].map((source) => ({
       source,
