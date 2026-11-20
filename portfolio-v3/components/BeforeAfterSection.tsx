@@ -43,9 +43,9 @@ export function CompareSlider({ before, after, label, first }: BeforeAfterPair &
     <div className="ba-compare">
       {label ? <div className="ba-shot-caption">{label}</div> : null}
       <div className="ba-compare-frame">
-        <Image src={after} alt={`${label ?? "After"}: after`} className="ba-compare-img" fill sizes={sizes} {...load} />
+        <Image src={after} alt={`${label ?? "After"}: after`} className="ba-compare-img" fill sizes={sizes} quality={85} {...load} />
         <div className="ba-compare-clip" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-          <Image src={before} alt={`${label ?? "Before"}: before`} className="ba-compare-img" fill sizes={sizes} {...load} />
+          <Image src={before} alt={`${label ?? "Before"}: before`} className="ba-compare-img" fill sizes={sizes} quality={85} {...load} />
         </div>
         <div className="ba-compare-line" style={{ left: `${pos}%` }}>
           <span className="ba-compare-grip" aria-hidden>

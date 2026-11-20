@@ -17,7 +17,7 @@ export default function Turn({ posts }: { posts: Post[] }) {
           <div key={l} className={`fl-lane${l % 2 ? " is-rev" : ""}`} style={{ ["--dur" as string]: `${[70, 90, 60][l]}s` }}>
             {[...lane, ...lane].map((p, k) => (
               <div key={k} className="fl-lane-tile" style={{ aspectRatio: `${p.w} / ${p.h}` }}>
-                <Image src={p.src} alt="" fill sizes="180px" loading="lazy" />
+                <Image src={p.src} alt="" fill sizes={`(max-width: 767px) ${Math.ceil(112 * p.w / p.h)}px, ${Math.ceil(150 * p.w / p.h)}px`} quality={85} loading="lazy" />
               </div>
             ))}
           </div>

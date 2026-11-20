@@ -5,9 +5,10 @@ import type { NextConfig } from "next";
 const media = "public, max-age=2592000, stale-while-revalidate=86400";
 const nextConfig: NextConfig = {
   images: {
-    formats: ["image/webp"],
+    formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 828, 1200, 1920],
-    imageSizes: [128, 200, 256, 384, 480],
+    imageSizes: [128, 200, 256, 384],
+    qualities: [75, 85],
     minimumCacheTTL: 2592000,
   },
   // Every page is prebuilt and public/ is served by the CDN, but lib/imageSize and lib/posts read public/ at

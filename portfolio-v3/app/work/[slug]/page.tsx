@@ -129,7 +129,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             <div className="fl-proof-grid">
               {c.screenshots.map((s) => (
                 <figure key={s.src} className="fl-reveal">
-                  <Image src={s.src} alt={s.caption} {...imageSize(s.src)} sizes="(max-width: 860px) 100vw, 50vw" />
+                  <Image src={s.src} alt={s.caption} {...imageSize(s.src)} sizes="(max-width: 860px) 100vw, 50vw" quality={85} />
                   <figcaption className="fl-muted">{s.caption}</figcaption>
                 </figure>
               ))}

@@ -47,7 +47,12 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
   return (
     <div className="fl-stream">
       <div ref={track} className={`fl-stream-track${reverse ? " is-rev" : ""}`} style={{ ["--dur" as string]: `${speed}s` }}>
-        {[...posts, ...posts].map((p, k) => (
+        {[...posts, ...posts].map((p, k) => {
+          // Ask for the tile's real width: image height (324px wide screens, 244px phones) times its clamped
+          // aspect ratio, so wide posts stay sharp. Quality 85 keeps text in the creatives crisp.
+          const ar = Math.min(1.9, Math.max(0.56, p.w / p.h));
+          const sizes = `(max-width: 767px) ${Math.ceil(244 * ar)}px, ${Math.ceil(324 * ar)}px`;
+          return (
           <button key={k} type="button" className="fl-tile" style={{ aspectRatio: `${Math.min(1.9, Math.max(0.56, p.w / p.h))}` }}
             onClick={(e) => show(k % posts.length, e.currentTarget)} tabIndex={k < posts.length ? 0 : -1} aria-hidden={k >= posts.length}
             aria-label={k < posts.length ? `Open ${account} post, ${p.caption}` : undefined}>
@@ -55,12 +60,13 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
               <span className="fl-text-card"><span>{p.text}</span><small>{p.caption}</small></span>
             ) : p.video ? (
               <>
-                <Image src={p.src} alt="" fill sizes="200px" />
+                <Image src={p.src} alt="" fill sizes={sizes} quality={85} />
                 <video data-src={p.tile ?? p.video} muted loop playsInline preload="none" />
               </>
-            ) : <Image src={p.src} alt="" fill sizes="200px" />}
+            ) : <Image src={p.src} alt="" fill sizes={sizes} quality={85} />}
           </button>
-        ))}
+          );
+        })}
       </div>
       <dialog ref={dialog} className="fl-view" aria-label="Post" onClose={() => setOpen(null)}>
         {cur ? (
@@ -68,7 +74,7 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
             <div className="fl-view-media" style={{ aspectRatio: `${cur.w} / ${cur.h}` }}>
               {cur.text && !cur.src ? (
                 <p className="fl-view-text">{cur.text}</p>
-              ) : cur.video ? <video key={cur.video} src={cur.video} poster={cur.src} controls autoPlay playsInline /> : <Image key={cur.src} src={cur.src} alt={`${account} post: ${cur.alt}`} fill sizes="90vw" />}
+              ) : cur.video ? <video key={cur.video} src={cur.video} poster={cur.src} controls autoPlay playsInline /> : <Image key={cur.src} src={cur.src} alt={`${account} post: ${cur.alt}`} fill sizes="90vw" quality={85} />}
             </div>
             <div className="fl-view-bar">
               <p>{cur.caption}. <a href={cur.href} target="_blank" rel="noopener noreferrer">Open the original</a></p>
