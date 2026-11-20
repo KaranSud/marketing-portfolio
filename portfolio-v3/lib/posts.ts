@@ -11,6 +11,7 @@ export type Post = {
   w: number;
   h: number;
   video?: string;
+  tile?: string; // small silent copy of the reel for the autoplaying tile (tasks/v3/workflows/reel-tiles.sh)
   text?: string;
   alt: string;
   caption: string;
@@ -22,8 +23,15 @@ const dir = path.join(process.cwd(), "data", "posts");
 export const posts: Record<string, Post[]> = Object.fromEntries(
   (fs.existsSync(dir) ? fs.readdirSync(dir) : [])
     .filter((f) => f.endsWith(".json"))
-    .map((f) => [f.replace(/\.json$/, ""), JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Post[]])
+    .map((f) => [f.replace(/\.json$/, ""), withTiles(JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Post[])])
 );
+
+function withTiles(list: Post[]): Post[] {
+  return list.map((p) => {
+    const tile = p.video?.replace(/\.mp4$/, ".tile.mp4");
+    return tile && fs.existsSync(path.join(process.cwd(), "public", tile)) ? { ...p, tile } : p;
+  });
+}
 
 /** Every image post on the site, for walls. Interleaved so neighbours come from different clients. */
 export function wallPosts(): Post[] {

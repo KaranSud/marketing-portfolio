@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import FlowNav from "@/components/flow/FlowNav";
 import { flowFonts } from "@/components/flow/fonts";
 import "@/app/flow/flow.css";
@@ -39,8 +40,8 @@ function PostList({ posts }: { posts: PostMeta[] }) {
       {posts.map((p) => (
         <li key={p.slug}>
           <Link className="fl-blog-row" href={`/blog/${p.slug}`}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="fl-blog-thumb" src={`/blog/${p.slug}/opengraph-image`} alt="" width={240} height={126} loading="lazy" />
+            {/* The share card, resized and converted by the image optimizer (the source PNG is 1200 wide). */}
+            <Image className="fl-blog-thumb" src={`/blog/${p.slug}/opengraph-image`} alt="" width={1200} height={630} sizes="(max-width: 767px) 100vw, 200px" />
             <span className="fl-blog-title">{p.title}</span>
             <span className="fl-blog-desc">{p.description}</span>
             <span className="fl-blog-meta">

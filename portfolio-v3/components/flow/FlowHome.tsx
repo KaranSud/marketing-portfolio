@@ -100,8 +100,8 @@ export default function FlowHome() {
               <div key={r} className={`marquee-row ${r ? "right" : "left"}`}>
                 {[...row, ...row, ...row, ...row].map(([name, src], k) => (
                   <div key={k} className="bchip" aria-hidden={k >= row.length}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={src} alt={name} loading="lazy" decoding="async" />
+                    {/* The same logo files, resized by the image optimizer for a 30px chip (some files are 200KB+). */}
+                    <Image src={src} alt={name} width={30} height={30} />
                     {name}
                   </div>
                 ))}
@@ -200,8 +200,7 @@ export default function FlowHome() {
         <div className="fl-writing-grid">
           {writing.map((p) => (
             <Link key={p.slug} href={`/blog/${p.slug}`} className="fl-writing-card fl-reveal">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/blog/${p.slug}/opengraph-image`} alt="" width={600} height={315} loading="lazy" />
+              <Image src={`/blog/${p.slug}/opengraph-image`} alt="" width={1200} height={630} sizes="(max-width: 767px) 100vw, 360px" />
               <strong>{p.title}</strong>
               <span className="fl-muted">{p.readingTime}</span>
             </Link>

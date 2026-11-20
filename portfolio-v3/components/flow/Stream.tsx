@@ -56,7 +56,7 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
             ) : p.video ? (
               <>
                 <Image src={p.src} alt="" fill sizes="200px" />
-                <video data-src={p.video} muted loop playsInline preload="none" />
+                <video data-src={p.tile ?? p.video} muted loop playsInline preload="none" />
               </>
             ) : <Image src={p.src} alt="" fill sizes="200px" />}
           </button>

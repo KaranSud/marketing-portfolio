@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { marked } from "marked";
 import FlowNav from "@/components/flow/FlowNav";
 import { flowFonts } from "@/components/flow/fonts";
@@ -86,8 +87,7 @@ export default async function PostPage({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <article>
           <figure className="fl-post-cover">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/blog/${slug}/opengraph-image`} alt={hooks[slug] ? `${hooks[slug].stat} ${hooks[slug].line}` : ""} width={1200} height={630} />
+            <Image src={`/blog/${slug}/opengraph-image`} alt={hooks[slug] ? `${hooks[slug].stat} ${hooks[slug].line}` : ""} width={1200} height={630} sizes="(max-width: 1148px) 100vw, 1100px" priority />
           </figure>
           <header className="fl-case-head">
             <h1>{post.title}</h1>
