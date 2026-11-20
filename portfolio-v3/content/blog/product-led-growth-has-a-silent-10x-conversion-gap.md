@@ -19,7 +19,7 @@ Most product led growth teams respond to this by optimizing onboarding. More in-
 
 ## The freemium math nobody shares
 
-The median B2B SaaS freemium conversion rate runs between [2.6% and 3.8%](https://openviewpartners.com/productbenchmarks), depending on how you define conversion and when you stop counting the cohort. Top-quartile companies reach 5-8%. If you are running freemium and landing near the median, your SaaS activation rate (the share of signups who ever experience core product value) is likely between 20-35%, and of those activated users, perhaps one in ten ever pays.
+The median B2B SaaS freemium conversion rate runs between 2.6% and 3.8%, depending on how you define conversion and when you stop counting the cohort. Top-quartile companies reach 5-8%. If you are running freemium and landing near the median, your SaaS activation rate (the share of signups who ever experience core product value) is likely between 20-35%, and of those activated users, perhaps one in ten ever pays.
 
 <figure class="chart-embed">
   <iframe src="/blog/product-led-growth-has-a-silent-10x-conversion-gap/chart1.html" title="Product led growth has a silent 10x conversion gap chart 1" loading="lazy" scrolling="no"></iframe>

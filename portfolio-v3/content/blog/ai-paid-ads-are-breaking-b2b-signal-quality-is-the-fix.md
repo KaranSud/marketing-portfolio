@@ -43,7 +43,7 @@ More expensive. Less traffic. More competition for the same space.
 
 That is not what AI efficiency looks like in a press release. But it is what AI efficiency looks like when the platforms are improving their auction economics while the average advertiser's signal quality stays flat. AI bidding is making Google's revenue machine more efficient, not necessarily yours.
 
-The State of PPC 2026 survey of [1,306 paid media professionals](https://almcorp.com/blog/state-of-ppc-2026-global-report/) found that 62% cite increasingly opaque, black-box ad platforms as their top challenge, and 53% say managing paid media is harder than it was two years ago. The common reaction to this is frustration with the platforms. The more productive reaction is to ask what is actually driving the opacity and why the results are inconsistent.
+The State of PPC 2026 survey of [1,306 paid media professionals](https://web.archive.org/web/20260628231557/https://almcorp.com/blog/state-of-ppc-2026-global-report/) found that 53% say managing paid media is harder than it was two years ago, and 65% of those name increasingly opaque, black-box ad platforms as the top reason. The common reaction to this is frustration with the platforms. The more productive reaction is to ask what is actually driving the opacity and why the results are inconsistent.
 
 The answer is almost always: the signals being fed into the system are not strong enough, specific enough, or close enough to actual revenue to give the AI useful learning material.
 
