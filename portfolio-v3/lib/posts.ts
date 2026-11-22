@@ -12,6 +12,7 @@ export type Post = {
   h: number;
   video?: string;
   tile?: string; // small silent copy of the reel for the autoplaying tile (tasks/v3/workflows/reel-tiles.sh)
+  lite?: string; // lighter copy for weak connections (same script)
   text?: string;
   alt: string;
   caption: string;
@@ -28,8 +29,10 @@ export const posts: Record<string, Post[]> = Object.fromEntries(
 
 function withTiles(list: Post[]): Post[] {
   return list.map((p) => {
-    const tile = p.video?.replace(/\.mp4$/, ".tile.mp4");
-    return tile && fs.existsSync(path.join(process.cwd(), "public", tile)) ? { ...p, tile } : p;
+    const has = (f?: string) => f && fs.existsSync(path.join(process.cwd(), "public", f)) ? f : undefined;
+    const tile = has(p.video?.replace(/\.mp4$/, ".tile.mp4"));
+    const lite = has(p.video?.replace(/\.mp4$/, ".lite.mp4"));
+    return { ...p, ...(tile ? { tile } : {}), ...(lite ? { lite } : {}) };
   });
 }
 

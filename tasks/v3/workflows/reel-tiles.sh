@@ -14,3 +14,14 @@ grep -ho '"video": *"[^"]*"' data/posts/*.json | sed 's/"video": *"//;s/"$//' | 
   if [ "$(stat -f %z "$out")" -ge "$(stat -f %z "$src")" ]; then rm -f "$out"; echo "kept original $v"; touch "$out.skip"; continue; fi
   echo "$(( $(stat -f %z "$src") / 1024 ))KB -> $(( $(stat -f %z "$out") / 1024 ))KB $v"
 done
+# Lite copies for weak connections (Stream.tsx picks them when the browser reports under 1.5 Mbps):
+# 360px tall, CRF 32, about a third of the tile copy. Softer, but it plays on 3G instead of not at all.
+grep -ho '"video": *"[^"]*"' data/posts/*.json | sed 's/"video": *"//;s/"$//' | sort -u | while read -r v; do
+  src="public$v"; out="${src%.mp4}.lite.mp4"
+  [ -f "$src" ] || continue; [ -f "$out" ] || [ -f "$out.skip" ] && continue
+  ffmpeg -nostdin -v error -y -i "$src" -an -vf "scale=-2:'min(360,ih)'" -c:v libx264 -preset slow -crf 32 \
+    -pix_fmt yuv420p -movflags +faststart "$out" || continue
+  base="${src%.mp4}.tile.mp4"; [ -f "$base" ] || base="$src"
+  if [ "$(stat -f %z "$out")" -ge "$(( $(stat -f %z "$base") * 8 / 10 ))" ]; then rm -f "$out"; touch "$out.skip"; echo "lite not worth it $v"; continue; fi
+  echo "lite $(( $(stat -f %z "$base") / 1024 ))KB -> $(( $(stat -f %z "$out") / 1024 ))KB $v"
+done

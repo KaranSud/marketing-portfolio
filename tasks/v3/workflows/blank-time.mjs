@@ -13,7 +13,9 @@ const [url, label = ''] = process.argv.slice(2);
 const ctx = await b.newContext({ viewport: { width: 360, height: 740 }, deviceScaleFactor: 2.625, isMobile: true, hasTouch: true });
 const p = await ctx.newPage(); const cdp = await ctx.newCDPSession(p);
 await cdp.send('Network.enable'); await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
-await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: (1.6 * 1024 * 1024) / 8, uploadThroughput: (750 * 1024) / 8 });
+// NET=3g: 750 kbps down, 300 ms RTT (a weak mobile link). Default: slow 4G, 1.6 Mbps, 150 ms.
+const net = process.env.NET === '3g' ? { latency: 300, downloadThroughput: (750 * 1024) / 8, uploadThroughput: (250 * 1024) / 8 } : { latency: 150, downloadThroughput: (1.6 * 1024 * 1024) / 8, uploadThroughput: (750 * 1024) / 8 };
+await cdp.send('Network.emulateNetworkConditions', { offline: false, ...net });
 await p.addInitScript(() => {
   window.__bt = { enter: new Map(), img: new Map(), play: new Map(), ask: [] };
   // every play request: when it was asked for, when it really started, and whether it was paused (left the screen) first
@@ -28,9 +30,12 @@ await p.addInitScript(() => {
   new MutationObserver(watch).observe(document, { childList: true, subtree: true });
 });
 await p.goto(url, { waitUntil: 'domcontentloaded', timeout: 120000 });
+const downlink = await p.evaluate(() => navigator.connection ? navigator.connection.downlink : 'n/a');
 await p.waitForTimeout(2500);
 const h = await p.evaluate(() => document.documentElement.scrollHeight);
-for (let y = 0; y < h; y += 140) { await p.mouse.wheel(0, 140); await p.waitForTimeout(200); }
+const stops = await p.evaluate(() => [...document.querySelectorAll('.fl-stream')].map((e) => e.getBoundingClientRect().top + scrollY - innerHeight / 3));
+for (let y = 0; y < h; y += 140) { await p.mouse.wheel(0, 140); await p.waitForTimeout(200);
+  if (process.env.DWELL && stops.some((s) => s >= y && s < y + 140)) await p.waitForTimeout(+process.env.DWELL); }
 await p.waitForTimeout(4000);
 const r = await p.evaluate(() => {
   const now = performance.now(); const imgs = [], vids = [];
@@ -45,5 +50,5 @@ const r = await p.evaluate(() => {
 const stat = (a) => { const s = [...a].sort((x, y) => x - y); const q = (f) => Math.round(s[Math.min(s.length - 1, Math.floor(s.length * f))] || 0);
   return `n=${s.length} median ${q(0.5)}ms p90 ${q(0.9)}ms  blank >1s: ${s.filter((x) => x > 1000).length}  >3s: ${s.filter((x) => x > 3000).length}`; };
 const started = r.ask.filter((x) => x >= 0);
-console.log(`${label} images: ${stat(r.imgs)}\n${label} reels, play asked until playing: ${stat(started)}  (${r.ask.filter((x) => x < 0).length} left the screen first)`);
+console.log(`${label} [${process.env.NET || 'slow4g'}, browser sees ${downlink} Mbps${process.env.DWELL ? ', dwell ' + process.env.DWELL + 'ms' : ''}] images: ${stat(r.imgs)}\n${label} reels, play asked until playing: ${stat(started)}  (${r.ask.filter((x) => x < 0).length} left the screen first)`);
 await b.close();
