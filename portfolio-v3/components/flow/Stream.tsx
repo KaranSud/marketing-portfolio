@@ -34,10 +34,8 @@ export default function Stream({ posts, account, reverse = false, speed = 60 }: 
       if (e.isIntersecting && !timer) { pick(); timer = setInterval(pick, 700); }
       else if (!e.isIntersecting && timer) { clearInterval(timer); timer = undefined; }
     }, { rootMargin: "50% 0px" });
-    // Start once the page has finished loading, so tiles added as rows slide never hold the load spinner.
-    const start = () => io.observe(row);
-    if (document.readyState === "complete") start(); else addEventListener("load", start, { once: true });
-    return () => { removeEventListener("load", start); io.disconnect(); if (timer) clearInterval(timer); };
+    io.observe(row);
+    return () => { io.disconnect(); if (timer) clearInterval(timer); };
   }, [reverse]);
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
