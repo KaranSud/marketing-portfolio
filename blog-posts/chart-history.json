@@ -403,5 +403,14 @@
       "horizontal bar",
       "area"
     ]
+  },
+  {
+    "date": "2026-11-23",
+    "slug": "marketing-attribution-only-sees-39-percent-b2b-buyer-journey",
+    "title": "Marketing attribution only sees 39% of the B2B buyer journey",
+    "chart_types": [
+      "lollipop",
+      "radar"
+    ]
   }
 ]

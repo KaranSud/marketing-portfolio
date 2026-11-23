@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measurement Approach Coverage by Journey Stage</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --accent: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica Neue, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --text-secondary: #94A3B8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --text-secondary: #94A3B8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+  .container { max-width: 640px; margin: 0 auto; }
+  h2 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+  .subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; }
+  .canvas-wrap { position: relative; height: 340px; }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-top: 20px; justify-content: center;
+  }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-secondary); }
+  .legend-swatch { width: 28px; height: 3px; border-radius: 2px; }
+  .insight {
+    margin-top: 20px; padding: 14px 16px;
+    background: rgba(220,38,38,0.07);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px; font-size: 13px;
+    color: var(--text-secondary); line-height: 1.5;
+  }
+  .insight strong { color: var(--text); }
+  .source { font-size: 11px; color: var(--text-muted); margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>What each measurement method actually covers</h2>
+  <p class="subtitle">Relative coverage of buyer journey stages across four measurement approaches (0 = no coverage, 100 = strong coverage)</p>
+  <div class="canvas-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#0F172A"></div>
+      <span>Multi-touch attribution</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#DC2626"></div>
+      <span>Incrementality testing</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#475569"></div>
+      <span>Marketing mix modeling</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#94A3B8"></div>
+      <span>Self-reported attribution</span>
+    </div>
+  </div>
+  <div class="insight">
+    <strong>60-75% of buy-side leaders say current approaches underperform.</strong> No single method covers the full journey — the dark, influence-stage activity consistently scores lowest across all tools.
+  </div>
+  <p class="source">Source: IAB State of Data 2026 (n=400+ US buy-side decision-makers)</p>
+</div>
+<script>
+const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+  (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
+const pointLabels = isDark ? '#94A3B8' : '#475569';
+
+const labels = [
+  'Peer/community influence',
+  'Dark social & WOM',
+  'Brand awareness',
+  'Paid ad performance',
+  'Email engagement',
+  'Pipeline conversion'
+];
+
+new Chart(document.getElementById('chart').getContext('2d'), {
+  type: 'radar',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Multi-touch attribution',
+        data: [5, 8, 15, 90, 85, 95],
+        borderColor: '#0F172A',
+        backgroundColor: 'rgba(15,23,42,0.08)',
+        borderWidth: 2,
+        pointBackgroundColor: '#0F172A',
+        pointRadius: 4,
+      },
+      {
+        label: 'Incrementality testing',
+        data: [10, 12, 55, 80, 70, 75],
+        borderColor: '#DC2626',
+        backgroundColor: 'rgba(220,38,38,0.08)',
+        borderWidth: 2,
+        pointBackgroundColor: '#DC2626',
+        pointRadius: 4,
+      },
+      {
+        label: 'Marketing mix modeling',
+        data: [20, 18, 65, 70, 60, 65],
+        borderColor: '#475569',
+        backgroundColor: 'rgba(71,85,105,0.08)',
+        borderWidth: 2,
+        pointBackgroundColor: '#475569',
+        pointRadius: 4,
+      },
+      {
+        label: 'Self-reported attribution',
+        data: [65, 70, 60, 55, 50, 45],
+        borderColor: '#94A3B8',
+        backgroundColor: 'rgba(148,163,184,0.08)',
+        borderWidth: 2,
+        pointBackgroundColor: '#94A3B8',
+        pointRadius: 4,
+        borderDash: [4, 3],
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.dataset.label}: ${ctx.raw}/100`
+        }
+      }
+    },
+    scales: {
+      r: {
+        min: 0,
+        max: 100,
+        ticks: {
+          stepSize: 25,
+          display: false,
+        },
+        grid: { color: gridColor },
+        angleLines: { color: gridColor },
+        pointLabels: {
+          font: {
+            size: 11,
+            family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif'
+          },
+          color: pointLabels,
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+1/ 85% of marketers say they can measure ROI. Only 32% actually do it across all channels. That 53-point gap isn't a tools problem. It's a structural blindspot built into how attribution works. Here's what attribution can't see — and why it matters.
+
+2/ According to 6sense's 2025 Buyer Experience Report: B2B buyers contact a vendor at an average of 61% through their buying journey. The first 61% — research, peer reviews, shortlist formation — happens completely invisible to your analytics.
+
+3/ Attribution is technically accurate. It measures what it can see. The problem: what it can see is the final 39% of a decision that was already made before the buyer ever filled out your form.
+
+4/ The shortlist gets built in Slack threads, Reddit posts, LinkedIn DMs, and podcast episodes. Buyers arrive having already eliminated most options. Attribution shows the form fill. It never shows the conversation that eliminated you.
+
+5/ Gartner's 2025 CMO Spend Survey: marketing budgets flatlined at 7.7% of company revenue, down from 9.5% three years prior. 59% of CMOs say they don't have enough budget to execute strategy. That pressure makes teams optimize for what attribution can prove.
+
+6/ What attribution can prove is the final 39%. So teams invest more in the 39% and less in the 61% where actual selection happens. Pipeline gets harder. Teams ask for more budget. The board asks why channels aren't working. Nobody looks upstream.
+
+7/ McKinsey's 2025 "Past Forward" research interviewed 50+ senior marketing leaders. None could clearly articulate the ROI of their martech investments. This isn't a data scarcity problem. It's a measurement framing problem.
+
+8/ The IAB's State of Data 2026 report: 60-75% of buy-side leaders say their core measurement approaches — attribution, incrementality tests, and MMM — are underperforming. These are the people who've already adopted all three. Still not enough.
+
+9/ The same IAB report estimates AI-powered measurement could release $26 billion in media investment value. The gap between good measurement and what most teams do is not a small operational issue. It's a material financial problem at scale.
+
+10/ Three signals you can actually track for the invisible 61%: (1) branded search volume lift after campaigns. (2) Self-reported "how did you hear about us?" in demo request forms. (3) Time-based brand lift via geographic holdout studies.
+
+11/ Branded search is the most reliable proxy. When you run a campaign and branded searches rise in the following weeks, you're seeing the influence stage respond. Attribution will credit it to "organic brand search." The real signal is the volume change.
+
+12/ Refine Labs studied 620 conversions. Attribution credited web search with 78% of them. Buyer self-report credited dark social, word of mouth, and peer recommendations with the majority. Same purchases. Opposite conclusions about what drove them.
+
+13/ The fix is not a better attribution model. Attribution will never see the first 61% of your buyer's journey — that journey forms before buyers reveal themselves to you. The fix is building presence where buying decisions happen, not just where they close.
+
+14/ What the best CMOs actually do: measure the 39% carefully with available tools, run incrementality tests to validate what attribution says, use self-reported attribution to understand what attribution misses, and invest in brand presence based on evidence + judgment.
+
+15/ Full breakdown: Marketing attribution only sees 39% of the B2B buyer journey — link in bio. Follow @karansud for more.

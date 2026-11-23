@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measurement Confidence vs. Actual Practice</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --stem: #E7E5E4;
+    --dot-confident: #0F172A;
+    --dot-actual: #DC2626;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica Neue, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --grid: #1E293B;
+      --stem: #1E293B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --grid: #1E293B;
+    --stem: #1E293B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+  .container { max-width: 680px; margin: 0 auto; }
+  h2 {
+    font-size: 18px; font-weight: 700;
+    color: var(--text); margin-bottom: 6px; line-height: 1.3;
+  }
+  .subtitle {
+    font-size: 13px; color: var(--text-secondary);
+    margin-bottom: 28px; line-height: 1.5;
+  }
+  .chart-area { width: 100%; }
+  .row {
+    display: flex; align-items: center;
+    margin-bottom: 18px; gap: 10px;
+  }
+  .label {
+    width: 170px; min-width: 170px;
+    font-size: 12px; color: var(--text-secondary);
+    text-align: right; line-height: 1.3;
+  }
+  .bar-track {
+    flex: 1; position: relative; height: 24px;
+    display: flex; align-items: center;
+  }
+  .track-line {
+    position: absolute; left: 0; right: 0;
+    height: 1px; background: var(--grid);
+  }
+  .dot {
+    position: absolute; width: 12px; height: 12px;
+    border-radius: 50%; transform: translateX(-50%);
+    top: 50%; margin-top: -6px;
+  }
+  .dot-confident { background: var(--dot-confident); z-index: 2; }
+  .dot-actual { background: var(--dot-actual); z-index: 2; }
+  .gap-line {
+    position: absolute; height: 3px; top: 50%; transform: translateY(-50%);
+    background: rgba(220,38,38,0.25); z-index: 1;
+  }
+  .gap-label {
+    font-size: 10px; color: var(--accent); font-weight: 600;
+    margin-left: 6px; min-width: 36px;
+    white-space: nowrap;
+  }
+  .x-axis {
+    display: flex; justify-content: space-between;
+    margin-top: 4px; margin-left: 180px;
+    font-size: 10px; color: var(--text-muted);
+  }
+  .legend {
+    display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 12px; color: var(--text-secondary);
+  }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .insight {
+    margin-top: 20px; padding: 14px 16px;
+    background: rgba(220,38,38,0.07);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px; font-size: 13px;
+    color: var(--text-secondary); line-height: 1.5;
+  }
+  .insight strong { color: var(--text); }
+  .source { font-size: 11px; color: var(--text-muted); margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>The 53-point measurement gap</h2>
+  <p class="subtitle">Marketers who feel confident measuring ROI (dark) vs. those who actually measure holistically (red), by channel type</p>
+  <div class="chart-area" id="chart"></div>
+  <div class="x-axis">
+    <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#0F172A"></div>
+      <span>Feel confident measuring</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#DC2626"></div>
+      <span>Actually measure holistically</span>
+    </div>
+  </div>
+  <div class="insight">
+    <strong>85% vs. 32%.</strong> A 53-point gap separates confidence from practice across all channels — the widest in digital/paid, narrower in email but still significant.
+  </div>
+  <p class="source">Source: Nielsen 2025 Global Annual Marketing Survey (n=1,400 global marketers)</p>
+</div>
+<script>
+const data = [
+  { label: 'All channels (overall)', confident: 85, actual: 32 },
+  { label: 'Paid digital', confident: 91, actual: 38 },
+  { label: 'Organic search', confident: 82, actual: 35 },
+  { label: 'Social media', confident: 79, actual: 29 },
+  { label: 'Email marketing', confident: 88, actual: 48 },
+  { label: 'Traditional media', confident: 60, actual: 15 },
+  { label: 'Events / sponsorships', confident: 55, actual: 12 },
+];
+
+const chart = document.getElementById('chart');
+data.forEach(d => {
+  const confidentPct = d.confident;
+  const actualPct = d.actual;
+  const gapLeft = Math.min(confidentPct, actualPct);
+  const gapWidth = Math.abs(confidentPct - actualPct);
+  const gap = confidentPct - actualPct;
+
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.innerHTML = `
+    <div class="label">${d.label}</div>
+    <div class="bar-track">
+      <div class="track-line"></div>
+      <div class="gap-line" style="left:${gapLeft}%;width:${gapWidth}%"></div>
+      <div class="dot dot-confident" style="left:${confidentPct}%"></div>
+      <div class="dot dot-actual" style="left:${actualPct}%"></div>
+    </div>
+    <div class="gap-label">${gap > 0 ? '+' : ''}${gap}pt</div>
+  `;
+  chart.appendChild(row);
+});
+</script>
+</body>
+</html>

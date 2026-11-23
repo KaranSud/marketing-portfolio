@@ -57,4 +57,5 @@ export const hooks: Record<string, Hook> = {
   "the-buying-committee-just-outgrew-your-funnel": { stat: "13", line: "people in the average B2B deal", viz: { kind: "count", value: 13 } },
   "product-led-growth-activation-is-your-real-conversion-problem": { stat: "66%", line: "of PLG teams don't track the metric that predicts revenue", viz: { kind: "pct", value: 66 } },
   "product-led-growth-has-a-silent-10x-conversion-gap": { stat: "108%", line: "usage-based NRR vs 98% for seat-based models", viz: { kind: "vs", a: ["Seat-based", 98, "98%"], b: ["Usage-based", 108, "108%"] } },
+  "marketing-attribution-only-sees-39-percent-b2b-buyer-journey": { stat: "61%", line: "of the B2B buying journey forms before first contact", viz: { kind: "pct", value: 61 } },
 };
