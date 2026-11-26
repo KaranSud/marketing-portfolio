@@ -412,5 +412,14 @@
       "lollipop",
       "radar"
     ]
+  },
+  {
+    "date": "2026-11-26",
+    "slug": "marketing-mix-modeling-just-got-cheaper-thats-the-problem",
+    "title": "Marketing mix modeling just got cheaper. That's the problem.",
+    "chart_types": [
+      "vertical bar",
+      "donut"
+    ]
   }
 ]

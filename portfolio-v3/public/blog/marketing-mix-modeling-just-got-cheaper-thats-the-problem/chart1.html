@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMM Adoption vs Measurement Reality</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --text: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --grid: #E2E8F0;
+    --accent: #DC2626;
+    --bar-1: #0F172A;
+    --bar-2: #DC2626;
+    --bar-3: #64748B;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica Neue, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F172A;
+      --text: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --grid: #1E293B;
+      --bar-1: #94A3B8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F172A;
+    --text: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --grid: #1E293B;
+    --bar-1: #94A3B8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+  .container { max-width: 640px; margin: 0 auto; }
+  h2 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+  .subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; }
+  .canvas-wrap { position: relative; height: 300px; }
+  .insight {
+    margin-top: 20px; padding: 14px 16px;
+    background: rgba(220,38,38,0.07);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px; font-size: 13px;
+    color: var(--text-secondary); line-height: 1.5;
+  }
+  .insight strong { color: var(--text); }
+  .source { font-size: 11px; color: var(--text-muted); margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>More teams running MMM. Same teams measuring wrong.</h2>
+  <p class="subtitle">Adoption is surging while confidence and coverage remain low — IAB State of Data 2026, TransUnion/eMarketer 2026</p>
+  <div class="canvas-wrap">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="insight">
+    <strong>The adoption paradox:</strong> Nearly half of brand and agency marketers plan to invest in MMM, yet three in four say their measurement models underperform. Access to the tool is not the same as knowing how to use it.
+  </div>
+  <p class="source">Sources: IAB State of Data 2026 (n=400+); TransUnion/eMarketer 2026 survey (n=marketers, U.S.)</p>
+</div>
+<script>
+  const ctx = document.getElementById('chart').getContext('2d');
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const textColor = isDark ? '#F8FAFC' : '#0F172A';
+  const secondaryColor = isDark ? '#94A3B8' : '#475569';
+  const gridColor = isDark ? '#1E293B' : '#E2E8F0';
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [
+        ['Plan to invest', 'in MMM'],
+        ['Say measurement', 'underperforms'],
+        ['Run all three', 'measurement layers']
+      ],
+      datasets: [{
+        data: [46.9, 75, 39],
+        backgroundColor: ['#0F172A', '#DC2626', '#64748B'],
+        borderRadius: 4,
+        barPercentage: 0.55,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => ` ${ctx.raw}%`,
+            title: (items) => items[0].label.join(' ')
+          }
+        },
+        datalabels: false
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: secondaryColor,
+            font: { size: 12 }
+          },
+          border: { display: false }
+        },
+        y: {
+          min: 0, max: 100,
+          grid: { color: gridColor },
+          ticks: {
+            color: secondaryColor,
+            font: { size: 11 },
+            callback: v => v + '%'
+          },
+          border: { display: false }
+        }
+      },
+      animation: { duration: 600 }
+    }
+  });
+</script>
+</body>
+</html>

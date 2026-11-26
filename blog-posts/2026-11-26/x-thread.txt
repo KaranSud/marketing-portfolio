@@ -1,0 +1,95 @@
+1/ Three in four marketing leaders say their measurement systems are failing.
+
+They spent this year making them worse.
+
+Here's the measurement paradox nobody is talking about 🧵
+
+2/ The IAB surveyed 400+ senior analytics decision-makers.
+
+75% say their attribution, incrementality tests, and MMM models underperform.
+
+These aren't teams that don't measure. They measure carefully and are still wrong.
+
+3/ What changed? The tools got cheap.
+
+Google released Meridian (open-source MMM). Meta released Robyn. PyMC-Marketing built a full Bayesian MMM in Python.
+
+The price went from expensive to free almost overnight.
+
+4/ 46.9% of U.S. brand and agency marketers now plan to invest in MMM next year. (TransUnion/eMarketer 2026)
+
+Adoption is surging. So is overconfidence.
+
+5/ Julian Runge (Northwestern, co-author of Robyn research) put it plainly:
+
+The barrier didn't disappear. It moved.
+
+From "can we access this?" to "do we know what we're doing with it?"
+
+6/ MSI research on open-source MMM tools found the same thing:
+
+Automated models may conceal model misspecifications.
+
+A model that runs without errors doesn't mean the model is correct. It means the model ran.
+
+7/ The 3 most common MMM errors:
+
+① Attributing revenue to paid spend during high-organic-demand periods
+② Training on 90-day windows (systematically undervalues brand)
+③ Treating correlation as causation
+
+All three produce confident wrong answers.
+
+8/ Error #2 creates a feedback loop:
+
+Short window → undervalue brand → cut brand budget → long-term performance drops → "brand doesn't work" confirmed
+
+The model generated the conclusion it was set up to find.
+
+9/ The measurement architecture that works uses 3 layers:
+
+• Attribution → which campaigns convert today
+• Incrementality testing → did we cause this, or would it have happened anyway
+• MMM → long-term revenue contribution by channel
+
+Each answers a different question.
+
+10/ None of the three substitutes for the other two.
+
+Attribution without incrementality: confidently credits channels for sales they didn't cause.
+
+MMM without incrementality: correlation presented as strategy.
+
+Incrementality alone: no macro picture.
+
+11/ IAB State of Data 2026: only 39% of marketing teams run all three layers.
+
+The other 61% are drawing conclusions their stacks cannot support.
+
+McKinsey: effective analytics frees up 15-20% of marketing spend. That's not available to teams using one layer.
+
+12/ Sequence matters. You can't build all three at once.
+
+① Attribution first (UTMs + pixel + CRM)
+② Incrementality second (geo holdout, 4-6 weeks)
+③ MMM third (18+ months of data, incrementality as calibration)
+
+13/ Gartner (Feb 2026): by 2027, over 40% of CMOs pushing for larger brand budgets will lose C-suite influence.
+
+84% of companies are already stuck in a measurement doom loop.
+
+This is a CMO credibility problem now.
+
+14/ McKinsey State of Marketing Europe 2026:
+
+Only 3% of CMOs can explain more than 50% of their spend through MROI measurement.
+
+42% plan to invest more in MROI tools.
+
+Buying more tools is not the fix.
+
+15/ The measurement architecture you need already exists.
+
+What it requires isn't a tool purchase. It's a reckoning with which questions your current models cannot answer.
+
+Full post: karansud.com

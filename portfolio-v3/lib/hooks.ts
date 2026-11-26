@@ -58,4 +58,5 @@ export const hooks: Record<string, Hook> = {
   "product-led-growth-activation-is-your-real-conversion-problem": { stat: "66%", line: "of PLG teams don't track the metric that predicts revenue", viz: { kind: "pct", value: 66 } },
   "product-led-growth-has-a-silent-10x-conversion-gap": { stat: "108%", line: "usage-based NRR vs 98% for seat-based models", viz: { kind: "vs", a: ["Seat-based", 98, "98%"], b: ["Usage-based", 108, "108%"] } },
   "marketing-attribution-only-sees-39-percent-b2b-buyer-journey": { stat: "61%", line: "of the B2B buying journey forms before first contact", viz: { kind: "pct", value: 61 } },
+  "marketing-mix-modeling-just-got-cheaper-thats-the-problem": { stat: "39%", line: "of marketing teams run all three measurement layers", viz: { kind: "pct", value: 39 } },
 };

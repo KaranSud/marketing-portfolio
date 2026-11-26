@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 540" width="680" height="540" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica Neue, Arial, sans-serif">
+  <rect width="680" height="540" fill="#FAFAF9" rx="8"/>
+
+  <!-- Title -->
+  <text x="340" y="44" text-anchor="middle" font-size="18" font-weight="700" fill="#0F172A">The Three-Layer Marketing Measurement Stack</text>
+  <text x="340" y="66" text-anchor="middle" font-size="13" fill="#475569">Each layer answers a different question. None can substitute for the other two.</text>
+
+  <!-- Connector lines between layers -->
+  <line x1="340" y1="168" x2="340" y2="198" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+  <line x1="340" y1="318" x2="340" y2="348" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Layer 1: Attribution -->
+  <rect x="60" y="92" width="560" height="76" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="60" y="92" width="6" height="76" rx="3" fill="#94A3B8"/>
+  <rect x="63" y="92" width="3" height="76" fill="#94A3B8"/>
+  <text x="90" y="121" font-size="11" font-weight="600" fill="#64748B" letter-spacing="0.5">LAYER 1</text>
+  <text x="90" y="140" font-size="16" font-weight="700" fill="#0F172A">Attribution</text>
+  <text x="90" y="157" font-size="12" fill="#475569">Which campaigns are converting today? Use for daily channel and creative decisions.</text>
+  <!-- Right label -->
+  <rect x="488" y="110" width="118" height="40" rx="6" fill="#F1F5F9"/>
+  <text x="547" y="127" text-anchor="middle" font-size="10" font-weight="600" fill="#64748B">TIME HORIZON</text>
+  <text x="547" y="142" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">Daily / weekly</text>
+
+  <!-- Layer 2: Incrementality Testing -->
+  <rect x="60" y="242" width="560" height="76" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="60" y="242" width="6" height="76" rx="3" fill="#475569"/>
+  <rect x="63" y="242" width="3" height="76" fill="#475569"/>
+  <text x="90" y="271" font-size="11" font-weight="600" fill="#475569" letter-spacing="0.5">LAYER 2</text>
+  <text x="90" y="290" font-size="16" font-weight="700" fill="#0F172A">Incrementality Testing</text>
+  <text x="90" y="307" font-size="12" fill="#475569">Would this conversion have happened without this campaign? Proves causation, not correlation.</text>
+  <!-- Right label -->
+  <rect x="488" y="260" width="118" height="40" rx="6" fill="#F1F5F9"/>
+  <text x="547" y="277" text-anchor="middle" font-size="10" font-weight="600" fill="#475569">TIME HORIZON</text>
+  <text x="547" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">4–8 weeks</text>
+
+  <!-- Layer 3: MMM -->
+  <rect x="60" y="392" width="560" height="76" rx="8" fill="#FFFFFF" stroke="#E7E5E4" stroke-width="1.5"/>
+  <rect x="60" y="392" width="6" height="76" rx="3" fill="#DC2626"/>
+  <rect x="63" y="392" width="3" height="76" fill="#DC2626"/>
+  <text x="90" y="421" font-size="11" font-weight="600" fill="#DC2626" letter-spacing="0.5">LAYER 3</text>
+  <text x="90" y="440" font-size="16" font-weight="700" fill="#0F172A">Marketing Mix Modeling</text>
+  <text x="90" y="457" font-size="12" fill="#475569">What is each channel's long-term revenue contribution? Strategic budget allocation across years.</text>
+  <!-- Right label -->
+  <rect x="488" y="410" width="118" height="40" rx="6" fill="#FEF2F2"/>
+  <text x="547" y="427" text-anchor="middle" font-size="10" font-weight="600" fill="#DC2626">TIME HORIZON</text>
+  <text x="547" y="442" text-anchor="middle" font-size="12" font-weight="700" fill="#DC2626">18+ months</text>
+
+  <!-- Bottom note -->
+  <text x="340" y="500" text-anchor="middle" font-size="12" fill="#475569">39% of teams run all three layers (IAB State of Data 2026, n=400+)</text>
+  <text x="340" y="520" text-anchor="middle" font-size="11" fill="#94A3B8">karansud.com</text>
+</svg>
